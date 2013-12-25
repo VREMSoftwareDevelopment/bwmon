@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en" ng-app="BWMonApp" ng-controller="RootController">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Bandwidth Monitor Usage</title>
+	<link rel="stylesheet" href="css/bwmon.min.css"/>
+</head>
+<body class="container">
+	<h2>
+		<span class="pull-left">Bandwidth Monitor Usage</span>
+		<small class="pull-right">{{ clock  | date: 'medium'}}</small>
+		<span class="clearfix"></span>
+	</h2>
+	<div class="navbar navbar-default" ng-controller="NavigationController">
+		<ul class="nav navbar-nav">
+			<li ng-class="{active: isActive('/UsageByUser')}">
+				<a href="#/UsageByUser">Usage By User</a>
+			</li>
+			<li ng-class="{active: isActive('/UsageByMonth')}">
+				<a href="#/UsageByMonth">Usage By Month</a>
+			</li>
+			<li ng-class="{active: isActive('/UsageByYear')}">
+				<a href="#/UsageByYear">Usage By Year</a>
+			</li>
+		</ul>
+	</div>
+	<div class="ng-view-min-height">
+		<div ng-view></div>
+	</div>
+	<h5>
+		<span class="pull-left">This page was generated on {{currentDate | date: 'medium'}}</span>
+		<span class="pull-right">Version {{'%VERSION%' | interpolate}}</span>
+		<span class="clearfix"></span>
+	</h5>
+ 	<script src="bwmonUsage.js"></script>
+    <script src="js/bwmon.min.js"></script>
+</body>
+</html>

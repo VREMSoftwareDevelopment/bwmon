@@ -1,0 +1,18 @@
+{
+	"name": "bwmon",
+	"version": "2.0.0",
+	"main": "app/index.html",
+	"ignore": [
+		"**/.*",
+		"node_modules"
+	],
+	"dependencies": {
+		"angular": "latest",
+		"angular-route": "latest",
+		"angular-mocks": "latest",
+		"d3": "latest",
+		"line-chart": "latest",
+		"momentjs": "latest",
+		"underscore": "latest"
+  	}
+}

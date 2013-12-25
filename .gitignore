@@ -1,0 +1,6 @@
+/.settings
+/.project
+node_modules/
+server/bwmonUsage.*
+server/tomato_*.gz
+logs/coverage-*.json
