@@ -1,5 +1,5 @@
 @echo off
-echo Starting Karma Server
+echo Starting e2e Tests
 echo -------------------------------------------------------------------
 set BASE_DIR=%~dp0
-karma start "%BASE_DIR%..\config\karma.conf.js" %*
+protractor "%BASE_DIR%..\config\protractor.conf.js" %*
