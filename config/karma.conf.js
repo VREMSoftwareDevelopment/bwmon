@@ -16,7 +16,6 @@ module.exports = function(config){
 		exclude: [
 //			'app/js/**/*.min.js',
 		],
-		autoWatch: true,
 		frameworks: ['jasmine'],
 		browsers : [
 //			'Chrome',

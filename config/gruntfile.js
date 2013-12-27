@@ -84,15 +84,29 @@ module.exports = function(grunt) {
 				src: 'templates/**.tpl.html',
 			   	dest: 'app/js/templates.js'
 			}
+		},
+		karma: {
+			unit: {
+				configFile: 'config/karma.conf.js',
+				autoWatch: false,
+				singleRun: true
+			},
+			unit_auto: {
+				configFile: 'config/karma.conf.js',
+				autoWatch: true,
+				singleRun: false
+			}
 		}
 	});
 
-	grunt.registerTask('default', [
-		'preprocess',
-		'ngtemplates',
-		'jshint',
-		'concat',
-		'uglify',
-		'cssmin'
-	]);
+	// always
+	grunt.registerTask('default', ['preprocess', 'ngtemplates', 'jshint']);
+	// single run test
+	grunt.registerTask('test', ['default', 'karma:unit']);
+
+	// auto-test and watch tests
+	grunt.registerTask('autotest', ['default', 'karma:unit_auto']);
+
+	// production build
+	grunt.registerTask('production', ['test', 'concat', 'uglify', 'cssmin']);
 };
