@@ -14,22 +14,21 @@
  *    limitations under the License.
  */
 angular.module('BWMonApp.controllers', [])
-.controller('RootController', ['$timeout', '$scope', function($timeout, $scope) {
+.controller('RootController', ['$interval', '$scope', function($interval, $scope) {
 	'use strict';
 
-	var updateClock = function() {
-			$scope.clock = new Date();
-		},
-		refresh = $timeout(function reload() {
-			$scope.$apply(updateClock);
-			refresh = $timeout(reload, 1000);
-		}, 1000);
+	function updateClock() {
+		$scope.clock = new Date();
+	}
+
+	var clockOn = $interval(updateClock, 1000);
 
 	$scope.$on('$destroy', function(e) {
-        $timeout.cancel(refresh);
+		$interval.cancel(clockOn);
 	});
 
 	updateClock();
+
 	$scope.currentDate = $scope.clock;
 
 	$scope.chartTypes = ['column', 'line', 'area'];

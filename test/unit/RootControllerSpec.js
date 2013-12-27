@@ -4,7 +4,7 @@ describe('RootController tests', function(){
 	var $scope = null;
 
 	beforeEach(module('BWMonApp.controllers'));
-	beforeEach(inject(function($rootScope, $timeout, $controller){
+	beforeEach(inject(function($rootScope, $controller){
 		$scope = $rootScope.$new();
 
 		$controller('RootController', {

@@ -13,10 +13,10 @@ describe('bwmon home page', function() {
 	});
 
 	it('should default to Usage By User', function() {
-		var t1 = Protractor.By.className('container');
+		var t1 = by.className('container');
 		console.log(t1);
 
-		var e1 = browser.findElement(t1);
+		var e1 = element(t1);
 		console.log(e1);
 
 		var result = e1.getText();
