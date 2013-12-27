@@ -1,4 +1,7 @@
-module.exports = function (grunt) {
+module.exports = function(grunt) {
+
+	require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
+
 	grunt.initConfig({
 		pkg: grunt.file.readJSON('package.json'),
 		concat: {
@@ -83,13 +86,6 @@ module.exports = function (grunt) {
 			}
 		}
 	});
-
-	grunt.loadNpmTasks('grunt-preprocess');
-	grunt.loadNpmTasks('grunt-contrib-jshint');
-	grunt.loadNpmTasks('grunt-contrib-concat');
-	grunt.loadNpmTasks('grunt-contrib-uglify');
-	grunt.loadNpmTasks('grunt-contrib-cssmin');
-	grunt.loadNpmTasks('grunt-angular-templates');
 
 	grunt.registerTask('default', [
 		'preprocess',
