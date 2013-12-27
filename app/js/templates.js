@@ -4,7 +4,7 @@ angular.module('BWMonApp').run(['$templateCache', function($templateCache) {
   $templateCache.put('templates/UsageByMonth.tpl.html',
     "<form class=\"form-inline\" role=\"form\">\r" +
     "\n" +
-    "\t<button class=\"btn btn-primary\" ng-click=\"showChart=!showChart\">Show\r" +
+    "\t<button id=\"buttonShowChart\" class=\"btn btn-primary\" ng-click=\"showChart=!showChart\">Show\r" +
     "\n" +
     "\t\t<span ng-show=\"showChart\">Data</span>\r" +
     "\n" +
@@ -16,7 +16,7 @@ angular.module('BWMonApp').run(['$templateCache', function($templateCache) {
     "\n" +
     "\t\t<label class=\"sr-only\" for=\"year\">Year</label>\r" +
     "\n" +
-    "\t\t<select class=\"form-control\" name=\"year\" ng-model=\"year\" ng-options=\"choice for choice in years\"></select>\r" +
+    "\t\t<select class=\"form-control\" name=\"year\" ng-model=\"year\" ng-options=\"choiceYear for choiceYear in years\"></select>\r" +
     "\n" +
     "\t</div>\r" +
     "\n" +
@@ -32,7 +32,7 @@ angular.module('BWMonApp').run(['$templateCache', function($templateCache) {
     "\n" +
     "<div ng-show=\"showChart\">\r" +
     "\n" +
-    "\t<linechart data=\"chartData\" options=\"chartOptions\"></linechart>\r" +
+    "\t<linechart id=\"chartData\" data=\"chartData\" options=\"chartOptions\"></linechart>\r" +
     "\n" +
     "</div>\r" +
     "\n" +
@@ -116,7 +116,7 @@ angular.module('BWMonApp').run(['$templateCache', function($templateCache) {
   $templateCache.put('templates/UsageByUser.tpl.html',
     "<form class=\"form-inline\" role=\"form\">\r" +
     "\n" +
-    "\t<button class=\"btn btn-primary\" ng-click=\"showChart=!showChart\">Show\r" +
+    "\t<button id=\"buttonShowChart\" class=\"btn btn-primary\" ng-click=\"showChart=!showChart\">Show\r" +
     "\n" +
     "\t\t<span ng-show=\"showChart\">Data</span>\r" +
     "\n" +
@@ -128,7 +128,7 @@ angular.module('BWMonApp').run(['$templateCache', function($templateCache) {
     "\n" +
     "\t\t<label class=\"sr-only\" for=\"year\">Year</label>\r" +
     "\n" +
-    "\t\t<select class=\"form-control\" name=\"year\" ng-model=\"selected.year\" ng-options=\"choice for choice in years\"></select>\r" +
+    "\t\t<select class=\"form-control\" name=\"year\" ng-model=\"selected.year\" ng-options=\"choiceYear for choiceYear in years\"></select>\r" +
     "\n" +
     "\t</div>\r" +
     "\n" +
@@ -136,7 +136,7 @@ angular.module('BWMonApp').run(['$templateCache', function($templateCache) {
     "\n" +
     "\t\t<label class=\"sr-only\" for=\"month\">Month</label>\r" +
     "\n" +
-    "\t\t<select class=\"form-control\" name=\"month\" ng-model=\"selected.month\" ng-options=\"choice for choice in months\"></select>\r" +
+    "\t\t<select class=\"form-control\" name=\"month\" ng-model=\"selected.month\" ng-options=\"choiceMonth for choiceMonth in months\"></select>\r" +
     "\n" +
     "\t</div>\r" +
     "\n" +
@@ -144,7 +144,7 @@ angular.module('BWMonApp').run(['$templateCache', function($templateCache) {
     "\n" +
     "\t\t<label class=\"sr-only\" for=\"filter\">Filter by IP, MAC or User</label>\r" +
     "\n" +
-    "\t\t<input class=\"form-control\" naem=\"filter\" placeholder=\"IP, MAC or User\" ng-model=\"selected.filter\"/>\r" +
+    "\t\t<input class=\"form-control\" name=\"filter\" placeholder=\"IP, MAC or User\" ng-model=\"selected.filter\"/>\r" +
     "\n" +
     "\t</div>\r" +
     "\n" +
@@ -160,11 +160,11 @@ angular.module('BWMonApp').run(['$templateCache', function($templateCache) {
     "\n" +
     "\t\t<span ng-show=\"page.hasPages()\">\r" +
     "\n" +
-    "\t\t\t<button class=\"btn btn-primary\" ng-disabled=\"!page.hasPrevious()\" ng-click=\"page.previous()\">Previous</button>\r" +
+    "\t\t\t<button id=\"buttonPrevious\" class=\"btn btn-primary\" ng-disabled=\"!page.hasPrevious()\" ng-click=\"page.previous()\">Previous</button>\r" +
     "\n" +
-    "\t\t\t{{page.current + 1}}/{{page.pages()}}\r" +
+    "\t\t\t<span>{{page.current + 1}}/{{page.pages()}}</span>\r" +
     "\n" +
-    "\t\t\t<button class=\"btn btn-primary\" ng-disabled=\"!page.hasNext()\" ng-click=\"page.next()\">Next</button>\r" +
+    "\t\t\t<button id=\"buttonNext\" class=\"btn btn-primary\" ng-disabled=\"!page.hasNext()\" ng-click=\"page.next()\">Next</button>\r" +
     "\n" +
     "\t\t</span>\r" +
     "\n" +
@@ -174,7 +174,7 @@ angular.module('BWMonApp').run(['$templateCache', function($templateCache) {
     "\n" +
     "<div ng-show=\"showChart\">\r" +
     "\n" +
-    "\t<linechart data=\"chartData\" options=\"chartOptions\"></linechart>\r" +
+    "\t<linechart id=\"chartData\" data=\"chartData\" options=\"chartOptions\"></linechart>\r" +
     "\n" +
     "</div>\r" +
     "\n" +
@@ -278,7 +278,7 @@ angular.module('BWMonApp').run(['$templateCache', function($templateCache) {
   $templateCache.put('templates/UsageByYear.tpl.html',
     "<form class=\"form-inline\" role=\"form\">\r" +
     "\n" +
-    "\t<button class=\"btn btn-primary\" ng-click=\"showChart=!showChart\">Show\r" +
+    "\t<button id=\"buttonShowChart\" class=\"btn btn-primary\" ng-click=\"showChart=!showChart\">Show\r" +
     "\n" +
     "\t\t<span ng-show=\"showChart\">Data</span>\r" +
     "\n" +
@@ -298,7 +298,7 @@ angular.module('BWMonApp').run(['$templateCache', function($templateCache) {
     "\n" +
     "<div ng-show=\"showChart\">\r" +
     "\n" +
-    "\t<linechart data=\"chartData\" options=\"chartOptions\"></linechart>\r" +
+    "\t<linechart id=\"chartData\" data=\"chartData\" options=\"chartOptions\"></linechart>\r" +
     "\n" +
     "</div>\r" +
     "\n" +

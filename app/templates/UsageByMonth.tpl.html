@@ -5,7 +5,7 @@
 	</button>
  	<div class="form-group">
 		<label class="sr-only" for="year">Year</label>
-		<select class="form-control" name="year" ng-model="year" ng-options="choice for choice in years"></select>
+		<select class="form-control" name="year" ng-model="year" ng-options="choiceYear for choiceYear in years"></select>
 	</div>
 	<div ng-show="showChart" class="form-group">
 		<label class="sr-only" for="chartType">Chart Type</label>
@@ -13,7 +13,7 @@
 	</div>
 </form>
 <div ng-show="showChart">
-	<linechart data="chartData" options="chartOptions"></linechart>
+	<linechart id="chartData" data="chartData" options="chartOptions"></linechart>
 </div>
 <div ng-hide="showChart" class="table-responsive">
 	<table class="table table-striped table-hover table-condensed">
