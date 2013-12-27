@@ -1,62 +1,67 @@
 <?xml version="1.0"?>
 <testsuites>
-  <testsuite name="PhantomJS 1.9.2 (Windows 7)" package="" timestamp="2013-12-25T19:45:50" id="0" hostname="HOME-SERVER" tests="55" errors="0" failures="0" time="0.232">
+  <testsuite name="PhantomJS 1.9.2 (Windows 7)" package="" timestamp="2013-12-27T00:51:07" id="0" hostname="HOME-SERVER">
     <properties>
       <property name="browser.fullName" value="Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/534.34 (KHTML, like Gecko) PhantomJS/1.9.2 Safari/534.34"/>
     </properties>
-    <testcase name="should return true" time="0.02" classname="PhantomJS 1.9.2 (Windows 7).NavigationController tests"/>
+  </testsuite>
+  <testsuite name="PhantomJS 1.9.2 (Windows 7)" package="" timestamp="2013-12-27T00:51:07" id="0" hostname="HOME-SERVER" tests="55" errors="0" failures="0" time="0.247">
+    <properties>
+      <property name="browser.fullName" value="Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/534.34 (KHTML, like Gecko) PhantomJS/1.9.2 Safari/534.34"/>
+    </properties>
+    <testcase name="should return true" time="0.021" classname="PhantomJS 1.9.2 (Windows 7).NavigationController tests"/>
     <testcase name="should return false" time="0.003" classname="PhantomJS 1.9.2 (Windows 7).NavigationController tests"/>
-    <testcase name="should set current Date" time="0.003" classname="PhantomJS 1.9.2 (Windows 7).RootController tests"/>
+    <testcase name="should set current Date" time="0.004" classname="PhantomJS 1.9.2 (Windows 7).RootController tests"/>
     <testcase name="should set graph options - series " time="0.002" classname="PhantomJS 1.9.2 (Windows 7).RootController tests"/>
     <testcase name="should set chart types" time="0.002" classname="PhantomJS 1.9.2 (Windows 7).RootController tests"/>
-    <testcase name="should update years with getYears" time="0.006" classname="PhantomJS 1.9.2 (Windows 7).UsageByMonthController tests"/>
+    <testcase name="should update years with getYears" time="0.007" classname="PhantomJS 1.9.2 (Windows 7).UsageByMonthController tests"/>
     <testcase name="should update year with getYears first element" time="0.002" classname="PhantomJS 1.9.2 (Windows 7).UsageByMonthController tests"/>
-    <testcase name="should update data with getUsageByMonth" time="0.001" classname="PhantomJS 1.9.2 (Windows 7).UsageByMonthController tests"/>
-    <testcase name="should update total with getUsageByMonth" time="0.002" classname="PhantomJS 1.9.2 (Windows 7).UsageByMonthController tests"/>
+    <testcase name="should update data with getUsageByMonth" time="0.002" classname="PhantomJS 1.9.2 (Windows 7).UsageByMonthController tests"/>
+    <testcase name="should update total with getUsageByMonth" time="0.001" classname="PhantomJS 1.9.2 (Windows 7).UsageByMonthController tests"/>
     <testcase name="should update chart data with getUsageByMonth" time="0.001" classname="PhantomJS 1.9.2 (Windows 7).UsageByMonthController tests"/>
     <testcase name="should update graph options - series with getUsageByMonth" time="0.002" classname="PhantomJS 1.9.2 (Windows 7).UsageByMonthController tests"/>
-    <testcase name="should update graph options with non empty label - x axes" time="0.005" classname="PhantomJS 1.9.2 (Windows 7).UsageByMonthController tests"/>
+    <testcase name="should update graph options with non empty label - x axes" time="0.006" classname="PhantomJS 1.9.2 (Windows 7).UsageByMonthController tests"/>
     <testcase name="should update graph options with empty label - x axes" time="0.002" classname="PhantomJS 1.9.2 (Windows 7).UsageByMonthController tests"/>
-    <testcase name="should update graph options with non empty tootltip - x axes" time="0.001" classname="PhantomJS 1.9.2 (Windows 7).UsageByMonthController tests"/>
+    <testcase name="should update graph options with non empty tootltip - x axes" time="0.003" classname="PhantomJS 1.9.2 (Windows 7).UsageByMonthController tests"/>
     <testcase name="should update graph options with empty tootltip - x axes" time="0.002" classname="PhantomJS 1.9.2 (Windows 7).UsageByMonthController tests"/>
-    <testcase name="should update years with getYears" time="0.002" classname="PhantomJS 1.9.2 (Windows 7).UsageByUserController tests"/>
-    <testcase name="should update year with getYears first element" time="0.007" classname="PhantomJS 1.9.2 (Windows 7).UsageByUserController tests"/>
-    <testcase name="should update months with getMonths" time="0.003" classname="PhantomJS 1.9.2 (Windows 7).UsageByUserController tests"/>
+    <testcase name="should update years with getYears" time="0.003" classname="PhantomJS 1.9.2 (Windows 7).UsageByUserController tests"/>
+    <testcase name="should update year with getYears first element" time="0.009" classname="PhantomJS 1.9.2 (Windows 7).UsageByUserController tests"/>
+    <testcase name="should update months with getMonths" time="0.002" classname="PhantomJS 1.9.2 (Windows 7).UsageByUserController tests"/>
     <testcase name="should update month with getMonths first element" time="0.001" classname="PhantomJS 1.9.2 (Windows 7).UsageByUserController tests"/>
     <testcase name="should update data with getUsageByUser" time="0.002" classname="PhantomJS 1.9.2 (Windows 7).UsageByUserController tests"/>
     <testcase name="should update total with getUsageByUser" time="0.002" classname="PhantomJS 1.9.2 (Windows 7).UsageByUserController tests"/>
     <testcase name="should update chart data with getUsageByUser" time="0.002" classname="PhantomJS 1.9.2 (Windows 7).UsageByUserController tests"/>
-    <testcase name="should update graph options - series with getUsageByYear" time="0.001" classname="PhantomJS 1.9.2 (Windows 7).UsageByUserController tests"/>
+    <testcase name="should update graph options - series with getUsageByYear" time="0.002" classname="PhantomJS 1.9.2 (Windows 7).UsageByUserController tests"/>
     <testcase name="should update graph options with non empty label - x axes" time="0.002" classname="PhantomJS 1.9.2 (Windows 7).UsageByUserController tests"/>
     <testcase name="should update graph options with empty label - x axes" time="0.002" classname="PhantomJS 1.9.2 (Windows 7).UsageByUserController tests"/>
-    <testcase name="should update graph options with non empty tootltip - x axes" time="0.003" classname="PhantomJS 1.9.2 (Windows 7).UsageByUserController tests"/>
+    <testcase name="should update graph options with non empty tootltip - x axes" time="0.002" classname="PhantomJS 1.9.2 (Windows 7).UsageByUserController tests"/>
     <testcase name="should update graph options with empty tootltip - x axes" time="0.002" classname="PhantomJS 1.9.2 (Windows 7).UsageByUserController tests"/>
     <testcase name="should update data with getUsageByYear" time="0.002" classname="PhantomJS 1.9.2 (Windows 7).UsageByYearController tests"/>
     <testcase name="should update chart data with getUsageByYear" time="0.001" classname="PhantomJS 1.9.2 (Windows 7).UsageByYearController tests"/>
-    <testcase name="should update graph options - series with getUsageByYear" time="0.001" classname="PhantomJS 1.9.2 (Windows 7).UsageByYearController tests"/>
+    <testcase name="should update graph options - series with getUsageByYear" time="0.002" classname="PhantomJS 1.9.2 (Windows 7).UsageByYearController tests"/>
     <testcase name="should update graph options with non empty label - x axes" time="0.002" classname="PhantomJS 1.9.2 (Windows 7).UsageByYearController tests"/>
-    <testcase name="should update graph options with empty label - x axes" time="0.002" classname="PhantomJS 1.9.2 (Windows 7).UsageByYearController tests"/>
-    <testcase name="should update graph options with non empty tootltip - x axes" time="0.001" classname="PhantomJS 1.9.2 (Windows 7).UsageByYearController tests"/>
-    <testcase name="should update graph options with empty tootltip - x axes" time="0.002" classname="PhantomJS 1.9.2 (Windows 7).UsageByYearController tests"/>
-    <testcase name="should print current version" time="0.011" classname="PhantomJS 1.9.2 (Windows 7).directives app-version"/>
-    <testcase name="should replace VERSION" time="0.001" classname="PhantomJS 1.9.2 (Windows 7).filter interpolate"/>
+    <testcase name="should update graph options with empty label - x axes" time="0.001" classname="PhantomJS 1.9.2 (Windows 7).UsageByYearController tests"/>
+    <testcase name="should update graph options with non empty tootltip - x axes" time="0.002" classname="PhantomJS 1.9.2 (Windows 7).UsageByYearController tests"/>
+    <testcase name="should update graph options with empty tootltip - x axes" time="0.001" classname="PhantomJS 1.9.2 (Windows 7).UsageByYearController tests"/>
+    <testcase name="should print current version" time="0.013" classname="PhantomJS 1.9.2 (Windows 7).directives app-version"/>
+    <testcase name="should replace VERSION" time="0.002" classname="PhantomJS 1.9.2 (Windows 7).filter interpolate"/>
     <testcase name="should slice array from startFrom" time="0.001" classname="PhantomJS 1.9.2 (Windows 7).filter startFrom"/>
-    <testcase name="should return december month as full name" time="0.001" classname="PhantomJS 1.9.2 (Windows 7).filter toMonth"/>
+    <testcase name="should return december month as full name" time="0.002" classname="PhantomJS 1.9.2 (Windows 7).filter toMonth"/>
     <testcase name="should return january month as full name" time="0.001" classname="PhantomJS 1.9.2 (Windows 7).filter toMonth"/>
     <testcase name="should return month as full name" time="0.001" classname="PhantomJS 1.9.2 (Windows 7).filter timeToDate"/>
-    <testcase name="should return value in GBytes" time="0.001" classname="PhantomJS 1.9.2 (Windows 7).filter usageInGBytes"/>
-    <testcase name="should return current version" time="0.02" classname="PhantomJS 1.9.2 (Windows 7).BWMonApp_services"/>
+    <testcase name="should return value in GBytes" time="0.002" classname="PhantomJS 1.9.2 (Windows 7).filter usageInGBytes"/>
+    <testcase name="should return current version" time="0.022" classname="PhantomJS 1.9.2 (Windows 7).BWMonApp_services"/>
     <testcase name="should return years" time="0.008" classname="PhantomJS 1.9.2 (Windows 7).BWMonApp_services"/>
     <testcase name="should return months" time="0.008" classname="PhantomJS 1.9.2 (Windows 7).BWMonApp_services"/>
     <testcase name="should return data by year" time="0.009" classname="PhantomJS 1.9.2 (Windows 7).BWMonApp_services"/>
-    <testcase name="should return chart data by year" time="0.007" classname="PhantomJS 1.9.2 (Windows 7).BWMonApp_services"/>
-    <testcase name="should return usage data by month" time="0.009" classname="PhantomJS 1.9.2 (Windows 7).BWMonApp_services"/>
-    <testcase name="should return total by month" time="0.007" classname="PhantomJS 1.9.2 (Windows 7).BWMonApp_services"/>
-    <testcase name="should return chart usage by month" time="0.009" classname="PhantomJS 1.9.2 (Windows 7).BWMonApp_services"/>
+    <testcase name="should return chart data by year" time="0.008" classname="PhantomJS 1.9.2 (Windows 7).BWMonApp_services"/>
+    <testcase name="should return usage data by month" time="0.008" classname="PhantomJS 1.9.2 (Windows 7).BWMonApp_services"/>
+    <testcase name="should return total by month" time="0.008" classname="PhantomJS 1.9.2 (Windows 7).BWMonApp_services"/>
+    <testcase name="should return chart usage by month" time="0.007" classname="PhantomJS 1.9.2 (Windows 7).BWMonApp_services"/>
     <testcase name="should return usage data by user" time="0.01" classname="PhantomJS 1.9.2 (Windows 7).BWMonApp_services"/>
-    <testcase name="should return usage data by user with filter using IP" time="0.008" classname="PhantomJS 1.9.2 (Windows 7).BWMonApp_services"/>
-    <testcase name="should return usage data by user with filter using MAC" time="0.006" classname="PhantomJS 1.9.2 (Windows 7).BWMonApp_services"/>
-    <testcase name="should return usage data by user with filter using user" time="0.006" classname="PhantomJS 1.9.2 (Windows 7).BWMonApp_services"/>
+    <testcase name="should return usage data by user with filter using IP" time="0.007" classname="PhantomJS 1.9.2 (Windows 7).BWMonApp_services"/>
+    <testcase name="should return usage data by user with filter using MAC" time="0.007" classname="PhantomJS 1.9.2 (Windows 7).BWMonApp_services"/>
+    <testcase name="should return usage data by user with filter using user" time="0.007" classname="PhantomJS 1.9.2 (Windows 7).BWMonApp_services"/>
     <testcase name="should return total by user" time="0.007" classname="PhantomJS 1.9.2 (Windows 7).BWMonApp_services"/>
     <testcase name="should return chart usage by user" time="0.007" classname="PhantomJS 1.9.2 (Windows 7).BWMonApp_services"/>
     <system-out><![CDATA[

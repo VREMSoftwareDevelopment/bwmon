@@ -1,11 +1,25 @@
-describe('angularjs homepage', function() {
-	it('should greet the named user', function() {
-		browser.get('http://www.angularjs.org');
+describe('bwmon home page', function() {
+	'use strict';
 
-		element(by.model('yourName')).sendKeys('Julie');
+/*
+ * test is broken in Windows
+ *
+ */
+	var URL = 'http://localhost:8080';
 
-		var greeting = element(by.binding('yourName'));
+	beforeEach(function () {
+		browser.get(URL);
+		browser.waitForAngular();
+	});
 
-		expect(greeting.getText()).toEqual('Hello Julie!');
+	it('should default to Usage By User', function() {
+		var t1 = Protractor.By.className('container');
+		console.log(t1);
+
+		var e1 = browser.findElement(t1);
+		console.log(e1);
+
+		var result = e1.getText();
+		console.log(result);
 	});
 });
