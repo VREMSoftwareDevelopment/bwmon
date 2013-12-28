@@ -2,6 +2,7 @@ describe('UsageByUserController tests', function() {
 	'use strict';
 
 	var $scope = null,
+		page = {},
 		years = [10, 5, 6],
 		year = years[0],
 		months = ['Jan', 'Mar', 'Jun'],
@@ -29,6 +30,11 @@ describe('UsageByUserController tests', function() {
 					chartData: chartData
 				};
 			}
+		},
+		mockPagingService = {
+			getPaging: function() {
+				return page;
+			}
 		};
 
 	beforeEach(module('BWMonApp.controllers'));
@@ -37,7 +43,8 @@ describe('UsageByUserController tests', function() {
 
 		$controller('UsageByUserController', {
 			$scope: $scope,
-			BWMonService: mockBWMonService
+			BWMonService: mockBWMonService,
+			PagingService: mockPagingService
 		});
 	}));
 
@@ -125,4 +132,10 @@ describe('UsageByUserController tests', function() {
 		expect(expected).toEqual(actual);
 	}));
 
+	it('should update page with page from PageService', inject(function() {
+		var expected = page,
+			actual = $scope.page;
+
+		expect(expected).toEqual(actual);
+	}));
 });

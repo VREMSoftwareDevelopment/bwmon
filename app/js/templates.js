@@ -158,13 +158,13 @@ angular.module('BWMonApp').run(['$templateCache', function($templateCache) {
     "\n" +
     "\t<div ng-hide=\"showChart\" class=\"form-group pull-right\">\r" +
     "\n" +
-    "\t\t<span ng-show=\"page.hasPages()\">\r" +
+    "\t\t<span ng-show=\"page.hasPages(data)\">\r" +
     "\n" +
     "\t\t\t<button id=\"buttonPrevious\" class=\"btn btn-primary\" ng-disabled=\"!page.hasPrevious()\" ng-click=\"page.previous()\">Previous</button>\r" +
     "\n" +
-    "\t\t\t<span>{{page.current + 1}}/{{page.pages()}}</span>\r" +
+    "\t\t\t<span>{{page.current + 1}}/{{page.pages(data)}}</span>\r" +
     "\n" +
-    "\t\t\t<button id=\"buttonNext\" class=\"btn btn-primary\" ng-disabled=\"!page.hasNext()\" ng-click=\"page.next()\">Next</button>\r" +
+    "\t\t\t<button id=\"buttonNext\" class=\"btn btn-primary\" ng-disabled=\"!page.hasNext(data)\" ng-click=\"page.next(data)\">Next</button>\r" +
     "\n" +
     "\t\t</span>\r" +
     "\n" +

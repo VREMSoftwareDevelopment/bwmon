@@ -20,10 +20,10 @@
 		<select class="form-control" name="chartType" ng-model="chartSeries[0].type" ng-options="chartType for chartType in chartTypes"></select>
 	</div>
 	<div ng-hide="showChart" class="form-group pull-right">
-		<span ng-show="page.hasPages()">
+		<span ng-show="page.hasPages(data)">
 			<button id="buttonPrevious" class="btn btn-primary" ng-disabled="!page.hasPrevious()" ng-click="page.previous()">Previous</button>
-			<span>{{page.current + 1}}/{{page.pages()}}</span>
-			<button id="buttonNext" class="btn btn-primary" ng-disabled="!page.hasNext()" ng-click="page.next()">Next</button>
+			<span>{{page.current + 1}}/{{page.pages(data)}}</span>
+			<button id="buttonNext" class="btn btn-primary" ng-disabled="!page.hasNext(data)" ng-click="page.next(data)">Next</button>
 		</span>
 	</div>
 </form>

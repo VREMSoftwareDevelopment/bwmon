@@ -1,15 +1,11 @@
-describe('BWMonApp.services', function() {
+describe('BWMonApp.services BWMonService', function() {
 	'use strict';
 
-	var BWMonService;
+	var BWMonService = null;
 
 	beforeEach(module('BWMonApp.services'));
 	beforeEach(inject(function(_BWMonService_){
 		BWMonService =_BWMonService_;
-	}));
-
-	it('should return current version', inject(function(version) {
-		expect('2.0').toEqual(version);
 	}));
 
 	it('should return years', function() {

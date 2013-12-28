@@ -38,6 +38,7 @@ angular.module('BWMonApp.controllers', [])
 		label: 'GBytes',
 		type: $scope.chartTypes[0]
 	}];
+
 }])
 .controller('NavigationController', ['$scope', '$location', function($scope, $location) {
 	'use strict';
@@ -46,7 +47,7 @@ angular.module('BWMonApp.controllers', [])
 		return viewLocation === $location.path();
 	};
 }])
-.controller('UsageByUserController', ['$scope', 'BWMonService', function($scope, BWMonService) {
+.controller('UsageByUserController', ['$scope', 'BWMonService', 'PagingService', function($scope, BWMonService, PagingService) {
 	'use strict';
 
 	var getLabel = function(value, data) {
@@ -85,6 +86,8 @@ angular.module('BWMonApp.controllers', [])
 
 	init();
 
+	$scope.page = PagingService.getPaging();
+
 	$scope.$watch('selected.year', function() {
 		getMonths($scope.selected.year);
 	}, true);
@@ -107,36 +110,6 @@ angular.module('BWMonApp.controllers', [])
 				tooltipFormatter: function(value) {
 					return getTooltip(value, $scope.data);
 				}
-			}
-		}
-	};
-
-	$scope.page = {
-		current: 0,
-		size: 12,
-		pages: function() {
-			return Math.ceil($scope.data.length / this.size);
-		},
-		startIndex: function() {
-			return this.current * this.size;
-		},
-		hasPages: function() {
-			return this.hasPrevious() || this.hasNext();
-		},
-		hasPrevious: function() {
-			return this.current > 0;
-		},
-		hasNext: function() {
-			return this.current < $scope.data.length / this.size - 1;
-		},
-		previous: function() {
-			if (this.hasPrevious()) {
-				this.current -= 1;
-			}
-		},
-		next: function() {
-			if (this.hasNext()) {
-				this.current += 1;
 			}
 		}
 	};

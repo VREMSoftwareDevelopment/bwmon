@@ -43,12 +43,12 @@ describe('bwmon e2e usage by user', function() {
 		it('should have next page button enabled', function() {
 			var result = element(by.id('buttonNext'));
 			expect(result.getText()).toEqual('Next');
-			expect(result.getAttribute('ng-disabled')).toEqual('!page.hasNext()');
-			expect(result.getAttribute('ng-click')).toEqual('page.next()');
+			expect(result.getAttribute('ng-disabled')).toEqual('!page.hasNext(data)');
+			expect(result.getAttribute('ng-click')).toEqual('page.next(data)');
 		});
 
 		it('should have page counts', function() {
-			expect(element(by.binding('{{page.pages()}}')).getText()).toEqual('1/3');
+			expect(element(by.binding('{{page.pages(data)}}')).getText()).toEqual('1/3');
 		});
 
 		it('should have rows', function() {
