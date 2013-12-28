@@ -2,5 +2,6 @@
 /.project
 node_modules/
 logs/
+dist/bwmonUsage.*
 server/bwmonUsage.*
 server/tomato_*.gz
