@@ -32,8 +32,7 @@ module.exports = function(config){
 		],
 		reporters: [
 			'progress',
-			'junit',
-			'coverage'
+			'junit'
 		],
 		junitReporter: {
 			outputFile: 'logs/test-results.xml'

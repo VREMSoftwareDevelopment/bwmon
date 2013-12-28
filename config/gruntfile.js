@@ -91,6 +91,12 @@ module.exports = function(grunt) {
 				autoWatch: false,
 				singleRun: true
 			},
+			unit_coverage: {
+				configFile: 'config/karma.conf.js',
+				autoWatch: false,
+				singleRun: true,
+				reporters: ['coverage']
+			},
 			unit_auto: {
 				configFile: 'config/karma.conf.js',
 				autoWatch: true,
@@ -109,12 +115,16 @@ module.exports = function(grunt) {
 
 	// always
 	grunt.registerTask('default', ['preprocess', 'ngtemplates', 'jshint']);
+
 	// single run test
 	grunt.registerTask('test', ['default', 'karma:unit', 'protractor:unit']);
 
 	// auto-test and watch tests
 	grunt.registerTask('autotest', ['default', 'karma:unit_auto']);
 
+	//coverage testing
+	grunt.registerTask('coverage', ['default', 'karma:unit_coverage']);
+
 	// production build
-	grunt.registerTask('production', ['test', 'concat', 'uglify', 'cssmin']);
+	grunt.registerTask('production', ['test', 'coverage', 'concat', 'uglify', 'cssmin']);
 };
