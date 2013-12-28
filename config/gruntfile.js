@@ -96,13 +96,21 @@ module.exports = function(grunt) {
 				autoWatch: true,
 				singleRun: false
 			}
+		},
+		protractor: {
+			options: {
+				keepAlive: true,
+				configFile: "config/protractor.conf.js"
+			},
+			unit: {
+			}
 		}
 	});
 
 	// always
 	grunt.registerTask('default', ['preprocess', 'ngtemplates', 'jshint']);
 	// single run test
-	grunt.registerTask('test', ['default', 'karma:unit']);
+	grunt.registerTask('test', ['default', 'karma:unit', 'protractor:unit']);
 
 	// auto-test and watch tests
 	grunt.registerTask('autotest', ['default', 'karma:unit_auto']);

@@ -11,8 +11,10 @@ exports.config = {
 		'../test/e2e/*Spec.js'
 	],
 	jasmineNodeOpts: {
+		onComplete: null,
 		showColors: true,
 		isVerbose: true,
-		includeStackTrace: true
+		includeStackTrace: true,
+		defaultTimeoutInterval: 10000
 	}
 };
