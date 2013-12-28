@@ -126,5 +126,5 @@ module.exports = function(grunt) {
 	grunt.registerTask('coverage', ['default', 'karma:unit_coverage']);
 
 	// production build
-	grunt.registerTask('production', ['test', 'coverage', 'concat', 'uglify', 'cssmin']);
+	grunt.registerTask('production', ['test', 'concat', 'uglify', 'cssmin']);
 };
