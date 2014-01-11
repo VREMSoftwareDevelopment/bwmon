@@ -1,11 +1,12 @@
 'use strict';
 
 exports.config = {
-	seleniumAddress: 'http://localhost:4444/wd/hub',
+// Testing using Chrome Driver Directly
+// seleniumAddress: 'http://localhost:4444/wd/hub',
+	chromeOnly: true,
+	chromeDriver: '../selenium/chromedriver',
 	capabilities: {
 		'browserName': 'chrome'
-//		'browserName': 'firefox'
-//		'browserName': 'phantomjs'
 	},
 	specs: [
 		'../test/e2e/*Spec.js'

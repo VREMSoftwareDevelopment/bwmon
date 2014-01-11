@@ -1,7 +1,8 @@
 /.settings
 /.project
-node_modules/
-logs/
 dist/bwmonUsage.*
+logs/
+node_modules/
+selenium/
 server/bwmonUsage.*
 server/tomato_*.gz
