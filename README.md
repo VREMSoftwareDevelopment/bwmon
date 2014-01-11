@@ -8,3 +8,4 @@
 ####*Technical Features:*
 - Shell script to collect bandwidth usage and to generate JSON data structure.
 - Web Based GUI to display bandwidth usage
+- Web Based GUI is using Bootstrap and AngularJS
