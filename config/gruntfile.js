@@ -26,7 +26,8 @@ module.exports = function(grunt) {
 		},
 		uglify: {
 			options: {
-				banner: '/*! <%=pkg.name%> - v<%=pkg.version%> - <%=pkg.description%> - <%=pkg.licenses.type%> - <%=grunt.template.today("yyyy-mm-dd")%> */'
+				banner: '/*! <%=pkg.name%> - v<%=pkg.version%> - <%=pkg.description%> - <%=pkg.licenses.type%> - <%=grunt.template.today("yyyy-mm-dd")%> */',
+				sourceMap: true
 			},
 			build: {
 				src: 'dist/js/<%= pkg.name %>.min.js',

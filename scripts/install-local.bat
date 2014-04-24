@@ -9,7 +9,7 @@ call npm.cmd install --save-dev grunt-contrib-uglify
 call npm.cmd install --save-dev grunt-karma
 call npm.cmd install --save-dev grunt-preprocess
 call npm.cmd install --save-dev grunt-template
-call npm.cmd install --save-dev karma@0.10.8
+call npm.cmd install --save-dev karma
 call npm.cmd install --save-dev karma-chrome-launcher
 call npm.cmd install --save-dev karma-coffee-preprocessor
 call npm.cmd install --save-dev karma-coverage

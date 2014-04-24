@@ -2,8 +2,9 @@
 
 exports.config = {
 // Testing using Chrome Driver Directly
-// seleniumAddress: 'http://localhost:4444/wd/hub',
-	chromeOnly: true,
+	seleniumAddress: 'http://localhost:4444/wd/hub',
+// Currently is broken...
+//	chromeOnly: true,
 	chromeDriver: '../selenium/chromedriver',
 	capabilities: {
 		'browserName': 'chrome'
