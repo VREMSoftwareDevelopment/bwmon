@@ -9,31 +9,28 @@ describe('UsageByMonthController tests', function() {
 			total: 10
 		},
 		chartData = [],
-		mockBWMonService = {
-			getYears: function() {
-				return years;
-			},
-			getUsageByMonth: function(year) {
-				return {
-					data: data,
-					chartData: chartData
-				};
-			}
-		};
+		mockBWMonService;
 
-
+    beforeEach(module('BWMonApp.services'));
 	beforeEach(module('BWMonApp.controllers'));
-	beforeEach(inject(function($rootScope, $controller){
-		$scope = $rootScope.$new();
 
+
+	beforeEach(inject(function($rootScope, $controller, _BWMonService_){
+
+        $scope = $rootScope.$new();
 		$scope.chartSeries = [];
+        spyOn($scope, '$watch');
+
+        mockBWMonService = _BWMonService_;
+        spyOn(mockBWMonService, 'getYears').andReturn(years);
+        spyOn(mockBWMonService, 'getUsageByMonth').andReturn({data: data, chartData: chartData});
+
 
 		$controller('UsageByMonthController', {
 			$scope: $scope,
 			BWMonService: mockBWMonService
 		});
 
-		spyOn($scope, '$watch');
 	}));
 
 	it('should update years with getYears', inject(function() {
