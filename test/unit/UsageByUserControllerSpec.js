@@ -17,29 +17,22 @@ describe('UsageByUserController tests', function() {
 			total: 10
 		},
 		chartData = data.usage,
-		mockBWMonService = {
-			getYears: function() {
-				return years;
-			},
-			getMonths: function(year) {
-				return months;
-			},
-			getUsageByUser: function(year, month) {
-				return {
-					data: data,
-					chartData: chartData
-				};
-			}
-		},
-		mockPagingService = {
-			getPaging: function() {
-				return page;
-			}
-		};
+		mockBWMonService,
+		mockPagingService;
 
+    beforeEach(module('BWMonApp.services'));
 	beforeEach(module('BWMonApp.controllers'));
-	beforeEach(inject(function($rootScope, $controller){
+
+	beforeEach(inject(function($rootScope, $controller, _BWMonService_, _PagingService_){
 		$scope = $rootScope.$new();
+
+		mockBWMonService = _BWMonService_;
+        spyOn(mockBWMonService, 'getYears').andReturn(years);
+        spyOn(mockBWMonService, 'getMonths').andReturn(months);
+        spyOn(mockBWMonService, 'getUsageByUser').andReturn({data: data, chartData: chartData});
+
+        mockPagingService = _PagingService_;
+        spyOn(mockPagingService, 'getPaging').andReturn(page);
 
 		$controller('UsageByUserController', {
 			$scope: $scope,

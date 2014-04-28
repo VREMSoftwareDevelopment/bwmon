@@ -3,22 +3,20 @@ describe('UsageByYearController tests', function() {
 
 	var $scope = null,
 		data = {id: 11},
-		mockBWMonService = {
-			getUsageByYear: function() {
-				return {
-					data: data,
-					chartData: {1: data}
-				};
-			}
-		};
+		mockBWMonService;
 
+    beforeEach(module('BWMonApp.services'));
 	beforeEach(module('BWMonApp.controllers'));
-	beforeEach(inject(function($rootScope, $controller){
+
+	beforeEach(inject(function($rootScope, $controller, _BWMonService_){
 		$scope = $rootScope.$new();
 
 		$scope.chartSeries = [];
 
-		$controller('UsageByYearController', {
+		mockBWMonService = _BWMonService_;
+        spyOn(mockBWMonService, 'getUsageByYear').andReturn({data: data, chartData: {1: data}});
+
+        $controller('UsageByYearController', {
 			$scope: $scope,
 			BWMonService: mockBWMonService,
 		});
