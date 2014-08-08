@@ -8,18 +8,24 @@ describe('bwmon e2e usage by user', function() {
 		browser.waitForAngular();
 	});
 
-	it('should have year', function() {
-		expect(element(by.selectedOption('selected.year')).getText())
-			.toEqual('2013');
-		expect(element(by.select('selected.year')).getText())
-			.toEqual('2013201220112010');
+	it('should have years', function() {
+		 expect(element(by.model('selected.year')).getText())
+		 	.toEqual('2013201220112010');
 	});
 
-	it('should have month', function() {
-		expect(element(by.selectedOption('selected.month')).getText())
+	it('should have year selected', function() {
+		 expect(element(by.model('selected.year')).element(by.css('option:checked')).getText())
+		 	.toEqual('2013');
+	});
+
+	it('should have months', function() {
+		 expect(element(by.model('selected.month')).getText())
+		 	.toEqual('NovemberOctoberSeptemberAugustJulyJuneMayAprilMarchFebruaryJanuary');
+	});
+
+	it('should have month selected', function() {
+		expect(element(by.model('selected.month')).element(by.css('option:checked')).getText())
 			.toEqual('November');
-		expect(element(by.select('selected.month')).getText())
-			.toEqual('NovemberOctoberSeptemberAugustJulyJuneMayAprilMarchFebruaryJanuary');
 	});
 
 	it('should have filter', function() {
@@ -75,11 +81,14 @@ describe('bwmon e2e usage by user', function() {
 				.toEqual('Show Data');
 		});
 
-		it('should have chart type', function() {
-			expect(element(by.selectedOption('chartSeries[0].type')).getText())
-				.toEqual('column');
-			expect(element(by.select('chartSeries[0].type')).getText())
-				.toEqual('columnlinearea');
+		it('should have chart types', function() {
+			 expect(element(by.model('chartSeries[0].type')).getText())
+			 	.toEqual('columnlinearea');
+		});
+
+		it('should have chart type selected', function() {
+			 expect(element(by.model('chartSeries[0].type')).element(by.css('option:checked')).getText())
+			 	.toEqual('column');
 		});
 
 		it('should have chart', function() {

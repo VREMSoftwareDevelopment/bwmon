@@ -35,11 +35,14 @@ describe('bwmon e2e usage by year', function() {
 				.toEqual('Show Data');
 		});
 
-		it('should have chart type', function() {
-			expect(element(by.selectedOption('chartSeries[0].type')).getText())
-				.toEqual('column');
-			expect(element(by.select('chartSeries[0].type')).getText())
-				.toEqual('columnlinearea');
+		it('should have chart types', function() {
+			 expect(element(by.model('chartSeries[0].type')).getText())
+			 	.toEqual('columnlinearea');
+		});
+
+		it('should have chart type selected', function() {
+			 expect(element(by.model('chartSeries[0].type')).element(by.css('option:checked')).getText())
+			 	.toEqual('column');
 		});
 
 		it('should have chart', function() {
