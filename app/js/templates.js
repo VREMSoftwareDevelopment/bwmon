@@ -44,7 +44,7 @@ angular.module('BWMonApp').run(['$templateCache', function($templateCache) {
     "\n" +
     "\t\t\t<tr>\r" +
     "\n" +
-    "\t\t\t\t<th><a href=\"\" ng-click=\"predicate='id'; reverse=reverse===undefined ? false : !reverse;\">Month</a></th>\r" +
+    "\t\t\t\t<th><a href=\"\" ng-click=\"predicate='id'; reverse=!reverse;\">Month</a></th>\r" +
     "\n" +
     "\t\t\t\t<th class=\"text-right\">Down</th>\r" +
     "\n" +
@@ -310,7 +310,7 @@ angular.module('BWMonApp').run(['$templateCache', function($templateCache) {
     "\n" +
     "\t\t\t<tr>\r" +
     "\n" +
-    "\t\t\t\t<th><a href=\"\" ng-click=\"predicate='id'; reverse=reverse===undefined ? false : !reverse;\">Year</a></th>\r" +
+    "\t\t\t\t<th><a href=\"\" ng-click=\"predicate='id'; reverse=!reverse;\">Year</a></th>\r" +
     "\n" +
     "\t\t\t\t<th class=\"text-right\">Down</th>\r" +
     "\n" +

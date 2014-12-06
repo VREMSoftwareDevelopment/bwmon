@@ -79,6 +79,8 @@ angular.module('BWMonApp.controllers', [])
 			$scope.years = BWMonService.getYears();
 			$scope.selected = {};
 			$scope.selected.year = $scope.years[0];
+			$scope.predicate = 'IP';
+			$scope.reverse = false;
 
 			getMonths($scope.selected.year);
 			getUsage($scope.selected);
@@ -134,6 +136,8 @@ angular.module('BWMonApp.controllers', [])
 			$scope.data = usageData.data.usage;
 			$scope.total = usageData.data.total;
 			$scope.chartData = usageData.chartData;
+			$scope.predicate = 'id';
+			$scope.reverse = true;
 		};
 
 	init();
@@ -186,4 +190,6 @@ angular.module('BWMonApp.controllers', [])
 			}
 		}
 	};
+	$scope.predicate = 'id';
+	$scope.reverse = true;
 }]);
