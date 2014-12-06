@@ -1,6 +1,6 @@
 {
-  "name": "n3-charts-line-chart",
-  "version": "1.0.2",
+  "name": "n3-line-chart",
+  "version": "1.1.4",
   "main": "dist/line-chart.min.js",
   "ignore": [
     "**/.*",
@@ -8,20 +8,25 @@
     "coverage",
     "lib",
     "node_modules",
-    "test"
+    "test",
+    "Gruntfile.js",
+    "karma.conf.js",
+    "package.json"
   ],
+  "dependencies": {
+    "d3": "*",
+    "angular": "*",
+    "moment": "*"
+  },
   "devDependencies": {
-    "d3": "~3.1.7",
-    "angular": "~1.0.6",
-    "angular-mocks": "~1.0.6",
-    "moment": "~2.0.0"
+    "angular-mocks": "*"
   },
   "homepage": "https://github.com/angular-d3/line-chart",
-  "_release": "1.0.2",
+  "_release": "1.1.4",
   "_resolution": {
     "type": "version",
-    "tag": "1.0.2",
-    "commit": "7d8630b011cd9395e461bcf985380e746cc642ec"
+    "tag": "1.1.4",
+    "commit": "236fde10d3a5ad05cae0c258168f04adef7d111b"
   },
   "_source": "git://github.com/angular-d3/line-chart.git",
   "_target": "*",

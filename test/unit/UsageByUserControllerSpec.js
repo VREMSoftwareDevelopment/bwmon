@@ -27,12 +27,12 @@ describe('UsageByUserController tests', function() {
 		$scope = $rootScope.$new();
 
 		mockBWMonService = _BWMonService_;
-        spyOn(mockBWMonService, 'getYears').andReturn(years);
-        spyOn(mockBWMonService, 'getMonths').andReturn(months);
-        spyOn(mockBWMonService, 'getUsageByUser').andReturn({data: data, chartData: chartData});
+        spyOn(mockBWMonService, 'getYears').and.returnValue(years);
+        spyOn(mockBWMonService, 'getMonths').and.returnValue(months);
+        spyOn(mockBWMonService, 'getUsageByUser').and.returnValue({data: data, chartData: chartData});
 
         mockPagingService = _PagingService_;
-        spyOn(mockPagingService, 'getPaging').andReturn(page);
+        spyOn(mockPagingService, 'getPaging').and.returnValue(page);
 
 		$controller('UsageByUserController', {
 			$scope: $scope,

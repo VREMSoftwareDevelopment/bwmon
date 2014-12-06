@@ -14,7 +14,7 @@ describe('UsageByYearController tests', function() {
 		$scope.chartSeries = [];
 
 		mockBWMonService = _BWMonService_;
-        spyOn(mockBWMonService, 'getUsageByYear').andReturn({data: data, chartData: {1: data}});
+        spyOn(mockBWMonService, 'getUsageByYear').and.returnValue({data: data, chartData: {1: data}});
 
         $controller('UsageByYearController', {
 			$scope: $scope,

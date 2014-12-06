@@ -54,14 +54,14 @@ angular.module('BWMonApp.services', [])
 		},
 		_getMonths = function(year) {
 			var result = _.where(_data, {year: year});
-			result = _.uniq(result, true, function(item){
+			result = _.uniq(result, function(item){
 				return item.month;
 			});
 			result = _.pluck(result, 'month');
 			return result;
 		},
 		_getYears = function() {
-			var result = _.uniq(_data, true, function(item){
+			var result = _.uniq(_data, function(item){
 				return item.year;
 			});
 			result = _.pluck(result, 'year');
