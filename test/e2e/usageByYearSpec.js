@@ -37,7 +37,7 @@ describe('bwmon e2e usage by year', function() {
 
 		it('should have chart types', function() {
 			 expect(element(by.model('chartSeries[0].type')).getText())
-			 	.toEqual('columnlinearea');
+			 	.toEqual('column\nline\narea');
 		});
 
 		it('should have chart type selected', function() {
