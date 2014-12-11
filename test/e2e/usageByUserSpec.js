@@ -54,7 +54,7 @@ describe('bwmon e2e usage by user', function() {
 		});
 
 		it('should have page counts', function() {
-			expect(element(by.binding('{{page.pages(data)}}')).getText()).toEqual('1/3');
+			expect(element(by.binding('page.pages(data)')).getText()).toEqual('1/3');
 		});
 
 		it('should have rows', function() {
