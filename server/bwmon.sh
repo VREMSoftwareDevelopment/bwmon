@@ -1,17 +1,16 @@
 #!/bin/sh
-# Bandwidth Usage - TomatoUSB Version
-#
-# Based on http://code.google.com/p/wrtbwmon/
-#
+#Bandwidth Usage - TomatoUSB Version
 
 [ -z "${1}" ] && display && exit 1
 [ -z "${2}" ] && display && exit 1
 
 LAN0_IFACE=$(nvram get lan_ifname)
 LAN1_IFACE=$(nvram get lan1_ifname)
+MACNAMES=$(nvram find macnames)
 USERSFILE="/etc/hosts.dnsmasq"
 [ -f "${USERSFILE}" ] || USERSFILE="/etc/dnsmasq/hosts/hosts"
 [ -f "${USERSFILE}" ] || USERSFILE="/dev/null"
+MACNAMESFILE=macnames
 USAGE_DB="bwmonUsage.db"
 USAGE_JS="bwmonUsage.js"
 USAGEDB=${2}/${USAGE_DB}
@@ -22,7 +21,7 @@ display() {
 	echo "Parameters: "
 	echo "	$0 setup path"
 	echo "	$0 update path"
-	echo "	$0 update publish"
+	echo "	$0 publish path"
 	echo "Examples: "
 	echo "	$0 setup /tmp"
 	echo "	$0 update /tmp"
@@ -73,10 +72,15 @@ usage() {
 	echo "};" >> ${USAGEJS}
 
 	#details
+	echo "$(echo ${MACNAMES/'macnames='/} | tr '>' '\n' | tr '<' ',')" > ${MACNAMESFILE}
+
 	cat ${USAGEDB} | while IFS=, read CURRENT_MONTH MAC IP USAGE_IN USAGE_OUT CREATE_TIME UPDATE_TIME
 	do
 		USER=$(grep "${IP}" "${USERSFILE}" | cut -f2 -s -d' ' )
-		[ -z "$USER" ] && USER=${MAC}
+		if [ -z "$USER" ]; then
+			USER=$(grep "$(echo ${MAC} | sed 's/://g')" "${MACNAMESFILE}" | cut -f2 -s -d',' )
+			[ -z "$USER" ] && USER=${MAC}
+		fi
 		echo "data.push(new Data(i++,'${CURRENT_MONTH}','${IP}','${MAC}','${USER}',${USAGE_IN},${USAGE_OUT},${CREATE_TIME},${UPDATE_TIME}));" >> ${USAGEJS}
 	done
 	#footer
@@ -88,6 +92,8 @@ update() {
 	iptables -L RRDIPT -vnxZ -t filter > /tmp/traffic_$$.tmp
 	grep -v "0x0" /proc/net/arp  | while read IP TYPE FLAGS MAC MASK IFACE
 	do
+		#Add new data to the graph. Count in Kbs to deal with 16 bits signed values (up to 2G only)
+		#Have to use temporary files because of crappy busybox shell
 		echo 0 > /tmp/in_$$.tmp
 		echo 0 > /tmp/out_$$.tmp
 		grep ${IP} /tmp/traffic_$$.tmp | while read PKTS BYTES TARGET PROT OPT IFIN IFOUT SRC DST
