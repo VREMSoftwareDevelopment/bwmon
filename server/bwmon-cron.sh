@@ -12,15 +12,18 @@
 # list:   cru l
 
 
-BWDIR=/mnt/Asus-RT-N16/logs
+BWDIR=$(pwd)
 BWMON=$BWDIR/bwmon.sh
+BWMONWWW=/tmp/var/wwwext/bwmon
 
 case ${1} in
 "install" )
 	cru a bwmon_setup "* * * * * $BWMON setup $BWDIR"
 	cru a bwmon_update "0,30 * * * * $BWMON update $BWDIR"
+	ln -s $BWDIR $BWMONWWW
 	;;
 "remove" )
+	ln -f $BWMONWWW
 	cru d bwmon_update
 	cru d bwmon_setup
 	;;
@@ -32,4 +35,3 @@ case ${1} in
 	exit
 	;;
 esac
-
