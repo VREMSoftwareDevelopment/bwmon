@@ -7,4 +7,3 @@ selenium/
 server/bwmonUsage.*
 server/tomato_*.gz
 *.*~
-TESTS-*.xml

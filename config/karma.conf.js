@@ -37,13 +37,16 @@ module.exports = function(config){
 			'junit'
 		],
 		junitReporter: {
-			outputFile: 'logs/test-results.xml'
+			outputDir: 'logs',
+			outputFile: 'logs/test-results.xml',
+			suite: 'unit'
 		},
 		preprocessors: {
 			'app/js/**/*.js': 'coverage'
 		},
 		coverageReporter: {
-			'dir': 'logs/'
+			type: 'html',
+			dir: 'logs/'
 		}
 	});
 };
