@@ -6,3 +6,5 @@ node_modules/
 selenium/
 server/bwmonUsage.*
 server/tomato_*.gz
+*.*~
+
