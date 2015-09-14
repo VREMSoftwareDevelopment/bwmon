@@ -21,7 +21,7 @@ A simple shell script designed to run on linux powered routers
   - `cd /mnt/<mounted name>/` - go to mounted folder
   - `mkdir bwmon` - make bandwidth usage monitor folder
   - `cd bwmon`  - go to bandwidth usage monitor folder
-  - `wget https://github.com/VREMSoftwareDevelopment/bwmon/releases/download/v2.1/bwmon.tar.gz` - get software from github
+  - `wget https://github.com/VREMSoftwareDevelopment/bwmon/releases/download/v2.2/bwmon.tar.gz` - get software from github
   - `tar -xzvf bwmon.tar.gz` - extract the software
   - `chmod +x *.sh` - make all shell script executable
   - `./bwmon-cron.sh install` - install bandwidth usage monitor
