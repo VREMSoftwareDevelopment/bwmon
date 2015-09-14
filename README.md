@@ -17,16 +17,21 @@ A simple shell script designed to run on linux powered routers
 ####*Installation instructions:*
 - Make sure that you have a harddisk or USB flash drive attached to router and it is formated and mounted.
 - Log into your router via *ssh*.
-- In *ssh* terminal type the following:
-  - `cd /mnt/<mounted name>/` - go to mounted folder
-  - `mkdir bwmon` - make bandwidth usage monitor folder
-  - `cd bwmon`  - go to bandwidth usage monitor folder
-  - `wget https://github.com/VREMSoftwareDevelopment/bwmon/releases/download/v2.2/bwmon.tar.gz` - get software from github
-  - `tar -xzvf bwmon.tar.gz` - extract the software
-  - `chmod +x *.sh` - make all shell script executable
-  - `./bwmon-cron.sh install` - install bandwidth usage monitor
+- To install application type the following command in *ssh* terminal:
+  - `cd /mnt/<mounted_name>/`
+  - `mkdir bwmon`
+  - `cd bwmon`
+  - `wget https://github.com/VREMSoftwareDevelopment/bwmon/releases/download/v2.2/bwmon.tar.gz`
+  - `tar -xzvf bwmon.tar.gz`
+  - `chmod +x *.sh`
+  - `./bwmon-cron.sh install`
 - Visit `http://<your_router_ip>/user/bwmon/index.html` to view bandwidth usage statistics.
-- To setup bandwidth usage monitor to start automatically after router reboots add the following to autostart script on mount: `./mnt/<mounted name>/bwmon/bwmon-cron.sh install`
+- To setup bandwidth usage monitor to start automatically after router reboots add the following to autostart script on mount: `./mnt/<mounted_ name>/bwmon/bwmon-cron.sh install`
 
 ####*Usage:*
 `./bwmon-cron.sh {install|remove}` - shell script to install or remove bandwidth usage monitor from cron jobs
+
+####*Note:*
+- Problem using`wget`:
+  - *error getting response: Connection reset by peer* - add the following option `--no-check-certificate`
+  - Or download the file from the web-site and copy to the folder.

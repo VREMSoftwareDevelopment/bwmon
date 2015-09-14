@@ -23,7 +23,7 @@ case ${1} in
 	ln -s $BWDIR $BWMONWWW
 	;;
 "remove" )
-	ln -f $BWMONWWW
+	rm -f $BWMONWWW
 	cru d bwmon_update
 	cru d bwmon_setup
 	;;

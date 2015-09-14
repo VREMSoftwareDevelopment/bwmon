@@ -33,6 +33,7 @@
     "karma-script-launcher": "^0.1.0",
     "matchdep": "^0.3.0",
     "protractor": "^2.2.0",
-    "requirejs": "^2.1.20"
+    "requirejs": "^2.1.20",
+    "webdriver-manager": "^7.0.1"
   }
 }

@@ -22,6 +22,3 @@ grunt --gruntfile $BASEDIR/../config/gruntfile.js --base $BASEDIR/.. "$@"
 
 pkill -f $SELENIUM
 pkill -f $HTTPSERVER
-
-
-
