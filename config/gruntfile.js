@@ -16,7 +16,7 @@ module.exports = function(grunt) {
 					'app/libs/underscore/underscore-min.js',
 					'app/libs/momentjs/min/moment.min.js',
 					'app/libs/d3/d3.min.js',
-					'app/libs/line-chart/dist/line-chart.min.js',
+					'app/libs/n3-line-chart/build/line-chart.min.js',
 					'app/js/**/*.js',
 					'!app/js/bwmon.min.js',
 					'!app/bwmonUsage.js'
