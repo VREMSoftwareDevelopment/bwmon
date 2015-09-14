@@ -4,7 +4,7 @@ describe('BWMonApp.services version', function() {
 	beforeEach(module('BWMonApp.services'));
 
 	it('should return current version', inject(function(version) {
-		expect('2.1').toEqual(version);
+		expect('2.2').toEqual(version);
 	}));
 
 });
