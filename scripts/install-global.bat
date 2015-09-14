@@ -1,1 +1,2 @@
-npm.cmd -g install grunt-cli bower grunt http-server
+call npm.cmd -g install bower grunt-cli grunt
+

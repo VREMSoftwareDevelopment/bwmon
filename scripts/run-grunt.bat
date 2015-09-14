@@ -18,3 +18,4 @@ REM
 REM Start Grunt
 echo -------------------------------------------------------------------
 grunt --gruntfile "%BASE_DIR%..\config\gruntfile.js" --base "%BASE_DIR%.." %*
+

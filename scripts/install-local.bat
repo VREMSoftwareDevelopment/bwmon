@@ -1,3 +1,3 @@
-npm install --save-dev
-npm install --save-dev webdriver-manager
+call npm.cmd install --save-dev
 node_modules/webdriver-manager/bin/webdriver-manager update --standalone
+

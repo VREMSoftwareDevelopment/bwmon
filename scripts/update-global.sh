@@ -1,1 +1,2 @@
-sudo npm -g update grunt-cli bower grunt http-server
+sudo npm -g update bower grunt-cli grunt 
+

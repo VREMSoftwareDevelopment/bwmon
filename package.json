@@ -3,11 +3,11 @@
   "version": "2.2.0",
   "description": "Bandwidth Monitor Usage",
   "homepage": "https://github.com/VREMSoftwareDevelopment/bwmon",
-  "licenses": {
-    "type": "Apache License",
-    "url": "http://www.apache.org/licenses/LICENSE-2.0"
+  "repository": {
+    "type": "git",
+    "url": "https//github.com/VREMSoftwareDevelopment/bwmon.git"
   },
-  "main": "index.html",
+  "license": "Apache-2.0",
   "devDependencies": {
     "grunt": "^0.4.5",
     "grunt-angular-templates": "^0.5.7",
@@ -20,6 +20,8 @@
     "grunt-preprocess": "^5.0.1",
     "grunt-protractor-runner": "^2.1.0",
     "grunt-template": "^0.2.3",
+    "http-server": "^0.8.0",
+    "jasmine-core": "^2.3.4",
     "karma": "^0.13.9",
     "karma-chrome-launcher": "^0.2.0",
     "karma-coffee-preprocessor": "^0.3.0",
@@ -32,6 +34,7 @@
     "karma-requirejs": "^0.2.2",
     "karma-script-launcher": "^0.1.0",
     "matchdep": "^0.3.0",
+    "phantomjs": "^1.9.18",
     "protractor": "^2.2.0",
     "requirejs": "^2.1.20",
     "webdriver-manager": "^7.0.1"

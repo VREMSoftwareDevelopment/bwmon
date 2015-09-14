@@ -1,1 +1,2 @@
-sudo npm -g install grunt-cli bower grunt http-server
+sudo npm -g install bower grunt-cli grunt
+
