@@ -15,7 +15,7 @@
  */
 angular.module('BWMonApp', [
 	'ngRoute',
-	'n3-charts.linechart',
+	'n3-line-chart',
 	'BWMonApp.filters',
 	'BWMonApp.services',
 	'BWMonApp.directives',

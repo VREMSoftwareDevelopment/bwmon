@@ -11,7 +11,7 @@
 		"angular-route": "latest",
 		"angular-mocks": "latest",
 		"d3": "latest",
-		"line-chart": "latest",
+		"n3-line-chart": "latest",
 		"momentjs": "latest",
 		"underscore": "latest"
   	}

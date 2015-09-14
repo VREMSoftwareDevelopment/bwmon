@@ -10,7 +10,7 @@ module.exports = function(config){
 			'app/libs/momentjs/moment.js',
 			'app/libs/underscore/underscore.js',
 			'app/libs/d3/d3.js',
-			'app/libs/line-chart/dist/line-chart.js',
+			'app/libs/n3-line-chart/build/line-chart.js',
 			'app/js/**/*.js',
 			'app/bwmonUsage.js',
 			'test/unit/**/*.js'
