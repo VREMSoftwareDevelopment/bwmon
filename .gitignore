@@ -1,6 +1,8 @@
 /.settings
 /.project
 dist/bwmonUsage.*
+dist/bwmon*.sh
+dist/bwmon.tar.gz
 logs/
 node_modules/
 selenium/
