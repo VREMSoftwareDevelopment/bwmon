@@ -1,1 +1,1 @@
-npm.cmd -g update grunt-cli bower grunt http-server
+npm.cmd -g update bower grunt-cli grunt
