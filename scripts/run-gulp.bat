@@ -8,7 +8,7 @@ taskkill /FI "Imagename eq cmd.exe" /FI "Windowtitle eq http-server - %BASE_DIR%
 start "selenium" %BASE_DIR%run-selenium
 start "http-server" %BASE_DIR%run-http-server
 
-grunt --gruntfile "%BASE_DIR%..\config\gruntfile.js" --base "%BASE_DIR%.." %*
+gulp %*
 
 taskkill /FI "Imagename eq cmd.exe" /FI "Windowtitle eq selenium - %BASE_DIR%run-selenium"
 taskkill /FI "Imagename eq cmd.exe" /FI "Windowtitle eq http-server - %BASE_DIR%run-http-server"

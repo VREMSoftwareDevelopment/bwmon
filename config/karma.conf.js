@@ -3,21 +3,6 @@ module.exports = function(config){
 
 	config.set({
 		basePath: '../',
-		files: [
-			'app/libs/angular/angular.js',
-			'app/libs/angular-route/angular-route.js',
-			'app/libs/angular-mocks/angular-mocks.js',
-			'app/libs/momentjs/moment.js',
-			'app/libs/underscore/underscore.js',
-			'app/libs/d3/d3.js',
-			'app/libs/n3-line-chart/build/line-chart.js',
-			'app/js/**/*.js',
-			'app/bwmonUsage.js',
-			'test/unit/**/*.js'
-		],
-		exclude: [
-//			'app/js/**/*.min.js',
-		],
 		frameworks: ['jasmine'],
 		browsers : [
 //			'Chrome',

@@ -3,9 +3,11 @@
 dist/bwmonUsage.*
 dist/bwmon*.sh
 dist/bwmon.tar.gz
+app/bower_components
 logs/
 node_modules/
 selenium/
 server/bwmonUsage.*
 server/tomato_*.gz
 *.*~
+.tern-project
