@@ -1,1 +1,1 @@
-npm.cmd -g update bower grunt-cli grunt
+npm.cmd -g update bower gulp
