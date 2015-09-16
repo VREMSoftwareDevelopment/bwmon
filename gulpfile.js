@@ -2,12 +2,9 @@ var gulp = require('gulp'),
 	plugins = require('gulp-load-plugins')(),
 
 	jshint = plugins.jshint,
-
-//	protractor = require('gulp-protractor').protractor,
-	gulp_protractor = plugins.protractor,
-	protractor = gulp_protractor.protractor,
-	webdriver_standalone = gulp_protractor.webdriver_standalone,
-	webdriver_update = gulp_protractor.webdriver_update,
+	protractor = plugins.protractor.protractor,
+//	webdriver_standalone = plugins.protractor.webdriver_standalone,
+//	webdriver_update = plugins.protractor.webdriver_update,
 
 //	concat = require('gulp-concat'),
 //	uglify = require('gulp-uglify'),
@@ -17,20 +14,31 @@ var gulp = require('gulp'),
 
 	KarmaServer = require('karma').Server,
 
-	srcmain = ['app/js/**/*.js'],
-	srcmainlibs = ['app/bower_components/angular/angular.min.js',
-			'app/bower_components/angular-route/angular-route.min.js',
-			'app/bower_components/underscore/underscore-min.js',
-			'app/bower_components/momentjs/min/moment.min.js',
-			'app/bower_components/d3/d3.min.js',
-			'app/bower_components/n3-line-chart/build/line-chart.min.js'],
-	srctestunit = ['test/unit/**/*.js'],
-	srcteste2e = ['test/e2e/**/*.js'],
-	srctestlibs = ['app/bower_components/angular-mocks/angular-mocks.js'],
-	srcignore = ['!app/js/bwmon.min.js', '!app/bwmonUsage.js'];
+	files = {
+		main: {
+			src: ['app/js/*.js'],
+			libs: [
+					'bower_components/angular/angular.min.js',
+					'bower_components/angular-route/angular-route.min.js',
+					'bower_components/underscore/underscore-min.js',
+					'bower_components/momentjs/min/moment.min.js',
+					'bower_components/d3/d3.min.js',
+					'bower_components/n3-line-chart/build/line-chart.min.js'
+			]
+		},
+		unit: {
+			src: ['test/unit/**/*.js'],
+			libs: ['bower_components/angular-mocks/angular-mocks.js']
+		},
+		e2e : {
+			src: ['test/e2e/**/*.js']
+		},
+		data: ['app/bwmonUsage.js'],
+		srcignore: ['!app/js/bwmon.min.js', '!app/bwmonUsage.js']
+	};
 
 gulp.task('jshint', function() {
-	var src = srcmain.concat(srctestunit, srcteste2e);
+	var src = [].concat(files.main.src, files.unit.src, files.e2e.src, files.data);
 	console.log(src);
 	return gulp
 		.src(src)
@@ -39,8 +47,8 @@ gulp.task('jshint', function() {
 		.pipe(jshint.reporter('fail'))
 });
 
-gulp.task('unit', function(done) {
-	var src = srcmainlibs.concat(srctestlibs, srcmain, srctestunit);
+gulp.task('unit', ['jshint'], function(done) {
+	var src = [].concat(files.main.libs, files.unit.libs, files.main.src, files.unit.src, files.data);
 	console.log(src);
 	new KarmaServer({
 		files: src,
@@ -50,8 +58,8 @@ gulp.task('unit', function(done) {
 	}, done).start();
 });
 
-gulp.task('unit_auto', function(done) {
-	var src = srcmainlibs.concat(srctestlibs, srcmain, srctestunit);
+gulp.task('unit_auto', ['jshint'], function(done) {
+	var src = [].concat(files.main.libs, files.unit.libs, files.main.src, files.unit.src, files.data);
 	console.log(src);
 	new KarmaServer({
 		files: src,
@@ -61,8 +69,8 @@ gulp.task('unit_auto', function(done) {
 	}, done).start();
 });
 
-gulp.task('unit_coverage', function(done) {
-	var src = srcmainlibs.concat(srctestlibs, srcmain, srctestunit);
+gulp.task('unit_coverage', ['jshint'], function(done) {
+	var src = [].concat(files.main.libs, files.unit.libs, files.main.src, files.unit.src, files.data);
 	console.log(src);
 	new KarmaServer({
 		files: src,
@@ -73,12 +81,12 @@ gulp.task('unit_coverage', function(done) {
 	}, done).start();
 });
 
-gulp.task('webdriver_update', webdriver_update);
 // broken in windows
+// gulp.task('webdriver_update', webdriver_update);
 // gulp.task('webdriver_standalone', webdriver_standalone);
 
-gulp.task('e2e', ['webdriver_update'], function() {
-	var src = srcteste2e;
+gulp.task('e2e', ['unit'],function() {
+	var src = files.e2e.src;
 	console.log(src);
 	return gulp
 		.src(src)

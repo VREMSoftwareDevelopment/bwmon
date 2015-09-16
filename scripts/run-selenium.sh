@@ -1,3 +1,6 @@
 #!/bin/sh
-node_modules/webdriver-manager/bin/webdriver-manager start
+WEBDRIVER=node_modules/webdriver-manager/bin/webdriver-manager
+
+$WEBDRIVER update --standalone
+$WEBDRIVER start
 

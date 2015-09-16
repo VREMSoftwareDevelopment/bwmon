@@ -1,3 +1,3 @@
 #!/bin/sh
-node_modules/http-server/bin/http-server app -p 8080
+node_modules/http-server/bin/http-server dist -p 8080
 
