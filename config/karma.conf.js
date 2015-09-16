@@ -3,6 +3,8 @@ module.exports = function(config){
 
 	config.set({
 		basePath: '../',
+		autoWatch: false,
+		singleRun: true,
 		frameworks: ['jasmine'],
 		browsers : [
 //			'Chrome',
@@ -18,8 +20,9 @@ module.exports = function(config){
 			'karma-junit-reporter'
 		],
 		reporters: [
-			'progress',
-			'junit'
+			'junit',
+//			'coverage',
+			'progress'
 		],
 		junitReporter: {
 			outputDir: 'logs',

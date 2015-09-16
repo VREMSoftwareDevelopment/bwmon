@@ -1,14 +1,16 @@
 @echo off
 
 set BASE_DIR=%~dp0
+set SELENIUM=selenium
+set HTTPSERVER=http-server
 
-taskkill /FI "Imagename eq cmd.exe" /FI "Windowtitle eq selenium - %BASE_DIR%run-selenium"
-taskkill /FI "Imagename eq cmd.exe" /FI "Windowtitle eq http-server - %BASE_DIR%run-http-server"
+taskkill /FI "Imagename eq cmd.exe" /FI "Windowtitle eq %HTTPSERVER% - %BASE_DIR%run-%HTTPSERVER%"
+taskkill /FI "Imagename eq cmd.exe" /FI "Windowtitle eq %SELENIUM% - %BASE_DIR%run-%SELENIUM%"
 
-start "selenium" %BASE_DIR%run-selenium
-start "http-server" %BASE_DIR%run-http-server
+start "%SELENIUM%" %BASE_DIR%run-%SELENIUM%
+start "%HTTPSERVER%" %BASE_DIR%run-%HTTPSERVER%
 
 call gulp %*
 
-taskkill /FI "Imagename eq cmd.exe" /FI "Windowtitle eq selenium - %BASE_DIR%run-selenium"
-taskkill /FI "Imagename eq cmd.exe" /FI "Windowtitle eq http-server - %BASE_DIR%run-http-server"
+taskkill /FI "Imagename eq cmd.exe" /FI "Windowtitle eq %HTTPSERVER% - %BASE_DIR%run-%HTTPSERVER%"
+taskkill /FI "Imagename eq cmd.exe" /FI "Windowtitle eq %SELENIUM% - %BASE_DIR%run-%SELENIUM%"

@@ -10,20 +10,20 @@ var gulp = require('gulp'),
 //	uglify = require('gulp-uglify'),
 //	rename = require('gulp-rename'),
 
+	map = require('map-stream'),
+	extend = require('node.extend'),
 	jshint_stylish = require('jshint-stylish'),
-
-	KarmaServer = require('karma').Server,
 
 	files = {
 		main: {
 			src: ['app/js/*.js'],
 			libs: [
-					'bower_components/angular/angular.min.js',
-					'bower_components/angular-route/angular-route.min.js',
-					'bower_components/underscore/underscore-min.js',
-					'bower_components/momentjs/min/moment.min.js',
-					'bower_components/d3/d3.min.js',
-					'bower_components/n3-line-chart/build/line-chart.min.js'
+				'bower_components/angular/angular.min.js',
+				'bower_components/angular-route/angular-route.min.js',
+				'bower_components/underscore/underscore-min.js',
+				'bower_components/momentjs/min/moment.min.js',
+				'bower_components/d3/d3.min.js',
+				'bower_components/n3-line-chart/build/line-chart.min.js'
 			]
 		},
 		unit: {
@@ -35,6 +35,25 @@ var gulp = require('gulp'),
 		},
 		data: ['app/bwmonUsage.js'],
 		srcignore: ['!app/js/bwmon.min.js', '!app/bwmonUsage.js']
+	},
+	exitOnJshintError = map(function (file, cb) {
+		if (!file.jshint.success) {
+			console.error('jshint failed');
+			process.exit(1);
+		}
+	}),
+	objectExists = function(object) {
+		return typeof object != "undefined";
+	},
+	karma = function(done, config) {
+		var Server = require('karma').Server,
+			defaults = {
+				files: [].concat(files.main.libs, files.unit.libs, files.main.src, files.unit.src, files.data),
+				configFile: __dirname+'/config/karma.conf.js',
+			},
+			parameters = extend(defaults, config);
+		console.log(parameters);
+		new Server(parameters, done).start();
 	};
 
 gulp.task('jshint', function() {
@@ -44,48 +63,17 @@ gulp.task('jshint', function() {
 		.src(src)
 		.pipe(jshint())
 		.pipe(jshint.reporter(jshint_stylish))
-		.pipe(jshint.reporter('fail'))
+		.pipe(exitOnJshintError);
 });
 
-gulp.task('unit', ['jshint'], function(done) {
-	var src = [].concat(files.main.libs, files.unit.libs, files.main.src, files.unit.src, files.data);
-	console.log(src);
-	new KarmaServer({
-		files: src,
-		configFile: __dirname+'/config/karma.conf.js',
-		autoWatch: false,
-		singleRun: true
-	}, done).start();
-});
-
-gulp.task('unit_auto', ['jshint'], function(done) {
-	var src = [].concat(files.main.libs, files.unit.libs, files.main.src, files.unit.src, files.data);
-	console.log(src);
-	new KarmaServer({
-		files: src,
-		configFile: __dirname+'/config/karma.conf.js',
-		autoWatch: true,
-		singleRun: false
-	}, done).start();
-});
-
-gulp.task('unit_coverage', ['jshint'], function(done) {
-	var src = [].concat(files.main.libs, files.unit.libs, files.main.src, files.unit.src, files.data);
-	console.log(src);
-	new KarmaServer({
-		files: src,
-		configFile: __dirname+'/config/karma.conf.js',
-		autoWatch: false,
-		singleRun: true,
-		reporters: ['coverage']
-	}, done).start();
-});
+gulp.task('unit', function(done) { karma(done); });
+gulp.task('unit_auto', function(done) { karma(done, {autoWatch: true, singleRun: false}); });
+gulp.task('coverage', function(done) { karma(done, {reporters: ['coverage']}); });
 
 // broken in windows
 // gulp.task('webdriver_update', webdriver_update);
 // gulp.task('webdriver_standalone', webdriver_standalone);
-
-gulp.task('e2e', ['unit'],function() {
+gulp.task('e2e', function() {
 	var src = files.e2e.src;
 	console.log(src);
 	return gulp
@@ -113,9 +101,9 @@ gulp.task('e2e', ['unit'],function() {
 //
 
 gulp.task('watch', function() {
-	var src = srcmain.concat(srctestunit, srcteste2e);
+	var src = [].concat(files.main.src, files.unit.src, files.e2e.src, files.data);
 	console.log(src);
-	gulp.watch(src, ['jshint']);
+	gulp.watch(src, ['jshint', 'unit']);
 });
 
-gulp.task('default', ['jshint', 'unit', 'watch']);
+gulp.task('default', ['jshint', 'unit', 'e2e']);
