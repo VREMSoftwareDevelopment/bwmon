@@ -12,7 +12,7 @@ var gulp = require('gulp'),
 	rename = plugins['rename'],
 	header = plugins['header'],
 	sourcemaps = plugins['sourcemaps'],
-	minifyCss = plugins['minify-css'],
+	minifyCss = plugins['minifyCss'],
 
 	pkg = require('./package.json'),
 	map = require('map-stream'),
@@ -31,12 +31,7 @@ var gulp = require('gulp'),
 				'bower_components/momentjs/min/moment.min.js',
 				'bower_components/d3/d3.min.js',
 				'bower_components/n3-line-chart/build/line-chart.min.js'
-			],
-			css: [
-				'app/css/app.css',
-				'bower_components/bootstrap/dist/css/bootstrap.min.css'
 			]
-
 		},
 		unit: {
 			src: ['test/unit/**/*.js'],
@@ -46,10 +41,18 @@ var gulp = require('gulp'),
 			src: ['test/e2e/**/*.js']
 		},
 		data: ['app/bwmonUsage.js'],
-		build: {
+		buildjs: {
 			dest: 'dist/js',
 			temp: 'bwmon.js',
 			name: 'bwmon.min.js'
+		},
+		buildcss: {
+			src: [
+				'app/css/app.css',
+				'bower_components/bootstrap/dist/css/bootstrap.min.css'
+			],
+			dest: 'dist/css',
+			name: 'bwmon.min.css'
 		}
 	},
 	objectExists = function(object) {
@@ -80,25 +83,34 @@ gulp.task('unit', ['jshint'], function(done) { karma(done); });
 gulp.task('unit_auto', function(done) { karma(done, {autoWatch: true, singleRun: false}); });
 gulp.task('coverage', function(done) { karma(done, {reporters: ['coverage']}); });
 
+gulp.task('buildcss', function() {
+	console.log(files.buildcss.src);
+	return gulp
+		.src(files.buildcss.src)
+		.pipe(minifyCss())
+		.pipe(concat(files.buildcss.name))
+		.pipe(gulp.dest(files.buildcss.dest));
+});
+
 gulp.task('buildjs', ['unit'], function() {
 	var src = [].concat(files.main.libs, files.main.src);
 	console.log(src);
 	return gulp
 		.src(src)
 		.pipe(sourcemaps.init())
-		.pipe(concat(files.build.temp, {newLine: ';'}))
-		.pipe(gulp.dest(files.build.dest))
-		.pipe(rename(files.build.name))
+		.pipe(concat(files.buildjs.temp, {newLine: ';'}))
+		.pipe(gulp.dest(files.buildjs.dest))
+		.pipe(rename(files.buildjs.name))
 		.pipe(uglify())
 		.pipe(header(banner, {pkg: pkg}))
-		.pipe(sourcemaps.write('./'))
-		.pipe(gulp.dest(files.build.dest));
+		.pipe(sourcemaps.write())
+		.pipe(gulp.dest(files.buildjs.dest));
 });
 
 // FIXME
 // gulp.task('webdriver_update', webdriver_update);
 // gulp.task('webdriver_standalone', webdriver_standalone);
-gulp.task('e2e', ['buildjs'], function() {
+gulp.task('e2e', ['buildjs', 'buildcss'], function() {
 	var src = files.e2e.src;
 	console.log(src);
 	return gulp
