@@ -8,3 +8,4 @@ node_modules/
 selenium/
 *.*~
 *.swp
+dist/js/bwmon.js
