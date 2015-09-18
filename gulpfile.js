@@ -13,6 +13,7 @@ var gulp = require('gulp'),
 	cssmin = plugins.minifyCss,
 	htmlmin = plugins.htmlmin,
 	templates = plugins.angularTemplatecache,
+	preprocess = plugins.preprocess,
 
 	pkg = require('./package.json'),
 	map = require('map-stream'),
@@ -59,6 +60,10 @@ var gulp = require('gulp'),
 			module: 'BWMonApp',
 			root: 'templates/',
 			dest: 'app/js'
+		},
+		html:  {
+			src: 'app/index.html',
+			dest: 'dist'
 		}
 	},
 	objectExists = function(object) {
@@ -87,7 +92,7 @@ gulp.task('templates', function() {
 		.pipe(gulp.dest(files.templates.dest));
 });
 
-gulp.task('jshint', ['templates'], function() {
+gulp.task('jshint', function() {
 	var src = [].concat(files.main.src, files.unit.src, files.e2e.src, files.data);
 	console.log(src);
 	return gulp
@@ -110,21 +115,7 @@ gulp.task('cssmin', function() {
 		.pipe(gulp.dest(files.cssmin.dest));
 });
 
-/*
-preprocess: {
-	options: {
-		context: {
-			PRODUCTION: true
-		}
-	},
-	html: {
-		src: 'app/index.html',
-		dest: 'dist/index.html'
-	}
-},
-*/
-
-gulp.task('uglify', ['unit'], function() {
+gulp.task('uglify', ['templates', 'unit'], function() {
 	var src = [].concat(files.main.libs, files.main.src);
 	console.log(src);
 	return gulp
@@ -139,10 +130,18 @@ gulp.task('uglify', ['unit'], function() {
 		.pipe(gulp.dest(files.uglify.dest));
 });
 
+gulp.task('html', function() {
+	console.log(files.html.src);
+	return gulp
+		.src(files.html.src)
+		.pipe(preprocess())
+		.pipe(gulp.dest(files.html.dest));
+});
+
 // FIXME
 // gulp.task('webdriver_update', webdriver_update);
 // gulp.task('webdriver_standalone', webdriver_standalone);
-gulp.task('e2e', ['uglify', 'cssmin'], function() {
+gulp.task('e2e', ['uglify', 'cssmin', 'html'], function() {
 	var src = files.e2e.src;
 	console.log(src);
 	return gulp
@@ -150,10 +149,10 @@ gulp.task('e2e', ['uglify', 'cssmin'], function() {
 		.pipe(protractor({configFile: __dirname+'/config/protractor.conf.js'}))
 });
 
-//gulp.task('watch', function() {
-//	var src = [].concat(files.main.src, files.unit.src, files.e2e.src, files.data);
-//	console.log(src);
-//	gulp.watch(src, ['jshint', 'unit']);
-//});
+gulp.task('watch', function() {
+	var src = [].concat(files.main.src, files.unit.src, files.e2e.src, files.data);
+	console.log(src);
+	gulp.watch(src, ['jshint']);
+});
 
 gulp.task('default', ['e2e']);
