@@ -1,1 +1,1 @@
-call npm.cmd install --save-dev
+npm.cmd install --save-dev
