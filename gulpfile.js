@@ -3,6 +3,7 @@ var gulp = require('gulp'),
 
 	jshint = plugins['jshint'],
 	protractor = plugins['protractor'].protractor,
+// FIXME
 //	webdriver_standalone = plugins.protractor.webdriver_standalone,
 //	webdriver_update = plugins.protractor.webdriver_update,
 
@@ -30,7 +31,12 @@ var gulp = require('gulp'),
 				'bower_components/momentjs/min/moment.min.js',
 				'bower_components/d3/d3.min.js',
 				'bower_components/n3-line-chart/build/line-chart.min.js'
+			],
+			css: [
+				'app/css/app.css',
+				'bower_components/bootstrap/dist/css/bootstrap.min.css'
 			]
+
 		},
 		unit: {
 			src: ['test/unit/**/*.js'],
@@ -43,16 +49,9 @@ var gulp = require('gulp'),
 		build: {
 			dest: 'dist/js',
 			temp: 'bwmon.js',
-			name: 'bwmon.min.js',
-			libs: 'libs.min.js'
+			name: 'bwmon.min.js'
 		}
 	},
-	exitOnJshintError = map(function (file, cb) {
-		if (!file.jshint.success) {
-			console.error('jshint failed');
-			process.exit(1);
-		}
-	}),
 	objectExists = function(object) {
 		return typeof object != "undefined";
 	},
@@ -74,34 +73,14 @@ gulp.task('jshint', function() {
 		.src(src)
 		.pipe(jshint())
 		.pipe(jshint.reporter(jshint_stylish))
-		.pipe(exitOnJshintError);
+		.pipe(jshint.reporter('fail'));
 });
 
-gulp.task('unit', function(done) { karma(done); });
+gulp.task('unit', ['jshint'], function(done) { karma(done); });
 gulp.task('unit_auto', function(done) { karma(done, {autoWatch: true, singleRun: false}); });
 gulp.task('coverage', function(done) { karma(done, {reporters: ['coverage']}); });
 
-// broken in windows
-// gulp.task('webdriver_update', webdriver_update);
-// gulp.task('webdriver_standalone', webdriver_standalone);
-gulp.task('e2e', function() {
-	var src = files.e2e.src;
-	console.log(src);
-	return gulp
-		.src(src)
-		.pipe(protractor({configFile: __dirname+'/config/protractor.conf.js'}))
-});
-
-gulp.task('buildlibs', function() {
-	var src = [].concat(files.main.libs);
-	console.log(src);
-	return gulp
-		.src(src)
-		.pipe(concat(files.build.libs))
-		.pipe(gulp.dest(files.build.dest))
-});
-
-gulp.task('build', function() {
+gulp.task('buildjs', ['unit'], function() {
 	var src = [].concat(files.main.libs, files.main.src);
 	console.log(src);
 	return gulp
@@ -116,6 +95,17 @@ gulp.task('build', function() {
 		.pipe(gulp.dest(files.build.dest));
 });
 
+// FIXME
+// gulp.task('webdriver_update', webdriver_update);
+// gulp.task('webdriver_standalone', webdriver_standalone);
+gulp.task('e2e', ['buildjs'], function() {
+	var src = files.e2e.src;
+	console.log(src);
+	return gulp
+		.src(src)
+		.pipe(protractor({configFile: __dirname+'/config/protractor.conf.js'}))
+});
+
 
 gulp.task('watch', function() {
 	var src = [].concat(files.main.src, files.unit.src, files.e2e.src, files.data);
@@ -123,4 +113,4 @@ gulp.task('watch', function() {
 	gulp.watch(src, ['jshint', 'unit']);
 });
 
-gulp.task('default', ['jshint', 'unit', 'e2e']);
+gulp.task('default', ['e2e']);
