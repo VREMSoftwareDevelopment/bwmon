@@ -1,11 +1,16 @@
 /.settings
 /.project
+/.tern-project
 dist/bwmonUsage.*
 dist/bwmon*.sh
 dist/bwmon.tar.gz
+dist/js/bwmon.js
 logs/
 node_modules/
+bower_components/
+data/
 selenium/
 server/bwmonUsage.*
 server/tomato_*.gz
 *.*~
+*.*swp
