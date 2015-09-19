@@ -1,25 +1,6 @@
 var gulp = require('gulp'),
 	plugins = require('gulp-load-plugins')(),
 
-	jshint = plugins.jshint,
-	protractor = plugins.protractor.protractor,
-	webdriverUpdate = plugins.protractor.webdriver_update,
-	concat = plugins.concat,
-	uglify = plugins.uglify,
-	rename = plugins.rename,
-	header = plugins.header,
-	cssmin = plugins.minifyCss,
-	htmlmin = plugins.htmlmin,
-	templates = plugins.angularTemplatecache,
-	preprocess = plugins.preprocess,
-	connect = plugins.connect,
-	git = plugins.git,
-	bump = plugins.bump,
-	filter = plugins.filter,
-	tagVersion = plugins.tagVersion,
-	tar = plugins.tar,
-	gzip = plugins.gzip,
-
 	pkg = require('./package.json'),
 	extend = require('node.extend'),
 	jshint_stylish = require('jshint-stylish'),
@@ -106,15 +87,15 @@ var gulp = require('gulp'),
 	},
 	version = function(type) {
 		return gulp.src(files.version.src)
-			.pipe(bump({type: type}))
+			.pipe(plugins.bump({type: type}))
 			.pipe(gulp.dest(files.version.dest));
 	};
 
 gulp.task('templates', function() {
 	return gulp
 		.src(files.templates.src)
-		.pipe(htmlmin())
-		.pipe(templates({
+		.pipe(plugins.htmlmin())
+		.pipe(plugins.angularTemplatecache({
 			module: files.templates.module,
 			root: files.templates.root
 		}))
@@ -125,9 +106,9 @@ gulp.task('jshint', function() {
 	var src = [].concat(files.js.src, files.unit.src, files.e2e.src, files.data.src);
 	return gulp
 		.src(src)
-		.pipe(jshint())
-		.pipe(jshint.reporter(jshint_stylish))
-		.pipe(jshint.reporter('fail'));
+		.pipe(plugins.jshint())
+		.pipe(plugins.jshint.reporter(jshint_stylish))
+		.pipe(plugins.jshint.reporter('fail'));
 });
 
 gulp.task('unit', ['jshint'], function(done) { karma(done); });
@@ -137,8 +118,8 @@ gulp.task('coverage', function(done) { karma(done, {reporters: ['coverage']}); }
 gulp.task('cssmin', function() {
 	return gulp
 		.src(files.css.src)
-		.pipe(cssmin())
-		.pipe(concat(files.css.name))
+		.pipe(plugins.minifyCss())
+		.pipe(plugins.concat(files.css.name))
 		.pipe(gulp.dest(files.css.dest));
 });
 
@@ -158,18 +139,18 @@ gulp.task('uglify', ['templates', 'unit'], function() {
 	var src = [].concat(files.js.src, files.js.excludes);
 	return gulp
 		.src(src)
-		.pipe(concat(files.js.temp, {newLine: ';'}))
+		.pipe(plugins.concat(files.js.temp, {newLine: ';'}))
 		.pipe(gulp.dest(files.js.dest))
-		.pipe(rename(files.js.name))
-		.pipe(uglify())
-		.pipe(header(banner, {pkg: pkg}))
+		.pipe(plugins.rename(files.js.name))
+		.pipe(plugins.uglify())
+		.pipe(plugins.header(banner, {pkg: pkg}))
 		.pipe(gulp.dest(files.js.dest));
 });
 
 gulp.task('html', function() {
 	return gulp
 		.src(files.html.src)
-		.pipe(preprocess(files.html.preprocess))
+		.pipe(plugins.preprocess(files.html.preprocess))
 		.pipe(gulp.dest(files.html.dest));
 });
 
@@ -180,26 +161,26 @@ gulp.task('data', function() {
 });
 
 gulp.task('webserver', ['jslibs', 'uglify', 'csslibs', 'cssmin', 'html', 'data', ], function() {
-	connect.server({
+	plugins.connect.server({
 		root: dstdir,
 		port: 8080
 	});
 });
 
-gulp.task('webdriverUpdate', webdriverUpdate);
+gulp.task('webdriverUpdate', plugins.protractor.webdriver_update);
 
 gulp.task('e2e', ['webdriverUpdate', 'webserver'], function() {
 	return gulp
 		.src(files.e2e.src)
-		.pipe(protractor({configFile: __dirname+'/config/protractor.conf.js'}));
+		.pipe(plugins.protractor.protractor({configFile: __dirname+'/config/protractor.conf.js'}));
 });
 
 gulp.task('clean', function() {
 	return del(dstdir);
 });
 
-gulp.task('build', ['clean', 'e2e'], function() {
-	connect.serverClose();
+gulp.task('build', ['e2e'], function() {
+	plugins.connect.serverClose();
 	return del(files.js.dest+'/'+files.js.temp);
 });
 
@@ -216,19 +197,19 @@ gulp.task('version:major', function() { return version('major'); });
 
 gulp.task('git:tag', function() {
 	return gulp.src(files.version.src)
-		.pipe(git.commit(files.version.message))
-		.pipe(filter(files.version.filter))
-		.pipe(tagVersion());
+		.pipe(plugins.git.commit(files.version.message))
+		.pipe(plugins.filter(files.version.filter))
+		.pipe(plugins.tagVersion());
 });
 
 gulp.task('release:clean', function() {
 	return del(files.release.dest);
 });
 
-gulp.task('release', function() {
+gulp.task('release', ['release:clean'], function() {
 	return gulp
 		.src(files.release.src)
-		.pipe(tar(files.release.name))
-		.pipe(gzip({gzipOptions: {level: 9}}))
+		.pipe(plugins.tar(files.release.name))
+		.pipe(plugins.gzip({gzipOptions: {level: 9}}))
 		.pipe(gulp.dest(files.release.dest));
 });
