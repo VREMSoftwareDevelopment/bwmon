@@ -7,12 +7,14 @@
 		"node_modules"
 	],
 	"dependencies": {
-		"angular": "latest",
-		"angular-route": "latest",
-		"angular-mocks": "latest",
-		"d3": "latest",
-		"n3-line-chart": "latest",
-		"momentjs": "latest",
-		"underscore": "latest"
-  	}
+		"angular": "^1.4.5",
+		"angular-mocks": "^1.4.5",
+		"angular-route": "~1.4.5",
+		"bootstrap": "~3.3.5",
+		"d3": "^3.5.6",
+		"moment": "momentjs#^2.10.6",
+		"momentjs": "^2.10.6",
+		"n3-line-chart": "^1.1.12",
+		"underscore": "^1.8.3"
+	}
 }

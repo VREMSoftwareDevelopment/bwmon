@@ -1,17 +1,10 @@
 'use strict';
 
 exports.config = {
-// Testing using Chrome Driver Directly
-	seleniumAddress: 'http://localhost:4444/wd/hub',
-// Currently is broken...
-//	chromeOnly: true,
-	chromeDriver: '../selenium/chromedriver',
+	seleniumServerJar: '../node_modules/protractor/selenium/selenium-server-standalone-2.45.0.jar',
 	capabilities: {
 		'browserName': 'chrome'
 	},
-	specs: [
-		'../test/e2e/*Spec.js'
-	],
 	onPrepare: function() {
 		// Disable animations so e2e tests run more quickly
 		var disableNgAnimate = function() {
