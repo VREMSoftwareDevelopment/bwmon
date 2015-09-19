@@ -17,6 +17,8 @@ var gulp = require('gulp'),
 	bump = plugins.bump,
 	filter = plugins.filter,
 	tagVersion = plugins.tagVersion,
+	tar = plugins.tar,
+	gzip = plugins.gzip,
 
 	pkg = require('./package.json'),
 	extend = require('node.extend'),
@@ -27,10 +29,11 @@ var gulp = require('gulp'),
 	srcdir = 'app',
 	dstdir = 'dist',
 	cmpdir = 'bower_components',
+	dataname = 'bwmonUsage.js',
 
 	files = {
 		data: {
-			src: [srcdir+'/bwmonUsage.js'],
+			src: [srcdir+'/'+dataname],
 			dest: dstdir
 		},
 		js: {
@@ -46,12 +49,12 @@ var gulp = require('gulp'),
 			dest: dstdir+'/js',
 			temp: 'bwmon.js',
 			name: 'bwmon.min.js',
-			excludes: '!'+srcdir+'/**/bwmonUsage.js'
+			excludes: '!'+srcdir+'/**/'+dataname
 		},
 		unit: {
 			src: ['test/unit/**/*.js'],
 			libs: [cmpdir+'/angular-mocks/angular-mocks.js'],
-			excludes: srcdir+'/**/!(bwmonUsage).js'
+			excludes: srcdir+'/**/!('+dataname+').js'
 		},
 		e2e : {
 			src: ['test/e2e/**/*.js']
@@ -82,6 +85,11 @@ var gulp = require('gulp'),
 			dest: './',
 			message: 'bumps package version',
 			filter: 'package.json'
+		},
+		release: {
+			src: [dstdir+'/**/*', '!'+dstdir+'/'+dataname, 'server/bwmon*.sh'],
+			name: 'bwmon.tar',
+			dest: 'release'
 		}
 	},
 	objectExists = function(object) {
@@ -207,4 +215,14 @@ gulp.task('git:tag', function() {
 		.pipe(git.commit(files.version.message))
 		.pipe(filter(files.version.filter))
 		.pipe(tagVersion());
+});
+
+gulp.task('release', function() {
+	var src = [].concat(files.release.src)
+	console.log(files.release.src);
+	return gulp
+		.src(files.release.src)
+		.pipe(tar(files.release.name))
+		.pipe(gzip({gzipOptions: {level: 9}}))
+		.pipe(gulp.dest(files.release.dest));
 });
