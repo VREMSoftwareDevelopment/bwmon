@@ -29,7 +29,7 @@ var gulp = require('gulp'),
 	srcdir = 'app',
 	dstdir = 'dist',
 	cmpdir = 'bower_components',
-	dataname = 'bwmonUsage.js',
+	dataname = pkg.name+'Usage.js',
 
 	files = {
 		data: {
@@ -47,8 +47,8 @@ var gulp = require('gulp'),
 				cmpdir+'/n3-line-chart/build/line-chart.min.js'
 			],
 			dest: dstdir+'/js',
-			temp: 'bwmon.js',
-			name: 'bwmon.min.js',
+			temp: pkg.name+'.js',
+			name: pkg.name+'.min.js',
 			excludes: '!'+srcdir+'/**/'+dataname
 		},
 		unit: {
@@ -63,7 +63,7 @@ var gulp = require('gulp'),
 			src: srcdir+'/css/app.css',
 			libs: cmpdir+'/bootstrap/dist/css/bootstrap.min.css',
 			dest: dstdir+'/css',
-			name: 'bwmon.min.css'
+			name: pkg.name+'.min.css'
 		},
 		templates:  {
 			src: srcdir+'/templates/**.tpl.html',
@@ -87,8 +87,8 @@ var gulp = require('gulp'),
 			filter: 'package.json'
 		},
 		release: {
-			src: [dstdir+'/**/*', '!'+dstdir+'/'+dataname, 'server/bwmon*.sh'],
-			name: 'bwmon.tar',
+			src: [dstdir+'/**/*', '!'+dstdir+'/'+dataname, 'server/'+pkg.name+'*.sh'],
+			name: pkg.name+'.tar',
 			dest: 'release'
 		}
 	},
@@ -194,7 +194,11 @@ gulp.task('e2e', ['webdriverUpdate', 'webserver'], function() {
 		.pipe(protractor({configFile: __dirname+'/config/protractor.conf.js'}));
 });
 
-gulp.task('build', ['e2e'], function() {
+gulp.task('clean', function() {
+	return del(dstdir);
+});
+
+gulp.task('build', ['clean', 'e2e'], function() {
 	connect.serverClose();
 	return del(files.js.dest+'/'+files.js.temp);
 });
@@ -217,9 +221,11 @@ gulp.task('git:tag', function() {
 		.pipe(tagVersion());
 });
 
+gulp.task('release:clean', function() {
+	return del(files.release.dest);
+});
+
 gulp.task('release', function() {
-	var src = [].concat(files.release.src)
-	console.log(files.release.src);
 	return gulp
 		.src(files.release.src)
 		.pipe(tar(files.release.name))
