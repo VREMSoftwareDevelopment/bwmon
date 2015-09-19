@@ -13,6 +13,10 @@ var gulp = require('gulp'),
 	templates = plugins.angularTemplatecache,
 	preprocess = plugins.preprocess,
 	connect = plugins.connect,
+	git = plugins.git,
+	bump = plugins.bump,
+	filter = plugins.filter,
+	tagVersion = plugins.tagVersion,
 
 	pkg = require('./package.json'),
 	extend = require('node.extend'),
@@ -67,7 +71,17 @@ var gulp = require('gulp'),
 		html:  {
 			src: srcdir+'/index.html',
 			dest: dstdir,
-			preprocess: {context: {PRODUCTION: true}}
+			preprocess: {
+				context: {
+					PRODUCTION: true
+				}
+			}
+		},
+		version: {
+			src: ['./package.json', './bower.json'],
+			dest: './',
+			message: 'bumps package version',
+			filter: 'package.json'
 		}
 	},
 	objectExists = function(object) {
@@ -81,6 +95,11 @@ var gulp = require('gulp'),
 			},
 			parameters = extend(defaults, config);
 		new Server(parameters, done).start();
+	},
+	version = function(type) {
+		return gulp.src(files.version.src)
+			.pipe(bump({type: type}))
+			.pipe(gulp.dest(files.version.dest));
 	};
 
 gulp.task('templates', function() {
@@ -178,3 +197,14 @@ gulp.task('watch', function() {
 });
 
 gulp.task('default', ['build']);
+
+gulp.task('version:patch', function() { return version('patch'); });
+gulp.task('version:minor', function() { return version('minor'); });
+gulp.task('version:major', function() { return version('major'); });
+
+gulp.task('git:tag', function() {
+	return gulp.src(files.version.src)
+		.pipe(git.commit(files.version.message))
+		.pipe(filter(files.version.filter))
+		.pipe(tagVersion());
+});
