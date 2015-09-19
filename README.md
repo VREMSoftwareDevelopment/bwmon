@@ -31,18 +31,17 @@ A simple shell script designed to run on linux powered routers
 ###Usage:
 `./bwmon-cron.sh {install|remove}` - shell script to install or remove bandwidth usage monitor from cron jobs
 
-###Note:
+######Note:
 - Problem using `wget`:
 	- *error getting response: Connection reset by peer* - add the following option `--no-check-certificate`
 	- Or download the file from the web-site and copy to the folder.
-
-
 
 ##*Build Instructions:*
 - Install NodeJS
 - Install Gulp and Bower: `npm install -g gulp bower`
 - Create project: `git clone https://github.com/VREMSoftwareDevelopment/bwmon.git`
 - Install required node modules: `npm install`
+- Build application: `gulp`
 
 ###Gulp tasks:
 - `gulp` #Places a fully optimized application (minified, concatenated, and more) in `/dist`
