@@ -3,7 +3,6 @@ var gulp = require('gulp'),
 
 	jshint = plugins.jshint,
 	protractor = plugins.protractor.protractor,
-	webdriverStandalone = plugins.protractor.webdriver_standalone,
 	webdriverUpdate = plugins.protractor.webdriver_update,
 	concat = plugins.concat,
 	uglify = plugins.uglify,
@@ -14,11 +13,13 @@ var gulp = require('gulp'),
 	htmlmin = plugins.htmlmin,
 	templates = plugins.angularTemplatecache,
 	preprocess = plugins.preprocess,
+	connect = plugins.connect,
 
 	pkg = require('./package.json'),
 	map = require('map-stream'),
 	extend = require('node.extend'),
 	jshint_stylish = require('jshint-stylish'),
+	del = require('del'),
 
 	banner = '/*! <%=pkg.name%> - v<%=pkg.version%> - <%=pkg.description%> - <%=pkg.license%> - <%= pkg.homepage %> */',
 	srcdir = 'app',
@@ -133,6 +134,10 @@ gulp.task('uglify', ['templates', 'unit'], function() {
 		.pipe(gulp.dest(files.uglify.dest));
 });
 
+gulp.task('clean', function () {
+	return del(files.uglify.dest+'/'+files.uglify.temp);
+});
+
 gulp.task('html', function() {
 	return gulp
 		.src(files.html.src)
@@ -146,13 +151,23 @@ gulp.task('data', function() {
 		.pipe(gulp.dest(files.data.dest));
 });
 
-// FIXME
-// gulp.task('webdriver_update', webdriver_update);
-// gulp.task('webdriver_standalone', webdriver_standalone);
-gulp.task('e2e', ['uglify', 'cssmin', 'html', 'data'], function() {
+gulp.task('webserver', ['uglify', 'cssmin', 'html', 'data'], function() {
+	connect.server({
+		root: dstdir,
+		port: 8080
+	});
+});
+
+gulp.task('webdriverUpdate', webdriverUpdate);
+
+gulp.task('e2e', ['webdriverUpdate', 'webserver'], function() {
 	return gulp
 		.src(files.e2e.src)
-		.pipe(protractor({configFile: __dirname+'/config/protractor.conf.js'}))
+		.pipe(protractor({configFile: __dirname+'/config/protractor.conf.js'}));
+});
+
+gulp.task('build', ['clean', 'e2e'], function() {
+	connect.serverClose();
 });
 
 gulp.task('watch', function() {
@@ -160,4 +175,4 @@ gulp.task('watch', function() {
 	gulp.watch(src, ['jshint']);
 });
 
-gulp.task('default', ['e2e']);
+gulp.task('default', ['build']);
