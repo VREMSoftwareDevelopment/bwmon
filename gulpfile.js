@@ -8,7 +8,6 @@ var gulp = require('gulp'),
 	uglify = plugins.uglify,
 	rename = plugins.rename,
 	header = plugins.header,
-	srcmaps = plugins.sourcemaps,
 	cssmin = plugins.minifyCss,
 	htmlmin = plugins.htmlmin,
 	templates = plugins.angularTemplatecache,
@@ -16,12 +15,11 @@ var gulp = require('gulp'),
 	connect = plugins.connect,
 
 	pkg = require('./package.json'),
-	map = require('map-stream'),
 	extend = require('node.extend'),
 	jshint_stylish = require('jshint-stylish'),
 	del = require('del'),
 
-	banner = '/*! <%=pkg.name%> - v<%=pkg.version%> - <%=pkg.description%> - <%=pkg.license%> - <%= pkg.homepage %> */',
+	banner = '/*\n\t<%=pkg.name%> v<%=pkg.version%>\n\t(C) 2010 - 2015 VREM Software Development\n\t<%= pkg.homepage %>\n\tLicense: <%=pkg.license%>\n*/\n',
 	srcdir = 'app',
 	dstdir = 'dist',
 	cmpdir = 'bower_components',
@@ -31,7 +29,7 @@ var gulp = require('gulp'),
 			src: [srcdir+'/bwmonUsage.js'],
 			dest: dstdir
 		},
-		main: {
+		js: {
 			src: [srcdir+'/**/*.js'],
 			libs: [
 				cmpdir+'/angular/angular.min.js',
@@ -40,27 +38,23 @@ var gulp = require('gulp'),
 				cmpdir+'/momentjs/min/moment.min.js',
 				cmpdir+'/d3/d3.min.js',
 				cmpdir+'/n3-line-chart/build/line-chart.min.js'
-			]
+			],
+			dest: dstdir+'/js',
+			temp: 'bwmon.js',
+			name: 'bwmon.min.js',
+			excludes: '!'+srcdir+'/**/bwmonUsage.js'
 		},
 		unit: {
 			src: ['test/unit/**/*.js'],
 			libs: [cmpdir+'/angular-mocks/angular-mocks.js'],
-			excludes: [srcdir+'/**/!(bwmon.min|bwmonUsage).js']
+			excludes: srcdir+'/**/!(bwmonUsage).js'
 		},
 		e2e : {
 			src: ['test/e2e/**/*.js']
 		},
-		uglify: {
-			dest: dstdir+'/js',
-			temp: 'bwmon.js',
-			name: 'bwmon.min.js',
-			excludes: ['!'+srcdir+'/**/bwmon.min.js', '!'+srcdir+'/**/bwmonUsage.js']
-		},
-		cssmin: {
-			src: [
-				srcdir+'/css/app.css',
-				cmpdir+'/bootstrap/dist/css/bootstrap.min.css'
-			],
+		css: {
+			src: srcdir+'/css/app.css',
+			libs: cmpdir+'/bootstrap/dist/css/bootstrap.min.css',
 			dest: dstdir+'/css',
 			name: 'bwmon.min.css'
 		},
@@ -72,7 +66,8 @@ var gulp = require('gulp'),
 		},
 		html:  {
 			src: srcdir+'/index.html',
-			dest: dstdir
+			dest: dstdir,
+			preprocess: {context: {PRODUCTION: true}}
 		}
 	},
 	objectExists = function(object) {
@@ -81,7 +76,7 @@ var gulp = require('gulp'),
 	karma = function(done, config) {
 		var Server = require('karma').Server,
 			defaults = {
-				files: [].concat(files.main.libs, files.unit.libs, files.main.src, files.unit.src, files.data.src, files.unit.excludes),
+				files: [].concat(files.js.libs, files.unit.libs, files.js.src, files.unit.src, files.data.src, files.unit.excludes),
 				configFile: __dirname+'/config/karma.conf.js',
 			},
 			parameters = extend(defaults, config);
@@ -100,7 +95,7 @@ gulp.task('templates', function() {
 });
 
 gulp.task('jshint', function() {
-	var src = [].concat(files.main.src, files.unit.src, files.e2e.src, files.data.src);
+	var src = [].concat(files.js.src, files.unit.src, files.e2e.src, files.data.src);
 	return gulp
 		.src(src)
 		.pipe(jshint())
@@ -114,30 +109,40 @@ gulp.task('coverage', function(done) { karma(done, {reporters: ['coverage']}); }
 
 gulp.task('cssmin', function() {
 	return gulp
-		.src(files.cssmin.src)
+		.src(files.css.src)
 		.pipe(cssmin())
-		.pipe(concat(files.cssmin.name))
-		.pipe(gulp.dest(files.cssmin.dest));
+		.pipe(concat(files.css.name))
+		.pipe(gulp.dest(files.css.dest));
+});
+
+gulp.task('csslibs', function() {
+	return gulp
+		.src(files.css.libs)
+		.pipe(gulp.dest(files.css.dest));
+});
+
+gulp.task('jslibs', function() {
+	return gulp
+		.src(files.js.libs)
+		.pipe(gulp.dest(files.js.dest));
 });
 
 gulp.task('uglify', ['templates', 'unit'], function() {
-	var src = [].concat(files.main.libs, files.main.src, files.uglify.excludes);
+	var src = [].concat(files.js.src, files.js.excludes);
 	return gulp
 		.src(src)
-		.pipe(srcmaps.init())
-		.pipe(concat(files.uglify.temp, {newLine: ';'}))
-		.pipe(gulp.dest(files.uglify.dest))
-		.pipe(rename(files.uglify.name))
+		.pipe(concat(files.js.temp, {newLine: ';'}))
+		.pipe(gulp.dest(files.js.dest))
+		.pipe(rename(files.js.name))
 		.pipe(uglify())
 		.pipe(header(banner, {pkg: pkg}))
-		.pipe(srcmaps.write())
-		.pipe(gulp.dest(files.uglify.dest));
+		.pipe(gulp.dest(files.js.dest));
 });
 
 gulp.task('html', function() {
 	return gulp
 		.src(files.html.src)
-		.pipe(preprocess())
+		.pipe(preprocess(files.html.preprocess))
 		.pipe(gulp.dest(files.html.dest));
 });
 
@@ -147,7 +152,7 @@ gulp.task('data', function() {
 		.pipe(gulp.dest(files.data.dest));
 });
 
-gulp.task('webserver', ['uglify', 'cssmin', 'html', 'data'], function() {
+gulp.task('webserver', ['jslibs', 'uglify', 'csslibs', 'cssmin', 'html', 'data', ], function() {
 	connect.server({
 		root: dstdir,
 		port: 8080
@@ -164,7 +169,7 @@ gulp.task('e2e', ['webdriverUpdate', 'webserver'], function() {
 
 gulp.task('build', ['e2e'], function() {
 	connect.serverClose();
-	return del(files.uglify.dest+'/'+files.uglify.temp);
+	return del(files.js.dest+'/'+files.js.temp);
 });
 
 gulp.task('watch', function() {

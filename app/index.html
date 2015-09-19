@@ -4,7 +4,10 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Bandwidth Monitor Usage</title>
+<!-- @ifdef PRODUCTION -->
+	<link rel="stylesheet" href="css/bootstrap.min.css">
 	<link rel="stylesheet" href="css/bwmon.min.css"/>
+<!-- @endif -->
 <!-- @ifdef DEVELOPMENT -->
 	<link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css">
 	<link rel="stylesheet" href="css/app.css"/>
@@ -41,7 +44,15 @@
 		<span class="clearfix"></span>
 	</h5>
 	<script src="bwmonUsage.js"></script>
+<!-- @ifdef PRODUCTION -->
+	<script src="js/angular.min.js"></script>
+	<script src="js/angular-route.min.js"></script>
+	<script src="js/underscore-min.js"></script>
+	<script src="js/moment.min.js"></script>
+	<script src="js/d3.min.js"></script>
+	<script src="js/line-chart.min.js"></script>
 	<script src="js/bwmon.min.js"></script>
+<!-- @endif -->
 <!-- @ifdef DEVELOPMENT -->
 	<script src="../bower_components/angular/angular.min.js"></script>
 	<script src="../bower_components/angular-route/angular-route.min.js"></script>
