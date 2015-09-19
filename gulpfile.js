@@ -86,7 +86,7 @@ var gulp = require('gulp'),
 gulp.task('templates', function() {
 	return gulp
 		.src(files.templates.src)
-		.pipe(htmlmin({collapseWhitespace: true}))
+		.pipe(htmlmin())
 		.pipe(templates({
 			module: files.templates.module,
 			root: files.templates.root
