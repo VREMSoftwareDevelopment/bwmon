@@ -3,9 +3,10 @@
 /.tern-project
 bower_components/
 data/
+dist/
 logs/
 node_modules/
 selenium/
 *.*~
 *.swp
-dist/js/bwmon.js
+app/js/templates.js

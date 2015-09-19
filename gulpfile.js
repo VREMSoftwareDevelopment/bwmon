@@ -21,49 +21,57 @@ var gulp = require('gulp'),
 	jshint_stylish = require('jshint-stylish'),
 
 	banner = '/*! <%=pkg.name%> - v<%=pkg.version%> - <%=pkg.description%> - <%=pkg.license%> - <%= pkg.homepage %> */',
+	srcdir = 'app',
+	dstdir = 'dist',
+	cmpdir = 'bower_components',
 
 	files = {
+		data: {
+			src: [srcdir+'/bwmonUsage.js'],
+			dest: dstdir
+		},
 		main: {
-			src: ['app/**/*.js', 'app/**/!(bwmon.min|bwmonUsage).js'],
+			src: [srcdir+'/**/*.js'],
 			libs: [
-				'bower_components/angular/angular.min.js',
-				'bower_components/angular-route/angular-route.min.js',
-				'bower_components/underscore/underscore-min.js',
-				'bower_components/momentjs/min/moment.min.js',
-				'bower_components/d3/d3.min.js',
-				'bower_components/n3-line-chart/build/line-chart.min.js'
+				cmpdir+'/angular/angular.min.js',
+				cmpdir+'/angular-route/angular-route.min.js',
+				cmpdir+'/underscore/underscore-min.js',
+				cmpdir+'/momentjs/min/moment.min.js',
+				cmpdir+'/d3/d3.min.js',
+				cmpdir+'/n3-line-chart/build/line-chart.min.js'
 			]
 		},
 		unit: {
 			src: ['test/unit/**/*.js'],
-			libs: ['bower_components/angular-mocks/angular-mocks.js']
+			libs: [cmpdir+'/angular-mocks/angular-mocks.js'],
+			excludes: [srcdir+'/**/!(bwmon.min|bwmonUsage).js']
 		},
 		e2e : {
 			src: ['test/e2e/**/*.js']
 		},
-		data: ['app/bwmonUsage.js'],
 		uglify: {
-			dest: 'dist/js',
+			dest: dstdir+'/js',
 			temp: 'bwmon.js',
-			name: 'bwmon.min.js'
+			name: 'bwmon.min.js',
+			excludes: ['!'+srcdir+'/**/bwmon.min.js', '!'+srcdir+'/**/bwmonUsage.js']
 		},
 		cssmin: {
 			src: [
-				'app/css/app.css',
-				'bower_components/bootstrap/dist/css/bootstrap.min.css'
+				srcdir+'/css/app.css',
+				cmpdir+'/bootstrap/dist/css/bootstrap.min.css'
 			],
-			dest: 'dist/css',
+			dest: dstdir+'/css',
 			name: 'bwmon.min.css'
 		},
 		templates:  {
-			src: 'app/templates/**.tpl.html',
+			src: srcdir+'/templates/**.tpl.html',
 			module: 'BWMonApp',
 			root: 'templates/',
-			dest: 'app/js'
+			dest: srcdir+'/js'
 		},
 		html:  {
-			src: 'app/index.html',
-			dest: 'dist'
+			src: srcdir+'/index.html',
+			dest: dstdir
 		}
 	},
 	objectExists = function(object) {
@@ -72,16 +80,14 @@ var gulp = require('gulp'),
 	karma = function(done, config) {
 		var Server = require('karma').Server,
 			defaults = {
-				files: [].concat(files.main.libs, files.unit.libs, files.main.src, files.unit.src, files.data),
+				files: [].concat(files.main.libs, files.unit.libs, files.main.src, files.unit.src, files.data.src, files.unit.excludes),
 				configFile: __dirname+'/config/karma.conf.js',
 			},
 			parameters = extend(defaults, config);
-		console.log(parameters);
 		new Server(parameters, done).start();
 	};
 
 gulp.task('templates', function() {
-	console.log(files.templates.src);
 	return gulp
 		.src(files.templates.src)
 		.pipe(htmlmin({collapseWhitespace: true}))
@@ -93,8 +99,7 @@ gulp.task('templates', function() {
 });
 
 gulp.task('jshint', function() {
-	var src = [].concat(files.main.src, files.unit.src, files.e2e.src, files.data);
-	console.log(src);
+	var src = [].concat(files.main.src, files.unit.src, files.e2e.src, files.data.src);
 	return gulp
 		.src(src)
 		.pipe(jshint())
@@ -107,7 +112,6 @@ gulp.task('unit_auto', function(done) { karma(done, {autoWatch: true, singleRun:
 gulp.task('coverage', function(done) { karma(done, {reporters: ['coverage']}); });
 
 gulp.task('cssmin', function() {
-	console.log(files.cssmin.src);
 	return gulp
 		.src(files.cssmin.src)
 		.pipe(cssmin())
@@ -116,8 +120,7 @@ gulp.task('cssmin', function() {
 });
 
 gulp.task('uglify', ['templates', 'unit'], function() {
-	var src = [].concat(files.main.libs, files.main.src);
-	console.log(src);
+	var src = [].concat(files.main.libs, files.main.src, files.uglify.excludes);
 	return gulp
 		.src(src)
 		.pipe(srcmaps.init())
@@ -131,27 +134,29 @@ gulp.task('uglify', ['templates', 'unit'], function() {
 });
 
 gulp.task('html', function() {
-	console.log(files.html.src);
 	return gulp
 		.src(files.html.src)
 		.pipe(preprocess())
 		.pipe(gulp.dest(files.html.dest));
 });
 
+gulp.task('data', function() {
+	return gulp
+		.src(files.data.src)
+		.pipe(gulp.dest(files.data.dest));
+});
+
 // FIXME
 // gulp.task('webdriver_update', webdriver_update);
 // gulp.task('webdriver_standalone', webdriver_standalone);
-gulp.task('e2e', ['uglify', 'cssmin', 'html'], function() {
-	var src = files.e2e.src;
-	console.log(src);
+gulp.task('e2e', ['uglify', 'cssmin', 'html', 'data'], function() {
 	return gulp
-		.src(src)
+		.src(files.e2e.src)
 		.pipe(protractor({configFile: __dirname+'/config/protractor.conf.js'}))
 });
 
 gulp.task('watch', function() {
-	var src = [].concat(files.main.src, files.unit.src, files.e2e.src, files.data);
-	console.log(src);
+	var src = [].concat(files.main.src, files.unit.src, files.e2e.src, files.data.src);
 	gulp.watch(src, ['jshint']);
 });
 
