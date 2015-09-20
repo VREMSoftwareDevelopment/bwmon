@@ -1,23 +1,23 @@
-describe('BWMonApp.services BWMonService', function() {
+describe('BWMonApp.services dataService', function() {
 	'use strict';
 
-	var BWMonService = null;
+	var dataService = null;
 
-	beforeEach(module('BWMonApp.services'));
-	beforeEach(inject(function(_BWMonService_){
-		BWMonService =_BWMonService_;
+	beforeEach(module('BWMonApp.dataService'));
+	beforeEach(inject(function(_dataService_){
+		dataService =_dataService_;
 	}));
 
 	it('should return years', function() {
 		var expected = [2013, 2012, 2011, 2010],
-			actual = BWMonService.getYears();
+			actual = dataService.getYears();
 
 		expect(angular.equals(expected, actual)).toBe(true);
 	});
 
 	it('should return months', function() {
 		var expected = [ 'November', 'October', 'September', 'August', 'July', 'June', 'May', 'April', 'March', 'February', 'January' ],
-			actual = BWMonService.getMonths(2013);
+			actual = dataService.getMonths(2013);
 
 		expect(angular.equals(expected, actual)).toBe(true);
 	});
@@ -29,7 +29,7 @@ describe('BWMonApp.services BWMonService', function() {
 				{id: 2011, download: 139938627, upload: 10744984, total: 150683611, average: 412831.811, days: 365},
 				{id: 2010, download: 0, upload: 0, total: 0, average: 0, days: 365}
 			],
-			actual = BWMonService.getUsageByYear().data;
+			actual = dataService.getUsageByYear().data;
 
 		expect(angular.equals(expected, actual)).toBe(true);
 	});
@@ -41,7 +41,7 @@ describe('BWMonApp.services BWMonService', function() {
 				{x: 2, id: 2012, total: 436.727},
 				{x: 3, id: 2013, total: 639.701}
 			],
-			actual = BWMonService.getUsageByYear().chartData;
+			actual = dataService.getUsageByYear().chartData;
 
 		expect(angular.equals(expected, actual)).toBe(true);
 	});
@@ -56,14 +56,14 @@ describe('BWMonApp.services BWMonService', function() {
 				{id: 6, download: 21800593, upload: 1506038, total: 23306631, average: 751826.806, days: 31},
 				{id: 5, download: 26949429, upload: 2085658, total: 29035087, average: 967836.233, days: 30}
 			],
-			actual = BWMonService.getUsageByMonth(2011).data.usage;
+			actual = dataService.getUsageByMonth(2011).data.usage;
 
 		expect(angular.equals(expected, actual)).toBe(true);
 	});
 
 	it('should return total by month', function() {
 		var expected = {id: 2011, download: 139938627, upload: 10744984, total: 150683611, average: 412831.811, days: 365},
-			actual = BWMonService.getUsageByMonth(2011).data.total;
+			actual = dataService.getUsageByMonth(2011).data.total;
 
 		expect(angular.equals(expected, actual)).toBe(true);
 	});
@@ -78,7 +78,7 @@ describe('BWMonApp.services BWMonService', function() {
 				{x: 5, id: 10, total: 11.615},
 				{x: 6, id: 11, total: 23.863}
 			],
-			actual = BWMonService.getUsageByMonth(2011).chartData;
+			actual = dataService.getUsageByMonth(2011).chartData;
 
 		expect(angular.equals(expected, actual)).toBe(true);
 	});
@@ -92,7 +92,7 @@ describe('BWMonApp.services BWMonService', function() {
 				{id:39, IP: '192.168.1.21', MAC: '00:23:7A:F7:A0:D0', user: 'COMPUTER-2', download: 654, upload: 210, firstSeen: 1320183002, lastSeen: 1322713801, year: 2011, month: 10, total: 864, days: 30, average: 28.8},
 				{id:35, IP: '192.168.1.24', MAC: '00:27:10:0E:B5:60', user: 'COMPUTER-4', download: 56729, upload: 8382, firstSeen: 1322274602, lastSeen: 1322407802, year: 2011, month: 10, total: 65111, days: 2, average: 32555.5}
 			],
-			actual = BWMonService.getUsageByUser(2011, 'November').data.usage;
+			actual = dataService.getUsageByUser(2011, 'November').data.usage;
 
 		expect(angular.equals(expected, actual)).toBe(true);
 	});
@@ -102,7 +102,7 @@ describe('BWMonApp.services BWMonService', function() {
 				{id:39, IP: '192.168.1.21', MAC: '00:23:7A:F7:A0:D0', user: 'COMPUTER-2', download: 654, upload: 210, firstSeen: 1320183002, lastSeen: 1322713801, year: 2011, month: 10, total: 864, days: 30, average: 28.8},
 				{id:35, IP: '192.168.1.24', MAC: '00:27:10:0E:B5:60', user: 'COMPUTER-4', download: 56729, upload: 8382, firstSeen: 1322274602, lastSeen: 1322407802, year: 2011, month: 10, total: 65111, days: 2, average: 32555.5}
 			],
-			actual = BWMonService.getUsageByUser(2011, 'November', '.2').data.usage;
+			actual = dataService.getUsageByUser(2011, 'November', '.2').data.usage;
 
 		expect(angular.equals(expected, actual)).toBe(true);
 	});
@@ -113,7 +113,7 @@ describe('BWMonApp.services BWMonService', function() {
 				{id:36, IP: '192.168.1.15', MAC: '00:1A:A0:C7:19:08', user: 'COMPUTER-9', download: 655493, upload: 22010, firstSeen: 1321403402, lastSeen: 1322701201, year: 2011, month: 10, total: 677503, days: 16, average: 42343.938},
 				{id:39, IP: '192.168.1.21', MAC: '00:23:7A:F7:A0:D0', user: 'COMPUTER-2', download: 654, upload: 210, firstSeen: 1320183002, lastSeen: 1322713801, year: 2011, month: 10, total: 864, days: 30, average: 28.8},
 			],
-			actual = BWMonService.getUsageByUser(2011, 'November', ':A0').data.usage;
+			actual = dataService.getUsageByUser(2011, 'November', ':A0').data.usage;
 
 		expect(angular.equals(expected, actual)).toBe(true);
 	});
@@ -122,14 +122,14 @@ describe('BWMonApp.services BWMonService', function() {
 		var expected = [
 				{id:39, IP: '192.168.1.21', MAC: '00:23:7A:F7:A0:D0', user: 'COMPUTER-2', download: 654, upload: 210, firstSeen: 1320183002, lastSeen: 1322713801, year: 2011, month: 10, total: 864, days: 30, average: 28.8},
 			],
-			actual = BWMonService.getUsageByUser(2011, 'November', '-2').data.usage;
+			actual = dataService.getUsageByUser(2011, 'November', '-2').data.usage;
 
 		expect(angular.equals(expected, actual)).toBe(true);
 	});
 
 	it('should return total by user', function() {
 		var expected = {id: 10, download: 10920971, upload: 693868, total: 11614839, average: 387161.3, days: 30},
-			actual = BWMonService.getUsageByUser(2011, 'November').data.total;
+			actual = dataService.getUsageByUser(2011, 'November').data.total;
 
 		expect(angular.equals(expected, actual)).toBe(true);
 	});
@@ -143,7 +143,7 @@ describe('BWMonApp.services BWMonService', function() {
 				{x: 4, id: 39, total: 0.001},
 				{x: 5, id: 35, total: 0.065}
 			],
-			actual = BWMonService.getUsageByUser(2011, 'November').chartData;
+			actual = dataService.getUsageByUser(2011, 'November').chartData;
 
 		expect(angular.equals(expected, actual)).toBe(true);
 	});

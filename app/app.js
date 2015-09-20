@@ -17,12 +17,13 @@ angular.module('BWMonApp', [
 	'ngRoute',
 	'n3-line-chart',
 	'BWMonApp.filters',
-	'BWMonApp.services',
 	'BWMonApp.controllers',
 	'BWMonApp.UsageByUser',
 	'BWMonApp.UsageByMonth',
 	'BWMonApp.UsageByYear',
-	'BWMonApp.version'
+	'BWMonApp.version',
+	'BWMonApp.pagingService',
+	'BWMonApp.dataService'
 ])
 .config(['$routeProvider', function($routeProvider) {
 	'use strict';

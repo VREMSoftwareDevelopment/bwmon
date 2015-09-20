@@ -3,22 +3,22 @@ describe('BWMonApp UsageByYear feature', function() {
 
 	var $scope = null,
 		data = {id: 11},
-		mockBWMonService;
+		mockdataService;
 
-	beforeEach(module('BWMonApp.services'));
+	beforeEach(module('BWMonApp.dataService'));
 	beforeEach(module('BWMonApp.UsageByYear'));
 
-	beforeEach(inject(function($rootScope, $controller, _BWMonService_){
+	beforeEach(inject(function($rootScope, $controller, _dataService_){
 		$scope = $rootScope.$new();
 
 		$scope.chartSeries = [];
 
-		mockBWMonService = _BWMonService_;
-		spyOn(mockBWMonService, 'getUsageByYear').and.returnValue({data: data, chartData: {1: data}});
+		mockdataService = _dataService_;
+		spyOn(mockdataService, 'getUsageByYear').and.returnValue({data: data, chartData: {1: data}});
 
 		$controller('UsageByYearController', {
 			$scope: $scope,
-			BWMonService: mockBWMonService,
+			dataService: mockdataService,
 		});
 	}));
 

@@ -21,7 +21,7 @@ angular.module('BWMonApp.UsageByUser', ['ngRoute'])
 		controller: 'UsageByUserController'
 	});
 }])
-.controller('UsageByUserController', ['$scope', 'BWMonService', 'PagingService', function($scope, BWMonService, PagingService) {
+.controller('UsageByUserController', ['$scope', 'dataService', 'pagingService', function($scope, dataService, pagingService) {
 	'use strict';
 
 	var getLabel = function(value, data) {
@@ -39,18 +39,18 @@ angular.module('BWMonApp.UsageByUser', ['ngRoute'])
 			return result;
 		},
 		getMonths = function(year) {
-			$scope.months = BWMonService.getMonths(year);
+			$scope.months = dataService.getMonths(year);
 			$scope.selected.month = $scope.months[0];
 			$scope.selected.search = '';
 		},
 		getUsage = function(year, month, filter) {
-			var usageData = BWMonService.getUsageByUser(year, month, filter);
+			var usageData = dataService.getUsageByUser(year, month, filter);
 			$scope.data = usageData.data.usage;
 			$scope.total = usageData.data.total;
 			$scope.chartData = usageData.chartData;
 		},
 		init = function() {
-			$scope.years = BWMonService.getYears();
+			$scope.years = dataService.getYears();
 			$scope.selected = {};
 			$scope.selected.year = $scope.years[0];
 			$scope.predicate = 'IP';
@@ -62,7 +62,7 @@ angular.module('BWMonApp.UsageByUser', ['ngRoute'])
 
 	init();
 
-	$scope.page = PagingService.getPaging();
+	$scope.page = pagingService.getPaging();
 
 	$scope.$watch('selected.year', function() {
 		getMonths($scope.selected.year);

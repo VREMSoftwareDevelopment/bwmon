@@ -17,27 +17,28 @@ describe('BWMonApp UsageByUser feature', function() {
 			total: 10
 		},
 		chartData = data.usage,
-		mockBWMonService,
-		mockPagingService;
+		mockdataService,
+		mockpagingService;
 
-	beforeEach(module('BWMonApp.services'));
+	beforeEach(module('BWMonApp.dataService'));
+	beforeEach(module('BWMonApp.pagingService'));
 	beforeEach(module('BWMonApp.UsageByUser'));
 
-	beforeEach(inject(function($rootScope, $controller, _BWMonService_, _PagingService_){
+	beforeEach(inject(function($rootScope, $controller, _dataService_, _pagingService_){
 		$scope = $rootScope.$new();
 
-		mockBWMonService = _BWMonService_;
-		spyOn(mockBWMonService, 'getYears').and.returnValue(years);
-		spyOn(mockBWMonService, 'getMonths').and.returnValue(months);
-		spyOn(mockBWMonService, 'getUsageByUser').and.returnValue({data: data, chartData: chartData});
+		mockdataService = _dataService_;
+		spyOn(mockdataService, 'getYears').and.returnValue(years);
+		spyOn(mockdataService, 'getMonths').and.returnValue(months);
+		spyOn(mockdataService, 'getUsageByUser').and.returnValue({data: data, chartData: chartData});
 
-		mockPagingService = _PagingService_;
-		spyOn(mockPagingService, 'getPaging').and.returnValue(page);
+		mockpagingService = _pagingService_;
+		spyOn(mockpagingService, 'getPaging').and.returnValue(page);
 
 		$controller('UsageByUserController', {
 			$scope: $scope,
-			BWMonService: mockBWMonService,
-			PagingService: mockPagingService
+			dataService: mockdataService,
+			pagingService: mockpagingService
 		});
 	}));
 

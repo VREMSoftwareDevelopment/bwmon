@@ -21,7 +21,7 @@ angular.module('BWMonApp.UsageByMonth', ['ngRoute'])
 		controller: 'UsageByMonthController'
 	});
 }])
-.controller('UsageByMonthController', ['$scope', 'BWMonService', function($scope, BWMonService) {
+.controller('UsageByMonthController', ['$scope', 'dataService', function($scope, dataService) {
 	'use strict';
 
 	var getLabel = function(value) {
@@ -34,10 +34,10 @@ angular.module('BWMonApp.UsageByMonth', ['ngRoute'])
 		init = function() {
 			var usageData;
 
-			$scope.years = BWMonService.getYears();
+			$scope.years = dataService.getYears();
 			$scope.year = $scope.years[0];
 
-			usageData = BWMonService.getUsageByMonth($scope.year);
+			usageData = dataService.getUsageByMonth($scope.year);
 			$scope.data = usageData.data.usage;
 			$scope.total = usageData.data.total;
 			$scope.chartData = usageData.chartData;
@@ -62,7 +62,7 @@ angular.module('BWMonApp.UsageByMonth', ['ngRoute'])
 	};
 
 	$scope.$watch('year', function() {
-		var usageData = BWMonService.getUsageByMonth($scope.year);
+		var usageData = dataService.getUsageByMonth($scope.year);
 		$scope.data = usageData.data.usage;
 		$scope.total = usageData.data.total;
 		$scope.chartData = usageData.chartData;

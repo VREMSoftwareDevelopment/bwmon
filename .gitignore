@@ -1,7 +1,7 @@
 /.settings
 /.project
 /.tern-project
-app/js/templates.js
+app/templates.js
 node_modules/
 bower_components/
 data/

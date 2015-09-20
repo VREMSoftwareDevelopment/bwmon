@@ -47,10 +47,11 @@ var gulp = require('gulp'),
 			name: pkg.name+'.min.css'
 		},
 		templates:  {
-			src: srcdir+'/templates/**.tpl.html',
+			src: srcdir+'/**/**.tpl.html',
 			module: 'BWMonApp',
 			root: 'templates/',
-			dest: srcdir+'/js'
+			dest: srcdir,
+			name: 'templates.js'
 		},
 		html:  {
 			src: srcdir+'/index.html',
@@ -91,7 +92,7 @@ var gulp = require('gulp'),
 			.pipe(gulp.dest(files.version.dest));
 	};
 
-gulp.task('templates', function() {
+gulp.task('templates', ['clean'], function() {
 	return gulp
 		.src(files.templates.src)
 		.pipe(plugins.htmlmin())
@@ -135,7 +136,7 @@ gulp.task('jslibs', function() {
 		.pipe(gulp.dest(files.js.dest));
 });
 
-gulp.task('uglify', ['clean', 'templates', 'unit'], function() {
+gulp.task('uglify', ['templates', 'unit'], function() {
 	var src = [].concat(files.js.src, files.js.excludes);
 	return gulp
 		.src(src)
@@ -176,6 +177,7 @@ gulp.task('e2e', ['webdriverUpdate', 'webserver'], function() {
 });
 
 gulp.task('clean', function() {
+	del(files.templates.dest+'/'+files.templates.name);
 	return del(dstdir);
 });
 

@@ -9,23 +9,23 @@ describe('BWMonApp UsageByMonth feature', function() {
 			total: 10
 		},
 		chartData = [],
-		mockBWMonService;
+		mockdataService;
 
-	beforeEach(module('BWMonApp.services'));
+	beforeEach(module('BWMonApp.dataService'));
 	beforeEach(module('BWMonApp.UsageByMonth'));
 
-	beforeEach(inject(function($rootScope, $controller, _BWMonService_){
+	beforeEach(inject(function($rootScope, $controller, _dataService_){
 		$scope = $rootScope.$new();
 		$scope.chartSeries = [];
 		spyOn($scope, '$watch');
 
-		mockBWMonService = _BWMonService_;
-		spyOn(mockBWMonService, 'getYears').and.returnValue(years);
-		spyOn(mockBWMonService, 'getUsageByMonth').and.returnValue({data: data, chartData: chartData});
+		mockdataService = _dataService_;
+		spyOn(mockdataService, 'getYears').and.returnValue(years);
+		spyOn(mockdataService, 'getUsageByMonth').and.returnValue({data: data, chartData: chartData});
 
 		$controller('UsageByMonthController', {
 			$scope: $scope,
-			BWMonService: mockBWMonService
+			dataService: mockdataService
 		});
 
 	}));
