@@ -13,7 +13,7 @@
  *    See the License for the specific language governing permissions and
  *    limitations under the License.
  */
-angular.module('BWMonApp.filters', [])
+angular.module('BWMonApp.Filters', [])
 .filter('startFrom', [function() {
 	'use strict';
 	return function(input, start) {

@@ -1,7 +1,7 @@
 describe('filter', function() {
 	'use strict';
 
-	beforeEach(module('BWMonApp.filters'));
+	beforeEach(module('BWMonApp.Filters'));
 
 	describe('startFrom', function() {
 		it('should slice array from startFrom', inject(function(startFromFilter) {
