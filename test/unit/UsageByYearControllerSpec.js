@@ -1,12 +1,12 @@
-describe('UsageByYearController tests', function() {
+describe('BWMonApp UsageByYear feature', function() {
 	'use strict';
 
 	var $scope = null,
 		data = {id: 11},
 		mockBWMonService;
 
-    beforeEach(module('BWMonApp.services'));
-	beforeEach(module('BWMonApp.controllers'));
+	beforeEach(module('BWMonApp.services'));
+	beforeEach(module('BWMonApp.UsageByYear'));
 
 	beforeEach(inject(function($rootScope, $controller, _BWMonService_){
 		$scope = $rootScope.$new();
@@ -14,12 +14,18 @@ describe('UsageByYearController tests', function() {
 		$scope.chartSeries = [];
 
 		mockBWMonService = _BWMonService_;
-        spyOn(mockBWMonService, 'getUsageByYear').and.returnValue({data: data, chartData: {1: data}});
+		spyOn(mockBWMonService, 'getUsageByYear').and.returnValue({data: data, chartData: {1: data}});
 
-        $controller('UsageByYearController', {
+		$controller('UsageByYearController', {
 			$scope: $scope,
 			BWMonService: mockBWMonService,
 		});
+	}));
+
+	it('should map UsageByYear route', inject(function($route){
+		var route = $route.routes['/UsageByYear'];
+		expect(route.controller).toBe('UsageByYearController');
+		expect(route.templateUrl).toBe('js/usagebyyear/UsageByYear.tpl.html');
 	}));
 
 	it('should update data with getUsageByYear', inject(function() {

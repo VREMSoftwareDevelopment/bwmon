@@ -1,4 +1,4 @@
-describe('UsageByUserController tests', function() {
+describe('BWMonApp UsageByUser feature', function() {
 	'use strict';
 
 	var $scope = null,
@@ -20,25 +20,31 @@ describe('UsageByUserController tests', function() {
 		mockBWMonService,
 		mockPagingService;
 
-    beforeEach(module('BWMonApp.services'));
-	beforeEach(module('BWMonApp.controllers'));
+	beforeEach(module('BWMonApp.services'));
+	beforeEach(module('BWMonApp.UsageByUser'));
 
 	beforeEach(inject(function($rootScope, $controller, _BWMonService_, _PagingService_){
 		$scope = $rootScope.$new();
 
 		mockBWMonService = _BWMonService_;
-        spyOn(mockBWMonService, 'getYears').and.returnValue(years);
-        spyOn(mockBWMonService, 'getMonths').and.returnValue(months);
-        spyOn(mockBWMonService, 'getUsageByUser').and.returnValue({data: data, chartData: chartData});
+		spyOn(mockBWMonService, 'getYears').and.returnValue(years);
+		spyOn(mockBWMonService, 'getMonths').and.returnValue(months);
+		spyOn(mockBWMonService, 'getUsageByUser').and.returnValue({data: data, chartData: chartData});
 
-        mockPagingService = _PagingService_;
-        spyOn(mockPagingService, 'getPaging').and.returnValue(page);
+		mockPagingService = _PagingService_;
+		spyOn(mockPagingService, 'getPaging').and.returnValue(page);
 
 		$controller('UsageByUserController', {
 			$scope: $scope,
 			BWMonService: mockBWMonService,
 			PagingService: mockPagingService
 		});
+	}));
+
+	it('should map UsageByUser route', inject(function($route){
+		var route = $route.routes['/UsageByUser'];
+		expect(route.controller).toBe('UsageByUserController');
+		expect(route.templateUrl).toBe('js/usagebyuser/UsageByUser.tpl.html');
 	}));
 
 	it('should update years with getYears', inject(function() {

@@ -1,4 +1,4 @@
-describe('UsageByMonthController tests', function() {
+describe('BWMonApp UsageByMonth feature', function() {
 	'use strict';
 
 	var $scope = null,
@@ -11,23 +11,29 @@ describe('UsageByMonthController tests', function() {
 		chartData = [],
 		mockBWMonService;
 
-    beforeEach(module('BWMonApp.services'));
-	beforeEach(module('BWMonApp.controllers'));
+	beforeEach(module('BWMonApp.services'));
+	beforeEach(module('BWMonApp.UsageByMonth'));
 
 	beforeEach(inject(function($rootScope, $controller, _BWMonService_){
-        $scope = $rootScope.$new();
+		$scope = $rootScope.$new();
 		$scope.chartSeries = [];
-        spyOn($scope, '$watch');
+		spyOn($scope, '$watch');
 
-        mockBWMonService = _BWMonService_;
-        spyOn(mockBWMonService, 'getYears').and.returnValue(years);
-        spyOn(mockBWMonService, 'getUsageByMonth').and.returnValue({data: data, chartData: chartData});
+		mockBWMonService = _BWMonService_;
+		spyOn(mockBWMonService, 'getYears').and.returnValue(years);
+		spyOn(mockBWMonService, 'getUsageByMonth').and.returnValue({data: data, chartData: chartData});
 
 		$controller('UsageByMonthController', {
 			$scope: $scope,
 			BWMonService: mockBWMonService
 		});
 
+	}));
+
+	it('should map UsageByMonth route', inject(function($route){
+		var route = $route.routes['/UsageByMonth'];
+		expect(route.controller).toBe('UsageByMonthController');
+		expect(route.templateUrl).toBe('js/usagebymonth/UsageByMonth.tpl.html');
 	}));
 
 	it('should update years with getYears', inject(function() {
