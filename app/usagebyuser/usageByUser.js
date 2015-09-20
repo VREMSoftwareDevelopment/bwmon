@@ -17,7 +17,7 @@ angular.module('BWMonApp.UsageByUser', ['ngRoute'])
 .config(['$routeProvider', function($routeProvider) {
 	'use strict';
 	$routeProvider.when('/UsageByUser', {
-		templateUrl: 'usagebyuser/UsageByUser.tpl.html',
+		templateUrl: 'usagebyuser/usageByUser.tpl.html',
 		controller: 'UsageByUserController'
 	});
 }])

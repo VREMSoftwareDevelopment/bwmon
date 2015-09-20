@@ -22,8 +22,8 @@ angular.module('BWMonApp', [
 	'BWMonApp.UsageByMonth',
 	'BWMonApp.UsageByYear',
 	'BWMonApp.Version',
-	'BWMonApp.pagingService',
-	'BWMonApp.dataService'
+	'BWMonApp.PagingService',
+	'BWMonApp.DataService'
 ])
 .config(['$routeProvider', function($routeProvider) {
 	'use strict';

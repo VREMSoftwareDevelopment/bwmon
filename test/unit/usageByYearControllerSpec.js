@@ -5,7 +5,7 @@ describe('BWMonApp UsageByYear feature', function() {
 		data = {id: 11},
 		mockdataService;
 
-	beforeEach(module('BWMonApp.dataService'));
+	beforeEach(module('BWMonApp.DataService'));
 	beforeEach(module('BWMonApp.UsageByYear'));
 
 	beforeEach(inject(function($rootScope, $controller, _dataService_){
@@ -25,7 +25,7 @@ describe('BWMonApp UsageByYear feature', function() {
 	it('should map UsageByYear route', inject(function($route){
 		var route = $route.routes['/UsageByYear'];
 		expect(route.controller).toBe('UsageByYearController');
-		expect(route.templateUrl).toBe('usagebyyear/UsageByYear.tpl.html');
+		expect(route.templateUrl).toBe('usagebyyear/usageByYear.tpl.html');
 	}));
 
 	it('should update data with getUsageByYear', inject(function() {

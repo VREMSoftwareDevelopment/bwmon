@@ -3,7 +3,7 @@ describe('BWMonApp.services dataService', function() {
 
 	var dataService = null;
 
-	beforeEach(module('BWMonApp.dataService'));
+	beforeEach(module('BWMonApp.DataService'));
 	beforeEach(inject(function(_dataService_){
 		dataService =_dataService_;
 	}));

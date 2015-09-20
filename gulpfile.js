@@ -96,7 +96,8 @@ var gulp = require('gulp'),
 	};
 
 gulp.task('clean', function() {
-	return remove(dstdir);
+	remove(dstdir);
+	return remove(files.templates.dstdir+'/templates.js');
 });
 
 gulp.task('jshint', ['clean'], function() {

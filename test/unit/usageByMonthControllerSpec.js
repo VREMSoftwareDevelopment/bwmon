@@ -11,7 +11,7 @@ describe('BWMonApp UsageByMonth feature', function() {
 		chartData = [],
 		mockdataService;
 
-	beforeEach(module('BWMonApp.dataService'));
+	beforeEach(module('BWMonApp.DataService'));
 	beforeEach(module('BWMonApp.UsageByMonth'));
 
 	beforeEach(inject(function($rootScope, $controller, _dataService_){
@@ -33,7 +33,7 @@ describe('BWMonApp UsageByMonth feature', function() {
 	it('should map UsageByMonth route', inject(function($route){
 		var route = $route.routes['/UsageByMonth'];
 		expect(route.controller).toBe('UsageByMonthController');
-		expect(route.templateUrl).toBe('usagebymonth/UsageByMonth.tpl.html');
+		expect(route.templateUrl).toBe('usagebymonth/usageByMonth.tpl.html');
 	}));
 
 	it('should update years with getYears', inject(function() {

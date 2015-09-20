@@ -13,7 +13,7 @@
  *    See the License for the specific language governing permissions and
  *    limitations under the License.
  */
-angular.module('BWMonApp.pagingService', [])
+angular.module('BWMonApp.PagingService', [])
 .factory('pagingService', function() {
 	return {
 		getPaging: function() {

@@ -13,7 +13,7 @@
  *    See the License for the specific language governing permissions and
  *    limitations under the License.
  */
-angular.module('BWMonApp.dataService', [])
+angular.module('BWMonApp.DataService', [])
 .factory('dataService', function() {
 	'use strict';
 

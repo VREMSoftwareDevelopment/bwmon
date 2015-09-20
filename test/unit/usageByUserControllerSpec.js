@@ -20,8 +20,8 @@ describe('BWMonApp UsageByUser feature', function() {
 		mockdataService,
 		mockpagingService;
 
-	beforeEach(module('BWMonApp.dataService'));
-	beforeEach(module('BWMonApp.pagingService'));
+	beforeEach(module('BWMonApp.DataService'));
+	beforeEach(module('BWMonApp.PagingService'));
 	beforeEach(module('BWMonApp.UsageByUser'));
 
 	beforeEach(inject(function($rootScope, $controller, _dataService_, _pagingService_){
@@ -45,7 +45,7 @@ describe('BWMonApp UsageByUser feature', function() {
 	it('should map UsageByUser route', inject(function($route){
 		var route = $route.routes['/UsageByUser'];
 		expect(route.controller).toBe('UsageByUserController');
-		expect(route.templateUrl).toBe('usagebyuser/UsageByUser.tpl.html');
+		expect(route.templateUrl).toBe('usagebyuser/usageByUser.tpl.html');
 	}));
 
 	it('should update years with getYears', inject(function() {

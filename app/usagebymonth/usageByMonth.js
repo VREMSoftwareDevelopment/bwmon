@@ -17,7 +17,7 @@ angular.module('BWMonApp.UsageByMonth', ['ngRoute'])
 .config(['$routeProvider', function($routeProvider) {
 	'use strict';
 	$routeProvider.when('/UsageByMonth', {
-		templateUrl: 'usagebymonth/UsageByMonth.tpl.html',
+		templateUrl: 'usagebymonth/usageByMonth.tpl.html',
 		controller: 'UsageByMonthController'
 	});
 }])
