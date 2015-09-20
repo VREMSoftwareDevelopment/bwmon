@@ -9,9 +9,9 @@ describe('NavigationController tests', function() {
 		$scope = $rootScope.$new();
 
 		mockLocation = $location;
-        spyOn(mockLocation, 'path').and.returnValue('/mypath');
+				spyOn(mockLocation, 'path').and.returnValue('/mypath');
 
-		$controller('NavigationController', {
+		$controller('navigationController', {
 			$scope: $scope,
 			$location: mockLocation
 		});

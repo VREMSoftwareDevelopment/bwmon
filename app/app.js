@@ -28,4 +28,31 @@ angular.module('BWMonApp', [
 .config(['$routeProvider', function($routeProvider) {
 	'use strict';
 	$routeProvider.otherwise({redirectTo: '/UsageByUser'});
+}])
+.controller('rootController', ['$interval', '$scope', function($interval, $scope) {
+	'use strict';
+
+	function updateClock() {
+		$scope.clock = new Date();
+	}
+
+	var clockOn = $interval(updateClock, 1000);
+
+	$scope.$on('$destroy', function(e) {
+		$interval.cancel(clockOn);
+	});
+
+	updateClock();
+
+	$scope.currentDate = $scope.clock;
+
+	$scope.chartTypes = ['column', 'line', 'area'];
+	$scope.chartSeries = [{
+		y: 'total',
+		color: '#3366CC',
+		label: 'GBytes',
+		type: $scope.chartTypes[0]
+	}];
+
 }]);
+

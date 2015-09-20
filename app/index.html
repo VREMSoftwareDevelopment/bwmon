@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" ng-app="BWMonApp" ng-controller="RootController">
+<html lang="en" ng-app="BWMonApp" ng-controller="rootController">
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,7 +19,7 @@
 		<small class="pull-right">{{ clock  | date: 'medium'}}</small>
 		<span class="clearfix"></span>
 	</h2>
-	<div class="navbar navbar-default" ng-controller="NavigationController">
+	<div class="navbar navbar-default" ng-controller="navigationController">
 		<ul class="nav navbar-nav">
 			<li ng-class="{active: isActive('/UsageByUser')}">
 				<a href="#/UsageByUser">Usage By User</a>
