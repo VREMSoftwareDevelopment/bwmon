@@ -33,7 +33,7 @@ describe('BWMonApp UsageByMonth feature', function() {
 	it('should map UsageByMonth route', inject(function($route){
 		var route = $route.routes['/UsageByMonth'];
 		expect(route.controller).toBe('UsageByMonthController');
-		expect(route.templateUrl).toBe('js/usagebymonth/UsageByMonth.tpl.html');
+		expect(route.templateUrl).toBe('usagebymonth/UsageByMonth.tpl.html');
 	}));
 
 	it('should update years with getYears', inject(function() {

@@ -25,7 +25,7 @@ describe('BWMonApp UsageByYear feature', function() {
 	it('should map UsageByYear route', inject(function($route){
 		var route = $route.routes['/UsageByYear'];
 		expect(route.controller).toBe('UsageByYearController');
-		expect(route.templateUrl).toBe('js/usagebyyear/UsageByYear.tpl.html');
+		expect(route.templateUrl).toBe('usagebyyear/UsageByYear.tpl.html');
 	}));
 
 	it('should update data with getUsageByYear', inject(function() {

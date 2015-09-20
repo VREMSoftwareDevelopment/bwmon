@@ -44,7 +44,7 @@ describe('BWMonApp UsageByUser feature', function() {
 	it('should map UsageByUser route', inject(function($route){
 		var route = $route.routes['/UsageByUser'];
 		expect(route.controller).toBe('UsageByUserController');
-		expect(route.templateUrl).toBe('js/usagebyuser/UsageByUser.tpl.html');
+		expect(route.templateUrl).toBe('usagebyuser/UsageByUser.tpl.html');
 	}));
 
 	it('should update years with getYears', inject(function() {
