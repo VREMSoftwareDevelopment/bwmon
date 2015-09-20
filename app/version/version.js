@@ -13,7 +13,7 @@
  *    See the License for the specific language governing permissions and
  *    limitations under the License.
  */
-angular.module('BWMonApp.version', [])
+angular.module('BWMonApp.Version', [])
 .value('version', '2.2.1')
 .filter('interpolate', ['version', function(version) {
 	'use strict';

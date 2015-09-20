@@ -21,7 +21,7 @@ angular.module('BWMonApp', [
 	'BWMonApp.UsageByUser',
 	'BWMonApp.UsageByMonth',
 	'BWMonApp.UsageByYear',
-	'BWMonApp.version',
+	'BWMonApp.Version',
 	'BWMonApp.pagingService',
 	'BWMonApp.dataService'
 ])
