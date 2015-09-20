@@ -88,19 +88,17 @@ var gulp = require('gulp'),
 		return gulp.src(files.version.src)
 			.pipe(plugins.bump({type: type}))
 			.pipe(gulp.dest(files.version.dest));
-	},
-	remove = function(files) {
-		return del(files).then(function() {
-			console.log('Deleted files/folders:', files);
-		});
 	};
 
-gulp.task('clean', function() {
-	remove(dstdir);
-	return remove(files.templates.dstdir+'/templates.js');
+gulp.task('uglify:clean', function() {
+	return del.sync(dstdir);
 });
 
-gulp.task('jshint', ['clean'], function() {
+gulp.task('templates:clean', function() {
+	return del.sync(files.templates.dstdir+'/templates.js');
+});
+
+gulp.task('jshint', function() {
 	var src = [].concat(files.js.src, files.unit.src, files.e2e.src, files.data.src);
 	return gulp
 		.src(src)
@@ -133,7 +131,7 @@ gulp.task('jslibs', function() {
 		.pipe(gulp.dest(files.js.dest));
 });
 
-gulp.task('templates', function() {
+gulp.task('templates', ['templates:clean'], function() {
 	return gulp
 		.src(files.templates.src)
 		.pipe(plugins.htmlmin())
@@ -141,7 +139,7 @@ gulp.task('templates', function() {
 		.pipe(gulp.dest(files.templates.dest));
 });
 
-gulp.task('uglify', ['templates', 'unit'], function() {
+gulp.task('uglify', ['uglify:clean', 'templates', 'unit'], function() {
 	var src = [].concat(files.js.src, files.js.excludes);
 	return gulp
 		.src(src)
@@ -210,7 +208,7 @@ gulp.task('git:tag', function() {
 });
 
 gulp.task('release:clean', function() {
-	return del(files.release.dest);
+	return del.sync(files.release.dest);
 });
 
 gulp.task('release', ['release:clean'], function() {
