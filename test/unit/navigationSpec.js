@@ -1,9 +1,9 @@
-describe('NavigationController tests', function() {
+describe('BWMonApp Navigation tests', function() {
 
 	var $scope = null,
 		mockLocation;
 
-	beforeEach(module('BWMonApp.controllers'));
+	beforeEach(module('BWMonApp.Navigation'));
 
 	beforeEach(inject(function($rootScope, $controller, $location){
 		$scope = $rootScope.$new();
