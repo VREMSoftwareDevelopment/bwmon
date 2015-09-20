@@ -27,7 +27,6 @@ describe('BWMonApp UsageByMonth feature', function() {
 			$scope: $scope,
 			dataService: mockdataService
 		});
-
 	}));
 
 	it('should map UsageByMonth route', inject(function($route){
@@ -41,7 +40,6 @@ describe('BWMonApp UsageByMonth feature', function() {
 			actual = $scope.years;
 
 		expect(expected).toEqual(actual);
-
 	}));
 
 	it('should update year with getYears first element', inject(function() {

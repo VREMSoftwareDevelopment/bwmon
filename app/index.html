@@ -19,19 +19,7 @@
 		<small class="pull-right">{{ clock  | date: 'medium'}}</small>
 		<span class="clearfix"></span>
 	</h2>
-	<div class="navbar navbar-default" ng-controller="navigationController">
-		<ul class="nav navbar-nav">
-			<li ng-class="{active: isActive('/UsageByUser')}">
-				<a href="#/UsageByUser">Usage By User</a>
-			</li>
-			<li ng-class="{active: isActive('/UsageByMonth')}">
-				<a href="#/UsageByMonth">Usage By Month</a>
-			</li>
-			<li ng-class="{active: isActive('/UsageByYear')}">
-				<a href="#/UsageByYear">Usage By Year</a>
-			</li>
-		</ul>
-	</div>
+	<div navigation ng-controller="navigationController"></div>
 	<div class="ng-view-min-height">
 		<div ng-view></div>
 	</div>

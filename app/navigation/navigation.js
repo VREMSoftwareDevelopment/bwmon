@@ -16,8 +16,13 @@
 angular.module('BWMonApp.Navigation', [])
 .controller('navigationController', ['$scope', '$location', function($scope, $location) {
 	'use strict';
-
 	$scope.isActive = function (viewLocation) {
 		return viewLocation === $location.path();
+	};
+}])
+.directive('navigation', [function() {
+	'use strict';
+	return {
+		templateUrl: 'navigation/navigation.tpl.html'
 	};
 }]);

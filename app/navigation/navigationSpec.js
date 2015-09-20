@@ -1,15 +1,13 @@
-describe('BWMonApp Navigation tests', function() {
-
-	var $scope = null,
-		mockLocation;
+describe('BWMonApp Navigation', function() {
+	var $scope,	mockLocation;
 
 	beforeEach(module('BWMonApp.Navigation'));
 
-	beforeEach(inject(function($rootScope, $controller, $location){
+	beforeEach(inject(function($rootScope, $controller, $location) {
 		$scope = $rootScope.$new();
 
 		mockLocation = $location;
-				spyOn(mockLocation, 'path').and.returnValue('/mypath');
+		spyOn(mockLocation, 'path').and.returnValue('/mypath');
 
 		$controller('navigationController', {
 			$scope: $scope,
@@ -24,4 +22,5 @@ describe('BWMonApp Navigation tests', function() {
 	it('should return false', inject(function() {
 		expect($scope.isActive('/mypath1')).toBe(false);
 	}));
+
 });
