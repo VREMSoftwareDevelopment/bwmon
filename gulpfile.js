@@ -49,9 +49,7 @@ var gulp = require('gulp'),
 		templates:  {
 			src: srcdir+'/**/**.tpl.html',
 			module: 'BWMonApp',
-			root: 'templates/',
-			dest: srcdir,
-			name: 'templates.js'
+			dest: srcdir
 		},
 		html:  {
 			src: srcdir+'/index.html',
@@ -90,20 +88,26 @@ var gulp = require('gulp'),
 		return gulp.src(files.version.src)
 			.pipe(plugins.bump({type: type}))
 			.pipe(gulp.dest(files.version.dest));
+	},
+	remove = function(files) {
+		return del(files).then(function() {
+			console.log('Deleted files/folders:', files);
+		});
 	};
 
-gulp.task('templates', ['clean'], function() {
+gulp.task('clean', function() {
+	return remove(dstdir);
+});
+
+gulp.task('templates', function() {
 	return gulp
 		.src(files.templates.src)
 		.pipe(plugins.htmlmin())
-		.pipe(plugins.angularTemplatecache({
-			module: files.templates.module,
-			root: files.templates.root
-		}))
+		.pipe(plugins.angularTemplatecache({module: files.templates.module}))
 		.pipe(gulp.dest(files.templates.dest));
 });
 
-gulp.task('jshint', function() {
+gulp.task('jshint', ['clean'], function() {
 	var src = [].concat(files.js.src, files.unit.src, files.e2e.src, files.data.src);
 	return gulp
 		.src(src)
