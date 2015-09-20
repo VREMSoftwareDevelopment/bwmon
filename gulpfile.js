@@ -30,15 +30,14 @@ var gulp = require('gulp'),
 			dest: dstdir+'/js',
 			temp: pkg.name+'.js',
 			name: pkg.name+'.min.js',
-			excludes: '!'+srcdir+'/**/'+dataname
+			excludes: ['!'+srcdir+'/**/'+dataname, '!'+srcdir+'/**/*Spec.js']
 		},
 		unit: {
-			src: ['test/unit/**/*.js'],
 			libs: [cmpdir+'/angular-mocks/angular-mocks.js'],
 			excludes: srcdir+'/**/!('+dataname+').js'
 		},
 		e2e : {
-			src: ['test/e2e/**/*.js']
+			src: ['e2e/**/*.js']
 		},
 		css: {
 			src: srcdir+'/css/app.css',
@@ -78,7 +77,7 @@ var gulp = require('gulp'),
 	karma = function(done, config) {
 		var Server = require('karma').Server,
 			defaults = {
-				files: [].concat(files.js.libs, files.unit.libs, files.js.src, files.unit.src, files.data.src, files.unit.excludes),
+				files: [].concat(files.js.libs, files.unit.libs, files.js.src, files.data.src, files.unit.excludes),
 				configFile: __dirname+'/config/karma.conf.js',
 			},
 			parameters = extend(defaults, config);
@@ -99,7 +98,7 @@ gulp.task('templates:clean', function() {
 });
 
 gulp.task('jshint', function() {
-	var src = [].concat(files.js.src, files.unit.src, files.e2e.src, files.data.src);
+	var src = [].concat(files.js.src, files.e2e.src, files.data.src);
 	return gulp
 		.src(src)
 		.pipe(plugins.jshint())
