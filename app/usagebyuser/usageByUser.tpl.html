@@ -1,8 +1,5 @@
 <form class="form-inline">
-	<button id="buttonShowChart" class="btn btn-primary" ng-click="showChart=!showChart">Show
-		<span ng-show="showChart">Data</span>
-		<span ng-hide="showChart">Chart</span>
-	</button>
+	<display-type></display-type>
 	<div class="form-group">
 		<label class="sr-only" for="year">Year</label>
 		<select class="form-control" name="year" ng-model="selected.year" ng-options="choiceYear for choiceYear in years"></select>

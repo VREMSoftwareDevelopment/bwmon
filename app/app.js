@@ -17,6 +17,7 @@ angular.module('BWMonApp', [
 	'ngRoute',
 	'n3-line-chart',
 	'BWMonApp.Filters',
+	'BWMonApp.Directives',
 	'BWMonApp.Navigation',
 	'BWMonApp.UsageByUser',
 	'BWMonApp.UsageByMonth',

@@ -19,7 +19,7 @@
 		<small class="pull-right">{{ clock  | date: 'medium'}}</small>
 		<span class="clearfix"></span>
 	</h2>
-	<div navigation ng-controller="navigationController"></div>
+	<navigation ng-controller="navigationController"></navigation>
 	<div class="ng-view-min-height">
 		<div ng-view></div>
 	</div>
@@ -49,7 +49,6 @@
 	<script src="../bower_components/d3/d3.js"></script>
 	<script src="../bower_components/n3-line-chart/build/line-chart.js"></script>
 	<script src="app.js"></script>
-	<script src="components/filters.js"></script>
 	<script src="version/version.js"></script>
 	<script src="navigation/navigation.js"></script>
 	<script src="services/dataService.js"></script>
@@ -57,6 +56,8 @@
 	<script src="usagebyuser/usageByUser.js"></script>
 	<script src="usagebymonth/usageByMonth.js"></script>
 	<script src="usagebyyear/usageByYear.js"></script>
+	<script src="components/filters.js"></script>
+	<script src="components/directives.js"></script>
 <!-- @endif -->
 </body>
 </html>

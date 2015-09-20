@@ -1,8 +1,5 @@
 <form class="form-inline">
-	<button id="buttonShowChart" class="btn btn-primary" ng-click="showChart=!showChart">Show
-		<span ng-show="showChart">Data</span>
-		<span ng-hide="showChart">Chart</span>
-	</button>
+	<display-type></display-type>
 	<div ng-show="showChart" class="form-group">
 		<label class="sr-only" for="chartType">Chart Type</label>
 		<select class="form-control" name="chartType" ng-model="chartSeries[0].type" ng-options="chartType for chartType in chartTypes"></select>
