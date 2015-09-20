@@ -99,14 +99,6 @@ gulp.task('clean', function() {
 	return remove(dstdir);
 });
 
-gulp.task('templates', function() {
-	return gulp
-		.src(files.templates.src)
-		.pipe(plugins.htmlmin())
-		.pipe(plugins.angularTemplatecache({module: files.templates.module}))
-		.pipe(gulp.dest(files.templates.dest));
-});
-
 gulp.task('jshint', ['clean'], function() {
 	var src = [].concat(files.js.src, files.unit.src, files.e2e.src, files.data.src);
 	return gulp
@@ -138,6 +130,14 @@ gulp.task('jslibs', function() {
 	return gulp
 		.src(files.js.libs)
 		.pipe(gulp.dest(files.js.dest));
+});
+
+gulp.task('templates', function() {
+	return gulp
+		.src(files.templates.src)
+		.pipe(plugins.htmlmin())
+		.pipe(plugins.angularTemplatecache({module: files.templates.module}))
+		.pipe(gulp.dest(files.templates.dest));
 });
 
 gulp.task('uglify', ['templates', 'unit'], function() {
