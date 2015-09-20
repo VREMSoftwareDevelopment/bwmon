@@ -135,7 +135,7 @@ gulp.task('jslibs', function() {
 		.pipe(gulp.dest(files.js.dest));
 });
 
-gulp.task('uglify', ['templates', 'unit'], function() {
+gulp.task('uglify', ['clean', 'templates', 'unit'], function() {
 	var src = [].concat(files.js.src, files.js.excludes);
 	return gulp
 		.src(src)

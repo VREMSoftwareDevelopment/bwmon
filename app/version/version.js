@@ -13,8 +13,15 @@
  *    See the License for the specific language governing permissions and
  *    limitations under the License.
  */
-angular.module('BWMonApp.directives', [])
-.directive('appVersion', ['version', function(version) {
+angular.module('BWMonApp.version', [])
+.value('version', '2.2.1')
+.filter('interpolate', ['version', function(version) {
+	'use strict';
+	return function(text) {
+		return String(text).replace(/\%VERSION\%/mg, version);
+	};
+}])
+.directive('version', ['version', function(version) {
 	'use strict';
 	return function(scope, elm, attrs) {
 		elm.text(version);

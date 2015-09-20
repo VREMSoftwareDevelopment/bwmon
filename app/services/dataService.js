@@ -14,7 +14,6 @@
  *    limitations under the License.
  */
 angular.module('BWMonApp.services', [])
-.value('version', '2.2.1')
 .factory('BWMonService', function() {
 	'use strict';
 
