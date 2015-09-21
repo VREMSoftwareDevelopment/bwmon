@@ -77,7 +77,7 @@ var gulp = require('gulp'),
 	karma = function(done, config) {
 		var Server = require('karma').Server,
 			defaults = {
-				files: [].concat(files.js.libs, files.unit.libs, files.js.src, files.data.src, files.unit.excludes),
+				files: [].concat(files.js.libs, files.unit.libs, files.js.src, files.data.src, files.unit.excludes, files.templates.src),
 				configFile: __dirname+'/config/karma.conf.js',
 			},
 			parameters = extend(defaults, config);

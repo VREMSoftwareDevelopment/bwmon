@@ -1,4 +1,4 @@
-describe('filter', function() {
+describe('Filters testing', function() {
 	'use strict';
 
 	beforeEach(module('BWMonApp.Filters'));

@@ -19,4 +19,19 @@ angular.module('BWMonApp.Directives', [])
 	return {
 		templateUrl: 'components/displayType.tpl.html'
 	};
+}])
+.directive('selectYear', ['dataService', function(dataService) {
+	'use strict';
+	return {
+		require: 'ngModel',
+		scope: {year: "=ngModel"},
+		link: function(scope, element, attr){
+			scope.years = dataService.getYears();
+			scope.year = scope.years[0];
+		},
+		templateUrl: 'components/selectYear.tpl.html'
+	};
 }]);
+
+
+

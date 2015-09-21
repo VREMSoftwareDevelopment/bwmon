@@ -17,7 +17,8 @@ module.exports = function(config){
 			'karma-firefox-launcher',
 			'karma-phantomjs-launcher',
 			'karma-coverage',
-			'karma-junit-reporter'
+			'karma-junit-reporter',
+			'karma-ng-html2js-preprocessor'
 		],
 		reporters: [
 			'junit',
@@ -30,7 +31,12 @@ module.exports = function(config){
 			suite: 'unit'
 		},
 		preprocessors: {
-			'app/js/**/*.js': 'coverage'
+			'app/**/*.js': 'coverage',
+			'app/**/*.tpl.html': 'ng-html2js'
+		},
+		ngHtml2JsPreprocessor: {
+			stripPrefix: 'app/',
+			moduleName: 'my.templates'
 		},
 		coverageReporter: {
 			type: 'html',
