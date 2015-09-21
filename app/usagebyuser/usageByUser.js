@@ -50,9 +50,8 @@ angular.module('BWMonApp.UsageByUser', ['ngRoute'])
 			$scope.chartData = usageData.chartData;
 		},
 		init = function() {
-			$scope.years = dataService.getYears();
 			$scope.selected = {};
-			$scope.selected.year = $scope.years[0];
+			$scope.selected.year = dataService.getYears()[0];
 			$scope.predicate = 'IP';
 			$scope.reverse = false;
 

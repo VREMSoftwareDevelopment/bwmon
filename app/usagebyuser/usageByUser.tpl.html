@@ -1,9 +1,6 @@
 <form class="form-inline">
 	<display-type></display-type>
-	<div class="form-group">
-		<label class="sr-only" for="year">Year</label>
-		<select class="form-control" name="year" ng-model="selected.year" ng-options="choiceYear for choiceYear in years"></select>
-	</div>
+	<select-year ng-model="selected.year"></select-year>
 	<div class="form-group">
 		<label class="sr-only" for="month">Month</label>
 		<select class="form-control" name="month" ng-model="selected.month" ng-options="choiceMonth for choiceMonth in months"></select>

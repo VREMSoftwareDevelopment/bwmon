@@ -34,9 +34,7 @@ angular.module('BWMonApp.UsageByMonth', ['ngRoute'])
 		init = function() {
 			var usageData;
 
-			$scope.years = dataService.getYears();
-			$scope.year = $scope.years[0];
-
+			$scope.year = dataService.getYears()[0];
 			usageData = dataService.getUsageByMonth($scope.year);
 			$scope.data = usageData.data.usage;
 			$scope.total = usageData.data.total;

@@ -8,19 +8,14 @@ describe('bwmon e2e usage by user', function() {
 		browser.waitForAngular();
 	});
 
-	it('should have years', function() {
-		 expect(element(by.model('selected.year')).getText())
-		 	.toEqual('2013\n2012\n2011\n2010');
-	});
-
 	it('should have year selected', function() {
-		 expect(element(by.model('selected.year')).element(by.css('option:checked')).getText())
-		 	.toEqual('2013');
+		expect(element(by.model('selected.year')).element(by.css('option:checked')).getText())
+			.toEqual('2013');
 	});
 
 	it('should have months', function() {
-		 expect(element(by.model('selected.month')).getText())
-		 	.toEqual('November\nOctober\nSeptember\nAugust\nJuly\nJune\nMay\nApril\nMarch\nFebruary\nJanuary');
+		expect(element(by.model('selected.month')).getText())
+			.toEqual('November\nOctober\nSeptember\nAugust\nJuly\nJune\nMay\nApril\nMarch\nFebruary\nJanuary');
 	});
 
 	it('should have month selected', function() {
@@ -82,13 +77,13 @@ describe('bwmon e2e usage by user', function() {
 		});
 
 		it('should have chart types', function() {
-			 expect(element(by.model('chartSeries[0].type')).getText())
-			 	.toEqual('column\nline\narea');
+			expect(element(by.model('chartSeries[0].type')).getText())
+				.toEqual('column\nline\narea');
 		});
 
 		it('should have chart type selected', function() {
-			 expect(element(by.model('chartSeries[0].type')).element(by.css('option:checked')).getText())
-			 	.toEqual('column');
+			expect(element(by.model('chartSeries[0].type')).element(by.css('option:checked')).getText())
+				.toEqual('column');
 		});
 
 		it('should have chart', function() {

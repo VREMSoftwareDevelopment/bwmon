@@ -24,10 +24,10 @@ angular.module('BWMonApp.Directives', [])
 	'use strict';
 	return {
 		require: 'ngModel',
-		scope: {year: "=ngModel"},
+		scope: {selectedYear: "=ngModel"},
 		link: function(scope, element, attr){
 			scope.years = dataService.getYears();
-			scope.year = scope.years[0];
+			scope.selectedYear = scope.years[0];
 		},
 		templateUrl: 'components/selectYear.tpl.html'
 	};

@@ -1,9 +1,6 @@
 <form class="form-inline">
 	<display-type></display-type>
-	<div class="form-group">
-		<label class="sr-only" for="year">Year</label>
-		<select class="form-control" name="year" ng-model="year" ng-options="choiceYear for choiceYear in years"></select>
-	</div>
+	<select-year ng-model="year"></select-year>
 	<div ng-show="showChart" class="form-group">
 		<label class="sr-only" for="chartType">Chart Type</label>
 		<select class="form-control" name="chartType" ng-model="chartSeries[0].type" ng-options="chartType for chartType in chartTypes"></select>

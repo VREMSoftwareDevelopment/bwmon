@@ -3,7 +3,6 @@ describe('BWMonApp UsageByMonth feature', function() {
 
 	var $scope = null,
 		years = [10, 5, 6],
-		year = years[0],
 		data = {
 			usage: 5,
 			total: 10
@@ -35,15 +34,8 @@ describe('BWMonApp UsageByMonth feature', function() {
 		expect(route.templateUrl).toBe('usagebymonth/usageByMonth.tpl.html');
 	}));
 
-	it('should update years with getYears', inject(function() {
-		var expected = years,
-			actual = $scope.years;
-
-		expect(expected).toEqual(actual);
-	}));
-
 	it('should update year with getYears first element', inject(function() {
-		var expected = year,
+		var expected = years[0],
 			actual = $scope.year;
 
 		expect(expected).toEqual(actual);
