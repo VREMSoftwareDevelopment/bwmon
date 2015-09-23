@@ -13,21 +13,22 @@
  *    See the License for the specific language governing permissions and
  *    limitations under the License.
  */
-angular.module('BWMonApp.Directives', [])
-.directive('selectYear', ['dataService', function(dataService) {
+angular.module('BWMonApp.DisplayType', [])
+.controller('displayTypeController', [function() {
+	'use strict';
+
+	var controller = this;
+
+	controller.displayChart = false;
+	controller.click = function() {
+		controller.displayChart = !controller.displayChart;
+	};
+}])
+.directive('displayType', [function() {
 	'use strict';
 	return {
 		restrict: 'E',
 		replace: true,
-		require: 'ngModel',
-		scope: {selectedYear: "=ngModel"},
-		link: function(scope, element, attr){
-			scope.years = dataService.getYears();
-			scope.selectedYear = scope.years[0];
-		},
-		templateUrl: 'components/selectYear.tpl.html'
+		templateUrl: 'display/displayType.tpl.html'
 	};
 }]);
-
-
-

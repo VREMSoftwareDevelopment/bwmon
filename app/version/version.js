@@ -23,7 +23,10 @@ angular.module('BWMonApp.Version', [])
 }])
 .directive('version', ['version', function(version) {
 	'use strict';
-	return function(scope, elm, attrs) {
-		elm.text(version);
+	return {
+		restrict: 'AE',
+		link: function(scope, element, attributes) {
+			element.text(version);
+		}
 	};
 }]);

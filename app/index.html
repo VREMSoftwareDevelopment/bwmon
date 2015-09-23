@@ -20,7 +20,7 @@
 		<span class="clearfix"></span>
 	</h2>
 	<navigation></navigation>
-	<div class="ng-view-min-height">
+	<div class="ng-view-min-height" ng-controller="displayTypeController as displayTypeCtrl">
 		<div ng-view></div>
 	</div>
 	<h5>
@@ -51,6 +51,7 @@
 	<script src="app.js"></script>
 	<script src="version/version.js"></script>
 	<script src="navigation/navigation.js"></script>
+	<script src="display/displayType.js"></script>
 	<script src="services/dataService.js"></script>
 	<script src="services/pagingService.js"></script>
 	<script src="services/chartService.js"></script>

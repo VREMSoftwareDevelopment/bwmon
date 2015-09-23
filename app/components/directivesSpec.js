@@ -4,47 +4,12 @@ describe('Directives testing', function() {
 	beforeEach(module('BWMonApp.Directives'));
 	beforeEach(module("my.templates"));
 
-	describe('displayType', function() {
-		var $compile,
-			$scope,
-			template = '<display_type/>',
-			element;
-
-		beforeEach(inject(function(_$compile_, _$rootScope_){
-			$compile = _$compile_;
-			$scope = _$rootScope_;
-
-			element = $compile(template)($scope);
-		}));
-
-		it('should have element', function() {
-			$scope.$digest();
-			expect(element).toBeDefined();
-		});
-
-		it('should change showChart after click', function() {
-			var button;
-
-			$scope.showChart = false;
-			$scope.$digest();
-
-			button = element.find('button');
-			expect(element.scope().showChart).toBe(false);
-
-			button.triggerHandler('click');
-			$scope.$digest();
-
-			expect(element.scope().showChart).toBe(true);
-			expect($scope.showChart).toBe(true);
-		});
-	});
-
 	describe('selectYear', function() {
 		var $compile,
 			$scope,
 			dataService,
 			years = ['10', '5', '6'],
-			template = '<select-year ng-model="myYear"/>',
+			template = '<div><select-year ng-model="myYear"></select-year></div>',
 			element;
 
 		beforeEach(module('BWMonApp.DataService'));

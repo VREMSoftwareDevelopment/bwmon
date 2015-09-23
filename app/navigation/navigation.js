@@ -36,6 +36,8 @@ angular.module('BWMonApp.Navigation', [])
 .directive('navigation', [function() {
 	'use strict';
 	return {
+		restrict: 'E',
+		replace: true,
 		templateUrl: 'navigation/navigation.tpl.html'
 	};
 }]);
