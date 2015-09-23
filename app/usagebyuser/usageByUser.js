@@ -21,7 +21,7 @@ angular.module('BWMonApp.UsageByUser', ['ngRoute'])
 		controller: 'UsageByUserController'
 	});
 }])
-.controller('UsageByUserController', ['$scope', 'dataService', 'pagingService', function($scope, dataService, pagingService) {
+.controller('UsageByUserController', ['$scope', 'dataService', 'pagingService', 'chartService', function($scope, dataService, pagingService, chartService) {
 	'use strict';
 
 	var getLabel = function(value, data) {
@@ -63,20 +63,10 @@ angular.module('BWMonApp.UsageByUser', ['ngRoute'])
 
 	$scope.page = pagingService.getPaging();
 
-	$scope.$watch('selected.year', function() {
-		getMonths($scope.selected.year);
-	}, true);
-
-	$scope.$watch('selected.month', function() {
-		$scope.selected.search = '';
-	}, true);
-
-	$scope.$watch('selected', function() {
-		getUsage($scope.selected.year, $scope.selected.month, $scope.selected.filter);
-	}, true);
-
+	$scope.chartTypes = chartService.getChartTypes();
+	$scope.selected.chartType = $scope.chartTypes[0];
 	$scope.chartOptions = {
-		series: $scope.chartSeries,
+		series: chartService.getChartSeries(),
 		axes: {
 			x: {
 				labelFunction: function(value) {
@@ -88,4 +78,23 @@ angular.module('BWMonApp.UsageByUser', ['ngRoute'])
 			}
 		}
 	};
+	$scope.chartOptions.series[0].type = $scope.selected.chartType;
+
+	$scope.$watch('selected.year', function() {
+		getMonths($scope.selected.year);
+	}, true);
+
+	$scope.$watch('selected.month', function() {
+		$scope.selected.search = '';
+	}, true);
+
+	$scope.$watch('selected.chartType', function() {
+		$scope.chartOptions.series[0].type = $scope.selected.chartType;
+	}, true);
+
+	$scope.$watch('selected', function() {
+		getUsage($scope.selected.year, $scope.selected.month, $scope.selected.filter);
+	}, true);
+
+
 }]);

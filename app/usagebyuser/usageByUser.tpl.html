@@ -11,7 +11,7 @@
 	</div>
 	<div ng-show="showChart" class="form-group">
 		<label class="sr-only" for="chartType">Chart Type</label>
-		<select class="form-control" name="chartType" ng-model="chartSeries[0].type" ng-options="chartType for chartType in chartTypes"></select>
+		<select class="form-control" name="chartType" ng-model="selected.chartType" ng-options="chartType for chartType in chartTypes"></select>
 	</div>
 	<div ng-hide="showChart" class="form-group pull-right">
 		<span ng-show="page.hasPages(data)">

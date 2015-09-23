@@ -16,28 +16,37 @@ describe('BWMonApp UsageByUser feature', function() {
 			total: 10
 		},
 		chartData = data.usage,
-		mockdataService,
-		mockpagingService;
+		chartSeries = [{key:1}],
+		chartTypes = ['x'],
+		chartService,
+		dataService,
+		pagingService;
 
+	beforeEach(module('BWMonApp.ChartService'));
 	beforeEach(module('BWMonApp.DataService'));
 	beforeEach(module('BWMonApp.PagingService'));
 	beforeEach(module('BWMonApp.UsageByUser'));
 
-	beforeEach(inject(function($rootScope, $controller, _dataService_, _pagingService_){
+	beforeEach(inject(function($rootScope, $controller, _dataService_, _pagingService_, _chartService_){
 		$scope = $rootScope.$new();
 
-		mockdataService = _dataService_;
-		spyOn(mockdataService, 'getYears').and.returnValue(years);
-		spyOn(mockdataService, 'getMonths').and.returnValue(months);
-		spyOn(mockdataService, 'getUsageByUser').and.returnValue({data: data, chartData: chartData});
+		dataService = _dataService_;
+		spyOn(dataService, 'getYears').and.returnValue(years);
+		spyOn(dataService, 'getMonths').and.returnValue(months);
+		spyOn(dataService, 'getUsageByUser').and.returnValue({data: data, chartData: chartData});
 
-		mockpagingService = _pagingService_;
-		spyOn(mockpagingService, 'getPaging').and.returnValue(page);
+		pagingService = _pagingService_;
+		spyOn(pagingService, 'getPaging').and.returnValue(page);
+
+		chartService = _chartService_;
+		spyOn(chartService, 'getChartSeries').and.returnValue(chartSeries);
+		spyOn(chartService, 'getChartTypes').and.returnValue(chartTypes);
 
 		$controller('UsageByUserController', {
 			$scope: $scope,
-			dataService: mockdataService,
-			pagingService: mockpagingService
+			dataService: dataService,
+			pagingService: pagingService,
+			chartService: chartService
 		});
 	}));
 
@@ -48,86 +57,62 @@ describe('BWMonApp UsageByUser feature', function() {
 	}));
 
 	it('should update year with getYears first element', inject(function() {
-		var expected = years[0],
-			actual = $scope.selected.year;
-
-		expect(expected).toEqual(actual);
+		expect($scope.selected.year).toEqual(years[0]);
 	}));
 
 	it('should update months with getMonths', inject(function() {
-		var expected = months,
-			actual = $scope.months;
-
-		expect(expected).toEqual(actual);
+		expect($scope.months).toEqual(months);
 	}));
 
 	it('should update month with getMonths first element', inject(function() {
-		var expected = month,
-			actual = $scope.selected.month;
-
-		expect(expected).toEqual(actual);
+		expect($scope.selected.month).toEqual(month);
 	}));
 
 	it('should update data with getUsageByUser', inject(function() {
-		var expected = data.usage,
-			actual = $scope.data;
-
-		expect(expected).toEqual(actual);
+		expect($scope.data).toEqual(data.usage);
 	}));
 
 	it('should update total with getUsageByUser', inject(function() {
-		var expected = data.total,
-			actual = $scope.total;
-
-		expect(expected).toEqual(actual);
+		expect($scope.total).toEqual(data.total);
 	}));
 
 	it('should update chart data with getUsageByUser', inject(function() {
-		var expected = chartData,
-			actual = $scope.chartData;
-
-		expect(expected).toEqual(actual);
+		expect($scope.chartData).toEqual(chartData);
 	}));
 
-	it('should update graph options - series with getUsageByYear', inject(function() {
-		var expected = {series: $scope.chartSeries},
-			actual = $scope.chartOptions;
+	it('should update graph options with chart series from ChartService', inject(function() {
+		expect($scope.chartOptions.series).toEqual(chartSeries);
+	}));
 
-		expect(expected.series).toEqual(actual.series);
+	it('should update graph options series type with first chart type from ChartService', inject(function() {
+		expect($scope.chartOptions.series[0].type).toEqual(chartTypes[0]);
+	}));
+
+	it('should update chart types with chart types from ChartService', inject(function() {
+		expect($scope.chartTypes).toEqual(chartTypes);
+	}));
+
+	it('should update selected chart type with first chart type from ChartService', inject(function() {
+		expect($scope.selected.chartType).toEqual(chartTypes[0]);
 	}));
 
 	it('should update graph options with non empty label - x axes', inject(function() {
-		var expected = 'IP-address',
-			actual = $scope.chartOptions.axes.x.labelFunction(1);
-
-		expect(expected).toEqual(actual);
+		expect($scope.chartOptions.axes.x.labelFunction(1)).toEqual('IP-address');
 	}));
 
 	it('should update graph options with empty label - x axes', inject(function() {
-		var expected = '',
-			actual = $scope.chartOptions.axes.x.labelFunction(1.1);
-
-		expect(expected).toEqual(actual);
+		expect($scope.chartOptions.axes.x.labelFunction(1.1)).toEqual('');
 	}));
 
 	it('should update graph options with non empty tootltip - x axes', inject(function() {
-		var expected = 'user-name',
-			actual = $scope.chartOptions.axes.x.tooltipFormatter(1);
-
-		expect(expected).toEqual(actual);
+		expect($scope.chartOptions.axes.x.tooltipFormatter(1)).toEqual('user-name');
 	}));
 
 	it('should update graph options with empty tootltip - x axes', inject(function() {
-		var expected = '',
-			actual = $scope.chartOptions.axes.x.tooltipFormatter(1.1);
-
-		expect(expected).toEqual(actual);
+		expect($scope.chartOptions.axes.x.tooltipFormatter(1.1)).toEqual('');
 	}));
 
 	it('should update page with page from PageService', inject(function() {
-		var expected = page,
-			actual = $scope.page;
-
-		expect(expected).toEqual(actual);
+		expect($scope.page).toEqual(page);
 	}));
 });

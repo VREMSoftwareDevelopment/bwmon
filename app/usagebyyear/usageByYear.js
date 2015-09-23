@@ -21,7 +21,7 @@ angular.module('BWMonApp.UsageByYear', ['ngRoute'])
 		controller: 'UsageByYearController'
 	});
 }])
-.controller('UsageByYearController', ['$scope', 'dataService', function($scope, dataService) {
+.controller('UsageByYearController', ['$scope', 'dataService', 'chartService', function($scope, dataService, chartService) {
 	'use strict';
 
 	var getLabel = function(value, data) {
@@ -35,8 +35,11 @@ angular.module('BWMonApp.UsageByYear', ['ngRoute'])
 
 	$scope.data = usageData.data;
 	$scope.chartData = usageData.chartData;
+
+	$scope.chartTypes = chartService.getChartTypes();
+	$scope.chartType = $scope.chartTypes[0];
 	$scope.chartOptions = {
-		series: $scope.chartSeries,
+		series: chartService.getChartSeries(),
 		axes: {
 			x: {
 				labelFunction: function(value) {
@@ -48,6 +51,13 @@ angular.module('BWMonApp.UsageByYear', ['ngRoute'])
 			}
 		}
 	};
+	$scope.chartOptions.series[0].type = $scope.chartType;
+
 	$scope.predicate = 'id';
 	$scope.reverse = true;
+
+	$scope.$watch('chartType', function() {
+		$scope.chartOptions.series[0].type = $scope.chartType;
+	}, true);
+
 }]);

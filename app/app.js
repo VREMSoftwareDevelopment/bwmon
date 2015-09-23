@@ -23,6 +23,7 @@ angular.module('BWMonApp', [
 	'BWMonApp.UsageByMonth',
 	'BWMonApp.UsageByYear',
 	'BWMonApp.Version',
+	'BWMonApp.ChartService',
 	'BWMonApp.PagingService',
 	'BWMonApp.DataService'
 ])
@@ -42,14 +43,6 @@ angular.module('BWMonApp', [
 	updateClock();
 
 	rootController.currentDate = rootController.clock;
-
-	$scope.chartTypes = ['column', 'line', 'area'];
-	$scope.chartSeries = [{
-		y: 'total',
-		color: '#3366CC',
-		label: 'GBytes',
-		type: $scope.chartTypes[0]
-	}];
 
 	$scope.$on('$destroy', function(e) {
 		$interval.cancel(clockOn);

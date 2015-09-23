@@ -7,24 +7,33 @@ describe('BWMonApp UsageByMonth feature', function() {
 			usage: 5,
 			total: 10
 		},
+		chartSeries = [{key:1}],
+		chartTypes = ['x'],
+		chartService,
 		chartData = [],
-		mockdataService;
+		dataService;
 
 	beforeEach(module('BWMonApp.DataService'));
+	beforeEach(module('BWMonApp.ChartService'));
 	beforeEach(module('BWMonApp.UsageByMonth'));
 
-	beforeEach(inject(function($rootScope, $controller, _dataService_){
+	beforeEach(inject(function($rootScope, $controller, _dataService_, _chartService_){
 		$scope = $rootScope.$new();
 		$scope.chartSeries = [];
 		spyOn($scope, '$watch');
 
-		mockdataService = _dataService_;
-		spyOn(mockdataService, 'getYears').and.returnValue(years);
-		spyOn(mockdataService, 'getUsageByMonth').and.returnValue({data: data, chartData: chartData});
+		dataService = _dataService_;
+		spyOn(dataService, 'getYears').and.returnValue(years);
+		spyOn(dataService, 'getUsageByMonth').and.returnValue({data: data, chartData: chartData});
+
+		chartService = _chartService_;
+		spyOn(chartService, 'getChartSeries').and.returnValue(chartSeries);
+		spyOn(chartService, 'getChartTypes').and.returnValue(chartTypes);
 
 		$controller('UsageByMonthController', {
 			$scope: $scope,
-			dataService: mockdataService
+			dataService: dataService,
+			chartService: chartService
 		});
 	}));
 
@@ -35,66 +44,51 @@ describe('BWMonApp UsageByMonth feature', function() {
 	}));
 
 	it('should update year with getYears first element', inject(function() {
-		var expected = years[0],
-			actual = $scope.year;
-
-		expect(expected).toEqual(actual);
+		expect($scope.year).toEqual(years[0]);
 	}));
 
 	it('should update data with getUsageByMonth', inject(function() {
-		var expected = data.usage,
-			actual = $scope.data;
-
-		expect(expected).toEqual(actual);
+		expect($scope.data).toEqual(data.usage);
 	}));
 
 	it('should update total with getUsageByMonth', inject(function() {
-		var expected = data.total,
-			actual = $scope.total;
-
-		expect(expected).toEqual(actual);
+		expect($scope.total).toEqual(data.total);
 	}));
 
 	it('should update chart data with getUsageByMonth', inject(function() {
-		var expected = [],
-			actual = $scope.chartData;
-
-		expect(expected).toEqual(actual);
+		expect($scope.chartData).toEqual([]);
 	}));
 
-	it('should update graph options - series with getUsageByMonth', inject(function() {
-		var expected = {series: $scope.chartSeries},
-			actual = $scope.chartOptions;
+	it('should update graph options with chart series from ChartService', inject(function() {
+		expect($scope.chartOptions.series).toEqual(chartSeries);
+	}));
 
-		expect(expected.series).toEqual(actual.series);
+	it('should update chart types with chart types from ChartService', inject(function() {
+		expect($scope.chartTypes).toEqual(chartTypes);
+	}));
+
+	it('should update graph options series type with first chart type from ChartService', inject(function() {
+		expect($scope.chartOptions.series[0].type).toEqual(chartTypes[0]);
+	}));
+
+	it('should update chart type with first chart type from ChartService', inject(function() {
+		expect($scope.chartType).toEqual(chartTypes[0]);
 	}));
 
 	it('should update graph options with non empty label - x axes', inject(function() {
-		var expected = 'February',
-			actual = $scope.chartOptions.axes.x.labelFunction(1);
-
-		expect(expected).toEqual(actual);
+		expect($scope.chartOptions.axes.x.labelFunction(1)).toEqual('February');
 	}));
 
 	it('should update graph options with empty label - x axes', inject(function() {
-		var expected = '',
-			actual = $scope.chartOptions.axes.x.labelFunction(1.1);
-
-		expect(expected).toEqual(actual);
+		expect($scope.chartOptions.axes.x.labelFunction(1.1)).toEqual('');
 	}));
 
 	it('should update graph options with non empty tootltip - x axes', inject(function() {
-		var expected = 'February',
-			actual = $scope.chartOptions.axes.x.tooltipFormatter(1);
-
-		expect(expected).toEqual(actual);
+		expect($scope.chartOptions.axes.x.tooltipFormatter(1)).toEqual('February');
 	}));
 
 	it('should update graph options with empty tootltip - x axes', inject(function() {
-		var expected = '',
-			actual = $scope.chartOptions.axes.x.tooltipFormatter(1.1);
-
-		expect(expected).toEqual(actual);
+		expect($scope.chartOptions.axes.x.tooltipFormatter(1.1)).toEqual('');
 	}));
 
 });

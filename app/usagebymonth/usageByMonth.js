@@ -21,7 +21,7 @@ angular.module('BWMonApp.UsageByMonth', ['ngRoute'])
 		controller: 'UsageByMonthController'
 	});
 }])
-.controller('UsageByMonthController', ['$scope', 'dataService', function($scope, dataService) {
+.controller('UsageByMonthController', ['$scope', 'dataService', 'chartService', function($scope, dataService, chartService) {
 	'use strict';
 
 	var getLabel = function(value) {
@@ -45,19 +45,22 @@ angular.module('BWMonApp.UsageByMonth', ['ngRoute'])
 
 	init();
 
+	$scope.chartTypes = chartService.getChartTypes();
+	$scope.chartType = $scope.chartTypes[0];
 	$scope.chartOptions = {
-		series: $scope.chartSeries,
+		series: chartService.getChartSeries(),
 		axes: {
 			x: {
 				labelFunction: function(value) {
-					return getLabel(value);
+					return getLabel(value, $scope.chartData);
 				},
 				tooltipFormatter: function(value) {
-					return getLabel(value);
+					return getLabel(value, $scope.chartData);
 				}
 			}
 		}
 	};
+	$scope.chartOptions.series[0].type = $scope.chartType;
 
 	$scope.$watch('year', function() {
 		var usageData = dataService.getUsageByMonth($scope.year);
@@ -65,4 +68,9 @@ angular.module('BWMonApp.UsageByMonth', ['ngRoute'])
 		$scope.total = usageData.data.total;
 		$scope.chartData = usageData.chartData;
 	}, true);
+
+	$scope.$watch('chartType', function() {
+		$scope.chartOptions.series[0].type = $scope.chartType;
+	}, true);
+
 }]);
