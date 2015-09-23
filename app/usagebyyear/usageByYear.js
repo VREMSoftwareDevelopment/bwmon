@@ -36,8 +36,7 @@ angular.module('BWMonApp.UsageByYear', ['ngRoute'])
 	$scope.data = usageData.data;
 	$scope.chartData = usageData.chartData;
 
-	$scope.chartTypes = chartService.getChartTypes();
-	$scope.chartType = $scope.chartTypes[0];
+	$scope.chartType = chartService.getChartTypes()[0];
 	$scope.chartOptions = {
 		series: chartService.getChartSeries(),
 		axes: {
