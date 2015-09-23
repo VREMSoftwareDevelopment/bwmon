@@ -1,26 +1,49 @@
 describe('BWMonApp Navigation', function() {
-	var $scope,	mockLocation;
+	var controller, location, route;
 
+	beforeEach(module('BWMonApp'));
 	beforeEach(module('BWMonApp.Navigation'));
 
-	beforeEach(inject(function($rootScope, $controller, $location) {
-		$scope = $rootScope.$new();
+	beforeEach(inject(function($controller, $location, $route) {
+		location = $location;
+		spyOn(location, 'path').and.returnValue('/mypath');
 
-		mockLocation = $location;
-		spyOn(mockLocation, 'path').and.returnValue('/mypath');
-
-		$controller('navigationController', {
-			$scope: $scope,
-			$location: mockLocation
+		controller = $controller('navigationController', {
+			$location: location
 		});
+
+		route = $route;
 	}));
 
 	it('should return true', inject(function() {
-		expect($scope.isActive('/mypath')).toBe(true);
+		expect(controller.isActive('/mypath')).toBe(true);
 	}));
 
 	it('should return false', inject(function() {
-		expect($scope.isActive('/mypath1')).toBe(false);
+		expect(controller.isActive('/mypath1')).toBe(false);
+	}));
+
+	it('should have same number of routes as $route', inject(function() {
+		var routes = [];
+		angular.forEach(route.routes, function(value, key, obj) {
+			if (key != 'null' && key[key.length-1] != '/') {
+				routes.push(key);
+			}
+		});
+		expect(controller.routes.length).toBe(routes.length);
+	}));
+
+	it('should have all route names in $route', inject(function() {
+		var routes = [];
+		angular.forEach(route.routes, function(value, key, obj) {
+			if (key != 'null' && key[key.length-1] != '/') {
+				routes.push(key);
+			}
+		});
+
+		angular.forEach(controller.routes, function(value, key, obj) {
+			expect(routes.indexOf(value.href) !== -1).toBe(true);
+		});
 	}));
 
 });

@@ -1,13 +1,7 @@
-<div class="navbar navbar-default"  ng-controller="navigationController">
+<div class="navbar navbar-default"  ng-controller="navigationController as navigationCtrl">
 	<ul class="nav navbar-nav">
-		<li ng-class="{active: isActive('/UsageByUser')}">
-			<a href="#/UsageByUser">Usage By User</a>
-		</li>
-		<li ng-class="{active: isActive('/UsageByMonth')}">
-			<a href="#/UsageByMonth">Usage By Month</a>
-		</li>
-		<li ng-class="{active: isActive('/UsageByYear')}">
-			<a href="#/UsageByYear">Usage By Year</a>
+		<li ng-repeat="route in ::navigationCtrl.routes" ng-class="{active: navigationCtrl.isActive('{{::route.href}}')}" >
+			<a href="#{{::route.href}}">{{::route.name}}</a>
 		</li>
 	</ul>
 </div>

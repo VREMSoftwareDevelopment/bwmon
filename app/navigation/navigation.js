@@ -14,11 +14,24 @@
  *    limitations under the License.
  */
 angular.module('BWMonApp.Navigation', [])
-.controller('navigationController', ['$scope', '$location', function($scope, $location) {
+.controller('navigationController', ['$location', function($location) {
 	'use strict';
-	$scope.isActive = function (viewLocation) {
+	var navigationController = this;
+
+	navigationController.isActive = function (viewLocation) {
 		return viewLocation === $location.path();
 	};
+
+	navigationController.routes = [{
+		href: '/UsageByUser',
+		name: 'Usage By User'
+	}, {
+		href: '/UsageByMonth',
+		name: 'Usage By Month'
+	}, {
+		href: '/UsageByYear',
+		name: 'Usage By Year'
+	}];
 }])
 .directive('navigation', [function() {
 	'use strict';

@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" ng-app="BWMonApp" ng-controller="rootController">
+<html lang="en" ng-app="BWMonApp" ng-controller="rootController as rootCtrl">
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,7 +16,7 @@
 <body class="container">
 	<h2>
 		<span class="pull-left">Bandwidth Monitor Usage</span>
-		<small class="pull-right">{{ clock  | date: 'medium'}}</small>
+		<small class="pull-right">{{::rootCtrl.clock  | date: 'medium'}}</small>
 		<span class="clearfix"></span>
 	</h2>
 	<navigation></navigation>
@@ -27,7 +27,7 @@
 		<b>All usage information is in gigabytes</b>
 	</h5>
 	<h5>
-		<span class="pull-left">This page was generated on {{currentDate | date: 'medium'}}</span>
+		<span class="pull-left">This page was generated on {{::rootCtrl.currentDate | date: 'medium'}}</span>
 		<span class="pull-right">Version {{'%VERSION%' | interpolate}}</span>
 		<span class="clearfix"></span>
 	</h5>

@@ -1,7 +1,7 @@
 describe('BWMonApp tests', function(){
 	'use strict';
 
-	var $scope = null;
+	var scope = null, controller;
 
 	beforeEach(module('BWMonApp'));
 
@@ -13,34 +13,23 @@ describe('BWMonApp tests', function(){
 
 	describe('BWMonApp rootController tests', function(){
 		beforeEach(inject(function($rootScope, $controller){
-			$scope = $rootScope.$new();
+			scope = $rootScope.$new();
 
-			$controller('rootController', {
-				$scope: $scope
+			controller = $controller('rootController', {
+				$scope: scope
 			});
 		}));
 
 		it('should set current Date', inject(function(){
-			var expected = $scope.clock,
-				actual = $scope.currentDate;
-
-			expect(expected).toEqual(actual);
+			expect(controller.clock).toEqual(controller.currentDate);
 		}));
 
 		it('should set graph options - series ', inject(function(){
-			var expected = [
-					{color: '#3366CC', type: 'column', label: 'GBytes', y: 'total'},
-				],
-				actual = $scope.chartSeries;
-
-			expect(expected).toEqual(actual);
+			expect(scope.chartSeries).toEqual([{color: '#3366CC', type: 'column', label: 'GBytes', y: 'total'}]);
 		}));
 
 		it('should set chart types', inject(function(){
-			var expected = ['column', 'line', 'area'],
-				actual = $scope.chartTypes;
-
-			expect(expected).toEqual(actual);
+			expect(scope.chartTypes).toEqual(['column', 'line', 'area']);
 		}));
 	});
 

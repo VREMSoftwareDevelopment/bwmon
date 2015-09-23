@@ -33,19 +33,15 @@ angular.module('BWMonApp', [
 .controller('rootController', ['$interval', '$scope', function($interval, $scope) {
 	'use strict';
 
-	function updateClock() {
-		$scope.clock = new Date();
-	}
-
-	var clockOn = $interval(updateClock, 1000);
-
-	$scope.$on('$destroy', function(e) {
-		$interval.cancel(clockOn);
-	});
+	var rootController = this,
+		updateClock = function() {
+			rootController.clock = new Date();
+		},
+		clockOn = $interval(updateClock, 1000);
 
 	updateClock();
 
-	$scope.currentDate = $scope.clock;
+	rootController.currentDate = rootController.clock;
 
 	$scope.chartTypes = ['column', 'line', 'area'];
 	$scope.chartSeries = [{
@@ -55,5 +51,8 @@ angular.module('BWMonApp', [
 		type: $scope.chartTypes[0]
 	}];
 
+	$scope.$on('$destroy', function(e) {
+		$interval.cancel(clockOn);
+	});
 }]);
 
