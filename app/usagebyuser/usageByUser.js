@@ -63,8 +63,7 @@ angular.module('BWMonApp.UsageByUser', ['ngRoute'])
 
 	$scope.page = pagingService.getPaging();
 
-	$scope.chartTypes = chartService.getChartTypes();
-	$scope.selected.chartType = $scope.chartTypes[0];
+	$scope.selected.chartType = chartService.getChartTypes()[0];
 	$scope.chartOptions = {
 		series: chartService.getChartSeries(),
 		axes: {

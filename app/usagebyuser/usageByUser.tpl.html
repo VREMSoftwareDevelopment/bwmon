@@ -9,10 +9,7 @@
 		<label class="sr-only" for="filter">Filter by IP, MAC or User</label>
 		<input class="form-control" name="filter" placeholder="IP, MAC or User" ng-model="selected.filter"/>
 	</div>
-	<div ng-if="displayTypeCtrl.displayChart" class="form-group">
-		<label class="sr-only" for="chartType">Chart Type</label>
-		<select class="form-control" name="chartType" ng-model="selected.chartType" ng-options="chartType for chartType in chartTypes"></select>
-	</div>
+	<chart-type ng-if="displayTypeCtrl.displayChart" ng-model="selected.chartType"></chart-type>
 	<div ng-if="!displayTypeCtrl.displayChart" class="form-group pull-right">
 		<span ng-if="page.hasPages(data)">
 			<button id="buttonPrevious" class="btn btn-primary" ng-disabled="!page.hasPrevious()" ng-click="page.previous()">Previous</button>

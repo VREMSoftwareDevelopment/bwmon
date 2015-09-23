@@ -88,10 +88,6 @@ describe('BWMonApp UsageByUser feature', function() {
 		expect($scope.chartOptions.series[0].type).toEqual(chartTypes[0]);
 	}));
 
-	it('should update chart types with chart types from ChartService', inject(function() {
-		expect($scope.chartTypes).toEqual(chartTypes);
-	}));
-
 	it('should update selected chart type with first chart type from ChartService', inject(function() {
 		expect($scope.selected.chartType).toEqual(chartTypes[0]);
 	}));
