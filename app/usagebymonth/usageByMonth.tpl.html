@@ -1,10 +1,7 @@
 <form class="form-inline">
 	<display-type></display-type>
 	<select-year ng-model="year"></select-year>
-	<div ng-if="displayTypeCtrl.displayChart" class="form-group">
-		<label class="sr-only" for="chartType">Chart Type</label>
-		<select class="form-control" name="chartType" ng-model="chartType" ng-options="chartType for chartType in chartTypes"></select>
-	</div>
+	<chart-type ng-if="displayTypeCtrl.displayChart" ng-model="chartType"></chart-type>
 </form>
 <div ng-if="!displayTypeCtrl.displayChart" class="table-responsive">
 	<table class="table table-striped table-hover table-condensed">

@@ -63,10 +63,6 @@ describe('BWMonApp UsageByMonth feature', function() {
 		expect($scope.chartOptions.series).toEqual(chartSeries);
 	}));
 
-	it('should update chart types with chart types from ChartService', inject(function() {
-		expect($scope.chartTypes).toEqual(chartTypes);
-	}));
-
 	it('should update graph options series type with first chart type from ChartService', inject(function() {
 		expect($scope.chartOptions.series[0].type).toEqual(chartTypes[0]);
 	}));
