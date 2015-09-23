@@ -5,8 +5,7 @@ describe('Directives testing', function() {
 	beforeEach(module("my.templates"));
 
 	describe('selectYear', function() {
-		var $compile,
-			$scope,
+		var scope,
 			dataService,
 			years = ['10', '5', '6'],
 			template = '<div><select-year ng-model="myYear"></select-year></div>',
@@ -14,25 +13,24 @@ describe('Directives testing', function() {
 
 		beforeEach(module('BWMonApp.DataService'));
 
-		beforeEach(inject(function(_$compile_, _$rootScope_, _dataService_){
-			$compile = _$compile_;
-			$scope = _$rootScope_;
+		beforeEach(inject(function($compile, $rootScope, _dataService_){
+			scope = $rootScope;
 
 			dataService = _dataService_;
 			spyOn(dataService, 'getYears').and.returnValue(years);
 
-			element = $compile(template)($scope);
+			element = $compile(template)(scope);
 		}));
 
 		it('should have element', function() {
-			$scope.$digest();
+			scope.$digest();
 			expect(element).toBeDefined();
 		});
 
 		it('should select first year in options', function() {
 			var options;
 
-			$scope.$digest();
+			scope.$digest();
 			options = element.find('select').find('option');
 			expect(options[0].selected).toBe(true);
 			expect(options[0].text).toBe(years[0]);
@@ -41,7 +39,7 @@ describe('Directives testing', function() {
 		it('should have all years in options', function() {
 			var index, options;
 
-			$scope.$digest();
+			scope.$digest();
 			options = element.find('select').find('option');
 			expect(options.length).toBe(years.length);
 			for (index = 0; index < years.length; ++index) {
