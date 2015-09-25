@@ -7,9 +7,9 @@
 		"node_modules"
 	],
 	"dependencies": {
-		"angular": "^1.4.5",
-		"angular-mocks": "^1.4.5",
-		"angular-route": "~1.4.5",
+		"angular": "^1.4.6",
+		"angular-mocks": "^1.4.6",
+		"angular-route": "~1.4.6",
 		"bootstrap": "~3.3.5",
 		"d3": "^3.5.6",
 		"moment": "momentjs#^2.10.6",
