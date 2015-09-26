@@ -1,8 +1,7 @@
 describe('BWMonApp.DisplayType testing', function() {
 	'use strict';
 
-	var $compile,
-		$rootScope,
+	var scope,
 		element,
 		controller,
 		template = '<div><display-type></display-type></div>';
@@ -11,37 +10,36 @@ describe('BWMonApp.DisplayType testing', function() {
 	beforeEach(module('BWMonApp.DisplayType'));
 
 	beforeEach(inject(function(_$compile_, _$rootScope_){
-		$compile = _$compile_;
-		$rootScope = _$rootScope_;
-		element = $compile(template)($rootScope);
+		scope = _$rootScope_.$new();
+		element = _$compile_(template)(scope);
 	}));
 
 	it('should have element', function() {
-		$rootScope.$digest();
+		scope.$digest();
 		expect(element).toBeDefined();
 	});
 
 	it('should displayType equals false', function() {
-		$rootScope.$digest();
-		expect($rootScope.displayType).toBeFalsy();
+		scope.$digest();
+		expect(scope.displayType).toBeFalsy();
 	});
 
 	it('should toogle change displayType to true', function() {
-		$rootScope.$digest();
-		$rootScope.toggle();
-		expect($rootScope.displayType).toBeTruthy();
+		scope.$digest();
+		scope.toggle();
+		expect(scope.displayType).toBeTruthy();
 	});
 
 	it('should contain Show Chart in button text', function() {
-		$rootScope.$digest();
+		scope.$digest();
 		expect(element.find('button').text()).not.toContain('Show Data');
 		expect(element.find('button').text()).toContain('Show Chart');
 	});
 
 	it('should toogle change button text to Show Data', function() {
-		$rootScope.$digest();
-		$rootScope.toggle();
-		$rootScope.$digest();
+		scope.$digest();
+		scope.toggle();
+		scope.$digest();
 		expect(element.find('button').text()).toContain('Show Data');
 		expect(element.find('button').text()).not.toContain('Show Chart');
 	});

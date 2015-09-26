@@ -16,6 +16,7 @@
 angular.module('BWMonApp.SelectMonth', [])
 .directive('selectMonth', ['dataService', function(dataService) {
 	'use strict';
+
 	return {
 		restrict: 'E',
 		replace: true,
@@ -25,12 +26,19 @@ angular.module('BWMonApp.SelectMonth', [])
 			year: '=year'
 		},
 		controller: function($scope) {
-			$scope.months = dataService.getMonths($scope.year);
-			$scope.month = $scope.months[0];
+			var updateMonth = function() {
+					$scope.months = dataService.getMonths($scope.year);
+					$scope.month = $scope.months[0];
+				};
+
+			updateMonth();
+			$scope.$watch('year', function() {
+				updateMonth();
+			}, true);
 		},
 		template: '<div class="form-group">'+
 			'<label class="sr-only" for="month">Month</label>'+
-			'<select class="form-control" name="month" ng-model="month" ng-options="choiceMonth for choiceMonth in ::months"></select>'+
+			'<select class="form-control" name="month" ng-model="month" ng-options="choiceMonth for choiceMonth in months"></select>'+
 			'</div>'
 	};
 }]);
