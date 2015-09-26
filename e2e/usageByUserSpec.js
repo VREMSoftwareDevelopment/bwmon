@@ -13,11 +13,6 @@ describe('bwmon e2e usage by user', function() {
 			.toEqual('2013');
 	});
 
-	it('should have months', function() {
-		expect(element(by.model('selected.month')).getText())
-			.toEqual('November\nOctober\nSeptember\nAugust\nJuly\nJune\nMay\nApril\nMarch\nFebruary\nJanuary');
-	});
-
 	it('should have month selected', function() {
 		expect(element(by.model('selected.month')).element(by.css('option:checked')).getText())
 			.toEqual('November');
