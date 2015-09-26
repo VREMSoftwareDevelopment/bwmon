@@ -20,11 +20,14 @@ angular.module('BWMonApp.ChartType', [])
 		restrict: 'E',
 		replace: true,
 		require: 'ngModel',
-		scope: {selectedChartType: "=ngModel"},
-		link: function(scope, element, attr){
-			scope.chartTypes= chartService.getChartTypes();
-			scope.selectedChartType = scope.chartTypes[0];
+		scope: {chartType: "=ngModel"},
+		controller: function($scope) {
+			$scope.chartTypes= chartService.getChartTypes();
+			$scope.chartType = $scope.chartTypes[0];
 		},
-		templateUrl: 'common/chartType.tpl.html'
+		template: '<div class="form-group">'+
+			'<label class="sr-only" for="chartType">Chart Type</label>'+
+			'<select class="form-control" name="chartType" ng-model="chartType" ng-options="choiceChartType for choiceChartType in ::chartTypes"></select>'+
+			'</div>'
 	};
 }]);

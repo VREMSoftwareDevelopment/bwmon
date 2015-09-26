@@ -13,21 +13,24 @@
  *    See the License for the specific language governing permissions and
  *    limitations under the License.
  */
-angular.module('BWMonApp.SelectYear', [])
-.directive('selectYear', ['dataService', function(dataService) {
+angular.module('BWMonApp.SelectMonth', [])
+.directive('selectMonth', ['dataService', function(dataService) {
 	'use strict';
 	return {
 		restrict: 'E',
 		replace: true,
-		require: 'ngModel',
-		scope: {year: "=ngModel"},
+		require: ['ngModel', 'year'],
+		scope: {
+			month: '=ngModel',
+			year: '=year'
+		},
 		controller: function($scope) {
-			$scope.years = dataService.getYears();
-			$scope.year = $scope.years[0];
+			$scope.months = dataService.getMonths($scope.year);
+			$scope.month = $scope.months[0];
 		},
 		template: '<div class="form-group">'+
-			'<label class="sr-only" for="year">Year</label>'+
-			'<select class="form-control" name="year" ng-model="year" ng-options="choiceYear for choiceYear in ::years"></select>'+
+			'<label class="sr-only" for="month">Month</label>'+
+			'<select class="form-control" name="month" ng-model="month" ng-options="choiceMonth for choiceMonth in ::months"></select>'+
 			'</div>'
 	};
 }]);

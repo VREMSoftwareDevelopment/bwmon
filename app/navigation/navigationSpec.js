@@ -18,11 +18,11 @@ describe('BWMonApp Navigation', function() {
 		}));
 
 		it('should return true', inject(function() {
-			expect(controller.isActive('/mypath')).toBe(true);
+			expect(controller.isActive('/mypath')).toBeTruthy();
 		}));
 
 		it('should return false', inject(function() {
-			expect(controller.isActive('/mypath1')).toBe(false);
+			expect(controller.isActive('/mypath1')).toBeFalsy();
 		}));
 
 		it('should have same number of routes as $route', inject(function() {
@@ -44,7 +44,7 @@ describe('BWMonApp Navigation', function() {
 			});
 
 			angular.forEach(controller.routes, function(value, key, obj) {
-				expect(routes.indexOf(value.href) !== -1).toBe(true);
+				expect(routes.indexOf(value.href) !== -1).toBeTruthy();
 			});
 		}));
 	});

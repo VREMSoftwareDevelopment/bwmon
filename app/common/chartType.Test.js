@@ -1,7 +1,7 @@
-describe('BWMonApp.SelectYear testing', function() {
+describe('BWMonApp.ChartType testing', function() {
 	'use strict';
 
-	var scope,
+	var $rootScope,
 		chartService,
 		chartTypes = ['10', '5', '6'],
 		template = '<div><chart-type ng-model="myType"></chart-type></div>',
@@ -9,35 +9,39 @@ describe('BWMonApp.SelectYear testing', function() {
 
 	beforeEach(module('BWMonApp.ChartType'));
 	beforeEach(module('BWMonApp.ChartService'));
-	beforeEach(module("my.templates"));
 
-	beforeEach(inject(function($compile, $rootScope, _chartService_){
-		scope = $rootScope;
+	beforeEach(inject(function(_$compile_, _$rootScope_, _chartService_){
+		$rootScope = _$rootScope_;
 
 		chartService = _chartService_;
 		spyOn(chartService, 'getChartTypes').and.returnValue(chartTypes);
 
-		element = $compile(template)(scope);
+		element = _$compile_(template)($rootScope);
 	}));
 
 	it('should have element', function() {
-		scope.$digest();
+		$rootScope.$digest();
 		expect(element).toBeDefined();
+	});
+
+	it('should call chartService.getChartTypes', function() {
+		$rootScope.$digest();
+		expect(chartService.getChartTypes).toHaveBeenCalled();
 	});
 
 	it('should select first chart type in options', function() {
 		var options;
 
-		scope.$digest();
+		$rootScope.$digest();
 		options = element.find('select').find('option');
-		expect(options[0].selected).toBe(true);
+		expect(options[0].selected).toBeTruthy();
 		expect(options[0].text).toBe(chartTypes[0]);
 	});
 
 	it('should have all chart types in options', function() {
 		var index, options;
 
-		scope.$digest();
+		$rootScope.$digest();
 		options = element.find('select').find('option');
 		expect(options.length).toBe(chartTypes.length);
 		for (index = 0; index < chartTypes.length; ++index) {

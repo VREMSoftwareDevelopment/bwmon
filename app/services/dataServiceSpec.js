@@ -12,14 +12,14 @@ describe('BWMonApp.services dataService', function() {
 		var expected = [2013, 2012, 2011, 2010],
 			actual = dataService.getYears();
 
-		expect(angular.equals(expected, actual)).toBe(true);
+		expect(angular.equals(expected, actual)).toBeTruthy();
 	});
 
 	it('should return months', function() {
 		var expected = [ 'November', 'October', 'September', 'August', 'July', 'June', 'May', 'April', 'March', 'February', 'January' ],
 			actual = dataService.getMonths(2013);
 
-		expect(angular.equals(expected, actual)).toBe(true);
+		expect(angular.equals(expected, actual)).toBeTruthy();
 	});
 
 	it('should return data by year', function() {
@@ -31,7 +31,7 @@ describe('BWMonApp.services dataService', function() {
 			],
 			actual = dataService.getUsageByYear().data;
 
-		expect(angular.equals(expected, actual)).toBe(true);
+		expect(angular.equals(expected, actual)).toBeTruthy();
 	});
 
 	it('should return chart data by year', function() {
@@ -43,7 +43,7 @@ describe('BWMonApp.services dataService', function() {
 			],
 			actual = dataService.getUsageByYear().chartData;
 
-		expect(angular.equals(expected, actual)).toBe(true);
+		expect(angular.equals(expected, actual)).toBeTruthy();
 	});
 
 	it('should return usage data by month', function() {
@@ -58,14 +58,14 @@ describe('BWMonApp.services dataService', function() {
 			],
 			actual = dataService.getUsageByMonth(2011).data.usage;
 
-		expect(angular.equals(expected, actual)).toBe(true);
+		expect(angular.equals(expected, actual)).toBeTruthy();
 	});
 
 	it('should return total by month', function() {
 		var expected = {id: 2011, download: 139938627, upload: 10744984, total: 150683611, average: 412831.811, days: 365},
 			actual = dataService.getUsageByMonth(2011).data.total;
 
-		expect(angular.equals(expected, actual)).toBe(true);
+		expect(angular.equals(expected, actual)).toBeTruthy();
 	});
 
 	it('should return chart usage by month', function() {
@@ -80,7 +80,7 @@ describe('BWMonApp.services dataService', function() {
 			],
 			actual = dataService.getUsageByMonth(2011).chartData;
 
-		expect(angular.equals(expected, actual)).toBe(true);
+		expect(angular.equals(expected, actual)).toBeTruthy();
 	});
 
 	it('should return usage data by user', function() {
@@ -94,7 +94,7 @@ describe('BWMonApp.services dataService', function() {
 			],
 			actual = dataService.getUsageByUser(2011, 'November').data.usage;
 
-		expect(angular.equals(expected, actual)).toBe(true);
+		expect(angular.equals(expected, actual)).toBeTruthy();
 	});
 
 	it('should return usage data by user with filter using IP', function() {
@@ -104,7 +104,7 @@ describe('BWMonApp.services dataService', function() {
 			],
 			actual = dataService.getUsageByUser(2011, 'November', '.2').data.usage;
 
-		expect(angular.equals(expected, actual)).toBe(true);
+		expect(angular.equals(expected, actual)).toBeTruthy();
 	});
 
 	it('should return usage data by user with filter using MAC', function() {
@@ -115,7 +115,7 @@ describe('BWMonApp.services dataService', function() {
 			],
 			actual = dataService.getUsageByUser(2011, 'November', ':A0').data.usage;
 
-		expect(angular.equals(expected, actual)).toBe(true);
+		expect(angular.equals(expected, actual)).toBeTruthy();
 	});
 
 	it('should return usage data by user with filter using user', function() {
@@ -124,14 +124,14 @@ describe('BWMonApp.services dataService', function() {
 			],
 			actual = dataService.getUsageByUser(2011, 'November', '-2').data.usage;
 
-		expect(angular.equals(expected, actual)).toBe(true);
+		expect(angular.equals(expected, actual)).toBeTruthy();
 	});
 
 	it('should return total by user', function() {
 		var expected = {id: 10, download: 10920971, upload: 693868, total: 11614839, average: 387161.3, days: 30},
 			actual = dataService.getUsageByUser(2011, 'November').data.total;
 
-		expect(angular.equals(expected, actual)).toBe(true);
+		expect(angular.equals(expected, actual)).toBeTruthy();
 	});
 
 	it('should return chart usage by user', function() {
@@ -145,7 +145,7 @@ describe('BWMonApp.services dataService', function() {
 			],
 			actual = dataService.getUsageByUser(2011, 'November').chartData;
 
-		expect(angular.equals(expected, actual)).toBe(true);
+		expect(angular.equals(expected, actual)).toBeTruthy();
 	});
 
 });

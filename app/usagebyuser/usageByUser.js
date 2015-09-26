@@ -51,7 +51,7 @@ angular.module('BWMonApp.UsageByUser', ['ngRoute'])
 		},
 		init = function() {
 			$scope.selected = {};
-			$scope.selected.year = dataService.getYears()[0];
+//			$scope.selected.year = dataService.getYears()[0];
 			$scope.predicate = 'IP';
 			$scope.reverse = false;
 

@@ -3,7 +3,6 @@ describe('BWMonApp UsageByUser feature', function() {
 
 	var $scope = null,
 		page = {},
-		years = [10, 5, 6],
 		months = ['Jan', 'Mar', 'Jun'],
 		month = months[0],
 		data = {
@@ -31,7 +30,6 @@ describe('BWMonApp UsageByUser feature', function() {
 		$scope = $rootScope.$new();
 
 		dataService = _dataService_;
-		spyOn(dataService, 'getYears').and.returnValue(years);
 		spyOn(dataService, 'getMonths').and.returnValue(months);
 		spyOn(dataService, 'getUsageByUser').and.returnValue({data: data, chartData: chartData});
 
@@ -54,10 +52,6 @@ describe('BWMonApp UsageByUser feature', function() {
 		var route = $route.routes['/UsageByUser'];
 		expect(route.controller).toBe('UsageByUserController');
 		expect(route.templateUrl).toBe('usagebyuser/usageByUser.tpl.html');
-	}));
-
-	it('should update year with getYears first element', inject(function() {
-		expect($scope.selected.year).toEqual(years[0]);
 	}));
 
 	it('should update months with getMonths', inject(function() {

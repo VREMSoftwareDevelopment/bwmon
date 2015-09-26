@@ -14,21 +14,20 @@
  *    limitations under the License.
  */
 angular.module('BWMonApp.DisplayType', [])
-.controller('displayTypeController', [function() {
-	'use strict';
-
-	var controller = this;
-
-	controller.displayChart = false;
-	controller.click = function() {
-		controller.displayChart = !controller.displayChart;
-	};
-}])
 .directive('displayType', [function() {
 	'use strict';
 	return {
 		restrict: 'E',
 		replace: true,
-		templateUrl: 'common/displayType.tpl.html'
+		controller: function($scope) {
+			$scope.displayType = false;
+			$scope.toggle = function() {
+				$scope.displayType = !$scope.displayType;
+			};
+		},
+		template: '<button id="buttonShowChart" class="btn btn-primary" ng-click="toogle()">'+
+			'<span ng-if="!displayType">Show Chart</span>'+
+			'<span ng-if="displayType">Show Data</span>'+
+			'</button>'
 	};
 }]);
