@@ -4,7 +4,7 @@ describe('BWMonApp.DisplayType testing', function() {
 	var scope,
 		element,
 		controller,
-		template = '<div><display-type></display-type></div>';
+		template = '<div><display-type ng-model="displayType"></display-type></div>';
 
 	beforeEach(module('BWMonApp'));
 	beforeEach(module('BWMonApp.DisplayType'));
@@ -24,23 +24,8 @@ describe('BWMonApp.DisplayType testing', function() {
 		expect(scope.displayType).toBeFalsy();
 	});
 
-	it('should toogle change displayType to true', function() {
-		scope.$digest();
-		scope.toggle();
-		expect(scope.displayType).toBeTruthy();
-	});
-
 	it('should contain Show Chart in button text', function() {
 		scope.$digest();
-		expect(element.find('button').text()).not.toContain('Show Data');
 		expect(element.find('button').text()).toContain('Show Chart');
-	});
-
-	it('should toogle change button text to Show Data', function() {
-		scope.$digest();
-		scope.toggle();
-		scope.$digest();
-		expect(element.find('button').text()).toContain('Show Data');
-		expect(element.find('button').text()).not.toContain('Show Chart');
 	});
 });

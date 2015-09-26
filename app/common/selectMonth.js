@@ -22,23 +22,23 @@ angular.module('BWMonApp.SelectMonth', [])
 		replace: true,
 		require: ['ngModel', 'year'],
 		scope: {
-			month: '=ngModel',
-			year: '=year'
+			selectMonth: '=ngModel',
+			selectYear: '=year'
 		},
 		controller: function($scope) {
 			var updateMonth = function() {
-					$scope.months = dataService.getMonths($scope.year);
-					$scope.month = $scope.months[0];
+					$scope.months = dataService.getMonths($scope.selectYear);
+					$scope.selectMonth = $scope.months[0];
 				};
 
 			updateMonth();
-			$scope.$watch('year', function() {
+			$scope.$watch('selectYear', function() {
 				updateMonth();
 			}, true);
 		},
 		template: '<div class="form-group">'+
 			'<label class="sr-only" for="month">Month</label>'+
-			'<select class="form-control" name="month" ng-model="month" ng-options="choiceMonth for choiceMonth in months"></select>'+
+			'<select class="form-control" name="month" ng-model="selectMonth" ng-options="choiceMonth for choiceMonth in months"></select>'+
 			'</div>'
 	};
 }]);

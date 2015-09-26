@@ -1,10 +1,7 @@
 <form class="form-inline">
-	<display-type></display-type>
+	<display-type ng-model="displayType"></display-type>
 	<select-year ng-model="selected.year"></select-year>
-	<div class="form-group">
-		<label class="sr-only" for="month">Month</label>
-		<select class="form-control" name="month" ng-model="selected.month" ng-options="choiceMonth for choiceMonth in months"></select>
-	</div>
+	<select-month ng-model="selected.month" year="selected.year"></select-month>
 	<div class="form-group">
 		<label class="sr-only" for="filter">Filter by IP, MAC or User</label>
 		<input class="form-control" name="filter" placeholder="IP, MAC or User" ng-model="selected.filter"/>

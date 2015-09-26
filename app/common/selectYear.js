@@ -20,14 +20,14 @@ angular.module('BWMonApp.SelectYear', [])
 		restrict: 'E',
 		replace: true,
 		require: 'ngModel',
-		scope: {year: "=ngModel"},
+		scope: {selectYear: "=ngModel"},
 		controller: function($scope) {
 			$scope.years = dataService.getYears();
-			$scope.year = $scope.years[0];
+			$scope.selectYear = $scope.years[0];
 		},
 		template: '<div class="form-group">'+
 			'<label class="sr-only" for="year">Year</label>'+
-			'<select class="form-control" name="year" ng-model="year" ng-options="choiceYear for choiceYear in ::years"></select>'+
+			'<select class="form-control" name="year" ng-model="selectYear" ng-options="choiceYear for choiceYear in ::years"></select>'+
 			'</div>'
 	};
 }]);

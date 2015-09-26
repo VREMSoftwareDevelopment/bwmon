@@ -1,5 +1,5 @@
 <form class="form-inline">
-	<display-type></display-type>
+	<display-type ng-model="displayType"></display-type>
 	<chart-type ng-if="displayType" ng-model="chartType"></chart-type>
 </form>
 <div ng-if="!displayType" class="table-responsive">
