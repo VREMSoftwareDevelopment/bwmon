@@ -14,30 +14,31 @@
  *    limitations under the License.
  */
 angular.module('BWMonApp.Navigation', [])
-.controller('navigationController', ['$location', function($location) {
-	'use strict';
-	var navigationController = this;
-
-	navigationController.isActive = function (viewLocation) {
-		return viewLocation === $location.path();
-	};
-
-	navigationController.routes = [{
-		href: '/UsageByUser',
-		name: 'Usage By User'
-	}, {
-		href: '/UsageByMonth',
-		name: 'Usage By Month'
-	}, {
-		href: '/UsageByYear',
-		name: 'Usage By Year'
-	}];
-}])
-.directive('navigation', [function() {
+.directive('navigation', ['$location', function($location) {
 	'use strict';
 	return {
 		restrict: 'E',
 		replace: true,
-		templateUrl: 'navigation/navigation.tpl.html'
+		controller: function($scope) {
+			$scope.isActive = function (viewLocation) {
+				return viewLocation === $location.path();
+			};
+			$scope.routes = [{
+				href: '/UsageByUser',
+				name: 'Usage By User'
+			}, {
+				href: '/UsageByMonth',
+				name: 'Usage By Month'
+			}, {
+				href: '/UsageByYear',
+				name: 'Usage By Year'
+			}];
+		},
+		template: '<div class="navbar navbar-default">'+
+			'<ul class="nav navbar-nav">'+
+			'<li ng-repeat="route in ::routes" ng-class="{active: isActive(\'{{::route.href}}\')}" >'+
+				'<a href="#{{::route.href}}">{{::route.name}}</a>'+
+			'</li></ul></div>'
+
 	};
 }]);

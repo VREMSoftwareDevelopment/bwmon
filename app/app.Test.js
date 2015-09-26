@@ -5,14 +5,14 @@ describe('BWMonApp tests', function(){
 
 	beforeEach(module('BWMonApp'));
 
-	beforeEach(inject(function($rootScope, $controller, $route) {
-		scope = $rootScope.$new();
+	beforeEach(inject(function(_$rootScope_, _$controller_, _$route_) {
+		scope = _$rootScope_.$new();
 
-		controller = $controller('rootController', {
+		controller = _$controller_('rootController', {
 			$scope: scope
 		});
 
-		route = $route;
+		route = _$route_;
 	}));
 
 	it('should map UsageByUser route by default', function() {

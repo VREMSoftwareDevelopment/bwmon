@@ -30,7 +30,7 @@ var gulp = require('gulp'),
 			dest: dstdir+'/js',
 			temp: pkg.name+'.js',
 			name: pkg.name+'.min.js',
-			excludes: ['!'+srcdir+'/**/'+dataname, '!'+srcdir+'/**/*Spec.js', '!'+srcdir+'/**/*.Test.js']
+			excludes: ['!'+srcdir+'/**/'+dataname, '!'+srcdir+'/**/*.Test.js']
 		},
 		test: {
 			libs: [cmpdir+'/angular-mocks/angular-mocks.js'],

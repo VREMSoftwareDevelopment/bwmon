@@ -1,7 +1,0 @@
-<div class="navbar navbar-default" ng-controller="navigationController as navigationCtrl">
-	<ul class="nav navbar-nav">
-		<li ng-repeat="route in ::navigationCtrl.routes" ng-class="{active: navigationCtrl.isActive('{{::route.href}}')}" >
-			<a href="#{{::route.href}}">{{::route.name}}</a>
-		</li>
-	</ul>
-</div>
