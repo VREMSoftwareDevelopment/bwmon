@@ -38,11 +38,6 @@ angular.module('BWMonApp.UsageByUser', ['ngRoute'])
 			}
 			return result;
 		},
-		getMonths = function(year) {
-			$scope.months = dataService.getMonths(year);
-			$scope.selected.month = $scope.months[0];
-			$scope.selected.search = '';
-		},
 		getUsage = function(year, month, filter) {
 			var usageData = dataService.getUsageByUser(year, month, filter);
 			$scope.data = usageData.data.usage;
@@ -51,11 +46,11 @@ angular.module('BWMonApp.UsageByUser', ['ngRoute'])
 		},
 		init = function() {
 			$scope.selected = {};
-//			$scope.selected.year = dataService.getYears()[0];
 			$scope.predicate = 'IP';
 			$scope.reverse = false;
 
-			getMonths($scope.selected.year);
+			$scope.selected.year = dataService.getYears()[0];
+			$scope.selected.month = dataService.getMonths($scope.selected.year)[0];
 			getUsage($scope.selected);
 		};
 
@@ -80,7 +75,7 @@ angular.module('BWMonApp.UsageByUser', ['ngRoute'])
 	$scope.chartOptions.series[0].type = $scope.selected.chartType;
 
 	$scope.$watch('selected.year', function() {
-		getMonths($scope.selected.year);
+		$scope.selected.search = '';
 	}, true);
 
 	$scope.$watch('selected.month', function() {

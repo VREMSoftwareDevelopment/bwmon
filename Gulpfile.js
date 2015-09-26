@@ -32,7 +32,7 @@ var gulp = require('gulp'),
 			name: pkg.name+'.min.js',
 			excludes: ['!'+srcdir+'/**/'+dataname, '!'+srcdir+'/**/*Spec.js', '!'+srcdir+'/**/*.Test.js']
 		},
-		unit: {
+		test: {
 			libs: [cmpdir+'/angular-mocks/angular-mocks.js'],
 			excludes: srcdir+'/**/!('+dataname+').js'
 		},
@@ -77,7 +77,7 @@ var gulp = require('gulp'),
 	karma = function(done, config) {
 		var Server = require('karma').Server,
 			defaults = {
-				files: [].concat(files.js.libs, files.unit.libs, files.js.src, files.data.src, files.unit.excludes, files.templates.src),
+				files: [].concat(files.js.libs, files.test.libs, files.js.src, files.data.src, files.test.excludes, files.templates.src),
 				configFile: __dirname+'/config/karma.conf.js',
 			},
 			parameters = extend(defaults, config);
@@ -106,8 +106,8 @@ gulp.task('jshint', function() {
 		.pipe(plugins.jshint.reporter('fail'));
 });
 
-gulp.task('unit', ['jshint'], function(done) { karma(done); });
-gulp.task('unit_auto', function(done) { karma(done, {autoWatch: true, singleRun: false}); });
+gulp.task('test', ['jshint'], function(done) { karma(done); });
+gulp.task('test_auto', function(done) { karma(done, {autoWatch: true, singleRun: false}); });
 gulp.task('coverage', function(done) { karma(done, {reporters: ['coverage']}); });
 
 gulp.task('cssmin', function() {
@@ -138,7 +138,7 @@ gulp.task('templates', ['templates:clean'], function() {
 		.pipe(gulp.dest(files.templates.dest));
 });
 
-gulp.task('uglify', ['uglify:clean', 'templates', 'unit'], function() {
+gulp.task('uglify', ['uglify:clean', 'templates', 'test'], function() {
 	var src = [].concat(files.js.src, files.js.excludes);
 	return gulp
 		.src(src)
@@ -189,7 +189,7 @@ gulp.task('build', ['e2e'], function() {
 });
 
 gulp.task('watch', function() {
-	var src = [].concat(files.main.src, files.unit.src, files.e2e.src, files.data.src);
+	var src = [].concat(files.main.src, files.test.src, files.e2e.src, files.data.src);
 	gulp.watch(src, ['jshint']);
 });
 
