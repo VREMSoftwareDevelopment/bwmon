@@ -42,6 +42,3 @@ angular.module('BWMonApp.SelectMonth', [])
 			'</div>'
 	};
 }]);
-
-
-

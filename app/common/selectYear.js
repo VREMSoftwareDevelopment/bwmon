@@ -31,6 +31,3 @@ angular.module('BWMonApp.SelectYear', [])
 			'</div>'
 	};
 }]);
-
-
-
