@@ -21,6 +21,39 @@ angular.module('BWMonApp.UsageByMonth', ['ngRoute'])
 		controller: 'UsageByMonthController'
 	});
 }])
+.directive('monthHeader', [function() {
+	return {
+		template: '<th><a href="" ng-click="predicate=\'id\'; reverse=!reverse;">Month</a></th>'+
+			'<th class="text-right">Down</th>'+
+			'<th class="text-right">Up</th>'+
+			'<th class="text-right"><a href="" ng-click="predicate=\'total\'; reverse=!reverse">Total</a></th>'+
+			'<th class="text-right">Percent</th>'+
+			'<th class="text-right">Average</th>'+
+			'<th class="text-right">Days</th>'
+	};
+}])
+.directive('monthBody', [function() {
+	return {
+		template: '<td>{{current.id | toMonth}}</td>'+
+			'<td class="text-right">{{current.download | usageInGBytes | number:3}}</td>'+
+			'<td class="text-right">{{current.upload | usageInGBytes | number:3}}</td>'+
+			'<td class="text-right">{{current.total | usageInGBytes | number:3}}</td>'+
+			'<td class="text-right">{{(current.total * 100 / total.total) | number:1}}%</td>'+
+			'<td class="text-right">{{current.average | usageInGBytes | number:3}}</td>'+
+			'<td class="text-right">{{current.days}}</td>'
+	};
+}])
+.directive('monthFooter', [function() {
+	return {
+		template: '<th>{{year}} Totals</th>'+
+			'<th class="text-right">{{total.download | usageInGBytes | number:3}}</th>'+
+			'<th class="text-right">{{total.upload | usageInGBytes | number:3}}</th>'+
+			'<th class="text-right">{{total.total | usageInGBytes | number:3}}</th>'+
+			'<th></th>'+
+			'<th class="text-right">{{total.average | usageInGBytes | number:3}}</th>'+
+			'<th class="text-right">{{total.days}}</th>'
+	};
+}])
 .controller('UsageByMonthController', ['$scope', 'dataService', 'chartService', function($scope, dataService, chartService) {
 	'use strict';
 

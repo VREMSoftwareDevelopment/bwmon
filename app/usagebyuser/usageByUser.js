@@ -21,6 +21,49 @@ angular.module('BWMonApp.UsageByUser', ['ngRoute'])
 		controller: 'UsageByUserController'
 	});
 }])
+.directive('userHeader', [function() {
+	return {
+		template: '<th><a href="" ng-click="predicate=\'IP\'; reverse=!reverse">IP</a></th>'+
+			'<th><a href="" ng-click="predicate=\'MAC\'; reverse=!reverse">MAC</a></th>'+
+			'<th><a href="" ng-click="predicate=\'user\'; reverse=!reverse">User</a></th>'+
+			'<th class="text-right">Down</th>'+
+			'<th class="text-right">Up</th>'+
+			'<th class="text-right"><a href="" ng-click="predicate=\'total\'; reverse=!reverse">Total</a></th>'+
+			'<th class="text-right">Percent</th>'+
+			'<th class="text-right">Average</th>'+
+			'<th class="text-right">Days</th>'+
+			'<th>First Seen</th>'+
+			'<th>Last Seen</th>'
+	};
+}])
+.directive('userBody', [function() {
+	return {
+		template: '<td>{{current.IP}}</td>'+
+			'<td>{{current.MAC}}</td>'+
+			'<td>{{current.user}}</td>'+
+			'<td class="text-right">{{current.download | usageInGBytes | number:3}}</td>'+
+			'<td class="text-right">{{current.upload | usageInGBytes | number:3}}</td>'+
+			'<td class="text-right">{{current.total | usageInGBytes | number:3}}</td>'+
+			'<td class="text-right">{{(current.total * 100 / total.total) | number:1}}%</td>'+
+			'<td class="text-right">{{current.average | usageInGBytes | number:3}}</td>'+
+			'<td class="text-right">{{current.days}}</td>'+
+			'<td>{{current.firstSeen | timeToDate | date: \'medium\'}}</td>'+
+			'<td>{{current.lastSeen | timeToDate | date: \'medium\'}}</td>'
+	};
+}])
+.directive('userFooter', [function() {
+	return {
+		template: '<th colspan="3">{{selected.month}} {{selected.year}} Totals</th>'+
+			'<th class="text-right">{{total.download | usageInGBytes | number:3}}</th>'+
+			'<th class="text-right">{{total.upload | usageInGBytes | number:3}}</th>'+
+			'<th class="text-right">{{total.total | usageInGBytes | number:3}}</th>'+
+			'<th></th>'+
+			'<th class="text-right">{{total.average | usageInGBytes | number:3}}</th>'+
+			'<th class="text-right">{{total.days}}</th>'+
+			'<th></th>'+
+			'<th></th>'
+	};
+}])
 .controller('UsageByUserController', ['$scope', 'dataService', 'pagingService', 'chartService', function($scope, dataService, pagingService, chartService) {
 	'use strict';
 

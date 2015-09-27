@@ -21,6 +21,26 @@ angular.module('BWMonApp.UsageByYear', ['ngRoute'])
 		controller: 'UsageByYearController'
 	});
 }])
+.directive('yearHeader', [function() {
+	return {
+		template: '<th><a href="" ng-click="predicate=\'id\'; reverse=!reverse;">Year</a></th>'+
+			'<th class="text-right">Down</th>'+
+			'<th class="text-right">Up</th>'+
+			'<th class="text-right"><a href="" ng-click="predicate=\'total\'; reverse=!reverse">Total</a></th>'+
+			'<th class="text-right">Average</th>'+
+			'<th class="text-right">Days</th>'
+	};
+}])
+.directive('yearBody', [function() {
+	return {
+		template: '<td>{{current.id}}</td>'+
+			'<td class="text-right">{{current.download | usageInGBytes | number:3}}</td>'+
+			'<td class="text-right">{{current.upload | usageInGBytes | number:3}}</td>'+
+			'<td class="text-right">{{current.total | usageInGBytes | number:3}}</td>'+
+			'<td class="text-right">{{current.average | usageInGBytes | number:3}}</td>'+
+			'<td class="text-right">{{current.days}}</td>'
+	};
+}])
 .controller('UsageByYearController', ['$scope', 'dataService', 'chartService', function($scope, dataService, chartService) {
 	'use strict';
 
