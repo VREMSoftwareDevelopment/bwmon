@@ -10,7 +10,6 @@ release/
 *.*~
 *.swp
 *.min.css
-*.min.js
-*-min.js
+app/js
 templates.js
 
