@@ -30,7 +30,7 @@ var gulp = require('gulp'),
 			dest: dstdir+'/js',
 			temp: pkg.name+'.js',
 			name: pkg.name+'.min.js',
-			excludes: ['!'+srcdir+'/**/'+dataname, '!'+srcdir+'/**/*.Test.js']
+			excludes: ['!'+srcdir+'/**/'+dataname, '!'+srcdir+'/**/*.Test.js', '!'+srcdir+'/js/*']
 		},
 		test: {
 			libs: [cmpdir+'/angular-mocks/angular-mocks.js'],
@@ -40,7 +40,7 @@ var gulp = require('gulp'),
 			src: ['e2e/**/*.js']
 		},
 		css: {
-			src: srcdir+'/css/app.css',
+			src: [srcdir+'/css/*.css', '!'+srcdir+'/css/*.min.css'],
 			libs: cmpdir+'/bootstrap/dist/css/bootstrap.min.css',
 			dest: dstdir+'/css',
 			name: pkg.name+'.min.css'
@@ -98,7 +98,7 @@ gulp.task('templates:clean', function() {
 });
 
 gulp.task('jshint', function() {
-	var src = [].concat(files.js.src, files.e2e.src, files.data.src);
+	var src = [].concat(files.js.src, files.e2e.src, files.data.src, files.js.excludes);
 	return gulp
 		.src(src)
 		.pipe(plugins.jshint())
@@ -194,6 +194,39 @@ gulp.task('watch', function() {
 });
 
 gulp.task('default', ['build']);
+
+gulp.task('devcss', function() {
+	return gulp
+		.src(files.css.src)
+		.pipe(plugins.concat(files.css.name))
+		.pipe(gulp.dest(srcdir+'/css'));
+});
+
+gulp.task('devcsslibs', function() {
+	return gulp
+	.src(files.css.libs)
+	.pipe(gulp.dest(srcdir+'/css'));
+});
+
+gulp.task('devjs', function() {
+	return gulp
+		.src(files.js.name)
+		.pipe(gulp.dest(srcdir+'/js'));
+});
+
+gulp.task('devjslibs', function() {
+	return gulp
+		.src(files.js.libs)
+		.pipe(gulp.dest(srcdir+'/js'));
+});
+
+gulp.task('devserver', ['devjs', 'devjslibs', 'devcss', 'devcsslibs'], function() {
+	plugins.connect.server({
+		root: srcdir,
+		port: 8080,
+		livereload: true
+	});
+});
 
 gulp.task('version:patch', function() { return version('patch'); });
 gulp.task('version:minor', function() { return version('minor'); });

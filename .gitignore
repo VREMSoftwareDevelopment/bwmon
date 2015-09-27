@@ -1,7 +1,6 @@
 /.settings
 /.project
 /.tern-project
-templates.js
 node_modules/
 bower_components/
 data/
@@ -10,4 +9,8 @@ logs/
 release/
 *.*~
 *.swp
+*.min.css
+*.min.js
+*-min.js
+templates.js
 
