@@ -35,23 +35,23 @@ angular.module('BWMonApp.UsageByMonth', ['ngRoute'])
 .directive('monthBody', [function() {
 	return {
 		template: '<td>{{current.id | toMonth}}</td>'+
-			'<td class="text-right">{{current.download | usageInGBytes | number:3}}</td>'+
-			'<td class="text-right">{{current.upload | usageInGBytes | number:3}}</td>'+
-			'<td class="text-right">{{current.total | usageInGBytes | number:3}}</td>'+
+			'<td class="text-right">{{::current.download | usageInGBytes | number:3}}</td>'+
+			'<td class="text-right">{{::current.upload | usageInGBytes | number:3}}</td>'+
+			'<td class="text-right">{{::current.total | usageInGBytes | number:3}}</td>'+
 			'<td class="text-right">{{(current.total * 100 / total.total) | number:1}}%</td>'+
-			'<td class="text-right">{{current.average | usageInGBytes | number:3}}</td>'+
-			'<td class="text-right">{{current.days}}</td>'
+			'<td class="text-right">{{::current.average | usageInGBytes | number:3}}</td>'+
+			'<td class="text-right">{{::current.days}}</td>'
 	};
 }])
 .directive('monthFooter', [function() {
 	return {
 		template: '<th>{{year}} Totals</th>'+
-			'<th class="text-right">{{total.download | usageInGBytes | number:3}}</th>'+
-			'<th class="text-right">{{total.upload | usageInGBytes | number:3}}</th>'+
-			'<th class="text-right">{{total.total | usageInGBytes | number:3}}</th>'+
+			'<th class="text-right">{{::total.download | usageInGBytes | number:3}}</th>'+
+			'<th class="text-right">{{::total.upload | usageInGBytes | number:3}}</th>'+
+			'<th class="text-right">{{::total.total | usageInGBytes | number:3}}</th>'+
 			'<th></th>'+
-			'<th class="text-right">{{total.average | usageInGBytes | number:3}}</th>'+
-			'<th class="text-right">{{total.days}}</th>'
+			'<th class="text-right">{{::total.average | usageInGBytes | number:3}}</th>'+
+			'<th class="text-right">{{::total.days}}</th>'
 	};
 }])
 .controller('UsageByMonthController', ['$scope', 'dataService', 'chartService', function($scope, dataService, chartService) {

@@ -34,11 +34,11 @@ angular.module('BWMonApp.UsageByYear', ['ngRoute'])
 .directive('yearBody', [function() {
 	return {
 		template: '<td>{{current.id}}</td>'+
-			'<td class="text-right">{{current.download | usageInGBytes | number:3}}</td>'+
-			'<td class="text-right">{{current.upload | usageInGBytes | number:3}}</td>'+
-			'<td class="text-right">{{current.total | usageInGBytes | number:3}}</td>'+
-			'<td class="text-right">{{current.average | usageInGBytes | number:3}}</td>'+
-			'<td class="text-right">{{current.days}}</td>'
+			'<td class="text-right">{{::current.download | usageInGBytes | number:3}}</td>'+
+			'<td class="text-right">{{::current.upload | usageInGBytes | number:3}}</td>'+
+			'<td class="text-right">{{::current.total | usageInGBytes | number:3}}</td>'+
+			'<td class="text-right">{{::current.average | usageInGBytes | number:3}}</td>'+
+			'<td class="text-right">{{::current.days}}</td>'
 	};
 }])
 .controller('UsageByYearController', ['$scope', 'dataService', 'chartService', function($scope, dataService, chartService) {
