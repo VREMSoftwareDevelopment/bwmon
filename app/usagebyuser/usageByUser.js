@@ -44,7 +44,7 @@ angular.module('BWMonApp.UsageByUser', ['ngRoute'])
 			'<td class="text-right">{{::current.download | usageInGBytes | number:3}}</td>'+
 			'<td class="text-right">{{::current.upload | usageInGBytes | number:3}}</td>'+
 			'<td class="text-right">{{::current.total | usageInGBytes | number:3}}</td>'+
-			'<td class="text-right">{{(current.total * 100 / total.total) | number:1}}%</td>'+
+			'<td class="text-right">{{::current.percent | number:1}}%</td>'+
 			'<td class="text-right">{{::current.average | usageInGBytes | number:3}}</td>'+
 			'<td class="text-right">{{::current.days}}</td>'+
 			'<td>{{::current.firstSeen | timeToDate | date: \'medium\'}}</td>'+

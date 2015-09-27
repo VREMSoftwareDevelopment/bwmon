@@ -85,23 +85,29 @@ angular.module('BWMonApp.DataService', [])
 						entry.user.toLowerCase().indexOf(filterLowerCase) != -1;
 				});
 			}
+			_.each(usage, function(value, index) {
+				value.percent = +(value.total * 100/total.total).toFixed(1);
+			});
+
 			return {
 				usage: usage,
 				total: total
 			};
 		},
 		_getUsageByMonth = function(year) {
-			var result = {
-					usage: [],
-					total: {}
-				},
-				months = _getMonths(year);
+			var	months = _getMonths(year),
+				usage = _.map(months, function(entry) {
+					return _getUsageByUser(year, entry).total;
+				}),
+				total = _getUsageByYear(year);
 
-			result.usage = _.map(months, function(entry) {
-				return _getUsageByUser(year, entry).total;
+			_.each(usage, function(value, index) {
+				value.percent = +(value.total * 100/total.total).toFixed(1);
 			});
-			result.total = _getUsageByYear(year);
-			return result;
+			return {
+				usage: usage,
+				total: total
+			};
 		},
 		_getChartData = function(data, reverse) {
 			var chartData = [],
