@@ -44,6 +44,9 @@ angular.module('BWMonApp.PagingService', [])
 			if (this.hasNext(data)) {
 				this.current += 1;
 			}
+		},
+		reset: function(data) {
+			this.current = 0;
 		}
 	};
 

@@ -10,85 +10,91 @@ describe('BWMonApp.services pagingService', function() {
 	}));
 
 	it('should return current page', function() {
-		expect(0).toEqual(pagingService.getPaging().current);
+		expect(pagingService.getPaging().current).toEqual(0);
 	});
 
 	it('should return size - row per page', function() {
-		expect(12).toEqual(pagingService.getPaging().size);
+		expect(pagingService.getPaging().size).toEqual(12);
 	});
 
 	it('should return 0 using startIndex for the first page', function() {
-		expect(0).toEqual(pagingService.getPaging().startIndex());
+		expect(pagingService.getPaging().startIndex()).toEqual(0);
 	});
 
 	it('should return 12 using startIndex for the second page', function() {
 		var page = pagingService.getPaging();
 		page.next(data);
-		expect(12).toEqual(page.startIndex());
+		expect(page.startIndex()).toEqual(12);
 	});
 
 	it('should return 3 using pages with given data', function() {
-		expect(3).toEqual(pagingService.getPaging().pages(data));
+		expect(pagingService.getPaging().pages(data)).toEqual(3);
 	});
 
 	it('should return 0 using pages with empty data', function() {
-		expect(0).toEqual(pagingService.getPaging().pages([]));
+		expect(pagingService.getPaging().pages([])).toEqual(0);
 	});
 
 	it('should return true using hasPages with given data', function() {
-		expect(true).toBe(pagingService.getPaging().hasPages(data));
+		expect(pagingService.getPaging().hasPages(data)).toBeTruthy();
 	});
 
 	it('should return false using hasPages with empty data', function() {
-		expect(false).toBe(pagingService.getPaging().hasPages([]));
+		expect(pagingService.getPaging().hasPages([])).toBeFalsy();
 	});
 
 	it('should return false using hasPrevious on the first page', function() {
-		expect(false).toBe(pagingService.getPaging().hasPrevious());
+		expect(pagingService.getPaging().hasPrevious()).toBeFalsy();
 	});
 
 	it('should return true using hasPrevious on the second page', function() {
 		var page = pagingService.getPaging();
 		page.next(data);
-		expect(true).toEqual(page.hasPrevious());
+		expect(page.hasPrevious()).toBeTruthy();
 	});
 
 	it('should return true using hasNext with given data', function() {
-		expect(true).toBe(pagingService.getPaging().hasNext(data));
+		expect(pagingService.getPaging().hasNext(data)).toBeTruthy();
 	});
 
 	it('should return false using hasNext with empty data', function() {
-		expect(false).toBe(pagingService.getPaging().hasNext([]));
+		expect(pagingService.getPaging().hasNext([])).toBeFalsy();
 	});
 
 	it('should increment current page usign next with given data', function() {
 		var page = pagingService.getPaging();
-		expect(0).toBe(page.current);
+		expect(page.current).toBe(0);
 		page.next(data);
-		expect(1).toBe(page.current);
+		expect(page.current).toBe(1);
 	});
 
 	it('should not increment current page using next on the last page', function() {
 		var page = pagingService.getPaging();
-		expect(0).toBe(page.current);
+		expect(page.current).toBe(0);
 		page.next([]);
-		expect(0).toBe(page.current);
+		expect(page.current).toBe(0);
 	});
 
 	it('should decrement current page using previous with given data', function() {
 		var page = pagingService.getPaging();
 		page.current = 1;
-		expect(1).toBe(page.current);
+		expect(page.current).toBe(1);
 		page.previous();
-		expect(0).toBe(page.current);
+		expect(page.current).toBe(0);
 	});
 
 	it('should not decrement current page using previous on the first page', function() {
 		var page = pagingService.getPaging();
-		expect(0).toBe(page.current);
+		expect(page.current).toBe(0);
 		page.previous();
-		expect(0).toBe(page.current);
+		expect(page.current).toBe(0);
 	});
 
+	it('should reset current to zero', function() {
+		var page = pagingService.getPaging();
+		page.current = 100;
+		page.reset();
+		expect(page.current).toBe(0);
+	});
 
 });
