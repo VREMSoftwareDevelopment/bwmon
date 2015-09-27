@@ -2,10 +2,7 @@
 	<display-type ng-model="displayType"></display-type>
 	<select-year ng-model="selected.year"></select-year>
 	<select-month ng-model="selected.month" year="selected.year"></select-month>
-	<div class="form-group">
-		<label class="sr-only" for="filter">Filter by IP, MAC or User</label>
-		<input class="form-control" name="filter" placeholder="IP, MAC or User" ng-model="selected.filter"/>
-	</div>
+	<select-user ng-model="selected.filter"></select-user>
 	<chart-type ng-if="displayType" ng-model="selected.chartType"></chart-type>
 	<div ng-if="!displayType" class="form-group pull-right">
 		<span ng-if="page.hasPages(data)">

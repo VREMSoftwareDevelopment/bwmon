@@ -25,6 +25,7 @@ angular.module('BWMonApp', [
 	'BWMonApp.DisplayType',
 	'BWMonApp.SelectYear',
 	'BWMonApp.SelectMonth',
+	'BWMonApp.SelectUser',
 	'BWMonApp.ChartType',
 	'BWMonApp.ChartService',
 	'BWMonApp.PagingService',

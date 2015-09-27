@@ -19,7 +19,7 @@ describe('bwmon e2e usage by user', function() {
 	});
 
 	it('should have filter', function() {
-		expect(element(by.model('selected.filter')).getText())
+		expect(element(by.model('selected.filter')).element(by.tagName('input')).getText())
 			.toEqual('');
 	});
 
