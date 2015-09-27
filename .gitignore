@@ -9,7 +9,5 @@ logs/
 release/
 *.*~
 *.swp
-*.min.css
-app/js
 templates.js
-
+app/index.html

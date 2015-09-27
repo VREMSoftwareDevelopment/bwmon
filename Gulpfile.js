@@ -30,7 +30,7 @@ var gulp = require('gulp'),
 			dest: dstdir+'/js',
 			temp: pkg.name+'.js',
 			name: pkg.name+'.min.js',
-			excludes: ['!'+srcdir+'/**/'+dataname, '!'+srcdir+'/**/*.Test.js', '!'+srcdir+'/js/*']
+			excludes: ['!'+srcdir+'/**/'+dataname, '!'+srcdir+'/**/*.Test.js']
 		},
 		test: {
 			libs: [cmpdir+'/angular-mocks/angular-mocks.js'],
@@ -40,7 +40,7 @@ var gulp = require('gulp'),
 			src: ['e2e/**/*.js']
 		},
 		css: {
-			src: [srcdir+'/css/*.css', '!'+srcdir+'/css/*.min.css'],
+			src: [srcdir+'/css/*.css'],
 			libs: cmpdir+'/bootstrap/dist/css/bootstrap.min.css',
 			dest: dstdir+'/css',
 			name: pkg.name+'.min.css'
@@ -51,12 +51,15 @@ var gulp = require('gulp'),
 			dest: srcdir
 		},
 		html:  {
-			src: srcdir+'/index.html',
-			dest: dstdir,
-			preprocess: {
-				context: {
-					PRODUCTION: true
-				}
+			src: srcdir+'/index.tpl.html',
+			name: 'index.html',
+			prod: {
+				preprocess: {context: {PRODUCTION: true}},
+				dest: dstdir,
+			},
+			dev: {
+				preprocess: {context: {DEVELOPMENT: true}},
+				dest: srcdir,
 			}
 		},
 		version: {
@@ -97,6 +100,22 @@ gulp.task('templates:clean', function() {
 	return del.sync(files.templates.dstdir+'/templates.js');
 });
 
+gulp.task('html:clean', function() {
+	return del.sync(files.html.prod.dest+'/'+files.html.name);
+});
+
+gulp.task('devhtml:clean', function() {
+	return del.sync(files.html.dev.dest+'/'+files.html.name);
+});
+
+gulp.task('devhtml', ['devhtml:clean'], function() {
+	return gulp
+		.src(files.html.src)
+		.pipe(plugins.rename(files.html.name))
+		.pipe(plugins.preprocess(files.html.dev.preprocess))
+		.pipe(gulp.dest(files.html.dev.dest));
+});
+
 gulp.task('jshint', function() {
 	var src = [].concat(files.js.src, files.e2e.src, files.data.src, files.js.excludes);
 	return gulp
@@ -106,7 +125,7 @@ gulp.task('jshint', function() {
 		.pipe(plugins.jshint.reporter('fail'));
 });
 
-gulp.task('test', ['jshint'], function(done) { karma(done); });
+gulp.task('test', ['jshint', 'devhtml'], function(done) { karma(done); });
 gulp.task('test_auto', function(done) { karma(done, {autoWatch: true, singleRun: false}); });
 gulp.task('coverage', function(done) { karma(done, {reporters: ['coverage']}); });
 
@@ -150,11 +169,12 @@ gulp.task('uglify', ['uglify:clean', 'templates', 'test'], function() {
 		.pipe(gulp.dest(files.js.dest));
 });
 
-gulp.task('html', function() {
+gulp.task('html', ['html:clean'], function() {
 	return gulp
 		.src(files.html.src)
-		.pipe(plugins.preprocess(files.html.preprocess))
-		.pipe(gulp.dest(files.html.dest));
+		.pipe(plugins.rename(files.html.name))
+		.pipe(plugins.preprocess(files.html.prod.preprocess))
+		.pipe(gulp.dest(files.html.prod.dest));
 });
 
 gulp.task('data', function() {
@@ -195,34 +215,9 @@ gulp.task('watch', function() {
 
 gulp.task('default', ['build']);
 
-gulp.task('devcss', function() {
-	return gulp
-		.src(files.css.src)
-		.pipe(plugins.concat(files.css.name))
-		.pipe(gulp.dest(srcdir+'/css'));
-});
-
-gulp.task('devcsslibs', function() {
-	return gulp
-	.src(files.css.libs)
-	.pipe(gulp.dest(srcdir+'/css'));
-});
-
-gulp.task('devjs', function() {
-	return gulp
-		.src(files.js.name)
-		.pipe(gulp.dest(srcdir+'/js'));
-});
-
-gulp.task('devjslibs', function() {
-	return gulp
-		.src(files.js.libs)
-		.pipe(gulp.dest(srcdir+'/js'));
-});
-
-gulp.task('devserver', ['devjs', 'devjslibs', 'devcss', 'devcsslibs'], function() {
+gulp.task('devwebserver', ['devhtml'], function() {
 	plugins.connect.server({
-		root: srcdir,
+		root: srcdir+'/..',
 		port: 8080,
 		livereload: true
 	});
