@@ -18,8 +18,8 @@ describe('bwmon e2e usage by user', function() {
 			.toEqual('November');
 	});
 
-	it('should have filter', function() {
-		expect(element(by.model('selected.filter')).element(by.tagName('input')).getText())
+	it('should have user selected', function() {
+		expect(element(by.model('selected.user')).element(by.tagName('input')).getText())
 			.toEqual('');
 	});
 

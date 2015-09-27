@@ -2,7 +2,7 @@
 	<display-type ng-model="displayType"></display-type>
 	<select-year ng-model="selected.year"></select-year>
 	<select-month ng-model="selected.month" year="selected.year"></select-month>
-	<select-user ng-model="selected.filter"></select-user>
+	<select-user ng-model="selected.user"></select-user>
 	<chart-type ng-if="displayType" ng-model="selected.chartType"></chart-type>
 	<div ng-if="!displayType" class="form-group pull-right">
 		<span ng-if="page.hasPages(data)">

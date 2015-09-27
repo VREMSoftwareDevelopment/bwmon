@@ -38,28 +38,28 @@ angular.module('BWMonApp.UsageByUser', ['ngRoute'])
 }])
 .directive('userBody', [function() {
 	return {
-		template: '<td>{{current.IP}}</td>'+
-			'<td>{{current.MAC}}</td>'+
-			'<td>{{current.user}}</td>'+
-			'<td class="text-right">{{current.download | usageInGBytes | number:3}}</td>'+
-			'<td class="text-right">{{current.upload | usageInGBytes | number:3}}</td>'+
-			'<td class="text-right">{{current.total | usageInGBytes | number:3}}</td>'+
+		template: '<td>{{::current.IP}}</td>'+
+			'<td>{{::current.MAC}}</td>'+
+			'<td>{{::current.user}}</td>'+
+			'<td class="text-right">{{::current.download | usageInGBytes | number:3}}</td>'+
+			'<td class="text-right">{{::current.upload | usageInGBytes | number:3}}</td>'+
+			'<td class="text-right">{{::current.total | usageInGBytes | number:3}}</td>'+
 			'<td class="text-right">{{(current.total * 100 / total.total) | number:1}}%</td>'+
-			'<td class="text-right">{{current.average | usageInGBytes | number:3}}</td>'+
-			'<td class="text-right">{{current.days}}</td>'+
-			'<td>{{current.firstSeen | timeToDate | date: \'medium\'}}</td>'+
-			'<td>{{current.lastSeen | timeToDate | date: \'medium\'}}</td>'
+			'<td class="text-right">{{::current.average | usageInGBytes | number:3}}</td>'+
+			'<td class="text-right">{{::current.days}}</td>'+
+			'<td>{{::current.firstSeen | timeToDate | date: \'medium\'}}</td>'+
+			'<td>{{::current.lastSeen | timeToDate | date: \'medium\'}}</td>'
 	};
 }])
 .directive('userFooter', [function() {
 	return {
-		template: '<th colspan="3">{{selected.month}} {{selected.year}} Totals</th>'+
-			'<th class="text-right">{{total.download | usageInGBytes | number:3}}</th>'+
-			'<th class="text-right">{{total.upload | usageInGBytes | number:3}}</th>'+
-			'<th class="text-right">{{total.total | usageInGBytes | number:3}}</th>'+
+		template: '<th colspan="3">{{::selected.month}} {{::selected.year}} Totals</th>'+
+			'<th class="text-right">{{::total.download | usageInGBytes | number:3}}</th>'+
+			'<th class="text-right">{{::total.upload | usageInGBytes | number:3}}</th>'+
+			'<th class="text-right">{{::total.total | usageInGBytes | number:3}}</th>'+
 			'<th></th>'+
-			'<th class="text-right">{{total.average | usageInGBytes | number:3}}</th>'+
-			'<th class="text-right">{{total.days}}</th>'+
+			'<th class="text-right">{{::total.average | usageInGBytes | number:3}}</th>'+
+			'<th class="text-right">{{::total.days}}</th>'+
 			'<th></th>'+
 			'<th></th>'
 	};
@@ -95,6 +95,10 @@ angular.module('BWMonApp.UsageByUser', ['ngRoute'])
 			$scope.selected.year = dataService.getYears()[0];
 			$scope.selected.month = dataService.getMonths($scope.selected.year)[0];
 			getUsage($scope.selected);
+		},
+		reset = function() {
+			$scope.selected.user = '';
+			$scope.page.reset();
 		};
 
 	init();
@@ -118,11 +122,11 @@ angular.module('BWMonApp.UsageByUser', ['ngRoute'])
 	$scope.chartOptions.series[0].type = $scope.selected.chartType;
 
 	$scope.$watch('selected.year', function() {
-		$scope.selected.search = '';
+		reset();
 	}, true);
 
 	$scope.$watch('selected.month', function() {
-		$scope.selected.search = '';
+		reset();
 	}, true);
 
 	$scope.$watch('selected.chartType', function() {
@@ -130,7 +134,7 @@ angular.module('BWMonApp.UsageByUser', ['ngRoute'])
 	}, true);
 
 	$scope.$watch('selected', function() {
-		getUsage($scope.selected.year, $scope.selected.month, $scope.selected.filter);
+		getUsage($scope.selected.year, $scope.selected.month, $scope.selected.user);
 	}, true);
 
 
