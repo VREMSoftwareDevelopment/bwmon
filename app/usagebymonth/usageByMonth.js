@@ -34,7 +34,7 @@ angular.module('BWMonApp.UsageByMonth', ['ngRoute'])
 }])
 .directive('monthBody', [function() {
 	return {
-		template: '<td>{{current.id | toMonth}}</td>'+
+		template: '<td>{{::current.id | toMonth}}</td>'+
 			'<td class="text-right">{{::current.download | usageInGBytes | number:3}}</td>'+
 			'<td class="text-right">{{::current.upload | usageInGBytes | number:3}}</td>'+
 			'<td class="text-right">{{::current.total | usageInGBytes | number:3}}</td>'+
