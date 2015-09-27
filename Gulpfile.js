@@ -126,8 +126,8 @@ gulp.task('jshint', function() {
 });
 
 gulp.task('test', ['jshint', 'devhtml'], function(done) { karma(done); });
-gulp.task('test_auto', function(done) { karma(done, {autoWatch: true, singleRun: false}); });
-gulp.task('coverage', function(done) { karma(done, {reporters: ['coverage']}); });
+gulp.task('test_auto', ['jshint', 'devhtml'], function(done) { karma(done, {autoWatch: true, singleRun: false}); });
+gulp.task('coverage', ['jshint', 'devhtml'], function(done) { karma(done, {reporters: ['coverage']}); });
 
 gulp.task('cssmin', function() {
 	return gulp

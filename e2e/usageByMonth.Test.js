@@ -44,7 +44,7 @@ describe('bwmon e2e usage by month', function() {
 		});
 
 		it('should have chart type selected', function() {
-			expect(element(by.model('chartType')).element(by.css('option:checked')).getText())
+			expect(element(by.model('selectedChartType')).element(by.css('option:checked')).getText())
 				.toEqual('column');
 		});
 
