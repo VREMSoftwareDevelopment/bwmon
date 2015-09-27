@@ -3,7 +3,7 @@ describe('BWMonApp Version feature', function() {
 
 	beforeEach(module('BWMonApp.Version'));
 
-	var expected = '2.2.1';
+	var expected = '2.2.2';
 
 	it('should print current version', inject(function(_$compile_, _$rootScope_) {
 		var actual = _$compile_('<span version></span>')(_$rootScope_).text();
