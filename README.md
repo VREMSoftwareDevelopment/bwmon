@@ -45,11 +45,12 @@ A simple shell script designed to run on linux powered routers
 - Build application: `gulp`
 
 ###Gulp tasks:
-- `gulp` - places a fully optimized application (minified, concatenated, and more) in `/dist`
+- `gulp` - places a fully optimized application (production ready) in `/dist`
 - `gulp build`  - same as `gulp`
-- `gulp webserver` - runs a server with sample data on `http://localhost:8080`
-- `gulp unit` - runs local unit tests
-- `gulp unit_auto` - runs local unit tests in continuous integration mode
+- `gulp webserver` - runs a server using production ready application with sample data on `http://localhost:8080`
+- `gulp test` - runs local unit tests
+- `gulp test_auto` - runs local unit tests in continuous integration mode
 - `gulp e2e` - runs local e2e tests
 - `gulp coverage` - creates unit test coverage report in `/logs/PhantomJS...`
+- `gulp devwebserver` - runs a server using development ready application with sample data on `http://localhost:8080/app`
 
