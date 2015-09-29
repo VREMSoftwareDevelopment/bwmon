@@ -19,7 +19,7 @@ describe('bwmon e2e usage by user', function() {
 	});
 
 	it('should have user selected', function() {
-		expect(element(by.model('selected.user')).element(by.tagName('input')).getText())
+		expect(element(by.model('selected.user')).getText())
 			.toEqual('');
 	});
 

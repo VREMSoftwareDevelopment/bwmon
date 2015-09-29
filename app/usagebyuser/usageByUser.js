@@ -21,6 +21,51 @@ angular.module('BWMonApp.UsageByUser', ['ngRoute'])
 		controller: 'UsageByUserController'
 	});
 }])
+.directive('userForm', [function() {
+	return {
+		restrict: 'E',
+		replace: true,
+		template: '<form class="form-inline">'+
+			'	<display-type ng-model="displayType"/></display-type>'+
+			'	<div class="form-group">'+
+			'		<label class="sr-only" for="year">Year</label>'+
+			'		<select-year ng-model="selected.year" class="form-control" name="year"/>'+
+			'	</div>'+
+			'	<div class="form-group">'+
+			'		<label class="sr-only" for="month">Month</label>'+
+			'		<select-month ng-model="selected.month" year="selected.year" class="form-control" name="month"/>'+
+			'	</div>'+
+			'	<div class="form-group">'+
+			'		<label class="sr-only" for="user">Filter by IP, MAC or User</label>'+
+			'		<input ng-model="selected.user" class="form-control" name="user" placeholder="IP, MAC or User"/>'+
+			'	</div>'+
+			'	<div ng-if="displayType" class="form-group">'+
+			'		<label class="sr-only" for="chartType">Chart Type</label>'+
+			'		<chart-type ng-model="selected.chartType" class="form-control" name="chartType"/>'+
+			'	</div>'+
+			'	<div ng-if="!displayType" class="form-group pull-right">'+
+			'		<span ng-if="page.hasPages(data)">'+
+			'			<button id="buttonPrevious" class="btn btn-primary" ng-disabled="!page.hasPrevious()" ng-click="page.previous()">Previous</button>'+
+			'			<span>{{page.current + 1}}/{{page.pages(data)}}</span>'+
+			'			<button id="buttonNext" class="btn btn-primary" ng-disabled="!page.hasNext(data)" ng-click="page.next(data)">Next</button>'+
+			'		</span>'+
+			'	</div>'+
+			'</form>'
+	};
+}])
+.directive('userTable', [function() {
+	return {
+		restrict: 'E',
+		replace: true,
+		template: '<div ng-if="!displayType" class="table-responsive">'+
+			'<table class="table table-striped table-hover table-condensed">'+
+			'<thead><tr user-header></tr></thead>'+
+			'<tbody><tr user-body ng-repeat="current in data | orderBy:predicate: reverse | startFrom: page.startIndex() | limitTo: page.size"></tr></tbody>'+
+			'<tfoot><tr user-footer></tr></tfoot>'+
+			'</table>'+
+			'</div>'
+	};
+}])
 .directive('userHeader', [function() {
 	return {
 		template: '<th><a href="" ng-click="predicate=\'IP\'; reverse=!reverse">IP</a></th>'+

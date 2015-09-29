@@ -21,6 +21,36 @@ angular.module('BWMonApp.UsageByMonth', ['ngRoute'])
 		controller: 'UsageByMonthController'
 	});
 }])
+.directive('monthForm', [function() {
+	return {
+		restrict: 'E',
+		replace: true,
+		template: '<form class="form-inline">'+
+			'	<display-type ng-model="displayType"/></display-type>'+
+			'	<div class="form-group">'+
+			'		<label class="sr-only" for="year">Year</label>'+
+			'		<select-year ng-model="year" class="form-control" name="year"/>'+
+			'	</div>'+
+			'	<div ng-if="displayType" class="form-group">'+
+			'		<label class="sr-only" for="chartType">Chart Type</label>'+
+			'		<chart-type ng-model="chartType" class="form-control" name="chartType"/>'+
+			'	</div>'+
+			'</form>'
+	};
+}])
+.directive('monthTable', [function() {
+	return {
+		restrict: 'E',
+		replace: true,
+		template: '<div ng-if="!displayType" class="table-responsive">'+
+			'<table class="table table-striped table-hover table-condensed">'+
+			'<thead><tr month-header></tr></thead>'+
+			'<tbody><tr month-body ng-repeat="current in data | orderBy:predicate:reverse"></tr></tbody>'+
+			'<tfoot><tr month-footer></tr></tfoot>'+
+			'</table>'+
+			'</div>'
+	};
+}])
 .directive('monthHeader', [function() {
 	return {
 		template: '<th><a href="" ng-click="predicate=\'id\'; reverse=!reverse;">Month</a></th>'+

@@ -21,6 +21,31 @@ angular.module('BWMonApp.UsageByYear', ['ngRoute'])
 		controller: 'UsageByYearController'
 	});
 }])
+.directive('yearForm', [function() {
+	return {
+		restrict: 'E',
+		replace: true,
+		template: '<form class="form-inline">'+
+			'	<display-type ng-model="displayType"/></display-type>'+
+			'	<div ng-if="displayType" class="form-group">'+
+			'		<label class="sr-only" for="chartType">Chart Type</label>'+
+			'		<chart-type ng-model="chartType" class="form-control" name="chartType"/>'+
+			'	</div>'+
+			'</form>'
+	};
+}])
+.directive('yearTable', [function() {
+	return {
+		restrict: 'E',
+		replace: true,
+		template: '<div ng-if="!displayType" class="table-responsive">'+
+			'<table class="table table-striped table-hover table-condensed">'+
+			'<thead><tr year-header></tr></thead>'+
+			'<tbody><tr year-body ng-repeat="current in data | orderBy:predicate:reverse"></tr></tbody>'+
+			'</table>'+
+			'</div>'
+	};
+}])
 .directive('yearHeader', [function() {
 	return {
 		template: '<th><a href="" ng-click="predicate=\'id\'; reverse=!reverse;">Year</a></th>'+
