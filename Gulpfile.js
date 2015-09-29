@@ -198,11 +198,6 @@ gulp.task('e2e', ['webdriverUpdate', 'webserver'], function() {
 		.pipe(plugins.protractor.protractor({configFile: __dirname+'/config/protractor.conf.js'}));
 });
 
-gulp.task('clean', function() {
-	del(files.templates.dest+'/'+files.templates.name);
-	return del(dstdir);
-});
-
 gulp.task('build', ['e2e'], function() {
 	plugins.connect.serverClose();
 	return del(files.js.dest+'/'+files.js.temp);
@@ -215,6 +210,9 @@ gulp.task('watch', function() {
 
 gulp.task('default', ['build']);
 
+/*
+ * Development Web Server for manual testing
+ */
 gulp.task('devwebserver', ['devhtml'], function() {
 	plugins.connect.server({
 		root: srcdir+'/..',
@@ -223,6 +221,9 @@ gulp.task('devwebserver', ['devhtml'], function() {
 	});
 });
 
+/*
+ * Release Management: Version, Git and Release
+ */
 gulp.task('version:patch', function() { return version('patch'); });
 gulp.task('version:minor', function() { return version('minor'); });
 gulp.task('version:major', function() { return version('major'); });
@@ -245,3 +246,8 @@ gulp.task('release', ['release:clean'], function() {
 		.pipe(plugins.gzip({gzipOptions: {level: 9}}))
 		.pipe(gulp.dest(files.release.dest));
 });
+
+/*
+ * Clean
+ */
+gulp.task('clean', ['uglify:clean', 'templates:clean', 'html:clean', 'devhtml:clean']);
