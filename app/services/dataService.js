@@ -120,11 +120,14 @@ angular.module('BWMonApp.DataService', [])
 				usageData = data.slice().reverse();
 			}
 			chartData = _.map(usageData, function(entry, key) {
-				return {
+				var result = {
 					x: key,
 					id: entry.id,
 					total: round(entry.total)
 				};
+				if (entry.IP) {result.IP = entry.IP;}
+				if (entry.user) {result.user = entry.user;}
+				return result;
 			});
 			return chartData;
 		},

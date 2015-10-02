@@ -139,7 +139,7 @@ angular.module('BWMonApp.UsageByUser', ['ngRoute'])
 		$scope.chartOptions = chartService.getChartOptions($scope.chartData, chartService.getUserLabel, chartService.getUserTooltip);
 	}, true);
 
-	$scope.$watch('chart.chartType', function() {
+	$scope.$watch('selected.chartType', function() {
 		$scope.chartOptions.series[0].type = $scope.selected.chartType;
 	}, true);
 

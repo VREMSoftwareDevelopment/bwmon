@@ -136,12 +136,12 @@ describe('BWMonApp.services dataService', function() {
 
 	it('should return chart usage by user', function() {
 		var expected = [
-				{x: 0, id: 38, total: 7.651},
-				{x: 1, id: 37, total: 2.981},
-				{x: 2, id: 34, total: 0.239},
-				{x: 3, id: 36, total: 0.678},
-				{x: 4, id: 39, total: 0.001},
-				{x: 5, id: 35, total: 0.065}
+				{x: 0, id: 38, total: 7.651, IP: "192.168.1.10", user: "COMPUTER-3"},
+				{x: 1, id: 37, total: 2.981, IP: "192.168.1.12", user: "COMPUTER-5"},
+				{x: 2, id: 34, total: 0.239, IP: "192.168.1.14", user: "COMPUTER-1"},
+				{x: 3, id: 36, total: 0.678, IP: "192.168.1.15", user: "COMPUTER-9"},
+				{x: 4, id: 39, total: 0.001, IP: "192.168.1.21", user: "COMPUTER-2"},
+				{x: 5, id: 35, total: 0.065, IP: "192.168.1.24", user: "COMPUTER-4"}
 			],
 			actual = dataService.getUsageByUser(2011, 'November').chartData;
 
