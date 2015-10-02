@@ -67,18 +67,18 @@ describe('BWMonApp UsageByMonth feature', function() {
 		expect(dataService.getUsageByMonth).toHaveBeenCalledWith(scope.selected.year);
 	});
 
-	it('should update chart options with chart options from ChartService', inject(function() {
+	it('should update chart options with chart options from ChartService', function() {
 		scope.selected.year = 1;
 		scope.$digest();
 		expect(scope.chartOptions).toEqual(chartOptions);
-		expect(chartService.getChartOptions).toHaveBeenCalled();
-	}));
+		expect(chartService.getChartOptions).toHaveBeenCalledWith(scope.chartData, chartService.getMonthLabel, chartService.getMonthLabel);
+	});
 
-	it('should change chart type in chart options', inject(function() {
+	it('should change chart type in chart options', function() {
 		scope.selected.chartType = 'test';
 		scope.$digest();
 		expect(scope.chartOptions.series[0].type).toEqual(scope.selected.chartType);
-	}));
+	});
 
 	it('should have monthForm template', function() {
 		var template = '<div><month-form></month-form></div>',

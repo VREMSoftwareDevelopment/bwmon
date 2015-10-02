@@ -2,21 +2,28 @@ describe('BWMonApp UsageByUser feature', function() {
 	'use strict';
 
 	var scope,
-		page = {},
-		years = [10, 5, 1],
-		months = ['Jan', 'Mar', 'Jun'],
-		data = {
-			usage: {
-				1:	{
-					IP: 'IP-address',
-					user: 'user-name',
-				}
-			},
-			total: 10
+		compile,
+		page = {
+			reset: function() {}
 		},
-		chartData = data.usage,
-		chartSeries = [{key:1}],
-		chartTypes = ['x'],
+		months = ['Jan', 'Mar', 'Jun'],
+		usageData = {
+			data: {
+				usage: {
+					1:	{
+						IP: 'IP-address',
+						user: 'user-name',
+					}
+				},
+				total: 10
+			},
+			chartData: 23
+		},
+		chartOptions = {
+				series: [{
+					type: 'type'
+				}]
+			},
 		chartService,
 		dataService,
 		pagingService;
@@ -25,21 +32,21 @@ describe('BWMonApp UsageByUser feature', function() {
 	beforeEach(module('BWMonApp.DataService'));
 	beforeEach(module('BWMonApp.PagingService'));
 	beforeEach(module('BWMonApp.UsageByUser'));
+	beforeEach(module('BWMonApp.Filters'));
 
-	beforeEach(inject(function(_$rootScope_, $controller, _dataService_, _pagingService_, _chartService_){
+	beforeEach(inject(function(_$compile_, _$rootScope_, $controller, _dataService_, _pagingService_, _chartService_){
+		compile = _$compile_;
 		scope = _$rootScope_.$new();
 
 		dataService = _dataService_;
-		spyOn(dataService, 'getYears').and.returnValue(years);
 		spyOn(dataService, 'getMonths').and.returnValue(months);
-		spyOn(dataService, 'getUsageByUser').and.returnValue({data: data, chartData: chartData});
+		spyOn(dataService, 'getUsageByUser').and.returnValue(usageData);
 
 		pagingService = _pagingService_;
 		spyOn(pagingService, 'getPaging').and.returnValue(page);
 
 		chartService = _chartService_;
-		spyOn(chartService, 'getChartSeries').and.returnValue(chartSeries);
-		spyOn(chartService, 'getChartTypes').and.returnValue(chartTypes);
+		spyOn(chartService, 'getChartOptions').and.returnValue(chartOptions);
 
 		$controller('UsageByUserController', {
 			$scope: scope,
@@ -55,58 +62,68 @@ describe('BWMonApp UsageByUser feature', function() {
 		expect(route.templateUrl).toBe('usagebyuser/usageByUser.tpl.html');
 	}));
 
-	it('should default year be first element of dataService.getYears', function() {
-		expect(scope.selected.year).toEqual(years[0]);
-		expect(dataService.getYears).toHaveBeenCalled();
-	});
-
-	it('should default month be first element of dataService.getMonths', function() {
-		expect(scope.selected.month).toEqual(months[0]);
-		expect(dataService.getMonths).toHaveBeenCalledWith(years[0]);
-	});
-
-	it('should default data be from dataService.getUsageByUser', function() {
-		expect(scope.data).toEqual(data.usage);
-		expect(dataService.getUsageByUser).toHaveBeenCalled();
-	});
-
-	it('should update total with getUsageByUser', function() {
-		expect(scope.total).toEqual(data.total);
-	});
-
-	it('should update chart data with getUsageByUser', function() {
-		expect(scope.chartData).toEqual(chartData);
-	});
-
-	it('should update graph options with chart series from ChartService', function() {
-		expect(scope.chartOptions.series).toEqual(chartSeries);
-	});
-
-	it('should update graph options series type with first chart type from ChartService', function() {
-		expect(scope.chartOptions.series[0].type).toEqual(chartTypes[0]);
-	});
-
-	it('should update selected chart type with first chart type from ChartService', function() {
-		expect(scope.selected.chartType).toEqual(chartTypes[0]);
-	});
-
-	it('should update graph options with non empty label - x axes', function() {
-		expect(scope.chartOptions.axes.x.labelFunction(1)).toEqual('IP-address');
-	});
-
-	it('should update graph options with empty label - x axes', function() {
-		expect(scope.chartOptions.axes.x.labelFunction(1.1)).toEqual('');
-	});
-
-	it('should update graph options with non empty tootltip - x axes', function() {
-		expect(scope.chartOptions.axes.x.tooltipFormatter(1)).toEqual('user-name');
-	});
-
-	it('should update graph options with empty tootltip - x axes', function() {
-		expect(scope.chartOptions.axes.x.tooltipFormatter(1.1)).toEqual('');
-	});
-
 	it('should update page with page from PageService', function() {
 		expect(scope.page).toEqual(page);
+		expect(pagingService.getPaging).toHaveBeenCalled();
 	});
+
+	it('should reset selected user and get new default month when selected year changes', function() {
+		scope.selected.year = 'year';
+		expect(scope.selected.user).toBeUndefined();
+		scope.$digest();
+		expect(scope.selected.user).toBe('');
+		expect(dataService.getMonths).toHaveBeenCalledWith(scope.selected.year);
+	});
+
+	it('should reset selected user when selected month changes', function() {
+		scope.selected.month = 'month';
+		expect(scope.selected.user).toBeUndefined();
+		scope.$digest();
+		expect(scope.selected.user).toBe('');
+	});
+
+	it('should get new usage data when any attribute in selected object changes', function() {
+		scope.selected.myTest = 'myTest';
+		scope.$digest();
+		expect(dataService.getUsageByUser).toHaveBeenCalledWith(scope.selected.year, scope.selected.month, scope.selected.user);
+		expect(scope.data).toEqual(usageData.data.usage);
+		expect(scope.total).toEqual(usageData.data.total);
+		expect(scope.chartData).toEqual(usageData.chartData);
+		expect(chartService.getChartOptions).toHaveBeenCalledWith(scope.chartData, chartService.getUserLabel, chartService.getUserTooltip);
+	});
+
+	it('should change chart type in chart options', function() {
+		scope.selected.chartType = 'test';
+		scope.$digest();
+		expect(scope.chartOptions.series[0].type).toEqual(scope.selected.chartType);
+	});
+
+	it('should have userForm template', function() {
+		var template = '<div><user-form></user-form></div>',
+			element = compile(template)(scope);
+		scope.$digest();
+		expect(element).toBeDefined();
+	});
+
+	it('should have userHeader template', function() {
+		var template = '<div><user-header></user-header></div>',
+			element = compile(template)(scope);
+		scope.$digest();
+		expect(element).toBeDefined();
+	});
+
+	it('should have userBody template', function() {
+		var template = '<div><user-body></user-body></div>',
+			element = compile(template)(scope);
+		scope.$digest();
+		expect(element).toBeDefined();
+	});
+
+	it('should have userFooter template', function() {
+		var template = '<div><user-footer></user-footer></div>',
+			element = compile(template)(scope);
+		scope.$digest();
+		expect(element).toBeDefined();
+	});
+
 });

@@ -17,24 +17,38 @@ angular.module('BWMonApp.ChartService', [])
 .factory('chartService', function() {
 	'use strict';
 
-	var _getLabel = function(value, data) {
+	var _getYearLabel = function(value, data) {
 			var result = '';
 			if (value % 1 === 0 && typeof data[value] !== 'undefined' && data[value] !== null) {
 				result = data[value].id;
 			}
 			return result;
 		},
+		_getMonthLabel = function(value) {
+			var result = '';
+			if (value % 1 === 0 && value >= 0 && value <= 11) {
+				result = moment({month: value}).format("MMMM");
+			}
+			return result;
+		},
+		_getUserLabel = function(value, data) {
+			var result = '';
+			if (value % 1 === 0 && typeof data[value] !== 'undefined' && data[value] !== null) {
+				result = data[value].IP;
+			}
+			return result;
+		},
+		_getUserTooltip = function(value, data) {
+			var result = '';
+			if (value % 1 === 0 && typeof data[value] !== 'undefined' && data[value] !== null) {
+				result = data[value].user;
+			}
+			return result;
+		},
 		_getChartTypes = function() {
 			return ['column', 'line', 'area'];
 		},
-		_getChartSeries = function() {
-			return [{
-				y: 'total',
-				color: '#3366CC',
-				label: 'GBytes'
-			}];
-		},
-		_getChartOptions = function(chartData) {
+		_getChartOptions = function(chartData, getLabel, getTooltip) {
 			return {
 				series: [{
 					y: 'total',
@@ -45,10 +59,10 @@ angular.module('BWMonApp.ChartService', [])
 				axes: {
 					x: {
 						labelFunction: function(value) {
-							return _getLabel(value, chartData);
+							return getLabel(value, chartData);
 						},
 						tooltipFormatter: function(value) {
-							return _getLabel(value, chartData);
+							return getTooltip(value, chartData);
 						}
 					}
 				}
@@ -56,8 +70,11 @@ angular.module('BWMonApp.ChartService', [])
 		};
 
 	return {
+		getYearLabel: _getYearLabel,
+		getMonthLabel: _getMonthLabel,
+		getUserLabel: _getUserLabel,
+		getUserTooltip: _getUserTooltip,
 		getChartTypes: _getChartTypes,
-		getChartSeries: _getChartSeries,
 		getChartOptions: _getChartOptions
 	};
 });

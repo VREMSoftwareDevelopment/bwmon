@@ -2,39 +2,57 @@ describe('BWMonApp.services chartService', function() {
 	'use strict';
 
 	var chartService,
-		data = [{id: 11}];
+		data = [{
+			id: 11,
+			IP: 5,
+			user: 'user'
+		}];
 
 	beforeEach(module('BWMonApp.ChartService'));
 	beforeEach(inject(function(_chartService_){
 		chartService =_chartService_;
 	}));
 
-	it('should have all options in chart series', function(){
-		expect(chartService.getChartSeries()).toEqual([{color: '#3366CC', label: 'GBytes', y: 'total'}]);
-	});
-
 	it('should have all choices in chart types', function(){
 		expect(chartService.getChartTypes()).toEqual(['column', 'line', 'area']);
 	});
 
-	it('should update graph options with chart series from ChartService', inject(function() {
+	it('should update graph options with chart series from ChartService', function() {
 		expect(chartService.getChartOptions(data).series).toEqual([{y: 'total', color: '#3366CC', label: 'GBytes', type: 'column'}]);
-	}));
+	});
 
-	it('should update graph options with non empty label - x axes', inject(function() {
-		expect(chartService.getChartOptions(data).axes.x.labelFunction(0)).toEqual(data[0].id);
-	}));
+	it('should return id from data using valid year', function() {
+		expect(chartService.getYearLabel(0, data)).toEqual(data[0].id);
+	});
 
-	it('should update graph options with empty label - x axes', inject(function() {
-		expect(chartService.getChartOptions(data).axes.x.labelFunction(1.1)).toEqual('');
-	}));
+	it('should return empty label from data using invalid year', function() {
+		expect(chartService.getYearLabel(1, data)).toEqual('');
+	});
 
-	it('should update graph options with non empty tootltip - x axes', inject(function() {
-		expect(chartService.getChartOptions(data).axes.x.tooltipFormatter(0)).toEqual(data[0].id);
-	}));
+	it('should return month from using valid month', function() {
+		expect(chartService.getMonthLabel(0)).toEqual('January');
+		expect(chartService.getMonthLabel(11)).toEqual('December');
+	});
 
-	it('should update graph options with empty tootltip - x axes', inject(function() {
-		expect(chartService.getChartOptions(data).axes.x.tooltipFormatter(1.1)).toEqual('');
-	}));
+	it('should return empty label using invalid month', function() {
+		expect(chartService.getYearLabel(-1, data)).toEqual('');
+		expect(chartService.getYearLabel(12, data)).toEqual('');
+	});
+
+	it('should return IP label from data using valid user', function() {
+		expect(chartService.getUserLabel(0, data)).toEqual(data[0].IP);
+	});
+
+	it('should return empty label from data using invalid user', function() {
+		expect(chartService.getUserLabel(1, data)).toEqual('');
+	});
+
+	it('should return user tooltip label from data using valid user', function() {
+		expect(chartService.getUserTooltip(0, data)).toEqual(data[0].user);
+	});
+
+	it('should return empty tooltip from data using invalid user', function() {
+		expect(chartService.getUserTooltip(1, data)).toEqual('');
+	});
 
 });

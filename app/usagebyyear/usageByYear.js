@@ -76,7 +76,7 @@ angular.module('BWMonApp.UsageByYear', ['ngRoute'])
 	$scope.reverse = true;
 	$scope.data = usageData.data;
 	$scope.chartData = usageData.chartData;
-	$scope.chartOptions = chartService.getChartOptions($scope.chartData);
+	$scope.chartOptions = chartService.getChartOptions($scope.chartData, chartService.getYearLabel, chartService.getYearLabel);
 
 	$scope.$watch('selected.chartType', function() {
 		$scope.chartOptions.series[0].type = $scope.selected.chartType;

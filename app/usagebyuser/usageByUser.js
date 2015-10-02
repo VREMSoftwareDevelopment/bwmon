@@ -112,74 +112,35 @@ angular.module('BWMonApp.UsageByUser', ['ngRoute'])
 .controller('UsageByUserController', ['$scope', 'dataService', 'pagingService', 'chartService', function($scope, dataService, pagingService, chartService) {
 	'use strict';
 
-	var getLabel = function(value, data) {
-			var result = '';
-			if (value % 1 === 0 && typeof data[value] !== 'undefined' && data[value] !== null) {
-				result = data[value].IP;
-			}
-			return result;
-		},
-		getTooltip = function(value, data) {
-			var result = '';
-			if (value % 1 === 0 && typeof data[value] !== 'undefined' && data[value] !== null) {
-				result = data[value].user;
-			}
-			return result;
-		},
-		getUsage = function(year, month, filter) {
-			var usageData = dataService.getUsageByUser(year, month, filter);
-			$scope.data = usageData.data.usage;
-			$scope.total = usageData.data.total;
-			$scope.chartData = usageData.chartData;
-		},
-		init = function() {
-			$scope.selected = {};
-			$scope.predicate = 'IP';
-			$scope.reverse = false;
-
-			$scope.selected.year = dataService.getYears()[0];
-			$scope.selected.month = dataService.getMonths($scope.selected.year)[0];
-			getUsage($scope.selected);
-		},
-		reset = function() {
+	var reset = function() {
 			$scope.selected.user = '';
 			$scope.page.reset();
 		};
 
-	init();
-
+	$scope.selected = {};
+	$scope.predicate = 'IP';
+	$scope.reverse = false;
 	$scope.page = pagingService.getPaging();
-
-	$scope.selected.chartType = chartService.getChartTypes()[0];
-	$scope.chartOptions = {
-		series: chartService.getChartSeries(),
-		axes: {
-			x: {
-				labelFunction: function(value) {
-					return getLabel(value, $scope.data);
-				},
-				tooltipFormatter: function(value) {
-					return getTooltip(value, $scope.data);
-				}
-			}
-		}
-	};
-	$scope.chartOptions.series[0].type = $scope.selected.chartType;
 
 	$scope.$watch('selected.year', function() {
 		reset();
+		$scope.selected.month = dataService.getMonths($scope.selected.year)[0];
 	}, true);
 
 	$scope.$watch('selected.month', function() {
 		reset();
 	}, true);
 
-	$scope.$watch('selected.chartType', function() {
-		$scope.chartOptions.series[0].type = $scope.selected.chartType;
+	$scope.$watch('selected', function() {
+		var usageData = dataService.getUsageByUser($scope.selected.year, $scope.selected.month, $scope.selected.user);
+		$scope.data = usageData.data.usage;
+		$scope.total = usageData.data.total;
+		$scope.chartData = usageData.chartData;
+		$scope.chartOptions = chartService.getChartOptions($scope.chartData, chartService.getUserLabel, chartService.getUserTooltip);
 	}, true);
 
-	$scope.$watch('selected', function() {
-		getUsage($scope.selected.year, $scope.selected.month, $scope.selected.user);
+	$scope.$watch('chart.chartType', function() {
+		$scope.chartOptions.series[0].type = $scope.selected.chartType;
 	}, true);
 
 

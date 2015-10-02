@@ -87,16 +87,18 @@ angular.module('BWMonApp.UsageByMonth', ['ngRoute'])
 .controller('UsageByMonthController', ['$scope', 'dataService', 'chartService', function($scope, dataService, chartService) {
 	'use strict';
 
+
 	$scope.selected = {};
 	$scope.predicate = 'id';
 	$scope.reverse = true;
 
 	$scope.$watch('selected.year', function() {
 		var usageData = dataService.getUsageByMonth($scope.selected.year);
+
 		$scope.data = usageData.data.usage;
 		$scope.total = usageData.data.total;
 		$scope.chartData = usageData.chartData;
-		$scope.chartOptions = chartService.getChartOptions($scope.chartData);
+		$scope.chartOptions = chartService.getChartOptions($scope.chartData, chartService.getMonthLabel, chartService.getMonthLabel);
 	}, true);
 
 	$scope.$watch('selected.chartType', function() {
