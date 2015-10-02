@@ -13,8 +13,8 @@ var gulp = require('gulp'),
 	dataname = pkg.name+'Usage.js',
 
 	files = {
-		data: {
-			src: [srcdir+'/'+dataname],
+		other: {
+			src: [srcdir+'/'+dataname, srcdir+'/favicon.ico'],
 			dest: dstdir
 		},
 		js: {
@@ -80,7 +80,7 @@ var gulp = require('gulp'),
 	karma = function(done, config) {
 		var Server = require('karma').Server,
 			defaults = {
-				files: [].concat(files.js.libs, files.test.libs, files.js.src, files.data.src, files.test.excludes, files.templates.src),
+				files: [].concat(files.js.libs, files.test.libs, files.js.src, files.test.excludes, files.templates.src),
 				configFile: __dirname+'/config/karma.conf.js',
 			},
 			parameters = extend(defaults, config);
@@ -117,7 +117,7 @@ gulp.task('devhtml', ['devhtml:clean'], function() {
 });
 
 gulp.task('jshint', function() {
-	var src = [].concat(files.js.src, files.e2e.src, files.data.src, files.js.excludes);
+	var src = [].concat(files.js.src, files.e2e.src, files.js.excludes);
 	return gulp
 		.src(src)
 		.pipe(plugins.jshint())
@@ -177,13 +177,13 @@ gulp.task('html', ['html:clean'], function() {
 		.pipe(gulp.dest(files.html.prod.dest));
 });
 
-gulp.task('data', function() {
+gulp.task('other', function() {
 	return gulp
-		.src(files.data.src)
-		.pipe(gulp.dest(files.data.dest));
+		.src(files.other.src)
+		.pipe(gulp.dest(files.other.dest));
 });
 
-gulp.task('webserver', ['jslibs', 'uglify', 'csslibs', 'cssmin', 'html', 'data', ], function() {
+gulp.task('webserver', ['jslibs', 'uglify', 'csslibs', 'cssmin', 'html', 'other', ], function() {
 	plugins.connect.server({
 		root: dstdir,
 		port: 8080
@@ -204,7 +204,7 @@ gulp.task('build', ['e2e'], function() {
 });
 
 gulp.task('watch', function() {
-	var src = [].concat(files.main.src, files.test.src, files.e2e.src, files.data.src);
+	var src = [].concat(files.main.src, files.test.src, files.e2e.src);
 	gulp.watch(src, ['jshint']);
 });
 
