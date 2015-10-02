@@ -9,7 +9,7 @@ describe('bwmon e2e usage by month', function() {
 	});
 
 	it('should have year selected', function() {
-		expect(element(by.model('year')).element(by.css('option:checked')).getText())
+		expect(element(by.model('selected.year')).element(by.css('option:checked')).getText())
 			.toEqual('2013');
 	});
 
@@ -44,7 +44,7 @@ describe('bwmon e2e usage by month', function() {
 		});
 
 		it('should have chart type selected', function() {
-			expect(element(by.model('chartType')).element(by.css('option:checked')).getText())
+			expect(element(by.model('selected.chartType')).element(by.css('option:checked')).getText())
 				.toEqual('column');
 		});
 

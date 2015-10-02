@@ -29,11 +29,11 @@ angular.module('BWMonApp.UsageByMonth', ['ngRoute'])
 			'	<display-type ng-model="displayType"/></display-type>'+
 			'	<div class="form-group">'+
 			'		<label class="sr-only" for="year">Year</label>'+
-			'		<select-year ng-model="year" class="form-control" name="year"/>'+
+			'		<select-year ng-model="selected.year" class="form-control" name="year"/>'+
 			'	</div>'+
 			'	<div ng-if="displayType" class="form-group">'+
 			'		<label class="sr-only" for="chartType">Chart Type</label>'+
-			'		<chart-type ng-model="chartType" class="form-control" name="chartType"/>'+
+			'		<chart-type ng-model="selected.chartType" class="form-control" name="chartType"/>'+
 			'	</div>'+
 			'</form>'
 	};
@@ -75,7 +75,7 @@ angular.module('BWMonApp.UsageByMonth', ['ngRoute'])
 }])
 .directive('monthFooter', [function() {
 	return {
-		template: '<th>{{year}} Totals</th>'+
+		template: '<th>{{selected.year}} Totals</th>'+
 			'<th class="text-right">{{::total.download | usageInGBytes | number:3}}</th>'+
 			'<th class="text-right">{{::total.upload | usageInGBytes | number:3}}</th>'+
 			'<th class="text-right">{{::total.total | usageInGBytes | number:3}}</th>'+
@@ -87,52 +87,20 @@ angular.module('BWMonApp.UsageByMonth', ['ngRoute'])
 .controller('UsageByMonthController', ['$scope', 'dataService', 'chartService', function($scope, dataService, chartService) {
 	'use strict';
 
-	var getLabel = function(value) {
-			var result = '';
-			if (value % 1 === 0 && value >= 0 && value <= 11) {
-				result = moment({month: value}).format("MMMM");
-			}
-			return result;
-		},
-		init = function() {
-			var usageData;
+	$scope.selected = {};
+	$scope.predicate = 'id';
+	$scope.reverse = true;
 
-			$scope.year = dataService.getYears()[0];
-			usageData = dataService.getUsageByMonth($scope.year);
-			$scope.data = usageData.data.usage;
-			$scope.total = usageData.data.total;
-			$scope.chartData = usageData.chartData;
-			$scope.predicate = 'id';
-			$scope.reverse = true;
-		};
-
-	init();
-
-	$scope.chartType = chartService.getChartTypes()[0];
-	$scope.chartOptions = {
-		series: chartService.getChartSeries(),
-		axes: {
-			x: {
-				labelFunction: function(value) {
-					return getLabel(value, $scope.chartData);
-				},
-				tooltipFormatter: function(value) {
-					return getLabel(value, $scope.chartData);
-				}
-			}
-		}
-	};
-	$scope.chartOptions.series[0].type = $scope.chartType;
-
-	$scope.$watch('year', function() {
-		var usageData = dataService.getUsageByMonth($scope.year);
+	$scope.$watch('selected.year', function() {
+		var usageData = dataService.getUsageByMonth($scope.selected.year);
 		$scope.data = usageData.data.usage;
 		$scope.total = usageData.data.total;
 		$scope.chartData = usageData.chartData;
+		$scope.chartOptions = chartService.getChartOptions($scope.chartData);
 	}, true);
 
-	$scope.$watch('chartType', function() {
-		$scope.chartOptions.series[0].type = $scope.chartType;
+	$scope.$watch('selected.chartType', function() {
+		$scope.chartOptions.series[0].type = $scope.selected.chartType;
 	}, true);
 
 }]);

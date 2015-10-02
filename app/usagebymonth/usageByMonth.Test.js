@@ -2,33 +2,36 @@ describe('BWMonApp UsageByMonth feature', function() {
 	'use strict';
 
 	var scope,
-		years = [10, 5, 6],
-		data = {
-			usage: 5,
-			total: 10
+		compile,
+		usageData = {
+			data: {
+				usage: 5,
+				total: 10
+			},
+			chartData: 23
 		},
-		chartSeries = [{key:1}],
-		chartTypes = ['x'],
+		chartOptions = {
+			series: [{
+				type: 'type'
+			}]
+		},
 		chartService,
-		chartData = [],
 		dataService;
 
 	beforeEach(module('BWMonApp.DataService'));
 	beforeEach(module('BWMonApp.ChartService'));
 	beforeEach(module('BWMonApp.UsageByMonth'));
+	beforeEach(module('BWMonApp.Filters'));
 
-	beforeEach(inject(function(_$rootScope_, _$controller_, _dataService_, _chartService_){
+	beforeEach(inject(function(_$compile_, _$rootScope_, _$controller_, _dataService_, _chartService_){
+		compile = _$compile_;
 		scope = _$rootScope_.$new();
-		scope.chartSeries = [];
-		spyOn(scope, '$watch');
 
 		dataService = _dataService_;
-		spyOn(dataService, 'getYears').and.returnValue(years);
-		spyOn(dataService, 'getUsageByMonth').and.returnValue({data: data, chartData: chartData});
+		spyOn(dataService, 'getUsageByMonth').and.returnValue(usageData);
 
 		chartService = _chartService_;
-		spyOn(chartService, 'getChartSeries').and.returnValue(chartSeries);
-		spyOn(chartService, 'getChartTypes').and.returnValue(chartTypes);
+		spyOn(chartService, 'getChartOptions').and.returnValue(chartOptions);
 
 		_$controller_('UsageByMonthController', {
 			$scope: scope,
@@ -43,50 +46,72 @@ describe('BWMonApp UsageByMonth feature', function() {
 		expect(route.templateUrl).toBe('usagebymonth/usageByMonth.tpl.html');
 	}));
 
-	it('should update year with getYears first element', function() {
-		expect(scope.year).toEqual(years[0]);
-		expect(dataService.getYears).toHaveBeenCalled();
-	});
-
 	it('should update data with getUsageByMonth', function() {
-		expect(scope.data).toEqual(data.usage);
-		expect(dataService.getUsageByMonth).toHaveBeenCalled();
+		scope.selected.year = 1;
+		scope.$digest();
+		expect(scope.data).toEqual(usageData.data.usage);
+		expect(dataService.getUsageByMonth).toHaveBeenCalledWith(scope.selected.year);
 	});
 
 	it('should update total with getUsageByMonth', function() {
-		expect(scope.total).toEqual(data.total);
+		scope.selected.year = 1;
+		scope.$digest();
+		expect(scope.total).toEqual(usageData.data.total);
+		expect(dataService.getUsageByMonth).toHaveBeenCalledWith(scope.selected.year);
 	});
 
 	it('should update chart data with getUsageByMonth', function() {
-		expect(scope.chartData).toEqual([]);
+		scope.selected.year = 1;
+		scope.$digest();
+		expect(scope.chartData).toEqual(usageData.chartData);
+		expect(dataService.getUsageByMonth).toHaveBeenCalledWith(scope.selected.year);
 	});
 
-	it('should update graph options with chart series from ChartService', function() {
-		expect(scope.chartOptions.series).toEqual(chartSeries);
+	it('should update chart options with chart options from ChartService', inject(function() {
+		scope.selected.year = 1;
+		scope.$digest();
+		expect(scope.chartOptions).toEqual(chartOptions);
+		expect(chartService.getChartOptions).toHaveBeenCalled();
+	}));
+
+	it('should change chart type in chart options', inject(function() {
+		scope.selected.chartType = 'test';
+		scope.$digest();
+		expect(scope.chartOptions.series[0].type).toEqual(scope.selected.chartType);
+	}));
+
+	it('should have monthForm template', function() {
+		var template = '<div><month-form></month-form></div>',
+			element = compile(template)(scope);
+		scope.$digest();
+		expect(element).toBeDefined();
 	});
 
-	it('should update graph options series type with first chart type from ChartService', function() {
-		expect(scope.chartOptions.series[0].type).toEqual(chartTypes[0]);
+	it('should have monthTable template', function() {
+		var template = '<div><month-table></month-table></div>',
+			element = compile(template)(scope);
+		scope.$digest();
+		expect(element).toBeDefined();
 	});
 
-	it('should update chart type with first chart type from ChartService', function() {
-		expect(scope.chartType).toEqual(chartTypes[0]);
+	it('should have monthHeader template', function() {
+		var template = '<div><month-header></month-header></div>',
+			element = compile(template)(scope);
+		scope.$digest();
+		expect(element).toBeDefined();
 	});
 
-	it('should update graph options with non empty label - x axes', function() {
-		expect(scope.chartOptions.axes.x.labelFunction(1)).toEqual('February');
+	it('should have monthBody template', function() {
+		var template = '<div><month-body></month-body></div>',
+			element = compile(template)(scope);
+		scope.$digest();
+		expect(element).toBeDefined();
 	});
 
-	it('should update graph options with empty label - x axes', function() {
-		expect(scope.chartOptions.axes.x.labelFunction(1.1)).toEqual('');
+	it('should have monthFooter template', function() {
+		var template = '<div><month-footer></month-footer></div>',
+			element = compile(template)(scope);
+		scope.$digest();
+		expect(element).toBeDefined();
 	});
-
-	it('should update graph options with non empty tootltip - x axes', function() {
-		expect(scope.chartOptions.axes.x.tooltipFormatter(1)).toEqual('February');
-	});
-
-	it('should update graph options with empty tootltip - x axes', function() {
-		expect(scope.chartOptions.axes.x.tooltipFormatter(1.1)).toEqual('');
-	});
-
 });

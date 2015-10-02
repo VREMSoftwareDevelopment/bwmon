@@ -21,8 +21,6 @@ describe('BWMonApp UsageByYear feature', function() {
 		compile = _$compile_;
 		scope = $rootScope.$new();
 
-		scope.chartSeries = [];
-
 		dataService = _dataService_;
 		spyOn(dataService, 'getUsageByYear').and.returnValue({data: data, chartData: {1: data}});
 
@@ -51,9 +49,15 @@ describe('BWMonApp UsageByYear feature', function() {
 		expect(scope.chartData).toEqual({1:data});
 	}));
 
-	it('should update chart options with chart options  from ChartService', inject(function() {
+	it('should update chart options with chart options from ChartService', inject(function() {
 		expect(scope.chartOptions).toEqual(chartOptions);
 		expect(chartService.getChartOptions).toHaveBeenCalled();
+	}));
+
+	it('should change chart type in chart options', inject(function() {
+		scope.selected.chartType = 'test';
+		scope.$digest();
+		expect(scope.chartOptions.series[0].type).toEqual(scope.selected.chartType);
 	}));
 
 	it('should have yearForm template', function() {
