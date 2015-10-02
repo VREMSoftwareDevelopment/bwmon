@@ -29,7 +29,7 @@ angular.module('BWMonApp.UsageByYear', ['ngRoute'])
 			'	<display-type ng-model="displayType"/></display-type>'+
 			'	<div ng-if="displayType" class="form-group">'+
 			'		<label class="sr-only" for="chartType">Chart Type</label>'+
-			'		<chart-type ng-model="chartType" class="form-control" name="chartType"/>'+
+			'		<chart-type ng-model="selected.chartType" class="form-control" name="chartType"/>'+
 			'	</div>'+
 			'</form>'
 	};
@@ -69,39 +69,17 @@ angular.module('BWMonApp.UsageByYear', ['ngRoute'])
 .controller('UsageByYearController', ['$scope', 'dataService', 'chartService', function($scope, dataService, chartService) {
 	'use strict';
 
-	var getLabel = function(value, data) {
-			var result = '';
-			if (value % 1 === 0 && typeof data[value] !== 'undefined' && data[value] !== null) {
-				result = data[value].id;
-			}
-			return result;
-		},
-		usageData = dataService.getUsageByYear();
+	var usageData = dataService.getUsageByYear();
 
-	$scope.data = usageData.data;
-	$scope.chartData = usageData.chartData;
-
-	$scope.chartType = chartService.getChartTypes()[0];
-	$scope.chartOptions = {
-		series: chartService.getChartSeries(),
-		axes: {
-			x: {
-				labelFunction: function(value) {
-					return getLabel(value, $scope.chartData);
-				},
-				tooltipFormatter: function(value) {
-					return getLabel(value, $scope.chartData);
-				}
-			}
-		}
-	};
-	$scope.chartOptions.series[0].type = $scope.chartType;
-
+	$scope.selected = {};
 	$scope.predicate = 'id';
 	$scope.reverse = true;
+	$scope.data = usageData.data;
+	$scope.chartData = usageData.chartData;
+	$scope.chartOptions = chartService.getChartOptions($scope.chartData);
 
-	$scope.$watch('chartType', function() {
-		$scope.chartOptions.series[0].type = $scope.chartType;
+	$scope.$watch('selected.chartType', function() {
+		$scope.chartOptions.series[0].type = $scope.selected.chartType;
 	}, true);
 
 }]);

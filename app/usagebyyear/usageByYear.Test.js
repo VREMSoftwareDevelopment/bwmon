@@ -2,8 +2,12 @@ describe('BWMonApp UsageByYear feature', function() {
 	'use strict';
 
 	var scope,
-		chartSeries = [{key:1}],
-		chartTypes = ['x'],
+		compile,
+		chartOptions = {
+			series: [{
+				type: 'type'
+			}]
+		},
 		chartService,
 		data = {id: 11},
 		dataService;
@@ -11,8 +15,10 @@ describe('BWMonApp UsageByYear feature', function() {
 	beforeEach(module('BWMonApp.DataService'));
 	beforeEach(module('BWMonApp.ChartService'));
 	beforeEach(module('BWMonApp.UsageByYear'));
+	beforeEach(module('BWMonApp.Filters'));
 
-	beforeEach(inject(function($rootScope, _$controller_, _dataService_, _chartService_){
+	beforeEach(inject(function(_$compile_, $rootScope, _$controller_, _dataService_, _chartService_){
+		compile = _$compile_;
 		scope = $rootScope.$new();
 
 		scope.chartSeries = [];
@@ -21,8 +27,7 @@ describe('BWMonApp UsageByYear feature', function() {
 		spyOn(dataService, 'getUsageByYear').and.returnValue({data: data, chartData: {1: data}});
 
 		chartService = _chartService_;
-		spyOn(chartService, 'getChartSeries').and.returnValue(chartSeries);
-		spyOn(chartService, 'getChartTypes').and.returnValue(chartTypes);
+		spyOn(chartService, 'getChartOptions').and.returnValue(chartOptions);
 
 		_$controller_('UsageByYearController', {
 			$scope: scope,
@@ -46,32 +51,37 @@ describe('BWMonApp UsageByYear feature', function() {
 		expect(scope.chartData).toEqual({1:data});
 	}));
 
-	it('should update graph options with chart series from ChartService', inject(function() {
-		expect(scope.chartOptions.series).toEqual(chartSeries);
+	it('should update chart options with chart options  from ChartService', inject(function() {
+		expect(scope.chartOptions).toEqual(chartOptions);
+		expect(chartService.getChartOptions).toHaveBeenCalled();
 	}));
 
-	it('should update graph options series type with first chart type from ChartService', inject(function() {
-		expect(scope.chartOptions.series[0].type).toEqual(chartTypes[0]);
-	}));
+	it('should have yearForm template', function() {
+		var template = '<div><year-form></year-form></div>',
+			element = compile(template)(scope);
+		scope.$digest();
+		expect(element).toBeDefined();
+	});
 
-	it('should update chart type with first chart type from ChartService', inject(function() {
-		expect(scope.chartType).toEqual(chartTypes[0]);
-	}));
+	it('should have yearTable template', function() {
+		var template = '<div><year-table></year-table></div>',
+			element = compile(template)(scope);
+		scope.$digest();
+		expect(element).toBeDefined();
+	});
 
-	it('should update graph options with non empty label - x axes', inject(function() {
-		expect(scope.chartOptions.axes.x.labelFunction(1)).toEqual(11);
-	}));
+	it('should have yearHeader template', function() {
+		var template = '<div><year-header></year-header></div>',
+			element = compile(template)(scope);
+		scope.$digest();
+		expect(element).toBeDefined();
+	});
 
-	it('should update graph options with empty label - x axes', inject(function() {
-		expect(scope.chartOptions.axes.x.labelFunction(1.1)).toEqual('');
-	}));
-
-	it('should update graph options with non empty tootltip - x axes', inject(function() {
-		expect(scope.chartOptions.axes.x.tooltipFormatter(1)).toEqual(11);
-	}));
-
-	it('should update graph options with empty tootltip - x axes', inject(function() {
-		expect(scope.chartOptions.axes.x.tooltipFormatter(1.1)).toEqual('');
-	}));
+	it('should have yearBody template', function() {
+		var template = '<div><year-body></year-body></div>',
+			element = compile(template)(scope);
+		scope.$digest();
+		expect(element).toBeDefined();
+	});
 
 });
