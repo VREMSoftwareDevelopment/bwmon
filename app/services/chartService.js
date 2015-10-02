@@ -17,19 +17,47 @@ angular.module('BWMonApp.ChartService', [])
 .factory('chartService', function() {
 	'use strict';
 
-	var chartTypes = ['column', 'line', 'area'],
-		chartSeries = [{
-			y: 'total',
-			color: '#3366CC',
-			label: 'GBytes'
-		}];
+	var _getLabel = function(value, data) {
+			var result = '';
+			if (value % 1 === 0 && typeof data[value] !== 'undefined' && data[value] !== null) {
+				result = data[value].id;
+			}
+			return result;
+		},
+		_getChartTypes = function() {
+			return ['column', 'line', 'area'];
+		},
+		_getChartSeries = function() {
+			return [{
+				y: 'total',
+				color: '#3366CC',
+				label: 'GBytes'
+			}];
+		},
+		_getChartOptions = function(chartData) {
+			return {
+				series: [{
+					y: 'total',
+					color: '#3366CC',
+					label: 'GBytes',
+					type: _getChartTypes()[0]
+				}],
+				axes: {
+					x: {
+						labelFunction: function(value) {
+							return _getLabel(value, chartData);
+						},
+						tooltipFormatter: function(value) {
+							return _getLabel(value, chartData);
+						}
+					}
+				}
+			};
+		};
 
 	return {
-		getChartTypes: function() {
-			return chartTypes;
-		},
-		getChartSeries: function() {
-			return chartSeries;
-		}
+		getChartTypes: _getChartTypes,
+		getChartSeries: _getChartSeries,
+		getChartOptions: _getChartOptions
 	};
 });
