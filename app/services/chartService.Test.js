@@ -17,8 +17,18 @@ describe('BWMonApp.services chartService', function() {
 		expect(chartService.getChartTypes()).toEqual(['column', 'line', 'area']);
 	});
 
-	it('should update graph options with chart series from ChartService', function() {
+	it('should have chart series', function() {
 		expect(chartService.getChartOptions(data).series).toEqual([{y: 'total', color: '#3366CC', label: 'GBytes', type: 'column'}]);
+	});
+
+	it('should call provided label function', function() {
+		var labelFn = function(value) {return 'myResult:'+value;}
+		expect(chartService.getChartOptions(data, labelFn).axes.x.labelFunction(1)).toEqual('myResult:1');
+	});
+
+	it('should call provided tooltip function', function() {
+		var tooltipFn = function(x, y) {return 'myResult:'+x;}
+		expect(chartService.getChartOptions(data, undefined, tooltipFn).tooltip.formatter(1, 2)).toEqual('myResult:1 : 2');
 	});
 
 	it('should return id from data using valid year', function() {

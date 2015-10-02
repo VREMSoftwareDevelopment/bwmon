@@ -48,7 +48,7 @@ angular.module('BWMonApp.ChartService', [])
 		_getChartTypes = function() {
 			return ['column', 'line', 'area'];
 		},
-		_getChartOptions = function(chartData, getLabel, getTooltip) {
+		_getChartOptions = function(data, label, tooltip) {
 			return {
 				series: [{
 					y: 'total',
@@ -59,11 +59,13 @@ angular.module('BWMonApp.ChartService', [])
 				axes: {
 					x: {
 						labelFunction: function(value) {
-							return getLabel(value, chartData);
-						},
-						tooltipFormatter: function(value) {
-							return getTooltip(value, chartData);
+							return label(value, data);
 						}
+					}
+				},
+				tooltip: {
+					formatter: function(x, y, series) {
+						return tooltip(x, data)  + ' : ' + y;
 					}
 				}
 			};
