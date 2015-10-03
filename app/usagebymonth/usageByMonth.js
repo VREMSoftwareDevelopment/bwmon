@@ -26,15 +26,15 @@ angular.module('BWMonApp.UsageByMonth', ['ngRoute'])
 		restrict: 'E',
 		replace: true,
 		template: '<form class="form-inline">'+
-			'	<display-type ng-model="displayType"/></display-type>'+
-			'	<div class="form-group">'+
-			'		<label class="sr-only" for="year">Year</label>'+
-			'		<select-year ng-model="selected.year" class="form-control" name="year"/>'+
-			'	</div>'+
-			'	<div ng-if="displayType" class="form-group">'+
-			'		<label class="sr-only" for="chartType">Chart Type</label>'+
-			'		<chart-type ng-model="selected.chartType" class="form-control" name="chartType"/>'+
-			'	</div>'+
+			'<display-type ng-model="displayType"/></display-type>'+
+			'<div class="form-group">'+
+				'<label class="sr-only" for="year">Year</label>'+
+				'<select-year ng-model="selected.year" class="form-control" name="year"/>'+
+			'</div>'+
+			'<div ng-if="displayType" class="form-group">'+
+				'<label class="sr-only" for="chartType">Chart Type</label>'+
+				'<chart-type ng-model="selected.chartType" class="form-control" name="chartType"/>'+
+			'</div>'+
 			'</form>'
 	};
 }])

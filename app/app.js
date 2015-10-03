@@ -15,6 +15,7 @@
  */
 angular.module('BWMonApp', [
 	'ngRoute',
+	'angularUtils.directives.dirPagination',
 	'n3-line-chart',
 	'BWMonApp.Filters',
 	'BWMonApp.Navigation',
@@ -27,7 +28,6 @@ angular.module('BWMonApp', [
 	'BWMonApp.SelectMonth',
 	'BWMonApp.ChartType',
 	'BWMonApp.ChartService',
-	'BWMonApp.PagingService',
 	'BWMonApp.DataService'
 ])
 .config(['$routeProvider', function($routeProvider) {

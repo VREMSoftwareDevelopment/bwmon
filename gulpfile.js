@@ -19,7 +19,7 @@ var gulp = require('gulp'),
 			dest: dstdir
 		},
 		js: {
-			src: [srcdir+'/**/*.js'],
+			src: [srcdir+'/**/*.js', cmpdir+'/angularUtils-pagination/dirPagination.js'],
 			libs: [
 				cmpdir+'/angular/angular.min.js',
 				cmpdir+'/angular-route/angular-route.min.js',
@@ -38,7 +38,7 @@ var gulp = require('gulp'),
 			excludes: srcdir+'/**/!('+dataname+').js'
 		},
 		e2e : {
-			src: ['e2e/**/*.js']
+			src: ['e2e/**/*.Test.js']
 		},
 		css: {
 			src: [srcdir+'/css/*.css'],

@@ -25,16 +25,14 @@ describe('BWMonApp UsageByUser feature', function() {
 				}]
 			},
 		chartService,
-		dataService,
-		pagingService;
+		dataService;
 
 	beforeEach(module('BWMonApp.ChartService'));
 	beforeEach(module('BWMonApp.DataService'));
-	beforeEach(module('BWMonApp.PagingService'));
 	beforeEach(module('BWMonApp.UsageByUser'));
 	beforeEach(module('BWMonApp.Filters'));
 
-	beforeEach(inject(function(_$compile_, _$rootScope_, $controller, _dataService_, _pagingService_, _chartService_){
+	beforeEach(inject(function(_$compile_, _$rootScope_, $controller, _dataService_, _chartService_){
 		compile = _$compile_;
 		scope = _$rootScope_.$new();
 
@@ -42,16 +40,12 @@ describe('BWMonApp UsageByUser feature', function() {
 		spyOn(dataService, 'getMonths').and.returnValue(months);
 		spyOn(dataService, 'getUsageByUser').and.returnValue(usageData);
 
-		pagingService = _pagingService_;
-		spyOn(pagingService, 'getPaging').and.returnValue(page);
-
 		chartService = _chartService_;
 		spyOn(chartService, 'getChartOptions').and.returnValue(chartOptions);
 
 		$controller('UsageByUserController', {
 			$scope: scope,
 			dataService: dataService,
-			pagingService: pagingService,
 			chartService: chartService
 		});
 	}));
@@ -61,11 +55,6 @@ describe('BWMonApp UsageByUser feature', function() {
 		expect(route.controller).toBe('UsageByUserController');
 		expect(route.templateUrl).toBe('usagebyuser/usageByUser.tpl.html');
 	}));
-
-	it('should update page with page from PageService', function() {
-		expect(scope.page).toEqual(page);
-		expect(pagingService.getPaging).toHaveBeenCalled();
-	});
 
 	it('should reset selected user and get new default month when selected year changes', function() {
 		scope.selected.year = 'year';
