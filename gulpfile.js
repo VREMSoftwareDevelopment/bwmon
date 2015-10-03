@@ -5,6 +5,7 @@ var gulp = require('gulp'),
 	extend = require('node.extend'),
 	jshint_stylish = require('jshint-stylish'),
 	del = require('del'),
+	argv = require('yargs').argv,
 
 	banner = '/*\n\t<%=pkg.name%> v<%=pkg.version%>\n\t(C) 2010 - 2015 VREM Software Development\n\t<%= pkg.homepage %>\n\tLicense: <%=pkg.license%>\n*/\n',
 	srcdir = 'app',
@@ -82,6 +83,7 @@ var gulp = require('gulp'),
 			defaults = {
 				files: [].concat(files.js.libs, files.test.libs, files.js.src, files.test.excludes, files.templates.src),
 				configFile: __dirname+'/config/karma.conf.js',
+				colors: argv.color ? true : false
 			},
 			parameters = extend(defaults, config);
 		new Server(parameters, done).start();
@@ -183,7 +185,7 @@ gulp.task('other', function() {
 		.pipe(gulp.dest(files.other.dest));
 });
 
-gulp.task('webserver', ['jslibs', 'uglify', 'csslibs', 'cssmin', 'html', 'other', ], function() {
+gulp.task('webserver', ['jslibs', 'uglify', 'csslibs', 'cssmin', 'html', 'other'], function() {
 	plugins.connect.server({
 		root: dstdir,
 		port: 8080
