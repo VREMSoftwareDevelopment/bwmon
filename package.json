@@ -42,6 +42,7 @@
 		"node.extend": "^1.1.5",
 		"phantomjs": "^1.9.18",
 		"protractor": "^2.2.0",
-		"webdriver-manager": "^7.0.1"
+		"webdriver-manager": "^7.0.1",
+		"yargs": "^3.26.0"
 	}
 }
