@@ -12,9 +12,9 @@ var gulp = require('gulp'),
 	dstdir = 'dist',
 	cmpdir = 'bower_components',
 	dataname = pkg.name+'Usage.js',
-	
+
 	showColor = argv.color === undefined || argv.color === null ? true : argv.color,
-	
+
 	files = {
 		other: {
 			src: [srcdir+'/'+dataname, srcdir+'/favicon.ico'],
@@ -199,8 +199,8 @@ gulp.task('webdriverUpdate', plugins.protractor.webdriver_update);
 
 gulp.task('e2e', ['webdriverUpdate', 'webserver'], function() {
 	return gulp
-		.src(__dirname+files.e2e.src)
-		.pipe(plugins.protractor.protractor({configFile: __dirname+'/config/protractor.conf.js'}));
+		.src('../'+files.e2e.src)
+		.pipe(plugins.protractor.protractor({configFile: 'config/protractor.conf.js'}));
 });
 
 gulp.task('build', ['e2e'], function() {
