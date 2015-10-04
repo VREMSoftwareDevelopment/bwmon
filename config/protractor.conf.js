@@ -1,6 +1,7 @@
 'use strict';
 
 exports.config = {
+	specs: ['../e2e/**/*.Test.js'],
 	capabilities: {
 		'browserName': 'chrome'
 	},
@@ -17,7 +18,6 @@ exports.config = {
 	},
 	jasmineNodeOpts: {
 		onComplete: null,
-		showColors: true,
 		isVerbose: true,
 		includeStackTrace: true,
 		defaultTimeoutInterval: 120000

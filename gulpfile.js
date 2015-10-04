@@ -12,7 +12,9 @@ var gulp = require('gulp'),
 	dstdir = 'dist',
 	cmpdir = 'bower_components',
 	dataname = pkg.name+'Usage.js',
-
+	
+	showColor = argv.color === undefined || argv.color === null ? true : argv.color,
+	
 	files = {
 		other: {
 			src: [srcdir+'/'+dataname, srcdir+'/favicon.ico'],
@@ -38,7 +40,7 @@ var gulp = require('gulp'),
 			excludes: srcdir+'/**/!('+dataname+').js'
 		},
 		e2e : {
-			src: ['e2e/**/*.Test.js']
+			src: 'e2e/**/*.Test.js'
 		},
 		css: {
 			src: [srcdir+'/css/*.css'],
@@ -81,9 +83,10 @@ var gulp = require('gulp'),
 	karma = function(done, config) {
 		var Server = require('karma').Server,
 			defaults = {
+				basePath: __dirname,
 				files: [].concat(files.js.libs, files.test.libs, files.js.src, files.test.excludes, files.templates.src),
 				configFile: __dirname+'/config/karma.conf.js',
-				colors: argv.color ? true : false
+				colors: showColor
 			},
 			parameters = extend(defaults, config);
 		new Server(parameters, done).start();
@@ -196,7 +199,7 @@ gulp.task('webdriverUpdate', plugins.protractor.webdriver_update);
 
 gulp.task('e2e', ['webdriverUpdate', 'webserver'], function() {
 	return gulp
-		.src(files.e2e.src)
+		.src(__dirname+files.e2e.src)
 		.pipe(plugins.protractor.protractor({configFile: __dirname+'/config/protractor.conf.js'}));
 });
 

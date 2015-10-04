@@ -2,7 +2,6 @@ module.exports = function(config){
 	'use strict';
 
 	config.set({
-		basePath: '../',
 		autoWatch: false,
 		singleRun: true,
 		frameworks: ['jasmine'],
