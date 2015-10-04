@@ -1,2 +1,3 @@
 .ng-view-min-height {min-height: 40em;}
-.form-inline .form-group {margin-left: 2px;}
+.form-inline .form-group {margin-left: 5px;}
+.form-inline .form-group .pagination {margin: 4px 0 0 0;}
