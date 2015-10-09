@@ -14,14 +14,14 @@
  *    limitations under the License.
  */
 angular.module('BWMonApp.UsageByUser', ['ngRoute'])
-.config(['$routeProvider', function($routeProvider) {
+.config(function($routeProvider) {
 	'use strict';
 	$routeProvider.when('/UsageByUser', {
 		templateUrl: 'usagebyuser/usageByUser.tpl.html',
 		controller: 'UsageByUserController'
 	});
-}])
-.directive('userForm', [function() {
+})
+.directive('userForm', function() {
 	return {
 		restrict: 'E',
 		replace: true,
@@ -48,8 +48,8 @@ angular.module('BWMonApp.UsageByUser', ['ngRoute'])
 			'</div>'+
 			'</form>'
 	};
-}])
-.directive('userTable', [function() {
+})
+.directive('userTable', function() {
 	return {
 		restrict: 'E',
 		replace: true,
@@ -61,8 +61,8 @@ angular.module('BWMonApp.UsageByUser', ['ngRoute'])
 			'</table>'+
 			'</div>'
 	};
-}])
-.directive('userHeader', [function() {
+})
+.directive('userHeader', function() {
 	return {
 		template: '<th><a href="" ng-click="predicate=\'IP\'; reverse=!reverse">IP</a></th>'+
 			'<th><a href="" ng-click="predicate=\'MAC\'; reverse=!reverse">MAC</a></th>'+
@@ -76,8 +76,8 @@ angular.module('BWMonApp.UsageByUser', ['ngRoute'])
 			'<th>First Seen</th>'+
 			'<th>Last Seen</th>'
 	};
-}])
-.directive('userBody', [function() {
+})
+.directive('userBody', function() {
 	return {
 		template: '<td>{{::current.IP}}</td>'+
 			'<td>{{::current.MAC}}</td>'+
@@ -91,8 +91,8 @@ angular.module('BWMonApp.UsageByUser', ['ngRoute'])
 			'<td>{{::current.firstSeen | timeToDate | date: \'medium\'}}</td>'+
 			'<td>{{::current.lastSeen | timeToDate | date: \'medium\'}}</td>'
 	};
-}])
-.directive('userFooter', [function() {
+})
+.directive('userFooter', function() {
 	return {
 		template: '<th colspan="3">{{::selected.month}} {{::selected.year}} Totals</th>'+
 			'<th class="text-right">{{::total.download | usageInGBytes | number:3}}</th>'+
@@ -104,8 +104,8 @@ angular.module('BWMonApp.UsageByUser', ['ngRoute'])
 			'<th></th>'+
 			'<th></th>'
 	};
-}])
-.controller('UsageByUserController', ['$scope', 'dataService', 'chartService', function($scope, dataService, chartService) {
+})
+.controller('UsageByUserController', function($scope, dataService, chartService) {
 	'use strict';
 
 	var reset = function() {
@@ -139,4 +139,4 @@ angular.module('BWMonApp.UsageByUser', ['ngRoute'])
 	}, true);
 
 
-}]);
+});

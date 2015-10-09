@@ -14,7 +14,7 @@
  *    limitations under the License.
  */
 angular.module('BWMonApp.ChartType', [])
-.directive('chartType', ['chartService', function(chartService) {
+.directive('chartType', function(chartService) {
 	'use strict';
 	return {
 		restrict: 'E',
@@ -27,11 +27,11 @@ angular.module('BWMonApp.ChartType', [])
 		},
 		template: '<select ng-options="choiceChartType for choiceChartType in ::chartTypes"></select>'
 	};
-}])
-.directive('chartDisplay', [function() {
+})
+.directive('chartDisplay', function() {
 	return {
 		restrict: 'E',
 		replace: true,
 		template: '<div ng-if="displayType"><linechart id="chartData" data="chartData" options="chartOptions"></linechart></div>'
 	};
-}]);
+});

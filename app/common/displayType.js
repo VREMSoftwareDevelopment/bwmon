@@ -14,7 +14,7 @@
  *    limitations under the License.
  */
 angular.module('BWMonApp.DisplayType', [])
-.directive('displayType', [function() {
+.directive('displayType', function() {
 	'use strict';
 	return {
 		restrict: 'E',
@@ -28,4 +28,4 @@ angular.module('BWMonApp.DisplayType', [])
 			'<span ng-if="displayType">Show Data</span>'+
 			'</button>'
 	};
-}]);
+});

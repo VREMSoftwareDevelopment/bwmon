@@ -14,14 +14,14 @@
  *    limitations under the License.
  */
 angular.module('BWMonApp.UsageByMonth', ['ngRoute'])
-.config(['$routeProvider', function($routeProvider) {
+.config(function($routeProvider) {
 	'use strict';
 	$routeProvider.when('/UsageByMonth', {
 		templateUrl: 'usagebymonth/usageByMonth.tpl.html',
 		controller: 'UsageByMonthController'
 	});
-}])
-.directive('monthForm', [function() {
+})
+.directive('monthForm', function() {
 	return {
 		restrict: 'E',
 		replace: true,
@@ -37,8 +37,8 @@ angular.module('BWMonApp.UsageByMonth', ['ngRoute'])
 			'</div>'+
 			'</form>'
 	};
-}])
-.directive('monthTable', [function() {
+})
+.directive('monthTable', function() {
 	return {
 		restrict: 'E',
 		replace: true,
@@ -50,8 +50,8 @@ angular.module('BWMonApp.UsageByMonth', ['ngRoute'])
 			'</table>'+
 			'</div>'
 	};
-}])
-.directive('monthHeader', [function() {
+})
+.directive('monthHeader', function() {
 	return {
 		template: '<th><a href="" ng-click="predicate=\'id\'; reverse=!reverse;">Month</a></th>'+
 			'<th class="text-right">Down</th>'+
@@ -61,8 +61,8 @@ angular.module('BWMonApp.UsageByMonth', ['ngRoute'])
 			'<th class="text-right">Average</th>'+
 			'<th class="text-right">Days</th>'
 	};
-}])
-.directive('monthBody', [function() {
+})
+.directive('monthBody', function() {
 	return {
 		template: '<td>{{::current.id | toMonth}}</td>'+
 			'<td class="text-right">{{::current.download | usageInGBytes | number:3}}</td>'+
@@ -72,8 +72,8 @@ angular.module('BWMonApp.UsageByMonth', ['ngRoute'])
 			'<td class="text-right">{{::current.average | usageInGBytes | number:3}}</td>'+
 			'<td class="text-right">{{::current.days}}</td>'
 	};
-}])
-.directive('monthFooter', [function() {
+})
+.directive('monthFooter', function() {
 	return {
 		template: '<th>{{selected.year}} Totals</th>'+
 			'<th class="text-right">{{::total.download | usageInGBytes | number:3}}</th>'+
@@ -83,8 +83,8 @@ angular.module('BWMonApp.UsageByMonth', ['ngRoute'])
 			'<th class="text-right">{{::total.average | usageInGBytes | number:3}}</th>'+
 			'<th class="text-right">{{::total.days}}</th>'
 	};
-}])
-.controller('UsageByMonthController', ['$scope', 'dataService', 'chartService', function($scope, dataService, chartService) {
+})
+.controller('UsageByMonthController', function($scope, dataService, chartService) {
 	'use strict';
 
 
@@ -105,4 +105,4 @@ angular.module('BWMonApp.UsageByMonth', ['ngRoute'])
 		$scope.chartOptions.series[0].type = $scope.selected.chartType;
 	}, true);
 
-}]);
+});

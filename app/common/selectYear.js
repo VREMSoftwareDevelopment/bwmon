@@ -14,7 +14,7 @@
  *    limitations under the License.
  */
 angular.module('BWMonApp.SelectYear', [])
-.directive('selectYear', ['dataService', function(dataService) {
+.directive('selectYear', function(dataService) {
 	'use strict';
 	return {
 		restrict: 'E',
@@ -27,4 +27,4 @@ angular.module('BWMonApp.SelectYear', [])
 		},
 		template: '<select ng-options="choiceYear for choiceYear in ::years"></select>'
 	};
-}]);
+});

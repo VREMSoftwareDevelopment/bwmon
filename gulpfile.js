@@ -169,7 +169,8 @@ gulp.task('uglify', ['uglify:clean', 'templates', 'test'], function() {
 		.pipe(plugins.concat(files.js.temp, {newLine: ';'}))
 		.pipe(gulp.dest(files.js.dest))
 		.pipe(plugins.rename(files.js.name))
-		.pipe(plugins.uglify({mangle: false}))
+		.pipe(plugins.ngAnnotate())
+		.pipe(plugins.uglify())
 		.pipe(plugins.header(banner, {pkg: pkg}))
 		.pipe(gulp.dest(files.js.dest));
 });

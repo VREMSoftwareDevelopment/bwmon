@@ -14,7 +14,7 @@
  *    limitations under the License.
  */
 angular.module('BWMonApp.Navigation', [])
-.directive('navigation', ['$location', function($location) {
+.directive('navigation', function($location) {
 	'use strict';
 	return {
 		restrict: 'E',
@@ -41,4 +41,4 @@ angular.module('BWMonApp.Navigation', [])
 			'</li></ul></div>'
 
 	};
-}]);
+});

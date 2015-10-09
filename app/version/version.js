@@ -15,13 +15,13 @@
  */
 angular.module('BWMonApp.Version', [])
 .value('version', '2.2.3')
-.filter('interpolate', ['version', function(version) {
+.filter('interpolate', function(version) {
 	'use strict';
 	return function(text) {
 		return String(text).replace(/\%VERSION\%/mg, version);
 	};
-}])
-.directive('version', ['version', function(version) {
+})
+.directive('version', function(version) {
 	'use strict';
 	return {
 		restrict: 'AE',
@@ -29,4 +29,4 @@ angular.module('BWMonApp.Version', [])
 			element.text(version);
 		}
 	};
-}]);
+});

@@ -14,14 +14,14 @@
  *    limitations under the License.
  */
 angular.module('BWMonApp.UsageByYear', ['ngRoute'])
-.config(['$routeProvider', function($routeProvider) {
+.config(function($routeProvider) {
 	'use strict';
 	$routeProvider.when('/UsageByYear', {
 		templateUrl: 'usagebyyear/usageByYear.tpl.html',
 		controller: 'UsageByYearController'
 	});
-}])
-.directive('yearForm', [function() {
+})
+.directive('yearForm', function() {
 	return {
 		restrict: 'E',
 		replace: true,
@@ -33,8 +33,8 @@ angular.module('BWMonApp.UsageByYear', ['ngRoute'])
 			'</div>'+
 			'</form>'
 	};
-}])
-.directive('yearTable', [function() {
+})
+.directive('yearTable', function() {
 	return {
 		restrict: 'E',
 		replace: true,
@@ -45,8 +45,8 @@ angular.module('BWMonApp.UsageByYear', ['ngRoute'])
 			'</table>'+
 			'</div>'
 	};
-}])
-.directive('yearHeader', [function() {
+})
+.directive('yearHeader', function() {
 	return {
 		template: '<th><a href="" ng-click="predicate=\'id\'; reverse=!reverse;">Year</a></th>'+
 			'<th class="text-right">Down</th>'+
@@ -55,8 +55,8 @@ angular.module('BWMonApp.UsageByYear', ['ngRoute'])
 			'<th class="text-right">Average</th>'+
 			'<th class="text-right">Days</th>'
 	};
-}])
-.directive('yearBody', [function() {
+})
+.directive('yearBody', function() {
 	return {
 		template: '<td>{{current.id}}</td>'+
 			'<td class="text-right">{{::current.download | usageInGBytes | number:3}}</td>'+
@@ -65,8 +65,8 @@ angular.module('BWMonApp.UsageByYear', ['ngRoute'])
 			'<td class="text-right">{{::current.average | usageInGBytes | number:3}}</td>'+
 			'<td class="text-right">{{::current.days}}</td>'
 	};
-}])
-.controller('UsageByYearController', ['$scope', 'dataService', 'chartService', function($scope, dataService, chartService) {
+})
+.controller('UsageByYearController', function($scope, dataService, chartService) {
 	'use strict';
 
 	var usageData = dataService.getUsageByYear();
@@ -82,4 +82,4 @@ angular.module('BWMonApp.UsageByYear', ['ngRoute'])
 		$scope.chartOptions.series[0].type = $scope.selected.chartType;
 	}, true);
 
-}]);
+});

@@ -30,11 +30,11 @@ angular.module('BWMonApp', [
 	'BWMonApp.ChartService',
 	'BWMonApp.DataService'
 ])
-.config(['$routeProvider', function($routeProvider) {
+.config(function($routeProvider) {
 	'use strict';
 	$routeProvider.otherwise({redirectTo: '/UsageByUser'});
-}])
-.controller('rootController', ['$interval', '$scope', function($interval, $scope) {
+})
+.controller('rootController', function($interval, $scope) {
 	'use strict';
 
 	var rootController = this,
@@ -50,5 +50,5 @@ angular.module('BWMonApp', [
 	$scope.$on('$destroy', function(e) {
 		$interval.cancel(clockOn);
 	});
-}]);
+});
 

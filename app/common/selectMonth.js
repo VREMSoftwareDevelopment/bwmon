@@ -14,7 +14,7 @@
  *    limitations under the License.
  */
 angular.module('BWMonApp.SelectMonth', [])
-.directive('selectMonth', ['dataService', function(dataService) {
+.directive('selectMonth', function(dataService) {
 	'use strict';
 
 	return {
@@ -38,4 +38,4 @@ angular.module('BWMonApp.SelectMonth', [])
 		},
 		template: '<select ng-options="choiceMonth for choiceMonth in months"></select>'
 	};
-}]);
+});
