@@ -124,16 +124,11 @@ gulp.task('devhtml', ['devhtml:clean'], function() {
 });
 
 gulp.task('jshint', function() {
-	var src = [].concat(files.js.src, files.e2e.src, '!'+srcdir+'/**'+files.templates.name, '!'+srcdir+'/**/'+dataname),
-		options = {
-			curly: true,
-			eqeqeq: true,
-			strict: true
-		};
+	var src = [].concat(files.js.src, files.e2e.src, '!'+srcdir+'/**'+files.templates.name, '!'+srcdir+'/**/'+dataname);
 	return gulp
 		.src(src)
 		.pipe(plugins.iife())
-		.pipe(plugins.jshint(options))
+		.pipe(plugins.jshint())
 		.pipe(plugins.jshint.reporter(jshint_stylish))
 		.pipe(plugins.jshint.reporter('fail'));
 });
