@@ -1,6 +1,4 @@
 describe('bwmon e2e usage by user', function() {
-	'use strict';
-
 	var URL = 'http://localhost:8080/#/UsageByUser';
 
 	beforeEach(function () {
@@ -24,14 +22,13 @@ describe('bwmon e2e usage by user', function() {
 	});
 
 	describe('data', function() {
-	
 		it('should have show chart', function() {
 			expect(element(by.id('buttonShowChart')).getText())
 				.toEqual('Show Chart');
 		});
 
 		it('should have pagination', function() {
-    		element.all(by.css('.pagination li a')).then(function(arr) {
+			element.all(by.css('.pagination li a')).then(function(arr) {
 				expect(arr.length).toEqual(7);
 				expect(arr[2].getText()).toEqual('1');
 				expect(arr[3].getText()).toEqual('2');
@@ -51,7 +48,6 @@ describe('bwmon e2e usage by user', function() {
 			expect(element(by.css('tfoot')).getText())
 				.toEqual('November 2013 Totals 83.066 4.263 87.329 2.911 30');
 		});
-	
 	});
 
 	describe('chart', function() {

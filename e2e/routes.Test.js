@@ -1,6 +1,4 @@
 describe('bwmon e2e routes tests', function() {
-	'use strict';
-
 	var URL = 'http://localhost:8080/';
 
 	it('should default to Usage By User page', function() {

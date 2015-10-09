@@ -1,6 +1,4 @@
 describe('bwmon e2e usage by year', function() {
-	'use strict';
-
 	var URL = 'http://localhost:8080/#/UsageByYear';
 
 	beforeEach(function () {
