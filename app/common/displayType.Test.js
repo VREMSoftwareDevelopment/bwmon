@@ -1,6 +1,4 @@
 describe('BWMonApp.DisplayType testing', function() {
-	'use strict';
-
 	var scope,
 		element,
 		controller,

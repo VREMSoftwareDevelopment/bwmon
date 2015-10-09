@@ -1,5 +1,4 @@
 describe('BWMonApp Navigation', function() {
-
 	beforeEach(module('BWMonApp'));
 	beforeEach(module('BWMonApp.Navigation'));
 
@@ -11,7 +10,7 @@ describe('BWMonApp Navigation', function() {
 		getRoutes = function() {
 			var routes = [];
 			angular.forEach(route.routes, function(value, key, obj) {
-				if (key != 'null' && key[key.length-1] != '/') {
+				if (key !== 'null' && key[key.length-1] !== '/') {
 					routes.push(key);
 				}
 			});

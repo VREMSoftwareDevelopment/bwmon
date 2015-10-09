@@ -15,7 +15,6 @@
  */
 angular.module('BWMonApp.DisplayType', [])
 .directive('displayType', function() {
-	'use strict';
 	return {
 		restrict: 'E',
 		replace: true,

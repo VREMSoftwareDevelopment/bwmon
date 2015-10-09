@@ -13,6 +13,8 @@ var gulp = require('gulp'),
 	cmpdir = 'bower_components',
 	dataname = pkg.name+'Usage.js',
 
+	paginationLib = cmpdir+'/angularUtils-pagination/dirPagination.js',
+
 	showColor = argv.color === undefined || argv.color === null ? true : argv.color,
 
 	files = {
@@ -21,7 +23,7 @@ var gulp = require('gulp'),
 			dest: dstdir
 		},
 		js: {
-			src: [srcdir+'/**/*.js', cmpdir+'/angularUtils-pagination/dirPagination.js'],
+			src: [srcdir+'/**/*.js', paginationLib],
 			libs: [
 				cmpdir+'/angular/angular.min.js',
 				cmpdir+'/angular-route/angular-route.min.js',
@@ -51,7 +53,8 @@ var gulp = require('gulp'),
 		templates:  {
 			src: srcdir+'/**/**.tpl.html',
 			module: 'BWMonApp',
-			dest: srcdir
+			dest: srcdir,
+			name: '/templates.js'
 		},
 		html:  {
 			src: srcdir+'/index.tpl.html',
@@ -102,7 +105,7 @@ gulp.task('uglify:clean', function() {
 });
 
 gulp.task('templates:clean', function() {
-	return del.sync(files.templates.dstdir+'/templates.js');
+	return del.sync(files.templates.dstdir+files.templates.name);
 });
 
 gulp.task('html:clean', function() {
@@ -122,10 +125,15 @@ gulp.task('devhtml', ['devhtml:clean'], function() {
 });
 
 gulp.task('jshint', function() {
-	var src = [].concat(files.js.src, files.e2e.src, files.js.excludes);
+	var src = [].concat(files.js.src, files.e2e.src, '!'+srcdir+'/**'+files.templates.name, '!'+paginationLib),
+		options = {
+			curly: true,
+			eqeqeq: true,
+			strict: true
+		};
 	return gulp
 		.src(src)
-		.pipe(plugins.jshint())
+		.pipe(plugins.jshint(options))
 		.pipe(plugins.jshint.reporter(jshint_stylish))
 		.pipe(plugins.jshint.reporter('fail'));
 });

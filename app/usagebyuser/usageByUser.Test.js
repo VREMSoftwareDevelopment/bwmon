@@ -1,6 +1,4 @@
 describe('BWMonApp UsageByUser feature', function() {
-	'use strict';
-
 	var scope,
 		compile,
 		page = {
@@ -114,5 +112,4 @@ describe('BWMonApp UsageByUser feature', function() {
 		scope.$digest();
 		expect(element).toBeDefined();
 	});
-
 });

@@ -15,7 +15,6 @@
  */
 angular.module('BWMonApp.SelectYear', [])
 .directive('selectYear', function(dataService) {
-	'use strict';
 	return {
 		restrict: 'E',
 		replace: true,

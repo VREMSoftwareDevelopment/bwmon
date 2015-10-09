@@ -15,7 +15,6 @@
  */
 angular.module('BWMonApp.Navigation', [])
 .directive('navigation', function($location) {
-	'use strict';
 	return {
 		restrict: 'E',
 		replace: true,

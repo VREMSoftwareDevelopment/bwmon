@@ -1,6 +1,4 @@
 describe('BWMonApp.ChartType testing', function() {
-	'use strict';
-
 	var scope,
 		chartService,
 		chartTypes = ['10', '5', '6'],

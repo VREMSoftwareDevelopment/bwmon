@@ -1,6 +1,4 @@
 describe('BWMonApp UsageByYear feature', function() {
-	'use strict';
-
 	var scope,
 		compile,
 		chartOptions = {
@@ -87,5 +85,4 @@ describe('BWMonApp UsageByYear feature', function() {
 		scope.$digest();
 		expect(element).toBeDefined();
 	});
-
 });

@@ -15,7 +15,6 @@
  */
 angular.module('BWMonApp.UsageByUser', ['ngRoute'])
 .config(function($routeProvider) {
-	'use strict';
 	$routeProvider.when('/UsageByUser', {
 		templateUrl: 'usagebyuser/usageByUser.tpl.html',
 		controller: 'UsageByUserController'
@@ -106,8 +105,6 @@ angular.module('BWMonApp.UsageByUser', ['ngRoute'])
 	};
 })
 .controller('UsageByUserController', function($scope, dataService, chartService) {
-	'use strict';
-
 	var reset = function() {
 			$scope.selected.user = '';
 		};
@@ -137,6 +134,4 @@ angular.module('BWMonApp.UsageByUser', ['ngRoute'])
 	$scope.$watch('selected.chartType', function() {
 		$scope.chartOptions.series[0].type = $scope.selected.chartType;
 	}, true);
-
-
 });

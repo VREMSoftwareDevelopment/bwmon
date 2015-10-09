@@ -15,7 +15,6 @@
  */
 angular.module('BWMonApp.ChartType', [])
 .directive('chartType', function(chartService) {
-	'use strict';
 	return {
 		restrict: 'E',
 		replace: true,

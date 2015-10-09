@@ -1,6 +1,4 @@
 describe('BWMonApp.SelectMonth testing', function() {
-	'use strict';
-
 	var scope,
 		dataService,
 		data = [

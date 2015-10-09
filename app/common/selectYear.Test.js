@@ -1,6 +1,4 @@
 describe('BWMonApp.SelectYear testing', function() {
-	'use strict';
-
 	var scope,
 		dataService,
 		years = ['10', '5', '6'],

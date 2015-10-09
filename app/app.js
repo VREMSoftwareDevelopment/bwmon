@@ -31,12 +31,9 @@ angular.module('BWMonApp', [
 	'BWMonApp.DataService'
 ])
 .config(function($routeProvider) {
-	'use strict';
 	$routeProvider.otherwise({redirectTo: '/UsageByUser'});
 })
 .controller('rootController', function($interval, $scope) {
-	'use strict';
-
 	var rootController = this,
 		updateClock = function() {
 			rootController.clock = new Date();
@@ -51,4 +48,3 @@ angular.module('BWMonApp', [
 		$interval.cancel(clockOn);
 	});
 });
-

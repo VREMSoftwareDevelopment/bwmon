@@ -1,6 +1,4 @@
 describe('BWMonApp UsageByMonth feature', function() {
-	'use strict';
-
 	var scope,
 		compile,
 		usageData = {

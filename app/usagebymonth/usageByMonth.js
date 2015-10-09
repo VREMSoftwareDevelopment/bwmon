@@ -15,7 +15,6 @@
  */
 angular.module('BWMonApp.UsageByMonth', ['ngRoute'])
 .config(function($routeProvider) {
-	'use strict';
 	$routeProvider.when('/UsageByMonth', {
 		templateUrl: 'usagebymonth/usageByMonth.tpl.html',
 		controller: 'UsageByMonthController'
@@ -85,9 +84,6 @@ angular.module('BWMonApp.UsageByMonth', ['ngRoute'])
 	};
 })
 .controller('UsageByMonthController', function($scope, dataService, chartService) {
-	'use strict';
-
-
 	$scope.selected = {};
 	$scope.predicate = 'id';
 	$scope.reverse = true;

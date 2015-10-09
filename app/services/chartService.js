@@ -15,8 +15,6 @@
  */
 angular.module('BWMonApp.ChartService', [])
 .factory('chartService', function() {
-	'use strict';
-
 	var _getYearLabel = function(value, data) {
 			var result = '';
 			if (value % 1 === 0 && typeof data[value] !== 'undefined' && data[value] !== null) {

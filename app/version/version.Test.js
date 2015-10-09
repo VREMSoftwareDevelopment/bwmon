@@ -1,6 +1,4 @@
 describe('BWMonApp Version feature', function() {
-	'use strict';
-
 	beforeEach(module('BWMonApp.Version'));
 
 	var expected = '2.2.3';

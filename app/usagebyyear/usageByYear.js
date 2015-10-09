@@ -15,7 +15,6 @@
  */
 angular.module('BWMonApp.UsageByYear', ['ngRoute'])
 .config(function($routeProvider) {
-	'use strict';
 	$routeProvider.when('/UsageByYear', {
 		templateUrl: 'usagebyyear/usageByYear.tpl.html',
 		controller: 'UsageByYearController'
@@ -67,8 +66,6 @@ angular.module('BWMonApp.UsageByYear', ['ngRoute'])
 	};
 })
 .controller('UsageByYearController', function($scope, dataService, chartService) {
-	'use strict';
-
 	var usageData = dataService.getUsageByYear();
 
 	$scope.selected = {};

@@ -1,6 +1,4 @@
 describe('BWMonApp.services dataService', function() {
-	'use strict';
-
 	var dataService;
 
 	beforeEach(module('BWMonApp.DataService'));

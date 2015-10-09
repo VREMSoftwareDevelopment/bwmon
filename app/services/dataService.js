@@ -15,8 +15,6 @@
  */
 angular.module('BWMonApp.DataService', [])
 .factory('dataService', function() {
-	'use strict';
-
 	var _data = bwmonData(),
 		_sort = function(a, b) {
 			var result = b.year - a.year;
@@ -80,9 +78,9 @@ angular.module('BWMonApp.DataService', [])
 			if (filter) {
 				usage = _.filter(usage, function(entry) {
 					var filterLowerCase = filter.toLowerCase();
-					return entry.IP.toLowerCase().indexOf(filterLowerCase) != -1 ||
-						entry.MAC.toLowerCase().indexOf(filterLowerCase) != -1 ||
-						entry.user.toLowerCase().indexOf(filterLowerCase) != -1;
+					return entry.IP.toLowerCase().indexOf(filterLowerCase) !== -1 ||
+						entry.MAC.toLowerCase().indexOf(filterLowerCase) !== -1 ||
+						entry.user.toLowerCase().indexOf(filterLowerCase) !== -1;
 				});
 			}
 			_.each(usage, function(value, index) {

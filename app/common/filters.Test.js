@@ -1,6 +1,4 @@
 describe('Filters testing', function() {
-	'use strict';
-
 	beforeEach(module('BWMonApp.Filters'));
 
 	describe('startFrom', function() {

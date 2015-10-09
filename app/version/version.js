@@ -16,13 +16,11 @@
 angular.module('BWMonApp.Version', [])
 .value('version', '2.2.3')
 .filter('interpolate', function(version) {
-	'use strict';
 	return function(text) {
 		return String(text).replace(/\%VERSION\%/mg, version);
 	};
 })
 .directive('version', function(version) {
-	'use strict';
 	return {
 		restrict: 'AE',
 		link: function(scope, element, attributes) {

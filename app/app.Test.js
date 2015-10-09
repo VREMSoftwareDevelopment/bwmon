@@ -1,6 +1,4 @@
 describe('BWMonApp tests', function(){
-	'use strict';
-
 	var scope, controller, route;
 
 	beforeEach(module('BWMonApp'));
