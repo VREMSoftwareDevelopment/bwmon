@@ -13,8 +13,6 @@ var gulp = require('gulp'),
 	cmpdir = 'bower_components',
 	dataname = pkg.name+'Usage.js',
 
-	paginationLib = cmpdir+'/angularUtils-pagination/dirPagination.js',
-
 	showColor = argv.color === undefined || argv.color === null ? true : argv.color,
 
 	files = {
@@ -23,10 +21,11 @@ var gulp = require('gulp'),
 			dest: dstdir
 		},
 		js: {
-			src: [srcdir+'/**/*.js', paginationLib],
+			src: [srcdir+'/**/*.js'],
 			libs: [
 				cmpdir+'/angular/angular.min.js',
 				cmpdir+'/angular-route/angular-route.min.js',
+				cmpdir+'/angularUtils-pagination/dirPagination.min.js',
 				cmpdir+'/underscore/underscore-min.js',
 				cmpdir+'/momentjs/min/moment.min.js',
 				cmpdir+'/d3/d3.min.js',
@@ -125,7 +124,7 @@ gulp.task('devhtml', ['devhtml:clean'], function() {
 });
 
 gulp.task('jshint', function() {
-	var src = [].concat(files.js.src, files.e2e.src, '!'+srcdir+'/**'+files.templates.name, '!'+paginationLib),
+	var src = [].concat(files.js.src, files.e2e.src, '!'+srcdir+'/**'+files.templates.name, '!'+srcdir+'/**/'+dataname),
 		options = {
 			curly: true,
 			eqeqeq: true,
@@ -133,6 +132,7 @@ gulp.task('jshint', function() {
 		};
 	return gulp
 		.src(src)
+		.pipe(plugins.iife())
 		.pipe(plugins.jshint(options))
 		.pipe(plugins.jshint.reporter(jshint_stylish))
 		.pipe(plugins.jshint.reporter('fail'));
@@ -178,6 +178,7 @@ gulp.task('uglify', ['uglify:clean', 'templates', 'test'], function() {
 		.pipe(gulp.dest(files.js.dest))
 		.pipe(plugins.rename(files.js.name))
 		.pipe(plugins.ngAnnotate())
+		.pipe(plugins.iife())
 		.pipe(plugins.uglify())
 		.pipe(plugins.header(banner, {pkg: pkg}))
 		.pipe(gulp.dest(files.js.dest));
@@ -265,3 +266,4 @@ gulp.task('release', ['release:clean'], function() {
  * Clean
  */
 gulp.task('clean', ['uglify:clean', 'templates:clean', 'html:clean', 'devhtml:clean']);
+
