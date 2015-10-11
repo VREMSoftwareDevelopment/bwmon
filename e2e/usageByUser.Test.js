@@ -37,7 +37,7 @@ describe('bwmon e2e usage by user', function() {
 		});
 
 		it('should have rows', function() {
-			element.all(by.repeater('current in data | orderBy:predicate: reverse | itemsPerPage: pageSize')).then(function(arr) {
+			element.all(by.repeater('current in data | orderBy:predicate:reverse | itemsPerPage:pageSize')).then(function(arr) {
 				expect(arr.length).toEqual(12);
 				expect(arr[0].getText()).toEqual('192.168.1.10 00:1C:25:27:9B:AE COMPUTER-3 15.004 0.973 15.978 18.3% 0.533 30 Nov 1, 2013 4:30:01 PM Nov 30, 2013 10:30:02 PM');
 				expect(arr[11].getText()).toEqual('192.168.1.148 00:1A:A0:C7:17:60 COMPUTER-18 0.083 0.005 0.088 0.1% 0.003 30 Nov 1, 2013 4:30:01 PM Nov 30, 2013 10:30:02 PM');

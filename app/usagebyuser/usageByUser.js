@@ -55,7 +55,7 @@ angular.module('BWMonApp.UsageByUser', ['ngRoute'])
 		template: '<div ng-if="!displayType" class="table-responsive">'+
 			'<table class="table table-striped table-hover table-condensed">'+
 			'<thead><tr user-header></tr></thead>'+
-			'<tbody><tr user-body dir-paginate="current in data | orderBy:predicate: reverse | itemsPerPage: pageSize"></tr></tbody>'+
+			'<tbody><tr user-body dir-paginate="current in data | orderBy:predicate:reverse | itemsPerPage:pageSize"></tr></tbody>'+
 			'<tfoot><tr user-footer></tr></tfoot>'+
 			'</table>'+
 			'</div>'
