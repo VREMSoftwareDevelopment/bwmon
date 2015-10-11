@@ -26,11 +26,4 @@ angular.module('BWMonApp.ChartType', [])
 		},
 		template: '<select ng-options="choiceChartType for choiceChartType in ::chartTypes"></select>'
 	};
-})
-.directive('chartDisplay', function() {
-	return {
-		restrict: 'E',
-		replace: true,
-		template: '<div ng-if="displayType"><linechart id="chartData" data="chartData" options="chartOptions"></linechart></div>'
-	};
 });

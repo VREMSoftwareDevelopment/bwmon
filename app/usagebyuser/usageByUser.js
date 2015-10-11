@@ -104,11 +104,19 @@ angular.module('BWMonApp.UsageByUser', ['ngRoute'])
 			'<th></th>'
 	};
 })
+.directive('chartDisplay', function() {
+	return {
+		restrict: 'E',
+		replace: true,
+		template: '<div ng-if="displayType"><linechart id="chartData" data="chartData" options="chartOptions"></linechart></div>'
+	};
+})
 .controller('UsageByUserController', function($scope, dataService, chartService) {
 	var reset = function() {
 			$scope.selected.user = '';
 		};
 
+	$scope.displayType = false;
 	$scope.selected = {};
 	$scope.predicate = 'IP';
 	$scope.reverse = false;

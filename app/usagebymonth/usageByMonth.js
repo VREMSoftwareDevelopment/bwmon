@@ -83,7 +83,15 @@ angular.module('BWMonApp.UsageByMonth', ['ngRoute'])
 			'<th class="text-right">{{::total.days}}</th>'
 	};
 })
+.directive('chartDisplay', function() {
+	return {
+		restrict: 'E',
+		replace: true,
+		template: '<div ng-if="displayType"><linechart id="chartData" data="chartData" options="chartOptions"></linechart></div>'
+	};
+})
 .controller('UsageByMonthController', function($scope, dataService, chartService) {
+	$scope.displayType = false;
 	$scope.selected = {};
 	$scope.predicate = 'id';
 	$scope.reverse = true;

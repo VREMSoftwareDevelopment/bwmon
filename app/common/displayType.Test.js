@@ -26,10 +26,9 @@ describe('BWMonApp.DisplayType testing', function() {
 		expect(element.find('button').text()).toContain('Show Chart');
 	});
 
-	it('should displayType equals false', function() {
+	it('should showData equals true', function() {
 		scope.$digest();
 		element.find('button').triggerHandler('click');
-		console.log(scope.showData);
 		expect(scope.showData).toBeTruthy();
 	});
 

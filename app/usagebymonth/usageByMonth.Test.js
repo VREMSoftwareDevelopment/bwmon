@@ -112,4 +112,13 @@ describe('BWMonApp UsageByMonth feature', function() {
 		scope.$digest();
 		expect(element).toBeDefined();
 	});
+
+	it('should have chartDisplay template', function() {
+		var template = '<div><chart-display></chart-display></div>',
+			element = compile(template)(scope);
+		scope.displayType = true;
+		scope.$digest();
+		expect(element).toBeDefined();
+		expect(element.html()).toContain('<linechart id="chartData" data="chartData" options="chartOptions"></linechart>');
+	});
 });

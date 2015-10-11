@@ -65,9 +65,17 @@ angular.module('BWMonApp.UsageByYear', ['ngRoute'])
 			'<td class="text-right">{{::current.days}}</td>'
 	};
 })
+.directive('chartDisplay', function() {
+	return {
+		restrict: 'E',
+		replace: true,
+		template: '<div ng-if="displayType"><linechart id="chartData" data="chartData" options="chartOptions"></linechart></div>'
+	};
+})
 .controller('UsageByYearController', function($scope, dataService, chartService) {
 	var usageData = dataService.getUsageByYear();
 
+	$scope.displayType = false;
 	$scope.selected = {};
 	$scope.predicate = 'id';
 	$scope.reverse = true;
