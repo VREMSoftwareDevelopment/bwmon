@@ -136,9 +136,7 @@ angular.module('BWMonApp.DataService', [])
 	init();
 
 	return {
-		getYears: function() {
-			return _getYears();
-		},
+		getYears: _getYears,
 		getMonths: function(year) {
 			var result = _getMonths(year);
 			result = _.map(result, function(month) {
