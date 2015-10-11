@@ -19,21 +19,26 @@ angular.module('BWMonApp.SelectMonth', [])
 		restrict: 'E',
 		replace: true,
 		require: ['ngModel', 'year'],
-		scope: {
+		template: '<select ng-options="choiceMonth for choiceMonth in ctrl.months"></select>',
+		scope: {},
+		bindToController: {
 			month: '=ngModel',
 			year: '=year'
 		},
 		controller: function($scope) {
+			var ctrl = this;
 			var updateMonth = function() {
-					$scope.months = dataService.getMonths($scope.year);
-					$scope.month = $scope.months[0];
-				};
+				var months = dataService.getMonths(ctrl.year);
+				ctrl.months = months;
+				ctrl.month = months[0];
+			};
 
 			updateMonth();
-			$scope.$watch('year', function() {
+			$scope.$watch('ctrl.year', function() {
 				updateMonth();
 			}, true);
 		},
-		template: '<select ng-options="choiceMonth for choiceMonth in months"></select>'
+		controllerAs: 'ctrl'
 	};
 });
+
