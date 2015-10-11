@@ -19,12 +19,17 @@ angular.module('BWMonApp.DisplayType', [])
 		restrict: 'E',
 		replace: true,
 		require: ['ngModel'],
-		scope: {
+		template: [
+				'<button id="buttonShowChart" class="btn btn-primary" ng-click="ctrl.displayType = !ctrl.displayType">',
+					'<span ng-if="!ctrl.displayType">Show Chart</span>',
+					'<span ng-if="ctrl.displayType">Show Data</span>',
+				'</button>'
+			].join(''),
+		scope: {},
+		bindToController: {
 			displayType: '=ngModel',
 		},
-		template: '<button id="buttonShowChart" class="btn btn-primary" ng-click="displayType=!displayType">'+
-			'<span ng-if="!displayType">Show Chart</span>'+
-			'<span ng-if="displayType">Show Data</span>'+
-			'</button>'
+		controller: function() {},
+		controllerAs: 'ctrl'
 	};
 });
