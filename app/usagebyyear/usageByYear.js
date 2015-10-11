@@ -24,52 +24,64 @@ angular.module('BWMonApp.UsageByYear', ['ngRoute'])
 	return {
 		restrict: 'E',
 		replace: true,
-		template: '<form class="form-inline">'+
-			'<display-type ng-model="displayType"/></display-type>'+
-			'<div ng-if="displayType" class="form-group">'+
-				'<label class="sr-only" for="chartType">Chart Type</label>'+
-				'<chart-type ng-model="selected.chartType" class="form-control" name="chartType"/>'+
-			'</div>'+
-			'</form>'
+		template: [
+				'<form class="form-inline">',
+					'<display-type ng-model="displayType"/></display-type>',
+					'<div ng-if="displayType" class="form-group">',
+						'<label class="sr-only" for="chartType">Chart Type</label>',
+						'<chart-type ng-model="selected.chartType" class="form-control" name="chartType"/>',
+					'</div>',
+				'</form>'
+			].join('')
 	};
 })
 .directive('yearTable', function() {
 	return {
 		restrict: 'E',
 		replace: true,
-		template: '<div ng-if="!displayType" class="table-responsive">'+
-			'<table class="table table-striped table-hover table-condensed">'+
-			'<thead><tr year-header></tr></thead>'+
-			'<tbody><tr year-body ng-repeat="current in data | orderBy:predicate:reverse"></tr></tbody>'+
-			'</table>'+
-			'</div>'
+		template: [
+				'<div ng-if="!displayType" class="table-responsive">',
+					'<table class="table table-striped table-hover table-condensed">',
+						'<thead><tr year-header></tr></thead>',
+						'<tbody><tr year-body ng-repeat="current in data | orderBy:predicate:reverse"></tr></tbody>',
+					'</table>',
+				'</div>'
+			].join('')
 	};
 })
 .directive('yearHeader', function() {
 	return {
-		template: '<th><a href="" ng-click="predicate=\'id\'; reverse=!reverse;">Year</a></th>'+
-			'<th class="text-right">Down</th>'+
-			'<th class="text-right">Up</th>'+
-			'<th class="text-right"><a href="" ng-click="predicate=\'total\'; reverse=!reverse">Total</a></th>'+
-			'<th class="text-right">Average</th>'+
-			'<th class="text-right">Days</th>'
+		template: [
+				'<th><a href="" ng-click="predicate=\'id\'; reverse=!reverse;">Year</a></th>',
+				'<th class="text-right">Down</th>',
+				'<th class="text-right">Up</th>',
+				'<th class="text-right"><a href="" ng-click="predicate=\'total\'; reverse=!reverse">Total</a></th>',
+				'<th class="text-right">Average</th>',
+				'<th class="text-right">Days</th>'
+			].join('')
 	};
 })
 .directive('yearBody', function() {
 	return {
-		template: '<td>{{current.id}}</td>'+
-			'<td class="text-right">{{::current.download | usageInGBytes | number:3}}</td>'+
-			'<td class="text-right">{{::current.upload | usageInGBytes | number:3}}</td>'+
-			'<td class="text-right">{{::current.total | usageInGBytes | number:3}}</td>'+
-			'<td class="text-right">{{::current.average | usageInGBytes | number:3}}</td>'+
-			'<td class="text-right">{{::current.days}}</td>'
+		template: [
+				'<td>{{current.id}}</td>',
+				'<td class="text-right">{{::current.download | usageInGBytes | number:3}}</td>',
+				'<td class="text-right">{{::current.upload | usageInGBytes | number:3}}</td>',
+				'<td class="text-right">{{::current.total | usageInGBytes | number:3}}</td>',
+				'<td class="text-right">{{::current.average | usageInGBytes | number:3}}</td>',
+				'<td class="text-right">{{::current.days}}</td>'
+			].join('')
 	};
 })
 .directive('chartDisplay', function() {
 	return {
 		restrict: 'E',
 		replace: true,
-		template: '<div ng-if="displayType"><linechart id="chartData" data="chartData" options="chartOptions"></linechart></div>'
+		template: [
+				'<div ng-if="displayType">',
+					'<linechart id="chartData" data="chartData" options="chartOptions"></linechart>',
+				'</div>'
+			].join('')
 	};
 })
 .controller('UsageByYearController', function($scope, dataService, chartService) {
