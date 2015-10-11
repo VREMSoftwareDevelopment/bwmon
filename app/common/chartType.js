@@ -19,11 +19,18 @@ angular.module('BWMonApp.ChartType', [])
 		restrict: 'E',
 		replace: true,
 		require: 'ngModel',
-		scope: {chartType: "=ngModel"},
-		controller: function($scope) {
-			$scope.chartTypes= chartService.getChartTypes();
-			$scope.chartType = $scope.chartTypes[0];
+		template: '<select ng-options="choiceChartType for choiceChartType in ::ctrl.chartTypes"></select>',
+		scope: {},
+		bindToController: {
+			chartType: '=ngModel'
 		},
-		template: '<select ng-options="choiceChartType for choiceChartType in ::chartTypes"></select>'
+		controller: function() {
+			var chartTypes = chartService.getChartTypes();
+			angular.extend(this, {
+				chartTypes: chartTypes,
+				chartType: chartTypes[0]
+			});
+		},
+		controllerAs: 'ctrl'
 	};
 });

@@ -19,11 +19,18 @@ angular.module('BWMonApp.SelectYear', [])
 		restrict: 'E',
 		replace: true,
 		require: 'ngModel',
-		scope: {year: '=ngModel'},
-		controller: function($scope) {
-			$scope.years = dataService.getYears();
-			$scope.year = $scope.years[0];
+		template: '<select ng-options="choiceYear for choiceYear in ::ctrl.years"></select>',
+		scope: {},
+		bindToController: {
+			year: '=ngModel'
 		},
-		template: '<select ng-options="choiceYear for choiceYear in ::years"></select>'
+		controller: function() {
+			var years = dataService.getYears();
+			angular.extend(this, {
+				years: years,
+				year: years[0]
+			});
+		},
+		controllerAs: 'ctrl'
 	};
 });
