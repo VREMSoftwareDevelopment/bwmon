@@ -18,26 +18,33 @@ angular.module('BWMonApp.Navigation', [])
 	return {
 		restrict: 'E',
 		replace: true,
+		template: [
+				'<div class="navbar navbar-default">',
+					'<ul class="nav navbar-nav">',
+						'<li ng-repeat="route in ::ctrl.routes" ng-class="{active: ctrl.isActive(\'{{::route.href}}\')}" >',
+							'<a href="#{{::route.href}}">{{::route.name}}</a>',
+						'</li>',
+					'</ul>',
+				'</div>'
+			].join(''),
+		scope: {},
 		controller: function($scope) {
-			$scope.isActive = function (viewLocation) {
-				return viewLocation === $location.path();
-			};
-			$scope.routes = [{
-				href: '/UsageByUser',
-				name: 'Usage By User'
-			}, {
-				href: '/UsageByMonth',
-				name: 'Usage By Month'
-			}, {
-				href: '/UsageByYear',
-				name: 'Usage By Year'
-			}];
+			angular.extend(this, {
+				isActive: function (viewLocation) {
+					return viewLocation === $location.path();
+				},
+				routes: [{
+					href: '/UsageByUser',
+					name: 'Usage By User'
+				}, {
+					href: '/UsageByMonth',
+					name: 'Usage By Month'
+				}, {
+					href: '/UsageByYear',
+					name: 'Usage By Year'
+				}]
+			});
 		},
-		template: '<div class="navbar navbar-default">'+
-			'<ul class="nav navbar-nav">'+
-			'<li ng-repeat="route in ::routes" ng-class="{active: isActive(\'{{::route.href}}\')}" >'+
-				'<a href="#{{::route.href}}">{{::route.name}}</a>'+
-			'</li></ul></div>'
-
+		controllerAs: 'ctrl'
 	};
 });

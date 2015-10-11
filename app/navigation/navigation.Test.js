@@ -17,15 +17,11 @@ describe('BWMonApp Navigation', function() {
 			return routes;
 		};
 
-
 	beforeEach(inject(function(_$compile_, _$rootScope_, _$location_, _$route_){
 		scope = _$rootScope_.$new();
-
 		location = _$location_;
-		spyOn(location, 'path').and.returnValue('/mypath');
-
+		spyOn(location, 'path').and.returnValue('/UsageByMonth');
 		route = _$route_;
-
 		element = _$compile_(template)(scope);
 	}));
 
@@ -34,32 +30,23 @@ describe('BWMonApp Navigation', function() {
 		expect(element).toBeDefined();
 	});
 
-	it('should have isolateScope', function() {
+	it('should call location.path', function() {
 		scope.$digest();
-		expect(element.isolateScope).toBeDefined();
-		// FIXME something is wrong with element.isolateScope()
-		// console.log(element.isolateScope());
+		expect(location.path).toHaveBeenCalled();
 	});
 
-	it('should return true', function() {
-		scope.$digest();
-		expect(scope.isActive('/mypath')).toBeTruthy();
-	});
-
-	it('should return false', function() {
-		expect(scope.isActive('/mypath1')).toBeFalsy();
-	});
-
-	it('should have same number of routes as $route', function() {
+	it('should have same number of routes', function() {
 		var routes = getRoutes();
+		scope.$digest();
 		expect(routes.length).toBe(3);
-		expect(scope.routes.length).toBe(routes.length);
+		expect(element.find('li').find('a').length).toBe(routes.length);
 	});
 
-	it('should have all route names in $route', function() {
+	it('should have all route names', function() {
 		var routes = getRoutes();
-		angular.forEach(scope.routes, function(value, key, obj) {
-			expect(routes.indexOf(value.href) !== -1).toBeTruthy();
+		scope.$digest();
+		angular.forEach(element.find('li').find('a'), function(value, key, obj) {
+			expect(value.contains(routes[key]) !== -1).toBeTruthy();
 		});
 	});
 });
