@@ -20,28 +20,12 @@ angular.module('BWMonApp.UsageByYear', ['ngRoute'])
 		controller: 'UsageByYearController'
 	});
 })
-.directive('yearForm', function() {
-	return {
-		restrict: 'E',
-		replace: true,
-		template: [
-				'<form class="form-inline">',
-					'<div class="form-group">',
-						'<display-type ng-model="displayType"/></display-type>',
-					'</div>',
-					'<div ng-if="displayType" class="form-group">',
-						'<chart-type ng-model="selected.chartType" class="form-control" name="chartType"/>',
-					'</div>',
-				'</form>'
-			].join('')
-	};
-})
 .directive('yearTable', function() {
 	return {
 		restrict: 'E',
 		replace: true,
 		template: [
-				'<div ng-if="!displayType" class="table-responsive">',
+				'<div class="table-responsive">',
 					'<table class="table table-striped table-hover table-condensed">',
 						'<thead><tr year-header></tr></thead>',
 						'<tbody><tr year-body ng-repeat="current in data | orderBy:predicate:reverse"></tr></tbody>',
@@ -74,12 +58,25 @@ angular.module('BWMonApp.UsageByYear', ['ngRoute'])
 			].join('')
 	};
 })
-.directive('chartDisplay', function() {
+.directive('yearChartForm', function() {
 	return {
 		restrict: 'E',
 		replace: true,
 		template: [
-				'<div ng-if="displayType">',
+				'<form class="form-inline">',
+					'<div class="form-group">',
+						'<chart-type ng-model="selected.chartType" class="form-control" name="chartType"/>',
+					'</div>',
+				'</form>'
+			].join('')
+	};
+})
+.directive('yearChart', function() {
+	return {
+		restrict: 'E',
+		replace: true,
+		template: [
+				'<div>',
 					'<linechart id="chartData" data="chartData" options="chartOptions"></linechart>',
 				'</div>'
 			].join('')
@@ -88,7 +85,6 @@ angular.module('BWMonApp.UsageByYear', ['ngRoute'])
 .controller('UsageByYearController', function($scope, dataService, chartService) {
 	var usageData = dataService.getUsageByYear();
 
-	$scope.displayType = false;
 	$scope.selected = {};
 	$scope.predicate = 'id';
 	$scope.reverse = true;

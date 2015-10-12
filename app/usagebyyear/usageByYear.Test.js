@@ -58,18 +58,13 @@ describe('BWMonApp UsageByYear feature', function() {
 		expect(scope.chartOptions.series[0].type).toEqual(scope.selected.chartType);
 	});
 
-	it('should have yearForm template', function() {
-		var template = '<div><year-form></year-form></div>',
-			element = compile(template)(scope);
-		scope.$digest();
-		expect(element).toBeDefined();
-	});
-
 	it('should have yearTable template', function() {
 		var template = '<div><year-table></year-table></div>',
 			element = compile(template)(scope);
 		scope.$digest();
 		expect(element).toBeDefined();
+		expect(element.html()).toContain('<table');
+		expect(element.html()).toContain('</table>');
 	});
 
 	it('should have yearHeader template', function() {
@@ -77,6 +72,8 @@ describe('BWMonApp UsageByYear feature', function() {
 			element = compile(template)(scope);
 		scope.$digest();
 		expect(element).toBeDefined();
+		expect(element.html()).toContain('<year-header>');
+		expect(element.html()).toContain('</year-header>');
 	});
 
 	it('should have yearBody template', function() {
@@ -84,15 +81,25 @@ describe('BWMonApp UsageByYear feature', function() {
 			element = compile(template)(scope);
 		scope.$digest();
 		expect(element).toBeDefined();
+		expect(element.html()).toEqual('<year-body class="ng-binding"></year-body>');
 	});
 
-	it('should have chartDisplay template', function() {
-		var template = '<div><chart-display></chart-display></div>',
+	it('should have yearChartForm template', function() {
+		var template = '<div><year-chart-form></year-chart-form></div>',
+			element = compile(template)(scope);
+		scope.$digest();
+		expect(element).toBeDefined();
+		expect(element.html()).toContain('<chart-type');
+		expect(element.html()).toContain('</chart-type>');
+	});
+
+	it('should have yearChart template', function() {
+		var template = '<div><year-chart></year-chart></div>',
 			element = compile(template)(scope);
 		scope.displayType = true;
 		scope.$digest();
 		expect(element).toBeDefined();
-		expect(element.html()).toContain('<linechart id="chartData" data="chartData" options="chartOptions"></linechart>');
+		expect(element.html()).toEqual('<div><linechart id="chartData" data="chartData" options="chartOptions"></linechart></div>');
 	});
 
 });
