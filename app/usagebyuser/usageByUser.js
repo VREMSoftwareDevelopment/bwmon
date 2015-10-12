@@ -17,7 +17,8 @@ angular.module('BWMonApp.UsageByUser', ['ngRoute'])
 .config(function($routeProvider) {
 	$routeProvider.when('/UsageByUser', {
 		templateUrl: 'usagebyuser/usageByUser.tpl.html',
-		controller: 'UsageByUserController'
+		controller: 'UsageByUserController',
+		controllerAs: 'usageByUserCtrl'
 	});
 })
 .directive('userForm', function() {
@@ -27,13 +28,13 @@ angular.module('BWMonApp.UsageByUser', ['ngRoute'])
 		template: [
 				'<form class="form-inline">',
 					'<div class="form-group">',
-						'<select-year ng-model="selected.year" class="form-control" name="year"/>',
+						'<select-year ng-model="usageByUserCtrl.selected.year" class="form-control" name="year"/>',
 					'</div>',
 					'<div class="form-group">',
-						'<select-month ng-model="selected.month" year="selected.year" class="form-control" name="month"/>',
+						'<select-month ng-model="usageByUserCtrl.selected.month" year="usageByUserCtrl.selected.year" class="form-control" name="month"/>',
 					'</div>',
 					'<div class="form-group">',
-						'<input ng-model="selected.user" class="form-control" name="user" placeholder="IP, MAC or User"/>',
+						'<input ng-model="usageByUserCtrl.selected.user" class="form-control" name="user" placeholder="IP, MAC or User"/>',
 					'</div>',
 					'<div class="form-group">',
 						'<dir-pagination-controls max-size="5" boundary-links="true"></dir-pagination-controls>',
@@ -50,7 +51,7 @@ angular.module('BWMonApp.UsageByUser', ['ngRoute'])
 				'<div class="table-responsive">',
 					'<table class="table table-striped table-hover table-condensed">',
 						'<thead><tr user-header></tr></thead>',
-						'<tbody><tr user-body dir-paginate="current in data | orderBy:predicate:reverse | itemsPerPage:pageSize"></tr></tbody>',
+						'<tbody><tr user-body dir-paginate="current in usageByUserCtrl.data | orderBy:predicate:usageByUserCtrl.reverse | itemsPerPage:usageByUserCtrl.pageSize"></tr></tbody>',
 						'<tfoot><tr user-footer></tr></tfoot>',
 					'</table>',
 				'</div>'
@@ -60,12 +61,12 @@ angular.module('BWMonApp.UsageByUser', ['ngRoute'])
 .directive('userHeader', function() {
 	return {
 		template: [
-				'<th><a href="" ng-click="predicate=\'IP\'; reverse=!reverse">IP</a></th>',
-				'<th><a href="" ng-click="predicate=\'MAC\'; reverse=!reverse">MAC</a></th>',
-				'<th><a href="" ng-click="predicate=\'user\'; reverse=!reverse">User</a></th>',
+				'<th><a href="" ng-click="predicate=\'IP\'; usageByUserCtrl.reverse=!usageByUserCtrl.reverse">IP</a></th>',
+				'<th><a href="" ng-click="predicate=\'MAC\'; usageByUserCtrl.reverse=!usageByUserCtrl.reverse">MAC</a></th>',
+				'<th><a href="" ng-click="predicate=\'user\'; usageByUserCtrl.reverse=!usageByUserCtrl.reverse">User</a></th>',
 				'<th class="text-right">Down</th>',
 				'<th class="text-right">Up</th>',
-				'<th class="text-right"><a href="" ng-click="predicate=\'total\'; reverse=!reverse">Total</a></th>',
+				'<th class="text-right"><a href="" ng-click="predicate=\'total\'; usageByUserCtrl.reverse=!usageByUserCtrl.reverse">Total</a></th>',
 				'<th class="text-right">Percent</th>',
 				'<th class="text-right">Average</th>',
 				'<th class="text-right">Days</th>',
@@ -94,13 +95,13 @@ angular.module('BWMonApp.UsageByUser', ['ngRoute'])
 .directive('userFooter', function() {
 	return {
 		template: [
-				'<th colspan="3">{{::selected.month}} {{::selected.year}} Totals</th>',
-				'<th class="text-right">{{::total.download | usageInGBytes | number:3}}</th>',
-				'<th class="text-right">{{::total.upload | usageInGBytes | number:3}}</th>',
-				'<th class="text-right">{{::total.total | usageInGBytes | number:3}}</th>',
+				'<th colspan="3">{{::usageByUserCtrl.selected.month}} {{::usageByUserCtrl.selected.year}} Totals</th>',
+				'<th class="text-right">{{::usageByUserCtrl.total.download | usageInGBytes | number:3}}</th>',
+				'<th class="text-right">{{::usageByUserCtrl.total.upload | usageInGBytes | number:3}}</th>',
+				'<th class="text-right">{{::usageByUserCtrl.total.total | usageInGBytes | number:3}}</th>',
 				'<th></th>',
-				'<th class="text-right">{{::total.average | usageInGBytes | number:3}}</th>',
-				'<th class="text-right">{{::total.days}}</th>',
+				'<th class="text-right">{{::usageByUserCtrl.total.average | usageInGBytes | number:3}}</th>',
+				'<th class="text-right">{{::usageByUserCtrl.total.days}}</th>',
 				'<th></th>',
 				'<th></th>'
 			].join('')
@@ -113,16 +114,16 @@ angular.module('BWMonApp.UsageByUser', ['ngRoute'])
 		template: [
 				'<form class="form-inline">',
 					'<div class="form-group">',
-						'<select-year ng-model="selected.year" class="form-control" name="year"/>',
+						'<select-year ng-model="usageByUserCtrl.selected.year" class="form-control" name="year"/>',
 					'</div>',
 					'<div class="form-group">',
-						'<select-month ng-model="selected.month" year="selected.year" class="form-control" name="month"/>',
+						'<select-month ng-model="usageByUserCtrl.selected.month" year="usageByUserCtrl.selected.year" class="form-control" name="month"/>',
 					'</div>',
 					'<div class="form-group">',
-						'<input ng-model="selected.user" class="form-control" name="user" placeholder="IP, MAC or User"/>',
+						'<input ng-model="usageByUserCtrl.selected.user" class="form-control" name="user" placeholder="IP, MAC or User"/>',
 					'</div>',
 					'<div class="form-group">',
-						'<chart-type ng-model="selected.chartType" class="form-control" name="chartType"/>',
+						'<chart-type ng-model="usageByUserCtrl.selected.chartType" class="form-control" name="chartType"/>',
 					'</div>',
 				'</form>'
 			].join('')
@@ -134,39 +135,40 @@ angular.module('BWMonApp.UsageByUser', ['ngRoute'])
 		replace: true,
 		template: [
 				'<div>',
-					'<linechart id="chartData" data="chartData" options="chartOptions"></linechart>',
+					'<linechart id="chartData" data="usageByUserCtrl.chartData" options="usageByUserCtrl.chartOptions"></linechart>',
 				'</div>'
 			].join('')
 	};
 })
 .controller('UsageByUserController', function($scope, dataService, chartService) {
-	var reset = function() {
-			$scope.selected.user = '';
+	var usageByUserCtrl = this,
+		reset = function() {
+			usageByUserCtrl.selected.user = '';
 		};
 
-	$scope.selected = {};
-	$scope.predicate = 'IP';
-	$scope.reverse = false;
-	$scope.pageSize = 12;
+	usageByUserCtrl.selected = {};
+	usageByUserCtrl.predicate = 'IP';
+	usageByUserCtrl.reverse = false;
+	usageByUserCtrl.pageSize = 12;
 
-	$scope.$watch('selected.year', function() {
+	$scope.$watch('usageByUserCtrl.selected.year', function() {
 		reset();
-		$scope.selected.month = dataService.getMonths($scope.selected.year)[0];
+		usageByUserCtrl.selected.month = dataService.getMonths(usageByUserCtrl.selected.year)[0];
 	}, true);
 
-	$scope.$watch('selected.month', function() {
+	$scope.$watch('usageByUserCtrl.selected.month', function() {
 		reset();
 	}, true);
 
-	$scope.$watch('selected', function() {
-		var usageData = dataService.getUsageByUser($scope.selected.year, $scope.selected.month, $scope.selected.user);
-		$scope.data = usageData.data.usage;
-		$scope.total = usageData.data.total;
-		$scope.chartData = usageData.chartData;
-		$scope.chartOptions = chartService.getChartOptions($scope.chartData, chartService.getUserLabel, chartService.getUserTooltip);
+	$scope.$watch('usageByUserCtrl.selected', function() {
+		var usageData = dataService.getUsageByUser(usageByUserCtrl.selected.year, usageByUserCtrl.selected.month, usageByUserCtrl.selected.user);
+		usageByUserCtrl.data = usageData.data.usage;
+		usageByUserCtrl.total = usageData.data.total;
+		usageByUserCtrl.chartData = usageData.chartData;
+		usageByUserCtrl.chartOptions = chartService.getChartOptions(usageByUserCtrl.chartData, chartService.getUserLabel, chartService.getUserTooltip);
 	}, true);
 
-	$scope.$watch('selected.chartType', function() {
-		$scope.chartOptions.series[0].type = $scope.selected.chartType;
+	$scope.$watch('usageByUserCtrl.selected.chartType', function() {
+		usageByUserCtrl.chartOptions.series[0].type = usageByUserCtrl.selected.chartType;
 	}, true);
 });

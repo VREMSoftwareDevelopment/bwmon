@@ -17,17 +17,17 @@ describe('bwmon e2e usage by user, ', function() {
 		});
 
 		it('should have year selected', function() {
-			expect(element.all(by.model('selected.year')).first().element(by.css('option:checked')).getText())
+			expect(element.all(by.model('usageByUserCtrl.selected.year')).first().element(by.css('option:checked')).getText())
 				.toEqual('2013');
 		});
 
 		it('should have month selected', function() {
-			expect(element.all(by.model('selected.month')).first().element(by.css('option:checked')).getText())
+			expect(element.all(by.model('usageByUserCtrl.selected.month')).first().element(by.css('option:checked')).getText())
 				.toEqual('November');
 		});
 
 		it('should have user selected', function() {
-			expect(element.all(by.model('selected.user')).first().getText())
+			expect(element.all(by.model('usageByUserCtrl.selected.user')).first().getText())
 				.toEqual('');
 		});
 
@@ -41,7 +41,7 @@ describe('bwmon e2e usage by user, ', function() {
 		});
 
 		it('should have rows', function() {
-			element.all(by.repeater('current in data | orderBy:predicate:reverse | itemsPerPage:pageSize')).then(function(arr) {
+			element.all(by.repeater('current in usageByUserCtrl.data | orderBy:predicate:usageByUserCtrl.reverse | itemsPerPage:usageByUserCtrl.pageSize')).then(function(arr) {
 				expect(arr.length).toEqual(12);
 				expect(arr[0].getText()).toEqual('192.168.1.10 00:1C:25:27:9B:AE COMPUTER-3 15.004 0.973 15.978 18.3% 0.533 30 Nov 1, 2013 4:30:01 PM Nov 30, 2013 10:30:02 PM');
 				expect(arr[11].getText()).toEqual('192.168.1.148 00:1A:A0:C7:17:60 COMPUTER-18 0.083 0.005 0.088 0.1% 0.003 30 Nov 1, 2013 4:30:01 PM Nov 30, 2013 10:30:02 PM');
@@ -69,29 +69,29 @@ describe('bwmon e2e usage by user, ', function() {
 		});
 
 		it('should have year selected', function() {
-			expect(element.all(by.model('selected.year')).last().element(by.css('option:checked')).getText())
+			expect(element.all(by.model('usageByUserCtrl.selected.year')).last().element(by.css('option:checked')).getText())
 				.toEqual('2013');
 		});
 
 		it('should have month selected', function() {
-			expect(element.all(by.model('selected.month')).last().element(by.css('option:checked')).getText())
+			expect(element.all(by.model('usageByUserCtrl.selected.month')).last().element(by.css('option:checked')).getText())
 				.toEqual('November');
 		});
 
 		it('should have user selected', function() {
-			expect(element.all(by.model('selected.user')).last().getText())
+			expect(element.all(by.model('usageByUserCtrl.selected.user')).last().getText())
 				.toEqual('');
 		});
 
 		it('should have chart type selected', function() {
-			expect(element(by.model('selected.chartType')).element(by.css('option:checked')).getText())
+			expect(element(by.model('usageByUserCtrl.selected.chartType')).element(by.css('option:checked')).getText())
 				.toEqual('column');
 		});
 
 		it('should have chart', function() {
 			var result = element(by.id('chartData'));
-			expect(result.getAttribute('data')).toEqual('chartData');
-			expect(result.getAttribute('options')).toEqual('chartOptions');
+			expect(result.getAttribute('data')).toEqual('usageByUserCtrl.chartData');
+			expect(result.getAttribute('options')).toEqual('usageByUserCtrl.chartOptions');
 		});
 	});
 
