@@ -27,13 +27,7 @@ angular.module('BWMonApp.UsageByMonth', ['ngRoute'])
 		template: [
 				'<form class="form-inline">',
 					'<div class="form-group">',
-						'<display-type ng-model="displayType"/></display-type>',
-					'</div>',
-					'<div class="form-group">',
 						'<select-year ng-model="selected.year" class="form-control" name="year"/>',
-					'</div>',
-					'<div ng-if="displayType" class="form-group">',
-						'<chart-type ng-model="selected.chartType" class="form-control" name="chartType"/>',
 					'</div>',
 				'</form>'
 			].join('')
@@ -44,7 +38,7 @@ angular.module('BWMonApp.UsageByMonth', ['ngRoute'])
 		restrict: 'E',
 		replace: true,
 		template: [
-				'<div ng-if="!displayType" class="table-responsive">',
+				'<div class="table-responsive">',
 					'<table class="table table-striped table-hover table-condensed">',
 						'<thead><tr month-header></tr></thead>',
 						'<tbody><tr month-body ng-repeat="current in data | orderBy:predicate:reverse"></tr></tbody>',
@@ -93,19 +87,34 @@ angular.module('BWMonApp.UsageByMonth', ['ngRoute'])
 			].join('')
 	};
 })
-.directive('chartDisplay', function() {
+.directive('monthChartForm', function() {
 	return {
 		restrict: 'E',
 		replace: true,
 		template: [
-				'<div ng-if="displayType">',
+				'<form class="form-inline">',
+					'<div class="form-group">',
+						'<select-year ng-model="selected.year" class="form-control" name="year"/>',
+					'</div>',
+					'<div class="form-group">',
+						'<chart-type ng-model="selected.chartType" class="form-control" name="chartType"/>',
+					'</div>',
+				'</form>'
+			].join('')
+	};
+})
+.directive('monthChart', function() {
+	return {
+		restrict: 'E',
+		replace: true,
+		template: [
+				'<div>',
 					'<linechart id="chartData" data="chartData" options="chartOptions"></linechart>',
 				'</div>'
 			].join('')
 	};
 })
 .controller('UsageByMonthController', function($scope, dataService, chartService) {
-	$scope.displayType = false;
 	$scope.selected = {};
 	$scope.predicate = 'id';
 	$scope.reverse = true;

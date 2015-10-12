@@ -81,7 +81,8 @@ describe('BWMonApp UsageByYear feature', function() {
 			element = compile(template)(scope);
 		scope.$digest();
 		expect(element).toBeDefined();
-		expect(element.html()).toEqual('<year-body class="ng-binding"></year-body>');
+		expect(element.html()).toContain('<year-body class="ng-binding">');
+		expect(element.html()).toContain('</year-body>');
 	});
 
 	it('should have yearChartForm template', function() {
