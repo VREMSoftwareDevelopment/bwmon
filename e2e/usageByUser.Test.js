@@ -6,21 +6,6 @@ describe('bwmon e2e usage by user, ', function() {
 		browser.waitForAngular();
 	});
 
-	it('should have year selected', function() {
-		expect(element(by.model('selected.year')).element(by.css('option:checked')).getText())
-			.toEqual('2013');
-	});
-
-	it('should have month selected', function() {
-		expect(element(by.model('selected.month')).element(by.css('option:checked')).getText())
-			.toEqual('November');
-	});
-
-	it('should have user selected', function() {
-		expect(element(by.model('selected.user')).getText())
-			.toEqual('');
-	});
-
 	describe('data', function() {
 		it('should have text as Data', function() {
 			expect(element(by.id('Data')).getText()).toEqual('Data');
@@ -29,6 +14,21 @@ describe('bwmon e2e usage by user, ', function() {
 		it('should have class as active', function() {
 			expect(element(by.id('Data')).getAttribute('class')).toMatch('active');
 			expect(element(by.id('Chart')).getAttribute('class')).not.toMatch('active');
+		});
+
+		it('should have year selected', function() {
+			expect(element.all(by.model('selected.year')).first().element(by.css('option:checked')).getText())
+				.toEqual('2013');
+		});
+
+		it('should have month selected', function() {
+			expect(element.all(by.model('selected.month')).first().element(by.css('option:checked')).getText())
+				.toEqual('November');
+		});
+
+		it('should have user selected', function() {
+			expect(element.all(by.model('selected.user')).first().getText())
+				.toEqual('');
 		});
 
 		it('should have pagination', function() {
@@ -66,6 +66,21 @@ describe('bwmon e2e usage by user, ', function() {
 		it('should have class as active', function() {
 			expect(element(by.id('Chart')).getAttribute('class')).toMatch('active');
 			expect(element(by.id('Data')).getAttribute('class')).not.toMatch('active');
+		});
+
+		it('should have year selected', function() {
+			expect(element.all(by.model('selected.year')).last().element(by.css('option:checked')).getText())
+				.toEqual('2013');
+		});
+
+		it('should have month selected', function() {
+			expect(element.all(by.model('selected.month')).last().element(by.css('option:checked')).getText())
+				.toEqual('November');
+		});
+
+		it('should have user selected', function() {
+			expect(element.all(by.model('selected.user')).last().getText())
+				.toEqual('');
 		});
 
 		it('should have chart type selected', function() {
