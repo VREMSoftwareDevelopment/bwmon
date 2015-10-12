@@ -17,12 +17,12 @@ describe('bwmon e2e usage by month, ', function() {
 		});
 
 		it('should have year selected', function() {
-			expect(element.all(by.model('selected.year')).first().element(by.css('option:checked')).getText())
+			expect(element.all(by.model('usageByMonthCtrl.selected.year')).first().element(by.css('option:checked')).getText())
 				.toEqual('2013');
 		});
 
 		it('should have rows', function() {
-			element.all(by.repeater('current in data | orderBy:predicate:reverse')).then(function(arr) {
+			element.all(by.repeater('current in usageByMonthCtrl.data | orderBy:predicate:usageByMonthCtrl.reverse')).then(function(arr) {
 				expect(arr.length).toEqual(11);
 				expect(arr[0].getText()).toEqual('November 83.066 4.263 87.329 13.7% 2.911 30');
 				expect(arr[10].getText()).toEqual('January 64.043 4.105 68.149 10.7% 2.198 31');
@@ -50,19 +50,19 @@ describe('bwmon e2e usage by month, ', function() {
 		});
 
 		it('should have year selected', function() {
-			expect(element.all(by.model('selected.year')).last().element(by.css('option:checked')).getText())
+			expect(element.all(by.model('usageByMonthCtrl.selected.year')).last().element(by.css('option:checked')).getText())
 				.toEqual('2013');
 		});
 
 		it('should have chart type selected', function() {
-			expect(element(by.model('selected.chartType')).element(by.css('option:checked')).getText())
+			expect(element(by.model('usageByMonthCtrl.selected.chartType')).element(by.css('option:checked')).getText())
 				.toEqual('column');
 		});
 
 		it('should have chart', function() {
 			var result = element(by.id('chartData'));
-			expect(result.getAttribute('data')).toEqual('chartData');
-			expect(result.getAttribute('options')).toEqual('chartOptions');
+			expect(result.getAttribute('data')).toEqual('usageByMonthCtrl.chartData');
+			expect(result.getAttribute('options')).toEqual('usageByMonthCtrl.chartOptions');
 		});
 	});
 

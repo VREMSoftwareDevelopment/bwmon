@@ -1,6 +1,7 @@
 describe('BWMonApp UsageByMonth feature', function() {
 	var scope,
 		compile,
+		controler,
 		usageData = {
 			data: {
 				usage: 5,
@@ -31,7 +32,7 @@ describe('BWMonApp UsageByMonth feature', function() {
 		chartService = _chartService_;
 		spyOn(chartService, 'getChartOptions').and.returnValue(chartOptions);
 
-		_$controller_('UsageByMonthController', {
+		controler = _$controller_('UsageByMonthController', {
 			$scope: scope,
 			dataService: dataService,
 			chartService: chartService
@@ -41,41 +42,42 @@ describe('BWMonApp UsageByMonth feature', function() {
 	it('should map UsageByMonth route', inject(function($route){
 		var route = $route.routes['/UsageByMonth'];
 		expect(route.controller).toBe('UsageByMonthController');
+		expect(route.controllerAs).toBe('usageByMonthCtrl');
 		expect(route.templateUrl).toBe('usagebymonth/usageByMonth.tpl.html');
 	}));
 
 	it('should update data with getUsageByMonth', function() {
-		scope.selected.year = 1;
+		controler.selected.year = 1;
 		scope.$digest();
-		expect(scope.data).toEqual(usageData.data.usage);
-		expect(dataService.getUsageByMonth).toHaveBeenCalledWith(scope.selected.year);
+		expect(controler.data).toEqual(usageData.data.usage);
+		expect(dataService.getUsageByMonth).toHaveBeenCalledWith(controler.selected.year);
 	});
 
 	it('should update total with getUsageByMonth', function() {
-		scope.selected.year = 1;
+		controler.selected.year = 1;
 		scope.$digest();
-		expect(scope.total).toEqual(usageData.data.total);
-		expect(dataService.getUsageByMonth).toHaveBeenCalledWith(scope.selected.year);
+		expect(controler.total).toEqual(usageData.data.total);
+		expect(dataService.getUsageByMonth).toHaveBeenCalledWith(controler.selected.year);
 	});
 
 	it('should update chart data with getUsageByMonth', function() {
-		scope.selected.year = 1;
+		controler.selected.year = 1;
 		scope.$digest();
-		expect(scope.chartData).toEqual(usageData.chartData);
-		expect(dataService.getUsageByMonth).toHaveBeenCalledWith(scope.selected.year);
+		expect(controler.chartData).toEqual(usageData.chartData);
+		expect(dataService.getUsageByMonth).toHaveBeenCalledWith(controler.selected.year);
 	});
 
 	it('should update chart options with chart options from ChartService', function() {
-		scope.selected.year = 1;
+		controler.selected.year = 1;
 		scope.$digest();
-		expect(scope.chartOptions).toEqual(chartOptions);
-		expect(chartService.getChartOptions).toHaveBeenCalledWith(scope.chartData, chartService.getMonthLabel, chartService.getMonthLabel);
+		expect(controler.chartOptions).toEqual(chartOptions);
+		expect(chartService.getChartOptions).toHaveBeenCalledWith(controler.chartData, chartService.getMonthLabel, chartService.getMonthLabel);
 	});
 
 	it('should change chart type in chart options', function() {
-		scope.selected.chartType = 'test';
+		controler.selected.chartType = 'test';
 		scope.$digest();
-		expect(scope.chartOptions.series[0].type).toEqual(scope.selected.chartType);
+		expect(controler.chartOptions.series[0].type).toEqual(controler.selected.chartType);
 	});
 
 	it('should have monthForm template', function() {
@@ -140,6 +142,6 @@ describe('BWMonApp UsageByMonth feature', function() {
 		scope.displayType = true;
 		scope.$digest();
 		expect(element).toBeDefined();
-		expect(element.html()).toEqual('<div><linechart id="chartData" data="chartData" options="chartOptions"></linechart></div>');
+		expect(element.html()).toEqual('<div><linechart id="chartData" data="usageByMonthCtrl.chartData" options="usageByMonthCtrl.chartOptions"></linechart></div>');
 	});
 });
