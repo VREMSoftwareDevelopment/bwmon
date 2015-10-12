@@ -1,6 +1,6 @@
 {
 	"name": "bwmon",
-	"version": "2.2.3",
+	"version": "2.3.0",
 	"main": "app/index.html",
 	"ignore": [
 		"**/.*",
