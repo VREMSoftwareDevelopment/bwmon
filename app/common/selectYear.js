@@ -19,7 +19,7 @@ angular.module('BWMonApp.SelectYear', [])
 		restrict: 'E',
 		replace: true,
 		require: 'ngModel',
-		template: '<select ng-options="choiceYear for choiceYear in ::ctrl.years"></select>',
+		template: '<select ng-options="choiceYear for choiceYear in ::selectYearCtrl.years"></select>',
 		scope: {},
 		bindToController: {
 			year: '=ngModel'
@@ -31,6 +31,6 @@ angular.module('BWMonApp.SelectYear', [])
 				year: years[0]
 			});
 		},
-		controllerAs: 'ctrl'
+		controllerAs: 'selectYearCtrl'
 	};
 });

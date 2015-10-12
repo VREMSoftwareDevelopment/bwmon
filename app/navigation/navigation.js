@@ -21,7 +21,7 @@ angular.module('BWMonApp.Navigation', [])
 		template: [
 				'<div class="navbar navbar-default">',
 					'<ul class="nav navbar-nav">',
-						'<li ng-repeat="route in ::ctrl.routes" ng-class="{active: ctrl.isActive(\'{{::route.href}}\')}" >',
+						'<li ng-repeat="route in ::navigationCtrl.routes" ng-class="{active: navigationCtrl.isActive(\'{{::route.href}}\')}" >',
 							'<a href="#{{::route.href}}">{{::route.name}}</a>',
 						'</li>',
 					'</ul>',
@@ -45,6 +45,6 @@ angular.module('BWMonApp.Navigation', [])
 				}]
 			});
 		},
-		controllerAs: 'ctrl'
+		controllerAs: 'navigationCtrl'
 	};
 });

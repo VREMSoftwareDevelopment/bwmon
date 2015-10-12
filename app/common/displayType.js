@@ -20,9 +20,9 @@ angular.module('BWMonApp.DisplayType', [])
 		replace: true,
 		require: ['ngModel'],
 		template: [
-				'<button id="buttonShowChart" class="btn btn-primary" ng-click="ctrl.displayType = !ctrl.displayType">',
-					'<span ng-if="!ctrl.displayType">Show Chart</span>',
-					'<span ng-if="ctrl.displayType">Show Data</span>',
+				'<button id="buttonShowChart" class="btn btn-primary" ng-click="displayTypeCtrl.displayType = !displayTypeCtrl.displayType">',
+					'<span ng-if="!displayTypeCtrl.displayType">Show Chart</span>',
+					'<span ng-if="displayTypeCtrl.displayType">Show Data</span>',
 				'</button>'
 			].join(''),
 		scope: {},
@@ -30,6 +30,6 @@ angular.module('BWMonApp.DisplayType', [])
 			displayType: '=ngModel',
 		},
 		controller: function() {},
-		controllerAs: 'ctrl'
+		controllerAs: 'displayTypeCtrl'
 	};
 });

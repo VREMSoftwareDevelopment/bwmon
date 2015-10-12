@@ -19,7 +19,7 @@ angular.module('BWMonApp.ChartType', [])
 		restrict: 'E',
 		replace: true,
 		require: 'ngModel',
-		template: '<select ng-options="choiceChartType for choiceChartType in ::ctrl.chartTypes"></select>',
+		template: '<select ng-options="choiceChartType for choiceChartType in ::chartTypeCtrl.chartTypes"></select>',
 		scope: {},
 		bindToController: {
 			chartType: '=ngModel'
@@ -31,6 +31,6 @@ angular.module('BWMonApp.ChartType', [])
 				chartType: chartTypes[0]
 			});
 		},
-		controllerAs: 'ctrl'
+		controllerAs: 'chartTypeCtrl'
 	};
 });
