@@ -15,6 +15,7 @@
  */
 angular.module('BWMonApp', [
 	'ngRoute',
+	'ui.bootstrap',
 	'angularUtils.directives.dirPagination',
 	'n3-line-chart',
 	'BWMonApp.Filters',
