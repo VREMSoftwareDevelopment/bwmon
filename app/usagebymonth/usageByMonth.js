@@ -131,7 +131,7 @@ angular.module('BWMonApp.UsageByMonth', ['ngRoute'])
 		usageByMonthCtrl.chartOptions = chartService.getChartOptions(usageByMonthCtrl.chartData, chartService.getMonthLabel, chartService.getMonthLabel);
 	}, true);
 
-	$scope.$watch('selected.chartType', function() {
+	$scope.$watch('usageByMonthCtrl.selected.chartType', function() {
 		usageByMonthCtrl.chartOptions.series[0].type = usageByMonthCtrl.selected.chartType;
 	}, true);
 
