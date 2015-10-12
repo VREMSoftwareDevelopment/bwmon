@@ -125,7 +125,16 @@ gulp.task('devhtml', ['devhtml:clean'], function() {
 		.pipe(gulp.dest(files.html.dev.dest));
 });
 
-gulp.task('jshint', function() {
+gulp.task('pagination', function() {
+	var src = [].concat(files.js.src, files.js.excludes);
+	return gulp
+		.src(cmpdir+'/angularUtils-pagination/dirPagination.js')
+		.pipe(plugins.rename('dirPagination.min.js'))
+		.pipe(plugins.uglify())
+		.pipe(gulp.dest(cmpdir+'/angularUtils-pagination'));
+});
+
+gulp.task('jshint', ['pagination'], function() {
 	var src = [].concat(files.js.src, files.e2e.src, '!'+srcdir+'/**'+files.templates.name, '!'+srcdir+'/**/'+dataname);
 	return gulp
 		.src(src)
