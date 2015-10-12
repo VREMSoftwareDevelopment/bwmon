@@ -17,7 +17,7 @@ describe('bwmon e2e usage by year, ', function() {
 		});
 
 		it('should have rows', function() {
-			element.all(by.repeater('current in data | orderBy:predicate:reverse')).then(function(arr) {
+			element.all(by.repeater('current in usageByYearCtrl.data | orderBy:predicate:usageByYearCtrl.reverse')).then(function(arr) {
 				expect(arr.length).toEqual(4);
 				expect(arr[0].getText()).toEqual('2013 603.928 35.773 639.701 1.753 365');
 				expect(arr[1].getText()).toEqual('2012 413.485 23.242 436.727 1.193 366');
@@ -42,14 +42,14 @@ describe('bwmon e2e usage by year, ', function() {
 		});
 
 		it('should have chart type selected', function() {
-			expect(element(by.model('selected.chartType')).element(by.css('option:checked')).getText())
+			expect(element(by.model('usageByYearCtrl.selected.chartType')).element(by.css('option:checked')).getText())
 				.toEqual('column');
 		});
 
 		it('should have chart', function() {
 			var result = element(by.id('chartData'));
-			expect(result.getAttribute('data')).toEqual('chartData');
-			expect(result.getAttribute('options')).toEqual('chartOptions');
+			expect(result.getAttribute('data')).toEqual('usageByYearCtrl.chartData');
+			expect(result.getAttribute('options')).toEqual('usageByYearCtrl.chartOptions');
 		});
 	});
 

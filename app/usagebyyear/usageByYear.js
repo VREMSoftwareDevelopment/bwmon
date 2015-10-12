@@ -17,7 +17,8 @@ angular.module('BWMonApp.UsageByYear', ['ngRoute'])
 .config(function($routeProvider) {
 	$routeProvider.when('/UsageByYear', {
 		templateUrl: 'usagebyyear/usageByYear.tpl.html',
-		controller: 'UsageByYearController'
+		controller: 'UsageByYearController',
+		controllerAs: 'usageByYearCtrl'
 	});
 })
 .directive('yearTable', function() {
@@ -28,7 +29,7 @@ angular.module('BWMonApp.UsageByYear', ['ngRoute'])
 				'<div class="table-responsive">',
 					'<table class="table table-striped table-hover table-condensed">',
 						'<thead><tr year-header></tr></thead>',
-						'<tbody><tr year-body ng-repeat="current in data | orderBy:predicate:reverse"></tr></tbody>',
+						'<tbody><tr year-body ng-repeat="current in usageByYearCtrl.data | orderBy:predicate:usageByYearCtrl.reverse"></tr></tbody>',
 					'</table>',
 				'</div>'
 			].join('')
@@ -37,10 +38,10 @@ angular.module('BWMonApp.UsageByYear', ['ngRoute'])
 .directive('yearHeader', function() {
 	return {
 		template: [
-				'<th><a href="" ng-click="predicate=\'id\'; reverse=!reverse;">Year</a></th>',
+				'<th><a href="" ng-click="predicate=\'id\'; usageByYearCtrl.reverse=!usageByYearCtrl.reverse;">Year</a></th>',
 				'<th class="text-right">Down</th>',
 				'<th class="text-right">Up</th>',
-				'<th class="text-right"><a href="" ng-click="predicate=\'total\'; reverse=!reverse">Total</a></th>',
+				'<th class="text-right"><a href="" ng-click="predicate=\'total\'; usageByYearCtrl.reverse=!usageByYearCtrl.reverse">Total</a></th>',
 				'<th class="text-right">Average</th>',
 				'<th class="text-right">Days</th>'
 			].join('')
@@ -65,7 +66,7 @@ angular.module('BWMonApp.UsageByYear', ['ngRoute'])
 		template: [
 				'<form class="form-inline">',
 					'<div class="form-group">',
-						'<chart-type ng-model="selected.chartType" class="form-control" name="chartType"/>',
+						'<chart-type ng-model="usageByYearCtrl.selected.chartType" class="form-control" name="chartType"/>',
 					'</div>',
 				'</form>'
 			].join('')
@@ -77,23 +78,24 @@ angular.module('BWMonApp.UsageByYear', ['ngRoute'])
 		replace: true,
 		template: [
 				'<div>',
-					'<linechart id="chartData" data="chartData" options="chartOptions"></linechart>',
+					'<linechart id="chartData" data="usageByYearCtrl.chartData" options="usageByYearCtrl.chartOptions"></linechart>',
 				'</div>'
 			].join('')
 	};
 })
 .controller('UsageByYearController', function($scope, dataService, chartService) {
+	var usageByYearCtrl = this;
 	var usageData = dataService.getUsageByYear();
 
-	$scope.selected = {};
-	$scope.predicate = 'id';
-	$scope.reverse = true;
-	$scope.data = usageData.data;
-	$scope.chartData = usageData.chartData;
-	$scope.chartOptions = chartService.getChartOptions($scope.chartData, chartService.getYearLabel, chartService.getYearLabel);
+	usageByYearCtrl.selected = {};
+	usageByYearCtrl.predicate = 'id';
+	usageByYearCtrl.reverse = false;
+	usageByYearCtrl.data = usageData.data;
+	usageByYearCtrl.chartData = usageData.chartData;
+	usageByYearCtrl.chartOptions = chartService.getChartOptions(usageByYearCtrl.chartData, chartService.getYearLabel, chartService.getYearLabel);
 
-	$scope.$watch('selected.chartType', function() {
-		$scope.chartOptions.series[0].type = $scope.selected.chartType;
+	$scope.$watch('usageByYearCtrl.selected.chartType', function() {
+		usageByYearCtrl.chartOptions.series[0].type = usageByYearCtrl.selected.chartType;
 	}, true);
 
 });

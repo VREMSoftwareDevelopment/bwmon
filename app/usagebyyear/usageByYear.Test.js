@@ -1,6 +1,7 @@
 describe('BWMonApp UsageByYear feature', function() {
 	var scope,
 		compile,
+		controller,
 		chartOptions = {
 			series: [{
 				type: 'type'
@@ -25,7 +26,7 @@ describe('BWMonApp UsageByYear feature', function() {
 		chartService = _chartService_;
 		spyOn(chartService, 'getChartOptions').and.returnValue(chartOptions);
 
-		_$controller_('UsageByYearController', {
+		controller = _$controller_('UsageByYearController', {
 			$scope: scope,
 			dataService: dataService,
 			chartService: chartService
@@ -35,27 +36,28 @@ describe('BWMonApp UsageByYear feature', function() {
 	it('should map UsageByYear route', inject(function($route){
 		var route = $route.routes['/UsageByYear'];
 		expect(route.controller).toBe('UsageByYearController');
+		expect(route.controllerAs).toBe('usageByYearCtrl');
 		expect(route.templateUrl).toBe('usagebyyear/usageByYear.tpl.html');
 	}));
 
 	it('should update data with getUsageByYear', function() {
-		expect(scope.data).toEqual(data);
+		expect(controller.data).toEqual(data);
 		expect(dataService.getUsageByYear).toHaveBeenCalled();
 	});
 
 	it('should update chart data with getUsageByYear', function() {
-		expect(scope.chartData).toEqual({1:data});
+		expect(controller.chartData).toEqual({1:data});
 	});
 
 	it('should update chart options with chart options from ChartService', function() {
-		expect(scope.chartOptions).toEqual(chartOptions);
-		expect(chartService.getChartOptions).toHaveBeenCalledWith(scope.chartData, chartService.getYearLabel, chartService.getYearLabel);
+		expect(controller.chartOptions).toEqual(chartOptions);
+		expect(chartService.getChartOptions).toHaveBeenCalledWith(controller.chartData, chartService.getYearLabel, chartService.getYearLabel);
 	});
 
 	it('should change chart type in chart options', function() {
-		scope.selected.chartType = 'test';
+		controller.selected.chartType = 'test';
 		scope.$digest();
-		expect(scope.chartOptions.series[0].type).toEqual(scope.selected.chartType);
+		expect(controller.chartOptions.series[0].type).toEqual(controller.selected.chartType);
 	});
 
 	it('should have yearTable template', function() {
@@ -100,7 +102,7 @@ describe('BWMonApp UsageByYear feature', function() {
 		scope.displayType = true;
 		scope.$digest();
 		expect(element).toBeDefined();
-		expect(element.html()).toEqual('<div><linechart id="chartData" data="chartData" options="chartOptions"></linechart></div>');
+		expect(element.html()).toEqual('<div><linechart id="chartData" data="usageByYearCtrl.chartData" options="usageByYearCtrl.chartOptions"></linechart></div>');
 	});
 
 });
