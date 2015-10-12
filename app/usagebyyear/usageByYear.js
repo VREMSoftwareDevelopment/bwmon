@@ -26,9 +26,10 @@ angular.module('BWMonApp.UsageByYear', ['ngRoute'])
 		replace: true,
 		template: [
 				'<form class="form-inline">',
-					'<display-type ng-model="displayType"/></display-type>',
+					'<div class="form-group">',
+						'<display-type ng-model="displayType"/></display-type>',
+					'</div>',
 					'<div ng-if="displayType" class="form-group">',
-						'<label class="sr-only" for="chartType">Chart Type</label>',
 						'<chart-type ng-model="selected.chartType" class="form-control" name="chartType"/>',
 					'</div>',
 				'</form>'
