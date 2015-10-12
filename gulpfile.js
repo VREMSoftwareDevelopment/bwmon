@@ -7,7 +7,7 @@ var gulp = require('gulp'),
 	del = require('del'),
 	argv = require('yargs').argv,
 
-	banner = '/*\n\t<%=pkg.name%> v<%=pkg.version%>\n\t(C) 2010 - 2015 VREM Software Development\n\t<%= pkg.homepage %>\n\tLicense: <%=pkg.license%>\n*/\n',
+	banner = 'window.VERSION="<%=pkg.version%>";\n/*\n\t<%=pkg.name%> v<%=pkg.version%>\n\t(C) 2010 - 2015 VREM Software Development\n\t<%= pkg.homepage %>\n\tLicense: <%=pkg.license%>\n*/\n',
 	srcdir = 'app',
 	dstdir = 'dist',
 	cmpdir = 'bower_components',
@@ -235,6 +235,7 @@ gulp.task('devwebserver', ['devhtml'], function() {
 
 /*
  * Release Management: Version, Git and Release
+ * 		version:<>, git:tag, release
  */
 gulp.task('version:patch', function() { return version('patch'); });
 gulp.task('version:minor', function() { return version('minor'); });
@@ -251,7 +252,7 @@ gulp.task('release:clean', function() {
 	return del.sync(files.release.dest);
 });
 
-gulp.task('release', ['release:clean'], function() {
+gulp.task('release', ['release:clean', 'build'], function() {
 	return gulp
 		.src(files.release.src)
 		.pipe(plugins.tar(files.release.name))

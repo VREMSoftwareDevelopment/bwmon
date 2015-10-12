@@ -22,7 +22,6 @@ angular.module('BWMonApp', [
 	'BWMonApp.UsageByUser',
 	'BWMonApp.UsageByMonth',
 	'BWMonApp.UsageByYear',
-	'BWMonApp.Version',
 	'BWMonApp.DisplayType',
 	'BWMonApp.SelectYear',
 	'BWMonApp.SelectMonth',
@@ -43,6 +42,7 @@ angular.module('BWMonApp', [
 	updateClock();
 
 	rootController.currentDate = rootController.clock;
+	rootController.version = window.VERSION || 'SNAPSHOT';
 
 	$scope.$on('$destroy', function(e) {
 		$interval.cancel(clockOn);
