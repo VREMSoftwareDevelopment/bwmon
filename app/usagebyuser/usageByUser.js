@@ -27,9 +27,6 @@ angular.module('BWMonApp.UsageByUser', ['ngRoute'])
 		template: [
 				'<form class="form-inline">',
 					'<div class="form-group">',
-						'<display-type ng-model="displayType"/></display-type>',
-					'</div>',
-					'<div class="form-group">',
 						'<select-year ng-model="selected.year" class="form-control" name="year"/>',
 					'</div>',
 					'<div class="form-group">',
@@ -38,10 +35,7 @@ angular.module('BWMonApp.UsageByUser', ['ngRoute'])
 					'<div class="form-group">',
 						'<input ng-model="selected.user" class="form-control" name="user" placeholder="IP, MAC or User"/>',
 					'</div>',
-					'<div ng-if="displayType" class="form-group">',
-						'<chart-type ng-model="selected.chartType" class="form-control" name="chartType"/>',
-					'</div>',
-					'<div ng-if="!displayType" class="form-group">',
+					'<div class="form-group">',
 						'<dir-pagination-controls max-size="5" boundary-links="true"></dir-pagination-controls>',
 					'</div>',
 				'</form>'
@@ -53,7 +47,7 @@ angular.module('BWMonApp.UsageByUser', ['ngRoute'])
 		restrict: 'E',
 		replace: true,
 		template: [
-				'<div ng-if="!displayType" class="table-responsive">',
+				'<div class="table-responsive">',
 					'<table class="table table-striped table-hover table-condensed">',
 						'<thead><tr user-header></tr></thead>',
 						'<tbody><tr user-body dir-paginate="current in data | orderBy:predicate:reverse | itemsPerPage:pageSize"></tr></tbody>',
@@ -112,12 +106,34 @@ angular.module('BWMonApp.UsageByUser', ['ngRoute'])
 			].join('')
 	};
 })
-.directive('chartDisplay', function() {
+.directive('userChartForm', function() {
 	return {
 		restrict: 'E',
 		replace: true,
 		template: [
-				'<div ng-if="displayType">',
+				'<form class="form-inline">',
+					'<div class="form-group">',
+						'<select-year ng-model="selected.year" class="form-control" name="year"/>',
+					'</div>',
+					'<div class="form-group">',
+						'<select-month ng-model="selected.month" year="selected.year" class="form-control" name="month"/>',
+					'</div>',
+					'<div class="form-group">',
+						'<input ng-model="selected.user" class="form-control" name="user" placeholder="IP, MAC or User"/>',
+					'</div>',
+					'<div class="form-group">',
+						'<chart-type ng-model="selected.chartType" class="form-control" name="chartType"/>',
+					'</div>',
+				'</form>'
+			].join('')
+	};
+})
+.directive('userChart', function() {
+	return {
+		restrict: 'E',
+		replace: true,
+		template: [
+				'<div>',
 					'<linechart id="chartData" data="chartData" options="chartOptions"></linechart>',
 				'</div>'
 			].join('')
@@ -128,7 +144,6 @@ angular.module('BWMonApp.UsageByUser', ['ngRoute'])
 			$scope.selected.user = '';
 		};
 
-	$scope.displayType = false;
 	$scope.selected = {};
 	$scope.predicate = 'IP';
 	$scope.reverse = false;

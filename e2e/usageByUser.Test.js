@@ -1,4 +1,4 @@
-describe('bwmon e2e usage by user', function() {
+describe('bwmon e2e usage by user, ', function() {
 	var URL = 'http://localhost:8080/#/UsageByUser';
 
 	beforeEach(function () {
@@ -22,9 +22,13 @@ describe('bwmon e2e usage by user', function() {
 	});
 
 	describe('data', function() {
-		it('should have show chart', function() {
-			expect(element(by.id('buttonShowChart')).getText())
-				.toEqual('Show Chart');
+		it('should have text as Data', function() {
+			expect(element(by.id('Data')).getText()).toEqual('Data');
+		});
+
+		it('should have class as active', function() {
+			expect(element(by.id('Data')).getAttribute('class')).toMatch('active');
+			expect(element(by.id('Chart')).getAttribute('class')).not.toMatch('active');
 		});
 
 		it('should have pagination', function() {
@@ -52,12 +56,16 @@ describe('bwmon e2e usage by user', function() {
 
 	describe('chart', function() {
 		beforeEach(function () {
-			element(by.id('buttonShowChart')).click();
+			element(by.id('Chart')).click();
 		});
 
-		it('should have show chart', function() {
-			expect(element(by.id('buttonShowChart')).getText())
-				.toEqual('Show Data');
+		it('should have text as Chart', function() {
+			expect(element(by.id('Chart')).getText()).toEqual('Chart');
+		});
+
+		it('should have class as active', function() {
+			expect(element(by.id('Chart')).getAttribute('class')).toMatch('active');
+			expect(element(by.id('Data')).getAttribute('class')).not.toMatch('active');
 		});
 
 		it('should have chart type selected', function() {

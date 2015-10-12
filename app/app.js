@@ -23,7 +23,6 @@ angular.module('BWMonApp', [
 	'BWMonApp.UsageByUser',
 	'BWMonApp.UsageByMonth',
 	'BWMonApp.UsageByYear',
-	'BWMonApp.DisplayType',
 	'BWMonApp.SelectYear',
 	'BWMonApp.SelectMonth',
 	'BWMonApp.ChartType',

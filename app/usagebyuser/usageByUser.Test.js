@@ -90,6 +90,12 @@ describe('BWMonApp UsageByUser feature', function() {
 			element = compile(template)(scope);
 		scope.$digest();
 		expect(element).toBeDefined();
+		expect(element.html()).toContain('<select-year');
+		expect(element.html()).toContain('</select-year>');
+		expect(element.html()).toContain('<select-month');
+		expect(element.html()).toContain('</select-month>');
+		expect(element.html()).toContain('<dir-pagination-controls');
+		expect(element.html()).toContain('</dir-pagination-controls>');
 	});
 
 	it('should have userHeader template', function() {
@@ -97,6 +103,8 @@ describe('BWMonApp UsageByUser feature', function() {
 			element = compile(template)(scope);
 		scope.$digest();
 		expect(element).toBeDefined();
+		expect(element.html()).toContain('<user-header>');
+		expect(element.html()).toContain('</user-header>');
 	});
 
 	it('should have userBody template', function() {
@@ -104,6 +112,8 @@ describe('BWMonApp UsageByUser feature', function() {
 			element = compile(template)(scope);
 		scope.$digest();
 		expect(element).toBeDefined();
+		expect(element.html()).toContain('<user-body class="ng-binding">');
+		expect(element.html()).toContain('</user-body>');
 	});
 
 	it('should have userFooter template', function() {
@@ -111,14 +121,29 @@ describe('BWMonApp UsageByUser feature', function() {
 			element = compile(template)(scope);
 		scope.$digest();
 		expect(element).toBeDefined();
+		expect(element.html()).toContain('<user-footer class="ng-binding">');
+		expect(element.html()).toContain('</user-footer>');
 	});
 
-	it('should have chartDisplay template', function() {
-		var template = '<div><chart-display></chart-display></div>',
+	it('should have userChartForm template', function() {
+		var template = '<div><user-chart-form></user-chart-form></div>',
+			element = compile(template)(scope);
+		scope.$digest();
+		expect(element).toBeDefined();
+		expect(element.html()).toContain('<select-year');
+		expect(element.html()).toContain('</select-year>');
+		expect(element.html()).toContain('<select-month');
+		expect(element.html()).toContain('</select-month>');
+		expect(element.html()).toContain('<chart-type');
+		expect(element.html()).toContain('</chart-type>');
+	});
+
+	it('should have userChart template', function() {
+		var template = '<div><user-chart></user-chart></div>',
 			element = compile(template)(scope);
 		scope.displayType = true;
 		scope.$digest();
 		expect(element).toBeDefined();
-		expect(element.html()).toContain('<linechart id="chartData" data="chartData" options="chartOptions"></linechart>');
+		expect(element.html()).toEqual('<div><linechart id="chartData" data="chartData" options="chartOptions"></linechart></div>');
 	});
 });
