@@ -35,7 +35,8 @@ var gulp = require('gulp'),
 			dest: dstdir+'/js',
 			temp: pkg.name+'.js',
 			name: pkg.name+'.min.js',
-			excludes: ['!'+srcdir+'/**/'+dataname, '!'+srcdir+'/**/*.Test.js']
+			excludes: ['!'+srcdir+'/**/'+dataname, '!'+srcdir+'/**/*.Test.js'],
+			libsname: 'libs.js'
 		},
 		test: {
 			libs: [cmpdir+'/angular-mocks/angular-mocks.js'],
@@ -155,6 +156,8 @@ gulp.task('csslibs', function() {
 gulp.task('jslibs', function() {
 	return gulp
 		.src(files.js.libs)
+		.pipe(plugins.concat(files.js.libsname, {newLine: ';'}))
+		.pipe(plugins.uglify({mangle: false, compress: false}))
 		.pipe(gulp.dest(files.js.dest));
 });
 
