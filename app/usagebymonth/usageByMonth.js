@@ -122,16 +122,13 @@ angular.module('BWMonApp.UsageByMonth', ['ngRoute'])
 	usageByMonthCtrl.predicate = 'id';
 	usageByMonthCtrl.reverse = false;
 
-	$scope.$watch('usageByMonthCtrl.selected.year', function() {
+	$scope.$watch('usageByMonthCtrl.selected', function() {
 		var usageData = dataService.getUsageByMonth(usageByMonthCtrl.selected.year);
 
 		usageByMonthCtrl.data = usageData.data.usage;
 		usageByMonthCtrl.total = usageData.data.total;
 		usageByMonthCtrl.chartData = usageData.chartData;
 		usageByMonthCtrl.chartOptions = chartService.getChartOptions(usageByMonthCtrl.chartData, chartService.getMonthLabel, chartService.getMonthLabel);
-	}, true);
-
-	$scope.$watch('usageByMonthCtrl.selected.chartType', function() {
 		usageByMonthCtrl.chartOptions.series[0].type = usageByMonthCtrl.selected.chartType;
 	}, true);
 

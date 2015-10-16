@@ -166,9 +166,6 @@ angular.module('BWMonApp.UsageByUser', ['ngRoute'])
 		usageByUserCtrl.total = usageData.data.total;
 		usageByUserCtrl.chartData = usageData.chartData;
 		usageByUserCtrl.chartOptions = chartService.getChartOptions(usageByUserCtrl.chartData, chartService.getUserLabel, chartService.getUserTooltip);
-	}, true);
-
-	$scope.$watch('usageByUserCtrl.selected.chartType', function() {
 		usageByUserCtrl.chartOptions.series[0].type = usageByUserCtrl.selected.chartType;
 	}, true);
 });
