@@ -46,6 +46,6 @@
 		"phantomjs": "^1.9.18",
 		"protractor": "^2.5.1",
 		"webdriver-manager": "^7.0.1",
-		"yargs": "^3.27.0"
+		"yargs": "^3.28.0"
 	}
 }

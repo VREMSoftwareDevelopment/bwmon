@@ -76,7 +76,7 @@ usage() {
 
 	cat ${USAGEDB} | while IFS=, read CURRENT_MONTH MAC IP USAGE_IN USAGE_OUT CREATE_TIME UPDATE_TIME
 	do
-		USER=$(grep "${IP}" "${USERSFILE}" | cut -f2 -s -d' ' )
+		USER=$(grep "${IP} " "${USERSFILE}" | cut -f2 -s -d' ' )
 		if [ -z "$USER" ]; then
 			USER=$(grep "$(echo ${MAC} | sed 's/://g')" "${MACNAMESFILE}" | cut -f2 -s -d',' )
 			[ -z "$USER" ] && USER=${MAC}
