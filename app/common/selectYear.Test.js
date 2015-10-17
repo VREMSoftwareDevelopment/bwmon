@@ -1,4 +1,4 @@
-describe('BWMonApp.SelectYear testing', function() {
+describe('BWMonApp.SelectYear module, selectYear directive ', function() {
 	var scope,
 		dataService,
 		years = ['10', '5', '6'],

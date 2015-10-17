@@ -14,7 +14,7 @@
  *    limitations under the License.
  */
 angular.module('BWMonApp.ChartType', [])
-.directive('chartType', function(chartService) {
+.directive('chartType', function() {
 	return {
 		restrict: 'E',
 		replace: true,
@@ -24,7 +24,7 @@ angular.module('BWMonApp.ChartType', [])
 		bindToController: {
 			chartType: '=ngModel'
 		},
-		controller: function() {
+		controller: function(chartService) {
 			var chartTypes = chartService.getChartTypes();
 			angular.extend(this, {
 				chartTypes: chartTypes,

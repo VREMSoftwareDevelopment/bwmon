@@ -1,4 +1,4 @@
-describe('BWMonApp.ChartType testing', function() {
+describe('BWMonApp.ChartType module, chartType directive ', function() {
 	var scope,
 		chartService,
 		chartTypes = ['10', '5', '6'],

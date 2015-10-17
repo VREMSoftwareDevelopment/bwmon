@@ -1,4 +1,4 @@
-describe('BWMonApp.services dataService', function() {
+describe('BWMonApp.DataService module, dataService factory ', function() {
 	var dataService;
 
 	beforeEach(module('BWMonApp.DataService'));

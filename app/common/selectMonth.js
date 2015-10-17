@@ -14,7 +14,7 @@
  *    limitations under the License.
  */
 angular.module('BWMonApp.SelectMonth', [])
-.directive('selectMonth', function(dataService) {
+.directive('selectMonth', function() {
 	return {
 		restrict: 'E',
 		replace: true,
@@ -25,7 +25,7 @@ angular.module('BWMonApp.SelectMonth', [])
 			month: '=ngModel',
 			year: '=year'
 		},
-		controller: function($scope) {
+		controller: function($scope, dataService) {
 			var ctrl = this;
 			var updateMonth = function() {
 				var months = dataService.getMonths(ctrl.year);

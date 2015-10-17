@@ -1,4 +1,4 @@
-describe('BWMonApp.services chartService', function() {
+describe('BWMonApp.ChartService module, chartService factory ', function() {
 	var chartService,
 		data = [{
 			id: 11,

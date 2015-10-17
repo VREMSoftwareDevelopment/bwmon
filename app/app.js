@@ -32,7 +32,7 @@ angular.module('BWMonApp', [
 .config(function($routeProvider) {
 	$routeProvider.otherwise({redirectTo: '/UsageByUser'});
 })
-.controller('rootController', function($interval, $scope) {
+.controller('rootController', function($scope, $interval) {
 	var rootController = this,
 		updateClock = function() {
 			rootController.clock = new Date();

@@ -14,7 +14,7 @@
  *    limitations under the License.
  */
 angular.module('BWMonApp.Navigation', [])
-.directive('navigation', function($location) {
+.directive('navigation', function() {
 	return {
 		restrict: 'E',
 		replace: true,
@@ -28,7 +28,7 @@ angular.module('BWMonApp.Navigation', [])
 				'</div>'
 			].join(''),
 		scope: {},
-		controller: function($scope) {
+		controller: function($scope, $location) {
 			angular.extend(this, {
 				isActive: function (viewLocation) {
 					return viewLocation === $location.path();

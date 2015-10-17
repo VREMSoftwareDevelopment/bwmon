@@ -14,7 +14,7 @@
  *    limitations under the License.
  */
 angular.module('BWMonApp.SelectYear', [])
-.directive('selectYear', function(dataService) {
+.directive('selectYear', function() {
 	return {
 		restrict: 'E',
 		replace: true,
@@ -24,7 +24,7 @@ angular.module('BWMonApp.SelectYear', [])
 		bindToController: {
 			year: '=ngModel'
 		},
-		controller: function() {
+		controller: function(dataService) {
 			var years = dataService.getYears();
 			angular.extend(this, {
 				years: years,

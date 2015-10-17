@@ -1,4 +1,4 @@
-describe('BWMonApp.SelectMonth testing', function() {
+describe('BWMonApp.SelectMonth module, selectMonth directive', function() {
 	var scope,
 		dataService,
 		data = [

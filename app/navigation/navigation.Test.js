@@ -1,7 +1,4 @@
-describe('BWMonApp Navigation', function() {
-	beforeEach(module('BWMonApp'));
-	beforeEach(module('BWMonApp.Navigation'));
-
+describe('BWMonApp.Navigation module, navigation directive', function() {
 	var scope,
 		location,
 		element,
@@ -16,6 +13,9 @@ describe('BWMonApp Navigation', function() {
 			});
 			return routes;
 		};
+
+	beforeEach(module('BWMonApp'));
+	beforeEach(module('BWMonApp.Navigation'));
 
 	beforeEach(inject(function(_$compile_, _$rootScope_, _$location_, _$route_){
 		scope = _$rootScope_.$new();
