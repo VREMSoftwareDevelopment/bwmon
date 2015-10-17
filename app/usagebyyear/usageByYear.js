@@ -21,68 +21,6 @@ angular.module('BWMonApp.UsageByYear', ['ngRoute'])
 		controllerAs: 'usageByYearCtrl'
 	});
 })
-.directive('yearTable', function() {
-	return {
-		restrict: 'E',
-		replace: true,
-		template: [
-				'<div class="table-responsive">',
-					'<table class="table table-striped table-hover table-condensed">',
-						'<thead><tr year-header></tr></thead>',
-						'<tbody><tr year-body ng-repeat="current in usageByYearCtrl.data | orderBy:predicate:usageByYearCtrl.reverse"></tr></tbody>',
-					'</table>',
-				'</div>'
-			].join('')
-	};
-})
-.directive('yearHeader', function() {
-	return {
-		template: [
-				'<th><a href="" ng-click="predicate=\'id\'; usageByYearCtrl.reverse=!usageByYearCtrl.reverse;">Year</a></th>',
-				'<th class="text-right">Down</th>',
-				'<th class="text-right">Up</th>',
-				'<th class="text-right"><a href="" ng-click="predicate=\'total\'; usageByYearCtrl.reverse=!usageByYearCtrl.reverse">Total</a></th>',
-				'<th class="text-right">Average</th>',
-				'<th class="text-right">Days</th>'
-			].join('')
-	};
-})
-.directive('yearBody', function() {
-	return {
-		template: [
-				'<td>{{current.id}}</td>',
-				'<td class="text-right">{{::current.download | usageInGBytes | number:3}}</td>',
-				'<td class="text-right">{{::current.upload | usageInGBytes | number:3}}</td>',
-				'<td class="text-right">{{::current.total | usageInGBytes | number:3}}</td>',
-				'<td class="text-right">{{::current.average | usageInGBytes | number:3}}</td>',
-				'<td class="text-right">{{::current.days}}</td>'
-			].join('')
-	};
-})
-.directive('yearChartForm', function() {
-	return {
-		restrict: 'E',
-		replace: true,
-		template: [
-				'<form class="form-inline">',
-					'<div class="form-group">',
-						'<chart-type ng-model="usageByYearCtrl.selected.chartType" class="form-control" name="chartType"/>',
-					'</div>',
-				'</form>'
-			].join('')
-	};
-})
-.directive('yearChart', function() {
-	return {
-		restrict: 'E',
-		replace: true,
-		template: [
-				'<div>',
-					'<linechart id="chartData" data="usageByYearCtrl.chartData" options="usageByYearCtrl.chartOptions"></linechart>',
-				'</div>'
-			].join('')
-	};
-})
 .controller('UsageByYearController', function($scope, dataService, chartService) {
 	var usageByYearCtrl = this;
 	var usageData = dataService.getUsageByYear();
@@ -97,5 +35,5 @@ angular.module('BWMonApp.UsageByYear', ['ngRoute'])
 	$scope.$watch('usageByYearCtrl.selected.chartType', function() {
 		usageByYearCtrl.chartOptions.series[0].type = usageByYearCtrl.selected.chartType;
 	}, true);
-
-});
+})
+;

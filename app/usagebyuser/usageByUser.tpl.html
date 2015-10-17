@@ -1,10 +1,84 @@
 <uib-tabset justified="true">
 	<uib-tab id="Data" heading="Data">
-		<user-form></user-form>
-		<user-table></user-table>
+		<form class="form-inline">
+			<div class="form-group">
+				<select-year ng-model="usageByUserCtrl.selected.year" class="form-control" name="year"/>
+			</div>
+			<div class="form-group">
+				<select-month ng-model="usageByUserCtrl.selected.month" year="usageByUserCtrl.selected.year" class="form-control" name="month"/>
+			</div>
+			<div class="form-group">
+				<input ng-model="usageByUserCtrl.selected.user" class="form-control" name="user" placeholder="IP, MAC or User"/>
+			</div>
+			<div class="form-group">
+				<dir-pagination-controls max-size="5" boundary-links="true"></dir-pagination-controls>
+			</div>
+		</form>
+		<div class="table-responsive">
+			<table class="table table-striped table-hover table-condensed">
+				<thead>
+					<tr>
+						<th><a href="" ng-click="predicate='IP'; usageByUserCtrl.reverse=!usageByUserCtrl.reverse">IP</a></th>
+						<th><a href="" ng-click="predicate='MAC'; usageByUserCtrl.reverse=!usageByUserCtrl.reverse">MAC</a></th>
+						<th><a href="" ng-click="predicate='user'; usageByUserCtrl.reverse=!usageByUserCtrl.reverse">User</a></th>
+						<th class="text-right">Down</th>
+						<th class="text-right">Up</th>
+						<th class="text-right"><a href="" ng-click="predicate='total'; usageByUserCtrl.reverse=!usageByUserCtrl.reverse">Total</a></th>
+						<th class="text-right">Percent</th>
+						<th class="text-right">Average</th>
+						<th class="text-right">Days</th>
+						<th>First Seen</th>
+						<th>Last Seen</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr dir-paginate="current in usageByUserCtrl.data | orderBy:predicate:usageByUserCtrl.reverse | itemsPerPage:usageByUserCtrl.pageSize">
+						<td>{{::current.IP}}</td>
+						<td>{{::current.MAC}}</td>
+						<td>{{::current.user}}</td>
+						<td class="text-right">{{::current.download | usageInGBytes | number:3}}</td>
+						<td class="text-right">{{::current.upload | usageInGBytes | number:3}}</td>
+						<td class="text-right">{{::current.total | usageInGBytes | number:3}}</td>
+						<td class="text-right">{{::current.percent | number:1}}%</td>
+						<td class="text-right">{{::current.average | usageInGBytes | number:3}}</td>
+						<td class="text-right">{{::current.days}}</td>
+						<td>{{::current.firstSeen | timeToDate | date: 'medium'}}</td>
+						<td>{{::current.lastSeen | timeToDate | date: 'medium'}}</td>
+					</tr>
+				</tbody>
+				<tfoot>
+					<tr>
+						<th colspan="3">{{::usageByUserCtrl.selected.month}} {{::usageByUserCtrl.selected.year}} Totals</th>
+						<th class="text-right">{{::usageByUserCtrl.total.download | usageInGBytes | number:3}}</th>
+						<th class="text-right">{{::usageByUserCtrl.total.upload | usageInGBytes | number:3}}</th>
+						<th class="text-right">{{::usageByUserCtrl.total.total | usageInGBytes | number:3}}</th>
+						<th></th>
+						<th class="text-right">{{::usageByUserCtrl.total.average | usageInGBytes | number:3}}</th>
+						<th class="text-right">{{::usageByUserCtrl.total.days}}</th>
+						<th></th>
+						<th></th>
+					</tr>
+				</tfoot>
+			</table>
+		</div>
 	</uib-tab>
 	<uib-tab id="Chart" heading="Chart">
-		<user-chart-form></user-chart-form>
-		<user-chart></user-chart>
+		<form class="form-inline">
+			<div class="form-group">
+				<select-year ng-model="usageByUserCtrl.selected.year" class="form-control" name="year"/>
+			</div>
+			<div class="form-group">
+				<select-month ng-model="usageByUserCtrl.selected.month" year="usageByUserCtrl.selected.year" class="form-control" name="month"/>
+			</div>
+			<div class="form-group">
+				<input ng-model="usageByUserCtrl.selected.user" class="form-control" name="user" placeholder="IP, MAC or User"/>
+			</div>
+			<div class="form-group">
+				<chart-type ng-model="usageByUserCtrl.selected.chartType" class="form-control" name="chartType"/>
+			</div>
+		</form>
+		<div>
+			<linechart id="chartData" data="usageByUserCtrl.chartData" options="usageByUserCtrl.chartOptions"></linechart>
+		</div>
 	</uib-tab>
 </uib-tabset>
