@@ -47,7 +47,31 @@ describe('BWMonApp.UsageByMonth module, ', function() {
 				dataService: dataService,
 				chartService: chartService
 			});
+
+			scope.usageByMonthCtrl = controller;
 		}));
+
+		it('should set predicate to id', function() {
+			expect(controller.predicate).toEqual('id');
+		});
+
+		it('should set reverse to false', function() {
+			expect(controller.reverse).toEqual(false);
+		});
+
+		it('should reset predicate', function() {
+			controller.predicate = 'xyz';
+			controller.selected.year = 1;
+			scope.$digest();
+			expect(controller.predicate).toEqual('id');
+		});
+
+		it('should reset reverse', function() {
+			controller.reverse = true;
+			controller.selected.year = 1;
+			scope.$digest();
+			expect(controller.reverse).toEqual(false);
+		});
 
 		it('should update data with getUsageByMonth', function() {
 			controller.selected.year = 1;
@@ -81,6 +105,13 @@ describe('BWMonApp.UsageByMonth module, ', function() {
 			controller.selected.chartType = 'test';
 			scope.$digest();
 			expect(controller.chartOptions.series[0].type).toEqual(controller.selected.chartType);
+		});
+
+		it('should update predicate to default', function() {
+			controller.selected.year = 1;
+			scope.$digest();
+			expect(controller.data).toEqual(usageData.data.usage);
+			expect(dataService.getUsageByMonth).toHaveBeenCalledWith(controller.selected.year);
 		});
 	});
 });

@@ -22,11 +22,14 @@ angular.module('BWMonApp.UsageByMonth', ['ngRoute'])
 	});
 })
 .controller('UsageByMonthController', function($scope, dataService, chartService) {
-	var usageByMonthCtrl = this;
+	var usageByMonthCtrl = this,
+		reset = function() {
+			usageByMonthCtrl.predicate = 'id';
+			usageByMonthCtrl.reverse = false;
+		};
 
 	usageByMonthCtrl.selected = {};
-	usageByMonthCtrl.predicate = 'id';
-	usageByMonthCtrl.reverse = false;
+	reset();
 
 	$scope.$watch('usageByMonthCtrl.selected', function() {
 		var usageData = dataService.getUsageByMonth(usageByMonthCtrl.selected.year);
@@ -36,6 +39,8 @@ angular.module('BWMonApp.UsageByMonth', ['ngRoute'])
 		usageByMonthCtrl.chartData = usageData.chartData;
 		usageByMonthCtrl.chartOptions = chartService.getChartOptions(usageByMonthCtrl.chartData, chartService.getMonthLabel, chartService.getMonthLabel);
 		usageByMonthCtrl.chartOptions.series[0].type = usageByMonthCtrl.selected.chartType;
+
+		reset();
 	}, true);
 })
 ;

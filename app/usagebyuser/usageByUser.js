@@ -25,12 +25,14 @@ angular.module('BWMonApp.UsageByUser', ['ngRoute'])
 	var usageByUserCtrl = this,
 		reset = function() {
 			usageByUserCtrl.selected.user = '';
+			usageByUserCtrl.predicate = 'IP';
+			usageByUserCtrl.reverse = false;
 		};
 
 	usageByUserCtrl.selected = {};
-	usageByUserCtrl.predicate = 'IP';
-	usageByUserCtrl.reverse = false;
 	usageByUserCtrl.pageSize = 12;
+
+	reset();
 
 	$scope.$watch('usageByUserCtrl.selected.year', function() {
 		reset();

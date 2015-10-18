@@ -1,56 +1,59 @@
 describe('bwmon e2e usage by year, ', function() {
-	var URL = 'http://localhost:8080/#/UsageByYear';
 
 	beforeEach(function () {
-		browser.get(URL);
+		browser.get('http://localhost:8080/#/UsageByYear');
 		browser.waitForAngular();
 	});
 
-	describe('data', function() {
-		it('should have text as Data', function() {
+	describe('data tab ', function() {
+		it('should have data tab selected', function() {
 			expect(element(by.id('Data')).getText()).toEqual('Data');
-		});
-
-		it('should have class as active', function() {
 			expect(element(by.id('Data')).getAttribute('class')).toMatch('active');
 			expect(element(by.id('Chart')).getAttribute('class')).not.toMatch('active');
 		});
 
-		it('should have rows', function() {
-			element.all(by.repeater('current in usageByYearCtrl.data | orderBy:predicate:usageByYearCtrl.reverse')).then(function(arr) {
-				expect(arr.length).toEqual(4);
-				expect(arr[0].getText()).toEqual('2013 603.928 35.773 639.701 1.753 365');
-				expect(arr[1].getText()).toEqual('2012 413.485 23.242 436.727 1.193 366');
-				expect(arr[2].getText()).toEqual('2011 139.939 10.745 150.684 0.413 365');
-				expect(arr[3].getText()).toEqual('2010 0.000 0.000 0.000 0.000 365');
-			});
+		it('should have data table', function() {
+			var tableElement = element.all(by.repeater('current in usageByYearCtrl.data | orderBy:predicate:usageByYearCtrl.reverse'));
+			expect(tableElement.count()).toEqual(4);
+			expect(tableElement.first().getText()).toEqual('2013 603.928 35.773 639.701 1.753 365');
+			expect(tableElement.last().getText()).toEqual('2010 0.000 0.000 0.000 0.000 365');
+		});
+
+		it('should sort by year', function() {
+			var tableElement = element.all(by.repeater('current in usageByYearCtrl.data | orderBy:predicate:usageByYearCtrl.reverse'));
+			element(by.id('yearSort')).click();
+			element(by.id('yearSort')).click();
+			expect(tableElement.first().getText()).toEqual('2010 0.000 0.000 0.000 0.000 365');
+			expect(tableElement.last().getText()).toEqual('2013 603.928 35.773 639.701 1.753 365');
+		});
+
+		it('should sort by total', function() {
+			var tableElement = element.all(by.repeater('current in usageByYearCtrl.data | orderBy:predicate:usageByYearCtrl.reverse'));
+			element(by.id('yearSort')).click();
+			element(by.id('totalSort')).click();
+			expect(tableElement.first().getText()).toEqual('2010 0.000 0.000 0.000 0.000 365');
+			expect(tableElement.last().getText()).toEqual('2013 603.928 35.773 639.701 1.753 365');
 		});
 	});
 
-	describe('chart', function() {
+	describe('chart tab ', function() {
 		beforeEach(function () {
 			element(by.id('Chart')).click();
 		});
 
-		it('should have text as Chart', function() {
+		it('should have chart tab selected', function() {
 			expect(element(by.id('Chart')).getText()).toEqual('Chart');
-		});
-
-		it('should have class as active', function() {
 			expect(element(by.id('Chart')).getAttribute('class')).toMatch('active');
 			expect(element(by.id('Data')).getAttribute('class')).not.toMatch('active');
 		});
 
-		it('should have chart type selected', function() {
-			expect(element(by.model('usageByYearCtrl.selected.chartType')).element(by.css('option:checked')).getText())
-				.toEqual('column');
+		it('should have chart type select', function() {
+			expect(element(by.model('usageByYearCtrl.selected.chartType')).element(by.css('option:checked')).getText()).toEqual('column');
 		});
 
-		it('should have chart', function() {
-			var result = element(by.id('chartData'));
-			expect(result.getAttribute('data')).toEqual('usageByYearCtrl.chartData');
-			expect(result.getAttribute('options')).toEqual('usageByYearCtrl.chartOptions');
+		it('should have chart data', function() {
+			expect(element(by.id('chartData')).getAttribute('data')).toEqual('usageByYearCtrl.chartData');
+			expect(element(by.id('chartData')).getAttribute('options')).toEqual('usageByYearCtrl.chartOptions');
 		});
 	});
-
 });

@@ -57,26 +57,40 @@ describe('BWMonApp.UsageByUser module, ', function() {
 				dataService: dataService,
 				chartService: chartService
 			});
+
+			scope.usageByUserCtrl = controller;
 		}));
 
-		it('should map UsageByUser route', inject(function($route){
-			var route = $route.routes['/UsageByUser'];
-			expect(route.controller).toBe('UsageByUserController');
-			expect(route.controllerAs).toBe('usageByUserCtrl');
-			expect(route.templateUrl).toBe('usagebyuser/usageByUser.tpl.html');
-		}));
-
-		it('should reset selected user and get new default month when selected year changes', function() {
-			controller.selected.year = 'year';
-			expect(controller.selected.user).toBeUndefined();
-			scope.$digest();
-			expect(controller.selected.user).toBe('');
-			expect(dataService.getMonths).toHaveBeenCalledWith(controller.selected.year);
+		it('should set predicate to id', function() {
+			expect(controller.predicate).toEqual('IP');
 		});
 
-		it('should reset selected user when selected month changes', function() {
-			controller.selected.month = 'month';
-			expect(controller.selected.user).toBeUndefined();
+		it('should set reverse to false', function() {
+			expect(controller.reverse).toEqual(false);
+		});
+
+		it('should set selected user to empty', function() {
+			expect(controller.selected.user).toBe('');
+		});
+
+		it('should set page size', function() {
+			expect(controller.pageSize).toEqual(12);
+		});
+
+		it('should reset predicate', function() {
+			controller.predicate = 'xyz';
+			scope.$digest();
+			expect(controller.predicate).toEqual('IP');
+		});
+
+		it('should reset reverse', function() {
+			controller.reverse = true;
+			scope.$digest();
+			expect(controller.reverse).toEqual(false);
+		});
+
+		it('should reset selected user', function() {
+			controller.selected.user = 'xyz';
 			scope.$digest();
 			expect(controller.selected.user).toBe('');
 		});

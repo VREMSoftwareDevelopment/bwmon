@@ -43,6 +43,14 @@ describe('BWMonApp.UsageByYear module, ', function() {
 			});
 		}));
 
+		it('should set predicate to id', function() {
+			expect(controller.predicate).toEqual('id');
+		});
+
+		it('should set reverse to false', function() {
+			expect(controller.reverse).toEqual(false);
+		});
+
 		it('should update data with getUsageByYear', function() {
 			expect(controller.data).toEqual(data);
 			expect(dataService.getUsageByYear).toHaveBeenCalled();
