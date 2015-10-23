@@ -3,7 +3,8 @@ describe('BWMonApp.Navigation module, navigation directive', function() {
 		location,
 		element,
 		route,
-		template = '<div><navigation></navigation></div>',
+		controller,
+		template,
 		getRoutes = function() {
 			var routes = [];
 			angular.forEach(route.routes, function(value, key, obj) {
@@ -18,16 +19,19 @@ describe('BWMonApp.Navigation module, navigation directive', function() {
 	beforeEach(module('BWMonApp.Navigation'));
 
 	beforeEach(inject(function(_$compile_, _$rootScope_, _$location_, _$route_){
+		template = angular.element('<div><navigation></navigation>');
 		scope = _$rootScope_.$new();
 		location = _$location_;
 		spyOn(location, 'path').and.returnValue('/UsageByMonth');
 		route = _$route_;
 		element = _$compile_(template)(scope);
+		controller = template.controller('navigation');
 	}));
 
 	it('should have element', function() {
 		scope.$digest();
 		expect(element).toBeDefined();
+		expect(element.find('li').attr('ng-repeat')).toBe('route in ::navigationCtrl.routes');
 	});
 
 	it('should call location.path', function() {
