@@ -1,6 +1,6 @@
 {
 	"name": "bwmon",
-	"version": "2.3.2",
+	"version": "2.3.3",
 	"description": "Bandwidth Monitor Usage",
 	"homepage": "https://github.com/VREMSoftwareDevelopment/bwmon",
 	"repository": {
