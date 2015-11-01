@@ -18,12 +18,24 @@
 			<table class="table table-striped table-hover table-condensed">
 				<thead>
 					<tr>
-						<th><a id="IPSort" href="" ng-click="predicate='IP'; usageByUserCtrl.reverse=!usageByUserCtrl.reverse">IP</a></th>
-						<th><a id="MACSort" href="" ng-click="predicate='MAC'; usageByUserCtrl.reverse=!usageByUserCtrl.reverse">MAC</a></th>
-						<th><a id="userSort" href="" ng-click="predicate='user'; usageByUserCtrl.reverse=!usageByUserCtrl.reverse">User</a></th>
+						<th class="text-left">
+							<a class="nounderline" id="IPSort" href="" ng-click="usageByUserCtrl.setOrder('IP')">IP</a>
+							<span class="sortorder" ng-class="usageByUserCtrl.getOrder('IP')"></span>
+						</th>
+						<th class="text-left">
+							<a class="nounderline" id="MACSort" href="" ng-click="usageByUserCtrl.setOrder('MAC')">MAC</a>
+							<span class="sortorder" ng-class="usageByUserCtrl.getOrder('MAC')"></span>
+						</th>
+						<th class="text-left">
+							<a class="nounderline" id="userSort" href="" ng-click="usageByUserCtrl.setOrder('user')">User</a>
+							<span class="sortorder" ng-class="usageByUserCtrl.getOrder('user')"></span>
+						</th>
 						<th class="text-right">Down</th>
 						<th class="text-right">Up</th>
-						<th class="text-right"><a id="totalSort" href="" ng-click="predicate='total'; usageByUserCtrl.reverse=!usageByUserCtrl.reverse">Total</a></th>
+						<th class="text-right">
+							<a class="nounderline" id="totalSort" href="" ng-click="usageByUserCtrl.setOrder('total')">Total</a>
+							<span class="sortorder" ng-class="usageByUserCtrl.getOrder('total')"></span>
+						</th>
 						<th class="text-right">Percent</th>
 						<th class="text-right">Average</th>
 						<th class="text-right">Days</th>
@@ -32,7 +44,7 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr dir-paginate="current in usageByUserCtrl.data | orderBy:predicate:usageByUserCtrl.reverse | itemsPerPage:usageByUserCtrl.pageSize">
+					<tr dir-paginate="current in usageByUserCtrl.data | orderBy:usageByUserCtrl.predicate:usageByUserCtrl.descending | itemsPerPage:usageByUserCtrl.pageSize">
 						<td>{{::current.IP}}</td>
 						<td>{{::current.MAC}}</td>
 						<td>{{::current.user}}</td>

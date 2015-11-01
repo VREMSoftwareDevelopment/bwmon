@@ -13,23 +13,33 @@ describe('bwmon e2e usage by year, ', function() {
 		});
 
 		it('should have data table', function() {
-			var tableElement = element.all(by.repeater('current in usageByYearCtrl.data | orderBy:predicate:usageByYearCtrl.reverse'));
+			var tableElement = element.all(by.repeater('current in usageByYearCtrl.data | orderBy:usageByYearCtrl.predicate:usageByYearCtrl.descending'));
 			expect(tableElement.count()).toEqual(4);
+		});
+
+		it('should sort by year descending', function() {
+			var tableElement = element.all(by.repeater('current in usageByYearCtrl.data | orderBy:usageByYearCtrl.predicate:usageByYearCtrl.descending'));
 			expect(tableElement.first().getText()).toEqual('2013 603.928 35.773 639.701 1.753 365');
 			expect(tableElement.last().getText()).toEqual('2010 0.000 0.000 0.000 0.000 365');
 		});
 
-		it('should sort by year', function() {
-			var tableElement = element.all(by.repeater('current in usageByYearCtrl.data | orderBy:predicate:usageByYearCtrl.reverse'));
-			element(by.id('yearSort')).click();
+		it('should sort by year ascending', function() {
+			var tableElement = element.all(by.repeater('current in usageByYearCtrl.data | orderBy:usageByYearCtrl.predicate:usageByYearCtrl.descending'));
 			element(by.id('yearSort')).click();
 			expect(tableElement.first().getText()).toEqual('2010 0.000 0.000 0.000 0.000 365');
 			expect(tableElement.last().getText()).toEqual('2013 603.928 35.773 639.701 1.753 365');
 		});
 
-		it('should sort by total', function() {
-			var tableElement = element.all(by.repeater('current in usageByYearCtrl.data | orderBy:predicate:usageByYearCtrl.reverse'));
-			element(by.id('yearSort')).click();
+		it('should sort by total descending', function() {
+			var tableElement = element.all(by.repeater('current in usageByYearCtrl.data | orderBy:usageByYearCtrl.predicate:usageByYearCtrl.descending'));
+			element(by.id('totalSort')).click();
+			expect(tableElement.first().getText()).toEqual('2013 603.928 35.773 639.701 1.753 365');
+			expect(tableElement.last().getText()).toEqual('2010 0.000 0.000 0.000 0.000 365');
+		});
+
+		it('should sort by total ascending', function() {
+			var tableElement = element.all(by.repeater('current in usageByYearCtrl.data | orderBy:usageByYearCtrl.predicate:usageByYearCtrl.descending'));
+			element(by.id('totalSort')).click();
 			element(by.id('totalSort')).click();
 			expect(tableElement.first().getText()).toEqual('2010 0.000 0.000 0.000 0.000 365');
 			expect(tableElement.last().getText()).toEqual('2013 603.928 35.773 639.701 1.753 365');

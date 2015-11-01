@@ -22,21 +22,29 @@ angular.module('BWMonApp.UsageByUser', ['ngRoute'])
 	});
 })
 .controller('UsageByUserController', function($scope, dataService, chartService) {
-	var usageByUserCtrl = this,
+	var ctrl = this,
 		reset = function() {
-			usageByUserCtrl.selected.user = '';
-			usageByUserCtrl.predicate = 'IP';
-			usageByUserCtrl.reverse = false;
+			ctrl.selected.user = '';
+			ctrl.predicate = 'IP';
+			ctrl.descending = false;
 		};
 
-	usageByUserCtrl.selected = {};
-	usageByUserCtrl.pageSize = 12;
+	ctrl.selected = {};
+	ctrl.pageSize = 12;
 
 	reset();
 
+	ctrl.setOrder = function(predicate) {
+		ctrl.descending = (ctrl.predicate === predicate) ? !ctrl.descending : false;
+		ctrl.predicate = predicate;
+	};
+	ctrl.getOrder = function(predicate) {
+		return ctrl.predicate === predicate ? (ctrl.descending ? {desc:true} : {asc: true}): {};
+	};
+
 	$scope.$watch('usageByUserCtrl.selected.year', function() {
 		reset();
-		usageByUserCtrl.selected.month = dataService.getMonths(usageByUserCtrl.selected.year)[0];
+		ctrl.selected.month = dataService.getMonths(ctrl.selected.year)[0];
 	}, true);
 
 	$scope.$watch('usageByUserCtrl.selected.month', function() {
@@ -44,12 +52,12 @@ angular.module('BWMonApp.UsageByUser', ['ngRoute'])
 	}, true);
 
 	$scope.$watch('usageByUserCtrl.selected', function() {
-		var usageData = dataService.getUsageByUser(usageByUserCtrl.selected.year, usageByUserCtrl.selected.month, usageByUserCtrl.selected.user);
-		usageByUserCtrl.data = usageData.data.usage;
-		usageByUserCtrl.total = usageData.data.total;
-		usageByUserCtrl.chartData = usageData.chartData;
-		usageByUserCtrl.chartOptions = chartService.getChartOptions(usageByUserCtrl.chartData, chartService.getUserLabel, chartService.getUserTooltip);
-		usageByUserCtrl.chartOptions.series[0].type = usageByUserCtrl.selected.chartType;
+		var usageData = dataService.getUsageByUser(ctrl.selected.year, ctrl.selected.month, ctrl.selected.user);
+		ctrl.data = usageData.data.usage;
+		ctrl.total = usageData.data.total;
+		ctrl.chartData = usageData.chartData;
+		ctrl.chartOptions = chartService.getChartOptions(ctrl.chartData, chartService.getUserLabel, chartService.getUserTooltip);
+		ctrl.chartOptions.series[0].type = ctrl.selected.chartType;
 	}, true);
 })
 ;

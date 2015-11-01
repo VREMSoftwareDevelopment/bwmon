@@ -65,8 +65,32 @@ describe('BWMonApp.UsageByUser module, ', function() {
 			expect(controller.predicate).toEqual('IP');
 		});
 
-		it('should set reverse to false', function() {
-			expect(controller.reverse).toEqual(false);
+		it('should set descending to false', function() {
+			expect(controller.descending).toEqual(false);
+		});
+
+		it('should setOrder set predicate', function() {
+			var predicate = 'XYZ';
+			controller.setOrder(predicate);
+			expect(controller.predicate).toEqual('XYZ');
+		});
+
+		it('should setOrder change descending to true', function() {
+			controller.setOrder(controller.predicate);
+			expect(controller.descending).toEqual(true);
+		});
+
+		it('should getOrder return ascending', function() {
+			expect(controller.getOrder(controller.predicate)).toEqual({asc:true});
+		});
+
+		it('should getOrder return descending', function() {
+			controller.descending = true;
+			expect(controller.getOrder(controller.predicate)).toEqual({desc:true});
+		});
+
+		it('should getOrder return none', function() {
+			expect(controller.getOrder('XYZ')).toEqual({});
 		});
 
 		it('should set selected user to empty', function() {
@@ -83,10 +107,10 @@ describe('BWMonApp.UsageByUser module, ', function() {
 			expect(controller.predicate).toEqual('IP');
 		});
 
-		it('should reset reverse', function() {
-			controller.reverse = true;
+		it('should reset descending', function() {
+			controller.descending = true;
 			scope.$digest();
-			expect(controller.reverse).toEqual(false);
+			expect(controller.descending).toEqual(false);
 		});
 
 		it('should reset selected user', function() {

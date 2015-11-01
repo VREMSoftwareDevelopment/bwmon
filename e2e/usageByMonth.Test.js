@@ -12,26 +12,37 @@ describe('bwmon e2e usage by month, ', function() {
 		});
 
 		it('should have data table', function() {
-			var tableElement = element.all(by.repeater('current in usageByMonthCtrl.data | orderBy:predicate:usageByMonthCtrl.reverse'));
+			var tableElement = element.all(by.repeater('current in usageByMonthCtrl.data | orderBy:usageByMonthCtrl.predicate:usageByMonthCtrl.descending'));
 			expect(tableElement.count()).toEqual(11);
-			expect(tableElement.first().getText()).toEqual('November 83.066 4.263 87.329 13.7% 2.911 30');
-			expect(tableElement.last().getText()).toEqual('January 64.043 4.105 68.149 10.7% 2.198 31');
 			expect(element(by.css('tfoot')).getText()).toEqual('2013 Totals 603.928 35.773 639.701 1.753 365');
 		});
 
-		it('should sort by month', function() {
-			var tableElement = element.all(by.repeater('current in usageByMonthCtrl.data | orderBy:predicate:usageByMonthCtrl.reverse'));
-			element(by.id('monthSort')).click();
+		it('should sort by month descending', function() {
+			var tableElement = element.all(by.repeater('current in usageByMonthCtrl.data | orderBy:usageByMonthCtrl.predicate:usageByMonthCtrl.descending'));
+			expect(tableElement.first().getText()).toEqual('November 83.066 4.263 87.329 13.7% 2.911 30');
+			expect(tableElement.last().getText()).toEqual('January 64.043 4.105 68.149 10.7% 2.198 31');
+		});
+
+		it('should sort by month ascending', function() {
+			var tableElement = element.all(by.repeater('current in usageByMonthCtrl.data | orderBy:usageByMonthCtrl.predicate:usageByMonthCtrl.descending'));
 			element(by.id('monthSort')).click();
 			expect(tableElement.first().getText()).toEqual('January 64.043 4.105 68.149 10.7% 2.198 31');
 			expect(tableElement.last().getText()).toEqual('November 83.066 4.263 87.329 13.7% 2.911 30');
 		});
 
-		it('should sort by total', function() {
-			var tableElement = element.all(by.repeater('current in usageByMonthCtrl.data | orderBy:predicate:usageByMonthCtrl.reverse'));
+		it('should sort by total descending', function() {
+			var tableElement = element.all(by.repeater('current in usageByMonthCtrl.data | orderBy:usageByMonthCtrl.predicate:usageByMonthCtrl.descending'));
 			element(by.id('totalSort')).click();
 			expect(tableElement.first().getText()).toEqual('November 83.066 4.263 87.329 13.7% 2.911 30');
 			expect(tableElement.last().getText()).toEqual('August 34.516 2.147 36.664 5.7% 1.183 31');
+		});
+
+		it('should sort by total ascending', function() {
+			var tableElement = element.all(by.repeater('current in usageByMonthCtrl.data | orderBy:usageByMonthCtrl.predicate:usageByMonthCtrl.descending'));
+			element(by.id('totalSort')).click();
+			element(by.id('totalSort')).click();
+			expect(tableElement.first().getText()).toEqual('August 34.516 2.147 36.664 5.7% 1.183 31');
+			expect(tableElement.last().getText()).toEqual('November 83.066 4.263 87.329 13.7% 2.911 30');
 		});
 
 		it('should have year select', function() {
@@ -40,7 +51,7 @@ describe('bwmon e2e usage by month, ', function() {
 
 		it('should show different information when changing year', function() {
 			var yearElement = element.all(by.model('usageByMonthCtrl.selected.year')).first(),
-				tableElement = element.all(by.repeater('current in usageByMonthCtrl.data | orderBy:predicate:usageByMonthCtrl.reverse'));
+				tableElement = element.all(by.repeater('current in usageByMonthCtrl.data | orderBy:usageByMonthCtrl.predicate:usageByMonthCtrl.descending'));
 			yearElement.element(by.cssContainingText('option', '2011')).click();
 			expect(yearElement.element(by.css('option:checked')).getText()).toEqual('2011');
 			expect(tableElement.count()).toEqual(7);

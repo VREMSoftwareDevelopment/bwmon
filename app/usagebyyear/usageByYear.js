@@ -22,18 +22,26 @@ angular.module('BWMonApp.UsageByYear', ['ngRoute'])
 	});
 })
 .controller('UsageByYearController', function($scope, dataService, chartService) {
-	var usageByYearCtrl = this;
+	var ctrl = this;
 	var usageData = dataService.getUsageByYear();
 
-	usageByYearCtrl.selected = {};
-	usageByYearCtrl.predicate = 'id';
-	usageByYearCtrl.reverse = false;
-	usageByYearCtrl.data = usageData.data;
-	usageByYearCtrl.chartData = usageData.chartData;
-	usageByYearCtrl.chartOptions = chartService.getChartOptions(usageByYearCtrl.chartData, chartService.getYearLabel, chartService.getYearLabel);
+	ctrl.predicate = 'id';
+	ctrl.descending = true;
+	ctrl.setOrder = function(predicate) {
+		ctrl.descending = (ctrl.predicate === predicate) ? !ctrl.descending : true;
+		ctrl.predicate = predicate;
+	};
+	ctrl.getOrder = function(predicate) {
+		return ctrl.predicate === predicate ? (ctrl.descending ? {desc:true} : {asc: true}): {};
+	};
+
+	ctrl.selected = {};
+	ctrl.data = usageData.data;
+	ctrl.chartData = usageData.chartData;
+	ctrl.chartOptions = chartService.getChartOptions(ctrl.chartData, chartService.getYearLabel, chartService.getYearLabel);
 
 	$scope.$watch('usageByYearCtrl.selected.chartType', function() {
-		usageByYearCtrl.chartOptions.series[0].type = usageByYearCtrl.selected.chartType;
+		ctrl.chartOptions.series[0].type = ctrl.selected.chartType;
 	}, true);
 })
 ;

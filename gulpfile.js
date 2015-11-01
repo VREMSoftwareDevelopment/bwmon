@@ -51,6 +51,10 @@ var gulp = require('gulp'),
 			dest: dstdir+'/css',
 			name: pkg.name+'.min.css'
 		},
+		img: {
+			src: srcdir+'/css/*.png',
+			dest: dstdir+'/css'
+		},
 		templates:  {
 			src: srcdir+'/**/**.tpl.html',
 			module: 'BWMonApp',
@@ -156,6 +160,12 @@ gulp.task('cssmin', function() {
 		.pipe(gulp.dest(files.css.dest));
 });
 
+gulp.task('img', function() {
+	return gulp
+		.src(files.img.src)
+		.pipe(gulp.dest(files.img.dest));
+});
+
 gulp.task('csslibs', function() {
 	return gulp
 		.src(files.css.libs)
@@ -208,7 +218,7 @@ gulp.task('other', function() {
 		.pipe(gulp.dest(files.other.dest));
 });
 
-gulp.task('webserver', ['jslibs', 'uglify', 'csslibs', 'cssmin', 'html', 'other'], function() {
+gulp.task('webserver', ['jslibs', 'uglify', 'csslibs', 'cssmin', 'html', 'img', 'other'], function() {
 	plugins.connect.server({
 		root: dstdir,
 		port: 8080

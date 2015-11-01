@@ -1,4 +1,5 @@
 describe('BWMonApp.Filters module, ', function() {
+
 	beforeEach(module('BWMonApp.Filters'));
 
 	it('startFrom filter should slice array from startFrom', inject(function(startFromFilter) {
@@ -19,7 +20,7 @@ describe('BWMonApp.Filters module, ', function() {
 	}));
 
 	it('usageInGBytes filter should return value in GBytes', inject(function(usageInGBytesFilter) {
-		var value = 123456789;
-		expect(usageInGBytesFilter(value)).toEqual(123.457);
+		expect(usageInGBytesFilter(123456789)).toEqual(123.457);
 	}));
+
 });

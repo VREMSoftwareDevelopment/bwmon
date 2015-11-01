@@ -47,8 +47,32 @@ describe('BWMonApp.UsageByYear module, ', function() {
 			expect(controller.predicate).toEqual('id');
 		});
 
-		it('should set reverse to false', function() {
-			expect(controller.reverse).toEqual(false);
+		it('should set descending to true', function() {
+			expect(controller.descending).toEqual(true);
+		});
+
+		it('should setOrder set predicate', function() {
+			var predicate = 'XYZ';
+			controller.setOrder(predicate);
+			expect(controller.predicate).toEqual('XYZ');
+		});
+
+		it('should setOrder change descending to false', function() {
+			controller.setOrder(controller.predicate);
+			expect(controller.descending).toEqual(false);
+		});
+
+		it('should getOrder return descending', function() {
+			expect(controller.getOrder(controller.predicate)).toEqual({desc:true});
+		});
+
+		it('should getOrder return ascending', function() {
+			controller.descending = false;
+			expect(controller.getOrder(controller.predicate)).toEqual({asc:true});
+		});
+
+		it('should getOrder return none', function() {
+			expect(controller.getOrder('XYZ')).toEqual({});
 		});
 
 		it('should update data with getUsageByYear', function() {

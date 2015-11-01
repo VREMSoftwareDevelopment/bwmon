@@ -22,23 +22,32 @@ angular.module('BWMonApp.UsageByMonth', ['ngRoute'])
 	});
 })
 .controller('UsageByMonthController', function($scope, dataService, chartService) {
-	var usageByMonthCtrl = this,
+	var ctrl = this,
 		reset = function() {
-			usageByMonthCtrl.predicate = 'id';
-			usageByMonthCtrl.reverse = false;
+			ctrl.predicate = 'id';
+			ctrl.descending = true;
 		};
 
-	usageByMonthCtrl.selected = {};
+	ctrl.selected = {};
 	reset();
 
-	$scope.$watch('usageByMonthCtrl.selected', function() {
-		var usageData = dataService.getUsageByMonth(usageByMonthCtrl.selected.year);
+	ctrl.setOrder = function(predicate) {
+		ctrl.descending = (ctrl.predicate === predicate) ? !ctrl.descending : true;
+		ctrl.predicate = predicate;
+	};
+	ctrl.getOrder = function(predicate) {
+		return ctrl.predicate === predicate ? (ctrl.descending ? {desc:true} : {asc: true}): {};
+	};
 
-		usageByMonthCtrl.data = usageData.data.usage;
-		usageByMonthCtrl.total = usageData.data.total;
-		usageByMonthCtrl.chartData = usageData.chartData;
-		usageByMonthCtrl.chartOptions = chartService.getChartOptions(usageByMonthCtrl.chartData, chartService.getMonthLabel, chartService.getMonthLabel);
-		usageByMonthCtrl.chartOptions.series[0].type = usageByMonthCtrl.selected.chartType;
+
+	$scope.$watch('usageByMonthCtrl.selected', function() {
+		var usageData = dataService.getUsageByMonth(ctrl.selected.year);
+
+		ctrl.data = usageData.data.usage;
+		ctrl.total = usageData.data.total;
+		ctrl.chartData = usageData.chartData;
+		ctrl.chartOptions = chartService.getChartOptions(ctrl.chartData, chartService.getMonthLabel, chartService.getMonthLabel);
+		ctrl.chartOptions.series[0].type = ctrl.selected.chartType;
 
 		reset();
 	}, true);
