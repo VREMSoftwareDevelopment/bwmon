@@ -4,7 +4,7 @@ A simple shell script designed to run on linux powered routers
 
 ![Sample Usage by User Screenshot](https://github.com/VREMSoftwareDevelopment/bwmon/raw/master/screenshots/UsageByUserData.jpg "Sample Usage by User Screenshot")
 
-[Try a demo version of this application](https://vremsoftwaredevelopment.github.io/bwmon)
+[Try a demo version of this application](https://vremsoftwaredevelopment.github.io/bwmon/demo)
 
 ###Software Features:
 - Designed to run on linux based routers such as: [Tomato](https://en.wikipedia.org/wiki/Tomato_firmware), [OpenWrt](https://en.wikipedia.org/wiki/OpenWrt), [DD-WRT](https://en.wikipedia.org/wiki/DD-WRT), etc
@@ -55,4 +55,6 @@ A simple shell script designed to run on linux powered routers
 - `gulp e2e` - runs local e2e tests
 - `gulp coverage` - creates unit test coverage report in `/logs/PhantomJS...`
 - `gulp devwebserver` - runs a server using development ready application with sample data on `http://localhost:8080/app`
+
+[See code coverage](https://vremsoftwaredevelopment.github.io/bwmon/coverage)
 
