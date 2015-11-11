@@ -61,12 +61,12 @@
 				<tfoot>
 					<tr>
 						<th colspan="3">{{usageByUserCtrl.selected.month}} {{usageByUserCtrl.selected.year}} Totals</th>
-						<th class="text-right">{{::usageByUserCtrl.total.download | usageInGBytes | number:3}}</th>
-						<th class="text-right">{{::usageByUserCtrl.total.upload | usageInGBytes | number:3}}</th>
-						<th class="text-right">{{::usageByUserCtrl.total.total | usageInGBytes | number:3}}</th>
+						<th class="text-right">{{usageByUserCtrl.total.download | usageInGBytes | number:3}}</th>
+						<th class="text-right">{{usageByUserCtrl.total.upload | usageInGBytes | number:3}}</th>
+						<th class="text-right">{{usageByUserCtrl.total.total | usageInGBytes | number:3}}</th>
 						<th></th>
-						<th class="text-right">{{::usageByUserCtrl.total.average | usageInGBytes | number:3}}</th>
-						<th class="text-right">{{::usageByUserCtrl.total.days}}</th>
+						<th class="text-right">{{usageByUserCtrl.total.average | usageInGBytes | number:3}}</th>
+						<th class="text-right">{{usageByUserCtrl.total.days}}</th>
 						<th></th>
 						<th></th>
 					</tr>

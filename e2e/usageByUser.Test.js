@@ -77,7 +77,7 @@ describe('bwmon e2e usage by user, ', function() {
 			expect(tableElement.count()).toEqual(7);
 			expect(tableElement.first().getText()).toEqual('192.168.1.10 00:1C:25:27:9B:AE COMPUTER-3 12.806 1.016 13.822 57.9% 0.446 31 Dec 1, 2011 11:30:02 AM Dec 31, 2011 11:30:01 PM');
 			expect(tableElement.last().getText()).toEqual('192.168.1.25 70:D4:F2:DA:FA:C9 COMPUTER-15 0.863 0.018 0.881 3.7% 0.088 10 Dec 21, 2011 8:00:01 PM Dec 31, 2011 12:30:01 PM');
-			expect(element(by.css('tfoot')).getText()).toEqual('December 2011 Totals 83.066 4.263 87.329 2.911 30');
+			expect(element(by.css('tfoot')).getText()).toEqual('December 2011 Totals 21.926 1.937 23.863 0.770 31');
 		});
 
 		it('should show different information when changing month', function() {
@@ -88,7 +88,7 @@ describe('bwmon e2e usage by user, ', function() {
 			expect(tableElement.count()).toEqual(9);
 			expect(tableElement.first().getText()).toEqual('192.168.1.10 00:1C:25:27:9B:AE COMPUTER-3 10.481 0.204 10.685 29.1% 0.356 30 Aug 1, 2013 7:30:02 PM Aug 30, 2013 11:00:07 PM');
 			expect(tableElement.last().getText()).toEqual('192.168.1.27 10:D5:42:88:3F:A0 COMPUTER-16 0.853 0.066 0.919 2.5% 0.033 28 Aug 1, 2013 8:00:02 PM Aug 29, 2013 3:00:02 PM');
-			expect(element(by.css('tfoot')).getText()).toEqual('August 2013 Totals 83.066 4.263 87.329 2.911 30');
+			expect(element(by.css('tfoot')).getText()).toEqual('August 2013 Totals 34.516 2.147 36.664 1.183 31');
 		});
 
 		it('should show different information when changing user', function() {

@@ -57,7 +57,7 @@ describe('bwmon e2e usage by month, ', function() {
 			expect(tableElement.count()).toEqual(7);
 			expect(tableElement.first().getText()).toEqual('December 21.926 1.937 23.863 15.8% 0.770 31');
 			expect(tableElement.last().getText()).toEqual('June 26.949 2.086 29.035 19.3% 0.968 30');
-			expect(element(by.css('tfoot')).getText()).toEqual('2011 Totals 603.928 35.773 639.701 1.753 365');
+			expect(element(by.css('tfoot')).getText()).toEqual('2011 Totals 139.939 10.745 150.684 0.413 365');
 		});
 	});
 

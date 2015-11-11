@@ -38,12 +38,12 @@
 				<tfoot>
 					<tr>
 						<th>{{usageByMonthCtrl.selected.year}} Totals</th>
-						<th class="text-right">{{::usageByMonthCtrl.total.download | usageInGBytes | number:3}}</th>
-						<th class="text-right">{{::usageByMonthCtrl.total.upload | usageInGBytes | number:3}}</th>
-						<th class="text-right">{{::usageByMonthCtrl.total.total | usageInGBytes | number:3}}</th>
+						<th class="text-right">{{usageByMonthCtrl.total.download | usageInGBytes | number:3}}</th>
+						<th class="text-right">{{usageByMonthCtrl.total.upload | usageInGBytes | number:3}}</th>
+						<th class="text-right">{{usageByMonthCtrl.total.total | usageInGBytes | number:3}}</th>
 						<th></th>
-						<th class="text-right">{{::usageByMonthCtrl.total.average | usageInGBytes | number:3}}</th>
-						<th class="text-right">{{::usageByMonthCtrl.total.days}}</th>
+						<th class="text-right">{{usageByMonthCtrl.total.average | usageInGBytes | number:3}}</th>
+						<th class="text-right">{{usageByMonthCtrl.total.days}}</th>
 					</tr>
 				</tfoot>
 			</table>
