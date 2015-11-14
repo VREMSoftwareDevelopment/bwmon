@@ -23,7 +23,7 @@ A simple shell script designed to run on linux powered routers
 	- `cd /mnt/<mounted_name>/`
 	- `mkdir bwmon`
 	- `cd bwmon`
-	- `wget https://github.com/VREMSoftwareDevelopment/bwmon/releases/download/v2.3.3/bwmon.tar.gz`
+	- `wget https://github.com/VREMSoftwareDevelopment/bwmon/releases/download/v2.3.4/bwmon.tar.gz`
 	- `tar -xzvf bwmon.tar.gz`
 	- `chmod +x *.sh`
 	- `./bwmon-cron.sh install`
