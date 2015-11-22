@@ -11,15 +11,15 @@
 # delete: cru d <unique id>
 # list:   cru l
 
-
-BWDIR=$(pwd)
+BWDIR=${2}
+[ -z "${2}" ] && BWDIR=$(pwd)
 BWMON=$BWDIR/bwmon.sh
 BWMONWWW=/tmp/var/wwwext/bwmon
 
 case ${1} in
 "install" )
 	cru a bwmon_setup "* * * * * $BWMON setup $BWDIR"
-	cru a bwmon_update "0,30 * * * * $BWMON update $BWDIR"
+	cru a bwmon_update "1,31 * * * * $BWMON update $BWDIR"
 	ln -s $BWDIR $BWMONWWW
 	;;
 "remove" )
