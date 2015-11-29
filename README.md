@@ -38,6 +38,7 @@ A simple shell script designed to run on linux powered routers
 	- *error getting response: Connection reset by peer* - add the following option `--no-check-certificate`
 	- Or download the file from the web-site and copy to the folder.
 
+
 ##*Build Instructions:*
 - Install NodeJS
 - Install Gulp and Bower: `npm install -g gulp bower`
