@@ -176,7 +176,7 @@ gulp.task('jslibs', function() {
 	return gulp
 		.src(files.js.libs)
 		.pipe(plugins.concat(files.js.libsname, {newLine: ';'}))
-		.pipe(plugins.uglify({mangle: false, compress: false}))
+//		.pipe(plugins.uglify({mangle: false, compress: false}))
 		.pipe(gulp.dest(files.js.dest));
 });
 

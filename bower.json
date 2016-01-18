@@ -8,14 +8,14 @@
 	],
 	"dependencies": {
 		"angular": "^1.4.7",
-		"angular-bootstrap": "~0.14.3",
+		"angular-bootstrap": "^0.14.3",
 		"angular-mocks": "^1.4.7",
 		"angular-route": "^1.4.7",
-		"angularUtils-pagination": "angular-utils-pagination#~0.9.2",
+		"angularUtils-pagination": "angular-utils-pagination#~0.9.4",
 		"bootstrap": "^3.3.5",
-		"d3": "^3.5.8",
-		"moment": "momentjs#^2.10.6",
-		"momentjs": "^2.10.6",
+		"d3": "^3.5.12",
+		"moment": "momentjs#^2.11.1",
+		"momentjs": "^2.11.1",
 		"n3-line-chart": "^1.1.12",
 		"underscore": "^1.8.3"
 	}
