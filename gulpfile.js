@@ -176,7 +176,6 @@ gulp.task('jslibs', function() {
 	return gulp
 		.src(files.js.libs)
 		.pipe(plugins.concat(files.js.libsname, {newLine: ';'}))
-//		.pipe(plugins.uglify({mangle: false, compress: false}))
 		.pipe(gulp.dest(files.js.dest));
 });
 
@@ -198,7 +197,7 @@ gulp.task('uglify', ['uglify:clean', 'templates', 'test'], function() {
 		.pipe(plugins.sourcemaps.init())
 			.pipe(plugins.ngAnnotate())
 			.pipe(plugins.iife())
-			.pipe(plugins.uglify())
+			.pipe(plugins.uglify({mangle: false, compress: true}))
 		.pipe(plugins.sourcemaps.write('./'))
 		.pipe(plugins.header(banner, {pkg: pkg}))
 		.pipe(gulp.dest(files.js.dest));
