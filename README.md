@@ -7,7 +7,7 @@ A simple shell script designed to run on linux powered routers
 [Try a demo version of this application](https://vremsoftwaredevelopment.github.io/bwmon/demo)
 
 ###Software Features:
-- Designed to run on linux based routers such as: [Tomato](https://en.wikipedia.org/wiki/Tomato_firmware), [OpenWrt](https://en.wikipedia.org/wiki/OpenWrt), [DD-WRT](https://en.wikipedia.org/wiki/DD-WRT), etc
+- Designed to run on linux based routers such as: [Tomato](https://en.wikipedia.org/wiki/Tomato_firmware), etc
 - Provides per user bandwidth usage monitoring
 - Generates bandwidth usage reports per user/month/year
 
