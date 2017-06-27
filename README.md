@@ -1,4 +1,4 @@
-##Bandwidth Usage Monitor
+## Bandwidth Usage Monitor
 
 A simple shell script designed to run on linux powered routers
 
@@ -6,17 +6,17 @@ A simple shell script designed to run on linux powered routers
 
 [Try a demo version of this application](https://vremsoftwaredevelopment.github.io/bwmon/demo)
 
-###Software Features:
+### Software Features:
 - Designed to run on linux based routers such as: [Tomato](https://en.wikipedia.org/wiki/Tomato_firmware), etc
 - Provides per user bandwidth usage monitoring
 - Generates bandwidth usage reports per user/month/year
 
-###Technical Features:
+### Technical Features:
 - Shell script to collect bandwidth usage and to generate JSON data structure.
 - Web Based GUI to display bandwidth usage
 - Web Based GUI is using Bootstrap and AngularJS
 
-##*Installation instructions:*
+## *Installation instructions:*
 - Make sure that you have a harddisk or USB flash drive attached to router and it is formated and mounted.
 - Log into your router via *ssh*.
 - To install application type the following command in *ssh* terminal:
@@ -30,16 +30,16 @@ A simple shell script designed to run on linux powered routers
 - Visit `http://<your_router_ip>/user/bwmon/index.html` to view bandwidth usage statistics.
 - To setup bandwidth usage monitor to start automatically after router reboots add the following to autostart script on mount: `./mnt/<mounted_ name>/bwmon/bwmon-cron.sh install`
 
-###Usage:
+### Usage:
 `./bwmon-cron.sh {install|remove}` - shell script to install or remove bandwidth usage monitor from cron jobs
 
-######Note:
+#### Note:
 - Problem using `wget`:
 	- *error getting response: Connection reset by peer* - add the following option `--no-check-certificate`
 	- Or download the file from the web-site and copy to the folder.
 
 
-##*Build Instructions:*
+## *Build Instructions:*
 - Install NodeJS
 - Install Gulp and Bower: `npm install -g gulp bower`
 - Create project: `git clone https://github.com/VREMSoftwareDevelopment/bwmon.git`
@@ -47,7 +47,7 @@ A simple shell script designed to run on linux powered routers
 - Install required bower components: `bower install`
 - Build application: `gulp`
 
-###Gulp tasks:
+### Gulp tasks:
 - `gulp` - places a fully optimized application (production ready) in `/dist`
 - `gulp build`  - same as `gulp`
 - `gulp webserver` - runs a server using production ready application with sample data on `http://localhost:8080`
