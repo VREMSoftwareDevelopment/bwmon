@@ -27,7 +27,8 @@ stop() {
 	cru d bwmon_setup
 }
 
-status() {
+check() {
+	echo " Checking bwmon..."
 	cru l | grep bwmon
 }
 
@@ -42,11 +43,11 @@ case "$1" in
 		stop
 		start
 		;;
-	status)
-		status
+	check)
+		check
 		;;
 	*)
-	echo "Usage: $0 {start|stop|status|restart}"
+	echo "Usage: $0 {start|stop|check|restart}"
 esac
 
 exit 0 
