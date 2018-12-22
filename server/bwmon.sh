@@ -1,12 +1,14 @@
 #!/bin/sh
-#Bandwidth Usage - TomatoUSB Version
+# Bandwidth Usage
+# AsusWRT-Merlin Version
+# 
 
 [ -z "${1}" ] && display && exit 1
 [ -z "${2}" ] && display && exit 1
 
 LAN0_IFACE=$(nvram get lan_ifname)
-LAN1_IFACE=$(nvram get lan1_ifname)
-MACNAMES=$(nvram find macnames)
+
+MACNAMES=$(nvram get custom_clientlist)
 USERSFILE="/etc/hosts.dnsmasq"
 [ -f "${USERSFILE}" ] || USERSFILE="/etc/dnsmasq/hosts/hosts"
 [ -f "${USERSFILE}" ] || USERSFILE="/dev/null"
@@ -15,6 +17,8 @@ USAGE_DB="bwmonUsage.db"
 USAGE_JS="bwmonUsage.js"
 USAGEDB=${2}/${USAGE_DB}
 USAGEJS=${2}/${USAGE_JS}
+DESTJS=/opt/share/www/bwmon/${USAGE_JS}
+DESTLOG=/opt/var/log/bwmon.log
 
 display() {
 	echo "Usage : $0 {setup|update} path"
@@ -29,8 +33,8 @@ display() {
 }
 
 log () {
-	logger -p user.info -t $0 "$1"
-	echo -p user.info -t $0 "$1"
+	echo $(date) $USER $0 "$1" >> ${DESTLOG}
+	echo $(date) $USER $0 "$1"
 }
 
 lock() {
@@ -72,19 +76,21 @@ usage() {
 	echo "};" >> ${USAGEJS}
 
 	#details
-	echo "$(echo ${MACNAMES/'macnames='/} | tr '>' '\n' | tr '<' ',')" > ${MACNAMESFILE}
-
+	echo "$(echo ${MACNAMES/'macnames='/} | tr '<' '\n' | tr '>' ',')" > ${MACNAMESFILE}
+	
 	cat ${USAGEDB} | while IFS=, read CURRENT_MONTH MAC IP USAGE_IN USAGE_OUT CREATE_TIME UPDATE_TIME
 	do
+		MACU=$(echo "$MAC" | tr '[a-z]' '[A-Z')
 		USER=$(grep "${IP} " "${USERSFILE}" | cut -f2 -s -d' ' )
 		if [ -z "$USER" ]; then
-			USER=$(grep "$(echo ${MAC} | sed 's/://g')" "${MACNAMESFILE}" | cut -f2 -s -d',' )
+			USER=$(grep "${MAC}" "${MACNAMESFILE}" | cut -f1 -s -d',' )
 			[ -z "$USER" ] && USER=${MAC}
 		fi
-		echo "data.push(new Data(i++,'${CURRENT_MONTH}','${IP}','${MAC}','${USER}',${USAGE_IN},${USAGE_OUT},${CREATE_TIME},${UPDATE_TIME}));" >> ${USAGEJS}
+		echo "data.push(new Data(i++,'${CURRENT_MONTH}','${IP}','${MACU}','${USER}',${USAGE_IN},${USAGE_OUT},${CREATE_TIME},${UPDATE_TIME}));" >> ${USAGEJS}
 	done
 	#footer
 	echo "return data;};" >> ${USAGEJS}
+	mv -f ${USAGEJS} ${DESTJS}
 }
 
 update() {
@@ -92,6 +98,7 @@ update() {
 	iptables -L RRDIPT -vnxZ -t filter > /tmp/traffic_$$.tmp
 	grep -v "0x0" /proc/net/arp  | while read IP TYPE FLAGS MAC MASK IFACE
 	do
+		MACU=$(echo "$MAC" | tr '[a-z]' '[A-Z')
 		#Add new data to the graph. Count in Kbs to deal with 16 bits signed values (up to 2G only)
 		#Have to use temporary files because of crappy busybox shell
 		echo 0 > /tmp/in_$$.tmp
@@ -104,11 +111,11 @@ update() {
 		IN=$(cat /tmp/in_$$.tmp)
 		OUT=$(cat /tmp/out_$$.tmp)
 		if [ ${IN} -gt 0 -o ${OUT} -gt 0 ];  then
-			log "DEBUG: New traffic for ${MAC} since last update : ${IN}k:${OUT}k"
+			log "DEBUG: New traffic for ${MACU} since last update : ${IN}k:${OUT}k"
 			CURRENT_MONTH=$(date +'%Y-%m')
-			LINE=$(grep "${CURRENT_MONTH},${MAC}" ${USAGEDB})
+			LINE=$(grep "${CURRENT_MONTH},${MACU}" ${USAGEDB})
 			if [ -z "${LINE}" ]; then
-				log "DEBUG: ${CURRENT_MONTH},${MAC} new month and host!"
+				log "DEBUG: ${CURRENT_MONTH},${MACU} new month and host!"
 				USAGE_IN=0
 				USAGE_OUT=0
 				CREATE_TIME=$(date +%s)
@@ -120,9 +127,9 @@ update() {
 			USAGE_IN=$((${USAGE_IN}+${IN}))
 			USAGE_OUT=$((${USAGE_OUT}+${OUT}))
 			UPDATE_TIME=$(date +%s)
-			grep -v "${CURRENT_MONTH},${MAC}" ${USAGEDB} > /tmp/db_$$.tmp
+			grep -v "${CURRENT_MONTH},${MACU}" ${USAGEDB} > /tmp/db_$$.tmp
 			mv /tmp/db_$$.tmp ${USAGEDB}
-			echo ${CURRENT_MONTH},${MAC},${IP},${USAGE_IN},${USAGE_OUT},${CREATE_TIME},${UPDATE_TIME} >> ${USAGEDB}
+			echo ${CURRENT_MONTH},${MACU},${IP},${USAGE_IN},${USAGE_OUT},${CREATE_TIME},${UPDATE_TIME} >> ${USAGEDB}
 		fi
 	done
 	rm -f /tmp/*_$$.tmp
@@ -142,16 +149,6 @@ create() {
 	fi
 	#LAN0 For each host in the ARP table
 	grep ${LAN0_IFACE} /proc/net/arp | while read IP TYPE FLAGS MAC MASK IFACE
-	do
-		#Add iptable rules (if non existing).
-		iptables -nL RRDIPT | grep "${IP} " > /dev/null
-		if [ $? -ne 0 ]; then
-			iptables -I RRDIPT -d ${IP} -j RETURN
-			iptables -I RRDIPT -s ${IP} -j RETURN
-		fi
-	done
-	#LAN1 For each host in the ARP table
-	grep ${LAN1_IFACE} /proc/net/arp | while read IP TYPE FLAGS MAC MASK IFACE
 	do
 		#Add iptable rules (if non existing).
 		iptables -nL RRDIPT | grep "${IP} " > /dev/null
