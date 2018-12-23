@@ -41,10 +41,9 @@ A simple shell script designed to run on linux powered routers
 
 ## *Build Instructions:*
 - Install NodeJS
-- Install Gulp and Bower: `npm install -g gulp bower`
+- Install Gulp: `npm install -g gulp`
 - Create project: `git clone https://github.com/VREMSoftwareDevelopment/bwmon.git`
 - Install required node modules: `npm install`
-- Install required bower components: `bower install`
 - Build application: `gulp`
 
 ### Gulp tasks:

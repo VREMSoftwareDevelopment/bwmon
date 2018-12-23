@@ -10,7 +10,7 @@ var gulp = require('gulp'),
 	banner = 'window.VERSION="<%=pkg.version%>";\n/*\n\t<%=pkg.name%> v<%=pkg.version%>\n\t(C) 2010 - 2015 VREM Software Development\n\t<%= pkg.homepage %>\n\tLicense: <%=pkg.license%>\n*/\n',
 	srcdir = 'app',
 	dstdir = 'dist',
-	cmpdir = 'bower_components',
+	cmpdir = 'node_modules',
 	dataname = pkg.name+'Usage.js',
 
 	showColor = argv.color === undefined || argv.color === null ? true : argv.color,
@@ -74,7 +74,7 @@ var gulp = require('gulp'),
 			}
 		},
 		version: {
-			src: ['./package.json', './bower.json'],
+			src: ['./package.json'],
 			dest: './',
 			message: 'bumps package version',
 			filter: 'package.json'
