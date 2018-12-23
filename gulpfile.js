@@ -25,12 +25,12 @@ var gulp = require('gulp'),
 			libs: [
 				cmpdir+'/angular/angular.min.js',
 				cmpdir+'/angular-route/angular-route.min.js',
-				cmpdir+'/angular-bootstrap/ui-bootstrap-tpls.min.js',
-				cmpdir+'/angularUtils-pagination/dirPagination.min.js',
+				cmpdir+'/angular-ui-bootstrap/dist/ui-bootstrap-tpls.js',
+				cmpdir+'/angular-utils-pagination/dirPagination.js',
 				cmpdir+'/underscore/underscore-min.js',
-				cmpdir+'/momentjs/min/moment.min.js',
+				cmpdir+'/moment/min/moment.min.js',
 				cmpdir+'/d3/d3.min.js',
-				cmpdir+'/n3-line-chart/build/line-chart.min.js'
+				cmpdir+'/n3-charts/build/LineChart.min.js'
 			],
 			dest: dstdir+'/js',
 			temp: pkg.name+'.js',
