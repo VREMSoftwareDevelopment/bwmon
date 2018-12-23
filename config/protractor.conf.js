@@ -3,7 +3,8 @@
 exports.config = {
 	specs: ['../e2e/**/*.Test.js'],
 	capabilities: {
-		'browserName': 'chrome'
+//		'browserName': 'chrome'
+		'browserName': 'firefox'
 	},
 	onPrepare: function() {
 		// Disable animations so e2e tests run more quickly
