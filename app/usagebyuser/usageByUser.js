@@ -30,7 +30,7 @@ angular.module('BWMonApp.UsageByUser', ['ngRoute'])
 		};
 
 	ctrl.selected = {};
-	ctrl.pageSize = 12;
+	ctrl.pageSize = 15;
 
 	reset();
 

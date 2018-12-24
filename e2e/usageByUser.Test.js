@@ -15,9 +15,9 @@ describe('bwmon e2e usage by user, ', function() {
 
 		it('should have data table', function() {
 			var tableElement = element.all(by.repeater('current in usageByUserCtrl.data | orderBy:usageByUserCtrl.predicate:usageByUserCtrl.descending | itemsPerPage:usageByUserCtrl.pageSize'));
-			expect(tableElement.count()).toEqual(12);
+			expect(tableElement.count()).toEqual(15);
 			expect(tableElement.first().getText()).toEqual('192.168.1.10 00:1C:25:27:9B:AE COMPUTER-3 15.004 0.973 15.978 18.3% 0.533 30 Nov 1, 2013 4:30:01 PM Nov 30, 2013 10:30:02 PM');
-			expect(tableElement.last().getText()).toEqual('192.168.1.148 00:1A:A0:C7:17:60 COMPUTER-18 0.083 0.005 0.088 0.1% 0.003 30 Nov 1, 2013 4:30:01 PM Nov 30, 2013 10:30:02 PM');
+			expect(tableElement.last().getText()).toEqual('192.168.1.20 00:1A:E9:92:A5:5F COMPUTER-8 0.023 0.000 0.024 0.0% 0.001 30 Nov 1, 2013 4:30:01 PM Nov 30, 2013 10:30:02 PM');
 			expect(element(by.css('tfoot')).getText()).toEqual('November 2013 Totals 83.066 4.263 87.329 2.911 30');
 		});
 
@@ -25,28 +25,28 @@ describe('bwmon e2e usage by user, ', function() {
 			var tableElement = element.all(by.repeater('current in usageByUserCtrl.data | orderBy:usageByUserCtrl.predicate:usageByUserCtrl.descending | itemsPerPage:usageByUserCtrl.pageSize'));
 			element(by.id('IPSort')).click();
 			expect(tableElement.first().getText()).toEqual('192.168.2.146 0C:EE:E6:80:C8:8C COMPUTER-27 0.573 0.025 0.597 0.7% 0.020 30 Nov 1, 2013 4:30:01 PM Nov 30, 2013 10:30:02 PM');
-			expect(tableElement.last().getText()).toEqual('192.168.1.21 40:6F:2A:54:D9:EB COMPUTER-2 1.407 0.112 1.518 1.7% 0.051 30 Nov 1, 2013 4:30:01 PM Nov 30, 2013 10:30:02 PM');
+			expect(tableElement.last().getText()).toEqual('192.168.1.15 00:1A:A0:C7:19:08 COMPUTER-9 27.175 0.565 27.740 31.8% 0.925 30 Nov 1, 2013 4:30:01 PM Nov 30, 2013 10:30:02 PM');
 		});
 
 		it('should sort by MAC', function() {
 			var tableElement = element.all(by.repeater('current in usageByUserCtrl.data | orderBy:usageByUserCtrl.predicate:usageByUserCtrl.descending | itemsPerPage:usageByUserCtrl.pageSize'));
 			element(by.id('MACSort')).click();
 			expect(tableElement.first().getText()).toEqual('192.168.1.133 00:19:B9:03:00:D7 COMPUTER-22 0.006 0.000 0.006 0.0% 0.000 30 Nov 1, 2013 4:30:01 PM Nov 30, 2013 10:30:02 PM');
-			expect(tableElement.last().getText()).toEqual('192.168.1.120 00:26:6C:A8:EE:D6 COMPUTER-21 0.089 0.003 0.092 0.1% 0.003 30 Nov 1, 2013 4:30:01 PM Nov 30, 2013 10:30:02 PM');
+			expect(tableElement.last().getText()).toEqual('192.168.1.16 00:90:A9:C6:19:5B COMPUTER-11 0.055 0.001 0.056 0.1% 0.002 30 Nov 1, 2013 4:30:01 PM Nov 30, 2013 10:30:02 PM');
 		});
 
 		it('should sort by USER', function() {
 			var tableElement = element.all(by.repeater('current in usageByUserCtrl.data | orderBy:usageByUserCtrl.predicate:usageByUserCtrl.descending | itemsPerPage:usageByUserCtrl.pageSize'));
 			element(by.id('userSort')).click();
 			expect(tableElement.first().getText()).toEqual('192.168.1.14 00:24:8D:28:F2:9A COMPUTER-1 0.203 0.012 0.214 0.2% 0.007 30 Nov 1, 2013 4:30:01 PM Nov 30, 2013 10:30:02 PM');
-			expect(tableElement.last().getText()).toEqual('192.168.1.21 40:6F:2A:54:D9:EB COMPUTER-2 1.407 0.112 1.518 1.7% 0.051 30 Nov 1, 2013 4:30:01 PM Nov 30, 2013 10:30:02 PM');
+			expect(tableElement.last().getText()).toEqual('192.168.1.133 00:19:B9:03:00:D7 COMPUTER-22 0.006 0.000 0.006 0.0% 0.000 30 Nov 1, 2013 4:30:01 PM Nov 30, 2013 10:30:02 PM');
 		});
 
 		it('should sort by total', function() {
 			var tableElement = element.all(by.repeater('current in usageByUserCtrl.data | orderBy:usageByUserCtrl.predicate:usageByUserCtrl.descending | itemsPerPage:usageByUserCtrl.pageSize'));
 			element(by.id('totalSort')).click();
 			expect(tableElement.first().getText()).toEqual('192.168.1.28 94:EB:CD:3D:82:CD COMPUTER-14 0.000 0.000 0.000 0.0% 0.000 30 Nov 1, 2013 4:30:01 PM Nov 30, 2013 10:30:02 PM');
-			expect(tableElement.last().getText()).toEqual('192.168.1.22 90:4C:E5:A6:91:FA COMPUTER-6 0.174 0.014 0.188 0.2% 0.006 30 Nov 1, 2013 4:30:01 PM Nov 30, 2013 10:30:02 PM');
+			expect(tableElement.last().getText()).toEqual('192.168.1.140 00:1A:A0:C7:2D:EE COMPUTER-17 0.389 0.008 0.397 0.5% 0.013 30 Nov 1, 2013 4:30:01 PM Nov 30, 2013 10:30:02 PM');
 		});
 
 		it('should have year selected', function() {
@@ -63,10 +63,9 @@ describe('bwmon e2e usage by user, ', function() {
 
 		it('should have pagination', function() {
 			var pagination = element.all(by.css('.pagination li a'));
-			expect(pagination.count()).toEqual(7);
+			expect(pagination.count()).toEqual(6);
 			expect(pagination.get(2).getText()).toEqual('1');
 			expect(pagination.get(3).getText()).toEqual('2');
-			expect(pagination.get(4).getText()).toEqual('3');
 		});
 
 		it('should show different information when changing year', function() {
