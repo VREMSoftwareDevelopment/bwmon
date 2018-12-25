@@ -47,7 +47,10 @@ var gulp = require('gulp'),
 		},
 		css: {
 			src: [srcdir+'/css/*.css'],
-			libs: cmpdir+'/bootstrap/dist/css/bootstrap.min.css',
+			libs: [
+				cmpdir+'/bootstrap/dist/css/bootstrap.min.css',
+				cmpdir+'/n3-charts/build/LineChart.min.css',
+			],
 			dest: dstdir+'/css',
 			name: pkg.name+'.min.css'
 		},

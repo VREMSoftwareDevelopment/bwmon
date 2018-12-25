@@ -108,7 +108,9 @@ angular.module('BWMonApp.DataService', [])
 			};
 		},
 		_getChartData = function(data, reverse) {
-			var chartData = [],
+			var result = {
+					dataset00: []
+				},
 				usageData = data,
 				round = function(value) {
 					return Math.round(value/1000)/1000;
@@ -117,7 +119,8 @@ angular.module('BWMonApp.DataService', [])
 			if (reverse) {
 				usageData = data.slice().reverse();
 			}
-			chartData = _.map(usageData, function(entry, key) {
+			
+			result.dataset00 = _.map(usageData, function(entry, key) {
 				var result = {
 					x: key,
 					id: entry.id,
@@ -127,7 +130,7 @@ angular.module('BWMonApp.DataService', [])
 				if (entry.user) {result.user = entry.user;}
 				return result;
 			});
-			return chartData;
+			return result;
 		},
 		init = function() {
 			_data.sort(_sort);

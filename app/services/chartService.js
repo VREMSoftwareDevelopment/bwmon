@@ -22,7 +22,7 @@ angular.module('BWMonApp.ChartService', [])
 			}
 			return result;
 		},
-		_getMonthLabel = function(value) {
+		_getMonthLabel = function(value, data) {
 			var result = '';
 			if (value % 1 === 0 && value >= 0 && value <= 11) {
 				result = moment({month: value}).format("MMMM");
@@ -44,26 +44,53 @@ angular.module('BWMonApp.ChartService', [])
 			return result;
 		},
 		_getChartTypes = function() {
-			return ['column', 'line', 'area'];
+			return [
+				['column'], 
+				['line', 'dot'], 
+				['line', 'dot', 'area']
+			];
 		},
-		_getChartOptions = function(data, label, tooltip) {
+		_getChartOptions = function(data, labelFn, tooltipFn) {
 			return {
+				margin: {
+					top: 40,
+					right: 40,
+					bottom: 40,
+					left: 40
+				},
 				series: [{
-					y: 'total',
+					axis: 'y',
+					dataset: 'dataset00',
+					key: 'total',
 					color: '#3366CC',
 					label: 'GBytes',
-					type: _getChartTypes()[0]
+					grid: {
+						x: false, 
+						y: true
+					},
+					type: _getChartTypes()[0],
+					id: 'series00'
 				}],
 				axes: {
-					x: {
-						labelFunction: function(value) {
-							return label(value, data);
+					x: { 
+						key: 'x',
+						tickFormat: function(value, index) {
+							return labelFn(value, data.dataset00);
 						}
 					}
 				},
-				tooltip: {
-					formatter: function(x, y, series) {
-						return tooltip(x, data)  + ' : ' + y;
+				tooltipHook: function(d) {
+					if (d) {
+						return {
+							rows: d.map(function(s) {
+								return {
+									label: tooltipFn(s.row.x, data.dataset00),
+									value: s.row.y1, 
+									color: s.series.color,
+									id: s.series.id 
+								};
+							})
+						};
 					}
 				}
 			};
