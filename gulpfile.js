@@ -158,7 +158,7 @@ gulp.task('coverage', ['jshint', 'devhtml'], function(done) { karma(done, {repor
 gulp.task('cssmin', function() {
 	return gulp
 		.src(files.css.src)
-		.pipe(plugins.minifyCss())
+		.pipe(plugins.cleanCss())
 		.pipe(plugins.concat(files.css.name))
 		.pipe(gulp.dest(files.css.dest));
 });
