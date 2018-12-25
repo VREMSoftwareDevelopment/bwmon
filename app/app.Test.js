@@ -40,11 +40,13 @@ describe('BWMonApp module, ', function(){
 		});
 
 		it('should set current version from window.VERSION', function() {
+			var prevWindowVERSION = window.VERSION;
 			window.VERSION = '1.2.3';
 			controller = $controller('rootController', {
 				$scope: scope,
 			});
 			expect(controller.version).toEqual(window.VERSION);
+			window.VERSION = prevWindowVERSION;
 		});
 
 	});
