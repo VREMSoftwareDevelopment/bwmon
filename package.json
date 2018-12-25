@@ -51,7 +51,7 @@
 		"gulp-uglify": "^3.0.1",
 		"jshint": "^2.9.7",
 		"jshint-stylish": "^2.2.1",
-		"karma": "^0.13.19",
+		"karma": "^3.1.4",
 		"karma-chrome-launcher": "^2.2.0",
 		"karma-coverage": "^1.1.2",
 		"karma-firefox-launcher": "^1.1.0",
