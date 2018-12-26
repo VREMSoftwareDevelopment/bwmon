@@ -7,7 +7,7 @@ A simple shell script designed to run on linux powered routers
 [Try a demo version of this application](https://vremsoftwaredevelopment.github.io/bwmon/demo)
 
 ### Software Features:
-- Designed to run on linux based routers such as: [Tomato](https://en.wikipedia.org/wiki/Tomato_firmware), etc
+- Designed to run on linux based routers such as: [TomatoUSB](https://en.wikipedia.org/wiki/Tomato_firmware), etc
 - Provides per user bandwidth usage monitoring
 - Generates bandwidth usage reports per user/month/year
 
@@ -23,7 +23,7 @@ A simple shell script designed to run on linux powered routers
 	- `cd /mnt/<mounted_name>/`
 	- `mkdir bwmon`
 	- `cd bwmon`
-	- `wget https://github.com/VREMSoftwareDevelopment/bwmon/releases/download/v2.3.4/bwmon.tar.gz`
+	- `wget https://github.com/VREMSoftwareDevelopment/bwmon/releases/download/v2.4.0/bwmon.tar.gz`
 	- `tar -xzvf bwmon.tar.gz`
 	- `chmod +x *.sh`
 	- `./bwmon-cron.sh install`
@@ -40,11 +40,10 @@ A simple shell script designed to run on linux powered routers
 
 
 ## *Build Instructions:*
-- Install NodeJS
-- Install Gulp and Bower: `npm install -g gulp bower`
+- Install node: see [https://nodejs.org](https://nodejs.org)
+- Install gulp (v3.9.1): see [https://gulpjs.com](https://gulpjs.com)
 - Create project: `git clone https://github.com/VREMSoftwareDevelopment/bwmon.git`
 - Install required node modules: `npm install`
-- Install required bower components: `bower install`
 - Build application: `gulp`
 
 ### Gulp tasks:

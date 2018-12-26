@@ -33,12 +33,14 @@ describe('BWMonApp.DataService module, dataService factory ', function() {
 	});
 
 	it('should return chart data by year', function() {
-		var expected = [
-				{x: 0, id: 2010, total: 0},
-				{x: 1, id: 2011, total: 150.684},
-				{x: 2, id: 2012, total: 436.727},
-				{x: 3, id: 2013, total: 639.701}
-			],
+		var expected = {
+				dataset00: [
+					{x: 0, id: 2010, total: 0},
+					{x: 1, id: 2011, total: 150.684},
+					{x: 2, id: 2012, total: 436.727},
+					{x: 3, id: 2013, total: 639.701}
+				]
+			},
 			actual = dataService.getUsageByYear().chartData;
 
 		expect(JSON.stringify(actual)).toEqual(JSON.stringify(expected));
@@ -67,15 +69,17 @@ describe('BWMonApp.DataService module, dataService factory ', function() {
 	});
 
 	it('should return chart usage by month', function() {
-		var expected = [
-				{x: 0, id: 5, total: 29.035},
-				{x: 1, id: 6, total: 23.307},
-				{x: 2, id: 7, total: 31.289},
-				{x: 3, id: 8, total: 16.037},
-				{x: 4, id: 9, total: 15.538},
-				{x: 5, id: 10, total: 11.615},
-				{x: 6, id: 11, total: 23.863}
-			],
+		var expected = {
+				dataset00: [
+					{x: 0, id: 5, total: 29.035},
+					{x: 1, id: 6, total: 23.307},
+					{x: 2, id: 7, total: 31.289},
+					{x: 3, id: 8, total: 16.037},
+					{x: 4, id: 9, total: 15.538},
+					{x: 5, id: 10, total: 11.615},
+					{x: 6, id: 11, total: 23.863}
+				]
+			},
 			actual = dataService.getUsageByMonth(2011).chartData;
 
 		expect(JSON.stringify(actual)).toEqual(JSON.stringify(expected));
@@ -133,14 +137,16 @@ describe('BWMonApp.DataService module, dataService factory ', function() {
 	});
 
 	it('should return chart usage by user', function() {
-		var expected = [
-				{x: 0, id: 38, total: 7.651, IP: "192.168.1.10", user: "COMPUTER-3"},
-				{x: 1, id: 37, total: 2.981, IP: "192.168.1.12", user: "COMPUTER-5"},
-				{x: 2, id: 34, total: 0.239, IP: "192.168.1.14", user: "COMPUTER-1"},
-				{x: 3, id: 36, total: 0.678, IP: "192.168.1.15", user: "COMPUTER-9"},
-				{x: 4, id: 39, total: 0.001, IP: "192.168.1.21", user: "COMPUTER-2"},
-				{x: 5, id: 35, total: 0.065, IP: "192.168.1.24", user: "COMPUTER-4"}
-			],
+		var expected = {
+				dataset00: [
+					{x: 0, id: 38, total: 7.651, IP: "192.168.1.10", user: "COMPUTER-3"},
+					{x: 1, id: 37, total: 2.981, IP: "192.168.1.12", user: "COMPUTER-5"},
+					{x: 2, id: 34, total: 0.239, IP: "192.168.1.14", user: "COMPUTER-1"},
+					{x: 3, id: 36, total: 0.678, IP: "192.168.1.15", user: "COMPUTER-9"},
+					{x: 4, id: 39, total: 0.001, IP: "192.168.1.21", user: "COMPUTER-2"},
+					{x: 5, id: 35, total: 0.065, IP: "192.168.1.24", user: "COMPUTER-4"}
+				]
+			},
 			actual = dataService.getUsageByUser(2011, 'November').chartData;
 
 		expect(JSON.stringify(actual)).toEqual(JSON.stringify(expected));

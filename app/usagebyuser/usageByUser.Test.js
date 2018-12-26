@@ -98,7 +98,7 @@ describe('BWMonApp.UsageByUser module, ', function() {
 		});
 
 		it('should set page size', function() {
-			expect(controller.pageSize).toEqual(12);
+			expect(controller.pageSize).toEqual(15);
 		});
 
 		it('should reset predicate', function() {

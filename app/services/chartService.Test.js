@@ -12,21 +12,50 @@ describe('BWMonApp.ChartService module, chartService factory ', function() {
 	}));
 
 	it('should have all choices in chart types', function(){
-		expect(chartService.getChartTypes()).toEqual(['column', 'line', 'area']);
+		var expected = [
+				['column'], 
+				['line', 'dot'], 
+				['line', 'dot', 'area']
+			];
+		expect(chartService.getChartTypes()).toEqual(expected);
+	});
+
+	it('should have margins', function() {
+		var expected =  {
+				top: 40,
+				right: 40,
+				bottom: 40,
+				left: 40
+			};
+		expect(chartService.getChartOptions(data).margin).toEqual(expected);
 	});
 
 	it('should have chart series', function() {
-		expect(chartService.getChartOptions(data).series).toEqual([{y: 'total', color: '#3366CC', label: 'GBytes', type: 'column'}]);
+		var expected = [{
+			axis: 'y',
+			dataset: 'dataset00',
+			key: 'total',
+			color: '#3366CC',
+			label: 'GBytes',
+			grid: {x: false, y: true},
+			type: ['column'],
+			id: 'series00'
+		}];
+		expect(chartService.getChartOptions(data).series).toEqual(expected);
 	});
 
+	it('should have axes', function() {
+		var expected = '{"x":{"key":"x"}}',
+			actual = JSON.stringify(chartService.getChartOptions(data).axes);
+		expect(actual).toEqual(expected);
+	});
+	
 	it('should call provided label function', function() {
-		var labelFn = function(value) {return 'myResult:'+value;};
-		expect(chartService.getChartOptions(data, labelFn).axes.x.labelFunction(1)).toEqual('myResult:1');
-	});
-
-	it('should call provided tooltip function', function() {
-		var tooltipFn = function(x, y) {return 'myResult:'+x;};
-		expect(chartService.getChartOptions(data, undefined, tooltipFn).tooltip.formatter(1, 2)).toEqual('myResult:1 : 2');
+		var labelFn = function(value) {
+				return 'myResult:'+value;
+			},
+			expected = 'myResult:1';
+		expect(chartService.getChartOptions(data, labelFn).axes.x.tickFormat(1)).toEqual(expected);
 	});
 
 	it('should return id from data using valid year', function() {
@@ -56,7 +85,8 @@ describe('BWMonApp.ChartService module, chartService factory ', function() {
 	});
 
 	it('should return user tooltip label from data using valid user', function() {
-		expect(chartService.getUserTooltip(0, data)).toEqual(data[0].user);
+		var expected = data[0].user + " | " + data[0].IP + " | ";  
+		expect(chartService.getUserTooltip(0, data)).toEqual(expected);
 	});
 
 	it('should return empty tooltip from data using invalid user', function() {

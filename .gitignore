@@ -2,7 +2,6 @@
 /.project
 /.tern-project
 node_modules/
-bower_components/
 data/
 dist/
 logs/

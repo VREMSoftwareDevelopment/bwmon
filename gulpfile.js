@@ -10,7 +10,7 @@ var gulp = require('gulp'),
 	banner = 'window.VERSION="<%=pkg.version%>";\n/*\n\t<%=pkg.name%> v<%=pkg.version%>\n\t(C) 2010 - 2015 VREM Software Development\n\t<%= pkg.homepage %>\n\tLicense: <%=pkg.license%>\n*/\n',
 	srcdir = 'app',
 	dstdir = 'dist',
-	cmpdir = 'bower_components',
+	cmpdir = 'node_modules',
 	dataname = pkg.name+'Usage.js',
 
 	showColor = argv.color === undefined || argv.color === null ? true : argv.color,
@@ -25,12 +25,12 @@ var gulp = require('gulp'),
 			libs: [
 				cmpdir+'/angular/angular.min.js',
 				cmpdir+'/angular-route/angular-route.min.js',
-				cmpdir+'/angular-bootstrap/ui-bootstrap-tpls.min.js',
-				cmpdir+'/angularUtils-pagination/dirPagination.min.js',
+				cmpdir+'/angular-ui-bootstrap/dist/ui-bootstrap-tpls.js',
+				cmpdir+'/angular-utils-pagination/dirPagination.js',
 				cmpdir+'/underscore/underscore-min.js',
-				cmpdir+'/momentjs/min/moment.min.js',
+				cmpdir+'/moment/min/moment.min.js',
 				cmpdir+'/d3/d3.min.js',
-				cmpdir+'/n3-line-chart/build/line-chart.min.js'
+				cmpdir+'/n3-charts/build/LineChart.min.js'
 			],
 			dest: dstdir+'/js',
 			temp: pkg.name+'.js',
@@ -47,7 +47,10 @@ var gulp = require('gulp'),
 		},
 		css: {
 			src: [srcdir+'/css/*.css'],
-			libs: cmpdir+'/bootstrap/dist/css/bootstrap.min.css',
+			libs: [
+				cmpdir+'/bootstrap/dist/css/bootstrap.min.css',
+				cmpdir+'/n3-charts/build/LineChart.min.css',
+			],
 			dest: dstdir+'/css',
 			name: pkg.name+'.min.css'
 		},
@@ -74,7 +77,7 @@ var gulp = require('gulp'),
 			}
 		},
 		version: {
-			src: ['./package.json', './bower.json'],
+			src: ['./package.json'],
 			dest: './',
 			message: 'bumps package version',
 			filter: 'package.json'
@@ -155,7 +158,7 @@ gulp.task('coverage', ['jshint', 'devhtml'], function(done) { karma(done, {repor
 gulp.task('cssmin', function() {
 	return gulp
 		.src(files.css.src)
-		.pipe(plugins.minifyCss())
+		.pipe(plugins.cleanCss())
 		.pipe(plugins.concat(files.css.name))
 		.pipe(gulp.dest(files.css.dest));
 });
