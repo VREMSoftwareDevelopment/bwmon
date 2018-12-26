@@ -83,7 +83,7 @@ var gulp = require('gulp'),
 			filter: 'package.json'
 		},
 		release: {
-			src: [dstdir+'/**/*', '!'+dstdir+'/'+dataname, 'server/'+pkg.name+'*.sh'],
+			src: [dstdir+'/**/*', '!'+dstdir+'/'+dataname, 'server/*'],
 			name: pkg.name+'.tar',
 			dest: 'release'
 		}
