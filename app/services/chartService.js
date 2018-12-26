@@ -39,7 +39,7 @@ angular.module('BWMonApp.ChartService', [])
 		_getUserTooltip = function(value, data) {
 			var result = '';
 			if (value % 1 === 0 && typeof data[value] !== 'undefined' && data[value] !== null) {
-				result = data[value].user;
+				result = data[value].user + " | " + data[value].IP + " | ";
 			}
 			return result;
 		},
@@ -85,7 +85,7 @@ angular.module('BWMonApp.ChartService', [])
 							rows: d.map(function(s) {
 								return {
 									label: tooltipFn(s.row.x, data.dataset00),
-									value: s.row.y1, 
+									value: s.row.y1 + " GB", 
 									color: s.series.color,
 									id: s.series.id 
 								};

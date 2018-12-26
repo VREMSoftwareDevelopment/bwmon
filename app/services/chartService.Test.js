@@ -85,7 +85,8 @@ describe('BWMonApp.ChartService module, chartService factory ', function() {
 	});
 
 	it('should return user tooltip label from data using valid user', function() {
-		expect(chartService.getUserTooltip(0, data)).toEqual(data[0].user);
+		var expected = data[0].user + " | " + data[0].IP + " | ";  
+		expect(chartService.getUserTooltip(0, data)).toEqual(expected);
 	});
 
 	it('should return empty tooltip from data using invalid user', function() {
