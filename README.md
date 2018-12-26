@@ -1,13 +1,13 @@
 ## Bandwidth Usage Monitor
 
-A simple shell script designed to run on linux powered routers
+A simple shell script designed to run on [Asus-Merlin](https://asuswrt.lostrealm.ca) powered routers
 
 ![Sample Usage by User Screenshot](https://github.com/VREMSoftwareDevelopment/bwmon/raw/master/screenshots/UsageByUserData.jpg "Sample Usage by User Screenshot")
 
 [Try a demo version of this application](https://vremsoftwaredevelopment.github.io/bwmon/demo)
 
 ### Software Features:
-- Designed to run on linux based routers such as: [TomatoUSB](https://en.wikipedia.org/wiki/Tomato_firmware), etc
+- Designed to run on [Asus-Merlin](https://asuswrt.lostrealm.ca) powered routers
 - Provides per user bandwidth usage monitoring
 - Generates bandwidth usage reports per user/month/year
 
@@ -23,21 +23,16 @@ A simple shell script designed to run on linux powered routers
 	- `cd /mnt/<mounted_name>/`
 	- `mkdir bwmon`
 	- `cd bwmon`
-	- `wget https://github.com/VREMSoftwareDevelopment/bwmon/releases/download/v2.4.0/bwmon.tar.gz`
+	- `wget https://github.com/VREMSoftwareDevelopment/bwmon/releases/download/v2.4.0-Merlin/bwmon.tar.gz`
 	- `tar -xzvf bwmon.tar.gz`
-	- `chmod +x *.sh`
-	- `./bwmon-cron.sh install`
-- Visit `http://<your_router_ip>/user/bwmon/index.html` to view bandwidth usage statistics.
-- To setup bandwidth usage monitor to start automatically after router reboots add the following to autostart script on mount: `./mnt/<mounted_ name>/bwmon/bwmon-cron.sh install`
-
-### Usage:
-`./bwmon-cron.sh {install|remove}` - shell script to install or remove bandwidth usage monitor from cron jobs
+	- `chmod +x install.sh`
+	- `./install.sh`
+- Visit `http://<your_router_ip>:<lighttpd_port>/bwmon/index.html` to view bandwidth usage statistics.
 
 #### Note:
 - Problem using `wget`:
 	- *error getting response: Connection reset by peer* - add the following option `--no-check-certificate`
 	- Or download the file from the web-site and copy to the folder.
-
 
 ## *Build Instructions:*
 - Install node: see [https://nodejs.org](https://nodejs.org)
