@@ -1,13 +1,13 @@
 ## Bandwidth Usage Monitor
 
-A simple shell script designed to run on linux powered routers
+A simple shell script designed to run on [TomatoUSB](https://en.wikipedia.org/wiki/Tomato_firmware) powered routers
 
 ![Sample Usage by User Screenshot](https://github.com/VREMSoftwareDevelopment/bwmon/raw/master/screenshots/UsageByUserData.jpg "Sample Usage by User Screenshot")
 
 [Try a demo version of this application](https://vremsoftwaredevelopment.github.io/bwmon/demo)
 
 ### Software Features:
-- Designed to run on linux based routers such as: [TomatoUSB](https://en.wikipedia.org/wiki/Tomato_firmware), etc
+- Designed to run on [TomatoUSB](https://en.wikipedia.org/wiki/Tomato_firmware) powered routers
 - Provides per user bandwidth usage monitoring
 - Generates bandwidth usage reports per user/month/year
 
