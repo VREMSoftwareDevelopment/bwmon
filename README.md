@@ -43,7 +43,7 @@ A simple shell script designed to run on linux powered routers
 - Install node: see [https://nodejs.org](https://nodejs.org)
 - Install gulp (v3.9.1): see [https://gulpjs.com](https://gulpjs.com)
 - Create project: `git clone https://github.com/VREMSoftwareDevelopment/bwmon.git`
-- Install required node modules: `npm install --save-dev`
+- Install required node modules: `npm install`
 - Build application: `gulp`
 
 ### Gulp tasks:
