@@ -14,9 +14,9 @@
 		"node_modules"
 	],
 	"dependencies": {
-		"angular": "~1.4.14",
-		"angular-mocks": "~1.4.14",
-		"angular-route": "~1.4.14",
+		"angular": "~1.5.8",
+		"angular-mocks": "~1.5.8",
+		"angular-route": "~1.5.8",
 		"angular-ui-bootstrap": "^2.5.6",
 		"angular-utils-pagination": "^0.11.1",
 		"bootstrap": "^3.4.0",
