@@ -126,8 +126,12 @@ angular.module('BWMonApp.DataService', [])
 					id: entry.id,
 					total: round(entry.total)
 				};
-				if (entry.IP) {result.IP = entry.IP;}
-				if (entry.user) {result.user = entry.user;}
+				if (entry.IP) {
+					result.IP = entry.IP;
+				}
+				if (entry.user) {
+					result.user = entry.user;
+				}
 				return result;
 			});
 			return result;
