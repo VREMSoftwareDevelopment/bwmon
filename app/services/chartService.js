@@ -1,5 +1,5 @@
 /*
- *    Copyright (C) 2010 - 2015 VREM Software Development <VREMSoftwareDevelopment@gmail.com>
+ *    Copyright (C) 2010 - 2018 VREM Software Development <VREMSoftwareDevelopment@gmail.com>
  *
  *    Licensed under the Apache License, Version 2.0 (the "License");
  *    you may not use this file except in compliance with the License.
@@ -15,14 +15,14 @@
  */
 angular.module('BWMonApp.ChartService', [])
 .factory('chartService', function() {
-	var _getYearLabel = function(value, data) {
+	var _getYearLabel = function(value) {
 			var result = '';
-			if (value % 1 === 0 && typeof data[value] !== 'undefined' && data[value] !== null) {
-				result = data[value].id;
+			if (value % 1 === 0) {
+				result = value;
 			}
 			return result;
 		},
-		_getMonthLabel = function(value, data) {
+		_getMonthLabel = function(value) {
 			var result = '';
 			if (value % 1 === 0 && value >= 0 && value <= 11) {
 				result = moment({month: value}).format("MMMM");
@@ -39,7 +39,7 @@ angular.module('BWMonApp.ChartService', [])
 		_getUserTooltip = function(value, data) {
 			var result = '';
 			if (value % 1 === 0 && typeof data[value] !== 'undefined' && data[value] !== null) {
-				result = data[value].user + " | " + data[value].IP + " | ";
+				result = data[value].user + " | " + data[value].IP;
 			}
 			return result;
 		},
@@ -51,6 +51,9 @@ angular.module('BWMonApp.ChartService', [])
 			];
 		},
 		_getChartOptions = function(data, labelFn, tooltipFn) {
+			var _data = data.dataset00,
+				_labelFn = labelFn,
+				_tooltipFn = tooltipFn;
 			return {
 				margin: {
 					top: 40,
@@ -61,7 +64,7 @@ angular.module('BWMonApp.ChartService', [])
 				series: [{
 					axis: 'y',
 					dataset: 'dataset00',
-					key: 'total',
+					key: 'y',
 					color: '#3366CC',
 					label: 'GBytes',
 					grid: {
@@ -75,8 +78,11 @@ angular.module('BWMonApp.ChartService', [])
 					x: { 
 						key: 'x',
 						tickFormat: function(value, index) {
-							return labelFn(value, data.dataset00);
+							return _labelFn(value, _data);
 						}
+					},
+					y: { 
+						min: 0
 					}
 				},
 				tooltipHook: function(d) {
@@ -84,8 +90,8 @@ angular.module('BWMonApp.ChartService', [])
 						return {
 							rows: d.map(function(s) {
 								return {
-									label: tooltipFn(s.row.x, data.dataset00),
-									value: s.row.y1 + " GB", 
+									label: _tooltipFn(s.row.x, _data),
+									value: " | " + s.row.y1 + " GB", 
 									color: s.series.color,
 									id: s.series.id 
 								};

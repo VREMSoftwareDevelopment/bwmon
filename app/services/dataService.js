@@ -1,5 +1,5 @@
 /*
- *    Copyright (C) 2010 - 2015 VREM Software Development <VREMSoftwareDevelopment@gmail.com>
+ *    Copyright (C) 2010 - 2018 VREM Software Development <VREMSoftwareDevelopment@gmail.com>
  *
  *    Licensed under the Apache License, Version 2.0 (the "License");
  *    you may not use this file except in compliance with the License.
@@ -107,30 +107,31 @@ angular.module('BWMonApp.DataService', [])
 				total: total
 			};
 		},
-		_getChartData = function(data, reverse) {
-			var result = {
-					dataset00: []
-				},
-				usageData = data,
-				round = function(value) {
-					return Math.round(value/1000)/1000;
-				};
-
-			if (reverse) {
-				usageData = data.slice().reverse();
-			}
-			
-			result.dataset00 = _.map(usageData, function(entry, key) {
-				var result = {
-					x: key,
-					id: entry.id,
-					total: round(entry.total)
-				};
-				if (entry.IP) {result.IP = entry.IP;}
-				if (entry.user) {result.user = entry.user;}
-				return result;
-			});
-			return result;
+		_round = function(value) {
+			return Math.round(value/1000)/1000;
+		},
+		_getChartData = function(data) {
+			return {
+				dataset00: _.map(data.slice().reverse(), function(entry, key) {
+					return {
+						x: entry.id,
+						y: _round(entry.total)
+					};
+				})
+			};
+		},
+		_getChartDataUser = function(data) {
+			return {
+				dataset00: _.map(data, function(entry, key) {
+					return {
+						x: key,
+						y: _round(entry.total),
+						id: entry.id,
+						IP: entry.IP,
+						user: entry.user
+					};
+				})
+			};
 		},
 		init = function() {
 			_data.sort(_sort);
@@ -151,14 +152,14 @@ angular.module('BWMonApp.DataService', [])
 			var result = _getUsageByUser(year, moment(year+'-'+month, "YYYY-MMMM").month(), filter);
 			return {
 				data: result,
-				chartData: _getChartData(result.usage, false)
+				chartData: _getChartDataUser(result.usage)
 			};
 		},
 		getUsageByMonth: function(year) {
 			var result = _getUsageByMonth(year);
 			return {
 				data: result,
-				chartData: _getChartData(result.usage, true)
+				chartData: _getChartData(result.usage)
 			};
 		},
 		getUsageByYear: function() {
@@ -168,7 +169,7 @@ angular.module('BWMonApp.DataService', [])
 			});
 			return {
 				data: result,
-				chartData: _getChartData(result, true)
+				chartData: _getChartData(result)
 			};
 		}
 	};

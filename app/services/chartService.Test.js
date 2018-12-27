@@ -1,6 +1,8 @@
 describe('BWMonApp.ChartService module, chartService factory ', function() {
 	var chartService,
 		data = [{
+			x: 0,
+			y: 10,
 			id: 11,
 			IP: 5,
 			user: 'user'
@@ -34,7 +36,7 @@ describe('BWMonApp.ChartService module, chartService factory ', function() {
 		var expected = [{
 			axis: 'y',
 			dataset: 'dataset00',
-			key: 'total',
+			key: 'y',
 			color: '#3366CC',
 			label: 'GBytes',
 			grid: {x: false, y: true},
@@ -44,10 +46,17 @@ describe('BWMonApp.ChartService module, chartService factory ', function() {
 		expect(chartService.getChartOptions(data).series).toEqual(expected);
 	});
 
-	it('should have axes', function() {
-		var expected = '{"x":{"key":"x"}}',
-			actual = JSON.stringify(chartService.getChartOptions(data).axes);
+	it('should have x axes', function() {
+		var expected = '{"key":"x"}',
+			actual = JSON.stringify(chartService.getChartOptions(data).axes.x);
 		expect(actual).toEqual(expected);
+	});
+	
+	it('should have y axes', function() {
+		var expected = {
+				min: 0
+			};
+		expect(chartService.getChartOptions(data).axes.y).toEqual(expected);
 	});
 	
 	it('should call provided label function', function() {
@@ -59,11 +68,7 @@ describe('BWMonApp.ChartService module, chartService factory ', function() {
 	});
 
 	it('should return id from data using valid year', function() {
-		expect(chartService.getYearLabel(0, data)).toEqual(data[0].id);
-	});
-
-	it('should return empty label from data using invalid year', function() {
-		expect(chartService.getYearLabel(1, data)).toEqual('');
+		expect(chartService.getYearLabel(10)).toEqual(10);
 	});
 
 	it('should return month from using valid month', function() {
@@ -72,8 +77,8 @@ describe('BWMonApp.ChartService module, chartService factory ', function() {
 	});
 
 	it('should return empty label using invalid month', function() {
-		expect(chartService.getYearLabel(-1, data)).toEqual('');
-		expect(chartService.getYearLabel(12, data)).toEqual('');
+		expect(chartService.getMonthLabel(-1)).toEqual('');
+		expect(chartService.getMonthLabel(12)).toEqual('');
 	});
 
 	it('should return IP label from data using valid user', function() {
@@ -85,7 +90,7 @@ describe('BWMonApp.ChartService module, chartService factory ', function() {
 	});
 
 	it('should return user tooltip label from data using valid user', function() {
-		var expected = data[0].user + " | " + data[0].IP + " | ";  
+		var expected = data[0].user + " | " + data[0].IP;  
 		expect(chartService.getUserTooltip(0, data)).toEqual(expected);
 	});
 
