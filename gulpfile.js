@@ -55,8 +55,7 @@ var gulp = require('gulp'),
 			libsname: 'libs.min.js'
 		},
 		test: {
-			libs: [cmpdir+'/angular-mocks/angular-mocks.js'],
-			excludes: srcdir+'/**/!('+dataname+').js'
+			libs: [cmpdir+'/angular-mocks/angular-mocks.js']
 		},
 		e2e : {
 			src: 'e2e/**/*.Test.js'
@@ -111,7 +110,7 @@ var gulp = require('gulp'),
 		var Server = require('karma').Server,
 			defaults = {
 				basePath: __dirname,
-				files: [].concat(files.js.libs, files.test.libs, files.js.src, files.test.excludes, files.templates.src),
+				files: [].concat(files.js.libs, files.test.libs, files.js.src, files.templates.src),
 				configFile: __dirname+'/config/karma.conf.js',
 				colors: showColor
 			},
