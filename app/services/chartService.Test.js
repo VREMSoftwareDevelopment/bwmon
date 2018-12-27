@@ -44,10 +44,17 @@ describe('BWMonApp.ChartService module, chartService factory ', function() {
 		expect(chartService.getChartOptions(data).series).toEqual(expected);
 	});
 
-	it('should have axes', function() {
-		var expected = '{"x":{"key":"x"}},"y":{"min":0}',
-			actual = JSON.stringify(chartService.getChartOptions(data).axes);
+	it('should have x axes', function() {
+		var expected = '{"key":"x"}',
+			actual = JSON.stringify(chartService.getChartOptions(data).axes.x);
 		expect(actual).toEqual(expected);
+	});
+	
+	it('should have y axes', function() {
+		var expected = {
+				min: 0
+			};
+		expect(chartService.getChartOptions(data).axes.y).toEqual(expected);
 	});
 	
 	it('should call provided label function', function() {
