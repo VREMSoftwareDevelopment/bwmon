@@ -15,31 +15,31 @@
  */
 angular.module('BWMonApp.ChartService', [])
 .factory('chartService', function() {
-	var _getYearLabel = function(value, data) {
+	var _getYearLabel = function(value) {
 			var result = '';
-			if (value % 1 === 0 && typeof data[value] !== 'undefined' && data[value] !== null) {
-				result = data[value].id;
+			if (value % 1 === 0) {
+				result = value;
 			}
 			return result;
 		},
-		_getMonthLabel = function(value, data) {
+		_getMonthLabel = function(value) {
 			var result = '';
 			if (value % 1 === 0 && value >= 0 && value <= 11) {
 				result = moment({month: value}).format("MMMM");
 			}
 			return result;
 		},
-		_getUserLabel = function(value, data) {
+		_getUserLabel = function(value, index, data) {
 			var result = '';
-			if (value % 1 === 0 && typeof data[value] !== 'undefined' && data[value] !== null) {
-				result = data[value].IP;
+			if (typeof data[index] !== 'undefined' && data[index] !== null) {
+				result = data[index].IP;
 			}
 			return result;
 		},
 		_getUserTooltip = function(value, data) {
 			var result = '';
 			if (value % 1 === 0 && typeof data[value] !== 'undefined' && data[value] !== null) {
-				result = data[value].user + " | " + data[value].IP + " | ";
+				result = data[value].user + " | " + data[value].IP;
 			}
 			return result;
 		},
@@ -61,7 +61,7 @@ angular.module('BWMonApp.ChartService', [])
 				series: [{
 					axis: 'y',
 					dataset: 'dataset00',
-					key: 'total',
+					key: 'y',
 					color: '#3366CC',
 					label: 'GBytes',
 					grid: {
@@ -75,7 +75,7 @@ angular.module('BWMonApp.ChartService', [])
 					x: { 
 						key: 'x',
 						tickFormat: function(value, index) {
-							return labelFn(value, data.dataset00);
+							return labelFn(value, index, data.dataset00);
 						}
 					},
 					y: { 
@@ -88,7 +88,7 @@ angular.module('BWMonApp.ChartService', [])
 							rows: d.map(function(s) {
 								return {
 									label: tooltipFn(s.row.x, data.dataset00),
-									value: s.row.y1 + " GB", 
+									value: " | " + s.row.y1 + " GB", 
 									color: s.series.color,
 									id: s.series.id 
 								};

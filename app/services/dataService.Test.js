@@ -34,9 +34,9 @@ describe('BWMonApp.DataService module, dataService factory ', function() {
 	it('should return chart data by year', function() {
 		var expected = {
 				dataset00: [
-					{x: 0, id: 2011, total: 150.684},
-					{x: 1, id: 2012, total: 436.727},
-					{x: 2, id: 2013, total: 639.701}
+					{x: 2011, y: 150.684},
+					{x: 2012, y: 436.727},
+					{x: 2013, y: 639.701}
 				]
 			},
 			actual = dataService.getUsageByYear().chartData;
@@ -69,13 +69,13 @@ describe('BWMonApp.DataService module, dataService factory ', function() {
 	it('should return chart usage by month', function() {
 		var expected = {
 				dataset00: [
-					{x: 0, id: 5, total: 29.035},
-					{x: 1, id: 6, total: 23.307},
-					{x: 2, id: 7, total: 31.289},
-					{x: 3, id: 8, total: 16.037},
-					{x: 4, id: 9, total: 15.538},
-					{x: 5, id: 10, total: 11.615},
-					{x: 6, id: 11, total: 23.863}
+					{x: 5, y: 29.035},
+					{x: 6, y: 23.307},
+					{x: 7, y: 31.289},
+					{x: 8, y: 16.037},
+					{x: 9, y: 15.538},
+					{x: 10, y: 11.615},
+					{x: 11, y: 23.863}
 				]
 			},
 			actual = dataService.getUsageByMonth(2011).chartData;
@@ -137,12 +137,12 @@ describe('BWMonApp.DataService module, dataService factory ', function() {
 	it('should return chart usage by user', function() {
 		var expected = {
 				dataset00: [
-					{x: 0, id: 37, total: 7.651, IP: "192.168.1.10", user: "COMPUTER-3"},
-					{x: 1, id: 36, total: 2.981, IP: "192.168.1.12", user: "COMPUTER-5"},
-					{x: 2, id: 33, total: 0.239, IP: "192.168.1.14", user: "COMPUTER-1"},
-					{x: 3, id: 35, total: 0.678, IP: "192.168.1.15", user: "COMPUTER-9"},
-					{x: 4, id: 38, total: 0.001, IP: "192.168.1.21", user: "COMPUTER-2"},
-					{x: 5, id: 34, total: 0.065, IP: "192.168.1.24", user: "COMPUTER-4"}
+					{x: 0, y: 7.651, id: 37, IP: "192.168.1.10", user: "COMPUTER-3"},
+					{x: 1, y: 2.981, id: 36, IP: "192.168.1.12", user: "COMPUTER-5"},
+					{x: 2, y: 0.239, id: 33, IP: "192.168.1.14", user: "COMPUTER-1"},
+					{x: 3, y: 0.678, id: 35, IP: "192.168.1.15", user: "COMPUTER-9"},
+					{x: 4, y: 0.001, id: 38, IP: "192.168.1.21", user: "COMPUTER-2"},
+					{x: 5, y: 0.065, id: 34, IP: "192.168.1.24", user: "COMPUTER-4"}
 				]
 			},
 			actual = dataService.getUsageByUser(2011, 'November').chartData;

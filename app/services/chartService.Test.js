@@ -34,7 +34,7 @@ describe('BWMonApp.ChartService module, chartService factory ', function() {
 		var expected = [{
 			axis: 'y',
 			dataset: 'dataset00',
-			key: 'total',
+			key: 'y',
 			color: '#3366CC',
 			label: 'GBytes',
 			grid: {x: false, y: true},
@@ -66,11 +66,7 @@ describe('BWMonApp.ChartService module, chartService factory ', function() {
 	});
 
 	it('should return id from data using valid year', function() {
-		expect(chartService.getYearLabel(0, data)).toEqual(data[0].id);
-	});
-
-	it('should return empty label from data using invalid year', function() {
-		expect(chartService.getYearLabel(1, data)).toEqual('');
+		expect(chartService.getYearLabel(10)).toEqual(10);
 	});
 
 	it('should return month from using valid month', function() {
@@ -79,20 +75,20 @@ describe('BWMonApp.ChartService module, chartService factory ', function() {
 	});
 
 	it('should return empty label using invalid month', function() {
-		expect(chartService.getYearLabel(-1, data)).toEqual('');
-		expect(chartService.getYearLabel(12, data)).toEqual('');
+		expect(chartService.getMonthLabel(-1)).toEqual('');
+		expect(chartService.getMonthLabel(12)).toEqual('');
 	});
 
 	it('should return IP label from data using valid user', function() {
-		expect(chartService.getUserLabel(0, data)).toEqual(data[0].IP);
+		expect(chartService.getUserLabel(10, 0, data)).toEqual(data[0].IP);
 	});
 
 	it('should return empty label from data using invalid user', function() {
-		expect(chartService.getUserLabel(1, data)).toEqual('');
+		expect(chartService.getUserLabel(10, 1, data)).toEqual('');
 	});
 
 	it('should return user tooltip label from data using valid user', function() {
-		var expected = data[0].user + " | " + data[0].IP + " | ";  
+		var expected = data[0].user + " | " + data[0].IP;  
 		expect(chartService.getUserTooltip(0, data)).toEqual(expected);
 	});
 

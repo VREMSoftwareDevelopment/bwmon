@@ -122,15 +122,16 @@ angular.module('BWMonApp.DataService', [])
 			
 			result.dataset00 = _.map(usageData, function(entry, key) {
 				var result = {
-					x: key,
-					id: entry.id,
-					total: round(entry.total)
+					x: entry.id,
+					y: round(entry.total)
 				};
 				if (entry.IP) {
+					result.x = key;
+					result.id = entry.id;
 					result.IP = entry.IP;
-				}
-				if (entry.user) {
-					result.user = entry.user;
+					if (entry.user) {
+						result.user = entry.user;
+					}
 				}
 				return result;
 			});
