@@ -77,6 +77,9 @@ angular.module('BWMonApp.ChartService', [])
 						tickFormat: function(value, index) {
 							return labelFn(value, data.dataset00);
 						}
+					},
+					y: { 
+						min: 0
 					}
 				},
 				tooltipHook: function(d) {

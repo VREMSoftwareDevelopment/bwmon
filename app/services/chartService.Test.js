@@ -45,7 +45,7 @@ describe('BWMonApp.ChartService module, chartService factory ', function() {
 	});
 
 	it('should have axes', function() {
-		var expected = '{"x":{"key":"x"}}',
+		var expected = '{"x":{"key":"x"}},"y":{"min":0}',
 			actual = JSON.stringify(chartService.getChartOptions(data).axes);
 		expect(actual).toEqual(expected);
 	});
