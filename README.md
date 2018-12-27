@@ -1,13 +1,13 @@
 ## Bandwidth Usage Monitor
 
-A simple shell script designed to run on [Asus-Merlin](https://asuswrt.lostrealm.ca) powered routers
+A simple shell script designed to run on [AsusWRT-Merlin](https://asuswrt.lostrealm.ca) powered routers
 
 ![Sample Usage by User Screenshot](https://github.com/VREMSoftwareDevelopment/bwmon/raw/master/screenshots/UsageByUserData.jpg "Sample Usage by User Screenshot")
 
 [Try a demo version of this application](https://vremsoftwaredevelopment.github.io/bwmon/demo)
 
 ### Software Features:
-- Designed to run on [Asus-Merlin](https://asuswrt.lostrealm.ca) powered routers
+- Designed to run on [AsusWRT-Merlin](https://asuswrt.lostrealm.ca) powered routers
 - Provides per user bandwidth usage monitoring
 - Generates bandwidth usage reports per user/month/year
 
