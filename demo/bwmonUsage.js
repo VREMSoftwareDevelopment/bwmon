@@ -16,7 +16,6 @@ this.total=this.download + this.upload;
 this.days=Math.floor((Math.abs(this.lastSeen-this.firstSeen)/(60*60*24))+1);
 this.average=+(this.total/this.days).toFixed(3);
 };
-data.push(new Data(i++,'2010-11','192.168.1.14','00:24:8D:28:F2:9A','COMPUTER-1',0,0,1290000000,1290000000));
 data.push(new Data(i++,'2011-06','192.168.1.14','00:24:8D:28:F2:9A','COMPUTER-1',202809,11512,1307160300,1308013207));
 data.push(new Data(i++,'2011-06','192.168.1.21','00:23:7A:F7:A0:D0','COMPUTER-2',3907,548,1307160300,1309433402));
 data.push(new Data(i++,'2011-06','192.168.1.10','00:1C:25:27:9B:AE','COMPUTER-3',5370488,334146,1307160300,1309482007));
