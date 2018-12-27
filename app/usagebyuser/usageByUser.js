@@ -31,13 +31,13 @@ angular.module('BWMonApp.UsageByUser', ['ngRoute'])
 
 	ctrl.selected = {};
 	ctrl.pageSize = 15;
-
 	reset();
 
 	ctrl.setOrder = function(predicate) {
 		ctrl.descending = (ctrl.predicate === predicate) ? !ctrl.descending : false;
 		ctrl.predicate = predicate;
 	};
+	
 	ctrl.getOrder = function(predicate) {
 		return ctrl.predicate === predicate ? (ctrl.descending ? {desc:true} : {asc: true}): {};
 	};

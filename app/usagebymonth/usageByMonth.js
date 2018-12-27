@@ -35,10 +35,10 @@ angular.module('BWMonApp.UsageByMonth', ['ngRoute'])
 		ctrl.descending = (ctrl.predicate === predicate) ? !ctrl.descending : true;
 		ctrl.predicate = predicate;
 	};
+	
 	ctrl.getOrder = function(predicate) {
 		return ctrl.predicate === predicate ? (ctrl.descending ? {desc:true} : {asc: true}): {};
 	};
-
 
 	$scope.$watch('usageByMonthCtrl.selected', function() {
 		var usageData = dataService.getUsageByMonth(ctrl.selected.year);

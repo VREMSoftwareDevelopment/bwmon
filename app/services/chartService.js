@@ -29,10 +29,10 @@ angular.module('BWMonApp.ChartService', [])
 			}
 			return result;
 		},
-		_getUserLabel = function(value, index, data) {
+		_getUserLabel = function(value, data) {
 			var result = '';
-			if (typeof data[index] !== 'undefined' && data[index] !== null) {
-				result = data[index].IP;
+			if (value % 1 === 0 && typeof data[value] !== 'undefined' && data[value] !== null) {
+				result = data[value].IP;
 			}
 			return result;
 		},
@@ -51,6 +51,9 @@ angular.module('BWMonApp.ChartService', [])
 			];
 		},
 		_getChartOptions = function(data, labelFn, tooltipFn) {
+			var _data = data.dataset00,
+				_labelFn = labelFn,
+				_tooltipFn = tooltipFn;
 			return {
 				margin: {
 					top: 40,
@@ -75,7 +78,7 @@ angular.module('BWMonApp.ChartService', [])
 					x: { 
 						key: 'x',
 						tickFormat: function(value, index) {
-							return labelFn(value, index, data.dataset00);
+							return _labelFn(value, _data);
 						}
 					},
 					y: { 
@@ -87,7 +90,7 @@ angular.module('BWMonApp.ChartService', [])
 						return {
 							rows: d.map(function(s) {
 								return {
-									label: tooltipFn(s.row.x, data.dataset00),
+									label: _tooltipFn(s.row.x, _data),
 									value: " | " + s.row.y1 + " GB", 
 									color: s.series.color,
 									id: s.series.id 

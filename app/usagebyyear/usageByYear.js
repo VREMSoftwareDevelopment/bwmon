@@ -22,23 +22,24 @@ angular.module('BWMonApp.UsageByYear', ['ngRoute'])
 	});
 })
 .controller('UsageByYearController', function($scope, dataService, chartService) {
-	var ctrl = this;
-	var usageData = dataService.getUsageByYear();
+	var ctrl = this,
+		usageData = dataService.getUsageByYear();
 
 	ctrl.predicate = 'id';
 	ctrl.descending = true;
-	ctrl.setOrder = function(predicate) {
-		ctrl.descending = (ctrl.predicate === predicate) ? !ctrl.descending : true;
-		ctrl.predicate = predicate;
-	};
-	ctrl.getOrder = function(predicate) {
-		return ctrl.predicate === predicate ? (ctrl.descending ? {desc:true} : {asc: true}): {};
-	};
-
 	ctrl.selected = {};
 	ctrl.data = usageData.data;
 	ctrl.chartData = usageData.chartData;
 	ctrl.chartOptions = chartService.getChartOptions(ctrl.chartData, chartService.getYearLabel, chartService.getYearLabel);
+	
+	ctrl.setOrder = function(predicate) {
+		ctrl.descending = (ctrl.predicate === predicate) ? !ctrl.descending : true;
+		ctrl.predicate = predicate;
+	};
+	
+	ctrl.getOrder = function(predicate) {
+		return ctrl.predicate === predicate ? (ctrl.descending ? {desc:true} : {asc: true}): {};
+	};
 
 	$scope.$watch('usageByYearCtrl.selected.chartType', function() {
 		ctrl.chartOptions.series[0].type = ctrl.selected.chartType;

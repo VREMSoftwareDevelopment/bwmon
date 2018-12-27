@@ -1,6 +1,8 @@
 describe('BWMonApp.ChartService module, chartService factory ', function() {
 	var chartService,
 		data = [{
+			x: 0,
+			y: 10,
 			id: 11,
 			IP: 5,
 			user: 'user'
@@ -80,11 +82,11 @@ describe('BWMonApp.ChartService module, chartService factory ', function() {
 	});
 
 	it('should return IP label from data using valid user', function() {
-		expect(chartService.getUserLabel(10, 0, data)).toEqual(data[0].IP);
+		expect(chartService.getUserLabel(0, data)).toEqual(data[0].IP);
 	});
 
 	it('should return empty label from data using invalid user', function() {
-		expect(chartService.getUserLabel(10, 1, data)).toEqual('');
+		expect(chartService.getUserLabel(1, data)).toEqual('');
 	});
 
 	it('should return user tooltip label from data using valid user', function() {
