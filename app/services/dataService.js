@@ -107,31 +107,26 @@ angular.module('BWMonApp.DataService', [])
 				total: total
 			};
 		},
-		_round = function(value) {
-			return Math.round(value/1000)/1000;
-		},
 		_getChartData = function(data) {
-			return {
-				dataset00: _.map(data.slice().reverse(), function(entry, key) {
+			var round = function(value) {
+					return Math.round(value/1000)/1000;
+				},
+				sort = function(a, b) {
+					var result = a.x - b.x;
+					if (result === 0) {
+						result = a.y - b.y;
+					}
+					return result;
+				},
+				transform = function(entry, key) {
 					return {
 						x: entry.id,
-						y: _round(entry.total)
+						y: round(entry.total)
 					};
-				})
-			};
-		},
-		_getChartDataUser = function(data) {
-			return {
-				dataset00: _.map(data, function(entry, key) {
-					return {
-						x: key,
-						y: _round(entry.total),
-						id: entry.id,
-						IP: entry.IP,
-						user: entry.user
-					};
-				})
-			};
+				}, 
+				result = _.map(data, transform);
+			result.sort(sort);
+			return result;
 		},
 		init = function() {
 			_data.sort(_sort);
@@ -152,7 +147,7 @@ angular.module('BWMonApp.DataService', [])
 			var result = _getUsageByUser(year, moment(year+'-'+month, "YYYY-MMMM").month(), filter);
 			return {
 				data: result,
-				chartData: _getChartDataUser(result.usage)
+				chartData: _getChartData(result.usage)
 			};
 		},
 		getUsageByMonth: function(year) {

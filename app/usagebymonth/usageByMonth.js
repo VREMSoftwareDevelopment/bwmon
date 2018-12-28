@@ -40,13 +40,21 @@ angular.module('BWMonApp.UsageByMonth', ['ngRoute'])
 		return ctrl.predicate === predicate ? (ctrl.descending ? {desc:true} : {asc: true}): {};
 	};
 
+	ctrl.getLabel = function(value) {
+		var result = '';
+		if (value % 1 === 0 && value >= 0 && value <= 11) {
+			result = moment({month: value}).format("MMMM");
+		}
+		return result;
+	};
+
 	$scope.$watch('usageByMonthCtrl.selected', function() {
 		var usageData = dataService.getUsageByMonth(ctrl.selected.year);
 
 		ctrl.data = usageData.data.usage;
 		ctrl.total = usageData.data.total;
-		ctrl.chartData = usageData.chartData;
-		ctrl.chartOptions = chartService.getChartOptions(ctrl.chartData, chartService.getMonthLabel, chartService.getMonthLabel);
+		ctrl.chartData = chartService.getChartData(usageData.chartData);
+		ctrl.chartOptions = chartService.getChartOptions(ctrl.getLabel, ctrl.getLabel);
 		ctrl.chartOptions.series[0].type = ctrl.selected.chartType;
 
 		reset();

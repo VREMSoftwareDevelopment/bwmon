@@ -15,82 +15,54 @@
  */
 angular.module('BWMonApp.ChartService', [])
 .factory('chartService', function() {
-	var _getYearLabel = function(value) {
-			var result = '';
-			if (value % 1 === 0) {
-				result = value;
-			}
-			return result;
-		},
-		_getMonthLabel = function(value) {
-			var result = '';
-			if (value % 1 === 0 && value >= 0 && value <= 11) {
-				result = moment({month: value}).format("MMMM");
-			}
-			return result;
-		},
-		_getUserLabel = function(value, data) {
-			var result = '';
-			if (value % 1 === 0 && typeof data[value] !== 'undefined' && data[value] !== null) {
-				result = data[value].IP;
-			}
-			return result;
-		},
-		_getUserTooltip = function(value, data) {
-			var result = '';
-			if (value % 1 === 0 && typeof data[value] !== 'undefined' && data[value] !== null) {
-				result = data[value].user + " | " + data[value].IP;
-			}
-			return result;
-		},
-		_getChartTypes = function() {
+	var _getChartTypes = function() {
 			return [
 				['column'], 
 				['line', 'dot'], 
 				['line', 'dot', 'area']
 			];
 		},
-		_getChartOptions = function(data, labelFn, tooltipFn) {
-			var _data = data.dataset00,
-				_labelFn = labelFn,
-				_tooltipFn = tooltipFn;
-			return {
-				margin: {
-					top: 40,
-					right: 40,
-					bottom: 40,
-					left: 40
+		_getChartOptions = function(labelFn, tooltipFn) {
+			var getMargin = function() {
+					return {
+						top: 40,
+						right: 40,
+						bottom: 40,
+						left: 40
+					};
 				},
-				series: [{
-					axis: 'y',
-					dataset: 'dataset00',
-					key: 'y',
-					color: '#3366CC',
-					label: 'GBytes',
-					grid: {
-						x: false, 
-						y: true
-					},
-					type: _getChartTypes()[0],
-					id: 'series00'
-				}],
-				axes: {
-					x: { 
-						key: 'x',
-						tickFormat: function(value, index) {
-							return _labelFn(value, _data);
+				getSeries = function() {
+					return [{
+						axis: 'y',
+						dataset: 'dataset00',
+						key: 'y',
+						color: '#3366CC',
+						label: 'GBytes',
+						grid: {
+							x: false, 
+							y: true
+						},
+						type: _getChartTypes()[0],
+						id: 'series00'
+					}];
+				},
+				getAxes = function() {
+					return {
+						x: { 
+							key: 'x',
+							tickFormat: labelFn
+						},
+						y: { 
+							min: 0
 						}
-					},
-					y: { 
-						min: 0
-					}
+					};
 				},
-				tooltipHook: function(d) {
+				tooltipHookFn = function(d) {
 					if (d) {
 						return {
 							rows: d.map(function(s) {
 								return {
-									label: _tooltipFn(s.row.x, _data),
+									label: tooltipFn(s.row.x),
 									value: " | " + s.row.y1 + " GB", 
 									color: s.series.color,
 									id: s.series.id 
@@ -98,16 +70,24 @@ angular.module('BWMonApp.ChartService', [])
 							})
 						};
 					}
-				}
+				};
+				
+			return {
+				margin: getMargin(),
+				series: getSeries(),
+				axes: getAxes(labelFn),
+				tooltipHook: tooltipHookFn
 			};
 		};
 
 	return {
-		getYearLabel: _getYearLabel,
-		getMonthLabel: _getMonthLabel,
-		getUserLabel: _getUserLabel,
-		getUserTooltip: _getUserTooltip,
 		getChartTypes: _getChartTypes,
-		getChartOptions: _getChartOptions
+		getChartOptions: _getChartOptions,
+		getChartData: function(data) {
+			return {
+				dataset00: data
+			};
+		}
+
 	};
 });

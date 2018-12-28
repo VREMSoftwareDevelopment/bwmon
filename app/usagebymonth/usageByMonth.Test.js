@@ -21,16 +21,24 @@ describe('BWMonApp.UsageByMonth module, ', function() {
 	describe('UsageByMonthController controller ', function() {
 		var	controller,
 			usageData = {
-				data: {
-					usage: 5,
-					total: 10
-				},
-				chartData: 23
+				data: [
+					{usage: 5, total: 10},
+					{usage: 2, total: 11},
+					{usage: 1, total: 12}
+				],
+				chartData: [
+					{x: 1, y: 0},
+					{x: 2, y: 1},
+					{x: 3, y: 2}
+				]
 			},
 			chartOptions = {
 				series: [{
 					type: 'type'
 				}]
+			},
+			chartData = {
+				dataset: usageData.chartData
 			},
 			chartService,
 			dataService;
@@ -41,6 +49,7 @@ describe('BWMonApp.UsageByMonth module, ', function() {
 
 			chartService = _chartService_;
 			spyOn(chartService, 'getChartOptions').and.returnValue(chartOptions);
+			spyOn(chartService, 'getChartData').and.returnValue(chartData);
 
 			controller = _$controller_('UsageByMonthController', {
 				$scope: scope,
@@ -114,15 +123,28 @@ describe('BWMonApp.UsageByMonth module, ', function() {
 		it('should update chart data with getUsageByMonth', function() {
 			controller.selected.year = 1;
 			scope.$digest();
-			expect(controller.chartData).toEqual(usageData.chartData);
+			expect(controller.chartData).toEqual(chartData);
 			expect(dataService.getUsageByMonth).toHaveBeenCalledWith(controller.selected.year);
+		});
+
+		it('should update chart data with getUsageByMonth', function() {
+			controller.selected.year = 1;
+			scope.$digest();
+			expect(dataService.getUsageByMonth).toHaveBeenCalledWith(controller.selected.year);
+		});
+
+		it('should update chart data with getChartData', function() {
+			controller.selected.year = 1;
+			scope.$digest();
+			expect(controller.chartData).toEqual(chartData);
+			expect(chartService.getChartData).toHaveBeenCalledWith(usageData.chartData);
 		});
 
 		it('should update chart options with chart options from ChartService', function() {
 			controller.selected.year = 1;
 			scope.$digest();
 			expect(controller.chartOptions).toEqual(chartOptions);
-			expect(chartService.getChartOptions).toHaveBeenCalledWith(controller.chartData, chartService.getMonthLabel, chartService.getMonthLabel);
+			expect(chartService.getChartOptions).toHaveBeenCalledWith(controller.getLabel, controller.getLabel);
 		});
 
 		it('should change chart type in chart options', function() {
@@ -137,5 +159,17 @@ describe('BWMonApp.UsageByMonth module, ', function() {
 			expect(controller.data).toEqual(usageData.data.usage);
 			expect(dataService.getUsageByMonth).toHaveBeenCalledWith(controller.selected.year);
 		});
+		
+		it('should return month from using valid month', function() {
+			expect(controller.getLabel(0)).toEqual('January');
+			expect(controller.getLabel(11)).toEqual('December');
+		});
+
+		it('should return empty label using invalid month', function() {
+			expect(controller.getLabel(-1)).toEqual('');
+			expect(controller.getLabel(12)).toEqual('');
+		});
+
+		
 	});
 });

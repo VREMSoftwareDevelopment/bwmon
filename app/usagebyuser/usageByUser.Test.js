@@ -24,32 +24,42 @@ describe('BWMonApp.UsageByUser module, ', function() {
 				reset: function() {}
 			},
 			months = ['Jan', 'Mar', 'Jun'],
-			usageData = {
+			usageByUser = {
 				data: {
-					usage: {
-						1:	{
-							IP: 'IP-address',
-							user: 'user-name',
-						}
-					},
+					usage: [
+						{id: 3, IP: 'IP3', MAC: 'MAC3', user: 'user3', total: 30},
+						{id: 5, IP: 'IP5', MAC: 'MAC5', user: 'user5', total: 50},
+						{id: 2, IP: 'IP2', MAC: 'MAC2', user: 'user2', total: 20},
+						{id: 4, IP: 'IP4', MAC: 'MAC4', user: 'user4', total: 40},
+						{id: 1, IP: 'IP1', MAC: 'MAC1', user: 'user1', total: 10}
+					],
 					total: 10
 				},
-				chartData: 23
+				chartData: [
+					{x: 1, y: 0},
+					{x: 2, y: 1},
+					{x: 3, y: 2}
+				]
+			},
+			chartData = {
+				dataset: usageByUser.chartData
 			},
 			chartOptions = {
-					series: [{
-						type: 'type'
-					}]
-				},
+				series: [{
+					type: 'type'
+				}]
+			},
 			chartService,
 			dataService;
 
 		beforeEach(inject(function($controller, _dataService_, _chartService_){
 			dataService = _dataService_;
+			
 			spyOn(dataService, 'getMonths').and.returnValue(months);
-			spyOn(dataService, 'getUsageByUser').and.returnValue(usageData);
+			spyOn(dataService, 'getUsageByUser').and.returnValue(usageByUser);
 
 			chartService = _chartService_;
+			spyOn(chartService, 'getChartData').and.returnValue(chartData);
 			spyOn(chartService, 'getChartOptions').and.returnValue(chartOptions);
 
 			controller = $controller('UsageByUserController', {
@@ -119,20 +129,46 @@ describe('BWMonApp.UsageByUser module, ', function() {
 			expect(controller.selected.user).toBe('');
 		});
 
-		it('should get new usage data when any attribute in selected object changes', function() {
+		it('should get new user usage data when any attribute in selected object changes', function() {
 			controller.selected.myTest = 'myTest';
 			scope.$digest();
 			expect(dataService.getUsageByUser).toHaveBeenCalledWith(controller.selected.year, controller.selected.month, controller.selected.user);
-			expect(controller.data).toEqual(usageData.data.usage);
-			expect(controller.total).toEqual(usageData.data.total);
-			expect(controller.chartData).toEqual(usageData.chartData);
-			expect(chartService.getChartOptions).toHaveBeenCalledWith(controller.chartData, chartService.getUserLabel, chartService.getUserTooltip);
+			expect(controller.data).toEqual(usageByUser.data.usage);
+			expect(controller.total).toEqual(usageByUser.data.total);
+		});
+
+		it('should update chart data with getChartData', function() {
+			controller.selected.year = 1;
+			scope.$digest();
+			expect(controller.chartData).toEqual(chartData);
+			expect(chartService.getChartData).toHaveBeenCalledWith(usageByUser.chartData);
+		});
+
+		it('should update chart options with chart options from ChartService', function() {
+			controller.selected.year = 1;
+			scope.$digest();
+			expect(controller.chartOptions).toEqual(chartOptions);
+			expect(chartService.getChartOptions).toHaveBeenCalledWith(controller.getLabel, controller.getTooltip);
 		});
 
 		it('should change chart type in chart options', function() {
 			controller.selected.chartType = 'test';
 			scope.$digest();
 			expect(controller.chartOptions.series[0].type).toEqual(controller.selected.chartType);
+		});
+		
+		it('should return empty user label', function() {
+			controller.data = usageByUser.data.usage; 
+			expect(controller.getLabel(4)).toEqual('IP4');
+		});
+
+		it('should return user tooltip label from data using valid user', function() {
+			controller.data = usageByUser.data.usage; 
+			expect(controller.getTooltip(2)).toEqual('IP2 | MAC2 | user2');
+		});
+
+		it('should return empty tooltip from data using invalid user', function() {
+			expect(controller.getTooltip(0)).toEqual('');
 		});
 	});
 
