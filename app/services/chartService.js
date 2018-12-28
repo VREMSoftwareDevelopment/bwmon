@@ -56,7 +56,7 @@ angular.module('BWMonApp.ChartService', [])
 							min: 0
 						}
 					};
-				}
+				},
 				tooltipHookFn = function(d) {
 					if (d) {
 						return {
