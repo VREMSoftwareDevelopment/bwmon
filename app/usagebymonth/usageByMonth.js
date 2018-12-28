@@ -45,8 +45,8 @@ angular.module('BWMonApp.UsageByMonth', ['ngRoute'])
 
 		ctrl.data = usageData.data.usage;
 		ctrl.total = usageData.data.total;
-		ctrl.chartData = usageData.chartData;
-		ctrl.chartOptions = chartService.getChartOptions(ctrl.chartData, chartService.getMonthLabel, chartService.getMonthLabel);
+		ctrl.chartData = chartService.getChartData(usageData.chartData);
+		ctrl.chartOptions = chartService.getChartOptions(usageData.chartData, chartService.getMonthLabel, chartService.getMonthLabel);
 		ctrl.chartOptions.series[0].type = ctrl.selected.chartType;
 
 		reset();

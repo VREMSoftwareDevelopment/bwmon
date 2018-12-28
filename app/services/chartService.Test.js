@@ -1,13 +1,13 @@
 describe('BWMonApp.ChartService module, chartService factory ', function() {
 	var chartService,
-		data = [{
-			x: 0,
-			y: 10,
-			id: 11,
-			IP: 5,
-			user: 'user'
-		}];
-
+		data = [
+			{id: 3, IP: 'IP3', MAC: 'MAC3', user: 'user3', total: 30},
+			{id: 5, IP: 'IP5', MAC: 'MAC5', user: 'user5', total: 50},
+			{id: 2, IP: 'IP2', MAC: 'MAC2', user: 'user2', total: 20},
+			{id: 4, IP: 'IP4', MAC: 'MAC4', user: 'user4', total: 40},
+			{id: 1, IP: 'IP1', MAC: 'MAC1', user: 'user1', total: 10}
+		];
+	
 	beforeEach(module('BWMonApp.ChartService'));
 	beforeEach(inject(function(_chartService_){
 		chartService =_chartService_;
@@ -81,21 +81,25 @@ describe('BWMonApp.ChartService module, chartService factory ', function() {
 		expect(chartService.getMonthLabel(12)).toEqual('');
 	});
 
-	it('should return IP label from data using valid user', function() {
-		expect(chartService.getUserLabel(0, data)).toEqual(data[0].IP);
-	});
-
-	it('should return empty label from data using invalid user', function() {
-		expect(chartService.getUserLabel(1, data)).toEqual('');
+	it('should return empty user label', function() {
+		expect(chartService.getUserLabel(4, data)).toEqual('IP4');
 	});
 
 	it('should return user tooltip label from data using valid user', function() {
-		var expected = data[0].user + " | " + data[0].IP;  
-		expect(chartService.getUserTooltip(0, data)).toEqual(expected);
+		var expected = 'IP2 | MAC2 | user2';  
+		expect(chartService.getUserTooltip(2, data)).toEqual(expected);
 	});
 
 	it('should return empty tooltip from data using invalid user', function() {
-		expect(chartService.getUserTooltip(1, data)).toEqual('');
+		expect(chartService.getUserTooltip(0, data)).toEqual('');
+	});
+
+	it('should wrap chart data', function() {
+		var data = [1, 2, 3],
+			expected = {
+				dataset00: data
+			};
+		expect(chartService.getChartData(data)).toEqual(expected);
 	});
 
 });

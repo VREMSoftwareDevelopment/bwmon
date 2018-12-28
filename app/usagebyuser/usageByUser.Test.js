@@ -24,32 +24,40 @@ describe('BWMonApp.UsageByUser module, ', function() {
 				reset: function() {}
 			},
 			months = ['Jan', 'Mar', 'Jun'],
-			usageData = {
+			usageByUser = {
 				data: {
-					usage: {
-						1:	{
-							IP: 'IP-address',
-							user: 'user-name',
-						}
-					},
+					usage: [
+						{id: 1, user: 'user1'},
+						{id: 2, user: 'user2'},
+						{id: 3, user: 'user3'}
+					],
 					total: 10
 				},
-				chartData: 23
+				chartData: [
+					{x: 1, y: 0},
+					{x: 2, y: 1},
+					{x: 3, y: 2}
+				]
+			},
+			chartData = {
+				dataset: usageByUser.chartData
 			},
 			chartOptions = {
-					series: [{
-						type: 'type'
-					}]
-				},
+				series: [{
+					type: 'type'
+				}]
+			},
 			chartService,
 			dataService;
 
 		beforeEach(inject(function($controller, _dataService_, _chartService_){
 			dataService = _dataService_;
+			
 			spyOn(dataService, 'getMonths').and.returnValue(months);
-			spyOn(dataService, 'getUsageByUser').and.returnValue(usageData);
+			spyOn(dataService, 'getUsageByUser').and.returnValue(usageByUser);
 
 			chartService = _chartService_;
+			spyOn(chartService, 'getChartData').and.returnValue(chartData);
 			spyOn(chartService, 'getChartOptions').and.returnValue(chartOptions);
 
 			controller = $controller('UsageByUserController', {
@@ -119,14 +127,26 @@ describe('BWMonApp.UsageByUser module, ', function() {
 			expect(controller.selected.user).toBe('');
 		});
 
-		it('should get new usage data when any attribute in selected object changes', function() {
+		it('should get new user usage data when any attribute in selected object changes', function() {
 			controller.selected.myTest = 'myTest';
 			scope.$digest();
 			expect(dataService.getUsageByUser).toHaveBeenCalledWith(controller.selected.year, controller.selected.month, controller.selected.user);
-			expect(controller.data).toEqual(usageData.data.usage);
-			expect(controller.total).toEqual(usageData.data.total);
-			expect(controller.chartData).toEqual(usageData.chartData);
-			expect(chartService.getChartOptions).toHaveBeenCalledWith(controller.chartData, chartService.getUserLabel, chartService.getUserTooltip);
+			expect(controller.data).toEqual(usageByUser.data.usage);
+			expect(controller.total).toEqual(usageByUser.data.total);
+		});
+
+		it('should update chart data with getChartData', function() {
+			controller.selected.year = 1;
+			scope.$digest();
+			expect(controller.chartData).toEqual(chartData);
+			expect(chartService.getChartData).toHaveBeenCalledWith(usageByUser.chartData);
+		});
+
+		it('should update chart options with chart options from ChartService', function() {
+			controller.selected.year = 1;
+			scope.$digest();
+			expect(controller.chartOptions).toEqual(chartOptions);
+			expect(chartService.getChartOptions).toHaveBeenCalledWith(usageByUser.data.usage, chartService.getUserLabel, chartService.getUserTooltip);
 		});
 
 		it('should change chart type in chart options', function() {

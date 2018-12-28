@@ -29,17 +29,28 @@ angular.module('BWMonApp.ChartService', [])
 			}
 			return result;
 		},
+		_findUserData = function(value, data) {
+			var result;
+			if (value % 1 === 0) {
+				result = _.find(data, function(item) {
+					return value === item.id;
+				});
+			}
+			return result;
+		},
 		_getUserLabel = function(value, data) {
-			var result = '';
-			if (value % 1 === 0 && typeof data[value] !== 'undefined' && data[value] !== null) {
-				result = data[value].IP;
+			var result = '',
+				item = _findUserData(value, data); 
+			if (typeof item !== 'undefined' && item !== null) {
+				result = item.IP;
 			}
 			return result;
 		},
 		_getUserTooltip = function(value, data) {
-			var result = '';
-			if (value % 1 === 0 && typeof data[value] !== 'undefined' && data[value] !== null) {
-				result = data[value].user + " | " + data[value].IP;
+			var result = '',
+				item = _findUserData(value, data); 
+			if (typeof item !== 'undefined' && item !== null) {
+				result = item.IP + " | " + item.MAC + " | " + item.user;
 			}
 			return result;
 		},
@@ -51,9 +62,6 @@ angular.module('BWMonApp.ChartService', [])
 			];
 		},
 		_getChartOptions = function(data, labelFn, tooltipFn) {
-			var _data = data.dataset00,
-				_labelFn = labelFn,
-				_tooltipFn = tooltipFn;
 			return {
 				margin: {
 					top: 40,
@@ -78,7 +86,7 @@ angular.module('BWMonApp.ChartService', [])
 					x: { 
 						key: 'x',
 						tickFormat: function(value, index) {
-							return _labelFn(value, _data);
+							return labelFn(value, data);
 						}
 					},
 					y: { 
@@ -90,7 +98,7 @@ angular.module('BWMonApp.ChartService', [])
 						return {
 							rows: d.map(function(s) {
 								return {
-									label: _tooltipFn(s.row.x, _data),
+									label: tooltipFn(s.row.x, data),
 									value: " | " + s.row.y1 + " GB", 
 									color: s.series.color,
 									id: s.series.id 
@@ -108,6 +116,12 @@ angular.module('BWMonApp.ChartService', [])
 		getUserLabel: _getUserLabel,
 		getUserTooltip: _getUserTooltip,
 		getChartTypes: _getChartTypes,
-		getChartOptions: _getChartOptions
+		getChartOptions: _getChartOptions,
+		getChartData: function(data) {
+			return {
+				dataset00: data
+			};
+		}
+
 	};
 });

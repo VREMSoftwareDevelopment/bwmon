@@ -20,21 +20,29 @@ describe('BWMonApp.UsageByYear module, ', function() {
 
 	describe('UsageByYearController controller ', function() {
 		var controller,
+			data = [
+				{id: 1},
+				{id: 2},
+				{id: 3}
+			],
 			chartOptions = {
-					series: [{
-						type: 'type'
-					}]
+				series: [{
+					type: 'type'
+				}]
 			},
-			data = {id: 11},
+			chartData = {
+				dataset: data
+			},
 			chartService,
 			dataService;
 
 		beforeEach(inject(function(_$controller_, _dataService_, _chartService_){
 			dataService = _dataService_;
-			spyOn(dataService, 'getUsageByYear').and.returnValue({data: data, chartData: {1: data}});
+			spyOn(dataService, 'getUsageByYear').and.returnValue({data: data, chartData: data});
 
 			chartService = _chartService_;
 			spyOn(chartService, 'getChartOptions').and.returnValue(chartOptions);
+			spyOn(chartService, 'getChartData').and.returnValue(chartData);
 
 			controller = _$controller_('UsageByYearController', {
 				$scope: scope,
@@ -80,13 +88,14 @@ describe('BWMonApp.UsageByYear module, ', function() {
 			expect(dataService.getUsageByYear).toHaveBeenCalled();
 		});
 
-		it('should update chart data with getUsageByYear', function() {
-			expect(controller.chartData).toEqual({1:data});
+		it('should update chart data with getChartData', function() {
+			expect(controller.chartData).toEqual(chartData);
+			expect(chartService.getChartData).toHaveBeenCalledWith(data);
 		});
 
 		it('should update chart options with chart options from ChartService', function() {
 			expect(controller.chartOptions).toEqual(chartOptions);
-			expect(chartService.getChartOptions).toHaveBeenCalledWith(controller.chartData, chartService.getYearLabel, chartService.getYearLabel);
+			expect(chartService.getChartOptions).toHaveBeenCalledWith(data, chartService.getYearLabel, chartService.getYearLabel);
 		});
 
 		it('should change chart type in chart options', function() {

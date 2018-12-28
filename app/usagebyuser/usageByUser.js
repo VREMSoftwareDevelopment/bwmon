@@ -53,10 +53,11 @@ angular.module('BWMonApp.UsageByUser', ['ngRoute'])
 
 	$scope.$watch('usageByUserCtrl.selected', function() {
 		var usageData = dataService.getUsageByUser(ctrl.selected.year, ctrl.selected.month, ctrl.selected.user);
+		
 		ctrl.data = usageData.data.usage;
 		ctrl.total = usageData.data.total;
-		ctrl.chartData = usageData.chartData;
-		ctrl.chartOptions = chartService.getChartOptions(ctrl.chartData, chartService.getUserLabel, chartService.getUserTooltip);
+		ctrl.chartData = chartService.getChartData(usageData.chartData);
+		ctrl.chartOptions = chartService.getChartOptions(usageData.data.usage, chartService.getUserLabel, chartService.getUserTooltip);
 		ctrl.chartOptions.series[0].type = ctrl.selected.chartType;
 	}, true);
 })

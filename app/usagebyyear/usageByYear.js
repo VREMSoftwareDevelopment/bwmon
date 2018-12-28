@@ -29,8 +29,8 @@ angular.module('BWMonApp.UsageByYear', ['ngRoute'])
 	ctrl.descending = true;
 	ctrl.selected = {};
 	ctrl.data = usageData.data;
-	ctrl.chartData = usageData.chartData;
-	ctrl.chartOptions = chartService.getChartOptions(ctrl.chartData, chartService.getYearLabel, chartService.getYearLabel);
+	ctrl.chartData = chartService.getChartData(usageData.chartData);
+	ctrl.chartOptions = chartService.getChartOptions(usageData.chartData, chartService.getYearLabel, chartService.getYearLabel);
 	
 	ctrl.setOrder = function(predicate) {
 		ctrl.descending = (ctrl.predicate === predicate) ? !ctrl.descending : true;
