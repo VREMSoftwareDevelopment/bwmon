@@ -27,9 +27,11 @@ describe('BWMonApp.UsageByUser module, ', function() {
 			usageByUser = {
 				data: {
 					usage: [
-						{id: 1, user: 'user1'},
-						{id: 2, user: 'user2'},
-						{id: 3, user: 'user3'}
+						{id: 3, IP: 'IP3', MAC: 'MAC3', user: 'user3', total: 30},
+						{id: 5, IP: 'IP5', MAC: 'MAC5', user: 'user5', total: 50},
+						{id: 2, IP: 'IP2', MAC: 'MAC2', user: 'user2', total: 20},
+						{id: 4, IP: 'IP4', MAC: 'MAC4', user: 'user4', total: 40},
+						{id: 1, IP: 'IP1', MAC: 'MAC1', user: 'user1', total: 10}
 					],
 					total: 10
 				},
@@ -146,13 +148,27 @@ describe('BWMonApp.UsageByUser module, ', function() {
 			controller.selected.year = 1;
 			scope.$digest();
 			expect(controller.chartOptions).toEqual(chartOptions);
-			expect(chartService.getChartOptions).toHaveBeenCalledWith(usageByUser.data.usage, chartService.getUserLabel, chartService.getUserTooltip);
+			expect(chartService.getChartOptions).toHaveBeenCalledWith(controller.getLabel, controller.getTooltip);
 		});
 
 		it('should change chart type in chart options', function() {
 			controller.selected.chartType = 'test';
 			scope.$digest();
 			expect(controller.chartOptions.series[0].type).toEqual(controller.selected.chartType);
+		});
+		
+		it('should return empty user label', function() {
+			controller.data = usageByUser.data.usage; 
+			expect(controller.getLabel(4)).toEqual('IP4');
+		});
+
+		it('should return user tooltip label from data using valid user', function() {
+			controller.data = usageByUser.data.usage; 
+			expect(controller.getTooltip(2)).toEqual('IP2 | MAC2 | user2');
+		});
+
+		it('should return empty tooltip from data using invalid user', function() {
+			expect(controller.getTooltip(0)).toEqual('');
 		});
 	});
 

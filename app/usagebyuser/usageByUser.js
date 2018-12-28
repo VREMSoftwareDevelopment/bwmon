@@ -27,6 +27,15 @@ angular.module('BWMonApp.UsageByUser', ['ngRoute'])
 			ctrl.selected.user = '';
 			ctrl.predicate = 'IP';
 			ctrl.descending = false;
+		},
+		findUserData = function(value) {
+			var result;
+			if (value % 1 === 0) {
+				result = _.find(ctrl.data, function(item) {
+					return value === item.id;
+				});
+			}
+			return result;
 		};
 
 	ctrl.selected = {};
@@ -42,6 +51,24 @@ angular.module('BWMonApp.UsageByUser', ['ngRoute'])
 		return ctrl.predicate === predicate ? (ctrl.descending ? {desc:true} : {asc: true}): {};
 	};
 
+	ctrl.getLabel = function(value) {
+		var result = '',
+			item = findUserData(value); 
+		if (typeof item !== 'undefined' && item !== null) {
+			result = item.IP;
+		}
+		return result;
+	};
+	
+	ctrl.getTooltip = function(value) {
+		var result = '',
+			item = findUserData(value); 
+		if (typeof item !== 'undefined' && item !== null) {
+			result = item.IP + " | " + item.MAC + " | " + item.user;
+		}
+		return result;
+	};
+
 	$scope.$watch('usageByUserCtrl.selected.year', function() {
 		reset();
 		ctrl.selected.month = dataService.getMonths(ctrl.selected.year)[0];
@@ -50,14 +77,14 @@ angular.module('BWMonApp.UsageByUser', ['ngRoute'])
 	$scope.$watch('usageByUserCtrl.selected.month', function() {
 		reset();
 	}, true);
-
+	
 	$scope.$watch('usageByUserCtrl.selected', function() {
 		var usageData = dataService.getUsageByUser(ctrl.selected.year, ctrl.selected.month, ctrl.selected.user);
 		
 		ctrl.data = usageData.data.usage;
 		ctrl.total = usageData.data.total;
 		ctrl.chartData = chartService.getChartData(usageData.chartData);
-		ctrl.chartOptions = chartService.getChartOptions(usageData.data.usage, chartService.getUserLabel, chartService.getUserTooltip);
+		ctrl.chartOptions = chartService.getChartOptions(ctrl.getLabel, ctrl.getTooltip);
 		ctrl.chartOptions.series[0].type = ctrl.selected.chartType;
 	}, true);
 })

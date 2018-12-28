@@ -15,53 +15,14 @@
  */
 angular.module('BWMonApp.ChartService', [])
 .factory('chartService', function() {
-	var _getYearLabel = function(value) {
-			var result = '';
-			if (value % 1 === 0) {
-				result = value;
-			}
-			return result;
-		},
-		_getMonthLabel = function(value) {
-			var result = '';
-			if (value % 1 === 0 && value >= 0 && value <= 11) {
-				result = moment({month: value}).format("MMMM");
-			}
-			return result;
-		},
-		_findUserData = function(value, data) {
-			var result;
-			if (value % 1 === 0) {
-				result = _.find(data, function(item) {
-					return value === item.id;
-				});
-			}
-			return result;
-		},
-		_getUserLabel = function(value, data) {
-			var result = '',
-				item = _findUserData(value, data); 
-			if (typeof item !== 'undefined' && item !== null) {
-				result = item.IP;
-			}
-			return result;
-		},
-		_getUserTooltip = function(value, data) {
-			var result = '',
-				item = _findUserData(value, data); 
-			if (typeof item !== 'undefined' && item !== null) {
-				result = item.IP + " | " + item.MAC + " | " + item.user;
-			}
-			return result;
-		},
-		_getChartTypes = function() {
+	var _getChartTypes = function() {
 			return [
 				['column'], 
 				['line', 'dot'], 
 				['line', 'dot', 'area']
 			];
 		},
-		_getChartOptions = function(data, labelFn, tooltipFn) {
+		_getChartOptions = function(labelFn, tooltipFn) {
 			return {
 				margin: {
 					top: 40,
@@ -85,9 +46,7 @@ angular.module('BWMonApp.ChartService', [])
 				axes: {
 					x: { 
 						key: 'x',
-						tickFormat: function(value, index) {
-							return labelFn(value, data);
-						}
+						tickFormat: labelFn
 					},
 					y: { 
 						min: 0
@@ -98,7 +57,7 @@ angular.module('BWMonApp.ChartService', [])
 						return {
 							rows: d.map(function(s) {
 								return {
-									label: tooltipFn(s.row.x, data),
+									label: tooltipFn(s.row.x),
 									value: " | " + s.row.y1 + " GB", 
 									color: s.series.color,
 									id: s.series.id 
@@ -111,10 +70,6 @@ angular.module('BWMonApp.ChartService', [])
 		};
 
 	return {
-		getYearLabel: _getYearLabel,
-		getMonthLabel: _getMonthLabel,
-		getUserLabel: _getUserLabel,
-		getUserTooltip: _getUserTooltip,
 		getChartTypes: _getChartTypes,
 		getChartOptions: _getChartOptions,
 		getChartData: function(data) {

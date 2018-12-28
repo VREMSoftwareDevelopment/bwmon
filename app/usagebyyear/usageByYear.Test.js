@@ -95,7 +95,7 @@ describe('BWMonApp.UsageByYear module, ', function() {
 
 		it('should update chart options with chart options from ChartService', function() {
 			expect(controller.chartOptions).toEqual(chartOptions);
-			expect(chartService.getChartOptions).toHaveBeenCalledWith(data, chartService.getYearLabel, chartService.getYearLabel);
+			expect(chartService.getChartOptions).toHaveBeenCalledWith(controller.getLabel, controller.getLabel);
 		});
 
 		it('should change chart type in chart options', function() {
@@ -103,5 +103,15 @@ describe('BWMonApp.UsageByYear module, ', function() {
 			scope.$digest();
 			expect(controller.chartOptions.series[0].type).toEqual(controller.selected.chartType);
 		});
+		
+		it('should return same value', function() {
+			expect(controller.getLabel(10)).toEqual(10);
+		});
+
+		it('should return empty string when not %', function() {
+			expect(controller.getLabel(10.4)).toEqual('');
+		});
+
+		
 	});
 });
