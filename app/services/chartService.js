@@ -23,36 +23,41 @@ angular.module('BWMonApp.ChartService', [])
 			];
 		},
 		_getChartOptions = function(labelFn, tooltipFn) {
-			return {
-				margin: {
-					top: 40,
-					right: 40,
-					bottom: 40,
-					left: 40
+			var getMargin = function() {
+					return {
+						top: 40,
+						right: 40,
+						bottom: 40,
+						left: 40
+					};
 				},
-				series: [{
-					axis: 'y',
-					dataset: 'dataset00',
-					key: 'y',
-					color: '#3366CC',
-					label: 'GBytes',
-					grid: {
-						x: false, 
-						y: true
-					},
-					type: _getChartTypes()[0],
-					id: 'series00'
-				}],
-				axes: {
-					x: { 
-						key: 'x',
-						tickFormat: labelFn
-					},
-					y: { 
-						min: 0
-					}
+				getSeries = function() {
+					return [{
+						axis: 'y',
+						dataset: 'dataset00',
+						key: 'y',
+						color: '#3366CC',
+						label: 'GBytes',
+						grid: {
+							x: false, 
+							y: true
+						},
+						type: _getChartTypes()[0],
+						id: 'series00'
+					}];
 				},
-				tooltipHook: function(d) {
+				getAxes = function() {
+					return {
+						x: { 
+							key: 'x',
+							tickFormat: labelFn
+						},
+						y: { 
+							min: 0
+						}
+					};
+				}
+				tooltipHookFn = function(d) {
 					if (d) {
 						return {
 							rows: d.map(function(s) {
@@ -65,7 +70,13 @@ angular.module('BWMonApp.ChartService', [])
 							})
 						};
 					}
-				}
+				};
+				
+			return {
+				margin: getMargin(),
+				series: getSeries(),
+				axes: getAxes(labelFn),
+				tooltipHook: tooltipHookFn
 			};
 		};
 
