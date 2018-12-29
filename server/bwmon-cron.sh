@@ -48,6 +48,8 @@ case ${1} in
 	echo "Examples : "
 	echo "	$0 install"
 	echo "	$0 remove"
-	exit
+	exit 1
 	;;
 esac
+
+exit 0

@@ -18,6 +18,14 @@
 # TomatoUSB Version
 #
 
+display() {
+	echo "Usage : $0 {setup|update|publish} path"
+	echo "Parameters: "
+	echo "	$0 setup path"
+	echo "	$0 update path"
+	echo "	$0 publish path"
+}
+
 [ -z "${1}" ] && display && exit 1
 [ -z "${2}" ] && display && exit 1
 
@@ -33,19 +41,7 @@ USAGE_JS="bwmonUsage.js"
 USAGEDB=${2}/${USAGE_DB}
 USAGEJS=${2}/${USAGE_JS}
 
-display() {
-	echo "Usage : $0 {setup|update} path"
-	echo "Parameters: "
-	echo "	$0 setup path"
-	echo "	$0 update path"
-	echo "	$0 publish path"
-	echo "Examples: "
-	echo "	$0 setup /tmp"
-	echo "	$0 update /tmp"
-	echo "	$0 publish /tmp"
-}
-
-log () {
+log() {
 	logger -p user.info -t $0 "$1"
 	echo -p user.info -t $0 "$1"
 }
@@ -202,3 +198,5 @@ case ${1} in
 	exit 1
 	;;
 esac
+
+exit 0
