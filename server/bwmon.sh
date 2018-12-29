@@ -18,6 +18,14 @@
 # AsusWRT-Merlin Version
 # 
 
+display() {
+	echo "Usage : $0 {setup|update|publish} path"
+	echo "Parameters: "
+	echo "	$0 setup path"
+	echo "	$0 update path"
+	echo "	$0 publish path"
+}
+
 [ -z "${1}" ] && display && exit 1
 [ -z "${2}" ] && display && exit 1
 
@@ -35,19 +43,7 @@ USAGEJS=${2}/${USAGE_JS}
 DESTJS=/opt/share/www/bwmon/${USAGE_JS}
 DESTLOG=/opt/var/log/bwmon.log
 
-display() {
-	echo "Usage : $0 {setup|update} path"
-	echo "Parameters: "
-	echo "	$0 setup path"
-	echo "	$0 update path"
-	echo "	$0 publish path"
-	echo "Examples: "
-	echo "	$0 setup /tmp"
-	echo "	$0 update /tmp"
-	echo "	$0 publish /tmp"
-}
-
-log () {
+log() {
 	echo $(date) $USER $0 "$1" >> ${DESTLOG}
 	echo $(date) $USER $0 "$1"
 }
@@ -197,3 +193,5 @@ case ${1} in
 	exit 1
 	;;
 esac
+
+exit 0 

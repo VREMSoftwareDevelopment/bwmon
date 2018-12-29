@@ -31,3 +31,4 @@ rm -rf /opt/share/www/bwmon
 rm -rf /opt/share/www/sample-lighttpd-index.html
 rm -rf /opt/etc/init.d/S80bwmon
 echo " Done..."
+exit 0 

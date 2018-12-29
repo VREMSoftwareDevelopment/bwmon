@@ -49,3 +49,4 @@ echo " Done..."
 echo " Starting bwmon service..."
 /opt/etc/init.d/S80bwmon restart
 echo " Visit 'http://<your_router_ip>:<lighttpd_port>/bwmon/index.html' to view bandwidth usage statistics"
+exit 0 
