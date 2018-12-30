@@ -34,15 +34,14 @@ describe('BWMonApp.UsageByUser module, ', function() {
 						{id: 1, IP: 'IP1', MAC: 'MAC1', user: 'user1', total: 10}
 					],
 					total: 10
-				},
-				chartData: [
+				}
+			},
+			chartData = {
+				dataset: [
 					{x: 1, y: 0},
 					{x: 2, y: 1},
 					{x: 3, y: 2}
 				]
-			},
-			chartData = {
-				dataset: usageByUser.chartData
 			},
 			chartOptions = {
 				series: [{
@@ -141,7 +140,7 @@ describe('BWMonApp.UsageByUser module, ', function() {
 			controller.selected.year = 1;
 			scope.$digest();
 			expect(controller.chartData).toEqual(chartData);
-			expect(chartService.getChartData).toHaveBeenCalledWith(usageByUser.chartData);
+			expect(chartService.getChartData).toHaveBeenCalledWith(usageByUser.data.usage);
 		});
 
 		it('should update chart options with chart options from ChartService', function() {

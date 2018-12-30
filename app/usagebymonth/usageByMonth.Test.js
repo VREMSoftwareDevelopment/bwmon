@@ -25,11 +25,6 @@ describe('BWMonApp.UsageByMonth module, ', function() {
 					{usage: 5, total: 10},
 					{usage: 2, total: 11},
 					{usage: 1, total: 12}
-				],
-				chartData: [
-					{x: 1, y: 0},
-					{x: 2, y: 1},
-					{x: 3, y: 2}
 				]
 			},
 			chartOptions = {
@@ -38,7 +33,11 @@ describe('BWMonApp.UsageByMonth module, ', function() {
 				}]
 			},
 			chartData = {
-				dataset: usageData.chartData
+				dataset: [
+					{x: 1, y: 0},
+					{x: 2, y: 1},
+					{x: 3, y: 2}
+				]
 			},
 			chartService,
 			dataService;
@@ -137,7 +136,7 @@ describe('BWMonApp.UsageByMonth module, ', function() {
 			controller.selected.year = 1;
 			scope.$digest();
 			expect(controller.chartData).toEqual(chartData);
-			expect(chartService.getChartData).toHaveBeenCalledWith(usageData.chartData);
+			expect(chartService.getChartData).toHaveBeenCalledWith(usageData.data.usage);
 		});
 
 		it('should update chart options with chart options from ChartService', function() {

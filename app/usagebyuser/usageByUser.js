@@ -83,7 +83,7 @@ angular.module('BWMonApp.UsageByUser', ['ngRoute'])
 		
 		ctrl.data = usageData.data.usage;
 		ctrl.total = usageData.data.total;
-		ctrl.chartData = chartService.getChartData(usageData.chartData);
+		ctrl.chartData = chartService.getChartData(usageData.data.usage);
 		ctrl.chartOptions = chartService.getChartOptions(ctrl.getLabel, ctrl.getTooltip);
 		ctrl.chartOptions.series[0].type = ctrl.selected.chartType;
 	}, true);
