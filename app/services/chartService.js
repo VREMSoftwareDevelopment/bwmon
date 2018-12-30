@@ -84,11 +84,7 @@ angular.module('BWMonApp.ChartService', [])
 					return Math.round(value/1000)/1000;
 				},
 				sort = function(a, b) {
-					var result = a.x - b.x;
-					if (result === 0) {
-						result = a.y - b.y;
-					}
-					return result;
+					return a.x - b.x;
 				},
 				transform = function(entry, key) {
 					return {
