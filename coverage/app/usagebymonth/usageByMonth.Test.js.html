@@ -1,0 +1,587 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for app\usagebymonth\usageByMonth.Test.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../prettify.css" />
+    <link rel="stylesheet" href="../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../index.html">all files</a> / <a href="index.html">app/usagebymonth/</a> usageByMonth.Test.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>95/95</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>0/0</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>25/25</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>95/95</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line high'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175</td><td class="line-coverage quiet"><span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">20×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">19×</span>
+<span class="cline-any cline-yes">19×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">19×</span>
+<span class="cline-any cline-yes">19×</span>
+<span class="cline-any cline-yes">19×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">19×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">19×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">describe('BWMonApp.UsageByMonth module, ', function() {
+	var scope;
+&nbsp;
+	beforeEach(module('BWMonApp.UsageByMonth'));
+	beforeEach(module('BWMonApp.DataService'));
+	beforeEach(module('BWMonApp.ChartService'));
+&nbsp;
+	beforeEach(inject(function($rootScope){
+		scope = $rootScope.$new();
+	}));
+&nbsp;
+	describe('config ', function() {
+		it('should map UsageByMonth route', inject(function($route){
+			var route = $route.routes['/UsageByMonth'];
+			expect(route.controller).toBe('UsageByMonthController');
+			expect(route.controllerAs).toBe('usageByMonthCtrl');
+			expect(route.templateUrl).toBe('usagebymonth/usageByMonth.tpl.html');
+		}));
+	});
+&nbsp;
+	describe('UsageByMonthController controller ', function() {
+		var	controller,
+			usageData = {
+				data: [
+					{usage: 5, total: 10},
+					{usage: 2, total: 11},
+					{usage: 1, total: 12}
+				]
+			},
+			chartOptions = {
+				series: [{
+					type: 'type'
+				}]
+			},
+			chartData = {
+				dataset: [
+					{x: 1, y: 0},
+					{x: 2, y: 1},
+					{x: 3, y: 2}
+				]
+			},
+			chartService,
+			dataService;
+&nbsp;
+		beforeEach(inject(function(_$controller_, _dataService_, _chartService_){
+			dataService = _dataService_;
+			spyOn(dataService, 'getUsageByMonth').and.returnValue(usageData);
+&nbsp;
+			chartService = _chartService_;
+			spyOn(chartService, 'getChartOptions').and.returnValue(chartOptions);
+			spyOn(chartService, 'getChartData').and.returnValue(chartData);
+&nbsp;
+			controller = _$controller_('UsageByMonthController', {
+				$scope: scope,
+				dataService: dataService,
+				chartService: chartService
+			});
+&nbsp;
+			scope.usageByMonthCtrl = controller;
+		}));
+&nbsp;
+		it('should set predicate to id', function() {
+			expect(controller.predicate).toEqual('id');
+		});
+&nbsp;
+		it('should set descending to true', function() {
+			expect(controller.descending).toEqual(true);
+		});
+&nbsp;
+		it('should setOrder set predicate', function() {
+			var predicate = 'XYZ';
+			controller.setOrder(predicate);
+			expect(controller.predicate).toEqual('XYZ');
+		});
+&nbsp;
+		it('should setOrder change descending to false', function() {
+			controller.setOrder(controller.predicate);
+			expect(controller.descending).toEqual(false);
+		});
+&nbsp;
+		it('should getOrder return descending', function() {
+			expect(controller.getOrder(controller.predicate)).toEqual({desc:true});
+		});
+&nbsp;
+		it('should getOrder return ascending', function() {
+			controller.descending = false;
+			expect(controller.getOrder(controller.predicate)).toEqual({asc:true});
+		});
+&nbsp;
+		it('should getOrder return none', function() {
+			expect(controller.getOrder('XYZ')).toEqual({});
+		});
+&nbsp;
+		it('should reset predicate', function() {
+			controller.predicate = 'xyz';
+			controller.selected.year = 1;
+			scope.$digest();
+			expect(controller.predicate).toEqual('id');
+		});
+&nbsp;
+		it('should reset descending', function() {
+			controller.descending = false;
+			controller.selected.year = 1;
+			scope.$digest();
+			expect(controller.descending).toEqual(true);
+		});
+&nbsp;
+		it('should update data with getUsageByMonth', function() {
+			controller.selected.year = 1;
+			scope.$digest();
+			expect(controller.data).toEqual(usageData.data.usage);
+			expect(dataService.getUsageByMonth).toHaveBeenCalledWith(controller.selected.year);
+		});
+&nbsp;
+		it('should update total with getUsageByMonth', function() {
+			controller.selected.year = 1;
+			scope.$digest();
+			expect(controller.total).toEqual(usageData.data.total);
+			expect(dataService.getUsageByMonth).toHaveBeenCalledWith(controller.selected.year);
+		});
+&nbsp;
+		it('should update chart data with getUsageByMonth', function() {
+			controller.selected.year = 1;
+			scope.$digest();
+			expect(controller.chartData).toEqual(chartData);
+			expect(dataService.getUsageByMonth).toHaveBeenCalledWith(controller.selected.year);
+		});
+&nbsp;
+		it('should update chart data with getUsageByMonth', function() {
+			controller.selected.year = 1;
+			scope.$digest();
+			expect(dataService.getUsageByMonth).toHaveBeenCalledWith(controller.selected.year);
+		});
+&nbsp;
+		it('should update chart data with getChartData', function() {
+			controller.selected.year = 1;
+			scope.$digest();
+			expect(controller.chartData).toEqual(chartData);
+			expect(chartService.getChartData).toHaveBeenCalledWith(usageData.data.usage);
+		});
+&nbsp;
+		it('should update chart options with chart options from ChartService', function() {
+			controller.selected.year = 1;
+			scope.$digest();
+			expect(controller.chartOptions).toEqual(chartOptions);
+			expect(chartService.getChartOptions).toHaveBeenCalledWith(controller.getLabel, controller.getLabel);
+		});
+&nbsp;
+		it('should change chart type in chart options', function() {
+			controller.selected.chartType = 'test';
+			scope.$digest();
+			expect(controller.chartOptions.series[0].type).toEqual(controller.selected.chartType);
+		});
+&nbsp;
+		it('should update predicate to default', function() {
+			controller.selected.year = 1;
+			scope.$digest();
+			expect(controller.data).toEqual(usageData.data.usage);
+			expect(dataService.getUsageByMonth).toHaveBeenCalledWith(controller.selected.year);
+		});
+		
+		it('should return month from using valid month', function() {
+			expect(controller.getLabel(0)).toEqual('January');
+			expect(controller.getLabel(11)).toEqual('December');
+		});
+&nbsp;
+		it('should return empty label using invalid month', function() {
+			expect(controller.getLabel(-1)).toEqual('');
+			expect(controller.getLabel(12)).toEqual('');
+		});
+&nbsp;
+		
+	});
+});
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Sun Dec 30 2018 08:39:36 GMT-0500 (Eastern Standard Time)
+</div>
+</div>
+<script src="../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../sorter.js"></script>
+</body>
+</html>
