@@ -78,16 +78,34 @@ angular.module('BWMonApp.ChartService', [])
 				axes: getAxes(labelFn),
 				tooltipHook: tooltipHookFn
 			};
+		},
+		_getChartData = function(data) {
+			var round = function(value) {
+					return Math.round(value/1000)/1000;
+				},
+				sort = function(a, b) {
+					var result = a.x - b.x;
+					if (result === 0) {
+						result = a.y - b.y;
+					}
+					return result;
+				},
+				transform = function(entry, key) {
+					return {
+						x: entry.id,
+						y: round(entry.total)
+					};
+				}, 
+				result = _.map(data, transform);
+			result.sort(sort);
+			return {
+				dataset00: result
+			};
 		};
 
 	return {
 		getChartTypes: _getChartTypes,
 		getChartOptions: _getChartOptions,
-		getChartData: function(data) {
-			return {
-				dataset00: data
-			};
-		}
-
+		getChartData: _getChartData
 	};
 });

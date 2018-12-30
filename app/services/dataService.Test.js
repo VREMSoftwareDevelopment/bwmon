@@ -31,17 +31,6 @@ describe('BWMonApp.DataService module, dataService factory ', function() {
 		expect(JSON.stringify(actual)).toEqual(JSON.stringify(expected));
 	});
 	
-	it('should return chart data by year', function() {
-		var expected = [
-				{x: 2011, y: 150.684},
-				{x: 2012, y: 436.727},
-				{x: 2013, y: 639.701}
-			],
-			actual = dataService.getUsageByYear().chartData;
-
-		expect(JSON.stringify(actual)).toEqual(JSON.stringify(expected));
-	});
-
 	it('should return usage data by month', function() {
 		var expected = [
 				{id: 11, download: 21926209, upload: 1936607, total: 23862816, average: 769768.258, days: 31, percent: 15.8},
@@ -60,21 +49,6 @@ describe('BWMonApp.DataService module, dataService factory ', function() {
 	it('should return total by month', function() {
 		var expected = {id: 2011, download: 139938627, upload: 10744984, total: 150683611, average: 412831.811, days: 365},
 			actual = dataService.getUsageByMonth(2011).data.total;
-
-		expect(JSON.stringify(actual)).toEqual(JSON.stringify(expected));
-	});
-
-	it('should return chart usage by month', function() {
-		var expected = [
-				{x: 5, y: 29.035},
-				{x: 6, y: 23.307},
-				{x: 7, y: 31.289},
-				{x: 8, y: 16.037},
-				{x: 9, y: 15.538},
-				{x: 10, y: 11.615},
-				{x: 11, y: 23.863}
-			],
-			actual = dataService.getUsageByMonth(2011).chartData;
 
 		expect(JSON.stringify(actual)).toEqual(JSON.stringify(expected));
 	});
@@ -126,20 +100,6 @@ describe('BWMonApp.DataService module, dataService factory ', function() {
 	it('should return total by user', function() {
 		var expected = {id: 10, download: 10920971, upload: 693868, total: 11614839, average: 387161.3, days: 30},
 			actual = dataService.getUsageByUser(2011, 'November').data.total;
-
-		expect(JSON.stringify(actual)).toEqual(JSON.stringify(expected));
-	});
-
-	it('should return chart usage by user', function() {
-		var expected = [
-				{x: 33, y: 0.239},
-				{x: 34, y: 0.065},
-				{x: 35, y: 0.678},
-				{x: 36, y: 2.981},
-				{x: 37, y: 7.651},
-				{x: 38, y: 0.001}
-			],
-			actual = dataService.getUsageByUser(2011, 'November').chartData;
 
 		expect(JSON.stringify(actual)).toEqual(JSON.stringify(expected));
 	});
