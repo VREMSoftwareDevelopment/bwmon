@@ -8,9 +8,9 @@ describe('BWMonApp.ChartService module, chartService factory ', function() {
 
 	it('should have all choices in chart types', function(){
 		var expected = [
-				['column'], 
-				['line', 'dot'], 
-				['line', 'dot', 'area']
+				'column', 
+				'line', 
+				'area'
 			];
 		expect(chartService.getChartTypes()).toEqual(expected);
 	});
@@ -33,7 +33,7 @@ describe('BWMonApp.ChartService module, chartService factory ', function() {
 			color: '#3366CC',
 			label: 'GBytes',
 			grid: {x: false, y: true},
-			type: ['column'],
+			type: 'column',
 			id: 'series00'
 		}];
 		expect(chartService.getChartOptions().series).toEqual(expected);

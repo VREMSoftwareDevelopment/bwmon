@@ -28,9 +28,6 @@ angular.module('BWMonApp.UsageByMonth', ['ngRoute'])
 			ctrl.descending = true;
 		};
 
-	ctrl.selected = {};
-	reset();
-
 	ctrl.setOrder = function(predicate) {
 		ctrl.descending = (ctrl.predicate === predicate) ? !ctrl.descending : true;
 		ctrl.predicate = predicate;
@@ -59,5 +56,12 @@ angular.module('BWMonApp.UsageByMonth', ['ngRoute'])
 
 		reset();
 	}, true);
+	
+	ctrl.selected = {
+		year: dataService.getYears()[0],
+		chartType: chartService.getChartTypes()[0]
+	};
+	reset();
+
 })
 ;

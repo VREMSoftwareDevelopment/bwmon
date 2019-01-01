@@ -1,6 +1,6 @@
 {
 	"name": "bwmon",
-	"version": "2.4.3",
+	"version": "2.5.0",
 	"description": "Bandwidth Monitor Usage",
 	"homepage": "https://github.com/VREMSoftwareDevelopment/bwmon",
 	"repository": {
@@ -14,9 +14,9 @@
 		"node_modules"
 	],
 	"dependencies": {
-		"angular": "~1.5.8",
-		"angular-mocks": "~1.5.8",
-		"angular-route": "~1.5.8",
+		"angular": "^1.7.5",
+		"angular-mocks": "^1.7.5",
+		"angular-route": "^1.7.5",
 		"angular-ui-bootstrap": "^2.5.6",
 		"angular-utils-pagination": "^0.11.1",
 		"bootstrap": "^3.4.0",

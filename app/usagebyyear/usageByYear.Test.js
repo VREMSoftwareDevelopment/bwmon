@@ -25,9 +25,13 @@ describe('BWMonApp.UsageByYear module, ', function() {
 				{id: 2},
 				{id: 3}
 			],
+			chartTypes = [
+				['type1'],
+				['type2']
+			],
 			chartOptions = {
 				series: [{
-					type: 'type'
+					type: chartTypes[0]
 				}]
 			},
 			chartData = {
@@ -41,6 +45,7 @@ describe('BWMonApp.UsageByYear module, ', function() {
 			spyOn(dataService, 'getUsageByYear').and.returnValue({data: data, chartData: data});
 
 			chartService = _chartService_;
+			spyOn(chartService, 'getChartTypes').and.returnValue(chartTypes);
 			spyOn(chartService, 'getChartOptions').and.returnValue(chartOptions);
 			spyOn(chartService, 'getChartData').and.returnValue(chartData);
 
@@ -50,6 +55,10 @@ describe('BWMonApp.UsageByYear module, ', function() {
 				chartService: chartService
 			});
 		}));
+
+		it('should set selected chart type', function() {
+			expect(controller.selected.chartType).toBe(chartTypes[0]);
+		});
 
 		it('should set predicate to id', function() {
 			expect(controller.predicate).toEqual('id');

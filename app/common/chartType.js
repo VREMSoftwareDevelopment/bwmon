@@ -25,10 +25,8 @@ angular.module('BWMonApp.ChartType', [])
 			chartType: '=ngModel'
 		},
 		controller: function(chartService) {
-			var chartTypes = chartService.getChartTypes();
 			angular.extend(this, {
-				chartTypes: chartTypes,
-				chartType: chartTypes[0]
+				chartTypes: chartService.getChartTypes()
 			});
 		},
 		controllerAs: 'chartTypeCtrl'

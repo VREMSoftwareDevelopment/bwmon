@@ -25,10 +25,8 @@ angular.module('BWMonApp.SelectYear', [])
 			year: '=ngModel'
 		},
 		controller: function(dataService) {
-			var years = dataService.getYears();
 			angular.extend(this, {
-				years: years,
-				year: years[0]
+				years: dataService.getYears()
 			});
 		},
 		controllerAs: 'selectYearCtrl'

@@ -44,7 +44,9 @@ angular.module('BWMonApp.UsageByYear', ['ngRoute'])
 	
 	ctrl.predicate = 'id';
 	ctrl.descending = true;
-	ctrl.selected = {};
+	ctrl.selected = {
+		chartType: chartService.getChartTypes()[0]
+	};
 	ctrl.data = usageData.data;
 	ctrl.chartData = chartService.getChartData(usageData.data);
 	ctrl.chartOptions = chartService.getChartOptions(ctrl.getLabel, ctrl.getLabel);
