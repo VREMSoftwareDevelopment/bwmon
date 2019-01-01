@@ -14,6 +14,7 @@ describe('BWMonApp.SelectYear module, selectYear directive ', function() {
 		template = angular.element('<select-year ng-model="myYear"></select-year>');
 
 		scope = _$rootScope_.$new();
+		scope.myYear = years[0];
 
 		dataService = _dataService_;
 		spyOn(dataService, 'getYears').and.returnValue(years);

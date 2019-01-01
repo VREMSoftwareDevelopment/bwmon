@@ -23,6 +23,7 @@ describe('BWMonApp.UsageByUser module, ', function() {
 			page = {
 				reset: function() {}
 			},
+			years = ['2011', '2012'],
 			months = ['Jan', 'Mar', 'Jun'],
 			usageByUser = {
 				data: {
@@ -43,9 +44,13 @@ describe('BWMonApp.UsageByUser module, ', function() {
 					{x: 3, y: 2}
 				]
 			},
+			chartTypes = [
+				['type1'],
+				['type2']
+			],
 			chartOptions = {
 				series: [{
-					type: 'type'
+					type: chartTypes[0]
 				}]
 			},
 			chartService,
@@ -54,10 +59,12 @@ describe('BWMonApp.UsageByUser module, ', function() {
 		beforeEach(inject(function($controller, _dataService_, _chartService_){
 			dataService = _dataService_;
 			
+			spyOn(dataService, 'getYears').and.returnValue(years);
 			spyOn(dataService, 'getMonths').and.returnValue(months);
 			spyOn(dataService, 'getUsageByUser').and.returnValue(usageByUser);
 
 			chartService = _chartService_;
+			spyOn(chartService, 'getChartTypes').and.returnValue(chartTypes);
 			spyOn(chartService, 'getChartData').and.returnValue(chartData);
 			spyOn(chartService, 'getChartOptions').and.returnValue(chartOptions);
 
@@ -100,6 +107,14 @@ describe('BWMonApp.UsageByUser module, ', function() {
 
 		it('should getOrder return none', function() {
 			expect(controller.getOrder('XYZ')).toEqual({});
+		});
+
+		it('should set selected year', function() {
+			expect(controller.selected.year).toBe(years[0]);
+		});
+
+		it('should set selected chart type', function() {
+			expect(controller.selected.chartType).toBe(chartTypes[0]);
 		});
 
 		it('should set selected user to empty', function() {

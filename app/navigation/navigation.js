@@ -22,7 +22,7 @@ angular.module('BWMonApp.Navigation', [])
 				'<div class="navbar navbar-default">',
 					'<ul class="nav navbar-nav">',
 						'<li ng-repeat="route in ::navigationCtrl.routes" ng-class="{active: navigationCtrl.isActive(\'{{::route.href}}\')}" >',
-							'<a href="#{{::route.href}}">{{::route.name}}</a>',
+							'<a href="#!{{::route.href}}">{{::route.name}}</a>',
 						'</li>',
 					'</ul>',
 				'</div>'
@@ -34,13 +34,13 @@ angular.module('BWMonApp.Navigation', [])
 					return viewLocation === $location.path();
 				},
 				routes: [{
-					href: '/UsageByUser',
+					href: 'UsageByUser',
 					name: 'Usage By User'
 				}, {
-					href: '/UsageByMonth',
+					href: 'UsageByMonth',
 					name: 'Usage By Month'
 				}, {
-					href: '/UsageByYear',
+					href: 'UsageByYear',
 					name: 'Usage By Year'
 				}]
 			});

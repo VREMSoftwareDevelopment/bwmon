@@ -20,6 +20,7 @@ describe('BWMonApp.UsageByMonth module, ', function() {
 
 	describe('UsageByMonthController controller ', function() {
 		var	controller,
+			years = ['2011', '2012'],
 			usageData = {
 				data: [
 					{usage: 5, total: 10},
@@ -27,9 +28,13 @@ describe('BWMonApp.UsageByMonth module, ', function() {
 					{usage: 1, total: 12}
 				]
 			},
+			chartTypes = [
+				['type1'],
+				['type2']
+			],
 			chartOptions = {
 				series: [{
-					type: 'type'
+					type: chartTypes[0]
 				}]
 			},
 			chartData = {
@@ -44,9 +49,11 @@ describe('BWMonApp.UsageByMonth module, ', function() {
 
 		beforeEach(inject(function(_$controller_, _dataService_, _chartService_){
 			dataService = _dataService_;
+			spyOn(dataService, 'getYears').and.returnValue(years);
 			spyOn(dataService, 'getUsageByMonth').and.returnValue(usageData);
 
 			chartService = _chartService_;
+			spyOn(chartService, 'getChartTypes').and.returnValue(chartTypes);
 			spyOn(chartService, 'getChartOptions').and.returnValue(chartOptions);
 			spyOn(chartService, 'getChartData').and.returnValue(chartData);
 
@@ -58,6 +65,14 @@ describe('BWMonApp.UsageByMonth module, ', function() {
 
 			scope.usageByMonthCtrl = controller;
 		}));
+
+		it('should set selected year', function() {
+			expect(controller.selected.year).toBe(years[0]);
+		});
+
+		it('should set selected chart type', function() {
+			expect(controller.selected.chartType).toBe(chartTypes[0]);
+		});
 
 		it('should set predicate to id', function() {
 			expect(controller.predicate).toEqual('id');

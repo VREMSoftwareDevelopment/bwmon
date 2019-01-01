@@ -17,9 +17,9 @@ angular.module('BWMonApp.ChartService', [])
 .factory('chartService', function() {
 	var _getChartTypes = function() {
 			return [
-				['column'], 
-				['line', 'dot'], 
-				['line', 'dot', 'area']
+				'column', 
+				'line', 
+				'area'
 			];
 		},
 		_getChartOptions = function(labelFn, tooltipFn) {

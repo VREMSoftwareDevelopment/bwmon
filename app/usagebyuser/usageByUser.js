@@ -38,10 +38,6 @@ angular.module('BWMonApp.UsageByUser', ['ngRoute'])
 			return result;
 		};
 
-	ctrl.selected = {};
-	ctrl.pageSize = 15;
-	reset();
-
 	ctrl.setOrder = function(predicate) {
 		ctrl.descending = (ctrl.predicate === predicate) ? !ctrl.descending : false;
 		ctrl.predicate = predicate;
@@ -87,5 +83,13 @@ angular.module('BWMonApp.UsageByUser', ['ngRoute'])
 		ctrl.chartOptions = chartService.getChartOptions(ctrl.getLabel, ctrl.getTooltip);
 		ctrl.chartOptions.series[0].type = ctrl.selected.chartType;
 	}, true);
+	
+	ctrl.selected = {
+		year: dataService.getYears()[0],
+		chartType: chartService.getChartTypes()[0]
+	};
+	ctrl.pageSize = 15;
+	reset();
+	
 })
 ;

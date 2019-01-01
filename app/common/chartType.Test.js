@@ -14,6 +14,7 @@ describe('BWMonApp.ChartType module, chartType directive ', function() {
 		template = angular.element('<chart-type ng-model="myType"></chart-type>');
 
 		scope = _$rootScope_.$new();
+		scope.myType = chartTypes[0];
 
 		chartService = _chartService_;
 		spyOn(chartService, 'getChartTypes').and.returnValue(chartTypes);

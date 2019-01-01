@@ -14,6 +14,8 @@ describe('BWMonApp.SelectMonth module, selectMonth directive', function() {
 		template = angular.element('<select-month ng-model="myMonth" year="myYear"></select-month></div>');
 
 		scope = _$rootScope_.$new();
+		scope.myYear = data[0].year;
+		scope.myMonth = data[0].months[0];
 
 		dataService = _dataService_;
 		spyOn(dataService, 'getMonths').and.returnValue(data[0].months);
@@ -21,7 +23,6 @@ describe('BWMonApp.SelectMonth module, selectMonth directive', function() {
 		element = _$compile_(template)(scope);
 		controller = template.controller('selectMonth');
 
-		scope.myYear = data[0].year;
 	}));
 
 	it('should have element', function() {
