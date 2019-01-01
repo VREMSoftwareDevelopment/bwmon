@@ -1,7 +1,7 @@
 describe('bwmon e2e usage by year, ', function() {
 
 	beforeEach(function () {
-		browser.get('http://localhost:8080/#/UsageByYear');
+		browser.get('http://localhost:8080/#!/UsageByYear');
 		browser.waitForAngular();
 	});
 

@@ -1,6 +1,6 @@
 describe('bwmon e2e usage by month, ', function() {
 	beforeEach(function () {
-		browser.get('http://localhost:8080/#/UsageByMonth');
+		browser.get('http://localhost:8080/#!/UsageByMonth');
 		browser.waitForAngular();
 	});
 

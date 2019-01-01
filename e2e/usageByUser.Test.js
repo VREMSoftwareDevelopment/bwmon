@@ -1,5 +1,5 @@
 describe('bwmon e2e usage by user, ', function() {
-	var URL = 'http://localhost:8080/#/UsageByUser';
+	var URL = 'http://localhost:8080/#!/UsageByUser';
 
 	beforeEach(function () {
 		browser.get(URL);
