@@ -1,6 +1,7 @@
 /.settings
 /.project
 /.tern-project
+/.vscode
 node_modules/
 data/
 dist/
