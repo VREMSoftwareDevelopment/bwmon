@@ -50,7 +50,9 @@ describe('BWMonApp.Navigation module, navigation directive', function() {
 		var routes = getRoutes();
 		scope.$digest();
 		angular.forEach(element.find('li').find('a'), function(value, key, obj) {
-			expect(value.contains(routes[key]) !== -1).toBeTruthy();
+			var route = routes[key].substring(1);
+			var href = value.getAttribute('href').substring(2);
+			expect(href).toBe(route);
 		});
 	});
 });
