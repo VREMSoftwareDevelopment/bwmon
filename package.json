@@ -35,9 +35,9 @@
 		"gulp-concat": "^2.6.1",
 		"gulp-connect": "^5.7.0",
 		"gulp-filter": "^6.0.0",
-		"gulp-git": "^2.9.0",
+		"gulp-git": "^2.10.0",
 		"gulp-gzip": "^1.4.2",
-		"gulp-header": "^2.0.7",
+		"gulp-header": "^2.0.9",
 		"gulp-htmlmin": "^5.0.1",
 		"gulp-iife": "^0.4.0",
 		"gulp-jshint": "^2.1.0",
@@ -63,7 +63,7 @@
 		"node.extend": "^2.0.2",
 		"phantomjs-prebuilt": "^2.1.16",
 		"protractor": "^5.4.2",
-		"webdriver-manager": "^12.1.5",
+		"webdriver-manager": "^12.1.7",
 		"yargs": "^13.2.4"
 	}
 }
