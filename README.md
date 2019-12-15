@@ -23,7 +23,7 @@ A simple shell script designed to run on [AsusWRT-Merlin](https://asuswrt.lostre
 	- `cd /mnt/<mounted_name>/`
 	- `mkdir bwmon`
 	- `cd bwmon`
-	- `wget https://github.com/VREMSoftwareDevelopment/bwmon/releases/download/v2.5.0-Merlin/bwmon.tar.gz`
+	- `wget https://github.com/VREMSoftwareDevelopment/bwmon/releases/download/v2.5.1/bwmon.tar.gz`
 	- `tar -xzvf bwmon.tar.gz`
 	- `chmod +x install.sh`
 	- `./install.sh`
