@@ -8,10 +8,12 @@ jobs:
       - name: install node
         uses: actions/setup-node@v1
         with:
-          node-version: '12.x'
+          node-version: '10.x'
       - name: install gulp
         run: npm install --global gulp-cli
       - name: install dependencies
         run: npm install --save-dev
       - name: list dependencies
         run: npm list
+      - name: run tests
+        run: npm test
