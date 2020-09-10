@@ -15,5 +15,5 @@ jobs:
         run: npm install --save-dev
       - name: list dependencies
         run: npm list
-      - name: run tests
-        run: gulp test
+      - name: build
+        run: gulp build
