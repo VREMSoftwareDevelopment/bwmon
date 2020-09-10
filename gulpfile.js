@@ -42,8 +42,8 @@ var gulp = require('gulp'),
 				cmpdir+'/angular-route/angular-route.min.js',
 				cmpdir+'/angular-ui-bootstrap/dist/ui-bootstrap-tpls.js',
 				cmpdir+'/angular-utils-pagination/dirPagination.js',
-				cmpdir+'/underscore/underscore-min.js',
-				cmpdir+'/moment/min/moment.min.js',
+				cmpdir+'/lodash/lodash.min.js',
+				cmpdir+'/moment/moment.min.js',
 				cmpdir+'/d3/d3.min.js',
 				cmpdir+'/n3-charts/build/LineChart.min.js'
 			],
@@ -155,6 +155,7 @@ gulp.task('devhtml', ['devhtml:clean'], function() {
 		.pipe(gulp.dest(files.html.dev.dest));
 });
 
+// breaks angular injection in min form
 gulp.task('pagination', function() {
 	var src = cmpdir+'/angularUtils-pagination/dirPagination.js';
 	log("   ["+src+"]");
@@ -165,7 +166,28 @@ gulp.task('pagination', function() {
 		.pipe(gulp.dest(cmpdir+'/angularUtils-pagination'));
 });
 
-gulp.task('jshint', ['pagination'], function() {
+gulp.task('moment', function() {
+	var src = cmpdir+'/moment/moment.js';
+	log("   ["+src+"]");
+	return gulp
+		.src(src)
+		.pipe(plugins.rename('moment.min.js'))
+		.pipe(plugins.uglify())
+		.pipe(gulp.dest(cmpdir+'/moment'));
+});
+
+// breaks angular injection in min form
+gulp.task('ui-bootstrap', function() {
+	var src = cmpdir+'/angular-ui-bootstrap/dist/ui-bootstrap-tpls.js';
+	log("   ["+src+"]");
+	return gulp
+		.src(src)
+		.pipe(plugins.rename('ui-bootstrap-tpls.min.js'))
+		.pipe(plugins.uglify())
+		.pipe(gulp.dest(cmpdir+'/angular-ui-bootstrap/dist'));
+});
+
+gulp.task('jshint', ['pagination', 'moment', 'ui-bootstrap'], function() {
 	var src = [].concat(files.js.src, files.e2e.src, '!'+srcdir+'/**'+files.templates.name, '!'+srcdir+'/**/'+dataname);
 	log("   ["+src+"]");
 	return gulp

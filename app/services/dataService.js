@@ -50,28 +50,28 @@ angular.module('BWMonApp.DataService', [])
 			};
 		},
 		_getMonths = function(year) {
-			var result = _.where(_data, {year: year});
-			result = _.uniq(result, function(item){
+			var result = _.filter(_data, {year: year});
+			result = _.uniqBy(result, function(item){
 				return item.month;
 			});
-			result = _.pluck(result, 'month');
+			result = _.map(result, 'month');
 			return result;
 		},
 		_getYears = function() {
-			var result = _.uniq(_data, function(item){
+			var result = _.uniqBy(_data, function(item){
 				return item.year;
 			});
-			result = _.pluck(result, 'year');
+			result = _.map(result, 'year');
 			return result;
 		},
 		_getUsageByYear = function(year) {
 			var days = moment([year, 11, 31]).dayOfYear(),
-				usage = _.where(_data, {year: year});
+				usage = _.filter(_data, {year: year});
 
 			return _sum(usage, days, year);
 		},
 		_getUsageByUser = function(year, month, filter) {
-			var usage = _.where(_data, {year: year, month: month}),
+			var usage = _.filter(_data, {year: year, month: month}),
 				days = moment([year, month]).daysInMonth(),
 				total = _sum(usage, days, month);
 
@@ -83,7 +83,7 @@ angular.module('BWMonApp.DataService', [])
 						entry.user.toLowerCase().indexOf(filterLowerCase) !== -1;
 				});
 			}
-			_.each(usage, function(value, index) {
+			_.forEach(usage, function(value, index) {
 				value.percent = +(value.total * 100/total.total).toFixed(1);
 			});
 
