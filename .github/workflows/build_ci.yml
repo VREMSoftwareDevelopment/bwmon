@@ -5,9 +5,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Use Node.js
+      - name: install node
         uses: actions/setup-node@v1
         with:
           node-version: '12.x'
-      - name: Install dependencies
+      - name: node version
+        run: node --version
+      - name: npm version
+        run: npm --version
+      - name: install gulp
+        run: npm install --global gulp-cli@3.9.1
+      - name: gulp version
+        run: gulp --version
+      - name: install dependencies
         run: npm install
