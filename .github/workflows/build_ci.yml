@@ -14,8 +14,8 @@ jobs:
       - name: npm version
         run: npm --version
       - name: install gulp
-        run: npm install --global gulp-cli@3.9.1
-      - name: gulp version
-        run: gulp --version
+        run: npm install --global gulp-cli
       - name: install dependencies
         run: npm install
+      - name: gulp version
+        run: gulp --version
