@@ -16,4 +16,4 @@ jobs:
       - name: list dependencies
         run: npm list
       - name: run tests
-        run: npm test
+        run: gulp test
