@@ -13,5 +13,5 @@ jobs:
         run: npm install --global gulp-cli
       - name: install dependencies
         run: npm install --save-dev
-      - name: build
-        run: gulp build
+      - name: run tests
+        run: gulp test
