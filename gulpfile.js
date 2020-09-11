@@ -22,7 +22,15 @@ var gulp = require('gulp'),
 	del = require('del'),
 	log = require('fancy-log'),
 	argv = require('yargs').argv,
-	banner = 'window.VERSION="<%=pkg.version%>";\n/*\n\t<%=pkg.name%> v<%=pkg.version%>\n\t(C) 2010 - 2018 VREM Software Development\n\t<%= pkg.homepage %>\n\tLicense: <%=pkg.license%>\n*/\n',
+	banner = [
+		'window.VERSION="<%=pkg.version%>";',
+		'/*',
+		' * <%=pkg.name%> v<%=pkg.version%>',
+		' * (C) 2010 - 2020 VREM Software Development',
+		' * <%= pkg.homepage %>',
+		' * License: <%=pkg.license%>',
+		' */']
+		.join('\n'),
 	srcdir = 'app',
 	dstdir = 'dist',
 	cmpdir = 'node_modules',
@@ -43,7 +51,7 @@ var gulp = require('gulp'),
 				cmpdir+'/angular-ui-bootstrap/dist/ui-bootstrap-tpls.js',
 				cmpdir+'/angular-utils-pagination/dirPagination.js',
 				cmpdir+'/lodash/lodash.min.js',
-				cmpdir+'/moment/moment.min.js',
+				cmpdir+'/moment/moment.js',
 				cmpdir+'/d3/d3.min.js',
 				cmpdir+'/n3-charts/build/LineChart.min.js'
 			],
@@ -155,39 +163,34 @@ gulp.task('devhtml', ['devhtml:clean'], function() {
 		.pipe(gulp.dest(files.html.dev.dest));
 });
 
-// breaks angular injection in min form
-gulp.task('pagination', function() {
-	var src = cmpdir+'/angularUtils-pagination/dirPagination.js';
-	log("   ["+src+"]");
-	return gulp
-		.src(src)
-		.pipe(plugins.rename('dirPagination.min.js'))
-		.pipe(plugins.uglify())
-		.pipe(gulp.dest(cmpdir+'/angularUtils-pagination'));
-});
-
 gulp.task('moment', function() {
 	var src = cmpdir+'/moment/moment.js';
 	log("   ["+src+"]");
 	return gulp
-		.src(src)
-		.pipe(plugins.rename('moment.min.js'))
-		.pipe(plugins.uglify())
-		.pipe(gulp.dest(cmpdir+'/moment'));
+	.src(src)
+	.pipe(plugins.minify())
+	.pipe(gulp.dest(cmpdir+'/moment'));
 });
 
-// breaks angular injection in min form
+gulp.task('pagination', function() {
+	var src = cmpdir+'/angular-utils-pagination/dirPagination.js';
+	log("   ["+src+"]");
+	return gulp
+		.src(src)
+		.pipe(plugins.minify())
+		.pipe(gulp.dest(cmpdir+'/angular-utils-pagination'));
+});
+
 gulp.task('ui-bootstrap', function() {
 	var src = cmpdir+'/angular-ui-bootstrap/dist/ui-bootstrap-tpls.js';
 	log("   ["+src+"]");
 	return gulp
 		.src(src)
-		.pipe(plugins.rename('ui-bootstrap-tpls.min.js'))
-		.pipe(plugins.uglify())
+		.pipe(plugins.minify())
 		.pipe(gulp.dest(cmpdir+'/angular-ui-bootstrap/dist'));
 });
 
-gulp.task('jshint', ['pagination', 'moment', 'ui-bootstrap'], function() {
+gulp.task('jshint', ['moment', 'pagination', 'ui-bootstrap'], function() {
 	var src = [].concat(files.js.src, files.e2e.src, '!'+srcdir+'/**'+files.templates.name, '!'+srcdir+'/**/'+dataname);
 	log("   ["+src+"]");
 	return gulp

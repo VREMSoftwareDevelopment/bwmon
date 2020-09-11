@@ -51,5 +51,7 @@ A simple shell script designed to run on [AsusWRT-Merlin](https://asuswrt.lostre
 - `gulp coverage` - creates unit test coverage report in `/logs/PhantomJS...`
 - `gulp devwebserver` - runs a server using development ready application with sample data on `http://localhost:8080/app`
 
+[![Workflow Status](https://github.com/VREMSoftwareDevelopment/bwmon/workflows/Build%20CI/badge.svg)](https://github.com/VREMSoftwareDevelopment/bwmon/actions?query=workflow%3A%22Build+CI%22)
+
 [See code coverage](https://vremsoftwaredevelopment.github.io/bwmon/coverage)
 
