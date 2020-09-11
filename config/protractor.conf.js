@@ -2,6 +2,13 @@
 
 exports.config = {
 	specs: ['../e2e/**/*.Test.js'],
+	capabilities: {
+		'browserName': 'firefox',
+		'moz:firefoxOptions': {
+			args: [ '--headless' ]
+		}
+	},
+/*	
 	multiCapabilities: [{
 		'browserName': 'firefox',
 		'moz:firefoxOptions': {
@@ -13,13 +20,6 @@ exports.config = {
 			args: ["--headless", "--disable-gpu", "--window-size=800x600"]
 		}
 	}],
-/*	
-	capabilities: {
-		'browserName': 'firefox',
-		'moz:firefoxOptions': {
-			args: [ '--headless' ]
-		}
-	},
 	capabilities: {
 		'browserName': 'chrome',
 		chromeOptions: {
