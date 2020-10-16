@@ -23,8 +23,6 @@ const useUsageByMonth = () => {
         if (year) {
             fetch();
         }
-        setLoading(true);
-        setError(null);
     }, [year]);
 
     return { years, year, setYear, data, loading, error };

@@ -6,6 +6,8 @@ const useYearMonth = () => {
     const { years, year, setYear } = useYear();
     const [months, setMonths] = useState();
     const [month, setMonth] = useState();
+    const [error, setError] = useState();
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         async function fetch() {
@@ -13,16 +15,21 @@ const useYearMonth = () => {
                 const months = await API.getMonths(year);
                 setMonths(months);
                 setMonth(months[0]);
+                setLoading(false);
+                setError(null);
             } catch (e) {
-                console.log(e.message);
+                setLoading(false);
+                setError(e.message);
             }
         }
         if (year) {
+            setLoading(true);
+            setError(null);
             fetch();
         }
     }, [year]);
 
-    return { years, year, setYear, months, month, setMonth };
+    return { years, year, setYear, months, month, setMonth, loading, error };
 };
 
 export default useYearMonth;

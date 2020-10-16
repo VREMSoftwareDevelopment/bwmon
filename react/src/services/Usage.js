@@ -23,8 +23,7 @@ class Usage {
             const result = await response.text();
             return process(result);
         } catch (e) {
-            console.error('Error! Can NOT load file: ' + filename + ' | ' + e.message);
-            return [];
+            throw new Error('Error! Can NOT load file: ' + filename + ' | ' + e.message);
         }
     };
 }

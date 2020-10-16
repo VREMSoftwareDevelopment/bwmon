@@ -18,8 +18,6 @@ const useUsageByYear = () => {
                 setError(e.message);
             }
         }
-        setLoading(true);
-        setError(null);
         fetch();
     }, []);
 

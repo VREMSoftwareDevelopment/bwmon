@@ -24,8 +24,6 @@ const useUsageByUser = () => {
         if (year && month) {
             fetch();
         }
-        setLoading(true);
-        setError(null);
     }, [year, month, filter]);
 
     return { years, year, setYear, months, month, setMonth, filter, setFilter, data, loading, error };
