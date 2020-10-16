@@ -1,0 +1,32 @@
+name: Build CI
+on:
+    push:
+        branches: [react]
+    pull_request:
+        branches: [react]
+defaults:
+    run:
+        working-directory: react
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        strategy:
+            matrix:
+                node-version: [12.x]
+        steps:
+            - uses: actions/checkout@v2
+            - name: Use Node.js ${{ matrix.node-version }}
+              uses: actions/setup-node@v1
+              with:
+                  node-version: ${{ matrix.node-version }}
+            - name: Install dependencies
+              run: npm install
+            - name: Start server and run all tests with coverage
+              run: npm start & sleep 60; npm run coverage
+#            - name: Build & Deploy
+#              run: |
+#                  git remote set-url origin https://${github_token}@github.com/${repository}/
+#                  npm run deploy
+#              env:
+#                  github_token: ${{ secrets.ACTIONS_DEPLOY_ACCESS_TOKEN }}
+#                  repository: ${{ github.repository }}

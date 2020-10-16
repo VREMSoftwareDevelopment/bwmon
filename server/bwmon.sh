@@ -37,10 +37,10 @@ USERSFILE="/etc/hosts.dnsmasq"
 [ -f "${USERSFILE}" ] || USERSFILE="/dev/null"
 MACNAMESFILE=${2}/macnames
 USAGE_DB="bwmonUsage.db"
-USAGE_JS="bwmonUsage.js"
+OUTPUT_DB="usage.db"
 USAGEDB=${2}/${USAGE_DB}
-USAGEJS=${2}/${USAGE_JS}
-DESTJS=/opt/share/www/bwmon/${USAGE_JS}
+OUTPUTDB=${2}/${OUTPUT_DB}
+DESTDB=/opt/share/www/bwmon/${OUTPUT_DB}
 DESTLOG=/opt/var/log/bwmon.log
 
 log() {
@@ -66,25 +66,7 @@ unlock() {
 usage() {
 	#publish results
 	#header
-	echo "/*Bandwidth Usage Monitor Data*/" > ${USAGEJS}
-	echo "var bwmonData=function(){" > ${USAGEJS}
-	echo "'use strict';" >> ${USAGEJS}
-	echo "var i=0, data=[]," >> ${USAGEJS}
-	echo "Data=function(id,date,ip,mac,user,down,up,first,last){" >> ${USAGEJS}
-	echo "this.id=id;" >> ${USAGEJS}
-	echo "this.IP=ip;" >> ${USAGEJS}
-	echo "this.MAC=mac;" >> ${USAGEJS}
-	echo "this.user=user;" >> ${USAGEJS}
-	echo "this.download=down;" >> ${USAGEJS}
-	echo "this.upload=up;" >> ${USAGEJS}
-	echo "this.firstSeen=first;" >> ${USAGEJS}
-	echo "this.lastSeen=last;" >> ${USAGEJS}
-	echo "this.year=+(date.split('-')[0]);" >> ${USAGEJS}
-	echo "this.month=+(date.split('-')[1]-1);" >> ${USAGEJS}
-	echo "this.total=this.download + this.upload;" >> ${USAGEJS}
-	echo "this.days=Math.floor((Math.abs(this.lastSeen-this.firstSeen)/(60*60*24))+1);" >> ${USAGEJS}
-	echo "this.average=+(this.total/this.days).toFixed(3);" >> ${USAGEJS}
-	echo "};" >> ${USAGEJS}
+	echo "/*Bandwidth Usage Monitor Data*/" > ${OUTPUTDB}
 
 	#details
 	echo "$(echo ${MACNAMES/'macnames='/} | tr '<' '\n' | tr '>' ',')" > ${MACNAMESFILE}
@@ -97,11 +79,10 @@ usage() {
 			USER=$(grep "${MAC}" "${MACNAMESFILE}" | cut -f1 -s -d',' )
 			[ -z "$USER" ] && USER=${MAC}
 		fi
-		echo "data.push(new Data(i++,'${CURRENT_MONTH}','${IP}','${MACU}','${USER}',${USAGE_IN},${USAGE_OUT},${CREATE_TIME},${UPDATE_TIME}));" >> ${USAGEJS}
+		echo "${CURRENT_MONTH},${IP},${MACU},${USER},${USAGE_IN},${USAGE_OUT},${CREATE_TIME},${UPDATE_TIME}" >> ${OUTPUTDB}
 	done
 	#footer
-	echo "return data;};" >> ${USAGEJS}
-	mv -f ${USAGEJS} ${DESTJS}
+	mv -f ${OUTPUTDB} ${DESTDB}
 }
 
 update() {
@@ -176,14 +157,14 @@ case ${1} in
 	create
 	;;
 "update" )
-	log "INFO: Running update - ${USAGEDB} ${USAGEJS} ${USERSFILE}"
+	log "INFO: Running update - ${USAGEDB} ${OUTPUTDB} ${USERSFILE}"
 	lock
 	update
 	usage
 	unlock
 	;;
 "publish" )
-	log "INFO: Running publish - ${USAGEDB} ${USAGEJS} ${USERSFILE}"
+	log "INFO: Running publish - ${USAGEDB} ${OUTPUTDB} ${USERSFILE}"
 	lock
 	usage
 	unlock

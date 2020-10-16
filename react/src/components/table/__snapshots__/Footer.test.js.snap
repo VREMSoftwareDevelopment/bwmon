@@ -1,0 +1,50 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Footer renders correctly 1`] = `
+<thead
+  className="MuiTableHead-root"
+  role={null}
+>
+  <tr
+    className="MuiTableRow-root MuiTableRow-head"
+    id="test-footer"
+    role={null}
+  >
+    <th
+      aria-sort={null}
+      className="MuiTableCell-root MuiTableCell-head MuiTableCell-alignLeft"
+      scope="col"
+    >
+      Totals
+    </th>
+    <th
+      aria-sort={null}
+      className="MuiTableCell-root MuiTableCell-head MuiTableCell-alignLeft"
+      scope="col"
+    >
+      
+    </th>
+    <th
+      aria-sort={null}
+      className="MuiTableCell-root MuiTableCell-head MuiTableCell-alignRight"
+      scope="col"
+    >
+      12345
+    </th>
+    <th
+      aria-sort={null}
+      className="MuiTableCell-root MuiTableCell-head MuiTableCell-alignRight"
+      scope="col"
+    >
+      67890xyz
+    </th>
+    <th
+      aria-sort={null}
+      className="MuiTableCell-root MuiTableCell-head MuiTableCell-alignRight"
+      scope="col"
+    >
+      
+    </th>
+  </tr>
+</thead>
+`;

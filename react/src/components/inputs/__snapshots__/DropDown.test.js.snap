@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DropDown renders correctly with items 1`] = `
+<div
+  className="MuiInputBase-root MuiInput-root MuiInput-underline"
+  onClick={[Function]}
+>
+  <div
+    aria-haspopup="listbox"
+    aria-labelledby="12345"
+    className="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiInputBase-input MuiInput-input"
+    id="12345"
+    onBlur={[Function]}
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    onMouseDown={[Function]}
+    role="button"
+    tabIndex={0}
+  >
+    ZYXUW
+  </div>
+  <input
+    aria-hidden={true}
+    className="MuiSelect-nativeInput"
+    onAnimationStart={[Function]}
+    onChange={[Function]}
+    tabIndex={-1}
+    value="ZYXUW"
+  />
+  <svg
+    aria-hidden={true}
+    className="MuiSvgIcon-root MuiSelect-icon"
+    focusable="false"
+    viewBox="0 0 24 24"
+  >
+    <path
+      d="M7 10l5 5 5-5z"
+    />
+  </svg>
+</div>
+`;
+
+exports[`DropDown renders correctly with no items 1`] = `null`;
+
+exports[`DropDown renders correctly with no value 1`] = `null`;

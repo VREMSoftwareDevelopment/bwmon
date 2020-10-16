@@ -1,0 +1,9 @@
+{
+    "folders": [],
+    "settings": {},
+    "editor.formatOnSave": true,
+    "prettier.printWidth": 140,
+    "prettier.tabWidth": 4,
+    "prettier.singleQuote": true,
+    "git.ignoreLimitWarning": true
+}
