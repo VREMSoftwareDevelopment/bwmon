@@ -17,7 +17,7 @@ exports[`Header renders correctly 1`] = `
       className="MuiTypography-root MuiTypography-body1"
       id="app-version"
     >
-      3.0.0-BETA
+      3.0.0
     </p>
   </div>
 </header>
