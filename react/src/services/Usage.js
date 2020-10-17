@@ -15,16 +15,12 @@ const process = (response) =>
 class Usage {
     request = async (basepath) => {
         const filename = basepath + '/usage.db';
-        try {
-            const response = await fetch(filename);
-            if (!response.ok) {
-                throw new Error(response.status + ' ' + response.statusText);
-            }
-            const result = await response.text();
-            return process(result);
-        } catch (e) {
-            throw new Error('Error! Can NOT load file: ' + filename + ' | ' + e.message);
+        const response = await fetch(filename);
+        if (!response.ok) {
+            throw new Error(response.status + ' ' + response.statusText);
         }
+        const result = await response.text();
+        return process(result);
     };
 }
 

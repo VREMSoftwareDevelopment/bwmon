@@ -6,7 +6,6 @@ import DropDown from '../../components/inputs/DropDown';
 import Search from '../../components/inputs/Search';
 import useUsageByUserGraph from '../../hooks/byuser/UseUsageByUserGraph';
 import Loading from '../../components/loading/Loading';
-import Error from '../../components/messages/Error';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -18,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
 const UsageByUserGraph = () => {
     const classes = useStyles();
 
-    const { options, series, years, year, setYear, months, month, setMonth, setFilter, loading, error } = useUsageByUserGraph();
+    const { options, series, years, year, setYear, months, month, setMonth, setFilter, loading } = useUsageByUserGraph();
 
     const handleChangeYear = (event) => setYear(event.target.value);
 
@@ -45,7 +44,6 @@ const UsageByUserGraph = () => {
 
     return (
         <Paper>
-            <Error message={error} />
             <Loading isLoading={loading} />
             {filters()}
             <Chart options={options} series={series} type="bar" height={500} />

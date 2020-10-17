@@ -10,7 +10,6 @@ import useUsageByYear from '../../hooks/byyear/UseUsageByYear';
 import useSort from '../../hooks/common/UseSort';
 import usePagination from '../../hooks/common/UsePagination';
 import Loading from '../../components/loading/Loading';
-import Error from '../../components/messages/Error';
 
 const cellInfos = [
     new CellInfo('id', true, 'left', 'Year', false),
@@ -24,7 +23,7 @@ const cellInfos = [
 const rowsPerPageMin = 12;
 
 const UsageByYear = () => {
-    const { data, loading, error } = useUsageByYear();
+    const { data, loading } = useUsageByYear();
     const { page, setPage, rowsPerPage, setRowsPerPage } = usePagination(rowsPerPageMin);
     const { ascending, setAscending, orderBy, setOrderBy } = useSort(false, cellInfos[0].id);
 
@@ -60,7 +59,6 @@ const UsageByYear = () => {
 
     return (
         <Paper>
-            <Error message={error} />
             <Loading isLoading={loading} />
             <TableContainer>
                 <Table stickyHeader size="small">

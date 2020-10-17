@@ -14,8 +14,6 @@ describe('UseYear', () => {
         expect(result.current.years.length).toEqual(expectedYears.length);
         expect(result.current.years).toEqual(expectedYears);
         expect(result.current.year).toEqual(expectedYears[0]);
-        expect(result.current.loading).toBeFalsy();
-        expect(result.current.error).toBeNull();
     });
 
     test('changing year should change year', async () => {

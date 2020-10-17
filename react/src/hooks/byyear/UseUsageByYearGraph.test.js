@@ -31,6 +31,5 @@ describe('UseUsageByYearGraph', () => {
         expect(result.current.options).toEqual(expectedOptions);
         expect(result.current.series).toEqual(expectedSeries);
         expect(result.current.loading).toBeFalsy();
-        expect(result.current.error).toBeNull();
     });
 });

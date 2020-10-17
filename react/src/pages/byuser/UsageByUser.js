@@ -13,7 +13,6 @@ import useUsageByUser from '../../hooks/byuser/UseUsageByUser';
 import useSort from '../../hooks/common/UseSort';
 import usePagination from '../../hooks/common/UsePagination';
 import Loading from '../../components/loading/Loading';
-import Error from '../../components/messages/Error';
 
 const cellInfos = [
     new CellInfo('IP', true, 'left', 'IP', false),
@@ -32,7 +31,7 @@ const cellInfos = [
 const rowsPerPageMin = 12;
 
 const UsageByUser = () => {
-    const { years, year, setYear, months, month, setMonth, filter, setFilter, data, loading, error } = useUsageByUser();
+    const { years, year, setYear, months, month, setMonth, filter, setFilter, data, loading } = useUsageByUser();
     const { page, setPage, rowsPerPage, setRowsPerPage } = usePagination(rowsPerPageMin);
     const { ascending, setAscending, orderBy, setOrderBy } = useSort(true, cellInfos[0].id);
 
@@ -87,7 +86,6 @@ const UsageByUser = () => {
 
     return (
         <Paper>
-            <Error message={error} />
             <Loading isLoading={loading} />
             <TableContainer>
                 <Table stickyHeader size="small">

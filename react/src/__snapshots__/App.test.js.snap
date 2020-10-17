@@ -270,7 +270,7 @@ Array [
     className="MuiPaper-root MuiPaper-elevation1 MuiPaper-rounded"
   >
     <div
-      className="makeStyles-root-3"
+      className="makeStyles-root-2"
     >
       <div
         className="MuiLinearProgress-root MuiLinearProgress-colorPrimary MuiLinearProgress-indeterminate"
@@ -286,7 +286,7 @@ Array [
         />
       </div>
       <div
-        className="makeStyles-root-2"
+        className="makeStyles-root-3"
       >
         <div
           className="MuiPaper-root MuiAlert-root MuiAlert-standardInfo MuiPaper-elevation0"

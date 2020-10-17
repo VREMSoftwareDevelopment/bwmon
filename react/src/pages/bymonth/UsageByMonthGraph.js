@@ -4,16 +4,14 @@ import Chart from 'react-apexcharts';
 import DropDown from '../../components/inputs/DropDown';
 import useUsageByMonthGraph from '../../hooks/bymonth/UseUsageByMonthGraph';
 import Loading from '../../components/loading/Loading';
-import Error from '../../components/messages/Error';
 
 const UsageByMonthGraph = () => {
-    const { options, series, years, year, setYear, loading, error } = useUsageByMonthGraph();
+    const { options, series, years, year, setYear, loading } = useUsageByMonthGraph();
 
     const handleChangeYear = (event) => setYear(event.target.value);
 
     return (
         <Paper>
-            <Error message={error} />
             <Loading isLoading={loading} />
             <FormControl>
                 <DropDown id="month-year-graph" onChange={handleChangeYear} items={years} value={year} />

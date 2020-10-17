@@ -3,7 +3,7 @@ import { toMonth, usageInGBytes } from '../../utils/ConversionUtils';
 import useUsageByMonth from './UseUsageByMonth';
 
 const useUsageByMonthGraph = () => {
-    const { years, year, setYear, data, loading, error } = useUsageByMonth();
+    const { years, year, setYear, data, loading } = useUsageByMonth();
     const [options, setOptions] = useState({});
     const [series, setSeries] = useState([]);
 
@@ -30,7 +30,7 @@ const useUsageByMonthGraph = () => {
         }
     }, [data]);
 
-    return { options, series, years, year, setYear, loading, error };
+    return { options, series, years, year, setYear, loading };
 };
 
 export default useUsageByMonthGraph;

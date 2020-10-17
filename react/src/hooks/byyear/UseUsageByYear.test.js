@@ -30,6 +30,5 @@ describe('UseUsageByYear', () => {
         expect(result.current.data[0]).toEqual(expectedFirst);
         expect(result.current.data[expectedCount - 1]).toEqual(expectedLast);
         expect(result.current.loading).toBeFalsy();
-        expect(result.current.error).toBeNull();
     });
 });

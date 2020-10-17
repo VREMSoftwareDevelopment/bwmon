@@ -5,27 +5,20 @@ import useYear from '../common/UseYear';
 const useUsageByMonth = () => {
     const { years, year, setYear } = useYear();
     const [data, setData] = useState({ usage: [], total: [] });
-    const [error, setError] = useState();
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         async function fetch() {
-            try {
-                const usageByMonth = await API.getUsageByMonth(year);
-                setData(usageByMonth);
-                setLoading(false);
-                setError(null);
-            } catch (e) {
-                setLoading(false);
-                setError(e.message);
-            }
+            const usageByMonth = await API.getUsageByMonth(year);
+            setData(usageByMonth);
+            setLoading(false);
         }
         if (year) {
             fetch();
         }
     }, [year]);
 
-    return { years, year, setYear, data, loading, error };
+    return { years, year, setYear, data, loading };
 };
 
 export default useUsageByMonth;

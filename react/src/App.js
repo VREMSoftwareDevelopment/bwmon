@@ -7,6 +7,7 @@ import Header from './components/main/Header';
 import Footer from './components/main/Footer';
 import Navigation from './components/navigation/Navigation';
 import Routes from './components/navigation/Routes';
+import ErrorBoundary from './components/error/ErrorBoundary';
 import menu from './menu/Menu';
 
 import { createBrowserHistory } from 'history';
@@ -23,8 +24,10 @@ const App = () => (
             <CssBaseline />
             <Header />
             <Navigation menu={menu} />
-            <Routes menu={menu} />
-            <Footer />
+            <ErrorBoundary>
+                <Routes menu={menu} />
+                <Footer />
+            </ErrorBoundary>
         </ThemeProvider>
     </BrowserRouter>
 );

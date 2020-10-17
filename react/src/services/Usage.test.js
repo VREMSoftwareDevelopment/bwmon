@@ -64,17 +64,6 @@ describe('Usage', () => {
         expect(fetch).toHaveBeenCalledWith('xyz/usage.db');
     });
 
-    test('should return error when exception', async () => {
-        fetch.mockReject(() => new Promise(new Error('API is down')));
-
-        try {
-            await usage.request('xyz');
-            expect(true).toBe(false);
-        } catch (e) {
-            expect(e.message).toEqual('Error! Can NOT load file: xyz/usage.db | Promise resolver Error: API is down is not a function');
-        }
-    });
-
     test('should return error when status is not OK', async () => {
         fetch.mockResponseOnce('', { status: 400, statusText: 'Bad request' });
 
@@ -82,7 +71,7 @@ describe('Usage', () => {
             await usage.request('xyz');
             expect(true).toBe(false);
         } catch (e) {
-            expect(e.message).toEqual('Error! Can NOT load file: xyz/usage.db | 400 Bad request');
+            expect(e.message).toEqual('400 Bad request');
         }
     });
 });

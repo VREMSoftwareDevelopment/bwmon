@@ -54,7 +54,6 @@ describe('UseUsageByMonth', () => {
         expect(result.current.data.usage[0]).toEqual(expectedFirst);
         expect(result.current.data.usage[expectedCount - 1]).toEqual(expectedLast);
         expect(result.current.loading).toBeFalsy();
-        expect(result.current.error).toBeNull();
     });
 
     test('changing year should change year', async () => {

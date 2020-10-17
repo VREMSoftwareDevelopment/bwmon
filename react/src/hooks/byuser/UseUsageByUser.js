@@ -6,27 +6,20 @@ const useUsageByUser = () => {
     const { years, year, setYear, months, month, setMonth } = useYearMonth();
     const [filter, setFilter] = useState('');
     const [data, setData] = useState({ usage: [], total: [] });
-    const [error, setError] = useState();
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         async function fetch() {
-            try {
-                const usageByUser = await API.getUsageByUser(year, month, filter);
-                setData(usageByUser);
-                setLoading(false);
-                setError(null);
-            } catch (e) {
-                setLoading(false);
-                setError(e.message);
-            }
+            const usageByUser = await API.getUsageByUser(year, month, filter);
+            setData(usageByUser);
+            setLoading(false);
         }
         if (year && month) {
             fetch();
         }
     }, [year, month, filter]);
 
-    return { years, year, setYear, months, month, setMonth, filter, setFilter, data, loading, error };
+    return { years, year, setYear, months, month, setMonth, filter, setFilter, data, loading };
 };
 
 export default useUsageByUser;

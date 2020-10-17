@@ -10,7 +10,6 @@ import { comparator, sort } from '../../utils/SortUtils';
 import useUsageByMonth from '../../hooks/bymonth/UseUsageByMonth';
 import useSort from '../../hooks/common/UseSort';
 import Loading from '../../components/loading/Loading';
-import Error from '../../components/messages/Error';
 
 const cellInfos = [
     new CellInfo('id', true, 'left', 'Month', false, toMonth),
@@ -23,7 +22,7 @@ const cellInfos = [
 ];
 
 const UsageByMonth = () => {
-    const { years, year, setYear, data, loading, error } = useUsageByMonth();
+    const { years, year, setYear, data, loading } = useUsageByMonth();
     const { ascending, setAscending, orderBy, setOrderBy } = useSort(false, cellInfos[0].id);
 
     const handleChangeYear = (event) => setYear(event.target.value);
@@ -47,7 +46,6 @@ const UsageByMonth = () => {
 
     return (
         <Paper>
-            <Error message={error} />
             <Loading isLoading={loading} />
             <TableContainer>
                 <Table stickyHeader size="small">

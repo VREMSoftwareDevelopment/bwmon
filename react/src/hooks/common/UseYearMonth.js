@@ -6,30 +6,19 @@ const useYearMonth = () => {
     const { years, year, setYear } = useYear();
     const [months, setMonths] = useState();
     const [month, setMonth] = useState();
-    const [error, setError] = useState();
-    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         async function fetch() {
-            try {
-                const months = await API.getMonths(year);
-                setMonths(months);
-                setMonth(months[0]);
-                setLoading(false);
-                setError(null);
-            } catch (e) {
-                setLoading(false);
-                setError(e.message);
-            }
+            const months = await API.getMonths(year);
+            setMonths(months);
+            setMonth(months[0]);
         }
         if (year) {
-            setLoading(true);
-            setError(null);
             fetch();
         }
     }, [year]);
 
-    return { years, year, setYear, months, month, setMonth, loading, error };
+    return { years, year, setYear, months, month, setMonth };
 };
 
 export default useYearMonth;
