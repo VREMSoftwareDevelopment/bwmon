@@ -60,13 +60,15 @@ const rowsPerPageOptions = (rowsPerPage, count) => {
 
 const Pagination = (props) => {
     const options = rowsPerPageOptions(Math.min(props.minimum, props.count), props.count);
+    const selectProps = {
+        inputProps: { 'aria-label': 'rows per page' },
+        native: true,
+        id: 'select-rows-per-page-id',
+        labelId: 'select-label-rows-per-page-id',
+    };
+
     return (
-        <TablePagination
-            {...props}
-            rowsPerPageOptions={options}
-            SelectProps={{ inputProps: { 'aria-label': 'rows per page' }, native: true }}
-            ActionsComponent={Actions}
-        />
+        <TablePagination {...props} labelRowsPerPage="" SelectProps={selectProps} rowsPerPageOptions={options} ActionsComponent={Actions} />
     );
 };
 

@@ -1,8 +1,6 @@
 import React from 'react';
-import { create } from 'react-test-renderer';
 import UsageByYearGraph from './UsageByYearGraph';
-
-jest.mock('../../services/Usage');
+import { create } from 'react-test-renderer';
 
 describe('UsageByYearGraph', () => {
     test('renders correctly', () => {

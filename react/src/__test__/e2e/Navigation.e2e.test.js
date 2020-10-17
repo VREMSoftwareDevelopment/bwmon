@@ -1,4 +1,4 @@
-import { HOME_URL, TIMEOUT, launch, materialSelect } from './e2e-config';
+import { HOME_URL, TIMEOUT, launch } from './e2e-config';
 
 describe('Navigation e2e', () => {
     let browser;

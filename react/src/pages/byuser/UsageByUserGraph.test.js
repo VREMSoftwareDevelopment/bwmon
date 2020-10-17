@@ -1,6 +1,6 @@
 import React from 'react';
-import { create } from 'react-test-renderer';
 import UsageByUserGraph from './UsageByUserGraph';
+import { create } from 'react-test-renderer';
 
 jest.mock('../../services/Usage');
 

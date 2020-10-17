@@ -77,7 +77,7 @@
             "src/**/*.{js,jsx}",
             "!src/index.js",
             "!src/serviceWorker.js",
-            "!src/__test__/*",
+            "!**/__test__/*",
             "!**/__snapshots__/*",
             "!**/__mocks__/*"
         ]
