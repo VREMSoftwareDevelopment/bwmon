@@ -39,34 +39,35 @@ const UsageByYear = () => {
         setOrderBy(property);
     };
 
-    const values = () => sort(data, comparator(ascending, orderBy)).slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage);
-
-    const filters = () => (
-        <TableHead>
-            <TableRow>
-                <Pagination
-                    colSpan={cellInfos.length}
-                    count={data.length}
-                    minimum={rowsPerPageMin}
-                    rowsPerPage={rowsPerPage}
-                    page={page}
-                    onChangePage={handleChangePage}
-                    onChangeRowsPerPage={handleChangeRowsPerPage}
+    const displayData = () =>
+        data ? (
+            <Table stickyHeader size="small">
+                <TableHead>
+                    <TableRow>
+                        <Pagination
+                            colSpan={cellInfos.length}
+                            count={data.length}
+                            minimum={rowsPerPageMin}
+                            rowsPerPage={rowsPerPage}
+                            page={page}
+                            onChangePage={handleChangePage}
+                            onChangeRowsPerPage={handleChangeRowsPerPage}
+                        />
+                    </TableRow>
+                </TableHead>
+                <Header prefix="year" cellInfos={cellInfos} onRequestSort={handleRequestSort} ascending={ascending} orderBy={orderBy} />
+                <Body
+                    prefix="year"
+                    cellInfos={cellInfos}
+                    values={sort(data, comparator(ascending, orderBy)).slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)}
                 />
-            </TableRow>
-        </TableHead>
-    );
+            </Table>
+        ) : null;
 
     return (
         <Paper>
             <Loading isLoading={loading} />
-            <TableContainer>
-                <Table stickyHeader size="small">
-                    {filters()}
-                    <Header prefix="year" cellInfos={cellInfos} onRequestSort={handleRequestSort} ascending={ascending} orderBy={orderBy} />
-                    <Body prefix="year" cellInfos={cellInfos} values={values()} />
-                </Table>
-            </TableContainer>
+            <TableContainer>{displayData()}</TableContainer>
         </Paper>
     );
 };

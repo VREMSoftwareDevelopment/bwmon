@@ -5,7 +5,7 @@ import useYearMonth from '../common/UseYearMonth';
 const useUsageByUser = () => {
     const { years, year, setYear, months, month, setMonth } = useYearMonth();
     const [filter, setFilter] = useState('');
-    const [data, setData] = useState({ usage: [], total: [] });
+    const [data, setData] = useState();
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {

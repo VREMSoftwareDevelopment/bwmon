@@ -53,48 +53,49 @@ const UsageByUser = () => {
         setOrderBy(property);
     };
 
-    const values = () => sort(data.usage, comparator(ascending, orderBy)).slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage);
-
     useEffect(() => {
         setPage(0);
     }, [year, month, filter, setPage]);
 
-    const filters = () => (
-        <TableHead>
-            <TableRow>
-                <TableCell>
-                    <DropDown id="user-year" onChange={handleChangeYear} items={years} value={year} />
-                </TableCell>
-                <TableCell>
-                    <DropDown id="user-month" onChange={handleChangeMonth} items={months} value={month} />
-                </TableCell>
-                <TableCell colSpan={2}>
-                    <Search id="user-filter" onChange={handleChangeFilter} />
-                </TableCell>
-                <Pagination
-                    colSpan={cellInfos.length - 4}
-                    count={data.usage.length}
-                    minimum={rowsPerPageMin}
-                    rowsPerPage={rowsPerPage}
-                    page={page}
-                    onChangePage={handleChangePage}
-                    onChangeRowsPerPage={handleChangeRowsPerPage}
+    const displayData = () =>
+        data ? (
+            <Table stickyHeader size="small">
+                <TableHead>
+                    <TableRow>
+                        <TableCell>
+                            <DropDown id="user-year" onChange={handleChangeYear} items={years} value={year} />
+                        </TableCell>
+                        <TableCell>
+                            <DropDown id="user-month" onChange={handleChangeMonth} items={months} value={month} />
+                        </TableCell>
+                        <TableCell colSpan={2}>
+                            <Search id="user-filter" onChange={handleChangeFilter} />
+                        </TableCell>
+                        <Pagination
+                            colSpan={cellInfos.length - 4}
+                            count={data.usage.length}
+                            minimum={rowsPerPageMin}
+                            rowsPerPage={rowsPerPage}
+                            page={page}
+                            onChangePage={handleChangePage}
+                            onChangeRowsPerPage={handleChangeRowsPerPage}
+                        />
+                    </TableRow>
+                </TableHead>
+                <Header prefix="user" cellInfos={cellInfos} onRequestSort={handleRequestSort} ascending={ascending} orderBy={orderBy} />
+                <Body
+                    prefix="user"
+                    cellInfos={cellInfos}
+                    values={sort(data.usage, comparator(ascending, orderBy)).slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)}
                 />
-            </TableRow>
-        </TableHead>
-    );
+                <Footer prefix="user" cellInfos={cellInfos} values={data.total} />
+            </Table>
+        ) : null;
 
     return (
         <Paper>
             <Loading isLoading={loading} />
-            <TableContainer>
-                <Table stickyHeader size="small">
-                    {filters()}
-                    <Header prefix="user" cellInfos={cellInfos} onRequestSort={handleRequestSort} ascending={ascending} orderBy={orderBy} />
-                    <Body prefix="user" cellInfos={cellInfos} values={values()} />
-                    <Footer prefix="user" cellInfos={cellInfos} values={data.total} />
-                </Table>
-            </TableContainer>
+            <TableContainer>{displayData()}</TableContainer>
         </Paper>
     );
 };

@@ -32,35 +32,26 @@ const UsageByMonth = () => {
         setOrderBy(property);
     };
 
-    const values = () => sort(data.usage, comparator(ascending, orderBy));
-
-    const filters = () => (
-        <TableHead>
-            <TableRow>
-                <TableCell colSpan={cellInfos.length}>
-                    <DropDown id="month-year" onChange={handleChangeYear} items={years} value={year} />
-                </TableCell>
-            </TableRow>
-        </TableHead>
-    );
+    const displayData = () =>
+        data ? (
+            <Table stickyHeader size="small">
+                <TableHead>
+                    <TableRow>
+                        <TableCell colSpan={cellInfos.length}>
+                            <DropDown id="month-year" onChange={handleChangeYear} items={years} value={year} />
+                        </TableCell>
+                    </TableRow>
+                </TableHead>
+                <Header prefix="month" cellInfos={cellInfos} onRequestSort={handleRequestSort} ascending={ascending} orderBy={orderBy} />
+                <Body prefix="month" cellInfos={cellInfos} values={sort(data.usage, comparator(ascending, orderBy))} />
+                <Footer prefix="month" cellInfos={cellInfos} values={data.total} />
+            </Table>
+        ) : null;
 
     return (
         <Paper>
             <Loading isLoading={loading} />
-            <TableContainer>
-                <Table stickyHeader size="small">
-                    {filters()}
-                    <Header
-                        prefix="month"
-                        cellInfos={cellInfos}
-                        onRequestSort={handleRequestSort}
-                        ascending={ascending}
-                        orderBy={orderBy}
-                    />
-                    <Body prefix="month" cellInfos={cellInfos} values={values()} />
-                    <Footer prefix="month" cellInfos={cellInfos} values={data.total} />
-                </Table>
-            </TableContainer>
+            <TableContainer>{displayData()}</TableContainer>
         </Paper>
     );
 };

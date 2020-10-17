@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import API from '../../services/API';
 
 const useUsageByYear = () => {
-    const [data, setData] = useState([]);
+    const [data, setData] = useState();
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
