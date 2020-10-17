@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Error renders correctly with message 1`] = `
+exports[`Message renders correctly with message 1`] = `
 <div
   className="makeStyles-root-1"
 >
@@ -35,4 +35,4 @@ exports[`Error renders correctly with message 1`] = `
 </div>
 `;
 
-exports[`Error renders correctly with no message 1`] = `null`;
+exports[`Message renders correctly with no message 1`] = `null`;

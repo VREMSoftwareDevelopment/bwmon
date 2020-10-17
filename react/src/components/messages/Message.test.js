@@ -2,7 +2,7 @@ import React from 'react';
 import { create } from 'react-test-renderer';
 import Message from './Message';
 
-describe('Error', () => {
+describe('Message', () => {
     test('renders correctly with message', () => {
         const tree = create(<Message severity="success" message="message" />).toJSON();
         expect(tree).toMatchSnapshot();
