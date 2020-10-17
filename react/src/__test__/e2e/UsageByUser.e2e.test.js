@@ -185,7 +185,7 @@ describe('UsageByUser e2e', () => {
     test(
         'should show different information when rows per page',
         async () => {
-            const selector = '.MuiTablePagination-select';
+            const selector = '#select-rows-per-page-id';
             await page.waitForSelector(selector);
             await page.select(selector, '24');
             const tbodyElements = await page.evaluate(() =>
