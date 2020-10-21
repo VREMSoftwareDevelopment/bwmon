@@ -256,6 +256,11 @@ exports[`UsageByMonth renders correctly after data load 1`] = `
           className="MuiTableRow-root"
           id="month-data-0"
           role={null}
+          style={
+            Object {
+              "background": "white",
+            }
+          }
         >
           <td
             aria-sort={null}
@@ -304,6 +309,11 @@ exports[`UsageByMonth renders correctly after data load 1`] = `
           className="MuiTableRow-root"
           id="month-data-1"
           role={null}
+          style={
+            Object {
+              "background": "ghostwhite",
+            }
+          }
         >
           <td
             aria-sort={null}
@@ -352,6 +362,11 @@ exports[`UsageByMonth renders correctly after data load 1`] = `
           className="MuiTableRow-root"
           id="month-data-2"
           role={null}
+          style={
+            Object {
+              "background": "white",
+            }
+          }
         >
           <td
             aria-sort={null}
@@ -400,6 +415,11 @@ exports[`UsageByMonth renders correctly after data load 1`] = `
           className="MuiTableRow-root"
           id="month-data-3"
           role={null}
+          style={
+            Object {
+              "background": "ghostwhite",
+            }
+          }
         >
           <td
             aria-sort={null}
@@ -448,6 +468,11 @@ exports[`UsageByMonth renders correctly after data load 1`] = `
           className="MuiTableRow-root"
           id="month-data-4"
           role={null}
+          style={
+            Object {
+              "background": "white",
+            }
+          }
         >
           <td
             aria-sort={null}
@@ -496,6 +521,11 @@ exports[`UsageByMonth renders correctly after data load 1`] = `
           className="MuiTableRow-root"
           id="month-data-5"
           role={null}
+          style={
+            Object {
+              "background": "ghostwhite",
+            }
+          }
         >
           <td
             aria-sort={null}
@@ -544,6 +574,11 @@ exports[`UsageByMonth renders correctly after data load 1`] = `
           className="MuiTableRow-root"
           id="month-data-6"
           role={null}
+          style={
+            Object {
+              "background": "white",
+            }
+          }
         >
           <td
             aria-sort={null}
@@ -592,6 +627,11 @@ exports[`UsageByMonth renders correctly after data load 1`] = `
           className="MuiTableRow-root"
           id="month-data-7"
           role={null}
+          style={
+            Object {
+              "background": "ghostwhite",
+            }
+          }
         >
           <td
             aria-sort={null}
@@ -640,6 +680,11 @@ exports[`UsageByMonth renders correctly after data load 1`] = `
           className="MuiTableRow-root"
           id="month-data-8"
           role={null}
+          style={
+            Object {
+              "background": "white",
+            }
+          }
         >
           <td
             aria-sort={null}
@@ -688,6 +733,11 @@ exports[`UsageByMonth renders correctly after data load 1`] = `
           className="MuiTableRow-root"
           id="month-data-9"
           role={null}
+          style={
+            Object {
+              "background": "ghostwhite",
+            }
+          }
         >
           <td
             aria-sort={null}
@@ -736,6 +786,11 @@ exports[`UsageByMonth renders correctly after data load 1`] = `
           className="MuiTableRow-root"
           id="month-data-10"
           role={null}
+          style={
+            Object {
+              "background": "white",
+            }
+          }
         >
           <td
             aria-sort={null}

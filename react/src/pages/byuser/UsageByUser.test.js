@@ -11,8 +11,8 @@ describe('UsageByUser', () => {
         expect(tree).toMatchSnapshot();
     });
 
-    /*
     // current issue in Material UI Table Pagination label id
+    /*
     test('renders correctly after data load', async () => {
         let tree;
         act(() => {

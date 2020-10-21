@@ -9,6 +9,11 @@ exports[`Body renders correctly 1`] = `
     className="MuiTableRow-root"
     id="test-data-0"
     role={null}
+    style={
+      Object {
+        "background": "white",
+      }
+    }
   >
     <td
       aria-sort={null}
@@ -27,6 +32,11 @@ exports[`Body renders correctly 1`] = `
     className="MuiTableRow-root"
     id="test-data-1"
     role={null}
+    style={
+      Object {
+        "background": "ghostwhite",
+      }
+    }
   >
     <td
       aria-sort={null}
@@ -45,6 +55,11 @@ exports[`Body renders correctly 1`] = `
     className="MuiTableRow-root"
     id="test-data-2"
     role={null}
+    style={
+      Object {
+        "background": "white",
+      }
+    }
   >
     <td
       aria-sort={null}

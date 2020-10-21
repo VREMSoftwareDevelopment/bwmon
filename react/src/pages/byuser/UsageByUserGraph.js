@@ -10,7 +10,7 @@ import Loading from '../../components/loading/Loading';
 const useStyles = makeStyles((theme) => ({
     root: {
         flexGrow: 1,
-        margin: theme.spacing(1),
+        margin: theme.spacing(2),
     },
 }));
 

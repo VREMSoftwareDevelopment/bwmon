@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
+import { DateTime } from 'luxon';
 import theme from './theme';
 import { ThemeProvider } from '@material-ui/core/styles';
 import { CssBaseline } from '@material-ui/core';
@@ -18,7 +19,7 @@ export const history = createBrowserHistory({
     basename: basepath,
 });
 
-const App = () => (
+const App = ({ currentTime }) => (
     <BrowserRouter basename={basepath}>
         <ThemeProvider theme={theme}>
             <CssBaseline />
@@ -26,10 +27,14 @@ const App = () => (
             <Navigation menu={menu} />
             <ErrorBoundary>
                 <Routes menu={menu} />
-                <Footer />
+                <Footer currentTime={currentTime} />
             </ErrorBoundary>
         </ThemeProvider>
     </BrowserRouter>
 );
+
+App.defaultProps = {
+    currentTime: DateTime.local().toLocaleString(DateTime.DATETIME_FULL_WITH_SECONDS),
+};
 
 export default App;

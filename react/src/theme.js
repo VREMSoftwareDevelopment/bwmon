@@ -4,12 +4,12 @@ const theme = createMuiTheme({
     overrides: {
         MuiTableCell: {
             sizeSmall: {
-                padding: '8px 0px 8px 8px',
+                padding: '8px 0px 8px 16px',
             },
         },
         MuiFormControl: {
             root: {
-                margin: '8px 0px 8px 8px',
+                margin: '8px 0px 8px 16px',
             },
         },
         MuiGrid: {

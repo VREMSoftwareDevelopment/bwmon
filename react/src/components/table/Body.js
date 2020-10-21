@@ -6,7 +6,11 @@ import TableRow from '@material-ui/core/TableRow';
 const Body = ({ prefix, cellInfos, values }) => (
     <TableBody>
         {values.map((value, index) => (
-            <TableRow key={value.id} id={prefix + '-data-' + index}>
+            <TableRow
+                key={value.id}
+                id={prefix + '-data-' + index}
+                style={index % 2 ? { background: 'ghostwhite' } : { background: 'white' }}
+            >
                 {cellInfos.map((cellInfo) => {
                     return (
                         <TableCell key={cellInfo.id} align={cellInfo.align}>

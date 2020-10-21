@@ -365,6 +365,11 @@ exports[`UsageByYear renders correctly after data load 1`] = `
           className="MuiTableRow-root"
           id="year-data-0"
           role={null}
+          style={
+            Object {
+              "background": "white",
+            }
+          }
         >
           <td
             aria-sort={null}
@@ -407,6 +412,11 @@ exports[`UsageByYear renders correctly after data load 1`] = `
           className="MuiTableRow-root"
           id="year-data-1"
           role={null}
+          style={
+            Object {
+              "background": "ghostwhite",
+            }
+          }
         >
           <td
             aria-sort={null}
@@ -449,6 +459,11 @@ exports[`UsageByYear renders correctly after data load 1`] = `
           className="MuiTableRow-root"
           id="year-data-2"
           role={null}
+          style={
+            Object {
+              "background": "white",
+            }
+          }
         >
           <td
             aria-sort={null}

@@ -2,6 +2,8 @@
 
 A simple shell script designed to run on [AsusWRT-Merlin](https://asuswrt.lostrealm.ca) powered routers
 
+![Sample Usage by User Screenshot](https://github.com/VREMSoftwareDevelopment/bwmon/raw/master/screenshots/UsageByUserData.jpg 'Sample Usage by User Screenshot')
+
 [Try a demo version of this application](https://vremsoftwaredevelopment.github.io/bwmon/bwmon)
 
 ### Software Features:
@@ -24,7 +26,7 @@ A simple shell script designed to run on [AsusWRT-Merlin](https://asuswrt.lostre
     -   `cd /mnt/<mounted_name>/`
     -   `mkdir bwmon`
     -   `cd bwmon`
-    -   `wget https://github.com/VREMSoftwareDevelopment/bwmon/releases/download/v3.0.1/bwmon.tar.gz`
+    -   `wget https://github.com/VREMSoftwareDevelopment/bwmon/releases/download/v2.5.1/bwmon.tar.gz`
     -   `tar -xzvf bwmon.tar.gz`
     -   `chmod +x install.sh`
     -   `./install.sh`

@@ -1,9 +1,19 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Footer renders correctly 1`] = `
-<h6
-  className="MuiTypography-root makeStyles-footer-1 MuiTypography-subtitle2"
+<div
+  className="makeStyles-root-1"
 >
-  All usage information is in gigabytes
-</h6>
+  <h6
+    className="MuiTypography-root MuiTypography-subtitle2"
+  >
+    All usage information is in gigabytes
+  </h6>
+  <h6
+    className="MuiTypography-root MuiTypography-subtitle2"
+  >
+    This page was generated on 
+    October 20, 2020, 11:25:35 AM EDT
+  </h6>
+</div>
 `;

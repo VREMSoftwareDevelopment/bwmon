@@ -1,20 +1,22 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
+import { Typography } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
-    footer: {
-        margin: theme.spacing(1),
+    root: {
+        flexGrow: 1,
+        margin: theme.spacing(2),
     },
 }));
 
-const Footer = () => {
+const Footer = ({ currentTime }) => {
     const classes = useStyles();
 
     return (
-        <Typography variant="subtitle2" className={classes.footer}>
-            All usage information is in gigabytes
-        </Typography>
+        <div className={classes.root}>
+            <Typography variant="subtitle2">All usage information is in gigabytes</Typography>
+            <Typography variant="subtitle2">This page was generated on {currentTime}</Typography>
+        </div>
     );
 };
 

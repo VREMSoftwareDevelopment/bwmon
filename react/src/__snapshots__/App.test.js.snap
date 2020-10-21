@@ -322,10 +322,20 @@ Array [
       className="MuiTableContainer-root"
     />
   </div>,
-  <h6
-    className="MuiTypography-root makeStyles-footer-4 MuiTypography-subtitle2"
+  <div
+    className="makeStyles-root-4"
   >
-    All usage information is in gigabytes
-  </h6>,
+    <h6
+      className="MuiTypography-root MuiTypography-subtitle2"
+    >
+      All usage information is in gigabytes
+    </h6>
+    <h6
+      className="MuiTypography-root MuiTypography-subtitle2"
+    >
+      This page was generated on 
+      October 20, 2020, 11:25:35 AM EDT
+    </h6>
+  </div>,
 ]
 `;
