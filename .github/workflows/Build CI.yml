@@ -25,10 +25,3 @@ jobs:
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           file: ./react/coverage/coverage-final.json
-#            - name: Build & Deploy
-#              run: |
-#                  git remote set-url origin https://${github_token}@github.com/${repository}/
-#                  npm run deploy
-#              env:
-#                  github_token: ${{ secrets.ACTIONS_DEPLOY_ACCESS_TOKEN }}
-#                  repository: ${{ github.repository }}
