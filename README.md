@@ -48,4 +48,4 @@ A simple shell script designed to run on [AsusWRT-Merlin](https://asuswrt.lostre
 
 [![Workflow Status](https://github.com/VREMSoftwareDevelopment/bwmon/workflows/Build%20CI/badge.svg)](https://github.com/VREMSoftwareDevelopment/bwmon/actions?query=workflow%3A%22Build+CI%22)
 
-[![codecov](https://codecov.io/gh/VREMSoftwareDevelopment/bwmon/branch/master/graph/badge.svg?token=qoDvVAvNaw)]https://codecov.io/gh/VREMSoftwareDevelopment/bwmon)
+[![codecov](https://codecov.io/gh/VREMSoftwareDevelopment/bwmon/branch/master/graph/badge.svg?token=qoDvVAvNaw)](https://codecov.io/gh/VREMSoftwareDevelopment/bwmon)
