@@ -1,6 +1,6 @@
 ## Bandwidth Usage Monitor
 
-A simple shell script designed to run on [AsusWRT-Merlin](https://asuswrt.lostrealm.ca) powered routers
+A simple shell script designed to run on [AsusWRT-Merlin](https://www.asuswrt-merlin.net/) powered routers
 
 ![Sample Usage by User Screenshot](https://github.com/VREMSoftwareDevelopment/bwmon/raw/master/screenshots/UsageByUserData.jpg "Sample Usage by User Screenshot")
 
