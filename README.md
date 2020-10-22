@@ -4,7 +4,7 @@ A simple shell script designed to run on [AsusWRT-Merlin](https://asuswrt.lostre
 
 ![Sample Usage by User Screenshot](https://github.com/VREMSoftwareDevelopment/bwmon/raw/master/screenshots/UsageByUserData.jpg "Sample Usage by User Screenshot")
 
-[Try a demo version of this application](https://vremsoftwaredevelopment.github.io/bwmon/bwmon)
+[Try a demo version of this application](https://vremsoftwaredevelopment.github.io/bwmon)
 
 ### Software Features:
 
