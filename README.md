@@ -44,8 +44,7 @@ A simple shell script designed to run on [AsusWRT-Merlin](https://asuswrt.lostre
 - Create project: `git clone https://github.com/VREMSoftwareDevelopment/bwmon.git`
 - Go to react subfolder
 - Install required node modules: `npm install`
-- See README.md in subfolder
+- See README.md in react subfolder
 
 [![Workflow Status](https://github.com/VREMSoftwareDevelopment/bwmon/workflows/Build%20CI/badge.svg)](https://github.com/VREMSoftwareDevelopment/bwmon/actions?query=workflow%3A%22Build+CI%22)
-
 [![codecov](https://codecov.io/gh/VREMSoftwareDevelopment/bwmon/branch/master/graph/badge.svg?token=qoDvVAvNaw)](https://codecov.io/gh/VREMSoftwareDevelopment/bwmon)
