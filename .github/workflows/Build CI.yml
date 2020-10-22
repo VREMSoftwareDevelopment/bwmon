@@ -27,7 +27,7 @@ jobs:
         uses: codecov/codecov-action@v1
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
-          file: ./coverage/coverage-final.json
+          file: ./react/coverage/coverage-final.json
 #            - name: Build & Deploy
 #              run: |
 #                  git remote set-url origin https://${github_token}@github.com/${repository}/
