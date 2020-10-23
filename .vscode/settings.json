@@ -1,9 +1,46 @@
 {
-    "folders": [],
-    "settings": {},
-    "editor.formatOnSave": true,
-    "prettier.printWidth": 140,
-    "prettier.tabWidth": 4,
-    "prettier.singleQuote": true,
-    "git.ignoreLimitWarning": true
+  "editor.formatOnSave": true,
+  "git.ignoreLimitWarning": true,
+  "prettier.printWidth": 140,
+  "prettier.tabWidth": 4,
+  "prettier.singleQuote": true,
+  "psi-header.config": {
+    "forceToTop": true,
+    "blankLinesAfter": 1
+  },
+  "psi-header.changes-tracking": {
+    "autoHeader": "autoSave",
+    "isActive": true,
+    "enforceHeader": true,
+    "excludeGlob": ["**/settings.json"],
+    "exclude": ["json", "jsonc"]
+  },
+  "psi-header.variables": [
+    ["projectCreationYear", "2010"],
+    ["copyrightholder", "VREM Software Development"],
+    ["authoremail", "VREMSoftwareDevelopment@gmail.com"],
+    ["projectname", "Bandwidth Usage Monitor"]
+  ],
+  "psi-header.templates": [
+    {
+      "language": "*",
+      "template": [
+        "     Copyright (C) <<projectCreationYear>> - <<year>> <<copyrightholder>> <<<authoremail>>>",
+        "",
+        "     Licensed under the Apache License, Version 2.0 (the \"License\");",
+        "     you may not use this file except in compliance with the License.",
+        "     You may obtain a copy of the License at",
+        "",
+        "          http: //www.apache.org/licenses/LICENSE-2.0",
+        "",
+        "     Unless required by applicable law or agreed to in writing, software",
+        "     distributed under the License is distributed on an \"AS IS\" BASIS,",
+        "     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.",
+        "     See the License for the specific language governing permissions and",
+        "     limitations under the License.",
+        "",
+        "<<projectname>>"
+      ]
+    }
+  ]
 }

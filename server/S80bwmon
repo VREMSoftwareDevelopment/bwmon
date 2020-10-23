@@ -1,6 +1,5 @@
-#!/bin/sh
 #
-#     Copyright (C) 2010 - 2018 VREM Software Development <VREMSoftwareDevelopment@gmail.com>
+#     Copyright (C) 2010 - 2020 VREM Software Development <VREMSoftwareDevelopment@gmail.com>
 #
 #     Licensed under the Apache License, Version 2.0 (the "License");
 #     you may not use this file except in compliance with the License.
@@ -14,7 +13,7 @@
 #     See the License for the specific language governing permissions and
 #     limitations under the License.
 # 
-# Bandwidth Usage Setup
+# Bandwidth Usage Monitor Setup
 # AsusWRT-Merlin Version
 #
 # Cron Utility
@@ -26,6 +25,8 @@
 #		week (0 - 6) (Sunday=0)
 # delete: cru d <unique id>
 # list:   cru l
+#
+#!/bin/sh
 
 BWDIR=/opt/share/bwmon
 BWMON=${BWDIR}/bwmon.sh

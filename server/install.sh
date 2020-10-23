@@ -1,6 +1,5 @@
-#!/bin/sh
 #
-#     Copyright (C) 2010 - 2018 VREM Software Development <VREMSoftwareDevelopment@gmail.com>
+#     Copyright (C) 2010 - 2020 VREM Software Development <VREMSoftwareDevelopment@gmail.com>
 #
 #     Licensed under the Apache License, Version 2.0 (the "License");
 #     you may not use this file except in compliance with the License.
@@ -14,9 +13,10 @@
 #     See the License for the specific language governing permissions and
 #     limitations under the License.
 # 
-# Bandwidth Usage Installation
+# Bandwidth Usage Monitor Installation
 # AsusWRT-Merlin Version
 #
+#!/bin/sh
 set -e
 echo ""
 echo " Bandwidth Usage Installation "
