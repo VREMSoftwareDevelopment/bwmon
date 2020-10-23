@@ -32,9 +32,6 @@ const useUsageByMonth = () => {
             setLoading(false);
         }
         if (year) {
-            ('124');
-        }
-        if (year) {
             fetch();
         }
     }, [year]);
