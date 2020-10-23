@@ -11,6 +11,10 @@ coverage
 # production
 build
 
+# release
+bwmon.tar
+bwmon.tar.gz
+
 # misc
 .DS_Store
 .env.local

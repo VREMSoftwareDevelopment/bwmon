@@ -28,8 +28,8 @@ A simple shell script designed to run on [AsusWRT-Merlin](https://www.asuswrt-me
   - `cd bwmon`
   - `wget https://github.com/VREMSoftwareDevelopment/bwmon/releases/download/v2.5.1/bwmon.tar.gz`
   - `tar -xzvf bwmon.tar.gz`
-  - `chmod +x install.sh`
-  - `./install.sh`
+  - `chmod +x server/install.sh`
+  - `./server/install.sh`
 - Visit `http://<your_router_ip>:<lighttpd_port>/bwmon/index.html` to view bandwidth usage statistics.
 
 #### Note:

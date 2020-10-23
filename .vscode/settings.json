@@ -13,7 +13,7 @@
     "isActive": true,
     "enforceHeader": true,
     "excludeGlob": ["**/settings.json"],
-    "exclude": ["json", "jsonc"]
+    "exclude": ["markdown", "json"]
   },
   "psi-header.variables": [
     ["projectCreationYear", "2010"],

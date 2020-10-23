@@ -18,9 +18,5 @@
 # 
 #!/bin/sh
 
-#
-# source folders (including subfolder) and files:
-#       ./react/build/*
-#       ./server/*     
-#
-#
+tar -cvf bwmon.tar react/build server 
+gzip bwmon.tar
