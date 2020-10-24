@@ -17,11 +17,19 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - name: Install dependencies
+        working-directory: react
         run: npm install
       - name: Start server and run all tests with coverage
+        working-directory: react
         run: npm start & sleep 60; npm run coverage
       - name: Upload coverage to Codecov
+        working-directory: react
         uses: codecov/codecov-action@v1
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           file: ./react/coverage/coverage-final.json
+      - name: Build
+        working-directory: react
+        run: npm run build
+      - name: Create release
+        run: ./release.sh

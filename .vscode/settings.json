@@ -9,9 +9,9 @@
     "blankLinesAfter": 1
   },
   "psi-header.changes-tracking": {
-    "autoHeader": "autoSave",
-    "isActive": true,
-    "enforceHeader": true,
+    "autoHeader": "off",
+    "isActive": false,
+    "enforceHeader": false,
     "excludeGlob": ["**/settings.json"],
     "exclude": ["markdown", "json"]
   },
