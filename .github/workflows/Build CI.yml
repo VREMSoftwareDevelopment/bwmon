@@ -31,4 +31,4 @@ jobs:
         run: npm run build
         working-directory: react
       - name: Create release
-        run: ./release.sh
+        run: /bin/bash release.sh
