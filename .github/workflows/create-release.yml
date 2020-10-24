@@ -5,9 +5,6 @@ on:
       version:
         description: "version"
         required: true
-defaults:
-  run:
-    working-directory: react
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -34,4 +31,3 @@ jobs:
         working-directory: react
       - name: Create release
         run: sh ./scripts/release.sh
-        working-directory: ./
