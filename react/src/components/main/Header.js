@@ -13,7 +13,7 @@
  *      See the License for the specific language governing permissions and
  *      limitations under the License.
  *
- * Bandwidth Usage Monitor
+ * Bandwidth Monitor
  */
 
 import React from 'react';
@@ -26,17 +26,17 @@ const useStyles = makeStyles({
     },
 });
 
-const Header = () => {
+const Header = ({ description, version }) => {
     const classes = useStyles();
 
     return (
         <AppBar position="static">
             <Toolbar variant="dense">
                 <Typography id="app-title" variant="h6" className={classes.title}>
-                    {process.env.REACT_APP_DESCRIPTION}
+                    {description}
                 </Typography>
                 <Typography id="app-version" className={classes.text}>
-                    {process.env.REACT_APP_VERSION}
+                    {version}
                 </Typography>
             </Toolbar>
         </AppBar>

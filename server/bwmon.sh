@@ -13,7 +13,7 @@
 #     See the License for the specific language governing permissions and
 #     limitations under the License.
 # 
-# Bandwidth Usage Monitor
+# Bandwidth Monitor
 # AsusWRT-Merlin Version
 # 
 #!/bin/sh
@@ -66,7 +66,7 @@ unlock() {
 usage() {
 	#publish results
 	#header
-	echo "/*Bandwidth Usage Monitor Data*/" > ${OUTPUTDB}
+	echo "/*Bandwidth Monitor Data*/" > ${OUTPUTDB}
 
 	#details
 	echo "$(echo ${MACNAMES/'macnames='/} | tr '<' '\n' | tr '>' ',')" > ${MACNAMESFILE}

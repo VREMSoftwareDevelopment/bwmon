@@ -13,7 +13,7 @@
  *      See the License for the specific language governing permissions and
  *      limitations under the License.
  *
- * Bandwidth Usage Monitor
+ * Bandwidth Monitor
  */
 
 import React from 'react';
@@ -22,7 +22,7 @@ import Header from './Header';
 
 describe('Header', () => {
     test('renders correctly', () => {
-        const tree = create(<Header />).toJSON();
+        const tree = create(<Header description="Bandwidth Monitor" version="3.1.1" />).toJSON();
         expect(tree).toMatchSnapshot();
     });
 });

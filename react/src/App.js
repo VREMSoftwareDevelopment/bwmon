@@ -13,7 +13,7 @@
  *      See the License for the specific language governing permissions and
  *      limitations under the License.
  *
- * Bandwidth Usage Monitor
+ * Bandwidth Monitor
  */
 
 import React from 'react';
@@ -41,7 +41,7 @@ const App = ({ currentTime }) => (
     <BrowserRouter basename={basepath}>
         <ThemeProvider theme={theme}>
             <CssBaseline />
-            <Header />
+            <Header description={process.env.REACT_APP_DESCRIPTION} version={process.env.REACT_APP_VERSION} />
             <Navigation menu={menu} />
             <ErrorBoundary>
                 <Routes menu={menu} />

@@ -19,7 +19,7 @@
     ["projectCreationYear", "2010"],
     ["copyrightholder", "VREM Software Development"],
     ["authoremail", "VREMSoftwareDevelopment@gmail.com"],
-    ["projectname", "Bandwidth Usage Monitor"]
+    ["projectname", "Bandwidth Monitor"]
   ],
   "psi-header.templates": [
     {

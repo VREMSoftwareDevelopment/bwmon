@@ -13,7 +13,7 @@
  *      See the License for the specific language governing permissions and
  *      limitations under the License.
  *
- * Bandwidth Usage Monitor
+ * Bandwidth Monitor
  */
 
 import { HOME_URL, TIMEOUT, launch } from './e2e-config';
@@ -38,7 +38,7 @@ describe('App e2e', () => {
         async () => {
             await page.waitForSelector('#app-title');
             const title = await page.$eval('#app-title', (e) => e.innerHTML);
-            expect(title).toBe('Bandwidth Monitor Usage');
+            expect(title).toBe('Bandwidth Monitor');
         },
         TIMEOUT
     );

@@ -11,13 +11,13 @@ exports[`Header renders correctly 1`] = `
       className="MuiTypography-root makeStyles-title-1 MuiTypography-h6"
       id="app-title"
     >
-      Bandwidth Monitor Usage
+      Bandwidth Monitor
     </h6>
     <p
       className="MuiTypography-root MuiTypography-body1"
       id="app-version"
     >
-      3.0.0
+      3.1.1
     </p>
   </div>
 </header>

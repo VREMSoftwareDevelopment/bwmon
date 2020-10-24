@@ -1,4 +1,4 @@
-## Bandwidth Usage Monitor
+## Bandwidth Monitor
 
 A simple shell script designed to run on [AsusWRT-Merlin](https://www.asuswrt-merlin.net/) powered routers
 
@@ -9,7 +9,7 @@ A simple shell script designed to run on [AsusWRT-Merlin](https://www.asuswrt-me
 ### Software Features:
 
 - Designed to run on [AsusWRT-Merlin](https://asuswrt.lostrealm.ca) powered routers
-- Provides per user bandwidth usage monitoring
+- Provides per user Bandwidth Monitoring
 - Generates bandwidth usage reports per user/month/year
 
 ### Technical Features:

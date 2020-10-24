@@ -13,7 +13,7 @@
 #     See the License for the specific language governing permissions and
 #     limitations under the License.
 # 
-# Bandwidth Usage Monitor Installation
+# Bandwidth Monitor Installation
 # AsusWRT-Merlin Version
 #
 #!/bin/sh

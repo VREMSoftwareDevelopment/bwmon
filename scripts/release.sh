@@ -13,10 +13,9 @@
 #     See the License for the specific language governing permissions and
 #     limitations under the License.
 # 
-# Bandwidth Usage Monitor build release/installation package
+# Bandwidth Monitor build release/installation package
 # AsusWRT-Merlin Version
 # 
 #!/bin/sh
 
-tar -cvf bwmon.tar react/build server 
-gzip bwmon.tar
+tar -cvzf bwmon.tar.gz react/build server 

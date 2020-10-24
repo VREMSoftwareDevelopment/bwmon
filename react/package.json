@@ -1,6 +1,6 @@
 {
     "name": "bwmon",
-    "description": "Bandwidth Monitor Usage",
+    "description": "Bandwidth Monitor",
     "version": "3.0.0",
     "homepage": "/bwmon/",
     "private": true,
@@ -21,6 +21,7 @@
         "start": "react-scripts start",
         "build": "react-scripts build",
         "test": "react-scripts test",
+        "testonce": "react-scripts test --watchAll=false",
         "coverage": "react-scripts test --watchAll=false --coverage",
         "eject": "react-scripts eject",
         "pretty": "./node_modules/.bin/prettier --write \"./**/*.{js,jsx,json}\""
