@@ -30,4 +30,32 @@ jobs:
         run: npm run build
         working-directory: react
       - name: Create release
-        run: sh ./scripts/release.sh
+        run: tar -cvzf bwmon.tar.gz react/build server
+      - name: setup git config
+        run: |
+          git config user.name "GitHub Actions Bot - create release"
+          git config user.email "<>"
+      - name: commit
+        run: |
+          git commit -m "Version ${{ github.event.inputs.version }}"
+          git push origin master
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: v${{ github.event.inputs.version }}
+          release_name: Release v${{ github.event.inputs.version }}
+          draft: false
+          prerelease: false
+      - name: Upload Release Asset
+        id: upload-release-asset
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./bwmon.tar.gz
+          asset_name: bwmon.tar.gz
+          asset_content_type: application/gz
