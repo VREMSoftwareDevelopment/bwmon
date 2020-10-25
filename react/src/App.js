@@ -37,11 +37,11 @@ export const history = createBrowserHistory({
     basename: basepath,
 });
 
-const App = ({ currentTime }) => (
+const App = ({ description, version, currentTime }) => (
     <BrowserRouter basename={basepath}>
         <ThemeProvider theme={theme}>
             <CssBaseline />
-            <Header description={process.env.REACT_APP_DESCRIPTION} version={process.env.REACT_APP_VERSION} />
+            <Header description={description} version={version} />
             <Navigation menu={menu} />
             <ErrorBoundary>
                 <Routes menu={menu} />
@@ -52,6 +52,8 @@ const App = ({ currentTime }) => (
 );
 
 App.defaultProps = {
+    description: process.env.REACT_APP_DESCRIPTION,
+    version: process.env.REACT_APP_VERSION,
     currentTime: DateTime.local().toLocaleString(DateTime.DATETIME_FULL_WITH_SECONDS),
 };
 

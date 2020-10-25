@@ -25,10 +25,12 @@ jest.mock('./services/Usage');
 import App from './App';
 
 describe('App', () => {
+    const description = 'Bandwidth Monitor';
+    const version = '3.1.1';
     const currentTime = 'October 20, 2020, 11:25:35 AM EDT';
 
     test('renders correctly', () => {
-        const tree = create(<App currentTime={currentTime} />).toJSON();
+        const tree = create(<App description={description} version={version} currentTime={currentTime} />).toJSON();
         expect(tree).toMatchSnapshot();
     });
 
@@ -37,7 +39,7 @@ describe('App', () => {
     test('renders correctly after data load', async () => {
         let tree;
         act(() => {
-            tree = create(<App currentTime={currentTime} />);
+            tree = create(<App description={description} version={version} currentTime={currentTime} />);
         });
         await wait(1);
         expect(tree.toJSON()).toMatchSnapshot();
