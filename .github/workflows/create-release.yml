@@ -37,6 +37,8 @@ jobs:
           git config user.email "<>"
       - name: Commit release
         run: |
+          git status
+          git add -u
           git commit -m "Version ${{ github.event.inputs.version }}"
           git push origin master
       - name: Create release
