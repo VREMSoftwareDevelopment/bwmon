@@ -1,6 +1,8 @@
 name: "CreateRelease"
 on:
   workflow_dispatch:
+    branches:
+      master
     inputs:
       version:
         description: "version"
