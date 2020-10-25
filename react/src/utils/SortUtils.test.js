@@ -67,7 +67,6 @@ describe('SortUtils', () => {
 
             expect(result).toEqual(expected);
             expect(values !== result).toBeTruthy();
-            expect(values != result).toBeTruthy();
         });
 
         test('descending', () => {
@@ -79,7 +78,6 @@ describe('SortUtils', () => {
 
             expect(result).toEqual(expected);
             expect(values !== result).toBeTruthy();
-            expect(values != result).toBeTruthy();
         });
     });
 });

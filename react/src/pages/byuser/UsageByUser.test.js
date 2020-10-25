@@ -18,8 +18,9 @@
 
 import React from 'react';
 import UsageByUser from './UsageByUser';
-import { act, create } from 'react-test-renderer';
-import wait from '../../__test__/utils/Wait';
+import { create } from 'react-test-renderer';
+// import { act, create } from 'react-test-renderer';
+//import wait from '../../__test__/utils/Wait';
 
 jest.mock('../../services/Usage');
 

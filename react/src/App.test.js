@@ -17,12 +17,12 @@
  */
 
 import React from 'react';
-import { act, create } from 'react-test-renderer';
+import { create } from 'react-test-renderer';
+// import { act, create } from 'react-test-renderer';
 // import wait from './__test__/utils/Wait';
+import App from './App';
 
 jest.mock('./services/Usage');
-
-import App from './App';
 
 describe('App', () => {
     const description = 'Bandwidth Monitor';
