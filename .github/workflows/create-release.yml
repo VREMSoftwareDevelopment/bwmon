@@ -24,22 +24,22 @@ jobs:
         run: npm version ${{ github.event.inputs.version }}
         working-directory: react
       - name: Start server and run all tests
-        run: npm start & sleep 60; npm testonce
+        run: npm start & sleep 60; npm run testonce
         working-directory: react
       - name: Build
         run: npm run build
         working-directory: react
-      - name: Create release
+      - name: Create release assest
         run: tar -cvzf bwmon.tar.gz react/build server
-      - name: setup git config
+      - name: Setup git config
         run: |
           git config user.name "GitHub Actions Bot - create release"
           git config user.email "<>"
-      - name: commit
+      - name: Commit release
         run: |
           git commit -m "Version ${{ github.event.inputs.version }}"
           git push origin master
-      - name: Create Release
+      - name: Create release
         id: create_release
         uses: actions/create-release@v1
         env:
@@ -49,7 +49,7 @@ jobs:
           release_name: Release v${{ github.event.inputs.version }}
           draft: false
           prerelease: false
-      - name: Upload Release Asset
+      - name: Upload release asset
         id: upload-release-asset
         uses: actions/upload-release-asset@v1
         env:
