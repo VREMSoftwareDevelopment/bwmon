@@ -46,5 +46,6 @@ A simple shell script designed to run on [AsusWRT-Merlin](https://www.asuswrt-me
 - Install required node modules: `npm install`
 - See README.md in react subfolder
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/4bc1d97a37564d63acf4e9e02dd06615)](https://app.codacy.com/gh/VREMSoftwareDevelopment/bwmon?utm_source=github.com&utm_medium=referral&utm_content=VREMSoftwareDevelopment/bwmon&utm_campaign=Badge_Grade)
 [![Workflow Status](https://github.com/VREMSoftwareDevelopment/bwmon/workflows/TestsWithCoverage/badge.svg)](https://github.com/VREMSoftwareDevelopment/bwmon/actions?query=workflow%3A%22TestsWithCoverage%22)
 [![codecov](https://codecov.io/gh/VREMSoftwareDevelopment/bwmon/branch/master/graph/badge.svg?token=qoDvVAvNaw)](https://codecov.io/gh/VREMSoftwareDevelopment/bwmon)
