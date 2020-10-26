@@ -37,8 +37,29 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const Header = ({ prefix, cellInfos, onRequestSort, ascending, orderBy }) => {
+const SortableCell = ({ prefix, cellInfo, sortHandler, ascending, orderBy }) => {
     const classes = useStyles();
+    const direction = ascending ? 'asc' : 'desc';
+
+    return (
+        <TableCell id={prefix + '-' + cellInfo.id} align={cellInfo.align} sortDirection={orderBy === cellInfo.id ? direction : false}>
+            <TableSortLabel
+                active={orderBy === cellInfo.id}
+                direction={orderBy === cellInfo.id ? direction : 'asc'}
+                onClick={sortHandler(cellInfo.id)}
+            >
+                {cellInfo.label}
+                {orderBy === cellInfo.id ? (
+                    <span className={classes.visuallyHidden}>{direction === 'desc' ? 'sorted descending' : 'sorted ascending'}</span>
+                ) : null}
+            </TableSortLabel>
+        </TableCell>
+    );
+};
+
+const Cell = ({ cellInfo }) => <TableCell align={cellInfo.align}>{cellInfo.label}</TableCell>;
+
+const Header = ({ prefix, cellInfos, onRequestSort, ascending, orderBy }) => {
     const sortHandler = (property) => (event) => {
         onRequestSort(event, property);
     };
@@ -47,36 +68,18 @@ const Header = ({ prefix, cellInfos, onRequestSort, ascending, orderBy }) => {
         <TableHead>
             <TableRow key={'header'}>
                 {cellInfos.map((cellInfo) => {
-                    if (cellInfo.sortable) {
-                        const direction = ascending ? 'asc' : 'desc';
-                        return (
-                            <TableCell
-                                id={prefix + '-' + cellInfo.id}
-                                key={cellInfo.id}
-                                align={cellInfo.align}
-                                sortDirection={orderBy === cellInfo.id ? direction : false}
-                            >
-                                <TableSortLabel
-                                    active={orderBy === cellInfo.id}
-                                    direction={orderBy === cellInfo.id ? direction : 'asc'}
-                                    onClick={sortHandler(cellInfo.id)}
-                                >
-                                    {cellInfo.label}
-                                    {orderBy === cellInfo.id ? (
-                                        <span className={classes.visuallyHidden}>
-                                            {direction === 'desc' ? 'sorted descending' : 'sorted ascending'}
-                                        </span>
-                                    ) : null}
-                                </TableSortLabel>
-                            </TableCell>
-                        );
-                    } else {
-                        return (
-                            <TableCell key={cellInfo.id} align={cellInfo.align}>
-                                {cellInfo.label}
-                            </TableCell>
-                        );
-                    }
+                    return cellInfo.sortable ? (
+                        <SortableCell
+                            key={cellInfo.id}
+                            prefix={prefix}
+                            cellInfo={cellInfo}
+                            sortHandler={sortHandler}
+                            ascending={ascending}
+                            orderBy={orderBy}
+                        ></SortableCell>
+                    ) : (
+                        <Cell key={cellInfo.id} cellInfo={cellInfo} />
+                    );
                 })}
             </TableRow>
         </TableHead>

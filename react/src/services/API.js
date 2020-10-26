@@ -32,10 +32,7 @@ class Store {
         if (result === 0) {
             result = b.month - a.month;
             if (result === 0) {
-                result = a.IP < b.IP ? -1 : a.IP > b.IP ? 1 : 0;
-                if (result === 0) {
-                    result = b.id - a.id;
-                }
+                result = a.IP < b.IP ? -1 : a.IP > b.IP ? 1 : b.id - a.id;
             }
         }
         return result;
