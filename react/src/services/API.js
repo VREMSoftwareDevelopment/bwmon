@@ -61,14 +61,8 @@ class Store {
             upload += entry.upload;
             total += entry.total;
         });
-        return {
-            id: id,
-            download: download,
-            upload: upload,
-            total: total,
-            average: +(total / days).toFixed(3),
-            days: days,
-        };
+        const average = +(total / days).toFixed(3);
+        return { id, download, upload, total, average, days };
     };
 
     getYears = async () => {
@@ -104,10 +98,7 @@ class Store {
         }
         const total = this.sum(usage, days, month);
         usage.forEach((value) => (value.percent = +((value.total * 100) / total.total).toFixed(1)));
-        return {
-            usage: usage,
-            total: total,
-        };
+        return { usage, total };
     };
 }
 
@@ -134,10 +125,7 @@ class Service {
             })
         );
         usage.forEach((value) => (value.percent = +((value.total * 100) / total.total).toFixed(1)));
-        return {
-            usage: usage,
-            total: total,
-        };
+        return { usage, total };
     };
 
     getUsageByYear = async () => {
