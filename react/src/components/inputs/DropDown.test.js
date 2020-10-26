@@ -22,7 +22,7 @@ import DropDown from './DropDown';
 
 describe('DropDown', () => {
     const handleChange = (event) => {
-        console.log('handle change');
+        // handle change
     };
 
     test('renders correctly with items', () => {
