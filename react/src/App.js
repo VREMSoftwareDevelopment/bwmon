@@ -17,7 +17,7 @@
  */
 
 import React from 'react';
-import { BrowserRouter } from 'react-router-dom';
+import { HashRouter } from 'react-router-dom';
 import { DateTime } from 'luxon';
 import theme from './theme';
 import { ThemeProvider } from '@material-ui/core/styles';
@@ -38,7 +38,7 @@ export const history = createBrowserHistory({
 });
 
 const App = ({ description, version, currentTime }) => (
-    <BrowserRouter basename={basepath}>
+    <HashRouter basename={basepath}>
         <ThemeProvider theme={theme}>
             <CssBaseline />
             <Header description={description} version={version} />
@@ -48,7 +48,7 @@ const App = ({ description, version, currentTime }) => (
                 <Footer currentTime={currentTime} />
             </ErrorBoundary>
         </ThemeProvider>
-    </BrowserRouter>
+    </HashRouter>
 );
 
 App.defaultProps = {

@@ -28,7 +28,7 @@ Array [
     <a
       aria-disabled={false}
       className="MuiButtonBase-root MuiBottomNavigationAction-root Mui-selected"
-      href="/UsageByUser"
+      href="#/UsageByUser"
       id="usage-by-user"
       onBlur={[Function]}
       onClick={[Function]}
@@ -68,7 +68,7 @@ Array [
     <a
       aria-disabled={false}
       className="MuiButtonBase-root MuiBottomNavigationAction-root"
-      href="/UsageByUserGraph"
+      href="#/UsageByUserGraph"
       id="usage-by-user-graph"
       onBlur={[Function]}
       onClick={[Function]}
@@ -108,7 +108,7 @@ Array [
     <a
       aria-disabled={false}
       className="MuiButtonBase-root MuiBottomNavigationAction-root"
-      href="/UsageByMonth"
+      href="#/UsageByMonth"
       id="usage-by-month"
       onBlur={[Function]}
       onClick={[Function]}
@@ -148,7 +148,7 @@ Array [
     <a
       aria-disabled={false}
       className="MuiButtonBase-root MuiBottomNavigationAction-root"
-      href="/UsageByMonthGraph"
+      href="#/UsageByMonthGraph"
       id="usage-by-month-graph"
       onBlur={[Function]}
       onClick={[Function]}
@@ -188,7 +188,7 @@ Array [
     <a
       aria-disabled={false}
       className="MuiButtonBase-root MuiBottomNavigationAction-root"
-      href="/UsageByYear"
+      href="#/UsageByYear"
       id="usage-by-year"
       onBlur={[Function]}
       onClick={[Function]}
@@ -228,7 +228,7 @@ Array [
     <a
       aria-disabled={false}
       className="MuiButtonBase-root MuiBottomNavigationAction-root"
-      href="/UsageByYearGraph"
+      href="#/UsageByYearGraph"
       id="usage-by-year-graph"
       onBlur={[Function]}
       onClick={[Function]}
