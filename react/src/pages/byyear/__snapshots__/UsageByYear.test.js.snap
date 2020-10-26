@@ -273,11 +273,6 @@ exports[`UsageByYear renders correctly after data load 1`] = `
               tabIndex={0}
             >
               Year
-              <span
-                className="makeStyles-visuallyHidden-4"
-              >
-                sorted descending
-              </span>
               <svg
                 aria-hidden={true}
                 className="MuiSvgIcon-root MuiTableSortLabel-icon MuiTableSortLabel-iconDirectionDesc"

@@ -157,11 +157,6 @@ exports[`UsageByMonth renders correctly after data load 1`] = `
               tabIndex={0}
             >
               Month
-              <span
-                className="makeStyles-visuallyHidden-3"
-              >
-                sorted descending
-              </span>
               <svg
                 aria-hidden={true}
                 className="MuiSvgIcon-root MuiTableSortLabel-icon MuiTableSortLabel-iconDirectionDesc"

@@ -17,41 +17,24 @@
  */
 
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import TableSortLabel from '@material-ui/core/TableSortLabel';
 
-const useStyles = makeStyles((theme) => ({
-    visuallyHidden: {
-        border: 0,
-        clip: 'rect(0 0 0 0)',
-        height: 1,
-        margin: -1,
-        overflow: 'hidden',
-        padding: 0,
-        position: 'absolute',
-        top: 20,
-        width: 1,
-    },
-}));
-
 const SortableCell = ({ prefix, cellInfo, sortHandler, ascending, orderBy }) => {
-    const classes = useStyles();
     const direction = ascending ? 'asc' : 'desc';
+    const sortDirection = (orderBy, id) => (orderBy === id ? direction : false);
+    const defaultDirection = (orderBy, id) => (orderBy === id ? direction : 'asc');
 
     return (
-        <TableCell id={prefix + '-' + cellInfo.id} align={cellInfo.align} sortDirection={orderBy === cellInfo.id ? direction : false}>
+        <TableCell id={prefix + '-' + cellInfo.id} align={cellInfo.align} sortDirection={sortDirection(orderBy, cellInfo.id)}>
             <TableSortLabel
                 active={orderBy === cellInfo.id}
-                direction={orderBy === cellInfo.id ? direction : 'asc'}
+                direction={defaultDirection(orderBy, cellInfo.id)}
                 onClick={sortHandler(cellInfo.id)}
             >
                 {cellInfo.label}
-                {orderBy === cellInfo.id ? (
-                    <span className={classes.visuallyHidden}>{direction === 'desc' ? 'sorted descending' : 'sorted ascending'}</span>
-                ) : null}
             </TableSortLabel>
         </TableCell>
     );

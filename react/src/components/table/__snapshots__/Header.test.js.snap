@@ -34,11 +34,6 @@ exports[`Header renders correctly 1`] = `
         tabIndex={0}
       >
         IP
-        <span
-          className="makeStyles-visuallyHidden-1"
-        >
-          sorted ascending
-        </span>
         <svg
           aria-hidden={true}
           className="MuiSvgIcon-root MuiTableSortLabel-icon MuiTableSortLabel-iconDirectionAsc"
