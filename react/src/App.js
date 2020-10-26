@@ -31,14 +31,10 @@ import menu from './menu/Menu';
 
 import { createBrowserHistory } from 'history';
 
-const basepath = process.env.PUBLIC_URL;
-
-export const history = createBrowserHistory({
-    basename: basepath,
-});
+export const history = createBrowserHistory({ basename: process.env.PUBLIC_URL });
 
 const App = ({ description, version, currentTime }) => (
-    <HashRouter basename={basepath}>
+    <HashRouter>
         <ThemeProvider theme={theme}>
             <CssBaseline />
             <Header description={description} version={version} />
