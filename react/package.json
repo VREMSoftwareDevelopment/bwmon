@@ -1,7 +1,7 @@
 {
     "name": "bwmon",
     "description": "Bandwidth Monitor",
-    "version": "3.0.2",
+    "version": "3.0.1",
     "homepage": "/bwmon/",
     "private": true,
     "dependencies": {
