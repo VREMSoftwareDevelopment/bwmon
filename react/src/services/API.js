@@ -28,14 +28,15 @@ class Store {
     }
 
     orderBy = (a, b) => {
-        let result = b.year - a.year;
-        if (result === 0) {
-            result = b.month - a.month;
-            if (result === 0) {
-                result = a.IP < b.IP ? -1 : a.IP > b.IP ? 1 : b.id - a.id;
-            }
+        const yearDiff = b.year - a.year;
+        if (yearDiff !== 0) {
+            return yearDiff;
         }
-        return result;
+        const monthDiff = b.month - a.month;
+        if (monthDiff !== 0) {
+            return monthDiff;
+        }
+        return a.IP < b.IP ? -1 : a.IP > b.IP ? 1 : b.id - a.id;
     };
 
     data = async () => {

@@ -22,8 +22,8 @@ export default class Data {
         this.IP = ip;
         this.MAC = mac;
         this.user = user;
-        this.download = Number(down);
-        this.upload = Number(up);
+        this.download = Math.abs(Number(down));
+        this.upload = Math.abs(Number(up));
         this.firstSeen = Number(first);
         this.lastSeen = Number(last);
         this.year = +date.split('-')[0];
