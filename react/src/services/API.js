@@ -27,16 +27,18 @@ class Store {
         this.last = DateTime.local();
     }
 
+    orderById = (a, b) => b.id - a.id;
+
+    orderByIP = (a, b) => (a.IP < b.IP ? -1 : a.IP > b.IP ? 1 : this.orderById(a, b));
+
+    orderByMonth = (a, b) => {
+        const result = b.month - a.month;
+        return result === 0 ? this.orderByIP(a, b) : result;
+    };
+
     orderBy = (a, b) => {
-        const yearDiff = b.year - a.year;
-        if (yearDiff !== 0) {
-            return yearDiff;
-        }
-        const monthDiff = b.month - a.month;
-        if (monthDiff !== 0) {
-            return monthDiff;
-        }
-        return a.IP < b.IP ? -1 : a.IP > b.IP ? 1 : b.id - a.id;
+        const result = b.year - a.year;
+        return result === 0 ? this.orderByMonth(a, b) : result;
     };
 
     data = async () => {
