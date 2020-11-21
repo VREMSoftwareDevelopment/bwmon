@@ -99,7 +99,15 @@ describe('UseUsageByMonth', () => {
             total: 23862816,
             upload: 1936607,
         };
-        const expectedLast = { average: 967836.233, days: 30, download: 26949429, id: 6, percent: 19.3, total: 29035087, upload: 2085658 };
+        const expectedLast = {
+            average: 967836.233,
+            days: 30,
+            download: 26949429,
+            id: 6,
+            percent: 19.3,
+            total: 29035087,
+            upload: 2085658,
+        };
         const { result, waitForNextUpdate } = renderHook(useUsageByMonth);
 
         await waitForNextUpdate();

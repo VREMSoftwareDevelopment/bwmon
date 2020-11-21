@@ -28,7 +28,19 @@ describe('API', () => {
     });
 
     test('should return months', async () => {
-        const expected = ['November', 'October', 'September', 'August', 'July', 'June', 'May', 'April', 'March', 'February', 'January'];
+        const expected = [
+            'November',
+            'October',
+            'September',
+            'August',
+            'July',
+            'June',
+            'May',
+            'April',
+            'March',
+            'February',
+            'January',
+        ];
         const actual = await API.getMonths(2013);
         expect(JSON.stringify(actual)).toEqual(JSON.stringify(expected));
     });

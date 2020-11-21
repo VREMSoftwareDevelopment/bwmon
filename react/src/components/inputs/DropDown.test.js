@@ -26,7 +26,9 @@ describe('DropDown', () => {
     };
 
     test('renders correctly with items', () => {
-        const tree = create(<DropDown id="12345" value="ZYXUW" onChange={handleChange} items={['ABC', 'ZYXUW', 'WGKF']} />).toJSON();
+        const tree = create(
+            <DropDown id="12345" value="ZYXUW" onChange={handleChange} items={['ABC', 'ZYXUW', 'WGKF']} />
+        ).toJSON();
         expect(tree).toMatchSnapshot();
     });
 

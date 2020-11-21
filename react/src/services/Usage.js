@@ -26,7 +26,17 @@ const process = (response) =>
             const elements = line.replace(/[\n]/g, '').split(',');
             return elements.length < 8
                 ? null
-                : new Data(index, elements[0], elements[1], elements[2], elements[3], elements[4], elements[5], elements[6], elements[7]);
+                : new Data(
+                      index,
+                      elements[0],
+                      elements[1],
+                      elements[2],
+                      elements[3],
+                      elements[4],
+                      elements[5],
+                      elements[6],
+                      elements[7]
+                  );
         })
         .filter((line) => line !== null);
 

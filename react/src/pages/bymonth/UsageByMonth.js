@@ -60,7 +60,13 @@ const UsageByMonth = () => {
                         </TableCell>
                     </TableRow>
                 </TableHead>
-                <Header prefix="month" cellInfos={cellInfos} onRequestSort={handleRequestSort} ascending={ascending} orderBy={orderBy} />
+                <Header
+                    prefix="month"
+                    cellInfos={cellInfos}
+                    onRequestSort={handleRequestSort}
+                    ascending={ascending}
+                    orderBy={orderBy}
+                />
                 <Body prefix="month" cellInfos={cellInfos} values={sort(data.usage, comparator(ascending, orderBy))} />
                 <Footer prefix="month" cellInfos={cellInfos} values={data.total} />
             </Table>

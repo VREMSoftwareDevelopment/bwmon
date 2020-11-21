@@ -100,11 +100,20 @@ const UsageByUser = () => {
                         />
                     </TableRow>
                 </TableHead>
-                <Header prefix="user" cellInfos={cellInfos} onRequestSort={handleRequestSort} ascending={ascending} orderBy={orderBy} />
+                <Header
+                    prefix="user"
+                    cellInfos={cellInfos}
+                    onRequestSort={handleRequestSort}
+                    ascending={ascending}
+                    orderBy={orderBy}
+                />
                 <Body
                     prefix="user"
                     cellInfos={cellInfos}
-                    values={sort(data.usage, comparator(ascending, orderBy)).slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)}
+                    values={sort(data.usage, comparator(ascending, orderBy)).slice(
+                        page * rowsPerPage,
+                        page * rowsPerPage + rowsPerPage
+                    )}
                 />
                 <Footer prefix="user" cellInfos={cellInfos} values={data.total} />
             </Table>

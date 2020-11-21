@@ -33,7 +33,13 @@ describe('Header', () => {
 
     test('renders correctly', () => {
         const tree = create(
-            <Header prefix="test" cellInfos={cellInfos} onRequestSort={handleRequestSort} ascending={true} orderBy={cellInfos[0].id} />
+            <Header
+                prefix="test"
+                cellInfos={cellInfos}
+                onRequestSort={handleRequestSort}
+                ascending={true}
+                orderBy={cellInfos[0].id}
+            />
         ).toJSON();
         expect(tree).toMatchSnapshot();
     });

@@ -44,7 +44,19 @@ describe('UseUsageByMonthGraph', () => {
                 },
             },
             xaxis: {
-                categories: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November'],
+                categories: [
+                    'January',
+                    'February',
+                    'March',
+                    'April',
+                    'May',
+                    'June',
+                    'July',
+                    'August',
+                    'September',
+                    'October',
+                    'November',
+                ],
             },
         };
         const expectedSeries = [

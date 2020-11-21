@@ -73,7 +73,13 @@ const UsageByYear = () => {
                         />
                     </TableRow>
                 </TableHead>
-                <Header prefix="year" cellInfos={cellInfos} onRequestSort={handleRequestSort} ascending={ascending} orderBy={orderBy} />
+                <Header
+                    prefix="year"
+                    cellInfos={cellInfos}
+                    onRequestSort={handleRequestSort}
+                    ascending={ascending}
+                    orderBy={orderBy}
+                />
                 <Body
                     prefix="year"
                     cellInfos={cellInfos}

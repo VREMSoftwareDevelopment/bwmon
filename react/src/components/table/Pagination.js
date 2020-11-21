@@ -131,7 +131,13 @@ const Pagination = (props) => {
     };
 
     return (
-        <TablePagination {...props} labelRowsPerPage="" SelectProps={selectProps} rowsPerPageOptions={options} ActionsComponent={Actions} />
+        <TablePagination
+            {...props}
+            labelRowsPerPage=""
+            SelectProps={selectProps}
+            rowsPerPageOptions={options}
+            ActionsComponent={Actions}
+        />
     );
 };
 

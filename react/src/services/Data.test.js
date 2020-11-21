@@ -20,7 +20,17 @@ import Data from './Data';
 
 describe('Data', () => {
     test('should construct', () => {
-        const data = new Data(111, '2011-06', '192.168.1.14', '00:24:8D:28:F2:9A', 'COMPUTER-1', 202809, 11512, 1307160300, 1308013207);
+        const data = new Data(
+            111,
+            '2011-06',
+            '192.168.1.14',
+            '00:24:8D:28:F2:9A',
+            'COMPUTER-1',
+            202809,
+            11512,
+            1307160300,
+            1308013207
+        );
         expect(data.id).toEqual(111);
         expect(data.IP).toEqual('192.168.1.14');
         expect(data.MAC).toEqual('00:24:8D:28:F2:9A');
