@@ -5,16 +5,12 @@ import * as serviceWorker from './serviceWorker';
 
 const rootNode = document.getElementById('root');
 
-/*
 ReactDOM.render(
     <React.StrictMode>
         <App />
     </React.StrictMode>,
     rootNode
 );
-*/
-
-ReactDOM.render(<App />, rootNode);
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
