@@ -16,7 +16,7 @@
  * Bandwidth Monitor
  */
 
-import { HOME_URL, TIMEOUT, launch } from './e2e-config';
+import { HOME_URL, TIMEOUT, launch, startCoverage, stopCoverage } from './e2e-config';
 
 describe('App e2e', () => {
     let browser;
@@ -25,10 +25,12 @@ describe('App e2e', () => {
     beforeAll(async () => {
         browser = await launch();
         page = await browser.newPage();
+        await startCoverage(page);
         await page.goto(HOME_URL);
     }, TIMEOUT);
 
     afterAll(async () => {
+        await stopCoverage(page, 'App e2e');
         await page.close();
         await browser.close();
     }, TIMEOUT);

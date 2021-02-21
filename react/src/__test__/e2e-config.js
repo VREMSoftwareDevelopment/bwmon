@@ -42,6 +42,39 @@ export const materialSelect = async (page, newSelectedValue, cssSelector) => {
     );
 };
 
+export const startCoverage = async (page) => {
+    await Promise.all([page.coverage.startJSCoverage()]);
+};
+
+export const stopCoverage = async (page, tag) => {
+    const calculateUsedBytes = (coverage) =>
+        coverage
+            .map(({ ranges, text }) => {
+                let usedBytes = 0;
+                ranges.forEach((range) => (usedBytes += range.end - range.start - 1));
+                return {
+                    usedBytes,
+                    totalBytes: text.length,
+                };
+            })
+            .reduce(
+                (a, b) => {
+                    return {
+                        usedBytes: a.usedBytes + b.usedBytes,
+                        totalBytes: a.totalBytes + b.totalBytes,
+                    };
+                },
+                {
+                    usedBytes: 0,
+                    totalBytes: 0,
+                }
+            );
+
+    const [jsCoverage] = await Promise.all([page.coverage.stopJSCoverage()]);
+    const jsResult = calculateUsedBytes(jsCoverage);
+    console.info(tag + ' coverage: ' + ((jsResult.usedBytes / jsResult.totalBytes) * 100).toFixed(2) + '%');
+};
+
 export const launch = () =>
     puppeteer.launch({
         headless: true,

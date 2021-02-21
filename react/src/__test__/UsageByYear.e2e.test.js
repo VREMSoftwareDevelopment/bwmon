@@ -16,7 +16,7 @@
  * Bandwidth Monitor
  */
 
-import { HOME_URL, TIMEOUT, launch } from './e2e-config';
+import { HOME_URL, TIMEOUT, launch, startCoverage, stopCoverage } from './e2e-config';
 
 describe('UsageByYear e2e', () => {
     let browser;
@@ -24,20 +24,19 @@ describe('UsageByYear e2e', () => {
 
     beforeAll(async () => {
         browser = await launch();
+        page = await browser.newPage();
+        await startCoverage(page);
     }, TIMEOUT);
 
     afterAll(async () => {
+        await stopCoverage(page, 'UsageByYear e2e');
+        await page.close();
         await browser.close();
     }, TIMEOUT);
 
     beforeEach(async () => {
-        page = await browser.newPage();
         await page.goto(HOME_URL + 'UsageByYear');
         await page.waitForSelector('#year-data-0');
-    }, TIMEOUT);
-
-    afterEach(async () => {
-        await page.close();
     }, TIMEOUT);
 
     test(
