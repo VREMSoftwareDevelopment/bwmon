@@ -36,10 +36,10 @@ chmod +x server/uninstall.sh
 chmod +x server/S80bwmon
 mkdir -p /opt/share/bwmon
 mkdir -p /opt/share/www/bwmon
-cp -f server/bwmon.sh /opt/share/bwmon/.
-cp -f server/S80bwmon /opt/etc/init.d/.
-cp -f server/sample-lighttpd-index.html /opt/share/www/.
-cp -av react/build/* /opt/share/www/bwmon
+cp -fv server/bwmon.sh /opt/share/bwmon/.
+cp -fv server/S80bwmon /opt/etc/init.d/.
+cp -fv server/sample-lighttpd-index.html /opt/share/www/.
+cp -auv react/build/* /opt/share/www/bwmon
 echo " Done..."
 echo " Starting bwmon service..."
 /opt/etc/init.d/S80bwmon restart
