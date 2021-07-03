@@ -11,9 +11,9 @@
         "apexcharts": "^3.27.1",
         "history": "^5.0.0",
         "luxon": "^1.27.0",
-        "react": "^16.14.0",
+        "react": "^17.0.2",
         "react-apexcharts": "^1.3.9",
-        "react-dom": "^16.14.0",
+        "react-dom": "^17.0.2",
         "react-router-dom": "^5.2.0",
         "react-scripts": "^4.0.3"
     },
@@ -46,15 +46,15 @@
         "@testing-library/react": "^12.0.0",
         "@testing-library/react-hooks": "^7.0.1",
         "@testing-library/user-event": "^13.1.9",
+        "@wojtekmaj/enzyme-adapter-react-17": "^0.6.2",
         "enzyme": "^3.11.0",
-        "enzyme-adapter-react-16": "^1.15.6",
         "enzyme-to-json": "^3.6.2",
         "husky": "^7.0.0",
         "jest-fetch-mock": "^3.0.3",
         "prettier": "^2.3.2",
         "pretty-quick": "^3.1.1",
         "puppeteer": "^10.1.0",
-        "react-test-renderer": "^16.14.0"
+        "react-test-renderer": "^17.0.2"
     },
     "prettier": {
         "trailingComma": "es5",
