@@ -45,9 +45,9 @@ const UsageByYear = () => {
     const { page, setPage, rowsPerPage, setRowsPerPage } = usePagination(rowsPerPageMin);
     const { ascending, setAscending, orderBy, setOrderBy } = useSort(false, cellInfos[0].id);
 
-    const handleChangePage = (event, newPage) => setPage(newPage);
+    const handlePageChange = (event, newPage) => setPage(newPage);
 
-    const handleChangeRowsPerPage = (event) => {
+    const handleRowsPerPageChange = (event) => {
         setRowsPerPage(Number(event.target.value));
         setPage(0);
     };
@@ -68,8 +68,8 @@ const UsageByYear = () => {
                             minimum={rowsPerPageMin}
                             rowsPerPage={rowsPerPage}
                             page={page}
-                            onChangePage={handleChangePage}
-                            onChangeRowsPerPage={handleChangeRowsPerPage}
+                            onPageChange={handlePageChange}
+                            onRowsPerPageChange={handleRowsPerPageChange}
                         />
                     </TableRow>
                 </TableHead>

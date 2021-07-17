@@ -16,9 +16,9 @@
  * Bandwidth Monitor
  */
 
-import { createMuiTheme } from '@material-ui/core/styles';
+import { createTheme } from '@material-ui/core/styles';
 
-const theme = createMuiTheme({
+const theme = createTheme({
     overrides: {
         MuiTableCell: {
             sizeSmall: {

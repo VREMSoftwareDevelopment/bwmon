@@ -41,11 +41,11 @@ const isLastPage = (page, count, rowsPerPage) => {
     return page >= lastPage(count, rowsPerPage);
 };
 
-const FirstPageAction = ({ page, onChangePage }) => {
+const FirstPageAction = ({ page, onPageChange }) => {
     const theme = useTheme();
 
     const handleFirstPageButtonClick = (event) => {
-        onChangePage(event, 0);
+        onPageChange(event, 0);
     };
 
     return (
@@ -55,11 +55,11 @@ const FirstPageAction = ({ page, onChangePage }) => {
     );
 };
 
-const LastPageAction = ({ count, page, rowsPerPage, onChangePage }) => {
+const LastPageAction = ({ count, page, rowsPerPage, onPageChange }) => {
     const theme = useTheme();
 
     const handleLastPageButtonClick = (event) => {
-        onChangePage(event, Math.max(0, lastPage(count, rowsPerPage)));
+        onPageChange(event, Math.max(0, lastPage(count, rowsPerPage)));
     };
 
     return (
@@ -69,11 +69,11 @@ const LastPageAction = ({ count, page, rowsPerPage, onChangePage }) => {
     );
 };
 
-const PreviousPageAction = ({ page, onChangePage }) => {
+const PreviousPageAction = ({ page, onPageChange }) => {
     const theme = useTheme();
 
     const handleBackButtonClick = (event) => {
-        onChangePage(event, page - 1);
+        onPageChange(event, page - 1);
     };
 
     return (
@@ -83,11 +83,11 @@ const PreviousPageAction = ({ page, onChangePage }) => {
     );
 };
 
-const NextPageAction = ({ count, page, rowsPerPage, onChangePage }) => {
+const NextPageAction = ({ count, page, rowsPerPage, onPageChange }) => {
     const theme = useTheme();
 
     const handleNextButtonClick = (event) => {
-        onChangePage(event, page + 1);
+        onPageChange(event, page + 1);
     };
 
     return (
@@ -97,15 +97,15 @@ const NextPageAction = ({ count, page, rowsPerPage, onChangePage }) => {
     );
 };
 
-const Actions = ({ count, page, rowsPerPage, onChangePage }) => {
+const Actions = ({ count, page, rowsPerPage, onPageChange }) => {
     const classes = useStyles();
 
     return (
         <div className={classes.root}>
-            <FirstPageAction page={page} onChangePage={onChangePage} />
-            <PreviousPageAction page={page} onChangePage={onChangePage} />
-            <NextPageAction page={page} onChangePage={onChangePage} count={count} rowsPerPage={rowsPerPage} />
-            <LastPageAction page={page} onChangePage={onChangePage} count={count} rowsPerPage={rowsPerPage} />
+            <FirstPageAction page={page} onPageChange={onPageChange} />
+            <PreviousPageAction page={page} onPageChange={onPageChange} />
+            <NextPageAction page={page} onPageChange={onPageChange} count={count} rowsPerPage={rowsPerPage} />
+            <LastPageAction page={page} onPageChange={onPageChange} count={count} rowsPerPage={rowsPerPage} />
         </div>
     );
 };
