@@ -30,7 +30,7 @@ display() {
 [ -z "${2}" ] && display && exit 1
 
 LAN0_IFACE=$(nvram get lan_ifname)
-
+LAN1_IFACE=$(nvram get lan1_ifname)
 MACNAMES=$(nvram get custom_clientlist)
 USERSFILE="/etc/hosts.dnsmasq"
 [ -f "${USERSFILE}" ] || USERSFILE="/etc/dnsmasq/hosts/hosts"
@@ -141,6 +141,16 @@ create() {
 	fi
 	#LAN0 For each host in the ARP table
 	grep ${LAN0_IFACE} /proc/net/arp | while read IP TYPE FLAGS MAC MASK IFACE
+	do
+		#Add iptable rules (if non existing).
+		iptables -nL RRDIPT | grep "${IP} " > /dev/null
+		if [ $? -ne 0 ]; then
+			iptables -I RRDIPT -d ${IP} -j RETURN
+			iptables -I RRDIPT -s ${IP} -j RETURN
+		fi
+	done
+	#LAN1 For each host in the ARP table
+	grep ${LAN1_IFACE} /proc/net/arp | while read IP TYPE FLAGS MAC MASK IFACE
 	do
 		#Add iptable rules (if non existing).
 		iptables -nL RRDIPT | grep "${IP} " > /dev/null
