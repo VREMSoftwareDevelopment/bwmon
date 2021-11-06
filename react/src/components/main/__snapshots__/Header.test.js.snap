@@ -11,7 +11,7 @@ exports[`Header renders correctly 1`] = `
       className="MuiTypography-root makeStyles-title-1 MuiTypography-h6"
       id="app-title"
     >
-      Bandwidth Monitor
+      BWMon
     </h6>
     <p
       className="MuiTypography-root MuiTypography-body1"

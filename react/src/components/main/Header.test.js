@@ -21,11 +21,11 @@ import { create } from 'react-test-renderer';
 import Header from './Header';
 
 describe('Header', () => {
-    const description = 'Bandwidth Monitor';
+    const name = 'BWMon';
     const version = '3.1.1';
 
     test('renders correctly', () => {
-        const tree = create(<Header description={description} version={version} />).toJSON();
+        const tree = create(<Header name={name} version={version} />).toJSON();
         expect(tree).toMatchSnapshot();
     });
 });

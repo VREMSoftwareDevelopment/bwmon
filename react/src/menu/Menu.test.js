@@ -36,13 +36,13 @@ describe('Menu', () => {
         expect('usage-by-year-graph').toEqual(menu[5].id);
     });
 
-    test('component', () => {
-        expect(UsageByUser).toEqual(menu[0].component);
-        expect(UsageByUserGraph).toEqual(menu[1].component);
-        expect(UsageByMonth).toEqual(menu[2].component);
-        expect(UsageByMonthGraph).toEqual(menu[3].component);
-        expect(UsageByYear).toEqual(menu[4].component);
-        expect(UsageByYearGraph).toEqual(menu[5].component);
+    test('element', () => {
+        expect(<UsageByUser />).toEqual(menu[0].element);
+        expect(<UsageByUserGraph />).toEqual(menu[1].element);
+        expect(<UsageByMonth />).toEqual(menu[2].element);
+        expect(<UsageByMonthGraph />).toEqual(menu[3].element);
+        expect(<UsageByYear />).toEqual(menu[4].element);
+        expect(<UsageByYearGraph />).toEqual(menu[5].element);
     });
 
     test('pathname', () => {

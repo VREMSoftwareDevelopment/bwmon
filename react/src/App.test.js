@@ -17,32 +17,30 @@
  */
 
 import React from 'react';
-import { create } from 'react-test-renderer';
-// import { act, create } from 'react-test-renderer';
-// import wait from './__test__/utils/Wait';
+//import { create } from 'react-test-renderer';
+import { act, create } from 'react-test-renderer';
+import wait from './__test__/utils/Wait';
 import App from './App';
 
 jest.mock('./services/Usage');
 
 describe('App', () => {
-    const description = 'Bandwidth Monitor';
+    const name = 'BWMon';
     const version = '3.1.1';
     const currentTime = 'October 20, 2020, 11:25:35 AM EDT';
 
     test('renders correctly', () => {
-        const tree = create(<App description={description} version={version} currentTime={currentTime} />).toJSON();
+        const tree = create(<App name={name} version={version} currentTime={currentTime} />).toJSON();
         expect(tree).toMatchSnapshot();
     });
 
     // current issue in Material UI Table Pagination label id
-    /*
     test('renders correctly after data load', async () => {
         let tree;
         act(() => {
-            tree = create(<App description={description} version={version} currentTime={currentTime} />);
+            tree = create(<App name={name} version={version} currentTime={currentTime} />);
         });
         await wait(1);
         expect(tree.toJSON()).toMatchSnapshot();
     });
-    */
 });

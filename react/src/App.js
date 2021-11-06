@@ -25,7 +25,7 @@ import { CssBaseline } from '@material-ui/core';
 import Header from './components/main/Header';
 import Footer from './components/main/Footer';
 import Navigation from './components/navigation/Navigation';
-import Routes from './components/navigation/Routes';
+import BWMonRoutes from './components/navigation/BWMonRoutes';
 import ErrorBoundary from './components/error/ErrorBoundary';
 import menu from './menu/Menu';
 
@@ -33,14 +33,14 @@ import { createBrowserHistory } from 'history';
 
 export const history = createBrowserHistory({ basename: process.env.PUBLIC_URL });
 
-const App = ({ description, version, currentTime }) => (
+const App = ({ name, version, currentTime }) => (
     <HashRouter>
         <ThemeProvider theme={theme}>
             <CssBaseline />
-            <Header description={description} version={version} />
+            <Header name={name} version={version} />
             <Navigation menu={menu} />
             <ErrorBoundary>
-                <Routes menu={menu} />
+                <BWMonRoutes menu={menu} />
                 <Footer currentTime={currentTime} />
             </ErrorBoundary>
         </ThemeProvider>
@@ -48,6 +48,7 @@ const App = ({ description, version, currentTime }) => (
 );
 
 App.defaultProps = {
+    name: process.env.REACT_APP_NAME.toUpperCase(),
     description: process.env.REACT_APP_DESCRIPTION,
     version: process.env.REACT_APP_VERSION,
     currentTime: DateTime.local().toLocaleString(DateTime.DATETIME_FULL_WITH_SECONDS),

@@ -17,17 +17,18 @@
  */
 
 import React from 'react';
-import { Route, Switch } from 'react-router-dom';
-import PageNotFound from './PageNotFound';
+import { BrowserRouter } from 'react-router-dom';
+import { create } from 'react-test-renderer';
+import menu from '../../menu/Menu';
+import BWMonRoutes from './BWMonRoutes';
 
-const Routes = ({ menu }) => (
-    <Switch>
-        <Route key="0-default" exact path="/" component={menu[0].component} />
-        {menu.map((route, index) => (
-            <Route key={route.pathname} path={route.pathname} component={route.component} />
-        ))}
-        <Route key="0-error" component={PageNotFound} />
-    </Switch>
-);
-
-export default Routes;
+describe('BWMonRoutes', () => {
+    test('renders correctly', () => {
+        const tree = create(
+            <BrowserRouter>
+                <BWMonRoutes menu={menu} />
+            </BrowserRouter>
+        ).toJSON();
+        expect(tree).toMatchSnapshot();
+    });
+});
