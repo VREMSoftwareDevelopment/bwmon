@@ -20,9 +20,9 @@
     "scripts": {
         "start": "react-scripts start",
         "build": "react-scripts build",
-        "test": "react-scripts test",
-        "testonce": "react-scripts test --watchAll=false",
-        "coverage": "react-scripts test --watchAll=false --coverage",
+        "test": "react-scripts test --maxWorkers=25%",
+        "testonce": "react-scripts test --watchAll=false --maxWorkers=25%",
+        "coverage": "react-scripts test --watchAll=false --coverage --maxWorkers=25%",
         "eject": "react-scripts eject",
         "pretty": "./node_modules/.bin/prettier --write \"./**/*.{js,jsx,json}\""
     },

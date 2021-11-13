@@ -20,7 +20,7 @@ import React from 'react';
 import UsageByUser from './UsageByUser';
 import { create } from 'react-test-renderer';
 // import { act, create } from 'react-test-renderer';
-//import wait from '../../__test__/utils/Wait';
+// import wait from '../../__test__/utils/Wait';
 
 jest.mock('../../services/Usage');
 
@@ -31,14 +31,12 @@ describe('UsageByUser', () => {
     });
 
     // current issue in Material UI Table Pagination label id
-    /*
-    test('renders correctly after data load', async () => {
-        let tree;
-        act(() => {
-            tree = create(<UsageByUser />);
-        });
-        await wait(1);
-        expect(tree.toJSON()).toMatchSnapshot();
-    });
-    */
+    // test('renders correctly after data load', async () => {
+    //     let tree;
+    //     act(() => {
+    //         tree = create(<UsageByUser />);
+    //     });
+    //     await wait(1);
+    //     expect(tree.toJSON()).toMatchSnapshot();
+    // });
 });
