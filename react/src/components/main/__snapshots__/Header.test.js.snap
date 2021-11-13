@@ -11,7 +11,9 @@ exports[`Header renders correctly 1`] = `
       className="MuiTypography-root makeStyles-title-1 MuiTypography-h6"
       id="app-title"
     >
-      BWMon
+      Name
+       
+      Description
     </h6>
     <p
       className="MuiTypography-root MuiTypography-body1"

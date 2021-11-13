@@ -33,11 +33,11 @@ import { createBrowserHistory } from 'history';
 
 export const history = createBrowserHistory({ basename: process.env.PUBLIC_URL });
 
-const App = ({ name, version, currentTime }) => (
+const App = ({ name, description, version, currentTime }) => (
     <HashRouter>
         <ThemeProvider theme={theme}>
             <CssBaseline />
-            <Header name={name} version={version} />
+            <Header name={name} description={description} version={version} />
             <Navigation menu={menu} />
             <ErrorBoundary>
                 <BWMonRoutes menu={menu} />

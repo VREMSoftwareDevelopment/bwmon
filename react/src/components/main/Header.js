@@ -26,14 +26,14 @@ const useStyles = makeStyles({
     },
 });
 
-const Header = ({ name, version }) => {
+const Header = ({ name, description, version }) => {
     const classes = useStyles();
 
     return (
         <AppBar position="static">
             <Toolbar variant="dense">
                 <Typography id="app-title" variant="h6" className={classes.title}>
-                    {name}
+                    {name} {description}
                 </Typography>
                 <Typography id="app-version" className={classes.text}>
                     {version}
