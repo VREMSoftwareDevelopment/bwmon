@@ -1,63 +1,63 @@
-name: "CreateRelease"
+name: 'CreateRelease'
 on:
-  workflow_dispatch:
-    inputs:
-      version:
-        description: "version"
-        required: true
+    workflow_dispatch:
+        inputs:
+            version:
+                description: 'version'
+                required: true
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [14.x]
-    steps:
-      - uses: actions/checkout@v2
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
-        with:
-          node-version: ${{ matrix.node-version }}
-      - name: Install dependencies
-        run: npm install
-        working-directory: react
-      - name: Update version
-        run: npm version ${{ github.event.inputs.version }}
-        working-directory: react
-      - name: Start server and run all tests
-        run: npm start & sleep 60; npm run testonce
-        working-directory: react
-      - name: Build
-        run: npm run build
-        working-directory: react
-      - name: Create release assest
-        run: tar -cvzf bwmon.tar.gz react/build server
-      - name: Setup git config
-        run: |
-          git config user.name "GitHub Actions Bot - create release"
-          git config user.email "<>"
-      - name: Commit release
-        run: |
-          git status
-          git add -u
-          git commit -m "Version ${{ github.event.inputs.version }}"
-          git push origin master
-          git tag -a v${{ github.event.inputs.version }} -m "Release v${{ github.event.inputs.version }}"
-          git push origin v${{ github.event.inputs.version }}
-      - name: Create release
-        id: create_release
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
-        with:
-          tag_name: v${{ github.event.inputs.version }}
-          release_name: Release v${{ github.event.inputs.version }}
-      - name: Upload release asset
-        id: upload-release-asset
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./bwmon.tar.gz
-          asset_name: bwmon.tar.gz
-          asset_content_type: application/gz
+    build:
+        runs-on: ubuntu-latest
+        strategy:
+            matrix:
+                node-version: [16.x]
+        steps:
+            - uses: actions/checkout@v2
+            - name: Use Node.js ${{ matrix.node-version }}
+              uses: actions/setup-node@v1
+              with:
+                  node-version: ${{ matrix.node-version }}
+            - name: Install dependencies
+              run: npm install
+              working-directory: react
+            - name: Update version
+              run: npm version ${{ github.event.inputs.version }}
+              working-directory: react
+            - name: Start server and run all tests
+              run: npm start & sleep 60; npm run testonce
+              working-directory: react
+            - name: Build
+              run: npm run build
+              working-directory: react
+            - name: Create release assest
+              run: tar -cvzf bwmon.tar.gz react/build server
+            - name: Setup git config
+              run: |
+                  git config user.name "GitHub Actions Bot - create release"
+                  git config user.email "<>"
+            - name: Commit release
+              run: |
+                  git status
+                  git add -u
+                  git commit -m "Version ${{ github.event.inputs.version }}"
+                  git push origin master
+                  git tag -a v${{ github.event.inputs.version }} -m "Release v${{ github.event.inputs.version }}"
+                  git push origin v${{ github.event.inputs.version }}
+            - name: Create release
+              id: create_release
+              uses: actions/create-release@v1
+              env:
+                  GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
+              with:
+                  tag_name: v${{ github.event.inputs.version }}
+                  release_name: Release v${{ github.event.inputs.version }}
+            - name: Upload release asset
+              id: upload-release-asset
+              uses: actions/upload-release-asset@v1
+              env:
+                  GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
+              with:
+                  upload_url: ${{ steps.create_release.outputs.upload_url }}
+                  asset_path: ./bwmon.tar.gz
+                  asset_name: bwmon.tar.gz
+                  asset_content_type: application/gz
