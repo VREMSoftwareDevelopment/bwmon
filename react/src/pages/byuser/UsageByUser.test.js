@@ -22,12 +22,23 @@ import { act, create } from 'react-test-renderer';
 import UsageByUser from './UsageByUser';
 import wait from '../../__test__/utils/Wait';
 
-Settings.defaultZoneName = 'America/New York';
-
 jest.mock('../../services/Usage');
 jest.mock('../../components/table/Pagination');
 
 describe('UsageByUser', () => {
+    const originalZone = Settings.defaultZone;
+    const originalLocale = Settings.defaultLocale;
+
+    beforeEach(() => {
+        Settings.defaultZone = 'America/New_York';
+        Settings.defaultLocale = 'en-US';
+    });
+
+    afterEach(() => {
+        Settings.defaultZone = originalZone;
+        Settings.defaultLocale = originalLocale;
+    });
+
     test('renders correctly', () => {
         const tree = create(<UsageByUser />).toJSON();
         expect(tree).toMatchSnapshot();
