@@ -17,15 +17,10 @@
  */
 
 import React from 'react';
-import UsageByMonthGraph from './UsageByMonthGraph';
-import { create } from 'react-test-renderer';
+import Chart from 'react-apexcharts';
 
-jest.mock('../../services/Usage');
-jest.mock('../../components/graph/Graph');
+const Graph = ({ options, series }) => {
+    return <Chart options={options} series={series} type="bar" height={500} />;
+};
 
-describe('UsageByMonth', () => {
-    test('renders correctly', () => {
-        const tree = create(<UsageByMonthGraph />).toJSON();
-        expect(tree).toMatchSnapshot();
-    });
-});
+export default Graph;

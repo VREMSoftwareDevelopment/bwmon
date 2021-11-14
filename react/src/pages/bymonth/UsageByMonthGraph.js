@@ -18,10 +18,10 @@
 
 import React from 'react';
 import { FormControl, Paper } from '@material-ui/core';
-import Chart from 'react-apexcharts';
 import DropDown from '../../components/inputs/DropDown';
 import useUsageByMonthGraph from '../../hooks/bymonth/UseUsageByMonthGraph';
 import Loading from '../../components/loading/Loading';
+import Graph from '../../components/graph/Graph';
 
 const UsageByMonthGraph = () => {
     const { options, series, years, year, setYear, loading } = useUsageByMonthGraph();
@@ -34,7 +34,7 @@ const UsageByMonthGraph = () => {
             <FormControl>
                 <DropDown id="month-year-graph" onChange={handleChangeYear} items={years} value={year} />
             </FormControl>
-            <Chart options={options} series={series} type="bar" height={500} />
+            <Graph options={options} series={series} />
         </Paper>
     );
 };

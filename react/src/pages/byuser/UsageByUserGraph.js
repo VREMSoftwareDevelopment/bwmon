@@ -19,11 +19,11 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Paper, Grid } from '@material-ui/core';
-import Chart from 'react-apexcharts';
 import DropDown from '../../components/inputs/DropDown';
 import Search from '../../components/inputs/Search';
 import useUsageByUserGraph from '../../hooks/byuser/UseUsageByUserGraph';
 import Loading from '../../components/loading/Loading';
+import Graph from '../../components/graph/Graph';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -64,7 +64,7 @@ const UsageByUserGraph = () => {
         <Paper>
             <Loading isLoading={loading} />
             {filters()}
-            <Chart options={options} series={series} type="bar" height={500} />
+            <Graph options={options} series={series} />
         </Paper>
     );
 };

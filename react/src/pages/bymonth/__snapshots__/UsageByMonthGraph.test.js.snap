@@ -56,12 +56,16 @@ exports[`UsageByMonth renders correctly 1`] = `
   <div
     className="MuiFormControl-root"
   />
-  <div
-    height={500}
-    options={Object {}}
-    series={Array []}
-    type="bar"
-    width="100%"
-  />
+  <div>
+    Graph
+    <p>
+      Options: 
+      {}
+    </p>
+    <p>
+      Series: 
+      []
+    </p>
+  </div>
 </div>
 `;

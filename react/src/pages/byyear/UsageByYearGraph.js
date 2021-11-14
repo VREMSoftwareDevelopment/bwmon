@@ -18,9 +18,9 @@
 
 import React from 'react';
 import { Paper } from '@material-ui/core';
-import Chart from 'react-apexcharts';
 import useUsageByYearGraph from '../../hooks/byyear/UseUsageByYearGraph';
 import Loading from '../../components/loading/Loading';
+import Graph from '../../components/graph/Graph';
 
 const UsageByYearGraph = () => {
     const { options, series, loading } = useUsageByYearGraph();
@@ -28,7 +28,7 @@ const UsageByYearGraph = () => {
     return (
         <Paper>
             <Loading isLoading={loading} />
-            <Chart options={options} series={series} type="bar" height={500} />
+            <Graph options={options} series={series} />
         </Paper>
     );
 };

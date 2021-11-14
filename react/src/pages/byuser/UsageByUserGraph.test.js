@@ -21,6 +21,7 @@ import UsageByUserGraph from './UsageByUserGraph';
 import { create } from 'react-test-renderer';
 
 jest.mock('../../services/Usage');
+jest.mock('../../components/graph/Graph');
 
 describe('UsageByUserGraph', () => {
     test('renders correctly', () => {

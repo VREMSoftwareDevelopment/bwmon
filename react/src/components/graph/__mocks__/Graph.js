@@ -17,15 +17,15 @@
  */
 
 import React from 'react';
-import UsageByMonthGraph from './UsageByMonthGraph';
-import { create } from 'react-test-renderer';
 
-jest.mock('../../services/Usage');
-jest.mock('../../components/graph/Graph');
+const Graph = ({ options, series }) => {
+    return (
+        <div>
+            Graph
+            <p>Options: {JSON.stringify(options)}</p>
+            <p>Series: {JSON.stringify(series)}</p>
+        </div>
+    );
+};
 
-describe('UsageByMonth', () => {
-    test('renders correctly', () => {
-        const tree = create(<UsageByMonthGraph />).toJSON();
-        expect(tree).toMatchSnapshot();
-    });
-});
+export default Graph;

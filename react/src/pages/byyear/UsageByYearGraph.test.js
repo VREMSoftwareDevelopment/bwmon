@@ -20,6 +20,9 @@ import React from 'react';
 import UsageByYearGraph from './UsageByYearGraph';
 import { create } from 'react-test-renderer';
 
+jest.mock('../../services/Usage');
+jest.mock('../../components/graph/Graph');
+
 describe('UsageByYearGraph', () => {
     test('renders correctly', () => {
         const tree = create(<UsageByYearGraph />).toJSON();
