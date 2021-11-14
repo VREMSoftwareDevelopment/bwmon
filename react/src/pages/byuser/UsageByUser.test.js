@@ -17,9 +17,12 @@
  */
 
 import React from 'react';
-import UsageByUser from './UsageByUser';
+import { Settings } from 'luxon';
 import { act, create } from 'react-test-renderer';
+import UsageByUser from './UsageByUser';
 import wait from '../../__test__/utils/Wait';
+
+Settings.defaultZoneName = 'America/New York';
 
 jest.mock('../../services/Usage');
 jest.mock('../../components/table/Pagination');
