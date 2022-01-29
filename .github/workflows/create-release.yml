@@ -23,6 +23,9 @@ jobs:
             - name: Update version
               run: npm version ${{ github.event.inputs.version }}
               working-directory: react
+            - name: Audit
+              run: npm run audit
+              working-directory: react
             - name: Start server and run all tests
               run: npm start & sleep 60; npm run testonce
               working-directory: react

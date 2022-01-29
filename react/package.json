@@ -8,14 +8,14 @@
         "@material-ui/core": "^4.12.3",
         "@material-ui/icons": "^4.11.2",
         "@material-ui/lab": "^4.0.0-alpha.60",
-        "apexcharts": "^3.32.0",
-        "history": "^5.0.1",
-        "luxon": "^2.1.1",
+        "apexcharts": "^3.33.0",
+        "history": "^5.2.0",
+        "luxon": "^2.3.0",
         "react": "^17.0.2",
         "react-apexcharts": "^1.3.9",
         "react-dom": "^17.0.2",
-        "react-router-dom": "^6.1.1",
-        "react-scripts": "^4.0.3"
+        "react-router-dom": "^6.2.1",
+        "react-scripts": "^5.0.0"
     },
     "scripts": {
         "start": "react-scripts start",
@@ -24,7 +24,8 @@
         "testonce": "react-scripts test --watchAll=false --maxWorkers=50%",
         "coverage": "react-scripts test --watchAll=false --coverage --maxWorkers=50%",
         "eject": "react-scripts eject",
-        "pretty": "./node_modules/.bin/prettier --write \"./**/*.{js,jsx,json}\""
+        "pretty": "./node_modules/.bin/prettier --write \"./**/*.{js,jsx,json}\"",
+        "audit": "better-npm-audit audit -p -l high"
     },
     "eslintConfig": {
         "extends": "react-app"
@@ -47,13 +48,14 @@
         "@testing-library/react-hooks": "^7.0.2",
         "@testing-library/user-event": "^13.5.0",
         "@wojtekmaj/enzyme-adapter-react-17": "^0.6.6",
+        "better-npm-audit": "^3.5.1",
         "enzyme": "^3.11.0",
         "enzyme-to-json": "^3.6.2",
         "husky": "^7.0.4",
         "jest-fetch-mock": "^3.0.3",
         "prettier": "^2.5.1",
-        "pretty-quick": "^3.1.2",
-        "puppeteer": "^13.0.0",
+        "pretty-quick": "^3.1.3",
+        "puppeteer": "^13.1.2",
         "react-test-renderer": "^17.0.2"
     },
     "prettier": {
