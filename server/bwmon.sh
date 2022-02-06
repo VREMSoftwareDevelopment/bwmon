@@ -103,7 +103,7 @@ update() {
 		IN=$(cat /tmp/in_$$.tmp)
 		OUT=$(cat /tmp/out_$$.tmp)
 		if [ ${IN} -gt 0 -o ${OUT} -gt 0 ];  then
-			log "DEBUG: New traffic for ${MACU} since last update : ${IN}k:${OUT}k"
+#			log "DEBUG: New traffic for ${MACU} since last update : ${IN}k:${OUT}k"
 			CURRENT_MONTH=$(date +'%Y-%m')
 			LINE=$(grep "${CURRENT_MONTH},${MACU}" ${USAGEDB})
 			if [ -z "${LINE}" ]; then

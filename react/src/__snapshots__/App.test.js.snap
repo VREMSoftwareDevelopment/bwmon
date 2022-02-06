@@ -12,8 +12,6 @@ Array [
         className="MuiTypography-root makeStyles-title-1 MuiTypography-h6"
         id="app-title"
       >
-        BWMon
-         
         Bandwidth Monitor
       </h6>
       <p
@@ -354,8 +352,6 @@ Array [
         className="MuiTypography-root makeStyles-title-1 MuiTypography-h6"
         id="app-title"
       >
-        BWMon
-         
         Bandwidth Monitor
       </h6>
       <p

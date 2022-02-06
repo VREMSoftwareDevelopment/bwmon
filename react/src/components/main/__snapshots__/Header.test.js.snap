@@ -12,8 +12,6 @@ exports[`Header renders correctly 1`] = `
       id="app-title"
     >
       Name
-       
-      Description
     </h6>
     <p
       className="MuiTypography-root MuiTypography-body1"

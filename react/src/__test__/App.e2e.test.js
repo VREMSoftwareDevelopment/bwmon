@@ -40,7 +40,7 @@ describe('App e2e', () => {
         async () => {
             await page.waitForSelector('#app-title');
             const title = await page.$eval('#app-title', (e) => e.innerHTML);
-            expect(title).toBe('BWMON ');
+            expect(title).toBe('Bandwidth Monitor');
         },
         TIMEOUT
     );
