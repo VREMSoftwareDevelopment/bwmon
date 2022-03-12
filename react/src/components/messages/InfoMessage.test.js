@@ -18,34 +18,16 @@
 
 import React from 'react';
 import { create } from 'react-test-renderer';
-import ErrorBoundary from './ErrorBoundary';
+import InfoMessage from './InfoMessage';
 
-import { configure, mount } from 'enzyme';
-import Adapter from '@wojtekmaj/enzyme-adapter-react-17';
-
-configure({ adapter: new Adapter() });
-
-const Something = () => null;
-
-describe('<ErrorBoundary> window', () => {
-    test('renders correctly', () => {
-        const tree = create(
-            <ErrorBoundary>
-                <Something />
-            </ErrorBoundary>
-        ).toJSON();
+describe('InfoMessage', () => {
+    test('renders correctly with message', () => {
+        const tree = create(<InfoMessage message="message" />).toJSON();
         expect(tree).toMatchSnapshot();
     });
 
-    test('renders error', () => {
-        const error = new Error('Error!!!');
-        const wrapper = mount(
-            <ErrorBoundary>
-                <Something />
-            </ErrorBoundary>
-        );
-        expect(wrapper).toMatchSnapshot();
-        wrapper.find(Something).simulateError(error);
-        expect(wrapper).toMatchSnapshot();
+    test('renders correctly with no message', () => {
+        const tree = create(<InfoMessage />).toJSON();
+        expect(tree).toMatchSnapshot();
     });
 });

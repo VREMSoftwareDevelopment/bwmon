@@ -17,17 +17,10 @@
  */
 
 import React from 'react';
-import { create } from 'react-test-renderer';
-import Error from './Error';
+import Message from './Message';
 
-describe('Error', () => {
-    test('renders correctly with message', () => {
-        const tree = create(<Error message="message" />).toJSON();
-        expect(tree).toMatchSnapshot();
-    });
+const InfoMessage = ({ message }) => {
+    return <Message severity="info" message={message} />;
+};
 
-    test('renders correctly with no message', () => {
-        const tree = create(<Error />).toJSON();
-        expect(tree).toMatchSnapshot();
-    });
-});
+export default InfoMessage;

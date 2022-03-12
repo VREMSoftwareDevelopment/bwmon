@@ -22,11 +22,12 @@ import { DateTime } from 'luxon';
 import theme from './theme';
 import { ThemeProvider } from '@material-ui/core/styles';
 import { CssBaseline } from '@material-ui/core';
+import { ErrorBoundary } from 'react-error-boundary';
+import ErrorDisplay from './components/main/ErrorDisplay';
 import Header from './components/main/Header';
 import Footer from './components/main/Footer';
 import Navigation from './components/navigation/Navigation';
 import BWMonRoutes from './components/navigation/BWMonRoutes';
-import ErrorBoundary from './components/error/ErrorBoundary';
 import menu from './menu/Menu';
 
 import { createBrowserHistory } from 'history';
@@ -35,13 +36,13 @@ export const history = createBrowserHistory({ basename: process.env.PUBLIC_URL }
 
 const description = 'Bandwidth Monitor';
 
-const App = ({ name, description, version, currentTime }) => (
+const App = ({ name, version, currentTime }) => (
     <HashRouter>
         <ThemeProvider theme={theme}>
             <CssBaseline />
             <Header name={name} version={version} />
             <Navigation menu={menu} />
-            <ErrorBoundary>
+            <ErrorBoundary onError={ErrorDisplay}>
                 <BWMonRoutes menu={menu} />
                 <Footer currentTime={currentTime} />
             </ErrorBoundary>

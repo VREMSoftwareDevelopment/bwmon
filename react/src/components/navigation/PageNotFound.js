@@ -17,10 +17,10 @@
  */
 
 import React from 'react';
-import Error from '../messages/Error';
+import ErrorMessage from '../messages/ErrorMessage';
 
 const PageNotFound = () => {
-    return <Error message="Page Not Found" />;
+    return <ErrorMessage message="Page Not Found" />;
 };
 
 export default PageNotFound;

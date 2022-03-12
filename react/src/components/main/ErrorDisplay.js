@@ -17,17 +17,15 @@
  */
 
 import React from 'react';
-import { create } from 'react-test-renderer';
-import Info from './Info';
+import ErrorMessage from '../messages/ErrorMessage';
 
-describe('Info', () => {
-    test('renders correctly with message', () => {
-        const tree = create(<Info message="message" />).toJSON();
-        expect(tree).toMatchSnapshot();
-    });
+const ErrorDisplay = ({ error, info }) => {
+    return (
+        <div>
+            <ErrorMessage message={error.toString()} />
+            <div>{info.componentStack}</div>
+        </div>
+    );
+};
 
-    test('renders correctly with no message', () => {
-        const tree = create(<Info />).toJSON();
-        expect(tree).toMatchSnapshot();
-    });
-});
+export default ErrorDisplay;

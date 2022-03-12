@@ -17,28 +17,17 @@
  */
 
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import LinearProgress from '@material-ui/core/LinearProgress';
-import InfoMessage from '../messages/InfoMessage';
+import { create } from 'react-test-renderer';
+import ErrorMessage from './ErrorMessage';
 
-const useStyles = makeStyles((theme) => ({
-    root: {
-        width: '100%',
-        '& > * + *': {
-            marginTop: theme.spacing(2),
-        },
-    },
-}));
+describe('ErrorMessage', () => {
+    test('renders correctly with message', () => {
+        const tree = create(<ErrorMessage message="message" />).toJSON();
+        expect(tree).toMatchSnapshot();
+    });
 
-const Loading = ({ isLoading }) => {
-    const classes = useStyles();
-
-    return isLoading ? (
-        <div className={classes.root}>
-            <LinearProgress />
-            <InfoMessage message="Loading..." />
-        </div>
-    ) : null;
-};
-
-export default Loading;
+    test('renders correctly with no message', () => {
+        const tree = create(<ErrorMessage />).toJSON();
+        expect(tree).toMatchSnapshot();
+    });
+});

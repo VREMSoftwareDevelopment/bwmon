@@ -17,10 +17,17 @@
  */
 
 import React from 'react';
-import Message from './Message';
+import { create } from 'react-test-renderer';
+import ErrorDisplay from './ErrorDisplay';
 
-const Info = ({ message }) => {
-    return <Message severity="info" message={message} />;
-};
+describe('ErrorDisplay', () => {
+    const error = new Error('--- Error ---');
+    const info = {
+        componentStack: '--- Error Component Stack ---',
+    };
 
-export default Info;
+    test('renders correctly', () => {
+        const tree = create(<ErrorDisplay error={error} info={info} />).toJSON();
+        expect(tree).toMatchSnapshot();
+    });
+});
