@@ -78,11 +78,11 @@ describe('Usage', () => {
         expect(data[0]).toEqual(expectedFirst);
         expect(data[2]).toEqual(expectedLast);
 
-        expect(fetch).toHaveBeenCalledTimes(1);
+        expect(fetch).toHaveBeenCalled();
         expect(fetch).toHaveBeenCalledWith('xyz/usage.db');
     });
 
-    test('should return error when status is not OK', async () => {
+    test('should throw error when status is not OK', async () => {
         fetch.mockResponseOnce('', { status: 400, statusText: 'Bad request' });
 
         try {
@@ -92,4 +92,5 @@ describe('Usage', () => {
             expect(e.message).toEqual('400 Bad request');
         }
     });
+
 });

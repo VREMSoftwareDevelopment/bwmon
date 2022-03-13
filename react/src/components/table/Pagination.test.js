@@ -18,7 +18,7 @@
 
 import React from 'react';
 import { create } from 'react-test-renderer';
-import Pagination from './Pagination';
+import { Pagination, rowsPerPageOptions } from './Pagination';
 
 describe('Pagination', () => {
     const handlePageChange = (event, newPage) => {};
@@ -39,4 +39,29 @@ describe('Pagination', () => {
         ).toJSON();
         expect(tree).toMatchSnapshot();
     });
+
+    test('rowsPerPageOptions when rows per page is the same as count', () => {
+        const rowsPerPage = 10;
+        const count = 10;
+        const expected = [rowsPerPage];
+        const actual = rowsPerPageOptions(rowsPerPage, count);
+        expect(actual).toEqual(expected);
+    });
+
+    test('rowsPerPageOptions when rows per page is the larger than count', () => {
+        const rowsPerPage = 10;
+        const count = 9;
+        const expected = [rowsPerPage];
+        const actual = rowsPerPageOptions(rowsPerPage, count);
+        expect(actual).toEqual(expected);
+    });
+
+    test('rowsPerPageOptions when rows per page is the less than count', () => {
+        const rowsPerPage = 1;
+        const count = 20;
+        const expected = [1,2,4,8,16,20];
+        const actual = rowsPerPageOptions(rowsPerPage, count);
+        expect(actual).toEqual(expected);
+    });
+
 });
