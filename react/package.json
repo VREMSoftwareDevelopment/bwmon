@@ -8,14 +8,14 @@
         "@material-ui/core": "^4.12.3",
         "@material-ui/icons": "^4.11.2",
         "@material-ui/lab": "^4.0.0-alpha.60",
-        "apexcharts": "^3.33.2",
+        "apexcharts": "^3.35.0",
         "history": "^5.3.0",
         "luxon": "^2.3.1",
         "react": "^17.0.2",
         "react-apexcharts": "^1.4.0",
         "react-dom": "^17.0.2",
         "react-error-boundary": "^3.1.4",
-        "react-router-dom": "^6.2.2",
+        "react-router-dom": "^6.3.0",
         "react-scripts": "^5.0.0"
     },
     "scripts": {
@@ -44,16 +44,16 @@
         ]
     },
     "devDependencies": {
-        "@testing-library/jest-dom": "^5.16.2",
+        "@testing-library/jest-dom": "^5.16.3",
         "@testing-library/react": "^12.1.4",
         "@testing-library/react-hooks": "^7.0.2",
         "@testing-library/user-event": "^13.5.0",
-        "better-npm-audit": "^3.6.0",
+        "better-npm-audit": "^3.7.3",
         "husky": "^7.0.4",
         "jest-fetch-mock": "^3.0.3",
-        "prettier": "^2.6.0",
+        "prettier": "^2.6.1",
         "pretty-quick": "^3.1.3",
-        "puppeteer": "^13.5.1",
+        "puppeteer": "^13.5.2",
         "react-test-renderer": "^17.0.2"
     },
     "prettier": {
