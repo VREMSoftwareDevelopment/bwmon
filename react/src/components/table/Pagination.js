@@ -141,9 +141,6 @@ const Pagination = (props) => {
     );
 };
 
-export {
-    Pagination,
-    rowsPerPageOptions
-};
+export { Pagination, rowsPerPageOptions };
 
 export default Pagination;

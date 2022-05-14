@@ -25,7 +25,7 @@
         "testonce": "react-scripts test --watchAll=false --maxWorkers=50%",
         "coverage": "react-scripts test --watchAll=false --coverage --maxWorkers=50%",
         "eject": "react-scripts eject",
-        "pretty": "./node_modules/.bin/prettier --write \"./**/*.{js,jsx,json}\"",
+        "pretty": "prettier --write \"src/**/*.{js,jsx,json}\"",
         "audit": "better-npm-audit audit -p -l high"
     },
     "eslintConfig": {

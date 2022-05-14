@@ -59,9 +59,8 @@ describe('Pagination', () => {
     test('rowsPerPageOptions when rows per page is the less than count', () => {
         const rowsPerPage = 1;
         const count = 20;
-        const expected = [1,2,4,8,16,20];
+        const expected = [1, 2, 4, 8, 16, 20];
         const actual = rowsPerPageOptions(rowsPerPage, count);
         expect(actual).toEqual(expected);
     });
-
 });

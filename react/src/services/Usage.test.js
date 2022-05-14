@@ -92,5 +92,4 @@ describe('Usage', () => {
             expect(e.message).toEqual('400 Bad request');
         }
     });
-
 });
