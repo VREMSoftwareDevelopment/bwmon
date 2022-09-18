@@ -2,37 +2,38 @@
 
 exports[`UsageByMonth renders correctly 1`] = `
 <div
-  className="MuiPaper-root MuiPaper-elevation1 MuiPaper-rounded"
+  className="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-1ps6pg7-MuiPaper-root"
 >
   <div
     className="makeStyles-root-1"
   >
-    <div
-      className="MuiLinearProgress-root MuiLinearProgress-colorPrimary MuiLinearProgress-indeterminate"
+    <span
+      className="MuiLinearProgress-root MuiLinearProgress-colorPrimary MuiLinearProgress-indeterminate css-eglki6-MuiLinearProgress-root"
       role="progressbar"
     >
-      <div
-        className="MuiLinearProgress-bar MuiLinearProgress-barColorPrimary MuiLinearProgress-bar1Indeterminate"
+      <span
+        className="MuiLinearProgress-bar MuiLinearProgress-barColorPrimary MuiLinearProgress-bar1Indeterminate css-5ir5xx-MuiLinearProgress-bar1"
         style={Object {}}
       />
-      <div
-        className="MuiLinearProgress-bar MuiLinearProgress-bar2Indeterminate MuiLinearProgress-barColorPrimary"
+      <span
+        className="MuiLinearProgress-bar MuiLinearProgress-barColorPrimary MuiLinearProgress-bar2Indeterminate css-1r8wrcl-MuiLinearProgress-bar2"
         style={Object {}}
       />
-    </div>
+    </span>
     <div
       className="makeStyles-root-2"
     >
       <div
-        className="MuiPaper-root MuiAlert-root MuiAlert-standardInfo MuiPaper-elevation0"
+        className="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation0 MuiAlert-root MuiAlert-standardInfo MuiAlert-standard css-12mvehg-MuiPaper-root-MuiAlert-root"
         role="alert"
       >
         <div
-          className="MuiAlert-icon"
+          className="MuiAlert-icon css-1ytlwq5-MuiAlert-icon"
         >
           <svg
             aria-hidden={true}
-            className="MuiSvgIcon-root MuiSvgIcon-fontSizeInherit"
+            className="MuiSvgIcon-root MuiSvgIcon-fontSizeInherit css-1vooibu-MuiSvgIcon-root"
+            data-testid="InfoOutlinedIcon"
             focusable="false"
             viewBox="0 0 24 24"
           >
@@ -42,10 +43,10 @@ exports[`UsageByMonth renders correctly 1`] = `
           </svg>
         </div>
         <div
-          className="MuiAlert-message"
+          className="MuiAlert-message css-1pxa9xg-MuiAlert-message"
         >
           <div
-            className="MuiTypography-root MuiAlertTitle-root MuiTypography-body1 MuiTypography-gutterBottom"
+            className="MuiTypography-root MuiTypography-body1 MuiTypography-gutterBottom MuiAlertTitle-root css-yslrua-MuiTypography-root-MuiAlertTitle-root"
           >
             Loading...
           </div>
@@ -54,7 +55,7 @@ exports[`UsageByMonth renders correctly 1`] = `
     </div>
   </div>
   <div
-    className="MuiFormControl-root"
+    className="MuiFormControl-root css-1nrlq1o-MuiFormControl-root"
   />
   <div>
     Graph

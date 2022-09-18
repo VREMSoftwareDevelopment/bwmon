@@ -17,10 +17,7 @@
  */
 
 import React from 'react';
-import TableCell from '@material-ui/core/TableCell';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
-import TableSortLabel from '@material-ui/core/TableSortLabel';
+import { TableCell, TableHead, TableRow, TableSortLabel } from '@mui/material';
 
 const SortableCell = ({ prefix, cellInfo, sortHandler, ascending, orderBy }) => {
     const direction = ascending ? 'asc' : 'desc';

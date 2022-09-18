@@ -17,15 +17,15 @@
  */
 
 import React from 'react';
+import { themeWrapper } from '../../__test__/utils/themeWrapper';
 import UsageByMonthGraph from './UsageByMonthGraph';
-import { create } from 'react-test-renderer';
 
 jest.mock('../../services/Usage');
 jest.mock('../../components/graph/Graph');
 
 describe('UsageByMonth', () => {
     test('renders correctly', () => {
-        const tree = create(<UsageByMonthGraph />).toJSON();
+        const tree = themeWrapper(<UsageByMonthGraph />).toJSON();
         expect(tree).toMatchSnapshot();
     });
 });

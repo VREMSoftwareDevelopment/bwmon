@@ -17,8 +17,8 @@
  */
 
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import LinearProgress from '@material-ui/core/LinearProgress';
+import { makeStyles } from '@mui/styles';
+import { LinearProgress } from '@mui/material';
 import InfoMessage from '../messages/InfoMessage';
 
 const useStyles = makeStyles((theme) => ({

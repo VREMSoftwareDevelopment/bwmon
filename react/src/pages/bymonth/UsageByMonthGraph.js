@@ -17,7 +17,7 @@
  */
 
 import React from 'react';
-import { FormControl, Paper } from '@material-ui/core';
+import { FormControl, Paper } from '@mui/material';
 import DropDown from '../../components/inputs/DropDown';
 import useUsageByMonthGraph from '../../hooks/bymonth/UseUsageByMonthGraph';
 import Loading from '../../components/loading/Loading';

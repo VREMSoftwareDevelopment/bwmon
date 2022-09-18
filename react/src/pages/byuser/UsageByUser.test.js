@@ -18,7 +18,8 @@
 
 import React from 'react';
 import { Settings } from 'luxon';
-import { act, create } from 'react-test-renderer';
+import { act } from 'react-test-renderer';
+import { themeWrapper } from '../../__test__/utils/themeWrapper';
 import UsageByUser from './UsageByUser';
 import wait from '../../__test__/utils/Wait';
 
@@ -40,14 +41,14 @@ describe('UsageByUser', () => {
     });
 
     test('renders correctly', () => {
-        const tree = create(<UsageByUser />).toJSON();
+        const tree = themeWrapper(<UsageByUser />).toJSON();
         expect(tree).toMatchSnapshot();
     });
 
     test('renders correctly after data load', async () => {
         let tree;
         act(() => {
-            tree = create(<UsageByUser />);
+            tree = themeWrapper(<UsageByUser />);
         });
         await wait(1);
         expect(tree.toJSON()).toMatchSnapshot();

@@ -17,7 +17,7 @@
  */
 
 import React from 'react';
-import { create } from 'react-test-renderer';
+import { themeWrapper } from '../../__test__/utils/themeWrapper';
 import ErrorDisplay from './ErrorDisplay';
 
 describe('ErrorDisplay', () => {
@@ -27,7 +27,7 @@ describe('ErrorDisplay', () => {
     };
 
     test('renders correctly', () => {
-        const tree = create(<ErrorDisplay error={error} info={info} />).toJSON();
+        const tree = themeWrapper(<ErrorDisplay error={error} info={info} />).toJSON();
         expect(tree).toMatchSnapshot();
     });
 });

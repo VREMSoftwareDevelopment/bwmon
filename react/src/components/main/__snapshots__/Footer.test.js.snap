@@ -5,12 +5,12 @@ exports[`Footer renders correctly 1`] = `
   className="makeStyles-root-1"
 >
   <h6
-    className="MuiTypography-root MuiTypography-subtitle2"
+    className="MuiTypography-root MuiTypography-subtitle2 css-ati914-MuiTypography-root"
   >
     All usage information is in gigabytes
   </h6>
   <h6
-    className="MuiTypography-root MuiTypography-subtitle2"
+    className="MuiTypography-root MuiTypography-subtitle2 css-ati914-MuiTypography-root"
   >
     This page was generated on 
     October 20, 2020, 11:25:35 AM EDT

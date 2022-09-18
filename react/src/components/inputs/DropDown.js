@@ -17,7 +17,7 @@
  */
 
 import React from 'react';
-import { Select, MenuItem } from '@material-ui/core';
+import { Select, MenuItem } from '@mui/material';
 
 const DropDown = ({ items, ...props }) => {
     return items && props.value ? (

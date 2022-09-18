@@ -17,7 +17,7 @@
  */
 
 import React from 'react';
-import { Paper } from '@material-ui/core';
+import { Paper } from '@mui/material';
 import useUsageByYearGraph from '../../hooks/byyear/UseUsageByYearGraph';
 import Loading from '../../components/loading/Loading';
 import Graph from '../../components/graph/Graph';

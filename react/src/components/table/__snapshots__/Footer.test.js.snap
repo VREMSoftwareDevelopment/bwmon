@@ -2,45 +2,45 @@
 
 exports[`Footer renders correctly 1`] = `
 <thead
-  className="MuiTableHead-root"
+  className="MuiTableHead-root css-15wwp11-MuiTableHead-root"
   role={null}
 >
   <tr
-    className="MuiTableRow-root MuiTableRow-head"
+    className="MuiTableRow-root MuiTableRow-head css-1q1u3t4-MuiTableRow-root"
     id="test-footer"
     role={null}
   >
     <th
       aria-sort={null}
-      className="MuiTableCell-root MuiTableCell-head MuiTableCell-alignLeft"
+      className="MuiTableCell-root MuiTableCell-head MuiTableCell-alignLeft MuiTableCell-sizeMedium css-1ygcj2i-MuiTableCell-root"
       scope="col"
     >
       Totals
     </th>
     <th
       aria-sort={null}
-      className="MuiTableCell-root MuiTableCell-head MuiTableCell-alignLeft"
+      className="MuiTableCell-root MuiTableCell-head MuiTableCell-alignLeft MuiTableCell-sizeMedium css-1ygcj2i-MuiTableCell-root"
       scope="col"
     >
       
     </th>
     <th
       aria-sort={null}
-      className="MuiTableCell-root MuiTableCell-head MuiTableCell-alignRight"
+      className="MuiTableCell-root MuiTableCell-head MuiTableCell-alignRight MuiTableCell-sizeMedium css-1azl6jz-MuiTableCell-root"
       scope="col"
     >
       12345
     </th>
     <th
       aria-sort={null}
-      className="MuiTableCell-root MuiTableCell-head MuiTableCell-alignRight"
+      className="MuiTableCell-root MuiTableCell-head MuiTableCell-alignRight MuiTableCell-sizeMedium css-1azl6jz-MuiTableCell-root"
       scope="col"
     >
       67890xyz
     </th>
     <th
       aria-sort={null}
-      className="MuiTableCell-root MuiTableCell-head MuiTableCell-alignRight"
+      className="MuiTableCell-root MuiTableCell-head MuiTableCell-alignRight MuiTableCell-sizeMedium css-1azl6jz-MuiTableCell-root"
       scope="col"
     >
       

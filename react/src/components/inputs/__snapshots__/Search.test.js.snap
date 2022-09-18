@@ -2,18 +2,24 @@
 
 exports[`Search renders correctly 1`] = `
 <div
-  className="MuiFormControl-root MuiTextField-root"
+  className="MuiFormControl-root MuiTextField-root css-1u3bzj6-MuiFormControl-root-MuiTextField-root"
 >
   <div
-    className="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl MuiInputBase-adornedStart"
+    className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl MuiInputBase-adornedStart css-1q6at85-MuiInputBase-root-MuiOutlinedInput-root"
     onClick={[Function]}
   >
     <div
-      className="MuiInputAdornment-root MuiInputAdornment-positionStart"
+      className="MuiInputAdornment-root MuiInputAdornment-positionStart MuiInputAdornment-outlined MuiInputAdornment-sizeMedium css-ittuaa-MuiInputAdornment-root"
     >
+      <span
+        className="notranslate"
+      >
+        ​
+      </span>
       <svg
         aria-hidden={true}
-        className="MuiSvgIcon-root"
+        className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+        data-testid="SearchIcon"
         focusable="false"
         viewBox="0 0 24 24"
       >
@@ -25,7 +31,7 @@ exports[`Search renders correctly 1`] = `
     <input
       aria-invalid={false}
       autoFocus={false}
-      className="MuiInputBase-input MuiInput-input MuiInputBase-inputAdornedStart"
+      className="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputAdornedStart css-1o9s3wi-MuiInputBase-input-MuiOutlinedInput-input"
       disabled={false}
       id="12345"
       onAnimationStart={[Function]}
@@ -37,6 +43,20 @@ exports[`Search renders correctly 1`] = `
       type="text"
       value="XYZ"
     />
+    <fieldset
+      aria-hidden={true}
+      className="MuiOutlinedInput-notchedOutline css-1d3z3hw-MuiOutlinedInput-notchedOutline"
+    >
+      <legend
+        className="css-hdw1oc"
+      >
+        <span
+          className="notranslate"
+        >
+          ​
+        </span>
+      </legend>
+    </fieldset>
   </div>
 </div>
 `;

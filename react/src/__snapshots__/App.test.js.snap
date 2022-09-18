@@ -3,19 +3,19 @@
 exports[`App renders correctly 1`] = `
 Array [
   <header
-    className="MuiPaper-root MuiAppBar-root MuiAppBar-positionStatic MuiAppBar-colorPrimary MuiPaper-elevation4"
+    className="MuiPaper-root MuiPaper-elevation MuiPaper-elevation4 MuiAppBar-root MuiAppBar-colorPrimary MuiAppBar-positionStatic css-hip9hq-MuiPaper-root-MuiAppBar-root"
   >
     <div
-      className="MuiToolbar-root MuiToolbar-dense MuiToolbar-gutters"
+      className="MuiToolbar-root MuiToolbar-gutters MuiToolbar-dense css-10ltm04-MuiToolbar-root"
     >
       <h6
-        className="MuiTypography-root makeStyles-title-1 MuiTypography-h6"
+        className="MuiTypography-root MuiTypography-h6 makeStyles-title-1 css-2ulfj5-MuiTypography-root"
         id="app-title"
       >
         Bandwidth Monitor
       </h6>
       <p
-        className="MuiTypography-root MuiTypography-body1"
+        className="MuiTypography-root MuiTypography-body1 css-ahj2mt-MuiTypography-root"
         id="app-version"
       >
         3.1.1
@@ -23,15 +23,15 @@ Array [
     </div>
   </header>,
   <div
-    className="MuiBottomNavigation-root"
+    className="MuiBottomNavigation-root css-16lloyr-MuiBottomNavigation-root"
   >
     <a
-      aria-disabled={false}
-      className="MuiButtonBase-root MuiBottomNavigationAction-root Mui-selected"
+      className="MuiButtonBase-root MuiBottomNavigationAction-root Mui-selected css-1bjk3jo-MuiButtonBase-root-MuiBottomNavigationAction-root"
       href="#/UsageByUser"
       id="usage-by-user"
       onBlur={[Function]}
       onClick={[Function]}
+      onContextMenu={[Function]}
       onDragLeave={[Function]}
       onFocus={[Function]}
       onKeyDown={[Function]}
@@ -42,36 +42,32 @@ Array [
       onTouchEnd={[Function]}
       onTouchMove={[Function]}
       onTouchStart={[Function]}
-      role="button"
       tabIndex={0}
     >
-      <span
-        className="MuiBottomNavigationAction-wrapper"
+      <svg
+        aria-hidden={true}
+        className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+        data-testid="PersonIcon"
+        focusable="false"
+        viewBox="0 0 24 24"
       >
-        <svg
-          aria-hidden={true}
-          className="MuiSvgIcon-root"
-          focusable="false"
-          viewBox="0 0 24 24"
-        >
-          <path
-            d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"
-          />
-        </svg>
-        <span
-          className="MuiBottomNavigationAction-label Mui-selected"
-        >
-          By User
-        </span>
+        <path
+          d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"
+        />
+      </svg>
+      <span
+        className="MuiBottomNavigationAction-label Mui-selected css-imwso6-MuiBottomNavigationAction-label"
+      >
+        By User
       </span>
     </a>
     <a
-      aria-disabled={false}
-      className="MuiButtonBase-root MuiBottomNavigationAction-root"
+      className="MuiButtonBase-root MuiBottomNavigationAction-root css-1bjk3jo-MuiButtonBase-root-MuiBottomNavigationAction-root"
       href="#/UsageByUserGraph"
       id="usage-by-user-graph"
       onBlur={[Function]}
       onClick={[Function]}
+      onContextMenu={[Function]}
       onDragLeave={[Function]}
       onFocus={[Function]}
       onKeyDown={[Function]}
@@ -82,36 +78,32 @@ Array [
       onTouchEnd={[Function]}
       onTouchMove={[Function]}
       onTouchStart={[Function]}
-      role="button"
       tabIndex={0}
     >
-      <span
-        className="MuiBottomNavigationAction-wrapper"
+      <svg
+        aria-hidden={true}
+        className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+        data-testid="ShowChartIcon"
+        focusable="false"
+        viewBox="0 0 24 24"
       >
-        <svg
-          aria-hidden={true}
-          className="MuiSvgIcon-root"
-          focusable="false"
-          viewBox="0 0 24 24"
-        >
-          <path
-            d="M3.5 18.49l6-6.01 4 4L22 6.92l-1.41-1.41-7.09 7.97-4-4L2 16.99z"
-          />
-        </svg>
-        <span
-          className="MuiBottomNavigationAction-label"
-        >
-          By User Graph
-        </span>
+        <path
+          d="m3.5 18.49 6-6.01 4 4L22 6.92l-1.41-1.41-7.09 7.97-4-4L2 16.99z"
+        />
+      </svg>
+      <span
+        className="MuiBottomNavigationAction-label css-imwso6-MuiBottomNavigationAction-label"
+      >
+        By User Graph
       </span>
     </a>
     <a
-      aria-disabled={false}
-      className="MuiButtonBase-root MuiBottomNavigationAction-root"
+      className="MuiButtonBase-root MuiBottomNavigationAction-root css-1bjk3jo-MuiButtonBase-root-MuiBottomNavigationAction-root"
       href="#/UsageByMonth"
       id="usage-by-month"
       onBlur={[Function]}
       onClick={[Function]}
+      onContextMenu={[Function]}
       onDragLeave={[Function]}
       onFocus={[Function]}
       onKeyDown={[Function]}
@@ -122,36 +114,32 @@ Array [
       onTouchEnd={[Function]}
       onTouchMove={[Function]}
       onTouchStart={[Function]}
-      role="button"
       tabIndex={0}
     >
-      <span
-        className="MuiBottomNavigationAction-wrapper"
+      <svg
+        aria-hidden={true}
+        className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+        data-testid="CalendarTodayIcon"
+        focusable="false"
+        viewBox="0 0 24 24"
       >
-        <svg
-          aria-hidden={true}
-          className="MuiSvgIcon-root"
-          focusable="false"
-          viewBox="0 0 24 24"
-        >
-          <path
-            d="M20 3h-1V1h-2v2H7V1H5v2H4c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 18H4V8h16v13z"
-          />
-        </svg>
-        <span
-          className="MuiBottomNavigationAction-label"
-        >
-          By Month
-        </span>
+        <path
+          d="M20 3h-1V1h-2v2H7V1H5v2H4c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 18H4V8h16v13z"
+        />
+      </svg>
+      <span
+        className="MuiBottomNavigationAction-label css-imwso6-MuiBottomNavigationAction-label"
+      >
+        By Month
       </span>
     </a>
     <a
-      aria-disabled={false}
-      className="MuiButtonBase-root MuiBottomNavigationAction-root"
+      className="MuiButtonBase-root MuiBottomNavigationAction-root css-1bjk3jo-MuiButtonBase-root-MuiBottomNavigationAction-root"
       href="#/UsageByMonthGraph"
       id="usage-by-month-graph"
       onBlur={[Function]}
       onClick={[Function]}
+      onContextMenu={[Function]}
       onDragLeave={[Function]}
       onFocus={[Function]}
       onKeyDown={[Function]}
@@ -162,36 +150,32 @@ Array [
       onTouchEnd={[Function]}
       onTouchMove={[Function]}
       onTouchStart={[Function]}
-      role="button"
       tabIndex={0}
     >
-      <span
-        className="MuiBottomNavigationAction-wrapper"
+      <svg
+        aria-hidden={true}
+        className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+        data-testid="TimelineIcon"
+        focusable="false"
+        viewBox="0 0 24 24"
       >
-        <svg
-          aria-hidden={true}
-          className="MuiSvgIcon-root"
-          focusable="false"
-          viewBox="0 0 24 24"
-        >
-          <path
-            d="M23 8c0 1.1-.9 2-2 2-.18 0-.35-.02-.51-.07l-3.56 3.55c.05.16.07.34.07.52 0 1.1-.9 2-2 2s-2-.9-2-2c0-.18.02-.36.07-.52l-2.55-2.55c-.16.05-.34.07-.52.07s-.36-.02-.52-.07l-4.55 4.56c.05.16.07.33.07.51 0 1.1-.9 2-2 2s-2-.9-2-2 .9-2 2-2c.18 0 .35.02.51.07l4.56-4.55C8.02 9.36 8 9.18 8 9c0-1.1.9-2 2-2s2 .9 2 2c0 .18-.02.36-.07.52l2.55 2.55c.16-.05.34-.07.52-.07s.36.02.52.07l3.55-3.56C19.02 8.35 19 8.18 19 8c0-1.1.9-2 2-2s2 .9 2 2z"
-          />
-        </svg>
-        <span
-          className="MuiBottomNavigationAction-label"
-        >
-          By Month Graph
-        </span>
+        <path
+          d="M23 8c0 1.1-.9 2-2 2-.18 0-.35-.02-.51-.07l-3.56 3.55c.05.16.07.34.07.52 0 1.1-.9 2-2 2s-2-.9-2-2c0-.18.02-.36.07-.52l-2.55-2.55c-.16.05-.34.07-.52.07s-.36-.02-.52-.07l-4.55 4.56c.05.16.07.33.07.51 0 1.1-.9 2-2 2s-2-.9-2-2 .9-2 2-2c.18 0 .35.02.51.07l4.56-4.55C8.02 9.36 8 9.18 8 9c0-1.1.9-2 2-2s2 .9 2 2c0 .18-.02.36-.07.52l2.55 2.55c.16-.05.34-.07.52-.07s.36.02.52.07l3.55-3.56C19.02 8.35 19 8.18 19 8c0-1.1.9-2 2-2s2 .9 2 2z"
+        />
+      </svg>
+      <span
+        className="MuiBottomNavigationAction-label css-imwso6-MuiBottomNavigationAction-label"
+      >
+        By Month Graph
       </span>
     </a>
     <a
-      aria-disabled={false}
-      className="MuiButtonBase-root MuiBottomNavigationAction-root"
+      className="MuiButtonBase-root MuiBottomNavigationAction-root css-1bjk3jo-MuiButtonBase-root-MuiBottomNavigationAction-root"
       href="#/UsageByYear"
       id="usage-by-year"
       onBlur={[Function]}
       onClick={[Function]}
+      onContextMenu={[Function]}
       onDragLeave={[Function]}
       onFocus={[Function]}
       onKeyDown={[Function]}
@@ -202,36 +186,32 @@ Array [
       onTouchEnd={[Function]}
       onTouchMove={[Function]}
       onTouchStart={[Function]}
-      role="button"
       tabIndex={0}
     >
-      <span
-        className="MuiBottomNavigationAction-wrapper"
+      <svg
+        aria-hidden={true}
+        className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+        data-testid="CalendarViewDayIcon"
+        focusable="false"
+        viewBox="0 0 24 24"
       >
-        <svg
-          aria-hidden={true}
-          className="MuiSvgIcon-root"
-          focusable="false"
-          viewBox="0 0 24 24"
-        >
-          <path
-            d="M3 17h18v2H3zm0-7h18v5H3zm0-4h18v2H3z"
-          />
-        </svg>
-        <span
-          className="MuiBottomNavigationAction-label"
-        >
-          By Year
-        </span>
+        <path
+          d="M3 17h18v2H3zm0-7h18v5H3zm0-4h18v2H3z"
+        />
+      </svg>
+      <span
+        className="MuiBottomNavigationAction-label css-imwso6-MuiBottomNavigationAction-label"
+      >
+        By Year
       </span>
     </a>
     <a
-      aria-disabled={false}
-      className="MuiButtonBase-root MuiBottomNavigationAction-root"
+      className="MuiButtonBase-root MuiBottomNavigationAction-root css-1bjk3jo-MuiButtonBase-root-MuiBottomNavigationAction-root"
       href="#/UsageByYearGraph"
       id="usage-by-year-graph"
       onBlur={[Function]}
       onClick={[Function]}
+      onContextMenu={[Function]}
       onDragLeave={[Function]}
       onFocus={[Function]}
       onKeyDown={[Function]}
@@ -242,62 +222,59 @@ Array [
       onTouchEnd={[Function]}
       onTouchMove={[Function]}
       onTouchStart={[Function]}
-      role="button"
       tabIndex={0}
     >
-      <span
-        className="MuiBottomNavigationAction-wrapper"
+      <svg
+        aria-hidden={true}
+        className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+        data-testid="TimelineIcon"
+        focusable="false"
+        viewBox="0 0 24 24"
       >
-        <svg
-          aria-hidden={true}
-          className="MuiSvgIcon-root"
-          focusable="false"
-          viewBox="0 0 24 24"
-        >
-          <path
-            d="M23 8c0 1.1-.9 2-2 2-.18 0-.35-.02-.51-.07l-3.56 3.55c.05.16.07.34.07.52 0 1.1-.9 2-2 2s-2-.9-2-2c0-.18.02-.36.07-.52l-2.55-2.55c-.16.05-.34.07-.52.07s-.36-.02-.52-.07l-4.55 4.56c.05.16.07.33.07.51 0 1.1-.9 2-2 2s-2-.9-2-2 .9-2 2-2c.18 0 .35.02.51.07l4.56-4.55C8.02 9.36 8 9.18 8 9c0-1.1.9-2 2-2s2 .9 2 2c0 .18-.02.36-.07.52l2.55 2.55c.16-.05.34-.07.52-.07s.36.02.52.07l3.55-3.56C19.02 8.35 19 8.18 19 8c0-1.1.9-2 2-2s2 .9 2 2z"
-          />
-        </svg>
-        <span
-          className="MuiBottomNavigationAction-label"
-        >
-          By Year Graph
-        </span>
+        <path
+          d="M23 8c0 1.1-.9 2-2 2-.18 0-.35-.02-.51-.07l-3.56 3.55c.05.16.07.34.07.52 0 1.1-.9 2-2 2s-2-.9-2-2c0-.18.02-.36.07-.52l-2.55-2.55c-.16.05-.34.07-.52.07s-.36-.02-.52-.07l-4.55 4.56c.05.16.07.33.07.51 0 1.1-.9 2-2 2s-2-.9-2-2 .9-2 2-2c.18 0 .35.02.51.07l4.56-4.55C8.02 9.36 8 9.18 8 9c0-1.1.9-2 2-2s2 .9 2 2c0 .18-.02.36-.07.52l2.55 2.55c.16-.05.34-.07.52-.07s.36.02.52.07l3.55-3.56C19.02 8.35 19 8.18 19 8c0-1.1.9-2 2-2s2 .9 2 2z"
+        />
+      </svg>
+      <span
+        className="MuiBottomNavigationAction-label css-imwso6-MuiBottomNavigationAction-label"
+      >
+        By Year Graph
       </span>
     </a>
   </div>,
   <div
-    className="MuiPaper-root MuiPaper-elevation1 MuiPaper-rounded"
+    className="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-1ps6pg7-MuiPaper-root"
   >
     <div
       className="makeStyles-root-2"
     >
-      <div
-        className="MuiLinearProgress-root MuiLinearProgress-colorPrimary MuiLinearProgress-indeterminate"
+      <span
+        className="MuiLinearProgress-root MuiLinearProgress-colorPrimary MuiLinearProgress-indeterminate css-eglki6-MuiLinearProgress-root"
         role="progressbar"
       >
-        <div
-          className="MuiLinearProgress-bar MuiLinearProgress-barColorPrimary MuiLinearProgress-bar1Indeterminate"
+        <span
+          className="MuiLinearProgress-bar MuiLinearProgress-barColorPrimary MuiLinearProgress-bar1Indeterminate css-5ir5xx-MuiLinearProgress-bar1"
           style={Object {}}
         />
-        <div
-          className="MuiLinearProgress-bar MuiLinearProgress-bar2Indeterminate MuiLinearProgress-barColorPrimary"
+        <span
+          className="MuiLinearProgress-bar MuiLinearProgress-barColorPrimary MuiLinearProgress-bar2Indeterminate css-1r8wrcl-MuiLinearProgress-bar2"
           style={Object {}}
         />
-      </div>
+      </span>
       <div
         className="makeStyles-root-3"
       >
         <div
-          className="MuiPaper-root MuiAlert-root MuiAlert-standardInfo MuiPaper-elevation0"
+          className="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation0 MuiAlert-root MuiAlert-standardInfo MuiAlert-standard css-12mvehg-MuiPaper-root-MuiAlert-root"
           role="alert"
         >
           <div
-            className="MuiAlert-icon"
+            className="MuiAlert-icon css-1ytlwq5-MuiAlert-icon"
           >
             <svg
               aria-hidden={true}
-              className="MuiSvgIcon-root MuiSvgIcon-fontSizeInherit"
+              className="MuiSvgIcon-root MuiSvgIcon-fontSizeInherit css-1vooibu-MuiSvgIcon-root"
+              data-testid="InfoOutlinedIcon"
               focusable="false"
               viewBox="0 0 24 24"
             >
@@ -307,10 +284,10 @@ Array [
             </svg>
           </div>
           <div
-            className="MuiAlert-message"
+            className="MuiAlert-message css-1pxa9xg-MuiAlert-message"
           >
             <div
-              className="MuiTypography-root MuiAlertTitle-root MuiTypography-body1 MuiTypography-gutterBottom"
+              className="MuiTypography-root MuiTypography-body1 MuiTypography-gutterBottom MuiAlertTitle-root css-yslrua-MuiTypography-root-MuiAlertTitle-root"
             >
               Loading...
             </div>
@@ -319,19 +296,19 @@ Array [
       </div>
     </div>
     <div
-      className="MuiTableContainer-root"
+      className="MuiTableContainer-root css-rorn0c-MuiTableContainer-root"
     />
   </div>,
   <div
     className="makeStyles-root-4"
   >
     <h6
-      className="MuiTypography-root MuiTypography-subtitle2"
+      className="MuiTypography-root MuiTypography-subtitle2 css-ati914-MuiTypography-root"
     >
       All usage information is in gigabytes
     </h6>
     <h6
-      className="MuiTypography-root MuiTypography-subtitle2"
+      className="MuiTypography-root MuiTypography-subtitle2 css-ati914-MuiTypography-root"
     >
       This page was generated on 
       October 20, 2020, 11:25:35 AM EDT
@@ -343,19 +320,19 @@ Array [
 exports[`App renders correctly after data load 1`] = `
 Array [
   <header
-    className="MuiPaper-root MuiAppBar-root MuiAppBar-positionStatic MuiAppBar-colorPrimary MuiPaper-elevation4"
+    className="MuiPaper-root MuiPaper-elevation MuiPaper-elevation4 MuiAppBar-root MuiAppBar-colorPrimary MuiAppBar-positionStatic css-hip9hq-MuiPaper-root-MuiAppBar-root"
   >
     <div
-      className="MuiToolbar-root MuiToolbar-dense MuiToolbar-gutters"
+      className="MuiToolbar-root MuiToolbar-gutters MuiToolbar-dense css-10ltm04-MuiToolbar-root"
     >
       <h6
-        className="MuiTypography-root makeStyles-title-1 MuiTypography-h6"
+        className="MuiTypography-root MuiTypography-h6 makeStyles-title-1 css-2ulfj5-MuiTypography-root"
         id="app-title"
       >
         Bandwidth Monitor
       </h6>
       <p
-        className="MuiTypography-root MuiTypography-body1"
+        className="MuiTypography-root MuiTypography-body1 css-ahj2mt-MuiTypography-root"
         id="app-version"
       >
         3.1.1
@@ -363,15 +340,15 @@ Array [
     </div>
   </header>,
   <div
-    className="MuiBottomNavigation-root"
+    className="MuiBottomNavigation-root css-16lloyr-MuiBottomNavigation-root"
   >
     <a
-      aria-disabled={false}
-      className="MuiButtonBase-root MuiBottomNavigationAction-root Mui-selected"
+      className="MuiButtonBase-root MuiBottomNavigationAction-root Mui-selected css-1bjk3jo-MuiButtonBase-root-MuiBottomNavigationAction-root"
       href="#/UsageByUser"
       id="usage-by-user"
       onBlur={[Function]}
       onClick={[Function]}
+      onContextMenu={[Function]}
       onDragLeave={[Function]}
       onFocus={[Function]}
       onKeyDown={[Function]}
@@ -382,39 +359,35 @@ Array [
       onTouchEnd={[Function]}
       onTouchMove={[Function]}
       onTouchStart={[Function]}
-      role="button"
       tabIndex={0}
     >
-      <span
-        className="MuiBottomNavigationAction-wrapper"
+      <svg
+        aria-hidden={true}
+        className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+        data-testid="PersonIcon"
+        focusable="false"
+        viewBox="0 0 24 24"
       >
-        <svg
-          aria-hidden={true}
-          className="MuiSvgIcon-root"
-          focusable="false"
-          viewBox="0 0 24 24"
-        >
-          <path
-            d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"
-          />
-        </svg>
-        <span
-          className="MuiBottomNavigationAction-label Mui-selected"
-        >
-          By User
-        </span>
+        <path
+          d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"
+        />
+      </svg>
+      <span
+        className="MuiBottomNavigationAction-label Mui-selected css-imwso6-MuiBottomNavigationAction-label"
+      >
+        By User
       </span>
       <span
-        className="MuiTouchRipple-root"
+        className="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
       />
     </a>
     <a
-      aria-disabled={false}
-      className="MuiButtonBase-root MuiBottomNavigationAction-root"
+      className="MuiButtonBase-root MuiBottomNavigationAction-root css-1bjk3jo-MuiButtonBase-root-MuiBottomNavigationAction-root"
       href="#/UsageByUserGraph"
       id="usage-by-user-graph"
       onBlur={[Function]}
       onClick={[Function]}
+      onContextMenu={[Function]}
       onDragLeave={[Function]}
       onFocus={[Function]}
       onKeyDown={[Function]}
@@ -425,39 +398,35 @@ Array [
       onTouchEnd={[Function]}
       onTouchMove={[Function]}
       onTouchStart={[Function]}
-      role="button"
       tabIndex={0}
     >
-      <span
-        className="MuiBottomNavigationAction-wrapper"
+      <svg
+        aria-hidden={true}
+        className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+        data-testid="ShowChartIcon"
+        focusable="false"
+        viewBox="0 0 24 24"
       >
-        <svg
-          aria-hidden={true}
-          className="MuiSvgIcon-root"
-          focusable="false"
-          viewBox="0 0 24 24"
-        >
-          <path
-            d="M3.5 18.49l6-6.01 4 4L22 6.92l-1.41-1.41-7.09 7.97-4-4L2 16.99z"
-          />
-        </svg>
-        <span
-          className="MuiBottomNavigationAction-label"
-        >
-          By User Graph
-        </span>
+        <path
+          d="m3.5 18.49 6-6.01 4 4L22 6.92l-1.41-1.41-7.09 7.97-4-4L2 16.99z"
+        />
+      </svg>
+      <span
+        className="MuiBottomNavigationAction-label css-imwso6-MuiBottomNavigationAction-label"
+      >
+        By User Graph
       </span>
       <span
-        className="MuiTouchRipple-root"
+        className="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
       />
     </a>
     <a
-      aria-disabled={false}
-      className="MuiButtonBase-root MuiBottomNavigationAction-root"
+      className="MuiButtonBase-root MuiBottomNavigationAction-root css-1bjk3jo-MuiButtonBase-root-MuiBottomNavigationAction-root"
       href="#/UsageByMonth"
       id="usage-by-month"
       onBlur={[Function]}
       onClick={[Function]}
+      onContextMenu={[Function]}
       onDragLeave={[Function]}
       onFocus={[Function]}
       onKeyDown={[Function]}
@@ -468,39 +437,35 @@ Array [
       onTouchEnd={[Function]}
       onTouchMove={[Function]}
       onTouchStart={[Function]}
-      role="button"
       tabIndex={0}
     >
-      <span
-        className="MuiBottomNavigationAction-wrapper"
+      <svg
+        aria-hidden={true}
+        className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+        data-testid="CalendarTodayIcon"
+        focusable="false"
+        viewBox="0 0 24 24"
       >
-        <svg
-          aria-hidden={true}
-          className="MuiSvgIcon-root"
-          focusable="false"
-          viewBox="0 0 24 24"
-        >
-          <path
-            d="M20 3h-1V1h-2v2H7V1H5v2H4c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 18H4V8h16v13z"
-          />
-        </svg>
-        <span
-          className="MuiBottomNavigationAction-label"
-        >
-          By Month
-        </span>
+        <path
+          d="M20 3h-1V1h-2v2H7V1H5v2H4c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 18H4V8h16v13z"
+        />
+      </svg>
+      <span
+        className="MuiBottomNavigationAction-label css-imwso6-MuiBottomNavigationAction-label"
+      >
+        By Month
       </span>
       <span
-        className="MuiTouchRipple-root"
+        className="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
       />
     </a>
     <a
-      aria-disabled={false}
-      className="MuiButtonBase-root MuiBottomNavigationAction-root"
+      className="MuiButtonBase-root MuiBottomNavigationAction-root css-1bjk3jo-MuiButtonBase-root-MuiBottomNavigationAction-root"
       href="#/UsageByMonthGraph"
       id="usage-by-month-graph"
       onBlur={[Function]}
       onClick={[Function]}
+      onContextMenu={[Function]}
       onDragLeave={[Function]}
       onFocus={[Function]}
       onKeyDown={[Function]}
@@ -511,39 +476,35 @@ Array [
       onTouchEnd={[Function]}
       onTouchMove={[Function]}
       onTouchStart={[Function]}
-      role="button"
       tabIndex={0}
     >
-      <span
-        className="MuiBottomNavigationAction-wrapper"
+      <svg
+        aria-hidden={true}
+        className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+        data-testid="TimelineIcon"
+        focusable="false"
+        viewBox="0 0 24 24"
       >
-        <svg
-          aria-hidden={true}
-          className="MuiSvgIcon-root"
-          focusable="false"
-          viewBox="0 0 24 24"
-        >
-          <path
-            d="M23 8c0 1.1-.9 2-2 2-.18 0-.35-.02-.51-.07l-3.56 3.55c.05.16.07.34.07.52 0 1.1-.9 2-2 2s-2-.9-2-2c0-.18.02-.36.07-.52l-2.55-2.55c-.16.05-.34.07-.52.07s-.36-.02-.52-.07l-4.55 4.56c.05.16.07.33.07.51 0 1.1-.9 2-2 2s-2-.9-2-2 .9-2 2-2c.18 0 .35.02.51.07l4.56-4.55C8.02 9.36 8 9.18 8 9c0-1.1.9-2 2-2s2 .9 2 2c0 .18-.02.36-.07.52l2.55 2.55c.16-.05.34-.07.52-.07s.36.02.52.07l3.55-3.56C19.02 8.35 19 8.18 19 8c0-1.1.9-2 2-2s2 .9 2 2z"
-          />
-        </svg>
-        <span
-          className="MuiBottomNavigationAction-label"
-        >
-          By Month Graph
-        </span>
+        <path
+          d="M23 8c0 1.1-.9 2-2 2-.18 0-.35-.02-.51-.07l-3.56 3.55c.05.16.07.34.07.52 0 1.1-.9 2-2 2s-2-.9-2-2c0-.18.02-.36.07-.52l-2.55-2.55c-.16.05-.34.07-.52.07s-.36-.02-.52-.07l-4.55 4.56c.05.16.07.33.07.51 0 1.1-.9 2-2 2s-2-.9-2-2 .9-2 2-2c.18 0 .35.02.51.07l4.56-4.55C8.02 9.36 8 9.18 8 9c0-1.1.9-2 2-2s2 .9 2 2c0 .18-.02.36-.07.52l2.55 2.55c.16-.05.34-.07.52-.07s.36.02.52.07l3.55-3.56C19.02 8.35 19 8.18 19 8c0-1.1.9-2 2-2s2 .9 2 2z"
+        />
+      </svg>
+      <span
+        className="MuiBottomNavigationAction-label css-imwso6-MuiBottomNavigationAction-label"
+      >
+        By Month Graph
       </span>
       <span
-        className="MuiTouchRipple-root"
+        className="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
       />
     </a>
     <a
-      aria-disabled={false}
-      className="MuiButtonBase-root MuiBottomNavigationAction-root"
+      className="MuiButtonBase-root MuiBottomNavigationAction-root css-1bjk3jo-MuiButtonBase-root-MuiBottomNavigationAction-root"
       href="#/UsageByYear"
       id="usage-by-year"
       onBlur={[Function]}
       onClick={[Function]}
+      onContextMenu={[Function]}
       onDragLeave={[Function]}
       onFocus={[Function]}
       onKeyDown={[Function]}
@@ -554,39 +515,35 @@ Array [
       onTouchEnd={[Function]}
       onTouchMove={[Function]}
       onTouchStart={[Function]}
-      role="button"
       tabIndex={0}
     >
-      <span
-        className="MuiBottomNavigationAction-wrapper"
+      <svg
+        aria-hidden={true}
+        className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+        data-testid="CalendarViewDayIcon"
+        focusable="false"
+        viewBox="0 0 24 24"
       >
-        <svg
-          aria-hidden={true}
-          className="MuiSvgIcon-root"
-          focusable="false"
-          viewBox="0 0 24 24"
-        >
-          <path
-            d="M3 17h18v2H3zm0-7h18v5H3zm0-4h18v2H3z"
-          />
-        </svg>
-        <span
-          className="MuiBottomNavigationAction-label"
-        >
-          By Year
-        </span>
+        <path
+          d="M3 17h18v2H3zm0-7h18v5H3zm0-4h18v2H3z"
+        />
+      </svg>
+      <span
+        className="MuiBottomNavigationAction-label css-imwso6-MuiBottomNavigationAction-label"
+      >
+        By Year
       </span>
       <span
-        className="MuiTouchRipple-root"
+        className="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
       />
     </a>
     <a
-      aria-disabled={false}
-      className="MuiButtonBase-root MuiBottomNavigationAction-root"
+      className="MuiButtonBase-root MuiBottomNavigationAction-root css-1bjk3jo-MuiButtonBase-root-MuiBottomNavigationAction-root"
       href="#/UsageByYearGraph"
       id="usage-by-year-graph"
       onBlur={[Function]}
       onClick={[Function]}
+      onContextMenu={[Function]}
       onDragLeave={[Function]}
       onFocus={[Function]}
       onKeyDown={[Function]}
@@ -597,64 +554,61 @@ Array [
       onTouchEnd={[Function]}
       onTouchMove={[Function]}
       onTouchStart={[Function]}
-      role="button"
       tabIndex={0}
     >
-      <span
-        className="MuiBottomNavigationAction-wrapper"
+      <svg
+        aria-hidden={true}
+        className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+        data-testid="TimelineIcon"
+        focusable="false"
+        viewBox="0 0 24 24"
       >
-        <svg
-          aria-hidden={true}
-          className="MuiSvgIcon-root"
-          focusable="false"
-          viewBox="0 0 24 24"
-        >
-          <path
-            d="M23 8c0 1.1-.9 2-2 2-.18 0-.35-.02-.51-.07l-3.56 3.55c.05.16.07.34.07.52 0 1.1-.9 2-2 2s-2-.9-2-2c0-.18.02-.36.07-.52l-2.55-2.55c-.16.05-.34.07-.52.07s-.36-.02-.52-.07l-4.55 4.56c.05.16.07.33.07.51 0 1.1-.9 2-2 2s-2-.9-2-2 .9-2 2-2c.18 0 .35.02.51.07l4.56-4.55C8.02 9.36 8 9.18 8 9c0-1.1.9-2 2-2s2 .9 2 2c0 .18-.02.36-.07.52l2.55 2.55c.16-.05.34-.07.52-.07s.36.02.52.07l3.55-3.56C19.02 8.35 19 8.18 19 8c0-1.1.9-2 2-2s2 .9 2 2z"
-          />
-        </svg>
-        <span
-          className="MuiBottomNavigationAction-label"
-        >
-          By Year Graph
-        </span>
+        <path
+          d="M23 8c0 1.1-.9 2-2 2-.18 0-.35-.02-.51-.07l-3.56 3.55c.05.16.07.34.07.52 0 1.1-.9 2-2 2s-2-.9-2-2c0-.18.02-.36.07-.52l-2.55-2.55c-.16.05-.34.07-.52.07s-.36-.02-.52-.07l-4.55 4.56c.05.16.07.33.07.51 0 1.1-.9 2-2 2s-2-.9-2-2 .9-2 2-2c.18 0 .35.02.51.07l4.56-4.55C8.02 9.36 8 9.18 8 9c0-1.1.9-2 2-2s2 .9 2 2c0 .18-.02.36-.07.52l2.55 2.55c.16-.05.34-.07.52-.07s.36.02.52.07l3.55-3.56C19.02 8.35 19 8.18 19 8c0-1.1.9-2 2-2s2 .9 2 2z"
+        />
+      </svg>
+      <span
+        className="MuiBottomNavigationAction-label css-imwso6-MuiBottomNavigationAction-label"
+      >
+        By Year Graph
       </span>
       <span
-        className="MuiTouchRipple-root"
+        className="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
       />
     </a>
   </div>,
   <div
-    className="MuiPaper-root MuiPaper-elevation1 MuiPaper-rounded"
+    className="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-1ps6pg7-MuiPaper-root"
   >
     <div
-      className="MuiTableContainer-root"
+      className="MuiTableContainer-root css-rorn0c-MuiTableContainer-root"
     >
       <table
-        className="MuiTable-root MuiTable-stickyHeader"
+        className="MuiTable-root MuiTable-stickyHeader css-xn82ks-MuiTable-root"
         role={null}
       >
         <thead
-          className="MuiTableHead-root"
+          className="MuiTableHead-root css-15wwp11-MuiTableHead-root"
           role={null}
         >
           <tr
-            className="MuiTableRow-root MuiTableRow-head"
+            className="MuiTableRow-root MuiTableRow-head css-1q1u3t4-MuiTableRow-root"
             role={null}
           >
             <th
               aria-sort={null}
-              className="MuiTableCell-root MuiTableCell-head MuiTableCell-sizeSmall MuiTableCell-stickyHeader"
+              className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-sizeSmall css-1h37f49-MuiTableCell-root"
               scope="col"
             >
               <div
-                className="MuiInputBase-root MuiInput-root MuiInput-underline"
+                className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary  css-1yk1gt9-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root"
                 onClick={[Function]}
               >
                 <div
+                  aria-expanded="false"
                   aria-haspopup="listbox"
                   aria-labelledby="user-year"
-                  className="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiInputBase-input MuiInput-input"
+                  className="MuiSelect-select MuiSelect-outlined MuiInputBase-input MuiOutlinedInput-input css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input"
                   id="user-year"
                   onBlur={[Function]}
                   onFocus={[Function]}
@@ -667,7 +621,7 @@ Array [
                 </div>
                 <input
                   aria-hidden={true}
-                  className="MuiSelect-nativeInput"
+                  className="MuiSelect-nativeInput css-yf8vq0-MuiSelect-nativeInput"
                   onAnimationStart={[Function]}
                   onChange={[Function]}
                   tabIndex={-1}
@@ -675,7 +629,8 @@ Array [
                 />
                 <svg
                   aria-hidden={true}
-                  className="MuiSvgIcon-root MuiSelect-icon"
+                  className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiSelect-icon MuiSelect-iconOutlined css-hfutr2-MuiSvgIcon-root-MuiSelect-icon"
+                  data-testid="ArrowDropDownIcon"
                   focusable="false"
                   viewBox="0 0 24 24"
                 >
@@ -683,21 +638,36 @@ Array [
                     d="M7 10l5 5 5-5z"
                   />
                 </svg>
+                <fieldset
+                  aria-hidden={true}
+                  className="MuiOutlinedInput-notchedOutline css-1d3z3hw-MuiOutlinedInput-notchedOutline"
+                >
+                  <legend
+                    className="css-hdw1oc"
+                  >
+                    <span
+                      className="notranslate"
+                    >
+                      ​
+                    </span>
+                  </legend>
+                </fieldset>
               </div>
             </th>
             <th
               aria-sort={null}
-              className="MuiTableCell-root MuiTableCell-head MuiTableCell-sizeSmall MuiTableCell-stickyHeader"
+              className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-sizeSmall css-1h37f49-MuiTableCell-root"
               scope="col"
             >
               <div
-                className="MuiInputBase-root MuiInput-root MuiInput-underline"
+                className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary  css-1yk1gt9-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root"
                 onClick={[Function]}
               >
                 <div
+                  aria-expanded="false"
                   aria-haspopup="listbox"
                   aria-labelledby="user-month"
-                  className="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiInputBase-input MuiInput-input"
+                  className="MuiSelect-select MuiSelect-outlined MuiInputBase-input MuiOutlinedInput-input css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input"
                   id="user-month"
                   onBlur={[Function]}
                   onFocus={[Function]}
@@ -710,7 +680,7 @@ Array [
                 </div>
                 <input
                   aria-hidden={true}
-                  className="MuiSelect-nativeInput"
+                  className="MuiSelect-nativeInput css-yf8vq0-MuiSelect-nativeInput"
                   onAnimationStart={[Function]}
                   onChange={[Function]}
                   tabIndex={-1}
@@ -718,7 +688,8 @@ Array [
                 />
                 <svg
                   aria-hidden={true}
-                  className="MuiSvgIcon-root MuiSelect-icon"
+                  className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiSelect-icon MuiSelect-iconOutlined css-hfutr2-MuiSvgIcon-root-MuiSelect-icon"
+                  data-testid="ArrowDropDownIcon"
                   focusable="false"
                   viewBox="0 0 24 24"
                 >
@@ -726,27 +697,47 @@ Array [
                     d="M7 10l5 5 5-5z"
                   />
                 </svg>
+                <fieldset
+                  aria-hidden={true}
+                  className="MuiOutlinedInput-notchedOutline css-1d3z3hw-MuiOutlinedInput-notchedOutline"
+                >
+                  <legend
+                    className="css-hdw1oc"
+                  >
+                    <span
+                      className="notranslate"
+                    >
+                      ​
+                    </span>
+                  </legend>
+                </fieldset>
               </div>
             </th>
             <th
               aria-sort={null}
-              className="MuiTableCell-root MuiTableCell-head MuiTableCell-sizeSmall MuiTableCell-stickyHeader"
+              className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-sizeSmall css-1h37f49-MuiTableCell-root"
               colSpan={2}
               scope="col"
             >
               <div
-                className="MuiFormControl-root MuiTextField-root"
+                className="MuiFormControl-root MuiTextField-root css-1u3bzj6-MuiFormControl-root-MuiTextField-root"
               >
                 <div
-                  className="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl MuiInputBase-adornedStart"
+                  className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl MuiInputBase-adornedStart css-1q6at85-MuiInputBase-root-MuiOutlinedInput-root"
                   onClick={[Function]}
                 >
                   <div
-                    className="MuiInputAdornment-root MuiInputAdornment-positionStart"
+                    className="MuiInputAdornment-root MuiInputAdornment-positionStart MuiInputAdornment-outlined MuiInputAdornment-sizeMedium css-ittuaa-MuiInputAdornment-root"
                   >
+                    <span
+                      className="notranslate"
+                    >
+                      ​
+                    </span>
                     <svg
                       aria-hidden={true}
-                      className="MuiSvgIcon-root"
+                      className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                      data-testid="SearchIcon"
                       focusable="false"
                       viewBox="0 0 24 24"
                     >
@@ -758,7 +749,7 @@ Array [
                   <input
                     aria-invalid={false}
                     autoFocus={false}
-                    className="MuiInputBase-input MuiInput-input MuiInputBase-inputAdornedStart"
+                    className="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputAdornedStart css-1o9s3wi-MuiInputBase-input-MuiOutlinedInput-input"
                     disabled={false}
                     id="user-filter"
                     onAnimationStart={[Function]}
@@ -769,6 +760,20 @@ Array [
                     required={false}
                     type="text"
                   />
+                  <fieldset
+                    aria-hidden={true}
+                    className="MuiOutlinedInput-notchedOutline css-1d3z3hw-MuiOutlinedInput-notchedOutline"
+                  >
+                    <legend
+                      className="css-hdw1oc"
+                    >
+                      <span
+                        className="notranslate"
+                      >
+                        ​
+                      </span>
+                    </legend>
+                  </fieldset>
                 </div>
               </div>
             </th>
@@ -779,24 +784,24 @@ Array [
           </tr>
         </thead>
         <thead
-          className="MuiTableHead-root"
+          className="MuiTableHead-root css-15wwp11-MuiTableHead-root"
           role={null}
         >
           <tr
-            className="MuiTableRow-root MuiTableRow-head"
+            className="MuiTableRow-root MuiTableRow-head css-1q1u3t4-MuiTableRow-root"
             role={null}
           >
             <th
               aria-sort="ascending"
-              className="MuiTableCell-root MuiTableCell-head MuiTableCell-alignLeft MuiTableCell-sizeSmall MuiTableCell-stickyHeader"
+              className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignLeft MuiTableCell-sizeSmall css-1h37f49-MuiTableCell-root"
               id="user-IP"
               scope="col"
             >
               <span
-                aria-disabled={false}
-                className="MuiButtonBase-root MuiTableSortLabel-root MuiTableSortLabel-active"
+                className="MuiButtonBase-root MuiTableSortLabel-root Mui-active css-1qgma8u-MuiButtonBase-root-MuiTableSortLabel-root"
                 onBlur={[Function]}
                 onClick={[Function]}
+                onContextMenu={[Function]}
                 onDragLeave={[Function]}
                 onFocus={[Function]}
                 onKeyDown={[Function]}
@@ -813,7 +818,8 @@ Array [
                 IP
                 <svg
                   aria-hidden={true}
-                  className="MuiSvgIcon-root MuiTableSortLabel-icon MuiTableSortLabel-iconDirectionAsc"
+                  className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiTableSortLabel-icon MuiTableSortLabel-iconDirectionAsc css-1vweko9-MuiSvgIcon-root-MuiTableSortLabel-icon"
+                  data-testid="ArrowDownwardIcon"
                   focusable="false"
                   viewBox="0 0 24 24"
                 >
@@ -825,15 +831,15 @@ Array [
             </th>
             <th
               aria-sort={null}
-              className="MuiTableCell-root MuiTableCell-head MuiTableCell-alignLeft MuiTableCell-sizeSmall MuiTableCell-stickyHeader"
+              className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignLeft MuiTableCell-sizeSmall css-1h37f49-MuiTableCell-root"
               id="user-MAC"
               scope="col"
             >
               <span
-                aria-disabled={false}
-                className="MuiButtonBase-root MuiTableSortLabel-root"
+                className="MuiButtonBase-root MuiTableSortLabel-root css-1qgma8u-MuiButtonBase-root-MuiTableSortLabel-root"
                 onBlur={[Function]}
                 onClick={[Function]}
+                onContextMenu={[Function]}
                 onDragLeave={[Function]}
                 onFocus={[Function]}
                 onKeyDown={[Function]}
@@ -850,7 +856,8 @@ Array [
                 MAC
                 <svg
                   aria-hidden={true}
-                  className="MuiSvgIcon-root MuiTableSortLabel-icon MuiTableSortLabel-iconDirectionAsc"
+                  className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiTableSortLabel-icon MuiTableSortLabel-iconDirectionAsc css-1vweko9-MuiSvgIcon-root-MuiTableSortLabel-icon"
+                  data-testid="ArrowDownwardIcon"
                   focusable="false"
                   viewBox="0 0 24 24"
                 >
@@ -862,15 +869,15 @@ Array [
             </th>
             <th
               aria-sort={null}
-              className="MuiTableCell-root MuiTableCell-head MuiTableCell-alignLeft MuiTableCell-sizeSmall MuiTableCell-stickyHeader"
+              className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignLeft MuiTableCell-sizeSmall css-1h37f49-MuiTableCell-root"
               id="user-user"
               scope="col"
             >
               <span
-                aria-disabled={false}
-                className="MuiButtonBase-root MuiTableSortLabel-root"
+                className="MuiButtonBase-root MuiTableSortLabel-root css-1qgma8u-MuiButtonBase-root-MuiTableSortLabel-root"
                 onBlur={[Function]}
                 onClick={[Function]}
+                onContextMenu={[Function]}
                 onDragLeave={[Function]}
                 onFocus={[Function]}
                 onKeyDown={[Function]}
@@ -887,7 +894,8 @@ Array [
                 User
                 <svg
                   aria-hidden={true}
-                  className="MuiSvgIcon-root MuiTableSortLabel-icon MuiTableSortLabel-iconDirectionAsc"
+                  className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiTableSortLabel-icon MuiTableSortLabel-iconDirectionAsc css-1vweko9-MuiSvgIcon-root-MuiTableSortLabel-icon"
+                  data-testid="ArrowDownwardIcon"
                   focusable="false"
                   viewBox="0 0 24 24"
                 >
@@ -899,29 +907,29 @@ Array [
             </th>
             <th
               aria-sort={null}
-              className="MuiTableCell-root MuiTableCell-head MuiTableCell-alignRight MuiTableCell-sizeSmall MuiTableCell-stickyHeader"
+              className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignRight MuiTableCell-sizeSmall css-l2upbl-MuiTableCell-root"
               scope="col"
             >
               Down
             </th>
             <th
               aria-sort={null}
-              className="MuiTableCell-root MuiTableCell-head MuiTableCell-alignRight MuiTableCell-sizeSmall MuiTableCell-stickyHeader"
+              className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignRight MuiTableCell-sizeSmall css-l2upbl-MuiTableCell-root"
               scope="col"
             >
               Up
             </th>
             <th
               aria-sort={null}
-              className="MuiTableCell-root MuiTableCell-head MuiTableCell-alignRight MuiTableCell-sizeSmall MuiTableCell-stickyHeader"
+              className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignRight MuiTableCell-sizeSmall css-l2upbl-MuiTableCell-root"
               id="user-total"
               scope="col"
             >
               <span
-                aria-disabled={false}
-                className="MuiButtonBase-root MuiTableSortLabel-root"
+                className="MuiButtonBase-root MuiTableSortLabel-root css-1qgma8u-MuiButtonBase-root-MuiTableSortLabel-root"
                 onBlur={[Function]}
                 onClick={[Function]}
+                onContextMenu={[Function]}
                 onDragLeave={[Function]}
                 onFocus={[Function]}
                 onKeyDown={[Function]}
@@ -938,7 +946,8 @@ Array [
                 Total
                 <svg
                   aria-hidden={true}
-                  className="MuiSvgIcon-root MuiTableSortLabel-icon MuiTableSortLabel-iconDirectionAsc"
+                  className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiTableSortLabel-icon MuiTableSortLabel-iconDirectionAsc css-1vweko9-MuiSvgIcon-root-MuiTableSortLabel-icon"
+                  data-testid="ArrowDownwardIcon"
                   focusable="false"
                   viewBox="0 0 24 24"
                 >
@@ -950,35 +959,35 @@ Array [
             </th>
             <th
               aria-sort={null}
-              className="MuiTableCell-root MuiTableCell-head MuiTableCell-alignRight MuiTableCell-sizeSmall MuiTableCell-stickyHeader"
+              className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignRight MuiTableCell-sizeSmall css-l2upbl-MuiTableCell-root"
               scope="col"
             >
               Percent
             </th>
             <th
               aria-sort={null}
-              className="MuiTableCell-root MuiTableCell-head MuiTableCell-alignRight MuiTableCell-sizeSmall MuiTableCell-stickyHeader"
+              className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignRight MuiTableCell-sizeSmall css-l2upbl-MuiTableCell-root"
               scope="col"
             >
               Average
             </th>
             <th
               aria-sort={null}
-              className="MuiTableCell-root MuiTableCell-head MuiTableCell-alignLeft MuiTableCell-sizeSmall MuiTableCell-stickyHeader"
+              className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignLeft MuiTableCell-sizeSmall css-1h37f49-MuiTableCell-root"
               scope="col"
             >
               Days
             </th>
             <th
               aria-sort={null}
-              className="MuiTableCell-root MuiTableCell-head MuiTableCell-alignLeft MuiTableCell-sizeSmall MuiTableCell-stickyHeader"
+              className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignLeft MuiTableCell-sizeSmall css-1h37f49-MuiTableCell-root"
               scope="col"
             >
               First Seen
             </th>
             <th
               aria-sort={null}
-              className="MuiTableCell-root MuiTableCell-head MuiTableCell-alignLeft MuiTableCell-sizeSmall MuiTableCell-stickyHeader"
+              className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignLeft MuiTableCell-sizeSmall css-1h37f49-MuiTableCell-root"
               scope="col"
             >
               Last Seen
@@ -986,11 +995,11 @@ Array [
           </tr>
         </thead>
         <tbody
-          className="MuiTableBody-root"
+          className="MuiTableBody-root css-apqrd9-MuiTableBody-root"
           role={null}
         >
           <tr
-            className="MuiTableRow-root"
+            className="MuiTableRow-root css-1q1u3t4-MuiTableRow-root"
             id="user-data-0"
             role={null}
             style={
@@ -1001,73 +1010,73 @@ Array [
           >
             <td
               aria-sort={null}
-              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall"
+              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-dsuxgy-MuiTableCell-root"
             >
               192.168.1.10
             </td>
             <td
               aria-sort={null}
-              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall"
+              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-dsuxgy-MuiTableCell-root"
             >
               00:1C:25:27:9B:AE
             </td>
             <td
               aria-sort={null}
-              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall"
+              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-dsuxgy-MuiTableCell-root"
             >
               COMPUTER-3
             </td>
             <td
               aria-sort={null}
-              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall"
+              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-dv0mq-MuiTableCell-root"
             >
               15.004
             </td>
             <td
               aria-sort={null}
-              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall"
+              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-dv0mq-MuiTableCell-root"
             >
               0.973
             </td>
             <td
               aria-sort={null}
-              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall"
+              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-dv0mq-MuiTableCell-root"
             >
               15.978
             </td>
             <td
               aria-sort={null}
-              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall"
+              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-dv0mq-MuiTableCell-root"
             >
               18.3%
             </td>
             <td
               aria-sort={null}
-              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall"
+              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-dv0mq-MuiTableCell-root"
             >
               0.533
             </td>
             <td
               aria-sort={null}
-              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall"
+              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-dsuxgy-MuiTableCell-root"
             >
               30
             </td>
             <td
               aria-sort={null}
-              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall"
+              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-dsuxgy-MuiTableCell-root"
             >
               Nov 01, 2013 16:30
             </td>
             <td
               aria-sort={null}
-              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall"
+              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-dsuxgy-MuiTableCell-root"
             >
               Nov 30, 2013 22:30
             </td>
           </tr>
           <tr
-            className="MuiTableRow-root"
+            className="MuiTableRow-root css-1q1u3t4-MuiTableRow-root"
             id="user-data-1"
             role={null}
             style={
@@ -1078,73 +1087,73 @@ Array [
           >
             <td
               aria-sort={null}
-              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall"
+              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-dsuxgy-MuiTableCell-root"
             >
               192.168.1.11
             </td>
             <td
               aria-sort={null}
-              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall"
+              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-dsuxgy-MuiTableCell-root"
             >
               70:5A:B6:F3:58:AB
             </td>
             <td
               aria-sort={null}
-              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall"
+              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-dsuxgy-MuiTableCell-root"
             >
               COMPUTER-12
             </td>
             <td
               aria-sort={null}
-              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall"
+              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-dv0mq-MuiTableCell-root"
             >
               0.120
             </td>
             <td
               aria-sort={null}
-              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall"
+              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-dv0mq-MuiTableCell-root"
             >
               0.003
             </td>
             <td
               aria-sort={null}
-              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall"
+              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-dv0mq-MuiTableCell-root"
             >
               0.123
             </td>
             <td
               aria-sort={null}
-              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall"
+              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-dv0mq-MuiTableCell-root"
             >
               0.1%
             </td>
             <td
               aria-sort={null}
-              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall"
+              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-dv0mq-MuiTableCell-root"
             >
               0.004
             </td>
             <td
               aria-sort={null}
-              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall"
+              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-dsuxgy-MuiTableCell-root"
             >
               30
             </td>
             <td
               aria-sort={null}
-              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall"
+              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-dsuxgy-MuiTableCell-root"
             >
               Nov 01, 2013 16:30
             </td>
             <td
               aria-sort={null}
-              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall"
+              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-dsuxgy-MuiTableCell-root"
             >
               Nov 30, 2013 22:30
             </td>
           </tr>
           <tr
-            className="MuiTableRow-root"
+            className="MuiTableRow-root css-1q1u3t4-MuiTableRow-root"
             id="user-data-2"
             role={null}
             style={
@@ -1155,73 +1164,73 @@ Array [
           >
             <td
               aria-sort={null}
-              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall"
+              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-dsuxgy-MuiTableCell-root"
             >
               192.168.1.110
             </td>
             <td
               aria-sort={null}
-              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall"
+              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-dsuxgy-MuiTableCell-root"
             >
               00:1A:A0:C7:19:08
             </td>
             <td
               aria-sort={null}
-              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall"
+              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-dsuxgy-MuiTableCell-root"
             >
               COMPUTER-23
             </td>
             <td
               aria-sort={null}
-              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall"
+              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-dv0mq-MuiTableCell-root"
             >
               0.000
             </td>
             <td
               aria-sort={null}
-              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall"
+              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-dv0mq-MuiTableCell-root"
             >
               0.000
             </td>
             <td
               aria-sort={null}
-              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall"
+              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-dv0mq-MuiTableCell-root"
             >
               0.000
             </td>
             <td
               aria-sort={null}
-              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall"
+              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-dv0mq-MuiTableCell-root"
             >
               0.0%
             </td>
             <td
               aria-sort={null}
-              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall"
+              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-dv0mq-MuiTableCell-root"
             >
               0.000
             </td>
             <td
               aria-sort={null}
-              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall"
+              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-dsuxgy-MuiTableCell-root"
             >
               30
             </td>
             <td
               aria-sort={null}
-              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall"
+              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-dsuxgy-MuiTableCell-root"
             >
               Nov 01, 2013 16:30
             </td>
             <td
               aria-sort={null}
-              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall"
+              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-dsuxgy-MuiTableCell-root"
             >
               Nov 30, 2013 22:30
             </td>
           </tr>
           <tr
-            className="MuiTableRow-root"
+            className="MuiTableRow-root css-1q1u3t4-MuiTableRow-root"
             id="user-data-3"
             role={null}
             style={
@@ -1232,73 +1241,73 @@ Array [
           >
             <td
               aria-sort={null}
-              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall"
+              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-dsuxgy-MuiTableCell-root"
             >
               192.168.1.113
             </td>
             <td
               aria-sort={null}
-              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall"
+              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-dsuxgy-MuiTableCell-root"
             >
               00:1A:A0:C7:27:D3
             </td>
             <td
               aria-sort={null}
-              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall"
+              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-dsuxgy-MuiTableCell-root"
             >
               COMPUTER-20
             </td>
             <td
               aria-sort={null}
-              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall"
+              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-dv0mq-MuiTableCell-root"
             >
               0.002
             </td>
             <td
               aria-sort={null}
-              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall"
+              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-dv0mq-MuiTableCell-root"
             >
               0.000
             </td>
             <td
               aria-sort={null}
-              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall"
+              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-dv0mq-MuiTableCell-root"
             >
               0.002
             </td>
             <td
               aria-sort={null}
-              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall"
+              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-dv0mq-MuiTableCell-root"
             >
               0.0%
             </td>
             <td
               aria-sort={null}
-              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall"
+              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-dv0mq-MuiTableCell-root"
             >
               0.000
             </td>
             <td
               aria-sort={null}
-              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall"
+              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-dsuxgy-MuiTableCell-root"
             >
               30
             </td>
             <td
               aria-sort={null}
-              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall"
+              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-dsuxgy-MuiTableCell-root"
             >
               Nov 01, 2013 16:30
             </td>
             <td
               aria-sort={null}
-              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall"
+              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-dsuxgy-MuiTableCell-root"
             >
               Nov 30, 2013 22:30
             </td>
           </tr>
           <tr
-            className="MuiTableRow-root"
+            className="MuiTableRow-root css-1q1u3t4-MuiTableRow-root"
             id="user-data-4"
             role={null}
             style={
@@ -1309,73 +1318,73 @@ Array [
           >
             <td
               aria-sort={null}
-              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall"
+              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-dsuxgy-MuiTableCell-root"
             >
               192.168.1.115
             </td>
             <td
               aria-sort={null}
-              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall"
+              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-dsuxgy-MuiTableCell-root"
             >
               00:1A:A0:C7:27:D5
             </td>
             <td
               aria-sort={null}
-              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall"
+              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-dsuxgy-MuiTableCell-root"
             >
               COMPUTER-19
             </td>
             <td
               aria-sort={null}
-              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall"
+              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-dv0mq-MuiTableCell-root"
             >
               0.077
             </td>
             <td
               aria-sort={null}
-              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall"
+              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-dv0mq-MuiTableCell-root"
             >
               0.001
             </td>
             <td
               aria-sort={null}
-              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall"
+              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-dv0mq-MuiTableCell-root"
             >
               0.078
             </td>
             <td
               aria-sort={null}
-              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall"
+              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-dv0mq-MuiTableCell-root"
             >
               0.1%
             </td>
             <td
               aria-sort={null}
-              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall"
+              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-dv0mq-MuiTableCell-root"
             >
               0.003
             </td>
             <td
               aria-sort={null}
-              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall"
+              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-dsuxgy-MuiTableCell-root"
             >
               30
             </td>
             <td
               aria-sort={null}
-              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall"
+              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-dsuxgy-MuiTableCell-root"
             >
               Nov 01, 2013 16:30
             </td>
             <td
               aria-sort={null}
-              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall"
+              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-dsuxgy-MuiTableCell-root"
             >
               Nov 30, 2013 22:30
             </td>
           </tr>
           <tr
-            className="MuiTableRow-root"
+            className="MuiTableRow-root css-1q1u3t4-MuiTableRow-root"
             id="user-data-5"
             role={null}
             style={
@@ -1386,73 +1395,73 @@ Array [
           >
             <td
               aria-sort={null}
-              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall"
+              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-dsuxgy-MuiTableCell-root"
             >
               192.168.1.12
             </td>
             <td
               aria-sort={null}
-              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall"
+              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-dsuxgy-MuiTableCell-root"
             >
               00:26:9E:C4:A0:40
             </td>
             <td
               aria-sort={null}
-              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall"
+              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-dsuxgy-MuiTableCell-root"
             >
               COMPUTER-5
             </td>
             <td
               aria-sort={null}
-              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall"
+              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-dv0mq-MuiTableCell-root"
             >
               0.614
             </td>
             <td
               aria-sort={null}
-              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall"
+              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-dv0mq-MuiTableCell-root"
             >
               0.034
             </td>
             <td
               aria-sort={null}
-              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall"
+              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-dv0mq-MuiTableCell-root"
             >
               0.648
             </td>
             <td
               aria-sort={null}
-              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall"
+              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-dv0mq-MuiTableCell-root"
             >
               0.7%
             </td>
             <td
               aria-sort={null}
-              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall"
+              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-dv0mq-MuiTableCell-root"
             >
               0.022
             </td>
             <td
               aria-sort={null}
-              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall"
+              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-dsuxgy-MuiTableCell-root"
             >
               30
             </td>
             <td
               aria-sort={null}
-              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall"
+              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-dsuxgy-MuiTableCell-root"
             >
               Nov 01, 2013 16:30
             </td>
             <td
               aria-sort={null}
-              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall"
+              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-dsuxgy-MuiTableCell-root"
             >
               Nov 30, 2013 22:30
             </td>
           </tr>
           <tr
-            className="MuiTableRow-root"
+            className="MuiTableRow-root css-1q1u3t4-MuiTableRow-root"
             id="user-data-6"
             role={null}
             style={
@@ -1463,73 +1472,73 @@ Array [
           >
             <td
               aria-sort={null}
-              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall"
+              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-dsuxgy-MuiTableCell-root"
             >
               192.168.1.120
             </td>
             <td
               aria-sort={null}
-              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall"
+              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-dsuxgy-MuiTableCell-root"
             >
               00:26:6C:A8:EE:D6
             </td>
             <td
               aria-sort={null}
-              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall"
+              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-dsuxgy-MuiTableCell-root"
             >
               COMPUTER-21
             </td>
             <td
               aria-sort={null}
-              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall"
+              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-dv0mq-MuiTableCell-root"
             >
               0.089
             </td>
             <td
               aria-sort={null}
-              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall"
+              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-dv0mq-MuiTableCell-root"
             >
               0.003
             </td>
             <td
               aria-sort={null}
-              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall"
+              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-dv0mq-MuiTableCell-root"
             >
               0.092
             </td>
             <td
               aria-sort={null}
-              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall"
+              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-dv0mq-MuiTableCell-root"
             >
               0.1%
             </td>
             <td
               aria-sort={null}
-              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall"
+              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-dv0mq-MuiTableCell-root"
             >
               0.003
             </td>
             <td
               aria-sort={null}
-              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall"
+              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-dsuxgy-MuiTableCell-root"
             >
               30
             </td>
             <td
               aria-sort={null}
-              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall"
+              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-dsuxgy-MuiTableCell-root"
             >
               Nov 01, 2013 16:30
             </td>
             <td
               aria-sort={null}
-              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall"
+              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-dsuxgy-MuiTableCell-root"
             >
               Nov 30, 2013 22:30
             </td>
           </tr>
           <tr
-            className="MuiTableRow-root"
+            className="MuiTableRow-root css-1q1u3t4-MuiTableRow-root"
             id="user-data-7"
             role={null}
             style={
@@ -1540,73 +1549,73 @@ Array [
           >
             <td
               aria-sort={null}
-              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall"
+              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-dsuxgy-MuiTableCell-root"
             >
               192.168.1.13
             </td>
             <td
               aria-sort={null}
-              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall"
+              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-dsuxgy-MuiTableCell-root"
             >
               00:23:18:DA:FF:88
             </td>
             <td
               aria-sort={null}
-              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall"
+              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-dsuxgy-MuiTableCell-root"
             >
               COMPUTER-7
             </td>
             <td
               aria-sort={null}
-              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall"
+              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-dv0mq-MuiTableCell-root"
             >
               3.516
             </td>
             <td
               aria-sort={null}
-              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall"
+              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-dv0mq-MuiTableCell-root"
             >
               0.311
             </td>
             <td
               aria-sort={null}
-              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall"
+              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-dv0mq-MuiTableCell-root"
             >
               3.827
             </td>
             <td
               aria-sort={null}
-              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall"
+              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-dv0mq-MuiTableCell-root"
             >
               4.4%
             </td>
             <td
               aria-sort={null}
-              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall"
+              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-dv0mq-MuiTableCell-root"
             >
               0.128
             </td>
             <td
               aria-sort={null}
-              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall"
+              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-dsuxgy-MuiTableCell-root"
             >
               30
             </td>
             <td
               aria-sort={null}
-              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall"
+              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-dsuxgy-MuiTableCell-root"
             >
               Nov 01, 2013 16:30
             </td>
             <td
               aria-sort={null}
-              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall"
+              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-dsuxgy-MuiTableCell-root"
             >
               Nov 30, 2013 22:30
             </td>
           </tr>
           <tr
-            className="MuiTableRow-root"
+            className="MuiTableRow-root css-1q1u3t4-MuiTableRow-root"
             id="user-data-8"
             role={null}
             style={
@@ -1617,73 +1626,73 @@ Array [
           >
             <td
               aria-sort={null}
-              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall"
+              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-dsuxgy-MuiTableCell-root"
             >
               192.168.1.133
             </td>
             <td
               aria-sort={null}
-              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall"
+              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-dsuxgy-MuiTableCell-root"
             >
               00:19:B9:03:00:D7
             </td>
             <td
               aria-sort={null}
-              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall"
+              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-dsuxgy-MuiTableCell-root"
             >
               COMPUTER-22
             </td>
             <td
               aria-sort={null}
-              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall"
+              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-dv0mq-MuiTableCell-root"
             >
               0.006
             </td>
             <td
               aria-sort={null}
-              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall"
+              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-dv0mq-MuiTableCell-root"
             >
               0.000
             </td>
             <td
               aria-sort={null}
-              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall"
+              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-dv0mq-MuiTableCell-root"
             >
               0.006
             </td>
             <td
               aria-sort={null}
-              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall"
+              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-dv0mq-MuiTableCell-root"
             >
               0.0%
             </td>
             <td
               aria-sort={null}
-              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall"
+              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-dv0mq-MuiTableCell-root"
             >
               0.000
             </td>
             <td
               aria-sort={null}
-              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall"
+              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-dsuxgy-MuiTableCell-root"
             >
               30
             </td>
             <td
               aria-sort={null}
-              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall"
+              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-dsuxgy-MuiTableCell-root"
             >
               Nov 01, 2013 16:30
             </td>
             <td
               aria-sort={null}
-              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall"
+              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-dsuxgy-MuiTableCell-root"
             >
               Nov 30, 2013 22:30
             </td>
           </tr>
           <tr
-            className="MuiTableRow-root"
+            className="MuiTableRow-root css-1q1u3t4-MuiTableRow-root"
             id="user-data-9"
             role={null}
             style={
@@ -1694,73 +1703,73 @@ Array [
           >
             <td
               aria-sort={null}
-              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall"
+              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-dsuxgy-MuiTableCell-root"
             >
               192.168.1.14
             </td>
             <td
               aria-sort={null}
-              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall"
+              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-dsuxgy-MuiTableCell-root"
             >
               00:24:8D:28:F2:9A
             </td>
             <td
               aria-sort={null}
-              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall"
+              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-dsuxgy-MuiTableCell-root"
             >
               COMPUTER-1
             </td>
             <td
               aria-sort={null}
-              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall"
+              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-dv0mq-MuiTableCell-root"
             >
               0.203
             </td>
             <td
               aria-sort={null}
-              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall"
+              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-dv0mq-MuiTableCell-root"
             >
               0.012
             </td>
             <td
               aria-sort={null}
-              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall"
+              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-dv0mq-MuiTableCell-root"
             >
               0.214
             </td>
             <td
               aria-sort={null}
-              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall"
+              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-dv0mq-MuiTableCell-root"
             >
               0.2%
             </td>
             <td
               aria-sort={null}
-              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall"
+              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-dv0mq-MuiTableCell-root"
             >
               0.007
             </td>
             <td
               aria-sort={null}
-              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall"
+              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-dsuxgy-MuiTableCell-root"
             >
               30
             </td>
             <td
               aria-sort={null}
-              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall"
+              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-dsuxgy-MuiTableCell-root"
             >
               Nov 01, 2013 16:30
             </td>
             <td
               aria-sort={null}
-              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall"
+              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-dsuxgy-MuiTableCell-root"
             >
               Nov 30, 2013 22:30
             </td>
           </tr>
           <tr
-            className="MuiTableRow-root"
+            className="MuiTableRow-root css-1q1u3t4-MuiTableRow-root"
             id="user-data-10"
             role={null}
             style={
@@ -1771,73 +1780,73 @@ Array [
           >
             <td
               aria-sort={null}
-              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall"
+              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-dsuxgy-MuiTableCell-root"
             >
               192.168.1.140
             </td>
             <td
               aria-sort={null}
-              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall"
+              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-dsuxgy-MuiTableCell-root"
             >
               00:1A:A0:C7:2D:EE
             </td>
             <td
               aria-sort={null}
-              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall"
+              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-dsuxgy-MuiTableCell-root"
             >
               COMPUTER-17
             </td>
             <td
               aria-sort={null}
-              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall"
+              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-dv0mq-MuiTableCell-root"
             >
               0.389
             </td>
             <td
               aria-sort={null}
-              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall"
+              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-dv0mq-MuiTableCell-root"
             >
               0.008
             </td>
             <td
               aria-sort={null}
-              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall"
+              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-dv0mq-MuiTableCell-root"
             >
               0.397
             </td>
             <td
               aria-sort={null}
-              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall"
+              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-dv0mq-MuiTableCell-root"
             >
               0.5%
             </td>
             <td
               aria-sort={null}
-              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall"
+              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-dv0mq-MuiTableCell-root"
             >
               0.013
             </td>
             <td
               aria-sort={null}
-              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall"
+              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-dsuxgy-MuiTableCell-root"
             >
               30
             </td>
             <td
               aria-sort={null}
-              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall"
+              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-dsuxgy-MuiTableCell-root"
             >
               Nov 01, 2013 16:30
             </td>
             <td
               aria-sort={null}
-              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall"
+              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-dsuxgy-MuiTableCell-root"
             >
               Nov 30, 2013 22:30
             </td>
           </tr>
           <tr
-            className="MuiTableRow-root"
+            className="MuiTableRow-root css-1q1u3t4-MuiTableRow-root"
             id="user-data-11"
             role={null}
             style={
@@ -1848,154 +1857,154 @@ Array [
           >
             <td
               aria-sort={null}
-              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall"
+              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-dsuxgy-MuiTableCell-root"
             >
               192.168.1.148
             </td>
             <td
               aria-sort={null}
-              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall"
+              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-dsuxgy-MuiTableCell-root"
             >
               00:1A:A0:C7:17:60
             </td>
             <td
               aria-sort={null}
-              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall"
+              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-dsuxgy-MuiTableCell-root"
             >
               COMPUTER-18
             </td>
             <td
               aria-sort={null}
-              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall"
+              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-dv0mq-MuiTableCell-root"
             >
               0.083
             </td>
             <td
               aria-sort={null}
-              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall"
+              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-dv0mq-MuiTableCell-root"
             >
               0.005
             </td>
             <td
               aria-sort={null}
-              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall"
+              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-dv0mq-MuiTableCell-root"
             >
               0.088
             </td>
             <td
               aria-sort={null}
-              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall"
+              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-dv0mq-MuiTableCell-root"
             >
               0.1%
             </td>
             <td
               aria-sort={null}
-              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall"
+              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-dv0mq-MuiTableCell-root"
             >
               0.003
             </td>
             <td
               aria-sort={null}
-              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall"
+              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-dsuxgy-MuiTableCell-root"
             >
               30
             </td>
             <td
               aria-sort={null}
-              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall"
+              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-dsuxgy-MuiTableCell-root"
             >
               Nov 01, 2013 16:30
             </td>
             <td
               aria-sort={null}
-              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall"
+              className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-dsuxgy-MuiTableCell-root"
             >
               Nov 30, 2013 22:30
             </td>
           </tr>
         </tbody>
         <thead
-          className="MuiTableHead-root"
+          className="MuiTableHead-root css-15wwp11-MuiTableHead-root"
           role={null}
         >
           <tr
-            className="MuiTableRow-root MuiTableRow-head"
+            className="MuiTableRow-root MuiTableRow-head css-1q1u3t4-MuiTableRow-root"
             id="user-footer"
             role={null}
           >
             <th
               aria-sort={null}
-              className="MuiTableCell-root MuiTableCell-head MuiTableCell-alignLeft MuiTableCell-sizeSmall MuiTableCell-stickyHeader"
+              className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignLeft MuiTableCell-sizeSmall css-1h37f49-MuiTableCell-root"
               scope="col"
             >
               Totals
             </th>
             <th
               aria-sort={null}
-              className="MuiTableCell-root MuiTableCell-head MuiTableCell-alignLeft MuiTableCell-sizeSmall MuiTableCell-stickyHeader"
+              className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignLeft MuiTableCell-sizeSmall css-1h37f49-MuiTableCell-root"
               scope="col"
             >
               
             </th>
             <th
               aria-sort={null}
-              className="MuiTableCell-root MuiTableCell-head MuiTableCell-alignLeft MuiTableCell-sizeSmall MuiTableCell-stickyHeader"
+              className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignLeft MuiTableCell-sizeSmall css-1h37f49-MuiTableCell-root"
               scope="col"
             >
               
             </th>
             <th
               aria-sort={null}
-              className="MuiTableCell-root MuiTableCell-head MuiTableCell-alignRight MuiTableCell-sizeSmall MuiTableCell-stickyHeader"
+              className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignRight MuiTableCell-sizeSmall css-l2upbl-MuiTableCell-root"
               scope="col"
             >
               83.066
             </th>
             <th
               aria-sort={null}
-              className="MuiTableCell-root MuiTableCell-head MuiTableCell-alignRight MuiTableCell-sizeSmall MuiTableCell-stickyHeader"
+              className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignRight MuiTableCell-sizeSmall css-l2upbl-MuiTableCell-root"
               scope="col"
             >
               4.263
             </th>
             <th
               aria-sort={null}
-              className="MuiTableCell-root MuiTableCell-head MuiTableCell-alignRight MuiTableCell-sizeSmall MuiTableCell-stickyHeader"
+              className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignRight MuiTableCell-sizeSmall css-l2upbl-MuiTableCell-root"
               scope="col"
             >
               87.329
             </th>
             <th
               aria-sort={null}
-              className="MuiTableCell-root MuiTableCell-head MuiTableCell-alignRight MuiTableCell-sizeSmall MuiTableCell-stickyHeader"
+              className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignRight MuiTableCell-sizeSmall css-l2upbl-MuiTableCell-root"
               scope="col"
             >
               
             </th>
             <th
               aria-sort={null}
-              className="MuiTableCell-root MuiTableCell-head MuiTableCell-alignRight MuiTableCell-sizeSmall MuiTableCell-stickyHeader"
+              className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignRight MuiTableCell-sizeSmall css-l2upbl-MuiTableCell-root"
               scope="col"
             >
               2.911
             </th>
             <th
               aria-sort={null}
-              className="MuiTableCell-root MuiTableCell-head MuiTableCell-alignLeft MuiTableCell-sizeSmall MuiTableCell-stickyHeader"
+              className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignLeft MuiTableCell-sizeSmall css-1h37f49-MuiTableCell-root"
               scope="col"
             >
               30
             </th>
             <th
               aria-sort={null}
-              className="MuiTableCell-root MuiTableCell-head MuiTableCell-alignLeft MuiTableCell-sizeSmall MuiTableCell-stickyHeader"
+              className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignLeft MuiTableCell-sizeSmall css-1h37f49-MuiTableCell-root"
               scope="col"
             >
               
             </th>
             <th
               aria-sort={null}
-              className="MuiTableCell-root MuiTableCell-head MuiTableCell-alignLeft MuiTableCell-sizeSmall MuiTableCell-stickyHeader"
+              className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignLeft MuiTableCell-sizeSmall css-1h37f49-MuiTableCell-root"
               scope="col"
             >
               
@@ -2009,12 +2018,12 @@ Array [
     className="makeStyles-root-4"
   >
     <h6
-      className="MuiTypography-root MuiTypography-subtitle2"
+      className="MuiTypography-root MuiTypography-subtitle2 css-ati914-MuiTypography-root"
     >
       All usage information is in gigabytes
     </h6>
     <h6
-      className="MuiTypography-root MuiTypography-subtitle2"
+      className="MuiTypography-root MuiTypography-subtitle2 css-ati914-MuiTypography-root"
     >
       This page was generated on 
       October 20, 2020, 11:25:35 AM EDT

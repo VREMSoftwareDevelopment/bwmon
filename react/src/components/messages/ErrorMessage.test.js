@@ -17,17 +17,17 @@
  */
 
 import React from 'react';
-import { create } from 'react-test-renderer';
+import { themeWrapper } from '../../__test__/utils/themeWrapper';
 import ErrorMessage from './ErrorMessage';
 
 describe('ErrorMessage', () => {
     test('renders correctly with message', () => {
-        const tree = create(<ErrorMessage message="message" />).toJSON();
+        const tree = themeWrapper(<ErrorMessage message="message" />).toJSON();
         expect(tree).toMatchSnapshot();
     });
 
     test('renders correctly with no message', () => {
-        const tree = create(<ErrorMessage />).toJSON();
+        const tree = themeWrapper(<ErrorMessage />).toJSON();
         expect(tree).toMatchSnapshot();
     });
 });

@@ -17,7 +17,7 @@
  */
 
 import React from 'react';
-import { Person, CalendarToday, CalendarViewDay, ShowChart, Timeline } from '@material-ui/icons';
+import { Person, CalendarToday, CalendarViewDay, ShowChart, Timeline } from '@mui/icons-material';
 import UsageByUser from '../pages/byuser/UsageByUser';
 import UsageByUserGraph from '../pages/byuser/UsageByUserGraph';
 import UsageByMonth from '../pages/bymonth/UsageByMonth';

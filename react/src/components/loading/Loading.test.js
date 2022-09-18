@@ -17,12 +17,12 @@
  */
 
 import React from 'react';
-import { create } from 'react-test-renderer';
+import { themeWrapper } from '../../__test__/utils/themeWrapper';
 import Loading from './Loading';
 
 describe('Loading', () => {
     test('renders correctly', () => {
-        const tree = create(<Loading />).toJSON();
+        const tree = themeWrapper(<Loading />).toJSON();
         expect(tree).toMatchSnapshot();
     });
 });

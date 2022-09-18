@@ -17,7 +17,7 @@
  */
 
 import React from 'react';
-import { create } from 'react-test-renderer';
+import { themeWrapper } from '../../__test__/utils/themeWrapper';
 import Header from './Header';
 
 describe('Header', () => {
@@ -25,7 +25,7 @@ describe('Header', () => {
     const version = '3.1.1';
 
     test('renders correctly', () => {
-        const tree = create(<Header name={name} version={version} />).toJSON();
+        const tree = themeWrapper(<Header name={name} version={version} />).toJSON();
         expect(tree).toMatchSnapshot();
     });
 });

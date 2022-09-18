@@ -18,7 +18,7 @@
 
 import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
-import { create } from 'react-test-renderer';
+import { themeWrapper } from '../../__test__/utils/themeWrapper';
 import Navigation from './Navigation';
 
 jest.mock('react-router-dom', () => ({
@@ -36,7 +36,7 @@ describe('Navigation', () => {
     ];
 
     test('renders correctly', () => {
-        const tree = create(
+        const tree = themeWrapper(
             <BrowserRouter>
                 <Navigation menu={menu} />
             </BrowserRouter>

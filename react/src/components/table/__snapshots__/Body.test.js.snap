@@ -2,11 +2,11 @@
 
 exports[`Body renders correctly 1`] = `
 <tbody
-  className="MuiTableBody-root"
+  className="MuiTableBody-root css-apqrd9-MuiTableBody-root"
   role={null}
 >
   <tr
-    className="MuiTableRow-root"
+    className="MuiTableRow-root css-1q1u3t4-MuiTableRow-root"
     id="test-data-0"
     role={null}
     style={
@@ -17,19 +17,19 @@ exports[`Body renders correctly 1`] = `
   >
     <td
       aria-sort={null}
-      className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+      className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeMedium css-1ex1afd-MuiTableCell-root"
     >
       192.168.1.14
     </td>
     <td
       aria-sort={null}
-      className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight"
+      className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeMedium css-177gid-MuiTableCell-root"
     >
       12345202.809
     </td>
   </tr>
   <tr
-    className="MuiTableRow-root"
+    className="MuiTableRow-root css-1q1u3t4-MuiTableRow-root"
     id="test-data-1"
     role={null}
     style={
@@ -40,19 +40,19 @@ exports[`Body renders correctly 1`] = `
   >
     <td
       aria-sort={null}
-      className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+      className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeMedium css-1ex1afd-MuiTableCell-root"
     >
       192.168.1.21
     </td>
     <td
       aria-sort={null}
-      className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight"
+      className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeMedium css-177gid-MuiTableCell-root"
     >
       123453.907
     </td>
   </tr>
   <tr
-    className="MuiTableRow-root"
+    className="MuiTableRow-root css-1q1u3t4-MuiTableRow-root"
     id="test-data-2"
     role={null}
     style={
@@ -63,13 +63,13 @@ exports[`Body renders correctly 1`] = `
   >
     <td
       aria-sort={null}
-      className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft"
+      className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeMedium css-1ex1afd-MuiTableCell-root"
     >
       192.168.1.10
     </td>
     <td
       aria-sort={null}
-      className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight"
+      className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeMedium css-177gid-MuiTableCell-root"
     >
       5370.488
     </td>

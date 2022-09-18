@@ -17,12 +17,12 @@
  */
 
 import React from 'react';
-import { create } from 'react-test-renderer';
+import { themeWrapper } from '../../__test__/utils/themeWrapper';
 import PageNotFound from './PageNotFound';
 
 describe('PageNotFound', () => {
     test('renders correctly', () => {
-        const tree = create(<PageNotFound />).toJSON();
+        const tree = themeWrapper(<PageNotFound />).toJSON();
         expect(tree).toMatchSnapshot();
     });
 });

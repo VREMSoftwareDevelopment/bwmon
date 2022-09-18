@@ -17,7 +17,7 @@
  */
 
 import React, { useEffect } from 'react';
-import { Paper, Table, TableRow, TableHead, TableCell, TableContainer } from '@material-ui/core';
+import { Paper, Table, TableRow, TableHead, TableCell, TableContainer } from '@mui/material';
 import Body from '../../components/table/Body';
 import CellInfo from '../../components/table/CellInfo';
 import DropDown from '../../components/inputs/DropDown';

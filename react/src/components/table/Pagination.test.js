@@ -17,7 +17,7 @@
  */
 
 import React from 'react';
-import { create } from 'react-test-renderer';
+import { themeWrapper } from '../../__test__/utils/themeWrapper';
 import { Pagination, rowsPerPageOptions } from './Pagination';
 
 describe('Pagination', () => {
@@ -26,7 +26,7 @@ describe('Pagination', () => {
     const handleRowsPerPageChange = (event) => {};
 
     test('renders correctly', () => {
-        const tree = create(
+        const tree = themeWrapper(
             <Pagination
                 colSpan={7}
                 count={20}

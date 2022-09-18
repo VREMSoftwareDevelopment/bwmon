@@ -18,13 +18,13 @@
 
 import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
-import { create } from 'react-test-renderer';
+import { themeWrapper } from '../../__test__/utils/themeWrapper';
 import menu from '../../menu/Menu';
 import BWMonRoutes from './BWMonRoutes';
 
 describe('BWMonRoutes', () => {
     test('renders correctly', () => {
-        const tree = create(
+        const tree = themeWrapper(
             <BrowserRouter>
                 <BWMonRoutes menu={menu} />
             </BrowserRouter>

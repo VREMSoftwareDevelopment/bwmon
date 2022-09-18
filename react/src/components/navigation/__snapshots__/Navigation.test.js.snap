@@ -2,15 +2,15 @@
 
 exports[`Navigation renders correctly 1`] = `
 <div
-  className="MuiBottomNavigation-root"
+  className="MuiBottomNavigation-root css-16lloyr-MuiBottomNavigation-root"
 >
   <a
-    aria-disabled={false}
-    className="MuiButtonBase-root MuiBottomNavigationAction-root Mui-selected"
+    className="MuiButtonBase-root MuiBottomNavigationAction-root Mui-selected css-1bjk3jo-MuiButtonBase-root-MuiBottomNavigationAction-root"
     href="/pathname1"
     id="id1"
     onBlur={[Function]}
     onClick={[Function]}
+    onContextMenu={[Function]}
     onDragLeave={[Function]}
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -21,27 +21,22 @@ exports[`Navigation renders correctly 1`] = `
     onTouchEnd={[Function]}
     onTouchMove={[Function]}
     onTouchStart={[Function]}
-    role="button"
     tabIndex={0}
   >
+    icon1
     <span
-      className="MuiBottomNavigationAction-wrapper"
+      className="MuiBottomNavigationAction-label Mui-selected css-imwso6-MuiBottomNavigationAction-label"
     >
-      icon1
-      <span
-        className="MuiBottomNavigationAction-label Mui-selected"
-      >
-        label1
-      </span>
+      label1
     </span>
   </a>
   <a
-    aria-disabled={false}
-    className="MuiButtonBase-root MuiBottomNavigationAction-root"
+    className="MuiButtonBase-root MuiBottomNavigationAction-root css-1bjk3jo-MuiButtonBase-root-MuiBottomNavigationAction-root"
     href="/pathname2"
     id="id2"
     onBlur={[Function]}
     onClick={[Function]}
+    onContextMenu={[Function]}
     onDragLeave={[Function]}
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -52,27 +47,22 @@ exports[`Navigation renders correctly 1`] = `
     onTouchEnd={[Function]}
     onTouchMove={[Function]}
     onTouchStart={[Function]}
-    role="button"
     tabIndex={0}
   >
+    icon2
     <span
-      className="MuiBottomNavigationAction-wrapper"
+      className="MuiBottomNavigationAction-label css-imwso6-MuiBottomNavigationAction-label"
     >
-      icon2
-      <span
-        className="MuiBottomNavigationAction-label"
-      >
-        label2
-      </span>
+      label2
     </span>
   </a>
   <a
-    aria-disabled={false}
-    className="MuiButtonBase-root MuiBottomNavigationAction-root"
+    className="MuiButtonBase-root MuiBottomNavigationAction-root css-1bjk3jo-MuiButtonBase-root-MuiBottomNavigationAction-root"
     href="/pathname3"
     id="id3"
     onBlur={[Function]}
     onClick={[Function]}
+    onContextMenu={[Function]}
     onDragLeave={[Function]}
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -83,18 +73,13 @@ exports[`Navigation renders correctly 1`] = `
     onTouchEnd={[Function]}
     onTouchMove={[Function]}
     onTouchStart={[Function]}
-    role="button"
     tabIndex={0}
   >
+    icon3
     <span
-      className="MuiBottomNavigationAction-wrapper"
+      className="MuiBottomNavigationAction-label css-imwso6-MuiBottomNavigationAction-label"
     >
-      icon3
-      <span
-        className="MuiBottomNavigationAction-label"
-      >
-        label3
-      </span>
+      label3
     </span>
   </a>
 </div>

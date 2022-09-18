@@ -2,19 +2,19 @@
 
 exports[`Header renders correctly 1`] = `
 <header
-  className="MuiPaper-root MuiAppBar-root MuiAppBar-positionStatic MuiAppBar-colorPrimary MuiPaper-elevation4"
+  className="MuiPaper-root MuiPaper-elevation MuiPaper-elevation4 MuiAppBar-root MuiAppBar-colorPrimary MuiAppBar-positionStatic css-hip9hq-MuiPaper-root-MuiAppBar-root"
 >
   <div
-    className="MuiToolbar-root MuiToolbar-dense MuiToolbar-gutters"
+    className="MuiToolbar-root MuiToolbar-gutters MuiToolbar-dense css-10ltm04-MuiToolbar-root"
   >
     <h6
-      className="MuiTypography-root makeStyles-title-1 MuiTypography-h6"
+      className="MuiTypography-root MuiTypography-h6 makeStyles-title-1 css-2ulfj5-MuiTypography-root"
       id="app-title"
     >
       Name
     </h6>
     <p
-      className="MuiTypography-root MuiTypography-body1"
+      className="MuiTypography-root MuiTypography-body1 css-ahj2mt-MuiTypography-root"
       id="app-version"
     >
       3.1.1

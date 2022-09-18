@@ -17,7 +17,7 @@
  */
 
 import React from 'react';
-import { TableHead, TableRow, TableCell } from '@material-ui/core';
+import { TableHead, TableRow, TableCell } from '@mui/material';
 
 const Footer = ({ prefix, cellInfos, values }) => (
     <TableHead>

@@ -18,8 +18,8 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { makeStyles } from '@material-ui/core/styles';
-import { BottomNavigation, BottomNavigationAction } from '@material-ui/core';
+import { makeStyles } from '@mui/styles';
+import { BottomNavigation, BottomNavigationAction } from '@mui/material';
 import useNavigation from './UseNavigation';
 
 const useStyles = makeStyles({});

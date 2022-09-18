@@ -17,17 +17,17 @@
  */
 
 import React from 'react';
-import { create } from 'react-test-renderer';
+import { themeWrapper } from '../../__test__/utils/themeWrapper';
 import InfoMessage from './InfoMessage';
 
 describe('InfoMessage', () => {
     test('renders correctly with message', () => {
-        const tree = create(<InfoMessage message="message" />).toJSON();
+        const tree = themeWrapper(<InfoMessage message="message" />).toJSON();
         expect(tree).toMatchSnapshot();
     });
 
     test('renders correctly with no message', () => {
-        const tree = create(<InfoMessage />).toJSON();
+        const tree = themeWrapper(<InfoMessage />).toJSON();
         expect(tree).toMatchSnapshot();
     });
 });

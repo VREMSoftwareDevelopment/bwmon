@@ -17,9 +17,9 @@
  */
 
 import React from 'react';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
-import { TablePagination, IconButton } from '@material-ui/core';
-import { FirstPage, KeyboardArrowLeft, KeyboardArrowRight, LastPage } from '@material-ui/icons';
+import { makeStyles, useTheme } from '@mui/styles';
+import { TablePagination, IconButton } from '@mui/material';
+import { FirstPage, KeyboardArrowLeft, KeyboardArrowRight, LastPage } from '@mui/icons-material';
 
 const useStyles = makeStyles((theme) => ({
     root: {
