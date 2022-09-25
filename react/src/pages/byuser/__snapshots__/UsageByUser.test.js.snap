@@ -127,7 +127,7 @@ exports[`UsageByUser renders correctly after data load 1`] = `
                 className="MuiOutlinedInput-notchedOutline css-1d3z3hw-MuiOutlinedInput-notchedOutline"
               >
                 <legend
-                  className="css-hdw1oc"
+                  className="css-ihdtdm"
                 >
                   <span
                     className="notranslate"
@@ -186,7 +186,7 @@ exports[`UsageByUser renders correctly after data load 1`] = `
                 className="MuiOutlinedInput-notchedOutline css-1d3z3hw-MuiOutlinedInput-notchedOutline"
               >
                 <legend
-                  className="css-hdw1oc"
+                  className="css-ihdtdm"
                 >
                   <span
                     className="notranslate"
@@ -249,7 +249,7 @@ exports[`UsageByUser renders correctly after data load 1`] = `
                   className="MuiOutlinedInput-notchedOutline css-1d3z3hw-MuiOutlinedInput-notchedOutline"
                 >
                   <legend
-                    className="css-hdw1oc"
+                    className="css-ihdtdm"
                   >
                     <span
                       className="notranslate"
