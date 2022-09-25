@@ -19,7 +19,7 @@
 import React from 'react';
 import UsageByYear from './UsageByYear';
 import { act } from 'react-test-renderer';
-import { themeWrapper } from '../../__test__/utils/themeWrapper';
+import { themeWrapper } from '../../__test__/utils/ThemeWrapper';
 import wait from '../../__test__/utils/Wait';
 
 jest.mock('../../services/Usage');

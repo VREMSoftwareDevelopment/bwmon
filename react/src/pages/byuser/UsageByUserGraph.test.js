@@ -17,7 +17,7 @@
  */
 
 import React from 'react';
-import { themeWrapper } from '../../__test__/utils/themeWrapper';
+import { themeWrapper } from '../../__test__/utils/ThemeWrapper';
 import UsageByUserGraph from './UsageByUserGraph';
 
 jest.mock('../../services/Usage');

@@ -19,7 +19,7 @@
 import React from 'react';
 import { Settings } from 'luxon';
 import { act } from 'react-test-renderer';
-import { themeWrapper } from '../../__test__/utils/themeWrapper';
+import { themeWrapper } from '../../__test__/utils/ThemeWrapper';
 import UsageByUser from './UsageByUser';
 import wait from '../../__test__/utils/Wait';
 

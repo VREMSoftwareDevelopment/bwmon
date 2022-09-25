@@ -18,7 +18,7 @@
 
 import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
-import { themeWrapper } from '../../__test__/utils/themeWrapper';
+import { themeWrapper } from '../../__test__/utils/ThemeWrapper';
 import menu from '../../menu/Menu';
 import BWMonRoutes from './BWMonRoutes';
 

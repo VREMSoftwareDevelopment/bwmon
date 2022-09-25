@@ -18,7 +18,7 @@
 
 import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
-import { themeWrapper } from '../../__test__/utils/themeWrapper';
+import { themeWrapper } from '../../__test__/utils/ThemeWrapper';
 import Navigation from './Navigation';
 
 jest.mock('react-router-dom', () => ({
