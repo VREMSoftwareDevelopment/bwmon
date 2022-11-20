@@ -75,17 +75,4 @@ export const stopCoverage = async (page, tag) => {
     console.info(tag + ' coverage: ' + ((jsResult.usedBytes / jsResult.totalBytes) * 100).toFixed(2) + '%');
 };
 
-export const launch = () =>
-    puppeteer.launch({
-        headless: true,
-    });
-
-/*
-export const launch = () =>
-    puppeteer.launch({
-        headless: false,
-        defaultViewport: null,
-        args: ['--start-maximized'],
-        slowMo: 250,
-    });
-*/
+export const launch = async () => await puppeteer.launch();
