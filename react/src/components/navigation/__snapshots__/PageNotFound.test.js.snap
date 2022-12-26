@@ -5,7 +5,7 @@ exports[`PageNotFound renders correctly 1`] = `
   className="makeStyles-root-1"
 >
   <div
-    className="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation0 MuiAlert-root MuiAlert-standardError MuiAlert-standard css-xilmwd-MuiPaper-root-MuiAlert-root"
+    className="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation0 MuiAlert-root MuiAlert-standardError MuiAlert-standard css-1hdyuqk-MuiPaper-root-MuiAlert-root"
     role="alert"
   >
     <div
