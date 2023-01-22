@@ -5,16 +5,18 @@ on:
             version:
                 description: 'version'
                 required: true
+env:
+    RELEASE_ASSET: bwmon.tar.gz
 jobs:
-    build:
+    release:
         runs-on: ubuntu-latest
         strategy:
             matrix:
                 node-version: [16.x]
         steps:
-            - uses: actions/checkout@v2
+            - uses: actions/checkout@v3
             - name: Use Node.js ${{ matrix.node-version }}
-              uses: actions/setup-node@v1
+              uses: actions/setup-node@v3
               with:
                   node-version: ${{ matrix.node-version }}
             - name: Install dependencies
@@ -32,8 +34,8 @@ jobs:
             - name: Build
               run: npm run build
               working-directory: react
-            - name: Create release assest
-              run: tar -cvzf bwmon.tar.gz react/build server
+            - name: Create release asset
+              run: tar -cvzf ${{ RELEASE_ASSET }} react/build server
             - name: Setup git config
               run: |
                   git config user.name "GitHub Actions Bot - create release"
@@ -50,7 +52,7 @@ jobs:
               id: create_release
               uses: actions/create-release@v1
               env:
-                  GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
               with:
                   tag_name: v${{ github.event.inputs.version }}
                   release_name: Release v${{ github.event.inputs.version }}
@@ -58,9 +60,9 @@ jobs:
               id: upload-release-asset
               uses: actions/upload-release-asset@v1
               env:
-                  GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
               with:
                   upload_url: ${{ steps.create_release.outputs.upload_url }}
-                  asset_path: ./bwmon.tar.gz
-                  asset_name: bwmon.tar.gz
+                  asset_path: ./${{ RELEASE_ASSET }}
+                  assets: ${{ RELEASE_ASSET }}
                   asset_content_type: application/gz
