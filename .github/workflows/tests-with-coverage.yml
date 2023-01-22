@@ -8,9 +8,9 @@ jobs:
             matrix:
                 node-version: [16.x]
         steps:
-            - uses: actions/checkout@v2
+            - uses: actions/checkout@v3
             - name: Use Node.js ${{ matrix.node-version }}
-              uses: actions/setup-node@v1
+              uses: actions/setup-node@v3
               with:
                   node-version: ${{ matrix.node-version }}
             - name: Install dependencies
@@ -23,7 +23,7 @@ jobs:
               run: npm start & sleep 60; npm run coverage
               working-directory: react
             - name: Upload coverage to Codecov
-              uses: codecov/codecov-action@v2
+              uses: codecov/codecov-action@v3
               with:
                   token: ${{ secrets.CODECOV_TOKEN }}
                   file: ./react/coverage/coverage-final.json
