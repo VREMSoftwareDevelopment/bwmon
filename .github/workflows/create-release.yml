@@ -5,8 +5,6 @@ on:
             version:
                 description: 'version'
                 required: true
-env:
-    RELEASE_ASSET: bwmon.tar.gz
 jobs:
     release:
         runs-on: ubuntu-latest
@@ -35,7 +33,7 @@ jobs:
               run: npm run build
               working-directory: react
             - name: Create release asset
-              run: tar -cvzf ${{ RELEASE_ASSET }} react/build server
+              run: tar -cvzf bwmon.tar.gz react/build server
             - name: Setup git config
               run: |
                   git config user.name "GitHub Actions Bot - create release"
@@ -63,6 +61,6 @@ jobs:
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
               with:
                   upload_url: ${{ steps.create_release.outputs.upload_url }}
-                  asset_path: ./${{ RELEASE_ASSET }}
-                  assets: ${{ RELEASE_ASSET }}
+                  asset_path: ./bwmon.tar.gz
+                  assets: bwmon.tar.gz
                   asset_content_type: application/gz
