@@ -24,7 +24,7 @@ describe('Header', () => {
     const name = 'Name';
     const version = '3.1.1';
 
-    test('renders correctly', () => {
+    it('renders correctly', () => {
         const tree = themeWrapper(<Header name={name} version={version} />).toJSON();
         expect(tree).toMatchSnapshot();
     });

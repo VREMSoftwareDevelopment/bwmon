@@ -24,7 +24,7 @@ jest.mock('../../services/Usage');
 jest.mock('../../components/graph/Graph');
 
 describe('UsageByYearGraph', () => {
-    test('renders correctly', () => {
+    it('renders correctly', () => {
         const tree = themeWrapper(<UsageByYearGraph />).toJSON();
         expect(tree).toMatchSnapshot();
     });

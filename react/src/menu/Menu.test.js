@@ -27,7 +27,7 @@ import UsageByYearGraph from '../pages/byyear/UsageByYearGraph';
 import menu from './Menu';
 
 describe('Menu', () => {
-    test('id', () => {
+    it('id', () => {
         expect('usage-by-user').toEqual(menu[0].id);
         expect('usage-by-user-graph').toEqual(menu[1].id);
         expect('usage-by-month').toEqual(menu[2].id);
@@ -36,7 +36,7 @@ describe('Menu', () => {
         expect('usage-by-year-graph').toEqual(menu[5].id);
     });
 
-    test('element', () => {
+    it('element', () => {
         expect(<UsageByUser />).toEqual(menu[0].element);
         expect(<UsageByUserGraph />).toEqual(menu[1].element);
         expect(<UsageByMonth />).toEqual(menu[2].element);
@@ -45,7 +45,7 @@ describe('Menu', () => {
         expect(<UsageByYearGraph />).toEqual(menu[5].element);
     });
 
-    test('pathname', () => {
+    it('pathname', () => {
         expect('/UsageByUser').toEqual(menu[0].pathname);
         expect('/UsageByUserGraph').toEqual(menu[1].pathname);
         expect('/UsageByMonth').toEqual(menu[2].pathname);
@@ -54,7 +54,7 @@ describe('Menu', () => {
         expect('/UsageByYearGraph').toEqual(menu[5].pathname);
     });
 
-    test('label', () => {
+    it('label', () => {
         expect('By User').toEqual(menu[0].label);
         expect('By User Graph').toEqual(menu[1].label);
         expect('By Month').toEqual(menu[2].label);
@@ -63,7 +63,7 @@ describe('Menu', () => {
         expect('By Year Graph').toEqual(menu[5].label);
     });
 
-    test('icon', () => {
+    it('icon', () => {
         expect(<Person />).toEqual(menu[0].icon);
         expect(<ShowChart />).toEqual(menu[1].icon);
         expect(<CalendarToday />).toEqual(menu[2].icon);

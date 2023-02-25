@@ -26,12 +26,12 @@ jest.mock('../../services/Usage');
 jest.mock('../../components/table/Pagination');
 
 describe('UsageByYear', () => {
-    test('renders correctly', () => {
+    it('renders correctly', () => {
         const tree = themeWrapper(<UsageByYear />);
         expect(tree.toJSON()).toMatchSnapshot();
     });
 
-    test('renders correctly after data load', async () => {
+    it('renders correctly after data load', async () => {
         let tree;
         act(() => {
             tree = themeWrapper(<UsageByYear />);

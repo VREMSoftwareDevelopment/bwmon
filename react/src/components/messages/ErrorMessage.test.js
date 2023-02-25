@@ -21,12 +21,12 @@ import { themeWrapper } from '../../__test__/utils/ThemeWrapper';
 import ErrorMessage from './ErrorMessage';
 
 describe('ErrorMessage', () => {
-    test('renders correctly with message', () => {
+    it('renders correctly with message', () => {
         const tree = themeWrapper(<ErrorMessage message="message" />).toJSON();
         expect(tree).toMatchSnapshot();
     });
 
-    test('renders correctly with no message', () => {
+    it('renders correctly with no message', () => {
         const tree = themeWrapper(<ErrorMessage />).toJSON();
         expect(tree).toMatchSnapshot();
     });

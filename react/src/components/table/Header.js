@@ -25,11 +25,11 @@ const SortableCell = ({ prefix, cellInfo, sortHandler, ascending, orderBy }) => 
     const defaultDirection = (orderBy, id) => (orderBy === id ? direction : 'asc');
 
     return (
-        <TableCell id={prefix + '-' + cellInfo.id} align={cellInfo.align} sortDirection={sortDirection(orderBy, cellInfo.id)}>
+        <TableCell id={prefix + '-' + cellInfo.id} align={cellInfo.align} sortDirection={sortDirection(orderBy, cellInfo.idSort)}>
             <TableSortLabel
-                active={orderBy === cellInfo.id}
-                direction={defaultDirection(orderBy, cellInfo.id)}
-                onClick={sortHandler(cellInfo.id)}
+                active={orderBy === cellInfo.idSort}
+                direction={defaultDirection(orderBy, cellInfo.idSort)}
+                onClick={sortHandler(cellInfo.idSort)}
             >
                 {cellInfo.label}
             </TableSortLabel>
@@ -50,7 +50,7 @@ const Header = ({ prefix, cellInfos, onRequestSort, ascending, orderBy }) => {
                 {cellInfos.map((cellInfo) => {
                     return cellInfo.sortable ? (
                         <SortableCell
-                            key={cellInfo.id}
+                            key={cellInfo.idSort}
                             prefix={prefix}
                             cellInfo={cellInfo}
                             sortHandler={sortHandler}

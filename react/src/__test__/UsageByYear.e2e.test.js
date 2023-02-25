@@ -56,8 +56,8 @@ describe('UsageByYear e2e', () => {
             const tbodyElements = await page.evaluate(() =>
                 Array.from(document.querySelectorAll('tbody > tr'), (element) => element.innerText)
             );
-            expect(tbodyElements[0]).toEqual('2013	603.928	35.773	639.701	1.753	365');
-            expect(tbodyElements[2]).toEqual('2011	139.939	10.745	150.684	0.413	365');
+            expect(tbodyElements[0]).toEqual('2013\t603.928\t35.773\t639.701\t1.753\t365');
+            expect(tbodyElements[2]).toEqual('2011\t139.939\t10.745\t150.684\t0.413\t365');
         },
         TIMEOUT
     );
@@ -71,8 +71,8 @@ describe('UsageByYear e2e', () => {
             const tbodyElements = await page.evaluate(() =>
                 Array.from(document.querySelectorAll('tbody > tr'), (element) => element.innerText)
             );
-            expect(tbodyElements[0]).toEqual('2011	139.939	10.745	150.684	0.413	365');
-            expect(tbodyElements[2]).toEqual('2013	603.928	35.773	639.701	1.753	365');
+            expect(tbodyElements[0]).toEqual('2011\t139.939\t10.745\t150.684\t0.413\t365');
+            expect(tbodyElements[2]).toEqual('2013\t603.928\t35.773\t639.701\t1.753\t365');
         },
         TIMEOUT
     );
@@ -86,8 +86,8 @@ describe('UsageByYear e2e', () => {
             const tbodyElements = await page.evaluate(() =>
                 Array.from(document.querySelectorAll('tbody > tr'), (element) => element.innerText)
             );
-            expect(tbodyElements[0]).toEqual('2013	603.928	35.773	639.701	1.753	365');
-            expect(tbodyElements[2]).toEqual('2011	139.939	10.745	150.684	0.413	365');
+            expect(tbodyElements[0]).toEqual('2013\t603.928\t35.773\t639.701\t1.753\t365');
+            expect(tbodyElements[2]).toEqual('2011\t139.939\t10.745\t150.684\t0.413\t365');
         },
         TIMEOUT
     );
@@ -102,8 +102,8 @@ describe('UsageByYear e2e', () => {
             const tbodyElements = await page.evaluate(() =>
                 Array.from(document.querySelectorAll('tbody > tr'), (element) => element.innerText)
             );
-            expect(tbodyElements[0]).toEqual('2011	139.939	10.745	150.684	0.413	365');
-            expect(tbodyElements[2]).toEqual('2013	603.928	35.773	639.701	1.753	365');
+            expect(tbodyElements[0]).toEqual('2011\t139.939\t10.745\t150.684\t0.413\t365');
+            expect(tbodyElements[2]).toEqual('2013\t603.928\t35.773\t639.701\t1.753\t365');
         },
         TIMEOUT
     );

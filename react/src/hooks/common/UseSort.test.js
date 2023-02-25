@@ -20,14 +20,14 @@ import { act, renderHook } from '@testing-library/react-hooks';
 import useSort from './UseSort';
 
 describe('UseSort', () => {
-    test('should initialize', () => {
+    it('should initialize', () => {
         const { result } = renderHook(() => useSort(false, 'xyz'));
 
         expect(result.current.ascending).toBeFalsy();
         expect(result.current.orderBy).toEqual('xyz');
     });
 
-    test('changing ascending should change ascending', async () => {
+    it('changing ascending should change ascending', async () => {
         const { result } = renderHook(() => useSort(false, 'xyz'));
 
         act(() => result.current.setAscending(true));
@@ -35,7 +35,7 @@ describe('UseSort', () => {
         expect(result.current.ascending).toBeTruthy();
     });
 
-    test('changing orderBy should change orderBy', async () => {
+    it('changing orderBy should change orderBy', async () => {
         const { result } = renderHook(() => useSort(false, 'xyz'));
 
         act(() => result.current.setOrderBy('ABC'));

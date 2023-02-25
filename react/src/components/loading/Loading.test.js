@@ -21,7 +21,7 @@ import { themeWrapper } from '../../__test__/utils/ThemeWrapper';
 import Loading from './Loading';
 
 describe('Loading', () => {
-    test('renders correctly', () => {
+    it('renders correctly', () => {
         const tree = themeWrapper(<Loading />).toJSON();
         expect(tree).toMatchSnapshot();
     });

@@ -31,7 +31,7 @@ describe('Header', () => {
 
     const handleRequestSort = (event, property) => {};
 
-    test('renders correctly', () => {
+    it('renders correctly', () => {
         const tree = create(
             <Header
                 prefix="test"

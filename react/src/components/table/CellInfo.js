@@ -17,12 +17,13 @@
  */
 
 export default class CellInfo {
-    constructor(id, sortable, align, label, footer, convert) {
+    constructor(id, sortable, align, label, footer, convert, idSort) {
         this.id = id;
         this.sortable = sortable;
         this.align = align;
         this.label = label;
         this.footer = footer;
         this.convert = convert;
+        this.idSort = idSort ? idSort : id;
     }
 }

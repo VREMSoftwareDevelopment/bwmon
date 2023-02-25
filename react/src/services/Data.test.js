@@ -19,7 +19,7 @@
 import Data from './Data';
 
 describe('Data', () => {
-    test('should construct', () => {
+    it('should construct', () => {
         const data = new Data(
             111,
             '2011-06',

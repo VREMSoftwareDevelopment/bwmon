@@ -40,12 +40,12 @@ describe('UsageByUser', () => {
         Settings.defaultLocale = originalLocale;
     });
 
-    test('renders correctly', () => {
+    it('renders correctly', () => {
         const tree = themeWrapper(<UsageByUser />).toJSON();
         expect(tree).toMatchSnapshot();
     });
 
-    test('renders correctly after data load', async () => {
+    it('renders correctly after data load', async () => {
         let tree;
         act(() => {
             tree = themeWrapper(<UsageByUser />);

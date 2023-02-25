@@ -21,7 +21,7 @@ import { themeWrapper } from '../../__test__/utils/ThemeWrapper';
 import PageNotFound from './PageNotFound';
 
 describe('PageNotFound', () => {
-    test('renders correctly', () => {
+    it('renders correctly', () => {
         const tree = themeWrapper(<PageNotFound />).toJSON();
         expect(tree).toMatchSnapshot();
     });

@@ -21,12 +21,12 @@ import { themeWrapper } from '../../__test__/utils/ThemeWrapper';
 import InfoMessage from './InfoMessage';
 
 describe('InfoMessage', () => {
-    test('renders correctly with message', () => {
+    it('renders correctly with message', () => {
         const tree = themeWrapper(<InfoMessage message="message" />).toJSON();
         expect(tree).toMatchSnapshot();
     });
 
-    test('renders correctly with no message', () => {
+    it('renders correctly with no message', () => {
         const tree = themeWrapper(<InfoMessage />).toJSON();
         expect(tree).toMatchSnapshot();
     });

@@ -25,19 +25,19 @@ describe('DropDown', () => {
         // handle change
     };
 
-    test('renders correctly with items', () => {
+    it('renders correctly with items', () => {
         const tree = create(
             <DropDown id="12345" value="ZYXUW" onChange={handleChange} items={['ABC', 'ZYXUW', 'WGKF']} />
         ).toJSON();
         expect(tree).toMatchSnapshot();
     });
 
-    test('renders correctly with no items', () => {
+    it('renders correctly with no items', () => {
         const tree = create(<DropDown />).toJSON();
         expect(tree).toMatchSnapshot();
     });
 
-    test('renders correctly with no value', () => {
+    it('renders correctly with no value', () => {
         const tree = create(<DropDown items={['ABC', 'ZYXUW', 'WGKF']} />).toJSON();
         expect(tree).toMatchSnapshot();
     });

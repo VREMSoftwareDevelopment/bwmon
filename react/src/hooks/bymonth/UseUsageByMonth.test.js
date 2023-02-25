@@ -25,7 +25,7 @@ describe('UseUsageByMonth', () => {
     const expectedYears = [2013, 2012, 2011];
     const expectedYearsCount = 3;
 
-    test('should initialize years', async () => {
+    it('should initialize years', async () => {
         const { result, waitForNextUpdate } = renderHook(useUsageByMonth);
 
         await waitForNextUpdate();
@@ -35,7 +35,7 @@ describe('UseUsageByMonth', () => {
         expect(result.current.year).toEqual(expectedYears[0]);
     });
 
-    test('should initialize usage', async () => {
+    it('should initialize usage', async () => {
         const expectedCount = 11;
         const expectedTotal = {
             average: 1752605.622,
@@ -74,7 +74,7 @@ describe('UseUsageByMonth', () => {
         expect(result.current.loading).toBeFalsy();
     });
 
-    test('changing year should change year', async () => {
+    it('changing year should change year', async () => {
         const expectedYear = expectedYears[expectedYearsCount - 1];
         const { result, waitForNextUpdate } = renderHook(useUsageByMonth);
 
@@ -86,7 +86,7 @@ describe('UseUsageByMonth', () => {
         expect(result.current.year).toEqual(expectedYear);
     });
 
-    test('changing year should change usage', async () => {
+    it('changing year should change usage', async () => {
         const expectedYear = expectedYears[expectedYearsCount - 1];
         const expectedCount = 7;
         const expectedTotal = { average: 412831.811, days: 365, download: 139938627, id: 2011, total: 150683611, upload: 10744984 };

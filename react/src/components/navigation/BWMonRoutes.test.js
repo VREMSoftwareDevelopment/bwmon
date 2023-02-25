@@ -23,7 +23,7 @@ import menu from '../../menu/Menu';
 import BWMonRoutes from './BWMonRoutes';
 
 describe('BWMonRoutes', () => {
-    test('renders correctly', () => {
+    it('renders correctly', () => {
         const tree = themeWrapper(
             <BrowserRouter>
                 <BWMonRoutes menu={menu} />

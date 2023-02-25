@@ -32,7 +32,7 @@ describe('Body', () => {
         { id: 3, IP: '192.168.1.10', up: 5370488 },
     ];
 
-    test('renders correctly', () => {
+    it('renders correctly', () => {
         const tree = create(<Body prefix="test" cellInfos={cellInfos} values={values} />).toJSON();
         expect(tree).toMatchSnapshot();
     });

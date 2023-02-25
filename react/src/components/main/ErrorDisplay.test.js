@@ -26,7 +26,7 @@ describe('ErrorDisplay', () => {
         componentStack: '--- Error Component Stack ---',
     };
 
-    test('renders correctly', () => {
+    it('renders correctly', () => {
         const tree = themeWrapper(<ErrorDisplay error={error} info={info} />).toJSON();
         expect(tree).toMatchSnapshot();
     });

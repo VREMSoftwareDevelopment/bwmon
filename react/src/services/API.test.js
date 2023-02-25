@@ -21,13 +21,13 @@ import API from './API';
 jest.mock('./Usage');
 
 describe('API', () => {
-    test('should return years', async () => {
+    it('should return years', async () => {
         const expected = [2013, 2012, 2011];
         const actual = await API.getYears();
         expect(JSON.stringify(actual)).toEqual(JSON.stringify(expected));
     });
 
-    test('should return months', async () => {
+    it('should return months', async () => {
         const expected = [
             'November',
             'October',
@@ -45,7 +45,7 @@ describe('API', () => {
         expect(JSON.stringify(actual)).toEqual(JSON.stringify(expected));
     });
 
-    test('should return data by year', async () => {
+    it('should return data by year', async () => {
         const expected = [
             { id: 2013, download: 603928097, upload: 35772955, total: 639701052, average: 1752605.622, days: 365 },
             { id: 2012, download: 413484937, upload: 23242362, total: 436727299, average: 1193243.986, days: 366 },
@@ -55,7 +55,7 @@ describe('API', () => {
         expect(JSON.stringify(actual)).toEqual(JSON.stringify(expected));
     });
 
-    test('should return usage data by month', async () => {
+    it('should return usage data by month', async () => {
         const expected = [
             {
                 id: 12,
@@ -85,7 +85,7 @@ describe('API', () => {
         expect(JSON.stringify(actual.usage)).toEqual(JSON.stringify(expected));
     });
 
-    test('should return total by month', async () => {
+    it('should return total by month', async () => {
         const expected = {
             id: 2011,
             download: 139938627,
@@ -98,11 +98,12 @@ describe('API', () => {
         expect(JSON.stringify(actual.total)).toEqual(JSON.stringify(expected));
     });
 
-    test('should return usage data by user', async () => {
+    it('should return usage data by user', async () => {
         const expected = [
             {
                 id: 37,
                 IP: '192.168.1.10',
+                IPSort: 192168001010,
                 MAC: '00:1C:25:27:9B:AE',
                 user: 'COMPUTER-3',
                 download: 7241231,
@@ -119,6 +120,7 @@ describe('API', () => {
             {
                 id: 36,
                 IP: '192.168.1.12',
+                IPSort: 192168001012,
                 MAC: '00:26:9E:C4:A0:40',
                 user: 'COMPUTER-5',
                 download: 2734650,
@@ -135,6 +137,7 @@ describe('API', () => {
             {
                 id: 33,
                 IP: '192.168.1.14',
+                IPSort: 192168001014,
                 MAC: '00:24:8D:28:F2:9A',
                 user: 'COMPUTER-1',
                 download: 232214,
@@ -151,6 +154,7 @@ describe('API', () => {
             {
                 id: 35,
                 IP: '192.168.1.15',
+                IPSort: 192168001015,
                 MAC: '00:1A:A0:C7:19:08',
                 user: 'COMPUTER-9',
                 download: 655493,
@@ -167,6 +171,7 @@ describe('API', () => {
             {
                 id: 38,
                 IP: '192.168.1.21',
+                IPSort: 192168001021,
                 MAC: '00:23:7A:F7:A0:D0',
                 user: 'COMPUTER-2',
                 download: 654,
@@ -183,6 +188,7 @@ describe('API', () => {
             {
                 id: 34,
                 IP: '192.168.1.24',
+                IPSort: 192168001024,
                 MAC: '00:27:10:0E:B5:60',
                 user: 'COMPUTER-4',
                 download: 56729,
@@ -201,11 +207,12 @@ describe('API', () => {
         expect(JSON.stringify(actual.usage)).toEqual(JSON.stringify(expected));
     });
 
-    test('should return usage data by user with filter using IP', async () => {
+    it('should return usage data by user with filter using IP', async () => {
         const expected = [
             {
                 id: 38,
                 IP: '192.168.1.21',
+                IPSort: 192168001021,
                 MAC: '00:23:7A:F7:A0:D0',
                 user: 'COMPUTER-2',
                 download: 654,
@@ -222,6 +229,7 @@ describe('API', () => {
             {
                 id: 34,
                 IP: '192.168.1.24',
+                IPSort: 192168001024,
                 MAC: '00:27:10:0E:B5:60',
                 user: 'COMPUTER-4',
                 download: 56729,
@@ -240,11 +248,12 @@ describe('API', () => {
         expect(JSON.stringify(actual.usage)).toEqual(JSON.stringify(expected));
     });
 
-    test('should return usage data by user with filter using MAC', async () => {
+    it('should return usage data by user with filter using MAC', async () => {
         const expected = [
             {
                 id: 36,
                 IP: '192.168.1.12',
+                IPSort: 192168001012,
                 MAC: '00:26:9E:C4:A0:40',
                 user: 'COMPUTER-5',
                 download: 2734650,
@@ -261,6 +270,7 @@ describe('API', () => {
             {
                 id: 35,
                 IP: '192.168.1.15',
+                IPSort: 192168001015,
                 MAC: '00:1A:A0:C7:19:08',
                 user: 'COMPUTER-9',
                 download: 655493,
@@ -277,6 +287,7 @@ describe('API', () => {
             {
                 id: 38,
                 IP: '192.168.1.21',
+                IPSort: 192168001021,
                 MAC: '00:23:7A:F7:A0:D0',
                 user: 'COMPUTER-2',
                 download: 654,
@@ -295,11 +306,12 @@ describe('API', () => {
         expect(JSON.stringify(actual.usage)).toEqual(JSON.stringify(expected));
     });
 
-    test('should return usage data by user with filter using user', async () => {
+    it('should return usage data by user with filter using user', async () => {
         const expected = [
             {
                 id: 38,
                 IP: '192.168.1.21',
+                IPSort: 192168001021,
                 MAC: '00:23:7A:F7:A0:D0',
                 user: 'COMPUTER-2',
                 download: 654,
@@ -318,7 +330,7 @@ describe('API', () => {
         expect(JSON.stringify(actual.usage)).toEqual(JSON.stringify(expected));
     });
 
-    test('should return total by user', async () => {
+    it('should return total by user', async () => {
         const expected = { id: 11, download: 10920971, upload: 693868, total: 11614839, average: 387161.3, days: 30 };
         const actual = await API.getUsageByUser(2011, 'November');
         expect(JSON.stringify(actual.total)).toEqual(JSON.stringify(expected));

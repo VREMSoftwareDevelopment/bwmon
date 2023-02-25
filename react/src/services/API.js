@@ -29,7 +29,10 @@ class Store {
 
     orderById = (a, b) => b.id - a.id;
 
-    orderByIP = (a, b) => (a.IP < b.IP ? -1 : a.IP > b.IP ? 1 : this.orderById(a, b));
+    orderByIP = (a, b) => {
+        const result = a.IPSort - b.IPSort;
+        return result === 0 ? this.orderById(a, b) : result;
+    };
 
     orderByMonth = (a, b) => {
         const result = b.month - a.month;

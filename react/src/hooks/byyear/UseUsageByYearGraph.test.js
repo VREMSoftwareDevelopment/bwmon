@@ -22,7 +22,7 @@ import useUsageByYearGraph from './UseUsageByYearGraph';
 jest.mock('../../services/Usage');
 
 describe('UseUsageByYearGraph', () => {
-    test('should initialize', async () => {
+    it('should initialize', async () => {
         const expectedOptions = {
             chart: {
                 id: 'usage-by-year',

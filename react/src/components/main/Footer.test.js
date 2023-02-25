@@ -23,7 +23,7 @@ import Footer from './Footer';
 describe('Footer', () => {
     const currentTime = 'October 20, 2020, 11:25:35 AM EDT';
 
-    test('renders correctly', () => {
+    it('renders correctly', () => {
         const tree = themeWrapper(<Footer currentTime={currentTime} />).toJSON();
         expect(tree).toMatchSnapshot();
     });

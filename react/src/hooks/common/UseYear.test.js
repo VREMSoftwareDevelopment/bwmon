@@ -24,7 +24,7 @@ jest.mock('../../services/Usage');
 describe('UseYear', () => {
     const expectedYears = [2013, 2012, 2011];
 
-    test('should initialize', async () => {
+    it('should initialize', async () => {
         const { result, waitForNextUpdate } = renderHook(useYear);
 
         await waitForNextUpdate();
@@ -34,7 +34,7 @@ describe('UseYear', () => {
         expect(result.current.year).toEqual(expectedYears[0]);
     });
 
-    test('changing year should change year', async () => {
+    it('changing year should change year', async () => {
         const expected = expectedYears[expectedYears.length - 1];
         const { result, waitForNextUpdate } = renderHook(useYear);
 

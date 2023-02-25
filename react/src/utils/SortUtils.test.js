@@ -20,7 +20,7 @@ import { comparator, sort } from './SortUtils';
 
 describe('SortUtils', () => {
     describe('comparator', () => {
-        test('ascending', () => {
+        it('ascending', () => {
             const a = { value: 10 };
             const b = { value: 20 };
 
@@ -29,7 +29,7 @@ describe('SortUtils', () => {
             expect(fn(a, b)).toEqual(-1);
         });
 
-        test('ascending equals', () => {
+        it('ascending equals', () => {
             const a = { value: 10 };
             const b = { value: 10 };
 
@@ -38,7 +38,7 @@ describe('SortUtils', () => {
             expect(fn(a, b)).toEqual(0);
         });
 
-        test('descending', () => {
+        it('descending', () => {
             const a = { value: 10 };
             const b = { value: 20 };
 
@@ -47,7 +47,7 @@ describe('SortUtils', () => {
             expect(fn(a, b)).toEqual(1);
         });
 
-        test('descending equals', () => {
+        it('descending equals', () => {
             const a = { value: 10 };
             const b = { value: 10 };
 
@@ -58,7 +58,7 @@ describe('SortUtils', () => {
     });
 
     describe('sort', () => {
-        test('ascending', () => {
+        it('ascending', () => {
             const values = [{ value: 20 }, { value: 10 }, { value: 30 }, { value: 20 }];
             const fn = comparator(true, 'value');
             const expected = [{ value: 10 }, { value: 20 }, { value: 20 }, { value: 30 }];
@@ -69,7 +69,7 @@ describe('SortUtils', () => {
             expect(values !== result).toBeTruthy();
         });
 
-        test('descending', () => {
+        it('descending', () => {
             const values = [{ value: 20 }, { value: 10 }, { value: 30 }];
             const fn = comparator(false, 'value');
             const expected = [{ value: 30 }, { value: 20 }, { value: 10 }];

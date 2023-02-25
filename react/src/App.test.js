@@ -43,12 +43,12 @@ describe('App', () => {
     const version = '3.1.1';
     const currentTime = 'October 20, 2020, 11:25:35 AM EDT';
 
-    test('renders correctly', () => {
+    it('renders correctly', () => {
         const tree = create(<App name={name} version={version} currentTime={currentTime} />).toJSON();
         expect(tree).toMatchSnapshot();
     });
 
-    test('renders correctly after data load', async () => {
+    it('renders correctly after data load', async () => {
         let tree;
         act(() => {
             tree = create(<App name={name} version={version} currentTime={currentTime} />);

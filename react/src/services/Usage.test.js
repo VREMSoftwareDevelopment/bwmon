@@ -32,7 +32,7 @@ describe('Usage', () => {
         jest.useRealTimers();
     });
 
-    test('should return data', async () => {
+    it('should return data', async () => {
         const response =
             '2011-06,192.168.1.14,00:24:8D:28:F2:9A,COMPUTER-1,202809,11512,1307160300,1308013207\n' +
             '\n' +
@@ -41,6 +41,7 @@ describe('Usage', () => {
             '2013-01,192.168.1.16,00:90:A9:C6:19:5B,COMPUTER-11,212959,10700,1357322402,1359313201\n';
         const expectedFirst = {
             IP: '192.168.1.14',
+            IPSort: 192168001014,
             MAC: '00:24:8D:28:F2:9A',
             average: 21432.1,
             days: 10,
@@ -56,6 +57,7 @@ describe('Usage', () => {
         };
         const expectedLast = {
             IP: '192.168.1.16',
+            IPSort: 192168001016,
             MAC: '00:90:A9:C6:19:5B',
             average: 9319.125,
             days: 24,
@@ -82,7 +84,7 @@ describe('Usage', () => {
         expect(fetch).toHaveBeenCalledWith('xyz/usage.db');
     });
 
-    test('should throw error when status is not OK', async () => {
+    it('should throw error when status is not OK', async () => {
         fetch.mockResponseOnce('', { status: 400, statusText: 'Bad request' });
 
         try {

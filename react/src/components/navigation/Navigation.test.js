@@ -35,7 +35,7 @@ describe('Navigation', () => {
         { id: 'id3', pathname: '/pathname3', label: 'label3', icon: 'icon3' },
     ];
 
-    test('renders correctly', () => {
+    it('renders correctly', () => {
         const tree = themeWrapper(
             <BrowserRouter>
                 <Navigation menu={menu} />

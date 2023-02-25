@@ -22,7 +22,7 @@ import useUsageByYear from './UseUsageByYear';
 jest.mock('../../services/Usage');
 
 describe('UseUsageByYear', () => {
-    test('should initialize', async () => {
+    it('should initialize', async () => {
         const expectedCount = 3;
         const expectedFirst = {
             average: 1752605.622,

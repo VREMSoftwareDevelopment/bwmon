@@ -25,7 +25,7 @@ describe('Search', () => {
         // handle change
     };
 
-    test('renders correctly', () => {
+    it('renders correctly', () => {
         const tree = create(<Search id="12345" value="XYZ" onChange={handleChange} />).toJSON();
         expect(tree).toMatchSnapshot();
     });

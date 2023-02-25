@@ -24,7 +24,7 @@ jest.mock('../../services/Usage');
 jest.mock('../../components/graph/Graph');
 
 describe('UsageByUserGraph', () => {
-    test('renders correctly', () => {
+    it('renders correctly', () => {
         const tree = themeWrapper(<UsageByUserGraph />).toJSON();
         expect(tree).toMatchSnapshot();
     });

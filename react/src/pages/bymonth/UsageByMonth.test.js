@@ -25,12 +25,12 @@ import wait from '../../__test__/utils/Wait';
 jest.mock('../../services/Usage');
 
 describe('UsageByMonth', () => {
-    test('renders correctly', () => {
+    it('renders correctly', () => {
         const tree = themeWrapper(<UsageByMonth />).toJSON();
         expect(tree).toMatchSnapshot();
     });
 
-    test('renders correctly after data load', async () => {
+    it('renders correctly after data load', async () => {
         let tree;
         act(() => {
             tree = themeWrapper(<UsageByMonth />);

@@ -32,7 +32,7 @@ describe('Graph', () => {
     //     },
     // ];
 
-    test('renders correctly', () => {
+    it('renders correctly', () => {
         // issue:
         //  https://github.com/apexcharts/react-apexcharts/issues/352
         //  UnhandledPromiseRejection

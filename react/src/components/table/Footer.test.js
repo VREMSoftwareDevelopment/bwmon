@@ -40,7 +40,7 @@ describe('Footer', () => {
         total: 2468,
     };
 
-    test('renders correctly', () => {
+    it('renders correctly', () => {
         const tree = create(<Footer prefix="test" cellInfos={cellInfos} values={values} />).toJSON();
         expect(tree).toMatchSnapshot();
     });
