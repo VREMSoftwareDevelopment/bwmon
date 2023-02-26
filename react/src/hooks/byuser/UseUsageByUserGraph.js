@@ -17,7 +17,7 @@
  */
 
 import { useState, useEffect } from 'react';
-import { usageInGBytes } from '../../utils/ConversionUtils';
+import { toIPv4, usageInGBytes } from '../../utils/ConversionUtils';
 import useUsageByUser from './UseUsageByUser';
 
 const useUsageByYearGraph = () => {
@@ -35,7 +35,7 @@ const useUsageByYearGraph = () => {
                     },
                 },
                 xaxis: {
-                    categories: data.usage.map((element) => element.IP),
+                    categories: data.usage.map((element) => toIPv4(element.IP)),
                 },
             });
 

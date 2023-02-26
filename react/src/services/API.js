@@ -18,6 +18,7 @@
 
 import usage from './Usage';
 import { DateTime } from 'luxon';
+import { toIPv4 } from '../utils/ConversionUtils';
 
 // reload every 10 minutes
 const RELOAD_TIME = 10;
@@ -30,7 +31,7 @@ class Store {
     orderById = (a, b) => b.id - a.id;
 
     orderByIP = (a, b) => {
-        const result = a.IPSort - b.IPSort;
+        const result = a.IP - b.IP;
         return result === 0 ? this.orderById(a, b) : result;
     };
 
@@ -93,7 +94,7 @@ class Store {
             usage = usage.filter((entry) => {
                 let filterLowerCase = filter.toLowerCase();
                 return (
-                    entry.IP.toLowerCase().indexOf(filterLowerCase) !== -1 ||
+                    toIPv4(entry.IP).toLowerCase().indexOf(filterLowerCase) !== -1 ||
                     entry.MAC.toLowerCase().indexOf(filterLowerCase) !== -1 ||
                     entry.user.toLowerCase().indexOf(filterLowerCase) !== -1
                 );

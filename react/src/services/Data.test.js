@@ -16,6 +16,7 @@
  * Bandwidth Monitor
  */
 
+import { fromIPv4 } from '../utils/ConversionUtils';
 import Data from './Data';
 
 describe('Data', () => {
@@ -32,7 +33,7 @@ describe('Data', () => {
             1308013207
         );
         expect(data.id).toEqual(111);
-        expect(data.IP).toEqual('192.168.1.14');
+        expect(data.IP).toEqual(fromIPv4('192.168.1.14'));
         expect(data.MAC).toEqual('00:24:8D:28:F2:9A');
         expect(data.user).toEqual('COMPUTER-1');
         expect(data.download).toEqual(202809);

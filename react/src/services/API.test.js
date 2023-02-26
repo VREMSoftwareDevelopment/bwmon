@@ -16,6 +16,7 @@
  * Bandwidth Monitor
  */
 
+import { fromIPv4 } from '../utils/ConversionUtils';
 import API from './API';
 
 jest.mock('./Usage');
@@ -102,8 +103,7 @@ describe('API', () => {
         const expected = [
             {
                 id: 37,
-                IP: '192.168.1.10',
-                IPSort: 192168001010,
+                IP: fromIPv4('192.168.1.10'),
                 MAC: '00:1C:25:27:9B:AE',
                 user: 'COMPUTER-3',
                 download: 7241231,
@@ -119,8 +119,7 @@ describe('API', () => {
             },
             {
                 id: 36,
-                IP: '192.168.1.12',
-                IPSort: 192168001012,
+                IP: fromIPv4('192.168.1.12'),
                 MAC: '00:26:9E:C4:A0:40',
                 user: 'COMPUTER-5',
                 download: 2734650,
@@ -136,8 +135,7 @@ describe('API', () => {
             },
             {
                 id: 33,
-                IP: '192.168.1.14',
-                IPSort: 192168001014,
+                IP: fromIPv4('192.168.1.14'),
                 MAC: '00:24:8D:28:F2:9A',
                 user: 'COMPUTER-1',
                 download: 232214,
@@ -153,8 +151,7 @@ describe('API', () => {
             },
             {
                 id: 35,
-                IP: '192.168.1.15',
-                IPSort: 192168001015,
+                IP: fromIPv4('192.168.1.15'),
                 MAC: '00:1A:A0:C7:19:08',
                 user: 'COMPUTER-9',
                 download: 655493,
@@ -170,8 +167,7 @@ describe('API', () => {
             },
             {
                 id: 38,
-                IP: '192.168.1.21',
-                IPSort: 192168001021,
+                IP: fromIPv4('192.168.1.21'),
                 MAC: '00:23:7A:F7:A0:D0',
                 user: 'COMPUTER-2',
                 download: 654,
@@ -187,8 +183,7 @@ describe('API', () => {
             },
             {
                 id: 34,
-                IP: '192.168.1.24',
-                IPSort: 192168001024,
+                IP: fromIPv4('192.168.1.24'),
                 MAC: '00:27:10:0E:B5:60',
                 user: 'COMPUTER-4',
                 download: 56729,
@@ -211,8 +206,7 @@ describe('API', () => {
         const expected = [
             {
                 id: 38,
-                IP: '192.168.1.21',
-                IPSort: 192168001021,
+                IP: fromIPv4('192.168.1.21'),
                 MAC: '00:23:7A:F7:A0:D0',
                 user: 'COMPUTER-2',
                 download: 654,
@@ -228,8 +222,7 @@ describe('API', () => {
             },
             {
                 id: 34,
-                IP: '192.168.1.24',
-                IPSort: 192168001024,
+                IP: fromIPv4('192.168.1.24'),
                 MAC: '00:27:10:0E:B5:60',
                 user: 'COMPUTER-4',
                 download: 56729,
@@ -252,8 +245,7 @@ describe('API', () => {
         const expected = [
             {
                 id: 36,
-                IP: '192.168.1.12',
-                IPSort: 192168001012,
+                IP: fromIPv4('192.168.1.12'),
                 MAC: '00:26:9E:C4:A0:40',
                 user: 'COMPUTER-5',
                 download: 2734650,
@@ -269,8 +261,7 @@ describe('API', () => {
             },
             {
                 id: 35,
-                IP: '192.168.1.15',
-                IPSort: 192168001015,
+                IP: fromIPv4('192.168.1.15'),
                 MAC: '00:1A:A0:C7:19:08',
                 user: 'COMPUTER-9',
                 download: 655493,
@@ -286,8 +277,7 @@ describe('API', () => {
             },
             {
                 id: 38,
-                IP: '192.168.1.21',
-                IPSort: 192168001021,
+                IP: fromIPv4('192.168.1.21'),
                 MAC: '00:23:7A:F7:A0:D0',
                 user: 'COMPUTER-2',
                 download: 654,
@@ -310,8 +300,7 @@ describe('API', () => {
         const expected = [
             {
                 id: 38,
-                IP: '192.168.1.21',
-                IPSort: 192168001021,
+                IP: fromIPv4('192.168.1.21'),
                 MAC: '00:23:7A:F7:A0:D0',
                 user: 'COMPUTER-2',
                 download: 654,

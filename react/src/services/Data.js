@@ -16,16 +16,12 @@
  * Bandwidth Monitor
  */
 
+import { fromIPv4 } from '../utils/ConversionUtils';
+
 export default class Data {
     constructor(id, date, ip, mac, user, down, up, first, last) {
         this.id = id;
-        this.IP = ip;
-        this.IPSort = Number(
-            ip
-                .split('.')
-                .map((num) => `000${num}`.slice(-3))
-                .join('')
-        );
+        this.IP = fromIPv4(ip);
         this.MAC = mac;
         this.user = user;
         this.download = Math.abs(Number(down));

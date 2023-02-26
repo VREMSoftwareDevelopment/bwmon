@@ -17,6 +17,7 @@
  */
 
 import fetchMock from 'jest-fetch-mock';
+import { fromIPv4 } from '../utils/ConversionUtils';
 import usage from './Usage';
 
 fetchMock.enableMocks();
@@ -40,8 +41,7 @@ describe('Usage', () => {
             '\n' +
             '2013-01,192.168.1.16,00:90:A9:C6:19:5B,COMPUTER-11,212959,10700,1357322402,1359313201\n';
         const expectedFirst = {
-            IP: '192.168.1.14',
-            IPSort: 192168001014,
+            IP: fromIPv4('192.168.1.14'),
             MAC: '00:24:8D:28:F2:9A',
             average: 21432.1,
             days: 10,
@@ -56,8 +56,7 @@ describe('Usage', () => {
             year: 2011,
         };
         const expectedLast = {
-            IP: '192.168.1.16',
-            IPSort: 192168001016,
+            IP: fromIPv4('192.168.1.16'),
             MAC: '00:90:A9:C6:19:5B',
             average: 9319.125,
             days: 24,

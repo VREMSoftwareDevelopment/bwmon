@@ -17,7 +17,7 @@
  */
 
 import { DateTime } from 'luxon';
-import { timeToDate, toMonth, toPercent, usageInGBytes } from './ConversionUtils';
+import { fromIPv4, timeToDate, toIPv4, toMonth, toPercent, usageInGBytes } from './ConversionUtils';
 
 describe('ConversionUtils', () => {
     describe('toMonth', () => {
@@ -55,6 +55,22 @@ describe('ConversionUtils', () => {
         it('should return value with one decimal', () => {
             const expected = '123.5%';
             const actual = toPercent(123.456);
+            expect(actual).toEqual(expected);
+        });
+    });
+
+    describe('toIPv4', () => {
+        it('should return IPv4 coverted from number', () => {
+            const expected = '12.255.0.6';
+            const actual = toIPv4(218038278);
+            expect(actual).toEqual(expected);
+        });
+    });
+
+    describe('fromIPv4', () => {
+        it('should return number coverted from IPv4', () => {
+            const expected = 218038278;
+            const actual = fromIPv4('12.255.0.6');
             expect(actual).toEqual(expected);
         });
     });

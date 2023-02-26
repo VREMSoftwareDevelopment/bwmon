@@ -17,6 +17,7 @@
  */
 
 import { act, renderHook } from '@testing-library/react-hooks';
+import { fromIPv4 } from '../../utils/ConversionUtils';
 import useUsageByUser from './UseUsageByUser';
 
 jest.mock('../../services/Usage');
@@ -52,8 +53,7 @@ describe('UseUsageByUser', () => {
         const expectedCount = 27;
         const expectedTotal = { average: 2910960.6, days: 30, download: 83065864, id: 11, total: 87328818, upload: 4262954 };
         const expectedFirst = {
-            IP: '192.168.1.10',
-            IPSort: 192168001010,
+            IP: fromIPv4('192.168.1.10'),
             MAC: '00:1C:25:27:9B:AE',
             average: 532586.133,
             days: 30,
@@ -69,8 +69,7 @@ describe('UseUsageByUser', () => {
             year: 2013,
         };
         const expectedLast = {
-            IP: '192.168.2.146',
-            IPSort: 192168002146,
+            IP: fromIPv4('192.168.2.146'),
             MAC: '0C:EE:E6:80:C8:8C',
             average: 19914.6,
             days: 30,
@@ -131,8 +130,7 @@ describe('UseUsageByUser', () => {
         const expectedCount = 7;
         const expectedTotal = { average: 769768.258, days: 31, download: 21926209, id: 12, total: 23862816, upload: 1936607 };
         const expectedFirst = {
-            IP: '192.168.1.10',
-            IPSort: 192168001010,
+            IP: fromIPv4('192.168.1.10'),
             MAC: '00:1C:25:27:9B:AE',
             average: 445855.806,
             days: 31,
@@ -148,8 +146,7 @@ describe('UseUsageByUser', () => {
             year: 2011,
         };
         const expectedLast = {
-            IP: '192.168.1.25',
-            IPSort: 192168001025,
+            IP: fromIPv4('192.168.1.25'),
             MAC: '70:D4:F2:DA:FA:C9',
             average: 88103.9,
             days: 10,
@@ -194,8 +191,7 @@ describe('UseUsageByUser', () => {
         const expectedCount = 9;
         const expectedTotal = { average: 1182695.032, days: 31, download: 34516261, id: 8, total: 36663546, upload: 2147285 };
         const expectedFirst = {
-            IP: '192.168.1.10',
-            IPSort: 192168001010,
+            IP: fromIPv4('192.168.1.10'),
             MAC: '00:1C:25:27:9B:AE',
             average: 356156.3,
             days: 30,
@@ -211,8 +207,7 @@ describe('UseUsageByUser', () => {
             year: 2013,
         };
         const expectedLast = {
-            IP: '192.168.1.27',
-            IPSort: 192168001027,
+            IP: fromIPv4('192.168.1.27'),
             MAC: '10:D5:42:88:3F:A0',
             average: 32825.036,
             days: 28,
@@ -252,13 +247,12 @@ describe('UseUsageByUser', () => {
         expect(result.current.filter).toEqual(expected);
     });
 
-    fit('changing filter should change usage', async () => {
+    it('changing filter should change usage', async () => {
         const expected = '20';
         const expectedCount = 3;
         const expectedTotal = { average: 3911.033, days: 30, download: 113795, id: 11, total: 117331, upload: 3536 };
         const expectedFirst = {
-            IP: '192.168.1.20',
-            IPSort: 192168001020,
+            IP: fromIPv4('192.168.1.20'),
             MAC: '00:1A:E9:92:A5:5F',
             average: 784.933,
             days: 30,
@@ -274,8 +268,7 @@ describe('UseUsageByUser', () => {
             year: 2013,
         };
         const expectedLast = {
-            IP: '192.168.1.120',
-            IPSort: 192168001120,
+            IP: fromIPv4('192.168.1.120'),
             MAC: '00:26:6C:A8:EE:D6',
             average: 3057.333,
             days: 30,

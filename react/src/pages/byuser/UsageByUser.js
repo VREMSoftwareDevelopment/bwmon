@@ -25,7 +25,7 @@ import Footer from '../../components/table/Footer';
 import Header from '../../components/table/Header';
 import Pagination from '../../components/table/Pagination';
 import Search from '../../components/inputs/Search';
-import { timeToDate, toPercent, usageInGBytes } from '../../utils/ConversionUtils';
+import { timeToDate, toIPv4, toPercent, usageInGBytes } from '../../utils/ConversionUtils';
 import { comparator, sort } from '../../utils/SortUtils';
 import useUsageByUser from '../../hooks/byuser/UseUsageByUser';
 import useSort from '../../hooks/common/UseSort';
@@ -33,7 +33,7 @@ import usePagination from '../../hooks/common/UsePagination';
 import Loading from '../../components/loading/Loading';
 
 const cellInfos = [
-    new CellInfo('IP', true, 'left', 'IP', false, undefined, 'IPSort'),
+    new CellInfo('IP', true, 'left', 'IP', false, toIPv4),
     new CellInfo('MAC', true, 'left', 'MAC', false),
     new CellInfo('user', true, 'left', 'User', false),
     new CellInfo('download', false, 'right', 'Down', true, usageInGBytes),
@@ -51,7 +51,7 @@ const rowsPerPageMin = 12;
 const UsageByUser = () => {
     const { years, year, setYear, months, month, setMonth, filter, setFilter, data, loading } = useUsageByUser();
     const { page, setPage, rowsPerPage, setRowsPerPage } = usePagination(rowsPerPageMin);
-    const { ascending, setAscending, orderBy, setOrderBy } = useSort(true, cellInfos[0].idSort);
+    const { ascending, setAscending, orderBy, setOrderBy } = useSort(true, cellInfos[0].id);
 
     const handlePageChange = (event, newPage) => setPage(newPage);
 

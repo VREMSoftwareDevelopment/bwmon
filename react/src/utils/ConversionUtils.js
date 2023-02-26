@@ -22,3 +22,5 @@ export const timeToDate = (time) => DateTime.fromSeconds(Number(time)).toFormat(
 export const toMonth = (month) => DateTime.local(2012, month).toFormat('MMMM');
 export const usageInGBytes = (value) => (Number(value) / 1000000).toFixed(3);
 export const toPercent = (value) => Number(value).toFixed(1) + '%';
+export const toIPv4 = (value) => (value >>> 24) + '.' + ((value >> 16) & 255) + '.' + ((value >> 8) & 255) + '.' + (value & 255);
+export const fromIPv4 = (value) => value.split('.').reduce((value, octet) => (value << 8) + parseInt(octet, 10), 0) >>> 0;
