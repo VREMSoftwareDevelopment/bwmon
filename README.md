@@ -33,7 +33,7 @@ A simple shell script designed to run on [AsusWRT-Merlin](https://www.asuswrt-me
     -   `cd /mnt/<mounted_name>/`
     -   `mkdir bwmon`
     -   `cd bwmon`
-    -   `wget https://github.com/VREMSoftwareDevelopment/bwmon/releases/download/v3.0.7/bwmon.tar.gz`
+    -   `wget https://github.com/VREMSoftwareDevelopment/bwmon/releases/download/v3.0.8/bwmon.tar.gz`
     -   `tar -xzvf bwmon.tar.gz`
     -   `chmod +x server/install.sh`
     -   `./server/install.sh`
