@@ -1,19 +1,10 @@
 {
   "files": {
-    "main.js": "/bwmon/static/js/main.58bf7cca.chunk.js",
-    "main.js.map": "/bwmon/static/js/main.58bf7cca.chunk.js.map",
-    "runtime-main.js": "/bwmon/static/js/runtime-main.cd2340ef.js",
-    "runtime-main.js.map": "/bwmon/static/js/runtime-main.cd2340ef.js.map",
-    "static/js/2.b8e84995.chunk.js": "/bwmon/static/js/2.b8e84995.chunk.js",
-    "static/js/2.b8e84995.chunk.js.map": "/bwmon/static/js/2.b8e84995.chunk.js.map",
+    "main.js": "/bwmon/static/js/main.92bf9937.js",
     "index.html": "/bwmon/index.html",
-    "precache-manifest.5db9d012b861c4813a04cec7726b8d77.js": "/bwmon/precache-manifest.5db9d012b861c4813a04cec7726b8d77.js",
-    "service-worker.js": "/bwmon/service-worker.js",
-    "static/js/2.b8e84995.chunk.js.LICENSE.txt": "/bwmon/static/js/2.b8e84995.chunk.js.LICENSE.txt"
+    "main.92bf9937.js.map": "/bwmon/static/js/main.92bf9937.js.map"
   },
   "entrypoints": [
-    "static/js/runtime-main.cd2340ef.js",
-    "static/js/2.b8e84995.chunk.js",
-    "static/js/main.58bf7cca.chunk.js"
+    "static/js/main.92bf9937.js"
   ]
 }

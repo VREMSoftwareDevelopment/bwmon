@@ -1,6 +1,6 @@
 {
     "short_name": "BWMon",
-    "name": "Bandwidth Monitor Usage",
+    "name": "Bandwidth Monitor",
     "icons": [
         {
             "src": "favicon.ico",
