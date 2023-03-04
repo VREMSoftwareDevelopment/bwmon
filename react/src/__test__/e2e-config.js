@@ -1,5 +1,5 @@
 /*
- *      Copyright (C) 2010 - 2020 VREM Software Development <VREMSoftwareDevelopment@gmail.com>
+ *      Copyright (C) 2010 - 2023 VREM Software Development <VREMSoftwareDevelopment@gmail.com>
  *
  *      Licensed under the Apache License, Version 2.0 (the "License");
  *      you may not use this file except in compliance with the License.
@@ -16,7 +16,7 @@
  * Bandwidth Monitor
  */
 
-import puppeteerChromiumResolver from "puppeteer-chromium-resolver";
+import puppeteerChromiumResolver from 'puppeteer-chromium-resolver';
 
 global.XMLHttpRequest = undefined;
 
@@ -75,14 +75,16 @@ export const stopCoverage = async (page, tag) => {
     console.info(tag + ' coverage: ' + ((jsResult.usedBytes / jsResult.totalBytes) * 100).toFixed(2) + '%');
 };
 
-export const launch = async () => { 
+export const launch = async () => {
     const stats = puppeteerChromiumResolver.getStats();
-    return stats.puppeteer.launch({
-        headless: true,
-        args: ["--no-sandbox"],
-        ignoreDefaultArgs: ['--disable-extensions'],
-        executablePath: stats.executablePath
-    }).catch(function(error) {
-        console.log(error);
-    });
+    return stats.puppeteer
+        .launch({
+            headless: true,
+            args: ['--no-sandbox'],
+            ignoreDefaultArgs: ['--disable-extensions'],
+            executablePath: stats.executablePath,
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
 };
