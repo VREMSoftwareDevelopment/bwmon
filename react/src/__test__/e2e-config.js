@@ -79,7 +79,7 @@ export const launch = async () => {
     const stats = puppeteerChromiumResolver.getStats();
     return stats.puppeteer
         .launch({
-            headless: true,
+            headless: 'new',
             args: ['--no-sandbox'],
             ignoreDefaultArgs: ['--disable-extensions'],
             executablePath: stats.executablePath,

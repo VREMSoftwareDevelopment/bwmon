@@ -326,7 +326,7 @@ Array [
       className="MuiToolbar-root MuiToolbar-gutters MuiToolbar-dense css-10ltm04-MuiToolbar-root"
     >
       <h6
-        className="MuiTypography-root MuiTypography-h6 makeStyles-title-1 css-2ulfj5-MuiTypography-root"
+        className="MuiTypography-root MuiTypography-h6 makeStyles-title-5 css-2ulfj5-MuiTypography-root"
         id="app-title"
       >
         Bandwidth Monitor
@@ -621,6 +621,7 @@ Array [
                 </div>
                 <input
                   aria-hidden={true}
+                  aria-invalid={false}
                   className="MuiSelect-nativeInput css-yf8vq0-MuiSelect-nativeInput"
                   onAnimationStart={[Function]}
                   onChange={[Function]}
@@ -680,6 +681,7 @@ Array [
                 </div>
                 <input
                   aria-hidden={true}
+                  aria-invalid={false}
                   className="MuiSelect-nativeInput css-yf8vq0-MuiSelect-nativeInput"
                   onAnimationStart={[Function]}
                   onChange={[Function]}
@@ -2015,7 +2017,7 @@ Array [
     </div>
   </div>,
   <div
-    className="makeStyles-root-4"
+    className="makeStyles-root-8"
   >
     <h6
       className="MuiTypography-root MuiTypography-subtitle2 css-ati914-MuiTypography-root"
