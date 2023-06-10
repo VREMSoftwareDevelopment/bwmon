@@ -16,7 +16,7 @@
  * Bandwidth Monitor
  */
 
-import puppeteerChromiumResolver from 'puppeteer-chromium-resolver';
+import PCR from 'puppeteer-chromium-resolver';
 
 global.XMLHttpRequest = undefined;
 
@@ -76,7 +76,7 @@ export const stopCoverage = async (page, tag) => {
 };
 
 export const launch = async () => {
-    const stats = puppeteerChromiumResolver.getStats();
+    const stats = await PCR.getStats();
     return stats.puppeteer
         .launch({
             headless: 'new',

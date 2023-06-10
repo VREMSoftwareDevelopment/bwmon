@@ -34,6 +34,7 @@ LAN1_IFACE=$(nvram get lan1_ifname)
 MACNAMES=$(nvram get custom_clientlist)
 USERSFILE="/etc/hosts.dnsmasq"
 [ -f "${USERSFILE}" ] || USERSFILE="/etc/dnsmasq/hosts/hosts"
+[ -f "${USERSFILE}" ] || USERSFILE="/etc/hosts"
 [ -f "${USERSFILE}" ] || USERSFILE="/dev/null"
 MACNAMESFILE=${2}/macnames
 USAGE_DB="bwmonUsage.db"
