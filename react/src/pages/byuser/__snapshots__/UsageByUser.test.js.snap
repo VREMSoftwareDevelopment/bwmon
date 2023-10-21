@@ -89,6 +89,7 @@ exports[`UsageByUser renders correctly after data load 1`] = `
               onClick={[Function]}
             >
               <div
+                aria-controls="mui-3"
                 aria-expanded="false"
                 aria-haspopup="listbox"
                 aria-labelledby="user-year"
@@ -98,7 +99,7 @@ exports[`UsageByUser renders correctly after data load 1`] = `
                 onFocus={[Function]}
                 onKeyDown={[Function]}
                 onMouseDown={[Function]}
-                role="button"
+                role="combobox"
                 tabIndex={0}
               >
                 2013
@@ -149,6 +150,7 @@ exports[`UsageByUser renders correctly after data load 1`] = `
               onClick={[Function]}
             >
               <div
+                aria-controls="mui-4"
                 aria-expanded="false"
                 aria-haspopup="listbox"
                 aria-labelledby="user-month"
@@ -158,7 +160,7 @@ exports[`UsageByUser renders correctly after data load 1`] = `
                 onFocus={[Function]}
                 onKeyDown={[Function]}
                 onMouseDown={[Function]}
-                role="button"
+                role="combobox"
                 tabIndex={0}
               >
                 November

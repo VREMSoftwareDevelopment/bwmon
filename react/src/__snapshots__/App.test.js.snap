@@ -605,6 +605,7 @@ Array [
                 onClick={[Function]}
               >
                 <div
+                  aria-controls="mui-3"
                   aria-expanded="false"
                   aria-haspopup="listbox"
                   aria-labelledby="user-year"
@@ -614,7 +615,7 @@ Array [
                   onFocus={[Function]}
                   onKeyDown={[Function]}
                   onMouseDown={[Function]}
-                  role="button"
+                  role="combobox"
                   tabIndex={0}
                 >
                   2013
@@ -665,6 +666,7 @@ Array [
                 onClick={[Function]}
               >
                 <div
+                  aria-controls="mui-4"
                   aria-expanded="false"
                   aria-haspopup="listbox"
                   aria-labelledby="user-month"
@@ -674,7 +676,7 @@ Array [
                   onFocus={[Function]}
                   onKeyDown={[Function]}
                   onMouseDown={[Function]}
-                  role="button"
+                  role="combobox"
                   tabIndex={0}
                 >
                   November

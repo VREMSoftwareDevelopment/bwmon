@@ -90,6 +90,7 @@ exports[`UsageByMonth renders correctly after data load 1`] = `
               onClick={[Function]}
             >
               <div
+                aria-controls="mui-2"
                 aria-expanded="false"
                 aria-haspopup="listbox"
                 aria-labelledby="month-year"
@@ -99,7 +100,7 @@ exports[`UsageByMonth renders correctly after data load 1`] = `
                 onFocus={[Function]}
                 onKeyDown={[Function]}
                 onMouseDown={[Function]}
-                role="button"
+                role="combobox"
                 tabIndex={0}
               >
                 2013

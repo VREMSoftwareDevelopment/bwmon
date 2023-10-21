@@ -15,7 +15,7 @@ exports[`DropDown renders correctly with items 1`] = `
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDown={[Function]}
-    role="button"
+    role="combobox"
     tabIndex={0}
   >
     ZYXUW
