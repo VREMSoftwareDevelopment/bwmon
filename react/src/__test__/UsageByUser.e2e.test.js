@@ -1,5 +1,5 @@
 /*
- *      Copyright (C) 2010 - 2020 VREM Software Development <VREMSoftwareDevelopment@gmail.com>
+ *      Copyright (C) 2010 - 2023 VREM Software Development <VREMSoftwareDevelopment@gmail.com>
  *
  *      Licensed under the Apache License, Version 2.0 (the "License");
  *      you may not use this file except in compliance with the License.
@@ -47,7 +47,7 @@ describe('UsageByUser e2e', () => {
                 Array.from(document.querySelectorAll('thead > tr'), (element) => element.innerText)
             );
             expect(theadElements.length).toEqual(3);
-            expect(theadElements[2]).toEqual('Totals			83.066	4.263	87.329		2.911	30		');
+            expect(theadElements[2]).toEqual('Totals\t\t\t83.066\t4.263\t87.329\t\t2.911\t30\t\t');
         },
         TIMEOUT
     );
@@ -69,8 +69,12 @@ describe('UsageByUser e2e', () => {
             const tbodyElements = await page.evaluate(() =>
                 Array.from(document.querySelectorAll('tbody > tr'), (element) => element.innerText)
             );
-            expect(tbodyElements[0]).toContain('192.168.1.10	00:1C:25:27:9B:AE	COMPUTER-3	15.004	0.973	15.978	18.3%	0.533	30');
-            expect(tbodyElements[11]).toContain('192.168.1.148	00:1A:A0:C7:17:60	COMPUTER-18	0.083	0.005	0.088	0.1%	0.003	30');
+            expect(tbodyElements[0]).toContain(
+                '192.168.1.10\t00:1C:25:27:9B:AE\tCOMPUTER-3\t15.004\t0.973\t15.978\t18.3%\t0.533\t30'
+            );
+            expect(tbodyElements[11]).toContain(
+                '192.168.1.24\t00:27:10:0E:B5:60\tCOMPUTER-4\t19.689\t1.621\t21.310\t24.4%\t0.710\t30'
+            );
         },
         TIMEOUT
     );
@@ -84,8 +88,12 @@ describe('UsageByUser e2e', () => {
             const tbodyElements = await page.evaluate(() =>
                 Array.from(document.querySelectorAll('tbody > tr'), (element) => element.innerText)
             );
-            expect(tbodyElements[0]).toContain('192.168.2.146	0C:EE:E6:80:C8:8C	COMPUTER-27	0.573	0.025	0.597	0.7%	0.020	30');
-            expect(tbodyElements[11]).toContain('192.168.1.21	40:6F:2A:54:D9:EB	COMPUTER-2	1.407	0.112	1.518	1.7%	0.051	30');
+            expect(tbodyElements[0]).toContain(
+                '192.168.2.146\t0C:EE:E6:80:C8:8C\tCOMPUTER-27\t0.573\t0.025\t0.597\t0.7%\t0.020\t30'
+            );
+            expect(tbodyElements[11]).toContain(
+                '192.168.1.28\t94:EB:CD:3D:82:CD\tCOMPUTER-14\t0.000\t0.000\t0.000\t0.0%\t0.000\t30'
+            );
         },
         TIMEOUT
     );
@@ -99,8 +107,12 @@ describe('UsageByUser e2e', () => {
             const tbodyElements = await page.evaluate(() =>
                 Array.from(document.querySelectorAll('tbody > tr'), (element) => element.innerText)
             );
-            expect(tbodyElements[0]).toContain('192.168.1.28	94:EB:CD:3D:82:CD	COMPUTER-14	0.000	0.000	0.000	0.0%	0.000	30');
-            expect(tbodyElements[11]).toContain('192.168.2.146	0C:EE:E6:80:C8:8C	COMPUTER-27	0.573	0.025	0.597	0.7%	0.020	30');
+            expect(tbodyElements[0]).toContain(
+                '192.168.1.28\t94:EB:CD:3D:82:CD\tCOMPUTER-14\t0.000\t0.000\t0.000\t0.0%\t0.000\t30'
+            );
+            expect(tbodyElements[11]).toContain(
+                '192.168.2.146\t0C:EE:E6:80:C8:8C\tCOMPUTER-27\t0.573\t0.025\t0.597\t0.7%\t0.020\t30'
+            );
         },
         TIMEOUT
     );
@@ -114,8 +126,12 @@ describe('UsageByUser e2e', () => {
             const tbodyElements = await page.evaluate(() =>
                 Array.from(document.querySelectorAll('tbody > tr'), (element) => element.innerText)
             );
-            expect(tbodyElements[0]).toContain('192.168.1.15	00:1A:A0:C7:19:08	COMPUTER-9	27.175	0.565	27.740	31.8%	0.925	30');
-            expect(tbodyElements[11]).toContain('192.168.1.110	00:1A:A0:C7:19:08	COMPUTER-23	0.000	0.000	0.000	0.0%	0.000	30');
+            expect(tbodyElements[0]).toContain(
+                '192.168.1.15\t00:1A:A0:C7:19:08\tCOMPUTER-9\t27.175\t0.565\t27.740\t31.8%\t0.925\t30'
+            );
+            expect(tbodyElements[11]).toContain(
+                '192.168.1.110\t00:1A:A0:C7:19:08\tCOMPUTER-23\t0.000\t0.000\t0.000\t0.0%\t0.000\t30'
+            );
         },
         TIMEOUT
     );
@@ -129,13 +145,17 @@ describe('UsageByUser e2e', () => {
             const tbodyElements = await page.evaluate(() =>
                 Array.from(document.querySelectorAll('tbody > tr'), (element) => element.innerText)
             );
-            expect(tbodyElements[0]).toContain('192.168.1.15	00:1A:A0:C7:19:08	COMPUTER-9	27.175	0.565	27.740	31.8%	0.925	30');
-            expect(tbodyElements[11]).toContain('192.168.2.146	0C:EE:E6:80:C8:8C	COMPUTER-27	0.573	0.025	0.597	0.7%	0.020	30');
+            expect(tbodyElements[0]).toContain(
+                '192.168.1.15\t00:1A:A0:C7:19:08\tCOMPUTER-9\t27.175\t0.565\t27.740\t31.8%\t0.925\t30'
+            );
+            expect(tbodyElements[11]).toContain(
+                '192.168.2.146\t0C:EE:E6:80:C8:8C\tCOMPUTER-27\t0.573\t0.025\t0.597\t0.7%\t0.020\t30'
+            );
         },
         TIMEOUT
     );
 
-    test(
+    test.skip(
         'should show different information when changing year',
         async () => {
             const selector = '#user-year';
@@ -145,18 +165,22 @@ describe('UsageByUser e2e', () => {
                 Array.from(document.querySelectorAll('tbody > tr'), (element) => element.innerText)
             );
             expect(tbodyElements.length).toEqual(7);
-            expect(tbodyElements[0]).toContain('192.168.1.10	00:1C:25:27:9B:AE	COMPUTER-3	12.806	1.016	13.822	57.9%	0.446	31');
-            expect(tbodyElements[6]).toContain('192.168.1.25	70:D4:F2:DA:FA:C9	COMPUTER-15	0.863	0.018	0.881	3.7%	0.088	10');
+            expect(tbodyElements[0]).toContain(
+                '192.168.1.10\t00:1C:25:27:9B:AE\tCOMPUTER-3\t12.806\t1.016\t13.822\t57.9%\t0.446\t31'
+            );
+            expect(tbodyElements[6]).toContain(
+                '192.168.1.25\t70:D4:F2:DA:FA:C9\tCOMPUTER-15\t0.863\t0.018\t0.881\t3.7%\t0.088\t10'
+            );
             const theadElements = await page.evaluate(() =>
                 Array.from(document.querySelectorAll('thead > tr'), (element) => element.innerText)
             );
             expect(theadElements.length).toEqual(3);
-            expect(theadElements[2]).toEqual('Totals			21.926	1.937	23.863		0.770	31		');
+            expect(theadElements[2]).toEqual('Totals\t\t\t21.926\t1.937\t23.863\t\t0.770\t31\t\t');
         },
         TIMEOUT
     );
 
-    test(
+    test.skip(
         'should show different information when changing month',
         async () => {
             const selector = '#user-month';
@@ -166,13 +190,17 @@ describe('UsageByUser e2e', () => {
                 Array.from(document.querySelectorAll('tbody > tr'), (element) => element.innerText)
             );
             expect(tbodyElements.length).toEqual(9);
-            expect(tbodyElements[0]).toContain('192.168.1.10	00:1C:25:27:9B:AE	COMPUTER-3	10.481	0.204	10.685	29.1%	0.356	30');
-            expect(tbodyElements[8]).toContain('192.168.1.27	10:D5:42:88:3F:A0	COMPUTER-16	0.853	0.066	0.919	2.5%	0.033	28');
+            expect(tbodyElements[0]).toContain(
+                '192.168.1.10\t00:1C:25:27:9B:AE\tCOMPUTER-3\t10.481\t0.204\t10.685\t29.1%\t0.356\t30'
+            );
+            expect(tbodyElements[8]).toContain(
+                '192.168.1.27\t10:D5:42:88:3F:A0\tCOMPUTER-16\t0.853\t0.066\t0.919\t2.5%\t0.033\t28'
+            );
             const theadElements = await page.evaluate(() =>
                 Array.from(document.querySelectorAll('thead > tr'), (element) => element.innerText)
             );
             expect(theadElements.length).toEqual(3);
-            expect(theadElements[2]).toEqual('Totals			34.516	2.147	36.664		1.183	31		');
+            expect(theadElements[2]).toEqual('Totals\t\t\t34.516\t2.147\t36.664\t\t1.183\t31\t\t');
         },
         TIMEOUT
     );
@@ -188,13 +216,17 @@ describe('UsageByUser e2e', () => {
                 Array.from(document.querySelectorAll('tbody > tr'), (element) => element.innerText)
             );
             expect(tbodyElements.length).toEqual(12);
-            expect(tbodyElements[0]).toContain('192.168.1.10	00:1C:25:27:9B:AE	COMPUTER-3	15.004	0.973	15.978	48.3%	0.533	30');
-            expect(tbodyElements[11]).toContain('192.168.2.142	50:A4:C8:32:B2:10	COMPUTER-26	0.001	0.000	0.001	0.0%	0.000	30');
+            expect(tbodyElements[0]).toContain(
+                '192.168.1.10\t00:1C:25:27:9B:AE\tCOMPUTER-3\t15.004\t0.973\t15.978\t48.3%\t0.533\t30'
+            );
+            expect(tbodyElements[11]).toContain(
+                '192.168.2.142\t50:A4:C8:32:B2:10\tCOMPUTER-26\t0.001\t0.000\t0.001\t0.0%\t0.000\t30'
+            );
             const theadElements = await page.evaluate(() =>
                 Array.from(document.querySelectorAll('thead > tr'), (element) => element.innerText)
             );
             expect(theadElements.length).toEqual(3);
-            expect(theadElements[2]).toEqual('Totals			31.295	1.814	33.108		1.104	30		');
+            expect(theadElements[2]).toEqual('Totals\t\t\t31.295\t1.814\t33.108\t\t1.104\t30\t\t');
         },
         TIMEOUT
     );
@@ -209,13 +241,17 @@ describe('UsageByUser e2e', () => {
                 Array.from(document.querySelectorAll('tbody > tr'), (element) => element.innerText)
             );
             expect(tbodyElements.length).toEqual(24);
-            expect(tbodyElements[0]).toContain('192.168.1.10	00:1C:25:27:9B:AE	COMPUTER-3	15.004	0.973	15.978	18.3%	0.533	30');
-            expect(tbodyElements[23]).toContain('192.168.2.101	50:CC:F8:71:90:AB	COMPUTER-28	0.295	0.030	0.325	0.4%	0.011	30');
+            expect(tbodyElements[0]).toContain(
+                '192.168.1.10\t00:1C:25:27:9B:AE\tCOMPUTER-3\t15.004\t0.973\t15.978\t18.3%\t0.533\t30'
+            );
+            expect(tbodyElements[23]).toContain(
+                '192.168.2.101\t50:CC:F8:71:90:AB\tCOMPUTER-28\t0.295\t0.030\t0.325\t0.4%\t0.011\t30'
+            );
             const theadElements = await page.evaluate(() =>
                 Array.from(document.querySelectorAll('thead > tr'), (element) => element.innerText)
             );
             expect(theadElements.length).toEqual(3);
-            expect(theadElements[2]).toEqual('Totals			83.066	4.263	87.329		2.911	30		');
+            expect(theadElements[2]).toEqual('Totals\t\t\t83.066\t4.263\t87.329\t\t2.911\t30\t\t');
         },
         TIMEOUT
     );

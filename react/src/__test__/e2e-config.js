@@ -1,5 +1,5 @@
 /*
- *      Copyright (C) 2010 - 2020 VREM Software Development <VREMSoftwareDevelopment@gmail.com>
+ *      Copyright (C) 2010 - 2023 VREM Software Development <VREMSoftwareDevelopment@gmail.com>
  *
  *      Licensed under the Apache License, Version 2.0 (the "License");
  *      you may not use this file except in compliance with the License.
@@ -16,7 +16,7 @@
  * Bandwidth Monitor
  */
 
-import puppeteer from 'puppeteer';
+import PCR from 'puppeteer-chromium-resolver';
 
 global.XMLHttpRequest = undefined;
 
@@ -31,8 +31,7 @@ export const delay = (time) =>
 export const materialSelect = async (page, newSelectedValue, cssSelector) => {
     await page.evaluate(
         (newSelectedValue, cssSelector) => {
-            var clickEvent = document.createEvent('MouseEvents');
-            clickEvent.initEvent('mousedown', true, true);
+            var clickEvent = new Event('mousedown', { bubbles: true, cancelable: true });
             var selectNode = document.querySelector(cssSelector);
             selectNode.dispatchEvent(clickEvent);
             [...document.querySelectorAll('li')].filter((el) => el.innerText === newSelectedValue)[0].click();
@@ -75,17 +74,16 @@ export const stopCoverage = async (page, tag) => {
     console.info(tag + ' coverage: ' + ((jsResult.usedBytes / jsResult.totalBytes) * 100).toFixed(2) + '%');
 };
 
-export const launch = () =>
-    puppeteer.launch({
-        headless: true,
-    });
-
-/*
-export const launch = () =>
-    puppeteer.launch({
-        headless: false,
-        defaultViewport: null,
-        args: ['--start-maximized'],
-        slowMo: 250,
-    });
-*/
+export const launch = async () => {
+    const stats = await PCR.getStats();
+    return stats.puppeteer
+        .launch({
+            headless: 'new',
+            args: ['--no-sandbox'],
+            ignoreDefaultArgs: ['--disable-extensions'],
+            executablePath: stats.executablePath,
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+};

@@ -1,5 +1,5 @@
 /*
- *      Copyright (C) 2010 - 2020 VREM Software Development <VREMSoftwareDevelopment@gmail.com>
+ *      Copyright (C) 2010 - 2023 VREM Software Development <VREMSoftwareDevelopment@gmail.com>
  *
  *      Licensed under the Apache License, Version 2.0 (the "License");
  *      you may not use this file except in compliance with the License.
@@ -17,14 +17,14 @@
  */
 
 import React from 'react';
-import { themeWrapper } from '../../__test__/utils/themeWrapper';
+import { themeWrapper } from '../../__test__/utils/ThemeWrapper';
 import Header from './Header';
 
 describe('Header', () => {
     const name = 'Name';
     const version = '3.1.1';
 
-    test('renders correctly', () => {
+    it('renders correctly', () => {
         const tree = themeWrapper(<Header name={name} version={version} />).toJSON();
         expect(tree).toMatchSnapshot();
     });

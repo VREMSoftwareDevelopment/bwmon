@@ -24,7 +24,7 @@ exports[`UsageByUserGraph renders correctly 1`] = `
       className="makeStyles-root-3"
     >
       <div
-        className="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation0 MuiAlert-root MuiAlert-standardInfo MuiAlert-standard css-12mvehg-MuiPaper-root-MuiAlert-root"
+        className="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation0 MuiAlert-root MuiAlert-standardInfo MuiAlert-standard css-1fuz9qr-MuiPaper-root-MuiAlert-root"
         role="alert"
       >
         <div
@@ -115,7 +115,7 @@ exports[`UsageByUserGraph renders correctly 1`] = `
               className="MuiOutlinedInput-notchedOutline css-1d3z3hw-MuiOutlinedInput-notchedOutline"
             >
               <legend
-                className="css-hdw1oc"
+                className="css-ihdtdm"
               >
                 <span
                   className="notranslate"

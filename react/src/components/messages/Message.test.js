@@ -1,5 +1,5 @@
 /*
- *      Copyright (C) 2010 - 2020 VREM Software Development <VREMSoftwareDevelopment@gmail.com>
+ *      Copyright (C) 2010 - 2023 VREM Software Development <VREMSoftwareDevelopment@gmail.com>
  *
  *      Licensed under the Apache License, Version 2.0 (the "License");
  *      you may not use this file except in compliance with the License.
@@ -17,16 +17,16 @@
  */
 
 import React from 'react';
-import { themeWrapper } from '../../__test__/utils/themeWrapper';
+import { themeWrapper } from '../../__test__/utils/ThemeWrapper';
 import Message from './Message';
 
 describe('Message', () => {
-    test('renders correctly with message', () => {
+    it('renders correctly with message', () => {
         const tree = themeWrapper(<Message severity="success" message="message" />).toJSON();
         expect(tree).toMatchSnapshot();
     });
 
-    test('renders correctly with no message', () => {
+    it('renders correctly with no message', () => {
         const tree = themeWrapper(<Message severity="success" />).toJSON();
         expect(tree).toMatchSnapshot();
     });

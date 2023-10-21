@@ -1,5 +1,5 @@
 /*
- *      Copyright (C) 2010 - 2020 VREM Software Development <VREMSoftwareDevelopment@gmail.com>
+ *      Copyright (C) 2010 - 2023 VREM Software Development <VREMSoftwareDevelopment@gmail.com>
  *
  *      Licensed under the Apache License, Version 2.0 (the "License");
  *      you may not use this file except in compliance with the License.
@@ -17,7 +17,7 @@
  */
 
 import { useState, useEffect } from 'react';
-import { usageInGBytes } from '../../utils/ConversionUtils';
+import { toIPv4, usageInGBytes } from '../../utils/ConversionUtils';
 import useUsageByUser from './UseUsageByUser';
 
 const useUsageByYearGraph = () => {
@@ -35,7 +35,7 @@ const useUsageByYearGraph = () => {
                     },
                 },
                 xaxis: {
-                    categories: data.usage.map((element) => element.IP),
+                    categories: data.usage.map((element) => toIPv4(element.IP)),
                 },
             });
 

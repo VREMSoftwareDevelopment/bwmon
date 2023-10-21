@@ -1,5 +1,5 @@
 /*
- *      Copyright (C) 2010 - 2020 VREM Software Development <VREMSoftwareDevelopment@gmail.com>
+ *      Copyright (C) 2010 - 2023 VREM Software Development <VREMSoftwareDevelopment@gmail.com>
  *
  *      Licensed under the Apache License, Version 2.0 (the "License");
  *      you may not use this file except in compliance with the License.
@@ -16,10 +16,12 @@
  * Bandwidth Monitor
  */
 
+import { fromIPv4 } from '../utils/ConversionUtils';
+
 export default class Data {
     constructor(id, date, ip, mac, user, down, up, first, last) {
         this.id = id;
-        this.IP = ip;
+        this.IP = fromIPv4(ip);
         this.MAC = mac;
         this.user = user;
         this.download = Math.abs(Number(down));

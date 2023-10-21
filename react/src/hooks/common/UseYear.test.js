@@ -1,5 +1,5 @@
 /*
- *      Copyright (C) 2010 - 2020 VREM Software Development <VREMSoftwareDevelopment@gmail.com>
+ *      Copyright (C) 2010 - 2023 VREM Software Development <VREMSoftwareDevelopment@gmail.com>
  *
  *      Licensed under the Apache License, Version 2.0 (the "License");
  *      you may not use this file except in compliance with the License.
@@ -16,7 +16,7 @@
  * Bandwidth Monitor
  */
 
-import { act, renderHook } from '@testing-library/react-hooks';
+import { act, renderHook, waitFor } from '@testing-library/react';
 import useYear from './UseYear';
 
 jest.mock('../../services/Usage');
@@ -24,24 +24,21 @@ jest.mock('../../services/Usage');
 describe('UseYear', () => {
     const expectedYears = [2013, 2012, 2011];
 
-    test('should initialize', async () => {
-        const { result, waitForNextUpdate } = renderHook(useYear);
-
-        await waitForNextUpdate();
-
-        expect(result.current.years.length).toEqual(expectedYears.length);
-        expect(result.current.years).toEqual(expectedYears);
-        expect(result.current.year).toEqual(expectedYears[0]);
+    it('should initialize', async () => {
+        const { result } = renderHook(useYear);
+        await waitFor(() => {
+            expect(result.current.years.length).toEqual(expectedYears.length);
+            expect(result.current.years).toEqual(expectedYears);
+            expect(result.current.year).toEqual(expectedYears[0]);
+        });
     });
 
-    test('changing year should change year', async () => {
+    it('changing year should change year', async () => {
         const expected = expectedYears[expectedYears.length - 1];
-        const { result, waitForNextUpdate } = renderHook(useYear);
-
-        await waitForNextUpdate();
-
-        act(() => result.current.setYear(expected));
-
-        expect(result.current.year).toEqual(expected);
+        const { result } = renderHook(useYear);
+        await waitFor(() => {
+            act(() => result.current.setYear(expected));
+            expect(result.current.year).toEqual(expected);
+        });
     });
 });

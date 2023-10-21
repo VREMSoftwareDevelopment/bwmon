@@ -1,5 +1,5 @@
 /*
- *      Copyright (C) 2010 - 2020 VREM Software Development <VREMSoftwareDevelopment@gmail.com>
+ *      Copyright (C) 2010 - 2023 VREM Software Development <VREMSoftwareDevelopment@gmail.com>
  *
  *      Licensed under the Apache License, Version 2.0 (the "License");
  *      you may not use this file except in compliance with the License.
@@ -40,7 +40,7 @@ describe('Footer', () => {
         total: 2468,
     };
 
-    test('renders correctly', () => {
+    it('renders correctly', () => {
         const tree = create(<Footer prefix="test" cellInfos={cellInfos} values={values} />).toJSON();
         expect(tree).toMatchSnapshot();
     });

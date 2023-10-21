@@ -1,5 +1,5 @@
 /*
- *      Copyright (C) 2010 - 2020 VREM Software Development <VREMSoftwareDevelopment@gmail.com>
+ *      Copyright (C) 2010 - 2023 VREM Software Development <VREMSoftwareDevelopment@gmail.com>
  *
  *      Licensed under the Apache License, Version 2.0 (the "License");
  *      you may not use this file except in compliance with the License.
@@ -17,14 +17,14 @@
  */
 
 import React from 'react';
-import { themeWrapper } from '../../__test__/utils/themeWrapper';
+import { themeWrapper } from '../../__test__/utils/ThemeWrapper';
 import UsageByMonthGraph from './UsageByMonthGraph';
 
 jest.mock('../../services/Usage');
 jest.mock('../../components/graph/Graph');
 
 describe('UsageByMonth', () => {
-    test('renders correctly', () => {
+    it('renders correctly', () => {
         const tree = themeWrapper(<UsageByMonthGraph />).toJSON();
         expect(tree).toMatchSnapshot();
     });

@@ -6,6 +6,7 @@ exports[`DropDown renders correctly with items 1`] = `
   onClick={[Function]}
 >
   <div
+    aria-controls=":r0:"
     aria-expanded="false"
     aria-haspopup="listbox"
     aria-labelledby="12345"
@@ -15,13 +16,14 @@ exports[`DropDown renders correctly with items 1`] = `
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDown={[Function]}
-    role="button"
+    role="combobox"
     tabIndex={0}
   >
     ZYXUW
   </div>
   <input
     aria-hidden={true}
+    aria-invalid={false}
     className="MuiSelect-nativeInput css-yf8vq0-MuiSelect-nativeInput"
     onAnimationStart={[Function]}
     onChange={[Function]}
@@ -44,7 +46,7 @@ exports[`DropDown renders correctly with items 1`] = `
     className="MuiOutlinedInput-notchedOutline css-1d3z3hw-MuiOutlinedInput-notchedOutline"
   >
     <legend
-      className="css-hdw1oc"
+      className="css-ihdtdm"
     >
       <span
         className="notranslate"

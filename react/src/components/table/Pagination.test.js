@@ -1,5 +1,5 @@
 /*
- *      Copyright (C) 2010 - 2020 VREM Software Development <VREMSoftwareDevelopment@gmail.com>
+ *      Copyright (C) 2010 - 2023 VREM Software Development <VREMSoftwareDevelopment@gmail.com>
  *
  *      Licensed under the Apache License, Version 2.0 (the "License");
  *      you may not use this file except in compliance with the License.
@@ -17,7 +17,7 @@
  */
 
 import React from 'react';
-import { themeWrapper } from '../../__test__/utils/themeWrapper';
+import { themeWrapper } from '../../__test__/utils/ThemeWrapper';
 import { Pagination, rowsPerPageOptions } from './Pagination';
 
 describe('Pagination', () => {
@@ -25,7 +25,7 @@ describe('Pagination', () => {
 
     const handleRowsPerPageChange = (event) => {};
 
-    test('renders correctly', () => {
+    it('renders correctly', () => {
         const tree = themeWrapper(
             <Pagination
                 colSpan={7}
@@ -40,7 +40,7 @@ describe('Pagination', () => {
         expect(tree).toMatchSnapshot();
     });
 
-    test('rowsPerPageOptions when rows per page is the same as count', () => {
+    it('rowsPerPageOptions when rows per page is the same as count', () => {
         const rowsPerPage = 10;
         const count = 10;
         const expected = [rowsPerPage];
@@ -48,7 +48,7 @@ describe('Pagination', () => {
         expect(actual).toEqual(expected);
     });
 
-    test('rowsPerPageOptions when rows per page is the larger than count', () => {
+    it('rowsPerPageOptions when rows per page is the larger than count', () => {
         const rowsPerPage = 10;
         const count = 9;
         const expected = [rowsPerPage];
@@ -56,7 +56,7 @@ describe('Pagination', () => {
         expect(actual).toEqual(expected);
     });
 
-    test('rowsPerPageOptions when rows per page is the less than count', () => {
+    it('rowsPerPageOptions when rows per page is the less than count', () => {
         const rowsPerPage = 1;
         const count = 20;
         const expected = [1, 2, 4, 8, 16, 20];

@@ -1,5 +1,5 @@
 /*
- *      Copyright (C) 2010 - 2020 VREM Software Development <VREMSoftwareDevelopment@gmail.com>
+ *      Copyright (C) 2010 - 2023 VREM Software Development <VREMSoftwareDevelopment@gmail.com>
  *
  *      Licensed under the Apache License, Version 2.0 (the "License");
  *      you may not use this file except in compliance with the License.
@@ -43,12 +43,12 @@ describe('App', () => {
     const version = '3.1.1';
     const currentTime = 'October 20, 2020, 11:25:35 AM EDT';
 
-    test('renders correctly', () => {
+    it('renders correctly', () => {
         const tree = create(<App name={name} version={version} currentTime={currentTime} />).toJSON();
         expect(tree).toMatchSnapshot();
     });
 
-    test('renders correctly after data load', async () => {
+    it('renders correctly after data load', async () => {
         let tree;
         act(() => {
             tree = create(<App name={name} version={version} currentTime={currentTime} />);

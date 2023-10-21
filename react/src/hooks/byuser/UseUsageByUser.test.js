@@ -1,5 +1,5 @@
 /*
- *      Copyright (C) 2010 - 2020 VREM Software Development <VREMSoftwareDevelopment@gmail.com>
+ *      Copyright (C) 2010 - 2023 VREM Software Development <VREMSoftwareDevelopment@gmail.com>
  *
  *      Licensed under the Apache License, Version 2.0 (the "License");
  *      you may not use this file except in compliance with the License.
@@ -16,7 +16,8 @@
  * Bandwidth Monitor
  */
 
-import { act, renderHook } from '@testing-library/react-hooks';
+import { act, renderHook, waitFor } from '@testing-library/react';
+import { fromIPv4 } from '../../utils/ConversionUtils';
 import useUsageByUser from './UseUsageByUser';
 
 jest.mock('../../services/Usage');
@@ -25,34 +26,32 @@ describe('UseUsageByUser', () => {
     const expectedYears = [2013, 2012, 2011];
     const expectedYearsCount = 3;
 
-    test('should initialize years', async () => {
-        const { result, waitForNextUpdate } = renderHook(useUsageByUser);
-
-        await waitForNextUpdate();
-
-        expect(result.current.years.length).toEqual(expectedYearsCount);
-        expect(result.current.years).toEqual(expectedYears);
-        expect(result.current.year).toEqual(expectedYears[0]);
+    it('should initialize years', async () => {
+        const { result } = renderHook(useUsageByUser);
+        await waitFor(() => {
+            expect(result.current.years.length).toEqual(expectedYearsCount);
+            expect(result.current.years).toEqual(expectedYears);
+            expect(result.current.year).toEqual(expectedYears[0]);
+        });
     });
 
-    test('should initialize months', async () => {
+    it('should initialize months', async () => {
         const expectedCount = 11;
         const expectedFirst = 'November';
         const expectedLast = 'January';
-        const { result, waitForNextUpdate } = renderHook(useUsageByUser);
-
-        await waitForNextUpdate();
-
-        expect(result.current.months.length).toEqual(expectedCount);
-        expect(result.current.months[0]).toEqual(expectedFirst);
-        expect(result.current.months[expectedCount - 1]).toEqual(expectedLast);
+        const { result } = renderHook(useUsageByUser);
+        await waitFor(() => {
+            expect(result.current.months.length).toEqual(expectedCount);
+            expect(result.current.months[0]).toEqual(expectedFirst);
+            expect(result.current.months[expectedCount - 1]).toEqual(expectedLast);
+        });
     });
 
-    test('should initialize usage', async () => {
+    it('should initialize usage', async () => {
         const expectedCount = 27;
         const expectedTotal = { average: 2910960.6, days: 30, download: 83065864, id: 11, total: 87328818, upload: 4262954 };
         const expectedFirst = {
-            IP: '192.168.1.10',
+            IP: fromIPv4('192.168.1.10'),
             MAC: '00:1C:25:27:9B:AE',
             average: 532586.133,
             days: 30,
@@ -68,7 +67,7 @@ describe('UseUsageByUser', () => {
             year: 2013,
         };
         const expectedLast = {
-            IP: '192.168.2.146',
+            IP: fromIPv4('192.168.2.146'),
             MAC: '0C:EE:E6:80:C8:8C',
             average: 19914.6,
             days: 30,
@@ -83,53 +82,46 @@ describe('UseUsageByUser', () => {
             user: 'COMPUTER-27',
             year: 2013,
         };
-        const { result, waitForNextUpdate } = renderHook(useUsageByUser);
-
-        await waitForNextUpdate();
-
-        expect(result.current.data.total).toEqual(expectedTotal);
-        expect(result.current.data.usage.length).toEqual(expectedCount);
-        expect(result.current.data.usage[0]).toEqual(expectedFirst);
-        expect(result.current.data.usage[expectedCount - 1]).toEqual(expectedLast);
-        expect(result.current.loading).toBeFalsy();
+        const { result } = renderHook(useUsageByUser);
+        await waitFor(() => {
+            expect(result.current.data.total).toEqual(expectedTotal);
+            expect(result.current.data.usage.length).toEqual(expectedCount);
+            expect(result.current.data.usage[0]).toEqual(expectedFirst);
+            expect(result.current.data.usage[expectedCount - 1]).toEqual(expectedLast);
+            expect(result.current.loading).toBeFalsy();
+        });
     });
 
-    test('changing year should change year', async () => {
+    it('changing year should change year', async () => {
         const expectedYear = expectedYears[expectedYearsCount - 1];
-        const { result, waitForNextUpdate } = renderHook(useUsageByUser);
-
-        await waitForNextUpdate();
-
-        act(() => result.current.setYear(expectedYear));
-        await waitForNextUpdate();
-
-        expect(result.current.year).toEqual(expectedYear);
+        const { result } = renderHook(useUsageByUser);
+        await waitFor(() => {
+            act(() => result.current.setYear(expectedYear));
+            expect(result.current.year).toEqual(expectedYear);
+        });
     });
 
-    test('changing year should change months', async () => {
+    it('changing year should change months', async () => {
         const expectedYear = expectedYears[expectedYearsCount - 1];
         const expectedCount = 7;
-        const expectedFirst = 'December';
-        const expectedLast = 'June';
-        const { result, waitForNextUpdate } = renderHook(useUsageByUser);
-
-        await waitForNextUpdate();
-
-        act(() => result.current.setYear(expectedYear));
-        await waitForNextUpdate();
-
-        expect(result.current.months.length).toEqual(expectedCount);
-        expect(result.current.months[0]).toEqual(expectedFirst);
-        expect(result.current.months[expectedCount - 1]).toEqual(expectedLast);
-        expect(result.current.month).toEqual(expectedFirst);
+        const expectedFirstMonth = 'December';
+        const expectedLastMonth = 'June';
+        const { result } = renderHook(useUsageByUser);
+        await waitFor(() => {
+            act(() => result.current.setYear(expectedYear));
+            expect(result.current.months.length).toEqual(expectedCount);
+            expect(result.current.months[0]).toEqual(expectedFirstMonth);
+            expect(result.current.months[expectedCount - 1]).toEqual(expectedLastMonth);
+            expect(result.current.month).toEqual(expectedFirstMonth);
+        });
     });
 
-    test('changing year should change usage', async () => {
+    it('changing year should change usage', async () => {
         const expectedYear = expectedYears[expectedYearsCount - 1];
         const expectedCount = 7;
         const expectedTotal = { average: 769768.258, days: 31, download: 21926209, id: 12, total: 23862816, upload: 1936607 };
         const expectedFirst = {
-            IP: '192.168.1.10',
+            IP: fromIPv4('192.168.1.10'),
             MAC: '00:1C:25:27:9B:AE',
             average: 445855.806,
             days: 31,
@@ -145,7 +137,7 @@ describe('UseUsageByUser', () => {
             year: 2011,
         };
         const expectedLast = {
-            IP: '192.168.1.25',
+            IP: fromIPv4('192.168.1.25'),
             MAC: '70:D4:F2:DA:FA:C9',
             average: 88103.9,
             days: 10,
@@ -160,37 +152,31 @@ describe('UseUsageByUser', () => {
             user: 'COMPUTER-15',
             year: 2011,
         };
-        const { result, waitForNextUpdate } = renderHook(useUsageByUser);
-
-        await waitForNextUpdate();
-
-        act(() => result.current.setYear(expectedYear));
-        await waitForNextUpdate();
-
-        expect(result.current.data.total).toEqual(expectedTotal);
-        expect(result.current.data.usage.length).toEqual(expectedCount);
-        expect(result.current.data.usage[0]).toEqual(expectedFirst);
-        expect(result.current.data.usage[expectedCount - 1]).toEqual(expectedLast);
+        const { result } = renderHook(useUsageByUser);
+        await waitFor(() => {
+            act(() => result.current.setYear(expectedYear));
+            expect(result.current.data.total).toEqual(expectedTotal);
+            expect(result.current.data.usage.length).toEqual(expectedCount);
+            expect(result.current.data.usage[0]).toEqual(expectedFirst);
+            expect(result.current.data.usage[expectedCount - 1]).toEqual(expectedLast);
+        });
     });
 
-    test('changing month should change month', async () => {
+    it('changing month should change month', async () => {
         const expected = 'August';
-        const { result, waitForNextUpdate } = renderHook(useUsageByUser);
-
-        await waitForNextUpdate();
-
-        act(() => result.current.setMonth(expected));
-        await waitForNextUpdate();
-
-        expect(result.current.month).toEqual(expected);
+        const { result } = renderHook(useUsageByUser);
+        await waitFor(() => {
+            act(() => result.current.setMonth(expected));
+            expect(result.current.month).toEqual(expected);
+        });
     });
 
-    test('changing month should change usage', async () => {
+    it('changing month should change usage', async () => {
         const expected = 'August';
         const expectedCount = 9;
         const expectedTotal = { average: 1182695.032, days: 31, download: 34516261, id: 8, total: 36663546, upload: 2147285 };
         const expectedFirst = {
-            IP: '192.168.1.10',
+            IP: fromIPv4('192.168.1.10'),
             MAC: '00:1C:25:27:9B:AE',
             average: 356156.3,
             days: 30,
@@ -206,7 +192,7 @@ describe('UseUsageByUser', () => {
             year: 2013,
         };
         const expectedLast = {
-            IP: '192.168.1.27',
+            IP: fromIPv4('192.168.1.27'),
             MAC: '10:D5:42:88:3F:A0',
             average: 32825.036,
             days: 28,
@@ -221,53 +207,31 @@ describe('UseUsageByUser', () => {
             user: 'COMPUTER-16',
             year: 2013,
         };
-        const { result, waitForNextUpdate } = renderHook(useUsageByUser);
-
-        await waitForNextUpdate();
-
-        act(() => result.current.setMonth(expected));
-        await waitForNextUpdate();
-
-        expect(result.current.data.total).toEqual(expectedTotal);
-        expect(result.current.data.usage.length).toEqual(expectedCount);
-        expect(result.current.data.usage[0]).toEqual(expectedFirst);
-        expect(result.current.data.usage[expectedCount - 1]).toEqual(expectedLast);
+        const { result } = renderHook(useUsageByUser);
+        await waitFor(() => {
+            act(() => result.current.setMonth(expected));
+            expect(result.current.data.total).toEqual(expectedTotal);
+            expect(result.current.data.usage.length).toEqual(expectedCount);
+            expect(result.current.data.usage[0]).toEqual(expectedFirst);
+            expect(result.current.data.usage[expectedCount - 1]).toEqual(expectedLast);
+        });
     });
 
-    test('changing filter should change filter', async () => {
+    it('changing filter should change filter', async () => {
         const expected = '20';
-        const { result, waitForNextUpdate } = renderHook(useUsageByUser);
-
-        await waitForNextUpdate();
-
-        act(() => result.current.setFilter(expected));
-        await waitForNextUpdate();
-
-        expect(result.current.filter).toEqual(expected);
+        const { result } = renderHook(useUsageByUser);
+        await waitFor(() => {
+            act(() => result.current.setFilter(expected));
+            expect(result.current.filter).toEqual(expected);
+        });
     });
 
-    test('changing filter should change usage', async () => {
+    it('changing filter should change usage', async () => {
         const expected = '20';
         const expectedCount = 3;
         const expectedTotal = { average: 3911.033, days: 30, download: 113795, id: 11, total: 117331, upload: 3536 };
         const expectedFirst = {
-            IP: '192.168.1.113',
-            MAC: '00:1A:A0:C7:27:D3',
-            average: 68.767,
-            days: 30,
-            download: 1812,
-            firstSeen: 1383337801,
-            id: 229,
-            lastSeen: 1385868602,
-            month: 11,
-            percent: 1.8,
-            total: 2063,
-            upload: 251,
-            user: 'COMPUTER-20',
-            year: 2013,
-        };
-        const expectedLast = {
-            IP: '192.168.1.20',
+            IP: fromIPv4('192.168.1.20'),
             MAC: '00:1A:E9:92:A5:5F',
             average: 784.933,
             days: 30,
@@ -282,16 +246,29 @@ describe('UseUsageByUser', () => {
             user: 'COMPUTER-8',
             year: 2013,
         };
-        const { result, waitForNextUpdate } = renderHook(useUsageByUser);
-
-        await waitForNextUpdate();
-
-        act(() => result.current.setFilter(expected));
-        await waitForNextUpdate();
-
-        expect(result.current.data.total).toEqual(expectedTotal);
-        expect(result.current.data.usage.length).toEqual(expectedCount);
-        expect(result.current.data.usage[0]).toEqual(expectedFirst);
-        expect(result.current.data.usage[expectedCount - 1]).toEqual(expectedLast);
+        const expectedLast = {
+            IP: fromIPv4('192.168.1.120'),
+            MAC: '00:26:6C:A8:EE:D6',
+            average: 3057.333,
+            days: 30,
+            download: 88863,
+            firstSeen: 1383337801,
+            id: 230,
+            lastSeen: 1385868602,
+            month: 11,
+            percent: 78.2,
+            total: 91720,
+            upload: 2857,
+            user: 'COMPUTER-21',
+            year: 2013,
+        };
+        const { result } = renderHook(useUsageByUser);
+        await waitFor(() => {
+            act(() => result.current.setFilter(expected));
+            expect(result.current.data.total).toEqual(expectedTotal);
+            expect(result.current.data.usage.length).toEqual(expectedCount);
+            expect(result.current.data.usage[0]).toEqual(expectedFirst);
+            expect(result.current.data.usage[expectedCount - 1]).toEqual(expectedLast);
+        });
     });
 });

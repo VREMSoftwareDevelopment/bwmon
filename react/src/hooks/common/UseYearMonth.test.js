@@ -1,5 +1,5 @@
 /*
- *      Copyright (C) 2010 - 2020 VREM Software Development <VREMSoftwareDevelopment@gmail.com>
+ *      Copyright (C) 2010 - 2023 VREM Software Development <VREMSoftwareDevelopment@gmail.com>
  *
  *      Licensed under the Apache License, Version 2.0 (the "License");
  *      you may not use this file except in compliance with the License.
@@ -16,7 +16,7 @@
  * Bandwidth Monitor
  */
 
-import { act, renderHook } from '@testing-library/react-hooks';
+import { act, renderHook, waitFor } from '@testing-library/react';
 import useYearMonth from './UseYearMonth';
 
 jest.mock('../../services/Usage');
@@ -25,67 +25,59 @@ describe('UseYearMonth', () => {
     const expectedYears = [2013, 2012, 2011];
     const expectedYearsCount = 3;
 
-    test('should initialize years', async () => {
-        const { result, waitForNextUpdate } = renderHook(useYearMonth);
-
-        await waitForNextUpdate();
-
-        expect(result.current.years.length).toEqual(expectedYearsCount);
-        expect(result.current.years).toEqual(expectedYears);
-        expect(result.current.year).toEqual(expectedYears[0]);
+    it('should initialize years', async () => {
+        const { result } = renderHook(useYearMonth);
+        await waitFor(() => {
+            expect(result.current.years.length).toEqual(expectedYearsCount);
+            expect(result.current.years).toEqual(expectedYears);
+            expect(result.current.year).toEqual(expectedYears[0]);
+        });
     });
 
-    test('should initialize months', async () => {
+    it('should initialize months', async () => {
         const expectedCount = 11;
         const expectedFirst = 'November';
         const expectedLast = 'January';
-        const { result, waitForNextUpdate } = renderHook(useYearMonth);
-
-        await waitForNextUpdate();
-
-        expect(result.current.months.length).toEqual(expectedCount);
-        expect(result.current.months[0]).toEqual(expectedFirst);
-        expect(result.current.months[expectedCount - 1]).toEqual(expectedLast);
-        expect(result.current.month).toEqual(expectedFirst);
+        const { result } = renderHook(useYearMonth);
+        await waitFor(() => {
+            expect(result.current.months.length).toEqual(expectedCount);
+            expect(result.current.months[0]).toEqual(expectedFirst);
+            expect(result.current.months[expectedCount - 1]).toEqual(expectedLast);
+            expect(result.current.month).toEqual(expectedFirst);
+        });
     });
 
-    test('changing year should change year', async () => {
+    it('changing year should change year', async () => {
         const expectedYear = expectedYears[expectedYearsCount - 1];
-        const { result, waitForNextUpdate } = renderHook(useYearMonth);
-
-        await waitForNextUpdate();
-
-        act(() => result.current.setYear(expectedYear));
-        await waitForNextUpdate();
-
-        expect(result.current.year).toEqual(expectedYear);
+        const { result } = renderHook(useYearMonth);
+        await waitFor(() => {
+            act(() => result.current.setYear(expectedYear));
+            expect(result.current.year).toEqual(expectedYear);
+        });
     });
 
-    test('changing year should change months', async () => {
+    it('changing year should change months', async () => {
         const expectedYear = expectedYears[expectedYearsCount - 1];
         const expectedCount = 7;
         const expectedFirst = 'December';
         const expectedLast = 'June';
-        const { result, waitForNextUpdate } = renderHook(useYearMonth);
+        const { result } = renderHook(useYearMonth);
 
-        await waitForNextUpdate();
-
-        act(() => result.current.setYear(expectedYear));
-        await waitForNextUpdate();
-
-        expect(result.current.months.length).toEqual(expectedCount);
-        expect(result.current.months[0]).toEqual(expectedFirst);
-        expect(result.current.months[expectedCount - 1]).toEqual(expectedLast);
-        expect(result.current.month).toEqual(expectedFirst);
+        await waitFor(() => {
+            act(() => result.current.setYear(expectedYear));
+            expect(result.current.months.length).toEqual(expectedCount);
+            expect(result.current.months[0]).toEqual(expectedFirst);
+            expect(result.current.months[expectedCount - 1]).toEqual(expectedLast);
+            expect(result.current.month).toEqual(expectedFirst);
+        });
     });
 
-    test('changing month should change month', async () => {
+    it('changing month should change month', async () => {
         const expected = 'August';
-        const { result, waitForNextUpdate } = renderHook(useYearMonth);
-
-        await waitForNextUpdate();
-        act(() => result.current.setMonth(expected));
-
-        expect(result.current.month).toEqual(expected);
+        const { result } = renderHook(useYearMonth);
+        await waitFor(() => {
+            act(() => result.current.setMonth(expected));
+            expect(result.current.month).toEqual(expected);
+        });
     });
 });

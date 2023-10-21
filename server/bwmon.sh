@@ -1,5 +1,5 @@
 #
-#     Copyright (C) 2010 - 2020 VREM Software Development <VREMSoftwareDevelopment@gmail.com>
+#     Copyright (C) 2010 - 2023 VREM Software Development <VREMSoftwareDevelopment@gmail.com>
 #
 #     Licensed under the Apache License, Version 2.0 (the "License");
 #     you may not use this file except in compliance with the License.
@@ -34,6 +34,7 @@ LAN1_IFACE=$(nvram get lan1_ifname)
 MACNAMES=$(nvram get custom_clientlist)
 USERSFILE="/etc/hosts.dnsmasq"
 [ -f "${USERSFILE}" ] || USERSFILE="/etc/dnsmasq/hosts/hosts"
+[ -f "${USERSFILE}" ] || USERSFILE="/etc/hosts"
 [ -f "${USERSFILE}" ] || USERSFILE="/dev/null"
 MACNAMESFILE=${2}/macnames
 USAGE_DB="bwmonUsage.db"

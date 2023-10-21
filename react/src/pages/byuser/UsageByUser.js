@@ -1,5 +1,5 @@
 /*
- *      Copyright (C) 2010 - 2020 VREM Software Development <VREMSoftwareDevelopment@gmail.com>
+ *      Copyright (C) 2010 - 2023 VREM Software Development <VREMSoftwareDevelopment@gmail.com>
  *
  *      Licensed under the Apache License, Version 2.0 (the "License");
  *      you may not use this file except in compliance with the License.
@@ -25,7 +25,7 @@ import Footer from '../../components/table/Footer';
 import Header from '../../components/table/Header';
 import Pagination from '../../components/table/Pagination';
 import Search from '../../components/inputs/Search';
-import { timeToDate, toPercent, usageInGBytes } from '../../utils/ConversionUtils';
+import { timeToDate, toIPv4, toPercent, usageInGBytes } from '../../utils/ConversionUtils';
 import { comparator, sort } from '../../utils/SortUtils';
 import useUsageByUser from '../../hooks/byuser/UseUsageByUser';
 import useSort from '../../hooks/common/UseSort';
@@ -33,7 +33,7 @@ import usePagination from '../../hooks/common/UsePagination';
 import Loading from '../../components/loading/Loading';
 
 const cellInfos = [
-    new CellInfo('IP', true, 'left', 'IP', false),
+    new CellInfo('IP', true, 'left', 'IP', false, toIPv4),
     new CellInfo('MAC', true, 'left', 'MAC', false),
     new CellInfo('user', true, 'left', 'User', false),
     new CellInfo('download', false, 'right', 'Down', true, usageInGBytes),

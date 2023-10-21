@@ -1,5 +1,5 @@
 /*
- *      Copyright (C) 2010 - 2020 VREM Software Development <VREMSoftwareDevelopment@gmail.com>
+ *      Copyright (C) 2010 - 2023 VREM Software Development <VREMSoftwareDevelopment@gmail.com>
  *
  *      Licensed under the Apache License, Version 2.0 (the "License");
  *      you may not use this file except in compliance with the License.
@@ -25,19 +25,19 @@ describe('DropDown', () => {
         // handle change
     };
 
-    test('renders correctly with items', () => {
+    it('renders correctly with items', () => {
         const tree = create(
             <DropDown id="12345" value="ZYXUW" onChange={handleChange} items={['ABC', 'ZYXUW', 'WGKF']} />
         ).toJSON();
         expect(tree).toMatchSnapshot();
     });
 
-    test('renders correctly with no items', () => {
+    it('renders correctly with no items', () => {
         const tree = create(<DropDown />).toJSON();
         expect(tree).toMatchSnapshot();
     });
 
-    test('renders correctly with no value', () => {
+    it('renders correctly with no value', () => {
         const tree = create(<DropDown items={['ABC', 'ZYXUW', 'WGKF']} />).toJSON();
         expect(tree).toMatchSnapshot();
     });

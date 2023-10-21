@@ -1,5 +1,5 @@
 /*
- *      Copyright (C) 2010 - 2020 VREM Software Development <VREMSoftwareDevelopment@gmail.com>
+ *      Copyright (C) 2010 - 2023 VREM Software Development <VREMSoftwareDevelopment@gmail.com>
  *
  *      Licensed under the Apache License, Version 2.0 (the "License");
  *      you may not use this file except in compliance with the License.
@@ -16,30 +16,31 @@
  * Bandwidth Monitor
  */
 
-import { act, renderHook } from '@testing-library/react-hooks';
+import { act, renderHook, waitFor } from '@testing-library/react';
 import usePagination from './UsePagination';
 
 describe('UsePagination', () => {
-    test('should initialize', () => {
+    it('should initialize', async () => {
         const { result } = renderHook(() => usePagination(10));
-
-        expect(result.current.page).toEqual(0);
-        expect(result.current.rowsPerPage).toEqual(10);
+        await waitFor(() => {
+            expect(result.current.page).toEqual(0);
+            expect(result.current.rowsPerPage).toEqual(10);
+        });
     });
 
-    test('changing page should change page', async () => {
+    it('changing page should change page', async () => {
         const { result } = renderHook(() => usePagination(10));
-
-        act(() => result.current.setPage(2));
-
-        expect(result.current.page).toEqual(2);
+        await waitFor(() => {
+            act(() => result.current.setPage(2));
+            expect(result.current.page).toEqual(2);
+        });
     });
 
-    test('changing rowsPerPage should change rowsPerPage', async () => {
+    it('changing rowsPerPage should change rowsPerPage', async () => {
         const { result } = renderHook(() => usePagination(10));
-
-        act(() => result.current.setRowsPerPage(20));
-
-        expect(result.current.rowsPerPage).toEqual(20);
+        await waitFor(() => {
+            act(() => result.current.setRowsPerPage(20));
+            expect(result.current.rowsPerPage).toEqual(20);
+        });
     });
 });

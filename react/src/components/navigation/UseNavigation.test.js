@@ -1,5 +1,5 @@
 /*
- *      Copyright (C) 2010 - 2020 VREM Software Development <VREMSoftwareDevelopment@gmail.com>
+ *      Copyright (C) 2010 - 2023 VREM Software Development <VREMSoftwareDevelopment@gmail.com>
  *
  *      Licensed under the Apache License, Version 2.0 (the "License");
  *      you may not use this file except in compliance with the License.
@@ -16,7 +16,7 @@
  * Bandwidth Monitor
  */
 
-import { renderHook } from '@testing-library/react-hooks';
+import { renderHook } from '@testing-library/react';
 import useNavigation from './UseNavigation';
 
 jest.mock('react-router-dom', () => ({
@@ -27,14 +27,14 @@ jest.mock('react-router-dom', () => ({
 }));
 
 describe('UseNavigation', () => {
-    test('should initialize', () => {
+    it('should initialize', () => {
         const menu = [{ pathname: '/pathname1' }, { pathname: '/pathname2' }, { pathname: '/pathname3' }];
         const { result } = renderHook(() => useNavigation(menu));
 
         expect(result.current.index).toEqual(1);
     });
 
-    test('should default to first path if not found', () => {
+    it('should default to first path if not found', () => {
         const menu = [{ pathname: '/pathname1' }, { pathname: '/pathname3' }];
         const { result } = renderHook(() => useNavigation(menu));
 

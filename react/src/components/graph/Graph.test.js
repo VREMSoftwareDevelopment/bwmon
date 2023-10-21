@@ -1,5 +1,5 @@
 /*
- *      Copyright (C) 2010 - 2020 VREM Software Development <VREMSoftwareDevelopment@gmail.com>
+ *      Copyright (C) 2010 - 2023 VREM Software Development <VREMSoftwareDevelopment@gmail.com>
  *
  *      Licensed under the Apache License, Version 2.0 (the "License");
  *      you may not use this file except in compliance with the License.
@@ -32,7 +32,7 @@ describe('Graph', () => {
     //     },
     // ];
 
-    test('renders correctly', () => {
+    it('renders correctly', () => {
         // issue:
         //  https://github.com/apexcharts/react-apexcharts/issues/352
         //  UnhandledPromiseRejection

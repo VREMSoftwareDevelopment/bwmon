@@ -1,5 +1,5 @@
 /*
- *      Copyright (C) 2010 - 2020 VREM Software Development <VREMSoftwareDevelopment@gmail.com>
+ *      Copyright (C) 2010 - 2023 VREM Software Development <VREMSoftwareDevelopment@gmail.com>
  *
  *      Licensed under the Apache License, Version 2.0 (the "License");
  *      you may not use this file except in compliance with the License.
@@ -17,7 +17,7 @@
  */
 
 import React from 'react';
-import { themeWrapper } from '../../__test__/utils/themeWrapper';
+import { themeWrapper } from '../../__test__/utils/ThemeWrapper';
 import ErrorDisplay from './ErrorDisplay';
 
 describe('ErrorDisplay', () => {
@@ -26,7 +26,7 @@ describe('ErrorDisplay', () => {
         componentStack: '--- Error Component Stack ---',
     };
 
-    test('renders correctly', () => {
+    it('renders correctly', () => {
         const tree = themeWrapper(<ErrorDisplay error={error} info={info} />).toJSON();
         expect(tree).toMatchSnapshot();
     });

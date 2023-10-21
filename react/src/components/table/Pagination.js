@@ -1,5 +1,5 @@
 /*
- *      Copyright (C) 2010 - 2020 VREM Software Development <VREMSoftwareDevelopment@gmail.com>
+ *      Copyright (C) 2010 - 2023 VREM Software Development <VREMSoftwareDevelopment@gmail.com>
  *
  *      Licensed under the Apache License, Version 2.0 (the "License");
  *      you may not use this file except in compliance with the License.
@@ -17,7 +17,7 @@
  */
 
 import React from 'react';
-import { makeStyles, useTheme } from '@mui/styles';
+import { makeStyles, useTheme } from 'mui-styles';
 import { TablePagination, IconButton } from '@mui/material';
 import { FirstPage, KeyboardArrowLeft, KeyboardArrowRight, LastPage } from '@mui/icons-material';
 

@@ -1,5 +1,5 @@
 /*
- *      Copyright (C) 2010 - 2020 VREM Software Development <VREMSoftwareDevelopment@gmail.com>
+ *      Copyright (C) 2010 - 2023 VREM Software Development <VREMSoftwareDevelopment@gmail.com>
  *
  *      Licensed under the Apache License, Version 2.0 (the "License");
  *      you may not use this file except in compliance with the License.
@@ -16,13 +16,13 @@
  * Bandwidth Monitor
  */
 
-import { renderHook } from '@testing-library/react-hooks';
+import { renderHook, waitFor } from '@testing-library/react';
 import useUsageByYearGraph from './UseUsageByYearGraph';
 
 jest.mock('../../services/Usage');
 
 describe('UseUsageByYearGraph', () => {
-    test('should initialize', async () => {
+    it('should initialize', async () => {
         const expectedOptions = {
             chart: {
                 id: 'usage-by-year',
@@ -42,12 +42,11 @@ describe('UseUsageByYearGraph', () => {
             },
         ];
 
-        const { result, waitForNextUpdate } = renderHook(useUsageByYearGraph);
-
-        await waitForNextUpdate();
-
-        expect(result.current.options).toEqual(expectedOptions);
-        expect(result.current.series).toEqual(expectedSeries);
-        expect(result.current.loading).toBeFalsy();
+        const { result } = renderHook(useUsageByYearGraph);
+        await waitFor(() => {
+            expect(result.current.options).toEqual(expectedOptions);
+            expect(result.current.series).toEqual(expectedSeries);
+            expect(result.current.loading).toBeFalsy();
+        });
     });
 });
