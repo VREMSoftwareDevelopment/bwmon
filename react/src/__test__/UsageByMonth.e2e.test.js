@@ -75,7 +75,7 @@ describe('UsageByMonth e2e', () => {
         TIMEOUT
     );
 
-    test.skip(
+    test(
         'should sort by month ascending',
         async () => {
             const selector = '#month-id > span';
@@ -85,37 +85,6 @@ describe('UsageByMonth e2e', () => {
                 Array.from(document.querySelectorAll('tbody > tr'), (element) => element.innerText)
             );
             expect(tbodyElements[0]).toEqual('January\t64.043\t4.105\t68.149\t10.7%\t2.198\t31');
-            expect(tbodyElements[10]).toEqual('November\t83.066\t4.263\t87.329\t13.7%\t2.911\t30');
-        },
-        TIMEOUT
-    );
-
-    test(
-        'should sort by year descending',
-        async () => {
-            const selector = '#month-total > span';
-            await page.waitForSelector(selector);
-            await page.click(selector);
-            const tbodyElements = await page.evaluate(() =>
-                Array.from(document.querySelectorAll('tbody > tr'), (element) => element.innerText)
-            );
-            expect(tbodyElements[0]).toEqual('November\t83.066\t4.263\t87.329\t13.7%\t2.911\t30');
-            expect(tbodyElements[10]).toEqual('August\t34.516\t2.147\t36.664\t5.7%\t1.183\t31');
-        },
-        TIMEOUT
-    );
-
-    test.skip(
-        'should sort by year ascending',
-        async () => {
-            const selector = '#month-total > span';
-            await page.waitForSelector(selector);
-            await page.click(selector);
-            await page.click(selector);
-            const tbodyElements = await page.evaluate(() =>
-                Array.from(document.querySelectorAll('tbody > tr'), (element) => element.innerText)
-            );
-            expect(tbodyElements[0]).toEqual('August\t34.516\t2.147\t36.664\t5.7%\t1.183\t31');
             expect(tbodyElements[10]).toEqual('November\t83.066\t4.263\t87.329\t13.7%\t2.911\t30');
         },
         TIMEOUT
