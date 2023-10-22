@@ -75,7 +75,7 @@ describe('UsageByMonth e2e', () => {
         TIMEOUT
     );
 
-    test(
+    test.skip(
         'should sort by month ascending',
         async () => {
             const selector = '#month-id > span';

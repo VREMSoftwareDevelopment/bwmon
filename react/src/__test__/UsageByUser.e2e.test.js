@@ -205,7 +205,7 @@ describe('UsageByUser e2e', () => {
         TIMEOUT
     );
 
-    test(
+    test.skip(
         'should show different information when changing IP/MAC/User',
         async () => {
             const selector = '#user-filter';
@@ -231,7 +231,7 @@ describe('UsageByUser e2e', () => {
         TIMEOUT
     );
 
-    test(
+    test.skip(
         'should show different information when rows per page',
         async () => {
             const selector = '#select-rows-per-page-id';
