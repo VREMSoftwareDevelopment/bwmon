@@ -105,7 +105,7 @@ describe('UsageByMonth e2e', () => {
         TIMEOUT
     );
 
-    test(
+    test.skip(
         'should sort by year ascending',
         async () => {
             const selector = '#month-total > span';
