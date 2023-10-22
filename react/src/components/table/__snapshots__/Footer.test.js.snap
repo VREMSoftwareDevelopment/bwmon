@@ -7,6 +7,7 @@ exports[`Footer renders correctly 1`] = `
 >
   <tr
     className="MuiTableRow-root MuiTableRow-head css-1q1u3t4-MuiTableRow-root"
+    data-testid="test-footer"
     id="test-footer"
     role={null}
   >

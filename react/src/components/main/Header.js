@@ -32,10 +32,10 @@ const Header = ({ name, version }) => {
     return (
         <AppBar position="static">
             <Toolbar variant="dense">
-                <Typography id="app-title" variant="h6" className={classes.title}>
+                <Typography data-testid="app-title" id="app-title" variant="h6" className={classes.title}>
                     {name}
                 </Typography>
-                <Typography id="app-version" className={classes.text}>
+                <Typography data-testid="app-version" id="app-version" className={classes.text}>
                     {version}
                 </Typography>
             </Toolbar>

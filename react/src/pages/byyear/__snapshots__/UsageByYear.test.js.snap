@@ -96,6 +96,7 @@ exports[`UsageByYear renders correctly after data load 1`] = `
           <th
             aria-sort="descending"
             className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignLeft MuiTableCell-sizeSmall css-1h37f49-MuiTableCell-root"
+            data-testid="year-id"
             id="year-id"
             scope="col"
           >
@@ -148,6 +149,7 @@ exports[`UsageByYear renders correctly after data load 1`] = `
           <th
             aria-sort={null}
             className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignRight MuiTableCell-sizeSmall css-l2upbl-MuiTableCell-root"
+            data-testid="year-total"
             id="year-total"
             scope="col"
           >

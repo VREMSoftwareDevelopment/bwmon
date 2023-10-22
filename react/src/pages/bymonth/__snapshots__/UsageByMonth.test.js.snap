@@ -87,6 +87,7 @@ exports[`UsageByMonth renders correctly after data load 1`] = `
           >
             <div
               className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary  css-1yk1gt9-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root"
+              data-testid="month-year"
               onClick={[Function]}
             >
               <div
@@ -154,6 +155,7 @@ exports[`UsageByMonth renders correctly after data load 1`] = `
           <th
             aria-sort="descending"
             className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignLeft MuiTableCell-sizeSmall css-1h37f49-MuiTableCell-root"
+            data-testid="month-id"
             id="month-id"
             scope="col"
           >
@@ -206,6 +208,7 @@ exports[`UsageByMonth renders correctly after data load 1`] = `
           <th
             aria-sort={null}
             className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignRight MuiTableCell-sizeSmall css-l2upbl-MuiTableCell-root"
+            data-testid="month-total"
             id="month-total"
             scope="col"
           >
@@ -858,6 +861,7 @@ exports[`UsageByMonth renders correctly after data load 1`] = `
       >
         <tr
           className="MuiTableRow-root MuiTableRow-head css-1q1u3t4-MuiTableRow-root"
+          data-testid="month-footer"
           id="month-footer"
           role={null}
         >

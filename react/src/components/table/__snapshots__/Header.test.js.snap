@@ -12,6 +12,7 @@ exports[`Header renders correctly 1`] = `
     <th
       aria-sort="ascending"
       className="MuiTableCell-root MuiTableCell-head MuiTableCell-alignLeft MuiTableCell-sizeMedium css-1ygcj2i-MuiTableCell-root"
+      data-testid="test-IP"
       id="test-IP"
       scope="col"
     >
@@ -57,6 +58,7 @@ exports[`Header renders correctly 1`] = `
     <th
       aria-sort={null}
       className="MuiTableCell-root MuiTableCell-head MuiTableCell-alignRight MuiTableCell-sizeMedium css-1azl6jz-MuiTableCell-root"
+      data-testid="test-download"
       id="test-download"
       scope="col"
     >

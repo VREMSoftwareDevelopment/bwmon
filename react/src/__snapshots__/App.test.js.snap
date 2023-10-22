@@ -10,12 +10,14 @@ Array [
     >
       <h6
         className="MuiTypography-root MuiTypography-h6 makeStyles-title-1 css-2ulfj5-MuiTypography-root"
+        data-testid="app-title"
         id="app-title"
       >
         Bandwidth Monitor
       </h6>
       <p
         className="MuiTypography-root MuiTypography-body1 css-ahj2mt-MuiTypography-root"
+        data-testid="app-version"
         id="app-version"
       >
         3.1.1
@@ -27,6 +29,7 @@ Array [
   >
     <a
       className="MuiButtonBase-root MuiBottomNavigationAction-root Mui-selected css-1bjk3jo-MuiButtonBase-root-MuiBottomNavigationAction-root"
+      data-testid="usage-by-user"
       href="#/UsageByUser"
       id="usage-by-user"
       onBlur={[Function]}
@@ -63,6 +66,7 @@ Array [
     </a>
     <a
       className="MuiButtonBase-root MuiBottomNavigationAction-root css-1bjk3jo-MuiButtonBase-root-MuiBottomNavigationAction-root"
+      data-testid="usage-by-user-graph"
       href="#/UsageByUserGraph"
       id="usage-by-user-graph"
       onBlur={[Function]}
@@ -99,6 +103,7 @@ Array [
     </a>
     <a
       className="MuiButtonBase-root MuiBottomNavigationAction-root css-1bjk3jo-MuiButtonBase-root-MuiBottomNavigationAction-root"
+      data-testid="usage-by-month"
       href="#/UsageByMonth"
       id="usage-by-month"
       onBlur={[Function]}
@@ -135,6 +140,7 @@ Array [
     </a>
     <a
       className="MuiButtonBase-root MuiBottomNavigationAction-root css-1bjk3jo-MuiButtonBase-root-MuiBottomNavigationAction-root"
+      data-testid="usage-by-month-graph"
       href="#/UsageByMonthGraph"
       id="usage-by-month-graph"
       onBlur={[Function]}
@@ -171,6 +177,7 @@ Array [
     </a>
     <a
       className="MuiButtonBase-root MuiBottomNavigationAction-root css-1bjk3jo-MuiButtonBase-root-MuiBottomNavigationAction-root"
+      data-testid="usage-by-year"
       href="#/UsageByYear"
       id="usage-by-year"
       onBlur={[Function]}
@@ -207,6 +214,7 @@ Array [
     </a>
     <a
       className="MuiButtonBase-root MuiBottomNavigationAction-root css-1bjk3jo-MuiButtonBase-root-MuiBottomNavigationAction-root"
+      data-testid="usage-by-year-graph"
       href="#/UsageByYearGraph"
       id="usage-by-year-graph"
       onBlur={[Function]}
@@ -327,12 +335,14 @@ Array [
     >
       <h6
         className="MuiTypography-root MuiTypography-h6 makeStyles-title-5 css-2ulfj5-MuiTypography-root"
+        data-testid="app-title"
         id="app-title"
       >
         Bandwidth Monitor
       </h6>
       <p
         className="MuiTypography-root MuiTypography-body1 css-ahj2mt-MuiTypography-root"
+        data-testid="app-version"
         id="app-version"
       >
         3.1.1
@@ -344,6 +354,7 @@ Array [
   >
     <a
       className="MuiButtonBase-root MuiBottomNavigationAction-root Mui-selected css-1bjk3jo-MuiButtonBase-root-MuiBottomNavigationAction-root"
+      data-testid="usage-by-user"
       href="#/UsageByUser"
       id="usage-by-user"
       onBlur={[Function]}
@@ -383,6 +394,7 @@ Array [
     </a>
     <a
       className="MuiButtonBase-root MuiBottomNavigationAction-root css-1bjk3jo-MuiButtonBase-root-MuiBottomNavigationAction-root"
+      data-testid="usage-by-user-graph"
       href="#/UsageByUserGraph"
       id="usage-by-user-graph"
       onBlur={[Function]}
@@ -422,6 +434,7 @@ Array [
     </a>
     <a
       className="MuiButtonBase-root MuiBottomNavigationAction-root css-1bjk3jo-MuiButtonBase-root-MuiBottomNavigationAction-root"
+      data-testid="usage-by-month"
       href="#/UsageByMonth"
       id="usage-by-month"
       onBlur={[Function]}
@@ -461,6 +474,7 @@ Array [
     </a>
     <a
       className="MuiButtonBase-root MuiBottomNavigationAction-root css-1bjk3jo-MuiButtonBase-root-MuiBottomNavigationAction-root"
+      data-testid="usage-by-month-graph"
       href="#/UsageByMonthGraph"
       id="usage-by-month-graph"
       onBlur={[Function]}
@@ -500,6 +514,7 @@ Array [
     </a>
     <a
       className="MuiButtonBase-root MuiBottomNavigationAction-root css-1bjk3jo-MuiButtonBase-root-MuiBottomNavigationAction-root"
+      data-testid="usage-by-year"
       href="#/UsageByYear"
       id="usage-by-year"
       onBlur={[Function]}
@@ -539,6 +554,7 @@ Array [
     </a>
     <a
       className="MuiButtonBase-root MuiBottomNavigationAction-root css-1bjk3jo-MuiButtonBase-root-MuiBottomNavigationAction-root"
+      data-testid="usage-by-year-graph"
       href="#/UsageByYearGraph"
       id="usage-by-year-graph"
       onBlur={[Function]}
@@ -602,6 +618,7 @@ Array [
             >
               <div
                 className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary  css-1yk1gt9-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root"
+                data-testid="user-year"
                 onClick={[Function]}
               >
                 <div
@@ -663,6 +680,7 @@ Array [
             >
               <div
                 className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary  css-1yk1gt9-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root"
+                data-testid="user-month"
                 onClick={[Function]}
               >
                 <div
@@ -725,6 +743,7 @@ Array [
             >
               <div
                 className="MuiFormControl-root MuiTextField-root css-1u3bzj6-MuiFormControl-root-MuiTextField-root"
+                data-testid="user-filter"
               >
                 <div
                   className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl MuiInputBase-adornedStart css-1q6at85-MuiInputBase-root-MuiOutlinedInput-root"
@@ -798,6 +817,7 @@ Array [
             <th
               aria-sort="ascending"
               className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignLeft MuiTableCell-sizeSmall css-1h37f49-MuiTableCell-root"
+              data-testid="user-IP"
               id="user-IP"
               scope="col"
             >
@@ -836,6 +856,7 @@ Array [
             <th
               aria-sort={null}
               className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignLeft MuiTableCell-sizeSmall css-1h37f49-MuiTableCell-root"
+              data-testid="user-MAC"
               id="user-MAC"
               scope="col"
             >
@@ -874,6 +895,7 @@ Array [
             <th
               aria-sort={null}
               className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignLeft MuiTableCell-sizeSmall css-1h37f49-MuiTableCell-root"
+              data-testid="user-user"
               id="user-user"
               scope="col"
             >
@@ -926,6 +948,7 @@ Array [
             <th
               aria-sort={null}
               className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignRight MuiTableCell-sizeSmall css-l2upbl-MuiTableCell-root"
+              data-testid="user-total"
               id="user-total"
               scope="col"
             >
@@ -1933,6 +1956,7 @@ Array [
         >
           <tr
             className="MuiTableRow-root MuiTableRow-head css-1q1u3t4-MuiTableRow-root"
+            data-testid="user-footer"
             id="user-footer"
             role={null}
           >

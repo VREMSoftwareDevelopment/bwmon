@@ -6,6 +6,7 @@ exports[`Navigation renders correctly 1`] = `
 >
   <a
     className="MuiButtonBase-root MuiBottomNavigationAction-root Mui-selected css-1bjk3jo-MuiButtonBase-root-MuiBottomNavigationAction-root"
+    data-testid="id1"
     href="/pathname1"
     id="id1"
     onBlur={[Function]}
@@ -32,6 +33,7 @@ exports[`Navigation renders correctly 1`] = `
   </a>
   <a
     className="MuiButtonBase-root MuiBottomNavigationAction-root css-1bjk3jo-MuiButtonBase-root-MuiBottomNavigationAction-root"
+    data-testid="id2"
     href="/pathname2"
     id="id2"
     onBlur={[Function]}
@@ -58,6 +60,7 @@ exports[`Navigation renders correctly 1`] = `
   </a>
   <a
     className="MuiButtonBase-root MuiBottomNavigationAction-root css-1bjk3jo-MuiButtonBase-root-MuiBottomNavigationAction-root"
+    data-testid="id3"
     href="/pathname3"
     id="id3"
     onBlur={[Function]}

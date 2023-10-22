@@ -34,6 +34,7 @@ const Navigation = ({ menu }) => {
         <BottomNavigation value={index} onChange={handleChange} showLabels className={classes.root}>
             {menu.map((route, index) => (
                 <BottomNavigationAction
+                    data-testid={route.id}
                     id={route.id}
                     key={route.pathname}
                     value={index}

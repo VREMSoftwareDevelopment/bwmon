@@ -25,7 +25,12 @@ const SortableCell = ({ prefix, cellInfo, sortHandler, ascending, orderBy }) => 
     const defaultDirection = (orderBy, id) => (orderBy === id ? direction : 'asc');
 
     return (
-        <TableCell id={prefix + '-' + cellInfo.id} align={cellInfo.align} sortDirection={sortDirection(orderBy, cellInfo.id)}>
+        <TableCell
+            data-testid={prefix + '-' + cellInfo.id}
+            id={prefix + '-' + cellInfo.id}
+            align={cellInfo.align}
+            sortDirection={sortDirection(orderBy, cellInfo.id)}
+        >
             <TableSortLabel
                 active={orderBy === cellInfo.id}
                 direction={defaultDirection(orderBy, cellInfo.id)}

@@ -86,6 +86,7 @@ exports[`UsageByUser renders correctly after data load 1`] = `
           >
             <div
               className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary  css-1yk1gt9-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root"
+              data-testid="user-year"
               onClick={[Function]}
             >
               <div
@@ -147,6 +148,7 @@ exports[`UsageByUser renders correctly after data load 1`] = `
           >
             <div
               className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary  css-1yk1gt9-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root"
+              data-testid="user-month"
               onClick={[Function]}
             >
               <div
@@ -209,6 +211,7 @@ exports[`UsageByUser renders correctly after data load 1`] = `
           >
             <div
               className="MuiFormControl-root MuiTextField-root css-1u3bzj6-MuiFormControl-root-MuiTextField-root"
+              data-testid="user-filter"
             >
               <div
                 className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl MuiInputBase-adornedStart css-1q6at85-MuiInputBase-root-MuiOutlinedInput-root"
@@ -282,6 +285,7 @@ exports[`UsageByUser renders correctly after data load 1`] = `
           <th
             aria-sort="ascending"
             className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignLeft MuiTableCell-sizeSmall css-1h37f49-MuiTableCell-root"
+            data-testid="user-IP"
             id="user-IP"
             scope="col"
           >
@@ -320,6 +324,7 @@ exports[`UsageByUser renders correctly after data load 1`] = `
           <th
             aria-sort={null}
             className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignLeft MuiTableCell-sizeSmall css-1h37f49-MuiTableCell-root"
+            data-testid="user-MAC"
             id="user-MAC"
             scope="col"
           >
@@ -358,6 +363,7 @@ exports[`UsageByUser renders correctly after data load 1`] = `
           <th
             aria-sort={null}
             className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignLeft MuiTableCell-sizeSmall css-1h37f49-MuiTableCell-root"
+            data-testid="user-user"
             id="user-user"
             scope="col"
           >
@@ -410,6 +416,7 @@ exports[`UsageByUser renders correctly after data load 1`] = `
           <th
             aria-sort={null}
             className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignRight MuiTableCell-sizeSmall css-l2upbl-MuiTableCell-root"
+            data-testid="user-total"
             id="user-total"
             scope="col"
           >
@@ -1417,6 +1424,7 @@ exports[`UsageByUser renders correctly after data load 1`] = `
       >
         <tr
           className="MuiTableRow-root MuiTableRow-head css-1q1u3t4-MuiTableRow-root"
+          data-testid="user-footer"
           id="user-footer"
           role={null}
         >

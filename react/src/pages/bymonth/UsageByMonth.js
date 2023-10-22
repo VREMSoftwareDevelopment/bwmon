@@ -56,7 +56,13 @@ const UsageByMonth = () => {
                 <TableHead>
                     <TableRow>
                         <TableCell colSpan={cellInfos.length}>
-                            <DropDown id="month-year" onChange={handleChangeYear} items={years} value={year} />
+                            <DropDown
+                                data-testid="month-year"
+                                id="month-year"
+                                onChange={handleChangeYear}
+                                items={years}
+                                value={year}
+                            />
                         </TableCell>
                     </TableRow>
                 </TableHead>

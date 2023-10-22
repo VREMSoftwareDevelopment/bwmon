@@ -81,13 +81,25 @@ const UsageByUser = () => {
                 <TableHead>
                     <TableRow>
                         <TableCell>
-                            <DropDown id="user-year" onChange={handleChangeYear} items={years} value={year} />
+                            <DropDown
+                                data-testid="user-year"
+                                id="user-year"
+                                onChange={handleChangeYear}
+                                items={years}
+                                value={year}
+                            />
                         </TableCell>
                         <TableCell>
-                            <DropDown id="user-month" onChange={handleChangeMonth} items={months} value={month} />
+                            <DropDown
+                                data-testid="user-month"
+                                id="user-month"
+                                onChange={handleChangeMonth}
+                                items={months}
+                                value={month}
+                            />
                         </TableCell>
                         <TableCell colSpan={2}>
-                            <Search id="user-filter" onChange={handleChangeFilter} />
+                            <Search data-testid="user-filter" id="user-filter" onChange={handleChangeFilter} />
                         </TableCell>
                         <Pagination
                             colSpan={cellInfos.length - 4}

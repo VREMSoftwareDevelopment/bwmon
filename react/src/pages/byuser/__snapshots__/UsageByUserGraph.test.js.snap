@@ -71,6 +71,7 @@ exports[`UsageByUserGraph renders correctly 1`] = `
       >
         <div
           className="MuiFormControl-root MuiTextField-root css-1u3bzj6-MuiFormControl-root-MuiTextField-root"
+          data-testid="user-filter"
         >
           <div
             className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl MuiInputBase-adornedStart css-1q6at85-MuiInputBase-root-MuiOutlinedInput-root"

@@ -47,13 +47,13 @@ const UsageByUserGraph = () => {
         <div className={classes.root}>
             <Grid container>
                 <Grid item sm={2}>
-                    <DropDown id="user-year" onChange={handleChangeYear} items={years} value={year} />
+                    <DropDown data-testid="user-year" id="user-year" onChange={handleChangeYear} items={years} value={year} />
                 </Grid>
                 <Grid item sm={2}>
-                    <DropDown id="user-month" onChange={handleChangeMonth} items={months} value={month} />
+                    <DropDown data-testid="user-month" id="user-month" onChange={handleChangeMonth} items={months} value={month} />
                 </Grid>
                 <Grid item sm={4}>
-                    <Search id="user-filter" onChange={handleChangeFilter} />
+                    <Search data-testid="user-filter" id="user-filter" onChange={handleChangeFilter} />
                 </Grid>
                 <Grid item sm={4}></Grid>
             </Grid>

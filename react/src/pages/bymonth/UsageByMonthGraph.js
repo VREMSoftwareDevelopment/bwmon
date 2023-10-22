@@ -32,7 +32,13 @@ const UsageByMonthGraph = () => {
         <Paper>
             <Loading isLoading={loading} />
             <FormControl>
-                <DropDown id="month-year-graph" onChange={handleChangeYear} items={years} value={year} />
+                <DropDown
+                    data-testid="month-year-graph"
+                    id="month-year-graph"
+                    onChange={handleChangeYear}
+                    items={years}
+                    value={year}
+                />
             </FormControl>
             <Graph options={options} series={series} />
         </Paper>

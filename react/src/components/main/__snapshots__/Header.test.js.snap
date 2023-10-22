@@ -9,12 +9,14 @@ exports[`Header renders correctly 1`] = `
   >
     <h6
       className="MuiTypography-root MuiTypography-h6 makeStyles-title-1 css-2ulfj5-MuiTypography-root"
+      data-testid="app-title"
       id="app-title"
     >
       Name
     </h6>
     <p
       className="MuiTypography-root MuiTypography-body1 css-ahj2mt-MuiTypography-root"
+      data-testid="app-version"
       id="app-version"
     >
       3.1.1

@@ -21,7 +21,7 @@ import { TableHead, TableRow, TableCell } from '@mui/material';
 
 const Footer = ({ prefix, cellInfos, values }) => (
     <TableHead>
-        <TableRow key="footer" id={prefix + '-footer'}>
+        <TableRow key="footer" data-testid={prefix + '-footer'} id={prefix + '-footer'}>
             {cellInfos.map((cellInfo, index) => {
                 const text =
                     index === 0
