@@ -16,30 +16,31 @@
  * Bandwidth Monitor
  */
 
-import { act, renderHook } from '@testing-library/react-hooks';
+import { act, renderHook, waitFor } from '@testing-library/react';
 import useSort from './UseSort';
 
 describe('UseSort', () => {
-    it('should initialize', () => {
+    it('should initialize', async () => {
         const { result } = renderHook(() => useSort(false, 'xyz'));
-
-        expect(result.current.ascending).toBeFalsy();
-        expect(result.current.orderBy).toEqual('xyz');
+        await waitFor(() => {
+            expect(result.current.ascending).toBeFalsy();
+            expect(result.current.orderBy).toEqual('xyz');
+        });
     });
 
     it('changing ascending should change ascending', async () => {
         const { result } = renderHook(() => useSort(false, 'xyz'));
-
-        act(() => result.current.setAscending(true));
-
-        expect(result.current.ascending).toBeTruthy();
+        await waitFor(() => {
+            act(() => result.current.setAscending(true));
+            expect(result.current.ascending).toBeTruthy();
+        });
     });
 
     it('changing orderBy should change orderBy', async () => {
         const { result } = renderHook(() => useSort(false, 'xyz'));
-
-        act(() => result.current.setOrderBy('ABC'));
-
-        expect(result.current.orderBy).toEqual('ABC');
+        await waitFor(() => {
+            act(() => result.current.setOrderBy('ABC'));
+            expect(result.current.orderBy).toEqual('ABC');
+        });
     });
 });

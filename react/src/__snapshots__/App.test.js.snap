@@ -605,7 +605,7 @@ Array [
                 onClick={[Function]}
               >
                 <div
-                  aria-controls="mui-3"
+                  aria-controls=":r3:"
                   aria-expanded="false"
                   aria-haspopup="listbox"
                   aria-labelledby="user-year"
@@ -666,7 +666,7 @@ Array [
                 onClick={[Function]}
               >
                 <div
-                  aria-controls="mui-4"
+                  aria-controls=":r4:"
                   aria-expanded="false"
                   aria-haspopup="listbox"
                   aria-labelledby="user-month"
@@ -1947,16 +1947,12 @@ Array [
               aria-sort={null}
               className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignLeft MuiTableCell-sizeSmall css-1h37f49-MuiTableCell-root"
               scope="col"
-            >
-              
-            </th>
+            />
             <th
               aria-sort={null}
               className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignLeft MuiTableCell-sizeSmall css-1h37f49-MuiTableCell-root"
               scope="col"
-            >
-              
-            </th>
+            />
             <th
               aria-sort={null}
               className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignRight MuiTableCell-sizeSmall css-l2upbl-MuiTableCell-root"
@@ -1982,9 +1978,7 @@ Array [
               aria-sort={null}
               className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignRight MuiTableCell-sizeSmall css-l2upbl-MuiTableCell-root"
               scope="col"
-            >
-              
-            </th>
+            />
             <th
               aria-sort={null}
               className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignRight MuiTableCell-sizeSmall css-l2upbl-MuiTableCell-root"
@@ -2003,16 +1997,12 @@ Array [
               aria-sort={null}
               className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignLeft MuiTableCell-sizeSmall css-1h37f49-MuiTableCell-root"
               scope="col"
-            >
-              
-            </th>
+            />
             <th
               aria-sort={null}
               className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignLeft MuiTableCell-sizeSmall css-1h37f49-MuiTableCell-root"
               scope="col"
-            >
-              
-            </th>
+            />
           </tr>
         </thead>
       </table>

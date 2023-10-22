@@ -16,7 +16,7 @@
  * Bandwidth Monitor
  */
 
-import { act, renderHook } from '@testing-library/react-hooks';
+import { act, renderHook, waitFor } from '@testing-library/react';
 import useUsageByUserGraph from './UseUsageByUserGraph';
 
 jest.mock('../../services/Usage');
@@ -26,26 +26,24 @@ describe('UseUsageByUserGraph', () => {
     const expectedYearsCount = 3;
 
     it('should initialize years', async () => {
-        const { result, waitForNextUpdate } = renderHook(useUsageByUserGraph);
-
-        await waitForNextUpdate();
-
-        expect(result.current.years.length).toEqual(expectedYearsCount);
-        expect(result.current.years).toEqual(expectedYears);
-        expect(result.current.year).toEqual(expectedYears[0]);
+        const { result } = renderHook(useUsageByUserGraph);
+        await waitFor(() => {
+            expect(result.current.years.length).toEqual(expectedYearsCount);
+            expect(result.current.years).toEqual(expectedYears);
+            expect(result.current.year).toEqual(expectedYears[0]);
+        });
     });
 
     it('should initialize months', async () => {
         const expectedCount = 11;
         const expectedFirst = 'November';
         const expectedLast = 'January';
-        const { result, waitForNextUpdate } = renderHook(useUsageByUserGraph);
-
-        await waitForNextUpdate();
-
-        expect(result.current.months.length).toEqual(expectedCount);
-        expect(result.current.months[0]).toEqual(expectedFirst);
-        expect(result.current.months[expectedCount - 1]).toEqual(expectedLast);
+        const { result } = renderHook(useUsageByUserGraph);
+        await waitFor(() => {
+            expect(result.current.months.length).toEqual(expectedCount);
+            expect(result.current.months[0]).toEqual(expectedFirst);
+            expect(result.current.months[expectedCount - 1]).toEqual(expectedLast);
+        });
     });
 
     it('should initialize usage', async () => {
@@ -122,25 +120,21 @@ describe('UseUsageByUserGraph', () => {
                 ],
             },
         ];
-        const { result, waitForNextUpdate } = renderHook(useUsageByUserGraph);
-
-        await waitForNextUpdate();
-
-        expect(result.current.options).toEqual(expectedOptions);
-        expect(result.current.series).toEqual(expectedSeries);
-        expect(result.current.loading).toBeFalsy();
+        const { result } = renderHook(useUsageByUserGraph);
+        await waitFor(() => {
+            expect(result.current.options).toEqual(expectedOptions);
+            expect(result.current.series).toEqual(expectedSeries);
+            expect(result.current.loading).toBeFalsy();
+        });
     });
 
     it('changing year should change year', async () => {
         const expectedYear = expectedYears[expectedYearsCount - 1];
-        const { result, waitForNextUpdate } = renderHook(useUsageByUserGraph);
-
-        await waitForNextUpdate();
-
-        act(() => result.current.setYear(expectedYear));
-        await waitForNextUpdate();
-
-        expect(result.current.year).toEqual(expectedYear);
+        const { result } = renderHook(useUsageByUserGraph);
+        await waitFor(() => {
+            act(() => result.current.setYear(expectedYear));
+            expect(result.current.year).toEqual(expectedYear);
+        });
     });
 
     it('changing year should change months', async () => {
@@ -148,17 +142,14 @@ describe('UseUsageByUserGraph', () => {
         const expectedCount = 7;
         const expectedFirst = 'December';
         const expectedLast = 'June';
-        const { result, waitForNextUpdate } = renderHook(useUsageByUserGraph);
-
-        await waitForNextUpdate();
-
-        act(() => result.current.setYear(expectedYear));
-        await waitForNextUpdate();
-
-        expect(result.current.months.length).toEqual(expectedCount);
-        expect(result.current.months[0]).toEqual(expectedFirst);
-        expect(result.current.months[expectedCount - 1]).toEqual(expectedLast);
-        expect(result.current.month).toEqual(expectedFirst);
+        const { result } = renderHook(useUsageByUserGraph);
+        await waitFor(() => {
+            act(() => result.current.setYear(expectedYear));
+            expect(result.current.months.length).toEqual(expectedCount);
+            expect(result.current.months[0]).toEqual(expectedFirst);
+            expect(result.current.months[expectedCount - 1]).toEqual(expectedLast);
+            expect(result.current.month).toEqual(expectedFirst);
+        });
     });
 
     it('changing year should change usage', async () => {
@@ -188,27 +179,21 @@ describe('UseUsageByUserGraph', () => {
                 data: ['13.8', '4.2', '0.2', '0.0', '0.0', '4.7', '0.9'],
             },
         ];
-        const { result, waitForNextUpdate } = renderHook(useUsageByUserGraph);
-
-        await waitForNextUpdate();
-
-        act(() => result.current.setYear(expectedYear));
-        await waitForNextUpdate();
-
-        expect(result.current.options).toEqual(expectedOptions);
-        expect(result.current.series).toEqual(expectedSeries);
+        const { result } = renderHook(useUsageByUserGraph);
+        await waitFor(() => {
+            act(() => result.current.setYear(expectedYear));
+            expect(result.current.options).toEqual(expectedOptions);
+            expect(result.current.series).toEqual(expectedSeries);
+        });
     });
 
     it('changing month should change month', async () => {
         const expected = 'August';
-        const { result, waitForNextUpdate } = renderHook(useUsageByUserGraph);
-
-        await waitForNextUpdate();
-
-        act(() => result.current.setMonth(expected));
-        await waitForNextUpdate();
-
-        expect(result.current.month).toEqual(expected);
+        const { result } = renderHook(useUsageByUserGraph);
+        await waitFor(() => {
+            act(() => result.current.setMonth(expected));
+            expect(result.current.month).toEqual(expected);
+        });
     });
 
     it('changing month should change usage', async () => {
@@ -240,27 +225,21 @@ describe('UseUsageByUserGraph', () => {
                 data: ['10.7', '1.1', '9.6', '0.2', '0.2', '12.4', '1.2', '0.3', '0.9'],
             },
         ];
-        const { result, waitForNextUpdate } = renderHook(useUsageByUserGraph);
-
-        await waitForNextUpdate();
-
-        act(() => result.current.setMonth(expected));
-        await waitForNextUpdate();
-
-        expect(result.current.options).toEqual(expectedOptions);
-        expect(result.current.series).toEqual(expectedSeries);
+        const { result } = renderHook(useUsageByUserGraph);
+        await waitFor(() => {
+            act(() => result.current.setMonth(expected));
+            expect(result.current.options).toEqual(expectedOptions);
+            expect(result.current.series).toEqual(expectedSeries);
+        });
     });
 
     it('changing filter should change filter', async () => {
         const expected = '20';
-        const { result, waitForNextUpdate } = renderHook(useUsageByUserGraph);
-
-        await waitForNextUpdate();
-
-        act(() => result.current.setFilter(expected));
-        await waitForNextUpdate();
-
-        expect(result.current.filter).toEqual(expected);
+        const { result } = renderHook(useUsageByUserGraph);
+        await waitFor(() => {
+            act(() => result.current.setFilter(expected));
+            expect(result.current.filter).toEqual(expected);
+        });
     });
 
     it('changing filter should change usage', async () => {
@@ -282,14 +261,11 @@ describe('UseUsageByUserGraph', () => {
                 data: ['0.0', '0.0', '0.1'],
             },
         ];
-        const { result, waitForNextUpdate } = renderHook(useUsageByUserGraph);
-
-        await waitForNextUpdate();
-
-        act(() => result.current.setFilter(expected));
-        await waitForNextUpdate();
-
-        expect(result.current.options).toEqual(expectedOptions);
-        expect(result.current.series).toEqual(expectedSeries);
+        const { result } = renderHook(useUsageByUserGraph);
+        await waitFor(() => {
+            act(() => result.current.setFilter(expected));
+            expect(result.current.options).toEqual(expectedOptions);
+            expect(result.current.series).toEqual(expectedSeries);
+        });
     });
 });

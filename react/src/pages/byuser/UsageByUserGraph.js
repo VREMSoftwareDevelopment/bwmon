@@ -17,7 +17,7 @@
  */
 
 import React from 'react';
-import { makeStyles } from '@mui/styles';
+import { makeStyles } from 'mui-styles';
 import { Paper, Grid } from '@mui/material';
 import DropDown from '../../components/inputs/DropDown';
 import Search from '../../components/inputs/Search';

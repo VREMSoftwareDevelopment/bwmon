@@ -17,7 +17,7 @@
  */
 
 import React from 'react';
-import { makeStyles } from '@mui/styles';
+import { makeStyles } from 'mui-styles';
 import { LinearProgress } from '@mui/material';
 import InfoMessage from '../messages/InfoMessage';
 

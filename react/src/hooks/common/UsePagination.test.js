@@ -16,30 +16,31 @@
  * Bandwidth Monitor
  */
 
-import { act, renderHook } from '@testing-library/react-hooks';
+import { act, renderHook, waitFor } from '@testing-library/react';
 import usePagination from './UsePagination';
 
 describe('UsePagination', () => {
-    it('should initialize', () => {
+    it('should initialize', async () => {
         const { result } = renderHook(() => usePagination(10));
-
-        expect(result.current.page).toEqual(0);
-        expect(result.current.rowsPerPage).toEqual(10);
+        await waitFor(() => {
+            expect(result.current.page).toEqual(0);
+            expect(result.current.rowsPerPage).toEqual(10);
+        });
     });
 
     it('changing page should change page', async () => {
         const { result } = renderHook(() => usePagination(10));
-
-        act(() => result.current.setPage(2));
-
-        expect(result.current.page).toEqual(2);
+        await waitFor(() => {
+            act(() => result.current.setPage(2));
+            expect(result.current.page).toEqual(2);
+        });
     });
 
     it('changing rowsPerPage should change rowsPerPage', async () => {
         const { result } = renderHook(() => usePagination(10));
-
-        act(() => result.current.setRowsPerPage(20));
-
-        expect(result.current.rowsPerPage).toEqual(20);
+        await waitFor(() => {
+            act(() => result.current.setRowsPerPage(20));
+            expect(result.current.rowsPerPage).toEqual(20);
+        });
     });
 });

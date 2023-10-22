@@ -21,9 +21,7 @@ exports[`Footer renders correctly 1`] = `
       aria-sort={null}
       className="MuiTableCell-root MuiTableCell-head MuiTableCell-alignLeft MuiTableCell-sizeMedium css-1ygcj2i-MuiTableCell-root"
       scope="col"
-    >
-      
-    </th>
+    />
     <th
       aria-sort={null}
       className="MuiTableCell-root MuiTableCell-head MuiTableCell-alignRight MuiTableCell-sizeMedium css-1azl6jz-MuiTableCell-root"
@@ -42,9 +40,7 @@ exports[`Footer renders correctly 1`] = `
       aria-sort={null}
       className="MuiTableCell-root MuiTableCell-head MuiTableCell-alignRight MuiTableCell-sizeMedium css-1azl6jz-MuiTableCell-root"
       scope="col"
-    >
-      
-    </th>
+    />
   </tr>
 </thead>
 `;

@@ -16,7 +16,7 @@
  * Bandwidth Monitor
  */
 
-import { act, renderHook } from '@testing-library/react-hooks';
+import { act, renderHook, waitFor } from '@testing-library/react';
 import useUsageByMonth from './UseUsageByMonth';
 
 jest.mock('../../services/Usage');
@@ -26,13 +26,12 @@ describe('UseUsageByMonth', () => {
     const expectedYearsCount = 3;
 
     it('should initialize years', async () => {
-        const { result, waitForNextUpdate } = renderHook(useUsageByMonth);
-
-        await waitForNextUpdate();
-
-        expect(result.current.years.length).toEqual(expectedYearsCount);
-        expect(result.current.years).toEqual(expectedYears);
-        expect(result.current.year).toEqual(expectedYears[0]);
+        const { result } = renderHook(useUsageByMonth);
+        await waitFor(() => {
+            expect(result.current.years.length).toEqual(expectedYearsCount);
+            expect(result.current.years).toEqual(expectedYears);
+            expect(result.current.year).toEqual(expectedYears[0]);
+        });
     });
 
     it('should initialize usage', async () => {
@@ -63,27 +62,23 @@ describe('UseUsageByMonth', () => {
             total: 68148631,
             upload: 4105234,
         };
-        const { result, waitForNextUpdate } = renderHook(useUsageByMonth);
-
-        await waitForNextUpdate();
-
-        expect(result.current.data.total).toEqual(expectedTotal);
-        expect(result.current.data.usage.length).toEqual(expectedCount);
-        expect(result.current.data.usage[0]).toEqual(expectedFirst);
-        expect(result.current.data.usage[expectedCount - 1]).toEqual(expectedLast);
-        expect(result.current.loading).toBeFalsy();
+        const { result } = renderHook(useUsageByMonth);
+        await waitFor(() => {
+            expect(result.current.data.total).toEqual(expectedTotal);
+            expect(result.current.data.usage.length).toEqual(expectedCount);
+            expect(result.current.data.usage[0]).toEqual(expectedFirst);
+            expect(result.current.data.usage[expectedCount - 1]).toEqual(expectedLast);
+            expect(result.current.loading).toBeFalsy();
+        });
     });
 
     it('changing year should change year', async () => {
         const expectedYear = expectedYears[expectedYearsCount - 1];
-        const { result, waitForNextUpdate } = renderHook(useUsageByMonth);
-
-        await waitForNextUpdate();
-
-        act(() => result.current.setYear(expectedYear));
-        await waitForNextUpdate();
-
-        expect(result.current.year).toEqual(expectedYear);
+        const { result } = renderHook(useUsageByMonth);
+        await waitFor(() => {
+            act(() => result.current.setYear(expectedYear));
+            expect(result.current.year).toEqual(expectedYear);
+        });
     });
 
     it('changing year should change usage', async () => {
@@ -108,16 +103,13 @@ describe('UseUsageByMonth', () => {
             total: 29035087,
             upload: 2085658,
         };
-        const { result, waitForNextUpdate } = renderHook(useUsageByMonth);
-
-        await waitForNextUpdate();
-
-        act(() => result.current.setYear(expectedYear));
-        await waitForNextUpdate();
-
-        expect(result.current.data.total).toEqual(expectedTotal);
-        expect(result.current.data.usage.length).toEqual(expectedCount);
-        expect(result.current.data.usage[0]).toEqual(expectedFirst);
-        expect(result.current.data.usage[expectedCount - 1]).toEqual(expectedLast);
+        const { result } = renderHook(useUsageByMonth);
+        await waitFor(() => {
+            act(() => result.current.setYear(expectedYear));
+            expect(result.current.data.total).toEqual(expectedTotal);
+            expect(result.current.data.usage.length).toEqual(expectedCount);
+            expect(result.current.data.usage[0]).toEqual(expectedFirst);
+            expect(result.current.data.usage[expectedCount - 1]).toEqual(expectedLast);
+        });
     });
 });

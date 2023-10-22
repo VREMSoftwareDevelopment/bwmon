@@ -31,8 +31,7 @@ export const delay = (time) =>
 export const materialSelect = async (page, newSelectedValue, cssSelector) => {
     await page.evaluate(
         (newSelectedValue, cssSelector) => {
-            var clickEvent = document.createEvent('MouseEvents');
-            clickEvent.initEvent('mousedown', true, true);
+            var clickEvent = new Event('mousedown', { bubbles: true, cancelable: true });
             var selectNode = document.querySelector(cssSelector);
             selectNode.dispatchEvent(clickEvent);
             [...document.querySelectorAll('li')].filter((el) => el.innerText === newSelectedValue)[0].click();

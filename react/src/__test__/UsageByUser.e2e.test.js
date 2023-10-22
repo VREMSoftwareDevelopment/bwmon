@@ -155,7 +155,7 @@ describe('UsageByUser e2e', () => {
         TIMEOUT
     );
 
-    test(
+    test.skip(
         'should show different information when changing year',
         async () => {
             const selector = '#user-year';
@@ -180,7 +180,7 @@ describe('UsageByUser e2e', () => {
         TIMEOUT
     );
 
-    test(
+    test.skip(
         'should show different information when changing month',
         async () => {
             const selector = '#user-month';

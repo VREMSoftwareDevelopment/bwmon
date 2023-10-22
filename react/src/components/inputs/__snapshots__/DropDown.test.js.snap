@@ -6,6 +6,7 @@ exports[`DropDown renders correctly with items 1`] = `
   onClick={[Function]}
 >
   <div
+    aria-controls=":r0:"
     aria-expanded="false"
     aria-haspopup="listbox"
     aria-labelledby="12345"

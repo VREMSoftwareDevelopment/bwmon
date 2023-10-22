@@ -16,7 +16,7 @@
  * Bandwidth Monitor
  */
 
-import { act, renderHook } from '@testing-library/react-hooks';
+import { act, renderHook, waitFor } from '@testing-library/react';
 import useUsageByMonthGraph from './UseUsageByMonthGraph';
 
 jest.mock('../../services/Usage');
@@ -26,13 +26,12 @@ describe('UseUsageByMonthGraph', () => {
     const expectedYearsCount = 3;
 
     it('should initialize years', async () => {
-        const { result, waitForNextUpdate } = renderHook(useUsageByMonthGraph);
-
-        await waitForNextUpdate();
-
-        expect(result.current.years.length).toEqual(expectedYearsCount);
-        expect(result.current.years).toEqual(expectedYears);
-        expect(result.current.year).toEqual(expectedYears[0]);
+        const { result } = renderHook(useUsageByMonthGraph);
+        await waitFor(() => {
+            expect(result.current.years.length).toEqual(expectedYearsCount);
+            expect(result.current.years).toEqual(expectedYears);
+            expect(result.current.year).toEqual(expectedYears[0]);
+        });
     });
 
     it('should initialize usage', async () => {
@@ -65,26 +64,21 @@ describe('UseUsageByMonthGraph', () => {
                 data: [68, 57, 62, 58, 38, 84, 49, 37, 50, 49, 87],
             },
         ];
-
-        const { result, waitForNextUpdate } = renderHook(useUsageByMonthGraph);
-
-        await waitForNextUpdate();
-
-        expect(result.current.options).toEqual(expectedOptions);
-        expect(result.current.series).toEqual(expectedSeries);
-        expect(result.current.loading).toBeFalsy();
+        const { result } = renderHook(useUsageByMonthGraph);
+        await waitFor(() => {
+            expect(result.current.options).toEqual(expectedOptions);
+            expect(result.current.series).toEqual(expectedSeries);
+            expect(result.current.loading).toBeFalsy();
+        });
     });
 
     it('changing year should change year', async () => {
         const expectedYear = expectedYears[expectedYearsCount - 1];
-        const { result, waitForNextUpdate } = renderHook(useUsageByMonthGraph);
-
-        await waitForNextUpdate();
-
-        act(() => result.current.setYear(expectedYear));
-        await waitForNextUpdate();
-
-        expect(result.current.year).toEqual(expectedYear);
+        const { result } = renderHook(useUsageByMonthGraph);
+        await waitFor(() => {
+            act(() => result.current.setYear(expectedYear));
+            expect(result.current.year).toEqual(expectedYear);
+        });
     });
 
     it('changing year should change usage', async () => {
@@ -106,14 +100,11 @@ describe('UseUsageByMonthGraph', () => {
                 data: [29, 23, 31, 16, 16, 12, 24],
             },
         ];
-        const { result, waitForNextUpdate } = renderHook(useUsageByMonthGraph);
-
-        await waitForNextUpdate();
-
-        act(() => result.current.setYear(expectedYear));
-        await waitForNextUpdate();
-
-        expect(result.current.options).toEqual(expectedOptions);
-        expect(result.current.series).toEqual(expectedSeries);
+        const { result } = renderHook(useUsageByMonthGraph);
+        await waitFor(() => {
+            act(() => result.current.setYear(expectedYear));
+            expect(result.current.options).toEqual(expectedOptions);
+            expect(result.current.series).toEqual(expectedSeries);
+        });
     });
 });

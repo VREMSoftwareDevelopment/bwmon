@@ -16,7 +16,7 @@
  * Bandwidth Monitor
  */
 
-import { renderHook } from '@testing-library/react-hooks';
+import { renderHook, waitFor } from '@testing-library/react';
 import useUsageByYear from './UseUsageByYear';
 
 jest.mock('../../services/Usage');
@@ -40,13 +40,12 @@ describe('UseUsageByYear', () => {
             total: 150683611,
             upload: 10744984,
         };
-        const { result, waitForNextUpdate } = renderHook(useUsageByYear);
-
-        await waitForNextUpdate();
-
-        expect(result.current.data.length).toEqual(expectedCount);
-        expect(result.current.data[0]).toEqual(expectedFirst);
-        expect(result.current.data[expectedCount - 1]).toEqual(expectedLast);
-        expect(result.current.loading).toBeFalsy();
+        const { result } = renderHook(useUsageByYear);
+        await waitFor(() => {
+            expect(result.current.data.length).toEqual(expectedCount);
+            expect(result.current.data[0]).toEqual(expectedFirst);
+            expect(result.current.data[expectedCount - 1]).toEqual(expectedLast);
+            expect(result.current.loading).toBeFalsy();
+        });
     });
 });

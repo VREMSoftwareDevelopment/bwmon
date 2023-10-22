@@ -16,7 +16,7 @@
  * Bandwidth Monitor
  */
 
-import { renderHook } from '@testing-library/react-hooks';
+import { renderHook, waitFor } from '@testing-library/react';
 import useUsageByYearGraph from './UseUsageByYearGraph';
 
 jest.mock('../../services/Usage');
@@ -42,12 +42,11 @@ describe('UseUsageByYearGraph', () => {
             },
         ];
 
-        const { result, waitForNextUpdate } = renderHook(useUsageByYearGraph);
-
-        await waitForNextUpdate();
-
-        expect(result.current.options).toEqual(expectedOptions);
-        expect(result.current.series).toEqual(expectedSeries);
-        expect(result.current.loading).toBeFalsy();
+        const { result } = renderHook(useUsageByYearGraph);
+        await waitFor(() => {
+            expect(result.current.options).toEqual(expectedOptions);
+            expect(result.current.series).toEqual(expectedSeries);
+            expect(result.current.loading).toBeFalsy();
+        });
     });
 });
