@@ -6,11 +6,15 @@ exports[`Footer renders correctly 1`] = `
 >
   <h6
     className="MuiTypography-root MuiTypography-subtitle2 css-ati914-MuiTypography-root"
+    data-testid="app-footer1"
+    id="app-footer1"
   >
     All usage information is in gigabytes
   </h6>
   <h6
     className="MuiTypography-root MuiTypography-subtitle2 css-ati914-MuiTypography-root"
+    data-testid="app-footer2"
+    id="app-footer2"
   >
     This page was generated on 
     October 20, 2020, 11:25:35 AM EDT

@@ -32,8 +32,12 @@ const Footer = ({ currentTime }) => {
 
     return (
         <div className={classes.root}>
-            <Typography variant="subtitle2">All usage information is in gigabytes</Typography>
-            <Typography variant="subtitle2">This page was generated on {currentTime}</Typography>
+            <Typography data-testid="app-footer1" id="app-footer1" variant="subtitle2">
+                All usage information is in gigabytes
+            </Typography>
+            <Typography data-testid="app-footer2" id="app-footer2" variant="subtitle2">
+                This page was generated on {currentTime}
+            </Typography>
         </div>
     );
 };
