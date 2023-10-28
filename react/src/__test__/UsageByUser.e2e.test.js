@@ -211,22 +211,23 @@ describe('UsageByUser e2e', () => {
             const selector = '#user-filter';
             await page.waitForSelector(selector);
             await page.focus(selector);
-            await page.keyboard.type('3');
+            await page.keyboard.type('11');
+            await page.waitForTimeout(5000);
             const tbodyElements = await page.evaluate(() =>
                 Array.from(document.querySelectorAll('tbody > tr'), (element) => element.innerText)
             );
-            expect(tbodyElements.length).toEqual(12);
+            expect(tbodyElements.length).toEqual(5);
             expect(tbodyElements[0]).toContain(
-                '192.168.1.10\t00:1C:25:27:9B:AE\tCOMPUTER-3\t15.004\t0.973\t15.978\t48.3%\t0.533\t30'
+                '192.168.1.11\t70:5A:B6:F3:58:AB\tCOMPUTER-12\t0.120\t0.003\t0.123\t47.4%\t0.004\t30'
             );
-            expect(tbodyElements[11]).toContain(
-                '192.168.2.142\t50:A4:C8:32:B2:10\tCOMPUTER-26\t0.001\t0.000\t0.001\t0.0%\t0.000\t30'
+            expect(tbodyElements[4]).toContain(
+                '192.168.1.115\t00:1A:A0:C7:27:D5\tCOMPUTER-19\t0.077\t0.001\t0.078\t30.0%\t0.003\t30'
             );
             const theadElements = await page.evaluate(() =>
                 Array.from(document.querySelectorAll('thead > tr'), (element) => element.innerText)
             );
             expect(theadElements.length).toEqual(3);
-            expect(theadElements[2]).toEqual('Totals\t\t\t31.295\t1.814\t33.108\t\t1.104\t30\t\t');
+            expect(theadElements[2]).toEqual('Totals\t\t\t0.253\t0.006\t0.259\t\t0.009\t30\t\t');
         },
         TIMEOUT
     );
@@ -237,6 +238,7 @@ describe('UsageByUser e2e', () => {
             const selector = '#select-rows-per-page-id';
             await page.waitForSelector(selector);
             await page.select(selector, '24');
+            await page.waitForTimeout(5000);
             const tbodyElements = await page.evaluate(() =>
                 Array.from(document.querySelectorAll('tbody > tr'), (element) => element.innerText)
             );
