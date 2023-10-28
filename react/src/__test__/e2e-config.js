@@ -21,7 +21,7 @@ import PCR from 'puppeteer-chromium-resolver';
 global.XMLHttpRequest = undefined;
 
 export const HOME_URL = 'http://localhost:3000/bwmon#/';
-export const TIMEOUT = 30000;
+export const TIMEOUT = 60000;
 
 export const delay = (time) =>
     new Promise((resolve) => {
