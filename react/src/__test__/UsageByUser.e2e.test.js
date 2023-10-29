@@ -35,6 +35,7 @@ describe('UsageByUser e2e', () => {
     }, TIMEOUT);
 
     beforeEach(async () => {
+        await page.reload({ waitUntil: ['networkidle0', 'domcontentloaded'] });
         await page.goto(HOME_URL + 'UsageByUser');
         await page.waitForSelector('#user-data-0');
         await page.waitForSelector('#user-footer');
