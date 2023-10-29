@@ -206,30 +206,6 @@ describe('UsageByUser e2e', () => {
     );
 
     test(
-        'should show different information when changing IP/MAC/User',
-        async () => {
-            const selector = '#user-filter';
-            await page.waitForSelector(selector);
-            await page.focus(selector);
-            await page.keyboard.type('11');
-            await delay(5000);
-            const tbodyElements = await page.evaluate(() =>
-                Array.from(document.querySelectorAll('tbody > tr'), (element) => element.innerText)
-            );
-            expect(tbodyElements.length).toEqual(5);
-            expect(tbodyElements[0]).toContain(
-                '192.168.1.11\t70:5A:B6:F3:58:AB\tCOMPUTER-12\t0.120\t0.003\t0.123\t47.4%\t0.004\t30'
-            );
-            const theadElements = await page.evaluate(() =>
-                Array.from(document.querySelectorAll('thead > tr'), (element) => element.innerText)
-            );
-            expect(theadElements.length).toEqual(3);
-            expect(theadElements[2]).toEqual('Totals\t\t\t0.253\t0.006\t0.259\t\t0.009\t30\t\t');
-        },
-        TIMEOUT
-    );
-
-    test(
         'should show different information when rows per page',
         async () => {
             const selector = '#select-rows-per-page-id';
@@ -251,6 +227,33 @@ describe('UsageByUser e2e', () => {
             );
             expect(theadElements.length).toEqual(3);
             expect(theadElements[2]).toEqual('Totals\t\t\t83.066\t4.263\t87.329\t\t2.911\t30\t\t');
+        },
+        TIMEOUT
+    );
+
+    test(
+        'should show different information when changing IP/MAC/User',
+        async () => {
+            const selector = '#user-filter';
+            await page.waitForSelector(selector);
+            await page.focus(selector);
+            await page.keyboard.type('11');
+            await delay(5000);
+            const tbodyElements = await page.evaluate(() =>
+                Array.from(document.querySelectorAll('tbody > tr'), (element) => element.innerText)
+            );
+            expect(tbodyElements.length).toEqual(5);
+            expect(tbodyElements[0]).toContain(
+                '192.168.1.11\t70:5A:B6:F3:58:AB\tCOMPUTER-12\t0.120\t0.003\t0.123\t47.4%\t0.004\t30'
+            );
+            expect(tbodyElements[4]).toContain(
+                '192.168.1.115\t00:1A:A0:C7:27:D5\tCOMPUTER-19\t0.077\t0.001\t0.078\t30.0%\t0.003\t30'
+            );
+            const theadElements = await page.evaluate(() =>
+                Array.from(document.querySelectorAll('thead > tr'), (element) => element.innerText)
+            );
+            expect(theadElements.length).toEqual(3);
+            expect(theadElements[2]).toEqual('Totals\t\t\t0.253\t0.006\t0.259\t\t0.009\t30\t\t');
         },
         TIMEOUT
     );
