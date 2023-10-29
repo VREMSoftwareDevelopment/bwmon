@@ -31,8 +31,8 @@ export const delay = (time) =>
 export const materialSelect = async (page, newSelectedValue, cssSelector) => {
     await page.evaluate(
         (newSelectedValue, cssSelector) => {
-            var clickEvent = new Event('mousedown', { bubbles: true, cancelable: true });
-            var selectNode = document.querySelector(cssSelector);
+            let clickEvent = new Event('mousedown', { bubbles: true, cancelable: true });
+            let selectNode = document.querySelector(cssSelector);
             selectNode.dispatchEvent(clickEvent);
             [...document.querySelectorAll('li')].filter((el) => el.innerText === newSelectedValue)[0].click();
         },
@@ -71,10 +71,10 @@ export const stopCoverage = async (page, tag) => {
 
     const [jsCoverage] = await Promise.all([page.coverage.stopJSCoverage()]);
     const jsResult = calculateUsedBytes(jsCoverage);
-    console.info(tag + ' coverage: ' + ((jsResult.usedBytes / jsResult.totalBytes) * 100).toFixed(2) + '%');
+    console.log(tag + ' coverage: ' + ((jsResult.usedBytes / jsResult.totalBytes) * 100).toFixed(2) + '%');
 };
 
-export const launch = async () => {
+const launchFast = async () => {
     const stats = await PCR.getStats();
     return stats.puppeteer
         .launch({
@@ -86,4 +86,32 @@ export const launch = async () => {
         .catch(function (error) {
             console.log(error);
         });
+};
+
+const launchSlow = async () => {
+    const stats = await PCR.getStats();
+    return stats.puppeteer
+        .launch({
+            headless: false,
+            slowMo: 500,
+            devtools: true,
+            args: ['--no-sandbox'],
+            ignoreDefaultArgs: ['--disable-extensions'],
+            executablePath: stats.executablePath,
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+};
+
+export const launch = launchFast;
+
+export const debuggerOn = async (page) => {
+    await page.evaluate(() => {
+        debugger;
+    });
+};
+
+export const consoleOn = (page) => {
+    page.on('console', (msg) => console.log(msg.text()));
 };

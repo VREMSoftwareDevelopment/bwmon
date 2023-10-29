@@ -35,6 +35,10 @@ describe('Navigation e2e', () => {
         await browser.close();
     }, TIMEOUT);
 
+    beforeEach(async () => {
+        await page.reload({ waitUntil: ['networkidle0', 'domcontentloaded'] });
+    }, TIMEOUT);
+
     test(
         'Usage by Year',
         async () => {
@@ -43,6 +47,18 @@ describe('Navigation e2e', () => {
             await page.click(selector);
             const url = page.url();
             expect(url).toBe(HOME_URL + 'UsageByYear');
+        },
+        TIMEOUT
+    );
+
+    test(
+        'Usage by Year Graph',
+        async () => {
+            const selector = '#usage-by-year-graph';
+            await page.waitForSelector(selector);
+            await page.click(selector);
+            const url = page.url();
+            expect(url).toBe(HOME_URL + 'UsageByYearGraph');
         },
         TIMEOUT
     );
@@ -60,6 +76,18 @@ describe('Navigation e2e', () => {
     );
 
     test(
+        'Usage by Month Graph',
+        async () => {
+            const selector = '#usage-by-month-graph';
+            await page.waitForSelector(selector);
+            await page.click(selector);
+            const url = page.url();
+            expect(url).toBe(HOME_URL + 'UsageByMonthGraph');
+        },
+        TIMEOUT
+    );
+
+    test(
         'Usage by User',
         async () => {
             const selector = '#usage-by-user';
@@ -67,6 +95,18 @@ describe('Navigation e2e', () => {
             await page.click(selector);
             const url = page.url();
             expect(url).toBe(HOME_URL + 'UsageByUser');
+        },
+        TIMEOUT
+    );
+
+    test(
+        'Usage by User Graph',
+        async () => {
+            const selector = '#usage-by-user-graph';
+            await page.waitForSelector(selector);
+            await page.click(selector);
+            const url = page.url();
+            expect(url).toBe(HOME_URL + 'UsageByUserGraph');
         },
         TIMEOUT
     );

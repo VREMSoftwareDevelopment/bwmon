@@ -35,6 +35,7 @@ describe('UsageByMonth e2e', () => {
     }, TIMEOUT);
 
     beforeEach(async () => {
+        await page.reload({ waitUntil: ['networkidle0', 'domcontentloaded'] });
         await page.goto(HOME_URL + 'UsageByMonth');
         await page.waitForSelector('#month-data-0');
         await page.waitForSelector('#month-footer');

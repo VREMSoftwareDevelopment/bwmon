@@ -16,7 +16,7 @@
  * Bandwidth Monitor
  */
 
-import { HOME_URL, TIMEOUT, launch, delay, materialSelect, startCoverage, stopCoverage } from './e2e-config';
+import { HOME_URL, TIMEOUT, launch, materialSelect, startCoverage, stopCoverage } from './e2e-config';
 
 describe('UsageByUser e2e', () => {
     let browser;
@@ -212,7 +212,6 @@ describe('UsageByUser e2e', () => {
             const selector = '#select-rows-per-page-id';
             await page.waitForSelector(selector);
             await page.select(selector, '24');
-            await delay(5000);
             const tbodyElements = await page.evaluate(() =>
                 Array.from(document.querySelectorAll('tbody > tr'), (element) => element.innerText)
             );
@@ -239,7 +238,6 @@ describe('UsageByUser e2e', () => {
             await page.waitForSelector(selector);
             await page.focus(selector);
             await page.keyboard.type('11');
-            await delay(5000);
             const tbodyElements = await page.evaluate(() =>
                 Array.from(document.querySelectorAll('tbody > tr'), (element) => element.innerText)
             );
