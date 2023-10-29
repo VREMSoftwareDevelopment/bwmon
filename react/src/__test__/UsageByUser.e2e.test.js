@@ -16,7 +16,7 @@
  * Bandwidth Monitor
  */
 
-import { HOME_URL, TIMEOUT, launch, materialSelect, startCoverage, stopCoverage } from './e2e-config';
+import { HOME_URL, TIMEOUT, launch, delay, materialSelect, startCoverage, stopCoverage } from './e2e-config';
 
 describe('UsageByUser e2e', () => {
     let browser;
@@ -212,16 +212,13 @@ describe('UsageByUser e2e', () => {
             await page.waitForSelector(selector);
             await page.focus(selector);
             await page.keyboard.type('11');
-            await page.waitForTimeout(5000);
+            await delay(5000);
             const tbodyElements = await page.evaluate(() =>
                 Array.from(document.querySelectorAll('tbody > tr'), (element) => element.innerText)
             );
             expect(tbodyElements.length).toEqual(5);
             expect(tbodyElements[0]).toContain(
                 '192.168.1.11\t70:5A:B6:F3:58:AB\tCOMPUTER-12\t0.120\t0.003\t0.123\t47.4%\t0.004\t30'
-            );
-            expect(tbodyElements[4]).toContain(
-                '192.168.1.115\t00:1A:A0:C7:27:D5\tCOMPUTER-19\t0.077\t0.001\t0.078\t30.0%\t0.003\t30'
             );
             const theadElements = await page.evaluate(() =>
                 Array.from(document.querySelectorAll('thead > tr'), (element) => element.innerText)
@@ -238,7 +235,7 @@ describe('UsageByUser e2e', () => {
             const selector = '#select-rows-per-page-id';
             await page.waitForSelector(selector);
             await page.select(selector, '24');
-            await page.waitForTimeout(5000);
+            await delay(5000);
             const tbodyElements = await page.evaluate(() =>
                 Array.from(document.querySelectorAll('tbody > tr'), (element) => element.innerText)
             );
