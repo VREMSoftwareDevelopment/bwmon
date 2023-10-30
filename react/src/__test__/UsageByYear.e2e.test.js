@@ -43,10 +43,8 @@ describe('UsageByYear e2e', () => {
     test(
         'should have table',
         async () => {
-            const tbodyElements = await page.evaluate(() =>
-                Array.from(document.querySelectorAll('tbody > tr'), (element) => element.innerText)
-            );
-            expect(tbodyElements.length).toEqual(3);
+            const innerTexts = await page.$$eval('tbody > tr', (elements) => elements.map((element) => element.innerText));
+            expect(innerTexts.length).toEqual(3);
         },
         TIMEOUT
     );
@@ -54,11 +52,9 @@ describe('UsageByYear e2e', () => {
     test(
         'should sort by year descending',
         async () => {
-            const tbodyElements = await page.evaluate(() =>
-                Array.from(document.querySelectorAll('tbody > tr'), (element) => element.innerText)
-            );
-            expect(tbodyElements[0]).toEqual('2013\t603.928\t35.773\t639.701\t1.753\t365');
-            expect(tbodyElements[2]).toEqual('2011\t139.939\t10.745\t150.684\t0.413\t365');
+            const innerTexts = await page.$$eval('tbody > tr', (elements) => elements.map((element) => element.innerText));
+            expect(innerTexts[0]).toEqual('2013\t603.928\t35.773\t639.701\t1.753\t365');
+            expect(innerTexts[2]).toEqual('2011\t139.939\t10.745\t150.684\t0.413\t365');
         },
         TIMEOUT
     );
@@ -69,11 +65,9 @@ describe('UsageByYear e2e', () => {
             const selector = '#year-id > span';
             await page.waitForSelector(selector);
             await page.click(selector);
-            const tbodyElements = await page.evaluate(() =>
-                Array.from(document.querySelectorAll('tbody > tr'), (element) => element.innerText)
-            );
-            expect(tbodyElements[0]).toEqual('2011\t139.939\t10.745\t150.684\t0.413\t365');
-            expect(tbodyElements[2]).toEqual('2013\t603.928\t35.773\t639.701\t1.753\t365');
+            const innerTexts = await page.$$eval('tbody > tr', (elements) => elements.map((element) => element.innerText));
+            expect(innerTexts[0]).toEqual('2011\t139.939\t10.745\t150.684\t0.413\t365');
+            expect(innerTexts[2]).toEqual('2013\t603.928\t35.773\t639.701\t1.753\t365');
         },
         TIMEOUT
     );

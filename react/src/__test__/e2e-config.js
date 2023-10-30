@@ -28,17 +28,16 @@ export const delay = (time) =>
         setTimeout(resolve, time);
     });
 
-export const materialSelect = async (page, newSelectedValue, cssSelector) => {
-    await page.evaluate(
-        (newSelectedValue, cssSelector) => {
-            let clickEvent = new Event('mousedown', { bubbles: true, cancelable: true });
-            let selectNode = document.querySelector(cssSelector);
-            selectNode.dispatchEvent(clickEvent);
-            [...document.querySelectorAll('li')].filter((el) => el.innerText === newSelectedValue)[0].click();
-        },
-        newSelectedValue,
-        cssSelector
-    );
+export const materialSelect = async (page, value, selector) => {
+    await page.waitForSelector(selector);
+    await page.$eval(selector, (element) => {
+        const event = new MouseEvent('mousedown');
+        event.initEvent('mousedown', true, true);
+        element.dispatchEvent(event);
+    });
+    const valueSelector = `li[data-value="${value}"]`;
+    await page.waitForSelector(valueSelector);
+    await page.$eval(valueSelector, (element) => element.click());
 };
 
 export const startCoverage = async (page) => {

@@ -44,11 +44,9 @@ describe('UsageByMonth e2e', () => {
     test(
         'should have footer',
         async () => {
-            const theadElements = await page.evaluate(() =>
-                Array.from(document.querySelectorAll('thead > tr'), (element) => element.innerText)
-            );
-            expect(theadElements.length).toEqual(3);
-            expect(theadElements[2]).toEqual('Totals\t603.928\t35.773\t639.701\t\t1.753\t365');
+            const innerTexts = await page.$$eval('thead > tr', (elements) => elements.map((element) => element.innerText));
+            expect(innerTexts.length).toEqual(3);
+            expect(innerTexts[2]).toEqual('Totals\t603.928\t35.773\t639.701\t\t1.753\t365');
         },
         TIMEOUT
     );
@@ -56,10 +54,8 @@ describe('UsageByMonth e2e', () => {
     test(
         'should have table',
         async () => {
-            const tbodyElements = await page.evaluate(() =>
-                Array.from(document.querySelectorAll('tbody > tr'), (element) => element.innerText)
-            );
-            expect(tbodyElements.length).toEqual(11);
+            const innerTexts = await page.$$eval('tbody > tr', (elements) => elements.map((element) => element.innerText));
+            expect(innerTexts.length).toEqual(11);
         },
         TIMEOUT
     );
@@ -67,11 +63,9 @@ describe('UsageByMonth e2e', () => {
     test(
         'should sort by month descending',
         async () => {
-            const tbodyElements = await page.evaluate(() =>
-                Array.from(document.querySelectorAll('tbody > tr'), (element) => element.innerText)
-            );
-            expect(tbodyElements[0]).toEqual('November\t83.066\t4.263\t87.329\t13.7%\t2.911\t30');
-            expect(tbodyElements[10]).toEqual('January\t64.043\t4.105\t68.149\t10.7%\t2.198\t31');
+            const innerTexts = await page.$$eval('tbody > tr', (elements) => elements.map((element) => element.innerText));
+            expect(innerTexts[0]).toEqual('November\t83.066\t4.263\t87.329\t13.7%\t2.911\t30');
+            expect(innerTexts[10]).toEqual('January\t64.043\t4.105\t68.149\t10.7%\t2.198\t31');
         },
         TIMEOUT
     );
@@ -82,32 +76,25 @@ describe('UsageByMonth e2e', () => {
             const selector = '#month-id > span';
             await page.waitForSelector(selector);
             await page.click(selector);
-            const tbodyElements = await page.evaluate(() =>
-                Array.from(document.querySelectorAll('tbody > tr'), (element) => element.innerText)
-            );
-            expect(tbodyElements[0]).toEqual('January\t64.043\t4.105\t68.149\t10.7%\t2.198\t31');
-            expect(tbodyElements[10]).toEqual('November\t83.066\t4.263\t87.329\t13.7%\t2.911\t30');
+            const innerTexts = await page.$$eval('tbody > tr', (elements) => elements.map((element) => element.innerText));
+            expect(innerTexts[0]).toEqual('January\t64.043\t4.105\t68.149\t10.7%\t2.198\t31');
+            expect(innerTexts[10]).toEqual('November\t83.066\t4.263\t87.329\t13.7%\t2.911\t30');
         },
         TIMEOUT
     );
 
-    test.skip(
+    test(
         'should show different information when changing year',
         async () => {
             const selector = '#month-year';
-            await page.waitForSelector(selector);
             await materialSelect(page, '2011', selector);
-            const tbodyElements = await page.evaluate(() =>
-                Array.from(document.querySelectorAll('tbody > tr'), (element) => element.innerText)
-            );
-            expect(tbodyElements.length).toEqual(7);
-            expect(tbodyElements[0]).toEqual('December\t21.926\t1.937\t23.863\t15.8%\t0.770\t31');
-            expect(tbodyElements[6]).toEqual('June\t26.949\t2.086\t29.035\t19.3%\t0.968\t30');
-            const theadElements = await page.evaluate(() =>
-                Array.from(document.querySelectorAll('thead > tr'), (element) => element.innerText)
-            );
-            expect(theadElements.length).toEqual(3);
-            expect(theadElements[2]).toEqual('Totals\t139.939\t10.745\t150.684\t\t0.413\t365');
+            const innerTexts = await page.$$eval('tbody > tr', (elements) => elements.map((element) => element.innerText));
+            expect(innerTexts.length).toEqual(7);
+            expect(innerTexts[0]).toEqual('December\t21.926\t1.937\t23.863\t15.8%\t0.770\t31');
+            expect(innerTexts[6]).toEqual('June\t26.949\t2.086\t29.035\t19.3%\t0.968\t30');
+            const footerInnerTexts = await page.$$eval('thead > tr', (elements) => elements.map((element) => element.innerText));
+            expect(footerInnerTexts.length).toEqual(3);
+            expect(footerInnerTexts[2]).toEqual('Totals\t139.939\t10.745\t150.684\t\t0.413\t365');
         },
         TIMEOUT
     );
