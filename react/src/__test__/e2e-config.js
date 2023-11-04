@@ -41,12 +41,12 @@ export const materialSelect = async (page, value, selector) => {
 };
 
 export const startCoverage = async (page) => {
-    await Promise.all([page.coverage.startJSCoverage()]);
+    await Promise.all([page.coverage.startJSCoverage(), page.coverage.startCSSCoverage()]);
 };
 
 export const stopCoverage = async (page, tag) => {
-    const calculateUsedBytes = (coverage) =>
-        coverage
+    const calculateBytes = (coverage) => {
+        const bytes = coverage
             .map(({ ranges, text }) => {
                 let usedBytes = 0;
                 ranges.forEach((range) => (usedBytes += range.end - range.start - 1));
@@ -67,10 +67,11 @@ export const stopCoverage = async (page, tag) => {
                     totalBytes: 0,
                 }
             );
-
-    const [jsCoverage] = await Promise.all([page.coverage.stopJSCoverage()]);
-    const jsResult = calculateUsedBytes(jsCoverage);
-    console.log(tag + ' coverage: ' + ((jsResult.usedBytes / jsResult.totalBytes) * 100).toFixed(2) + '%');
+        return bytes.usedBytes / bytes.totalBytes;
+    };
+    const [jsCoverage, cssCoverage] = await Promise.all([page.coverage.stopJSCoverage(), page.coverage.stopCSSCoverage()]);
+    const coverage = (calculateBytes([...jsCoverage, ...cssCoverage]) * 100).toFixed(2);
+    console.log(tag + ' coverage: ' + coverage + '%');
 };
 
 const launchFast = async () => {

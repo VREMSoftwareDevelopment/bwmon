@@ -7,9 +7,9 @@
     "dependencies": {
         "@emotion/react": "^11.11.1",
         "@emotion/styled": "^11.11.0",
-        "@mui/icons-material": "^5.14.15",
+        "@mui/icons-material": "^5.14.16",
         "@mui/lab": "^5.0.0-alpha.128",
-        "@mui/material": "^5.14.15",
+        "@mui/material": "^5.14.16",
         "apexcharts": "^3.44.0",
         "history": "^5.3.0",
         "luxon": "^3.4.3",
@@ -18,7 +18,7 @@
         "react-apexcharts": "^1.4.1",
         "react-dom": "^18.2.0",
         "react-error-boundary": "^4.0.11",
-        "react-router-dom": "^6.17.0"
+        "react-router-dom": "^6.18.0"
     },
     "scripts": {
         "start": "react-scripts start",
@@ -27,6 +27,7 @@
         "test:once": "react-scripts test --watchAll=false --maxWorkers=50%",
         "test:coverage": "react-scripts test --watchAll=false --coverage --maxWorkers=50%",
         "test:CI": "react-scripts test --watchAll=false --coverage --runInBand",
+        "test:e2e": "react-scripts test --testPathPattern='./*\\e2e\\.test\\.js$' --maxWorkers=25%",
         "eject": "react-scripts eject",
         "pretty": "prettier --write \"src/**/*.{js,jsx,json}\"",
         "audit": "better-npm-audit audit -p -l high"
