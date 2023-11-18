@@ -23,9 +23,9 @@
     "scripts": {
         "start": "react-scripts start",
         "build": "react-scripts build",
-        "test": "react-scripts test --maxWorkers=50%",
-        "test:once": "react-scripts test --watchAll=false --maxWorkers=50%",
-        "test:coverage": "react-scripts test --watchAll=false --coverage --maxWorkers=50%",
+        "test": "react-scripts test --maxWorkers=25%",
+        "test:once": "react-scripts test --watchAll=false --maxWorkers=25%",
+        "test:coverage": "react-scripts test --watchAll=false --coverage --maxWorkers=25%",
         "test:CI": "react-scripts test --watchAll=false --coverage --runInBand",
         "test:e2e": "react-scripts test --testPathPattern='./*\\e2e\\.test\\.js$' --maxWorkers=25%",
         "eject": "react-scripts eject",
