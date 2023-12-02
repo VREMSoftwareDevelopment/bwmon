@@ -26,7 +26,7 @@
         "test": "react-scripts test --maxWorkers=25%",
         "test:once": "react-scripts test --watchAll=false --maxWorkers=25%",
         "test:coverage": "react-scripts test --watchAll=false --coverage --maxWorkers=25%",
-        "test:CI": "react-scripts test --watchAll=false --coverage --runInBand",
+        "test:CI": "react-scripts test --watchAll=false --coverage --runInBand --testPathIgnorePatterns='./*\\e2e\\.test\\.js$'",
         "test:e2e": "react-scripts test --testPathPattern='./*\\e2e\\.test\\.js$' --maxWorkers=25%",
         "eject": "react-scripts eject",
         "pretty": "prettier --write \"src/**/*.{js,jsx,json}\"",
