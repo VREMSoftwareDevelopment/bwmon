@@ -626,7 +626,7 @@ Array [
                 onClick={[Function]}
               >
                 <div
-                  aria-controls=":r3:"
+                  aria-controls=":r5:"
                   aria-expanded="false"
                   aria-haspopup="listbox"
                   aria-labelledby="user-year"
@@ -645,6 +645,7 @@ Array [
                   aria-hidden={true}
                   aria-invalid={false}
                   className="MuiSelect-nativeInput css-yf8vq0-MuiSelect-nativeInput"
+                  name=":r6:"
                   onAnimationStart={[Function]}
                   onChange={[Function]}
                   tabIndex={-1}
@@ -688,7 +689,7 @@ Array [
                 onClick={[Function]}
               >
                 <div
-                  aria-controls=":r4:"
+                  aria-controls=":r7:"
                   aria-expanded="false"
                   aria-haspopup="listbox"
                   aria-labelledby="user-month"
@@ -707,6 +708,7 @@ Array [
                   aria-hidden={true}
                   aria-invalid={false}
                   className="MuiSelect-nativeInput css-yf8vq0-MuiSelect-nativeInput"
+                  name=":r8:"
                   onAnimationStart={[Function]}
                   onChange={[Function]}
                   tabIndex={-1}
