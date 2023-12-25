@@ -27,7 +27,7 @@ jobs:
               run: npm run audit
               working-directory: react
             - name: Start server and run all tests
-              run: npm start & sleep 60; npm run testonce
+              run: npm start & sleep 60; npm run test:CI
               working-directory: react
             - name: Build
               run: npm run build
