@@ -91,7 +91,7 @@ exports[`UsageByMonth renders correctly after data load 1`] = `
               onClick={[Function]}
             >
               <div
-                aria-controls=":r2:"
+                aria-controls=":r1:"
                 aria-expanded="false"
                 aria-haspopup="listbox"
                 aria-labelledby="month-year"
@@ -110,7 +110,6 @@ exports[`UsageByMonth renders correctly after data load 1`] = `
                 aria-hidden={true}
                 aria-invalid={false}
                 className="MuiSelect-nativeInput css-yf8vq0-MuiSelect-nativeInput"
-                name=":r3:"
                 onAnimationStart={[Function]}
                 onChange={[Function]}
                 tabIndex={-1}

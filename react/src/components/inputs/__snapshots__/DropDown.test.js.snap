@@ -25,7 +25,6 @@ exports[`DropDown renders correctly with items 1`] = `
     aria-hidden={true}
     aria-invalid={false}
     className="MuiSelect-nativeInput css-yf8vq0-MuiSelect-nativeInput"
-    name=":r1:"
     onAnimationStart={[Function]}
     onChange={[Function]}
     tabIndex={-1}
