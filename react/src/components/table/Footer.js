@@ -1,5 +1,5 @@
 /*
- *      Copyright (C) 2010 - 2023 VREM Software Development <VREMSoftwareDevelopment@gmail.com>
+ *      Copyright (C) 2010 - 2024 VREM Software Development <VREMSoftwareDevelopment@gmail.com>
  *
  *      Licensed under the Apache License, Version 2.0 (the "License");
  *      you may not use this file except in compliance with the License.
@@ -27,10 +27,10 @@ const Footer = ({ prefix, cellInfos, values }) => (
                     index === 0
                         ? 'Totals'
                         : cellInfo.footer
-                        ? cellInfo.convert
-                            ? cellInfo.convert(values[cellInfo.id])
-                            : values[cellInfo.id]
-                        : '';
+                          ? cellInfo.convert
+                              ? cellInfo.convert(values[cellInfo.id])
+                              : values[cellInfo.id]
+                          : '';
                 return (
                     <TableCell key={cellInfo.id} align={cellInfo.align}>
                         {text}
