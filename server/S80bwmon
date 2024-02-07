@@ -34,7 +34,7 @@ BWMON=${BWDIR}/bwmon.sh
 start() {
 	echo " Starting bwmon..."
 	cru a bwmon_setup "* * * * * $BWMON setup $BWDIR"
-	cru a bwmon_update "1,31 * * * * $BWMON update $BWDIR"
+	cru a bwmon_update "*/30 * * * * $BWMON update $BWDIR"
 }
 
 stop() {

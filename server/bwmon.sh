@@ -24,10 +24,13 @@ display() {
 	echo "	$0 setup path"
 	echo "	$0 update path"
 	echo "	$0 publish path"
+	echo "Note: bc must be installed"
 }
 
 [ -z "${1}" ] && display && exit 1
 [ -z "${2}" ] && display && exit 1
+bc -version > /dev/null 2>&1
+[ $? -ne 0 ] && display && exit 1
 
 LAN0_IFACE=$(nvram get lan_ifname)
 LAN1_IFACE=$(nvram get lan1_ifname)
@@ -65,13 +68,11 @@ unlock() {
 }
 
 usage() {
-	#publish results
-	#header
+	# publish results
+	# header
 	echo "/*Bandwidth Monitor Data*/" > ${OUTPUTDB}
-
-	#details
+	# details
 	echo "$(echo ${MACNAMES/'macnames='/} | tr '<' '\n' | tr '>' ',')" > ${MACNAMESFILE}
-	
 	cat ${USAGEDB} | while IFS=, read CURRENT_MONTH MAC IP USAGE_IN USAGE_OUT CREATE_TIME UPDATE_TIME
 	do
 		MACU=$(echo "$MAC" | tr '[a-z]' '[A-Z')
@@ -82,29 +83,27 @@ usage() {
 		fi
 		echo "${CURRENT_MONTH},${IP},${MACU},${USER},${USAGE_IN},${USAGE_OUT},${CREATE_TIME},${UPDATE_TIME}" >> ${OUTPUTDB}
 	done
-	#footer
+	# footer
 	mv -f ${OUTPUTDB} ${DESTDB}
 }
 
 update() {
-	#Read and reset counters
+	# Read and reset counters
 	iptables -L RRDIPT -vnxZ -t filter > /tmp/traffic_$$.tmp
 	grep -v "0x0" /proc/net/arp  | while read IP TYPE FLAGS MAC MASK IFACE
 	do
 		MACU=$(echo "$MAC" | tr '[a-z]' '[A-Z')
-		#Add new data to the graph. Count in Kbs to deal with 16 bits signed values (up to 2G only)
-		#Have to use temporary files because of crappy busybox shell
 		echo 0 > /tmp/in_$$.tmp
 		echo 0 > /tmp/out_$$.tmp
 		grep ${IP} /tmp/traffic_$$.tmp | while read PKTS BYTES TARGET PROT OPT IFIN IFOUT SRC DST
 		do
-			[ "${DST}" = "${IP}" ] && echo $((${BYTES}/1000)) > /tmp/in_$$.tmp
-			[ "${SRC}" = "${IP}" ] && echo $((${BYTES}/1000)) > /tmp/out_$$.tmp
+			[ "${DST}" = "${IP}" ] && echo ${BYTES}/1000 | bc > /tmp/in_$$.tmp
+			[ "${SRC}" = "${IP}" ] && echo ${BYTES}/1000 | bc > /tmp/out_$$.tmp
 		done
 		IN=$(cat /tmp/in_$$.tmp)
 		OUT=$(cat /tmp/out_$$.tmp)
 		if [ ${IN} -gt 0 -o ${OUT} -gt 0 ];  then
-#			log "DEBUG: New traffic for ${MACU} since last update : ${IN}k:${OUT}k"
+			# log "DEBUG: New traffic for ${MACU} since last update : ${IN}k:${OUT}k"
 			CURRENT_MONTH=$(date +'%Y-%m')
 			LINE=$(grep "${CURRENT_MONTH},${MACU}" ${USAGEDB})
 			if [ -z "${LINE}" ]; then
@@ -117,8 +116,10 @@ update() {
 				USAGE_OUT=$(echo ${LINE} | cut -f5 -s -d, )
 				CREATE_TIME=$(echo ${LINE} | cut -f6 -s -d, )
 			fi
-			USAGE_IN=$((${USAGE_IN}+${IN}))
-			USAGE_OUT=$((${USAGE_OUT}+${OUT}))
+			# log "DEBUG: Usage before: ${USAGE_IN}k:${USAGE_OUT}k"
+			USAGE_IN=`echo ${USAGE_IN}+${IN} | bc`
+			USAGE_OUT=`echo ${USAGE_OUT}+${OUT} | bc`
+			# log "DEBUG: Usage after : ${USAGE_IN}k:${USAGE_OUT}k"
 			UPDATE_TIME=$(date +%s)
 			grep -v "${CURRENT_MONTH},${MACU}" ${USAGEDB} > /tmp/db_$$.tmp
 			mv /tmp/db_$$.tmp ${USAGEDB}
@@ -129,8 +130,9 @@ update() {
 }
 
 create() {
+	# Create the RRDIPT CHAIN (it doesn't matter if it already exists).
 	iptables -N RRDIPT 2> /dev/null
-	#Add the RRDIPT CHAIN to the FORWARD chain (if non existing).
+	# Add the RRDIPT CHAIN to the FORWARD chain (if non existing).
 	iptables -L FORWARD --line-numbers -n | grep "RRDIPT" | grep "1" > /dev/null
 	if [ $? -ne 0 ]; then
 		iptables -L FORWARD -n | grep "RRDIPT" > /dev/null
@@ -140,20 +142,20 @@ create() {
 		fi
 		iptables -I FORWARD -j RRDIPT
 	fi
-	#LAN0 For each host in the ARP table
+	# LAN0 For each host in the ARP table
 	grep ${LAN0_IFACE} /proc/net/arp | while read IP TYPE FLAGS MAC MASK IFACE
 	do
-		#Add iptable rules (if non existing).
+		# Add iptable rules (if non existing).
 		iptables -nL RRDIPT | grep "${IP} " > /dev/null
 		if [ $? -ne 0 ]; then
 			iptables -I RRDIPT -d ${IP} -j RETURN
 			iptables -I RRDIPT -s ${IP} -j RETURN
 		fi
 	done
-	#LAN1 For each host in the ARP table
+	# LAN1 For each host in the ARP table
 	grep ${LAN1_IFACE} /proc/net/arp | while read IP TYPE FLAGS MAC MASK IFACE
 	do
-		#Add iptable rules (if non existing).
+		# Add iptable rules (if non existing).
 		iptables -nL RRDIPT | grep "${IP} " > /dev/null
 		if [ $? -ne 0 ]; then
 			iptables -I RRDIPT -d ${IP} -j RETURN
@@ -164,7 +166,6 @@ create() {
 
 case ${1} in
 "setup" )
-	#Create the RRDIPT CHAIN (it doesn't matter if it already exists).
 	create
 	;;
 "update" )
