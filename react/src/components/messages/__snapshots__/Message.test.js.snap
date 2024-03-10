@@ -5,7 +5,7 @@ exports[`Message renders correctly with message 1`] = `
   className="makeStyles-root-1"
 >
   <div
-    className="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation0 MuiAlert-root MuiAlert-standardSuccess MuiAlert-standard css-wnkddu-MuiPaper-root-MuiAlert-root"
+    className="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation0 MuiAlert-root MuiAlert-colorSuccess MuiAlert-standardSuccess MuiAlert-standard css-svzhua-MuiPaper-root-MuiAlert-root"
     role="alert"
   >
     <div
