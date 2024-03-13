@@ -164,6 +164,15 @@ create() {
 	done
 }
 
+fcdisable() {
+	fc status > /dev/null 2>&1
+	if [ $? -eq 0 ]; then
+    	log "Flow Cache will be disabled ..."
+    	fc disable
+	   	fc flush
+	fi
+}
+
 case ${1} in
 "setup" )
 	create
