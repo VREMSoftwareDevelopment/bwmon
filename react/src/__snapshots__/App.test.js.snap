@@ -338,7 +338,7 @@ Array [
       className="MuiToolbar-root MuiToolbar-gutters MuiToolbar-dense css-10ltm04-MuiToolbar-root"
     >
       <h6
-        className="MuiTypography-root MuiTypography-h6 makeStyles-title-5 css-2ulfj5-MuiTypography-root"
+        className="MuiTypography-root MuiTypography-h6 makeStyles-title-1 css-2ulfj5-MuiTypography-root"
         data-testid="app-title"
         id="app-title"
       >
@@ -2037,7 +2037,7 @@ Array [
     </div>
   </div>,
   <div
-    className="makeStyles-root-8"
+    className="makeStyles-root-4"
   >
     <h6
       className="MuiTypography-root MuiTypography-subtitle2 css-ati914-MuiTypography-root"
