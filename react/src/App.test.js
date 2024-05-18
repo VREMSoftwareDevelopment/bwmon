@@ -25,6 +25,12 @@ import wait from './__test__/utils/Wait';
 jest.mock('./services/Usage');
 jest.mock('./components/table/Pagination');
 
+const error = console.error;
+console.error = (...args) => {
+    if (/defaultProps/.test(args[0])) return;
+    error(...args);
+};
+
 describe('App', () => {
     const originalZone = Settings.defaultZone;
     const originalLocale = Settings.defaultLocale;

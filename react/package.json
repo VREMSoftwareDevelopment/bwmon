@@ -6,19 +6,19 @@
     "private": true,
     "dependencies": {
         "@emotion/react": "^11.11.4",
-        "@emotion/styled": "^11.11.0",
-        "@mui/icons-material": "^5.15.14",
+        "@emotion/styled": "^11.11.5",
+        "@mui/icons-material": "^5.15.18",
         "@mui/lab": "^5.0.0-alpha.169",
-        "@mui/material": "^5.15.14",
-        "apexcharts": "^3.48.0",
+        "@mui/material": "^5.15.18",
+        "apexcharts": "^3.49.1",
         "history": "^5.3.0",
         "luxon": "^3.4.4",
-        "mui-styles": "^2.0.4",
-        "react": "^18.2.0",
+        "mui-styles": "^2.0.5",
+        "react": "^18.3.1",
         "react-apexcharts": "^1.4.1",
-        "react-dom": "^18.2.0",
+        "react-dom": "^18.3.1",
         "react-error-boundary": "^4.0.13",
-        "react-router-dom": "^6.22.3"
+        "react-router-dom": "^6.23.1"
     },
     "scripts": {
         "start": "react-scripts start",
@@ -49,8 +49,8 @@
     },
     "devDependencies": {
         "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
-        "@testing-library/jest-dom": "^6.4.2",
-        "@testing-library/react": "^14.2.2",
+        "@testing-library/jest-dom": "^6.4.5",
+        "@testing-library/react": "^15.0.7",
         "@testing-library/user-event": "^14.5.2",
         "better-npm-audit": "^3.7.3",
         "husky": "^9.0.11",
@@ -59,7 +59,7 @@
         "pretty-quick": "^4.0.0",
         "puppeteer-chromium-resolver": "^20.0.0",
         "react-scripts": "^5.0.1",
-        "react-test-renderer": "^18.2.0"
+        "react-test-renderer": "^18.3.1"
     },
     "prettier": {
         "trailingComma": "es5",
