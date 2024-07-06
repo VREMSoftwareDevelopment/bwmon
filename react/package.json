@@ -7,10 +7,10 @@
     "dependencies": {
         "@emotion/react": "^11.11.4",
         "@emotion/styled": "^11.11.5",
-        "@mui/icons-material": "^5.15.20",
+        "@mui/icons-material": "^5.16.0",
         "@mui/lab": "^5.0.0-alpha.169",
-        "@mui/material": "^5.15.20",
-        "apexcharts": "^3.49.1",
+        "@mui/material": "^5.16.0",
+        "apexcharts": "^3.50.0",
         "history": "^5.3.0",
         "luxon": "^3.4.4",
         "mui-styles": "^2.0.5",
@@ -18,7 +18,7 @@
         "react-apexcharts": "^1.4.1",
         "react-dom": "^18.3.1",
         "react-error-boundary": "^4.0.13",
-        "react-router-dom": "^6.23.1"
+        "react-router-dom": "^6.24.1"
     },
     "scripts": {
         "start": "react-scripts start",
