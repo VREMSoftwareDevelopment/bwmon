@@ -2,7 +2,7 @@
 
 exports[`DropDown renders correctly with items 1`] = `
 <div
-  className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary  css-1yk1gt9-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root"
+  className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary  css-1cprn2g-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root"
   onClick={[Function]}
 >
   <div
@@ -10,7 +10,7 @@ exports[`DropDown renders correctly with items 1`] = `
     aria-expanded="false"
     aria-haspopup="listbox"
     aria-labelledby="12345"
-    className="MuiSelect-select MuiSelect-outlined MuiInputBase-input MuiOutlinedInput-input css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input"
+    className="MuiSelect-select MuiSelect-outlined MuiInputBase-input MuiOutlinedInput-input css-15k6ek6-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input"
     id="12345"
     onBlur={[Function]}
     onFocus={[Function]}
@@ -32,7 +32,7 @@ exports[`DropDown renders correctly with items 1`] = `
   />
   <svg
     aria-hidden={true}
-    className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiSelect-icon MuiSelect-iconOutlined css-hfutr2-MuiSvgIcon-root-MuiSelect-icon"
+    className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiSelect-icon MuiSelect-iconOutlined css-1u6jos5-MuiSvgIcon-root-MuiSelect-icon"
     data-testid="ArrowDropDownIcon"
     focusable="false"
     viewBox="0 0 24 24"
@@ -46,7 +46,7 @@ exports[`DropDown renders correctly with items 1`] = `
     className="MuiOutlinedInput-notchedOutline css-1d3z3hw-MuiOutlinedInput-notchedOutline"
   >
     <legend
-      className="css-ihdtdm"
+      className="css-gpjuor"
     >
       <span
         className="notranslate"

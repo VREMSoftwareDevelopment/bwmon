@@ -5,11 +5,11 @@ exports[`Search renders correctly 1`] = `
   className="MuiFormControl-root MuiTextField-root css-1u3bzj6-MuiFormControl-root-MuiTextField-root"
 >
   <div
-    className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl MuiInputBase-adornedStart css-1q6at85-MuiInputBase-root-MuiOutlinedInput-root"
+    className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl MuiInputBase-adornedStart css-2a7nsh-MuiInputBase-root-MuiOutlinedInput-root"
     onClick={[Function]}
   >
     <div
-      className="MuiInputAdornment-root MuiInputAdornment-positionStart MuiInputAdornment-outlined MuiInputAdornment-sizeMedium css-ittuaa-MuiInputAdornment-root"
+      className="MuiInputAdornment-root MuiInputAdornment-positionStart MuiInputAdornment-outlined MuiInputAdornment-sizeMedium css-6ga8lj-MuiInputAdornment-root"
     >
       <span
         className="notranslate"
@@ -18,7 +18,7 @@ exports[`Search renders correctly 1`] = `
       </span>
       <svg
         aria-hidden={true}
-        className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+        className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-20bmp1-MuiSvgIcon-root"
         data-testid="SearchIcon"
         focusable="false"
         viewBox="0 0 24 24"
@@ -31,7 +31,7 @@ exports[`Search renders correctly 1`] = `
     <input
       aria-invalid={false}
       autoFocus={false}
-      className="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputAdornedStart css-1o9s3wi-MuiInputBase-input-MuiOutlinedInput-input"
+      className="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputAdornedStart css-19j5ahi-MuiInputBase-input-MuiOutlinedInput-input"
       disabled={false}
       id="12345"
       onAnimationStart={[Function]}
@@ -48,7 +48,7 @@ exports[`Search renders correctly 1`] = `
       className="MuiOutlinedInput-notchedOutline css-1d3z3hw-MuiOutlinedInput-notchedOutline"
     >
       <legend
-        className="css-ihdtdm"
+        className="css-gpjuor"
       >
         <span
           className="notranslate"

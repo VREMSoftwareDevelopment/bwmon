@@ -2,21 +2,26 @@
 
 exports[`UsageByYearGraph renders correctly 1`] = `
 <div
-  className="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-1ps6pg7-MuiPaper-root"
+  className="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-1dtoofl-MuiPaper-root"
+  style={
+    Object {
+      "--Paper-shadow": "0px 2px 1px -1px rgba(0,0,0,0.2),0px 1px 1px 0px rgba(0,0,0,0.14),0px 1px 3px 0px rgba(0,0,0,0.12)",
+    }
+  }
 >
   <div
     className="makeStyles-root-1"
   >
     <span
-      className="MuiLinearProgress-root MuiLinearProgress-colorPrimary MuiLinearProgress-indeterminate css-eglki6-MuiLinearProgress-root"
+      className="MuiLinearProgress-root MuiLinearProgress-colorPrimary MuiLinearProgress-indeterminate css-lrbo11-MuiLinearProgress-root"
       role="progressbar"
     >
       <span
-        className="MuiLinearProgress-bar MuiLinearProgress-barColorPrimary MuiLinearProgress-bar1Indeterminate css-5ir5xx-MuiLinearProgress-bar1"
+        className="MuiLinearProgress-bar MuiLinearProgress-barColorPrimary MuiLinearProgress-bar1Indeterminate css-eg0r9f-MuiLinearProgress-bar1"
         style={Object {}}
       />
       <span
-        className="MuiLinearProgress-bar MuiLinearProgress-barColorPrimary MuiLinearProgress-bar2Indeterminate css-1r8wrcl-MuiLinearProgress-bar2"
+        className="MuiLinearProgress-bar MuiLinearProgress-barColorPrimary MuiLinearProgress-bar2Indeterminate css-1yf7653-MuiLinearProgress-bar2"
         style={Object {}}
       />
     </span>
@@ -24,15 +29,20 @@ exports[`UsageByYearGraph renders correctly 1`] = `
       className="makeStyles-root-2"
     >
       <div
-        className="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation0 MuiAlert-root MuiAlert-colorInfo MuiAlert-standardInfo MuiAlert-standard css-hu7tqv-MuiPaper-root-MuiAlert-root"
+        className="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation0 MuiAlert-root MuiAlert-colorInfo MuiAlert-standardInfo MuiAlert-standard css-rxaxkm-MuiPaper-root-MuiAlert-root"
         role="alert"
+        style={
+          Object {
+            "--Paper-shadow": "none",
+          }
+        }
       >
         <div
           className="MuiAlert-icon css-1ytlwq5-MuiAlert-icon"
         >
           <svg
             aria-hidden={true}
-            className="MuiSvgIcon-root MuiSvgIcon-fontSizeInherit css-1vooibu-MuiSvgIcon-root"
+            className="MuiSvgIcon-root MuiSvgIcon-fontSizeInherit css-1lzspe0-MuiSvgIcon-root"
             data-testid="InfoOutlinedIcon"
             focusable="false"
             viewBox="0 0 24 24"
@@ -46,7 +56,8 @@ exports[`UsageByYearGraph renders correctly 1`] = `
           className="MuiAlert-message css-1pxa9xg-MuiAlert-message"
         >
           <div
-            className="MuiTypography-root MuiTypography-body1 MuiTypography-gutterBottom MuiAlertTitle-root css-yslrua-MuiTypography-root-MuiAlertTitle-root"
+            className="MuiTypography-root MuiTypography-body1 MuiTypography-gutterBottom MuiAlertTitle-root css-1hs5ppg-MuiTypography-root-MuiAlertTitle-root"
+            style={Object {}}
           >
             Loading...
           </div>

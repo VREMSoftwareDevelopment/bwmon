@@ -13,33 +13,33 @@ exports[`Footer renders correctly 1`] = `
   >
     <th
       aria-sort={null}
-      className="MuiTableCell-root MuiTableCell-head MuiTableCell-alignLeft MuiTableCell-sizeMedium css-1ygcj2i-MuiTableCell-root"
+      className="MuiTableCell-root MuiTableCell-head MuiTableCell-alignLeft MuiTableCell-sizeMedium css-snl1f5-MuiTableCell-root"
       scope="col"
     >
       Totals
     </th>
     <th
       aria-sort={null}
-      className="MuiTableCell-root MuiTableCell-head MuiTableCell-alignLeft MuiTableCell-sizeMedium css-1ygcj2i-MuiTableCell-root"
+      className="MuiTableCell-root MuiTableCell-head MuiTableCell-alignLeft MuiTableCell-sizeMedium css-snl1f5-MuiTableCell-root"
       scope="col"
     />
     <th
       aria-sort={null}
-      className="MuiTableCell-root MuiTableCell-head MuiTableCell-alignRight MuiTableCell-sizeMedium css-1azl6jz-MuiTableCell-root"
+      className="MuiTableCell-root MuiTableCell-head MuiTableCell-alignRight MuiTableCell-sizeMedium css-g2aoha-MuiTableCell-root"
       scope="col"
     >
       12345
     </th>
     <th
       aria-sort={null}
-      className="MuiTableCell-root MuiTableCell-head MuiTableCell-alignRight MuiTableCell-sizeMedium css-1azl6jz-MuiTableCell-root"
+      className="MuiTableCell-root MuiTableCell-head MuiTableCell-alignRight MuiTableCell-sizeMedium css-g2aoha-MuiTableCell-root"
       scope="col"
     >
       67890xyz
     </th>
     <th
       aria-sort={null}
-      className="MuiTableCell-root MuiTableCell-head MuiTableCell-alignRight MuiTableCell-sizeMedium css-1azl6jz-MuiTableCell-root"
+      className="MuiTableCell-root MuiTableCell-head MuiTableCell-alignRight MuiTableCell-sizeMedium css-g2aoha-MuiTableCell-root"
       scope="col"
     />
   </tr>

@@ -8,7 +8,7 @@ exports[`Pagination renders correctly 1`] = `
   minumum={5}
 >
   <div
-    className="MuiToolbar-root MuiToolbar-gutters MuiToolbar-regular MuiTablePagination-toolbar css-78c6dr-MuiToolbar-root-MuiTablePagination-toolbar"
+    className="MuiToolbar-root MuiToolbar-gutters MuiToolbar-regular MuiTablePagination-toolbar css-16og44m-MuiToolbar-root-MuiTablePagination-toolbar"
   >
     <div
       className="MuiTablePagination-spacer css-1psng7p-MuiTablePagination-spacer"
@@ -23,7 +23,7 @@ exports[`Pagination renders correctly 1`] = `
     >
       <button
         aria-label="first page"
-        className="MuiButtonBase-root Mui-disabled MuiIconButton-root Mui-disabled MuiIconButton-sizeMedium css-78trlr-MuiButtonBase-root-MuiIconButton-root"
+        className="MuiButtonBase-root Mui-disabled MuiIconButton-root Mui-disabled MuiIconButton-sizeMedium css-1wjzr1s-MuiButtonBase-root-MuiIconButton-root"
         disabled={true}
         onBlur={[Function]}
         onClick={[Function]}
@@ -43,7 +43,7 @@ exports[`Pagination renders correctly 1`] = `
       >
         <svg
           aria-hidden={true}
-          className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+          className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-20bmp1-MuiSvgIcon-root"
           data-testid="FirstPageIcon"
           focusable="false"
           viewBox="0 0 24 24"
@@ -55,7 +55,7 @@ exports[`Pagination renders correctly 1`] = `
       </button>
       <button
         aria-label="previous page"
-        className="MuiButtonBase-root Mui-disabled MuiIconButton-root Mui-disabled MuiIconButton-sizeMedium css-78trlr-MuiButtonBase-root-MuiIconButton-root"
+        className="MuiButtonBase-root Mui-disabled MuiIconButton-root Mui-disabled MuiIconButton-sizeMedium css-1wjzr1s-MuiButtonBase-root-MuiIconButton-root"
         disabled={true}
         onBlur={[Function]}
         onClick={[Function]}
@@ -75,7 +75,7 @@ exports[`Pagination renders correctly 1`] = `
       >
         <svg
           aria-hidden={true}
-          className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+          className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-20bmp1-MuiSvgIcon-root"
           data-testid="KeyboardArrowLeftIcon"
           focusable="false"
           viewBox="0 0 24 24"
@@ -87,7 +87,7 @@ exports[`Pagination renders correctly 1`] = `
       </button>
       <button
         aria-label="next page"
-        className="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-78trlr-MuiButtonBase-root-MuiIconButton-root"
+        className="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1wjzr1s-MuiButtonBase-root-MuiIconButton-root"
         disabled={false}
         onBlur={[Function]}
         onClick={[Function]}
@@ -107,7 +107,7 @@ exports[`Pagination renders correctly 1`] = `
       >
         <svg
           aria-hidden={true}
-          className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+          className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-20bmp1-MuiSvgIcon-root"
           data-testid="KeyboardArrowRightIcon"
           focusable="false"
           viewBox="0 0 24 24"
@@ -119,7 +119,7 @@ exports[`Pagination renders correctly 1`] = `
       </button>
       <button
         aria-label="last page"
-        className="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-78trlr-MuiButtonBase-root-MuiIconButton-root"
+        className="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1wjzr1s-MuiButtonBase-root-MuiIconButton-root"
         disabled={false}
         onBlur={[Function]}
         onClick={[Function]}
@@ -139,7 +139,7 @@ exports[`Pagination renders correctly 1`] = `
       >
         <svg
           aria-hidden={true}
-          className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+          className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-20bmp1-MuiSvgIcon-root"
           data-testid="LastPageIcon"
           focusable="false"
           viewBox="0 0 24 24"

@@ -2,21 +2,26 @@
 
 exports[`UsageByUser renders correctly 1`] = `
 <div
-  className="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-1ps6pg7-MuiPaper-root"
+  className="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-1dtoofl-MuiPaper-root"
+  style={
+    Object {
+      "--Paper-shadow": "0px 2px 1px -1px rgba(0,0,0,0.2),0px 1px 1px 0px rgba(0,0,0,0.14),0px 1px 3px 0px rgba(0,0,0,0.12)",
+    }
+  }
 >
   <div
     className="makeStyles-root-1"
   >
     <span
-      className="MuiLinearProgress-root MuiLinearProgress-colorPrimary MuiLinearProgress-indeterminate css-eglki6-MuiLinearProgress-root"
+      className="MuiLinearProgress-root MuiLinearProgress-colorPrimary MuiLinearProgress-indeterminate css-lrbo11-MuiLinearProgress-root"
       role="progressbar"
     >
       <span
-        className="MuiLinearProgress-bar MuiLinearProgress-barColorPrimary MuiLinearProgress-bar1Indeterminate css-5ir5xx-MuiLinearProgress-bar1"
+        className="MuiLinearProgress-bar MuiLinearProgress-barColorPrimary MuiLinearProgress-bar1Indeterminate css-eg0r9f-MuiLinearProgress-bar1"
         style={Object {}}
       />
       <span
-        className="MuiLinearProgress-bar MuiLinearProgress-barColorPrimary MuiLinearProgress-bar2Indeterminate css-1r8wrcl-MuiLinearProgress-bar2"
+        className="MuiLinearProgress-bar MuiLinearProgress-barColorPrimary MuiLinearProgress-bar2Indeterminate css-1yf7653-MuiLinearProgress-bar2"
         style={Object {}}
       />
     </span>
@@ -24,15 +29,20 @@ exports[`UsageByUser renders correctly 1`] = `
       className="makeStyles-root-2"
     >
       <div
-        className="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation0 MuiAlert-root MuiAlert-colorInfo MuiAlert-standardInfo MuiAlert-standard css-hu7tqv-MuiPaper-root-MuiAlert-root"
+        className="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation0 MuiAlert-root MuiAlert-colorInfo MuiAlert-standardInfo MuiAlert-standard css-rxaxkm-MuiPaper-root-MuiAlert-root"
         role="alert"
+        style={
+          Object {
+            "--Paper-shadow": "none",
+          }
+        }
       >
         <div
           className="MuiAlert-icon css-1ytlwq5-MuiAlert-icon"
         >
           <svg
             aria-hidden={true}
-            className="MuiSvgIcon-root MuiSvgIcon-fontSizeInherit css-1vooibu-MuiSvgIcon-root"
+            className="MuiSvgIcon-root MuiSvgIcon-fontSizeInherit css-1lzspe0-MuiSvgIcon-root"
             data-testid="InfoOutlinedIcon"
             focusable="false"
             viewBox="0 0 24 24"
@@ -46,7 +56,8 @@ exports[`UsageByUser renders correctly 1`] = `
           className="MuiAlert-message css-1pxa9xg-MuiAlert-message"
         >
           <div
-            className="MuiTypography-root MuiTypography-body1 MuiTypography-gutterBottom MuiAlertTitle-root css-yslrua-MuiTypography-root-MuiAlertTitle-root"
+            className="MuiTypography-root MuiTypography-body1 MuiTypography-gutterBottom MuiAlertTitle-root css-1hs5ppg-MuiTypography-root-MuiAlertTitle-root"
+            style={Object {}}
           >
             Loading...
           </div>
@@ -62,13 +73,18 @@ exports[`UsageByUser renders correctly 1`] = `
 
 exports[`UsageByUser renders correctly after data load 1`] = `
 <div
-  className="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-1ps6pg7-MuiPaper-root"
+  className="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-1dtoofl-MuiPaper-root"
+  style={
+    Object {
+      "--Paper-shadow": "0px 2px 1px -1px rgba(0,0,0,0.2),0px 1px 1px 0px rgba(0,0,0,0.14),0px 1px 3px 0px rgba(0,0,0,0.12)",
+    }
+  }
 >
   <div
     className="MuiTableContainer-root css-rorn0c-MuiTableContainer-root"
   >
     <table
-      className="MuiTable-root MuiTable-stickyHeader css-xn82ks-MuiTable-root"
+      className="MuiTable-root MuiTable-stickyHeader css-1sy33os-MuiTable-root"
       role={null}
     >
       <thead
@@ -81,11 +97,11 @@ exports[`UsageByUser renders correctly after data load 1`] = `
         >
           <th
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-sizeSmall css-1h37f49-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-sizeSmall css-136imul-MuiTableCell-root"
             scope="col"
           >
             <div
-              className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary  css-1yk1gt9-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root"
+              className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary  css-1cprn2g-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root"
               data-testid="user-year"
               onClick={[Function]}
             >
@@ -94,7 +110,7 @@ exports[`UsageByUser renders correctly after data load 1`] = `
                 aria-expanded="false"
                 aria-haspopup="listbox"
                 aria-labelledby="user-year"
-                className="MuiSelect-select MuiSelect-outlined MuiInputBase-input MuiOutlinedInput-input css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input"
+                className="MuiSelect-select MuiSelect-outlined MuiInputBase-input MuiOutlinedInput-input css-15k6ek6-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input"
                 id="user-year"
                 onBlur={[Function]}
                 onFocus={[Function]}
@@ -116,7 +132,7 @@ exports[`UsageByUser renders correctly after data load 1`] = `
               />
               <svg
                 aria-hidden={true}
-                className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiSelect-icon MuiSelect-iconOutlined css-hfutr2-MuiSvgIcon-root-MuiSelect-icon"
+                className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiSelect-icon MuiSelect-iconOutlined css-1u6jos5-MuiSvgIcon-root-MuiSelect-icon"
                 data-testid="ArrowDropDownIcon"
                 focusable="false"
                 viewBox="0 0 24 24"
@@ -130,7 +146,7 @@ exports[`UsageByUser renders correctly after data load 1`] = `
                 className="MuiOutlinedInput-notchedOutline css-1d3z3hw-MuiOutlinedInput-notchedOutline"
               >
                 <legend
-                  className="css-ihdtdm"
+                  className="css-gpjuor"
                 >
                   <span
                     className="notranslate"
@@ -143,11 +159,11 @@ exports[`UsageByUser renders correctly after data load 1`] = `
           </th>
           <th
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-sizeSmall css-1h37f49-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-sizeSmall css-136imul-MuiTableCell-root"
             scope="col"
           >
             <div
-              className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary  css-1yk1gt9-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root"
+              className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary  css-1cprn2g-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root"
               data-testid="user-month"
               onClick={[Function]}
             >
@@ -156,7 +172,7 @@ exports[`UsageByUser renders correctly after data load 1`] = `
                 aria-expanded="false"
                 aria-haspopup="listbox"
                 aria-labelledby="user-month"
-                className="MuiSelect-select MuiSelect-outlined MuiInputBase-input MuiOutlinedInput-input css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input"
+                className="MuiSelect-select MuiSelect-outlined MuiInputBase-input MuiOutlinedInput-input css-15k6ek6-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input"
                 id="user-month"
                 onBlur={[Function]}
                 onFocus={[Function]}
@@ -178,7 +194,7 @@ exports[`UsageByUser renders correctly after data load 1`] = `
               />
               <svg
                 aria-hidden={true}
-                className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiSelect-icon MuiSelect-iconOutlined css-hfutr2-MuiSvgIcon-root-MuiSelect-icon"
+                className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiSelect-icon MuiSelect-iconOutlined css-1u6jos5-MuiSvgIcon-root-MuiSelect-icon"
                 data-testid="ArrowDropDownIcon"
                 focusable="false"
                 viewBox="0 0 24 24"
@@ -192,7 +208,7 @@ exports[`UsageByUser renders correctly after data load 1`] = `
                 className="MuiOutlinedInput-notchedOutline css-1d3z3hw-MuiOutlinedInput-notchedOutline"
               >
                 <legend
-                  className="css-ihdtdm"
+                  className="css-gpjuor"
                 >
                   <span
                     className="notranslate"
@@ -205,7 +221,7 @@ exports[`UsageByUser renders correctly after data load 1`] = `
           </th>
           <th
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-sizeSmall css-1h37f49-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-sizeSmall css-136imul-MuiTableCell-root"
             colSpan={2}
             scope="col"
           >
@@ -214,11 +230,11 @@ exports[`UsageByUser renders correctly after data load 1`] = `
               data-testid="user-filter"
             >
               <div
-                className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl MuiInputBase-adornedStart css-1q6at85-MuiInputBase-root-MuiOutlinedInput-root"
+                className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl MuiInputBase-adornedStart css-2a7nsh-MuiInputBase-root-MuiOutlinedInput-root"
                 onClick={[Function]}
               >
                 <div
-                  className="MuiInputAdornment-root MuiInputAdornment-positionStart MuiInputAdornment-outlined MuiInputAdornment-sizeMedium css-ittuaa-MuiInputAdornment-root"
+                  className="MuiInputAdornment-root MuiInputAdornment-positionStart MuiInputAdornment-outlined MuiInputAdornment-sizeMedium css-6ga8lj-MuiInputAdornment-root"
                 >
                   <span
                     className="notranslate"
@@ -227,7 +243,7 @@ exports[`UsageByUser renders correctly after data load 1`] = `
                   </span>
                   <svg
                     aria-hidden={true}
-                    className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                    className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-20bmp1-MuiSvgIcon-root"
                     data-testid="SearchIcon"
                     focusable="false"
                     viewBox="0 0 24 24"
@@ -240,7 +256,7 @@ exports[`UsageByUser renders correctly after data load 1`] = `
                 <input
                   aria-invalid={false}
                   autoFocus={false}
-                  className="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputAdornedStart css-1o9s3wi-MuiInputBase-input-MuiOutlinedInput-input"
+                  className="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputAdornedStart css-19j5ahi-MuiInputBase-input-MuiOutlinedInput-input"
                   disabled={false}
                   id="user-filter"
                   onAnimationStart={[Function]}
@@ -256,7 +272,7 @@ exports[`UsageByUser renders correctly after data load 1`] = `
                   className="MuiOutlinedInput-notchedOutline css-1d3z3hw-MuiOutlinedInput-notchedOutline"
                 >
                   <legend
-                    className="css-ihdtdm"
+                    className="css-gpjuor"
                   >
                     <span
                       className="notranslate"
@@ -284,13 +300,13 @@ exports[`UsageByUser renders correctly after data load 1`] = `
         >
           <th
             aria-sort="ascending"
-            className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignLeft MuiTableCell-sizeSmall css-1h37f49-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignLeft MuiTableCell-sizeSmall css-1ils8b8-MuiTableCell-root"
             data-testid="user-IP"
             id="user-IP"
             scope="col"
           >
             <span
-              className="MuiButtonBase-root MuiTableSortLabel-root Mui-active css-1qgma8u-MuiButtonBase-root-MuiTableSortLabel-root"
+              className="MuiButtonBase-root MuiTableSortLabel-root Mui-active MuiTableSortLabel-directionAsc css-1qgma8u-MuiButtonBase-root-MuiTableSortLabel-root"
               onBlur={[Function]}
               onClick={[Function]}
               onContextMenu={[Function]}
@@ -310,7 +326,7 @@ exports[`UsageByUser renders correctly after data load 1`] = `
               IP
               <svg
                 aria-hidden={true}
-                className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiTableSortLabel-icon MuiTableSortLabel-iconDirectionAsc css-1vweko9-MuiSvgIcon-root-MuiTableSortLabel-icon"
+                className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiTableSortLabel-icon MuiTableSortLabel-iconDirectionAsc css-9rdgn9-MuiSvgIcon-root-MuiTableSortLabel-icon"
                 data-testid="ArrowDownwardIcon"
                 focusable="false"
                 viewBox="0 0 24 24"
@@ -323,13 +339,13 @@ exports[`UsageByUser renders correctly after data load 1`] = `
           </th>
           <th
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignLeft MuiTableCell-sizeSmall css-1h37f49-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignLeft MuiTableCell-sizeSmall css-1ils8b8-MuiTableCell-root"
             data-testid="user-MAC"
             id="user-MAC"
             scope="col"
           >
             <span
-              className="MuiButtonBase-root MuiTableSortLabel-root css-1qgma8u-MuiButtonBase-root-MuiTableSortLabel-root"
+              className="MuiButtonBase-root MuiTableSortLabel-root MuiTableSortLabel-directionAsc css-1qgma8u-MuiButtonBase-root-MuiTableSortLabel-root"
               onBlur={[Function]}
               onClick={[Function]}
               onContextMenu={[Function]}
@@ -349,7 +365,7 @@ exports[`UsageByUser renders correctly after data load 1`] = `
               MAC
               <svg
                 aria-hidden={true}
-                className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiTableSortLabel-icon MuiTableSortLabel-iconDirectionAsc css-1vweko9-MuiSvgIcon-root-MuiTableSortLabel-icon"
+                className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiTableSortLabel-icon MuiTableSortLabel-iconDirectionAsc css-9rdgn9-MuiSvgIcon-root-MuiTableSortLabel-icon"
                 data-testid="ArrowDownwardIcon"
                 focusable="false"
                 viewBox="0 0 24 24"
@@ -362,13 +378,13 @@ exports[`UsageByUser renders correctly after data load 1`] = `
           </th>
           <th
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignLeft MuiTableCell-sizeSmall css-1h37f49-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignLeft MuiTableCell-sizeSmall css-1ils8b8-MuiTableCell-root"
             data-testid="user-user"
             id="user-user"
             scope="col"
           >
             <span
-              className="MuiButtonBase-root MuiTableSortLabel-root css-1qgma8u-MuiButtonBase-root-MuiTableSortLabel-root"
+              className="MuiButtonBase-root MuiTableSortLabel-root MuiTableSortLabel-directionAsc css-1qgma8u-MuiButtonBase-root-MuiTableSortLabel-root"
               onBlur={[Function]}
               onClick={[Function]}
               onContextMenu={[Function]}
@@ -388,7 +404,7 @@ exports[`UsageByUser renders correctly after data load 1`] = `
               User
               <svg
                 aria-hidden={true}
-                className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiTableSortLabel-icon MuiTableSortLabel-iconDirectionAsc css-1vweko9-MuiSvgIcon-root-MuiTableSortLabel-icon"
+                className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiTableSortLabel-icon MuiTableSortLabel-iconDirectionAsc css-9rdgn9-MuiSvgIcon-root-MuiTableSortLabel-icon"
                 data-testid="ArrowDownwardIcon"
                 focusable="false"
                 viewBox="0 0 24 24"
@@ -401,27 +417,27 @@ exports[`UsageByUser renders correctly after data load 1`] = `
           </th>
           <th
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignRight MuiTableCell-sizeSmall css-l2upbl-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignRight MuiTableCell-sizeSmall css-csrj95-MuiTableCell-root"
             scope="col"
           >
             Down
           </th>
           <th
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignRight MuiTableCell-sizeSmall css-l2upbl-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignRight MuiTableCell-sizeSmall css-csrj95-MuiTableCell-root"
             scope="col"
           >
             Up
           </th>
           <th
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignRight MuiTableCell-sizeSmall css-l2upbl-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignRight MuiTableCell-sizeSmall css-csrj95-MuiTableCell-root"
             data-testid="user-total"
             id="user-total"
             scope="col"
           >
             <span
-              className="MuiButtonBase-root MuiTableSortLabel-root css-1qgma8u-MuiButtonBase-root-MuiTableSortLabel-root"
+              className="MuiButtonBase-root MuiTableSortLabel-root MuiTableSortLabel-directionAsc css-1qgma8u-MuiButtonBase-root-MuiTableSortLabel-root"
               onBlur={[Function]}
               onClick={[Function]}
               onContextMenu={[Function]}
@@ -441,7 +457,7 @@ exports[`UsageByUser renders correctly after data load 1`] = `
               Total
               <svg
                 aria-hidden={true}
-                className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiTableSortLabel-icon MuiTableSortLabel-iconDirectionAsc css-1vweko9-MuiSvgIcon-root-MuiTableSortLabel-icon"
+                className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiTableSortLabel-icon MuiTableSortLabel-iconDirectionAsc css-9rdgn9-MuiSvgIcon-root-MuiTableSortLabel-icon"
                 data-testid="ArrowDownwardIcon"
                 focusable="false"
                 viewBox="0 0 24 24"
@@ -454,35 +470,35 @@ exports[`UsageByUser renders correctly after data load 1`] = `
           </th>
           <th
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignRight MuiTableCell-sizeSmall css-l2upbl-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignRight MuiTableCell-sizeSmall css-csrj95-MuiTableCell-root"
             scope="col"
           >
             Percent
           </th>
           <th
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignRight MuiTableCell-sizeSmall css-l2upbl-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignRight MuiTableCell-sizeSmall css-csrj95-MuiTableCell-root"
             scope="col"
           >
             Average
           </th>
           <th
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignLeft MuiTableCell-sizeSmall css-1h37f49-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignLeft MuiTableCell-sizeSmall css-1ils8b8-MuiTableCell-root"
             scope="col"
           >
             Days
           </th>
           <th
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignLeft MuiTableCell-sizeSmall css-1h37f49-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignLeft MuiTableCell-sizeSmall css-1ils8b8-MuiTableCell-root"
             scope="col"
           >
             First Seen
           </th>
           <th
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignLeft MuiTableCell-sizeSmall css-1h37f49-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignLeft MuiTableCell-sizeSmall css-1ils8b8-MuiTableCell-root"
             scope="col"
           >
             Last Seen
@@ -505,67 +521,67 @@ exports[`UsageByUser renders correctly after data load 1`] = `
         >
           <td
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-dsuxgy-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-9dqz9p-MuiTableCell-root"
           >
             192.168.1.10
           </td>
           <td
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-dsuxgy-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-9dqz9p-MuiTableCell-root"
           >
             00:1C:25:27:9B:AE
           </td>
           <td
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-dsuxgy-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-9dqz9p-MuiTableCell-root"
           >
             COMPUTER-3
           </td>
           <td
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-dv0mq-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-2ign9w-MuiTableCell-root"
           >
             15.004
           </td>
           <td
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-dv0mq-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-2ign9w-MuiTableCell-root"
           >
             0.973
           </td>
           <td
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-dv0mq-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-2ign9w-MuiTableCell-root"
           >
             15.978
           </td>
           <td
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-dv0mq-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-2ign9w-MuiTableCell-root"
           >
             18.3%
           </td>
           <td
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-dv0mq-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-2ign9w-MuiTableCell-root"
           >
             0.533
           </td>
           <td
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-dsuxgy-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-9dqz9p-MuiTableCell-root"
           >
             30
           </td>
           <td
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-dsuxgy-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-9dqz9p-MuiTableCell-root"
           >
             Nov 01, 2013 16:30
           </td>
           <td
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-dsuxgy-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-9dqz9p-MuiTableCell-root"
           >
             Nov 30, 2013 22:30
           </td>
@@ -582,67 +598,67 @@ exports[`UsageByUser renders correctly after data load 1`] = `
         >
           <td
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-dsuxgy-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-9dqz9p-MuiTableCell-root"
           >
             192.168.1.11
           </td>
           <td
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-dsuxgy-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-9dqz9p-MuiTableCell-root"
           >
             70:5A:B6:F3:58:AB
           </td>
           <td
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-dsuxgy-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-9dqz9p-MuiTableCell-root"
           >
             COMPUTER-12
           </td>
           <td
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-dv0mq-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-2ign9w-MuiTableCell-root"
           >
             0.120
           </td>
           <td
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-dv0mq-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-2ign9w-MuiTableCell-root"
           >
             0.003
           </td>
           <td
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-dv0mq-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-2ign9w-MuiTableCell-root"
           >
             0.123
           </td>
           <td
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-dv0mq-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-2ign9w-MuiTableCell-root"
           >
             0.1%
           </td>
           <td
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-dv0mq-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-2ign9w-MuiTableCell-root"
           >
             0.004
           </td>
           <td
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-dsuxgy-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-9dqz9p-MuiTableCell-root"
           >
             30
           </td>
           <td
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-dsuxgy-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-9dqz9p-MuiTableCell-root"
           >
             Nov 01, 2013 16:30
           </td>
           <td
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-dsuxgy-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-9dqz9p-MuiTableCell-root"
           >
             Nov 30, 2013 22:30
           </td>
@@ -659,67 +675,67 @@ exports[`UsageByUser renders correctly after data load 1`] = `
         >
           <td
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-dsuxgy-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-9dqz9p-MuiTableCell-root"
           >
             192.168.1.12
           </td>
           <td
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-dsuxgy-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-9dqz9p-MuiTableCell-root"
           >
             00:26:9E:C4:A0:40
           </td>
           <td
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-dsuxgy-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-9dqz9p-MuiTableCell-root"
           >
             COMPUTER-5
           </td>
           <td
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-dv0mq-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-2ign9w-MuiTableCell-root"
           >
             0.614
           </td>
           <td
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-dv0mq-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-2ign9w-MuiTableCell-root"
           >
             0.034
           </td>
           <td
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-dv0mq-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-2ign9w-MuiTableCell-root"
           >
             0.648
           </td>
           <td
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-dv0mq-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-2ign9w-MuiTableCell-root"
           >
             0.7%
           </td>
           <td
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-dv0mq-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-2ign9w-MuiTableCell-root"
           >
             0.022
           </td>
           <td
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-dsuxgy-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-9dqz9p-MuiTableCell-root"
           >
             30
           </td>
           <td
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-dsuxgy-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-9dqz9p-MuiTableCell-root"
           >
             Nov 01, 2013 16:30
           </td>
           <td
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-dsuxgy-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-9dqz9p-MuiTableCell-root"
           >
             Nov 30, 2013 22:30
           </td>
@@ -736,67 +752,67 @@ exports[`UsageByUser renders correctly after data load 1`] = `
         >
           <td
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-dsuxgy-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-9dqz9p-MuiTableCell-root"
           >
             192.168.1.13
           </td>
           <td
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-dsuxgy-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-9dqz9p-MuiTableCell-root"
           >
             00:23:18:DA:FF:88
           </td>
           <td
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-dsuxgy-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-9dqz9p-MuiTableCell-root"
           >
             COMPUTER-7
           </td>
           <td
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-dv0mq-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-2ign9w-MuiTableCell-root"
           >
             3.516
           </td>
           <td
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-dv0mq-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-2ign9w-MuiTableCell-root"
           >
             0.311
           </td>
           <td
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-dv0mq-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-2ign9w-MuiTableCell-root"
           >
             3.827
           </td>
           <td
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-dv0mq-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-2ign9w-MuiTableCell-root"
           >
             4.4%
           </td>
           <td
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-dv0mq-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-2ign9w-MuiTableCell-root"
           >
             0.128
           </td>
           <td
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-dsuxgy-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-9dqz9p-MuiTableCell-root"
           >
             30
           </td>
           <td
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-dsuxgy-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-9dqz9p-MuiTableCell-root"
           >
             Nov 01, 2013 16:30
           </td>
           <td
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-dsuxgy-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-9dqz9p-MuiTableCell-root"
           >
             Nov 30, 2013 22:30
           </td>
@@ -813,67 +829,67 @@ exports[`UsageByUser renders correctly after data load 1`] = `
         >
           <td
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-dsuxgy-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-9dqz9p-MuiTableCell-root"
           >
             192.168.1.14
           </td>
           <td
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-dsuxgy-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-9dqz9p-MuiTableCell-root"
           >
             00:24:8D:28:F2:9A
           </td>
           <td
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-dsuxgy-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-9dqz9p-MuiTableCell-root"
           >
             COMPUTER-1
           </td>
           <td
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-dv0mq-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-2ign9w-MuiTableCell-root"
           >
             0.203
           </td>
           <td
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-dv0mq-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-2ign9w-MuiTableCell-root"
           >
             0.012
           </td>
           <td
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-dv0mq-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-2ign9w-MuiTableCell-root"
           >
             0.214
           </td>
           <td
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-dv0mq-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-2ign9w-MuiTableCell-root"
           >
             0.2%
           </td>
           <td
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-dv0mq-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-2ign9w-MuiTableCell-root"
           >
             0.007
           </td>
           <td
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-dsuxgy-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-9dqz9p-MuiTableCell-root"
           >
             30
           </td>
           <td
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-dsuxgy-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-9dqz9p-MuiTableCell-root"
           >
             Nov 01, 2013 16:30
           </td>
           <td
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-dsuxgy-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-9dqz9p-MuiTableCell-root"
           >
             Nov 30, 2013 22:30
           </td>
@@ -890,67 +906,67 @@ exports[`UsageByUser renders correctly after data load 1`] = `
         >
           <td
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-dsuxgy-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-9dqz9p-MuiTableCell-root"
           >
             192.168.1.15
           </td>
           <td
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-dsuxgy-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-9dqz9p-MuiTableCell-root"
           >
             00:1A:A0:C7:19:08
           </td>
           <td
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-dsuxgy-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-9dqz9p-MuiTableCell-root"
           >
             COMPUTER-9
           </td>
           <td
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-dv0mq-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-2ign9w-MuiTableCell-root"
           >
             27.175
           </td>
           <td
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-dv0mq-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-2ign9w-MuiTableCell-root"
           >
             0.565
           </td>
           <td
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-dv0mq-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-2ign9w-MuiTableCell-root"
           >
             27.740
           </td>
           <td
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-dv0mq-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-2ign9w-MuiTableCell-root"
           >
             31.8%
           </td>
           <td
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-dv0mq-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-2ign9w-MuiTableCell-root"
           >
             0.925
           </td>
           <td
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-dsuxgy-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-9dqz9p-MuiTableCell-root"
           >
             30
           </td>
           <td
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-dsuxgy-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-9dqz9p-MuiTableCell-root"
           >
             Nov 01, 2013 16:30
           </td>
           <td
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-dsuxgy-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-9dqz9p-MuiTableCell-root"
           >
             Nov 30, 2013 22:30
           </td>
@@ -967,67 +983,67 @@ exports[`UsageByUser renders correctly after data load 1`] = `
         >
           <td
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-dsuxgy-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-9dqz9p-MuiTableCell-root"
           >
             192.168.1.16
           </td>
           <td
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-dsuxgy-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-9dqz9p-MuiTableCell-root"
           >
             00:90:A9:C6:19:5B
           </td>
           <td
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-dsuxgy-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-9dqz9p-MuiTableCell-root"
           >
             COMPUTER-11
           </td>
           <td
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-dv0mq-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-2ign9w-MuiTableCell-root"
           >
             0.055
           </td>
           <td
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-dv0mq-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-2ign9w-MuiTableCell-root"
           >
             0.001
           </td>
           <td
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-dv0mq-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-2ign9w-MuiTableCell-root"
           >
             0.056
           </td>
           <td
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-dv0mq-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-2ign9w-MuiTableCell-root"
           >
             0.1%
           </td>
           <td
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-dv0mq-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-2ign9w-MuiTableCell-root"
           >
             0.002
           </td>
           <td
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-dsuxgy-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-9dqz9p-MuiTableCell-root"
           >
             30
           </td>
           <td
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-dsuxgy-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-9dqz9p-MuiTableCell-root"
           >
             Nov 01, 2013 16:30
           </td>
           <td
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-dsuxgy-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-9dqz9p-MuiTableCell-root"
           >
             Nov 30, 2013 22:30
           </td>
@@ -1044,67 +1060,67 @@ exports[`UsageByUser renders correctly after data load 1`] = `
         >
           <td
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-dsuxgy-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-9dqz9p-MuiTableCell-root"
           >
             192.168.1.20
           </td>
           <td
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-dsuxgy-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-9dqz9p-MuiTableCell-root"
           >
             00:1A:E9:92:A5:5F
           </td>
           <td
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-dsuxgy-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-9dqz9p-MuiTableCell-root"
           >
             COMPUTER-8
           </td>
           <td
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-dv0mq-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-2ign9w-MuiTableCell-root"
           >
             0.023
           </td>
           <td
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-dv0mq-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-2ign9w-MuiTableCell-root"
           >
             0.000
           </td>
           <td
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-dv0mq-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-2ign9w-MuiTableCell-root"
           >
             0.024
           </td>
           <td
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-dv0mq-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-2ign9w-MuiTableCell-root"
           >
             0.0%
           </td>
           <td
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-dv0mq-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-2ign9w-MuiTableCell-root"
           >
             0.001
           </td>
           <td
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-dsuxgy-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-9dqz9p-MuiTableCell-root"
           >
             30
           </td>
           <td
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-dsuxgy-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-9dqz9p-MuiTableCell-root"
           >
             Nov 01, 2013 16:30
           </td>
           <td
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-dsuxgy-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-9dqz9p-MuiTableCell-root"
           >
             Nov 30, 2013 22:30
           </td>
@@ -1121,67 +1137,67 @@ exports[`UsageByUser renders correctly after data load 1`] = `
         >
           <td
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-dsuxgy-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-9dqz9p-MuiTableCell-root"
           >
             192.168.1.21
           </td>
           <td
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-dsuxgy-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-9dqz9p-MuiTableCell-root"
           >
             40:6F:2A:54:D9:EB
           </td>
           <td
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-dsuxgy-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-9dqz9p-MuiTableCell-root"
           >
             COMPUTER-2
           </td>
           <td
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-dv0mq-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-2ign9w-MuiTableCell-root"
           >
             1.407
           </td>
           <td
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-dv0mq-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-2ign9w-MuiTableCell-root"
           >
             0.112
           </td>
           <td
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-dv0mq-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-2ign9w-MuiTableCell-root"
           >
             1.518
           </td>
           <td
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-dv0mq-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-2ign9w-MuiTableCell-root"
           >
             1.7%
           </td>
           <td
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-dv0mq-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-2ign9w-MuiTableCell-root"
           >
             0.051
           </td>
           <td
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-dsuxgy-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-9dqz9p-MuiTableCell-root"
           >
             30
           </td>
           <td
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-dsuxgy-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-9dqz9p-MuiTableCell-root"
           >
             Nov 01, 2013 16:30
           </td>
           <td
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-dsuxgy-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-9dqz9p-MuiTableCell-root"
           >
             Nov 30, 2013 22:30
           </td>
@@ -1198,67 +1214,67 @@ exports[`UsageByUser renders correctly after data load 1`] = `
         >
           <td
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-dsuxgy-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-9dqz9p-MuiTableCell-root"
           >
             192.168.1.22
           </td>
           <td
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-dsuxgy-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-9dqz9p-MuiTableCell-root"
           >
             90:4C:E5:A6:91:FA
           </td>
           <td
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-dsuxgy-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-9dqz9p-MuiTableCell-root"
           >
             COMPUTER-6
           </td>
           <td
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-dv0mq-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-2ign9w-MuiTableCell-root"
           >
             0.174
           </td>
           <td
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-dv0mq-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-2ign9w-MuiTableCell-root"
           >
             0.014
           </td>
           <td
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-dv0mq-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-2ign9w-MuiTableCell-root"
           >
             0.188
           </td>
           <td
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-dv0mq-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-2ign9w-MuiTableCell-root"
           >
             0.2%
           </td>
           <td
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-dv0mq-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-2ign9w-MuiTableCell-root"
           >
             0.006
           </td>
           <td
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-dsuxgy-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-9dqz9p-MuiTableCell-root"
           >
             30
           </td>
           <td
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-dsuxgy-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-9dqz9p-MuiTableCell-root"
           >
             Nov 01, 2013 16:30
           </td>
           <td
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-dsuxgy-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-9dqz9p-MuiTableCell-root"
           >
             Nov 30, 2013 22:30
           </td>
@@ -1275,67 +1291,67 @@ exports[`UsageByUser renders correctly after data load 1`] = `
         >
           <td
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-dsuxgy-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-9dqz9p-MuiTableCell-root"
           >
             192.168.1.23
           </td>
           <td
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-dsuxgy-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-9dqz9p-MuiTableCell-root"
           >
             78:E4:00:9F:97:3A
           </td>
           <td
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-dsuxgy-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-9dqz9p-MuiTableCell-root"
           >
             COMPUTER-10
           </td>
           <td
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-dv0mq-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-2ign9w-MuiTableCell-root"
           >
             9.292
           </td>
           <td
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-dv0mq-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-2ign9w-MuiTableCell-root"
           >
             0.325
           </td>
           <td
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-dv0mq-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-2ign9w-MuiTableCell-root"
           >
             9.616
           </td>
           <td
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-dv0mq-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-2ign9w-MuiTableCell-root"
           >
             11.0%
           </td>
           <td
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-dv0mq-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-2ign9w-MuiTableCell-root"
           >
             0.321
           </td>
           <td
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-dsuxgy-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-9dqz9p-MuiTableCell-root"
           >
             30
           </td>
           <td
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-dsuxgy-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-9dqz9p-MuiTableCell-root"
           >
             Nov 01, 2013 16:30
           </td>
           <td
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-dsuxgy-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-9dqz9p-MuiTableCell-root"
           >
             Nov 30, 2013 22:30
           </td>
@@ -1352,67 +1368,67 @@ exports[`UsageByUser renders correctly after data load 1`] = `
         >
           <td
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-dsuxgy-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-9dqz9p-MuiTableCell-root"
           >
             192.168.1.24
           </td>
           <td
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-dsuxgy-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-9dqz9p-MuiTableCell-root"
           >
             00:27:10:0E:B5:60
           </td>
           <td
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-dsuxgy-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-9dqz9p-MuiTableCell-root"
           >
             COMPUTER-4
           </td>
           <td
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-dv0mq-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-2ign9w-MuiTableCell-root"
           >
             19.689
           </td>
           <td
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-dv0mq-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-2ign9w-MuiTableCell-root"
           >
             1.621
           </td>
           <td
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-dv0mq-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-2ign9w-MuiTableCell-root"
           >
             21.310
           </td>
           <td
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-dv0mq-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-2ign9w-MuiTableCell-root"
           >
             24.4%
           </td>
           <td
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-dv0mq-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-2ign9w-MuiTableCell-root"
           >
             0.710
           </td>
           <td
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-dsuxgy-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-9dqz9p-MuiTableCell-root"
           >
             30
           </td>
           <td
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-dsuxgy-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-9dqz9p-MuiTableCell-root"
           >
             Nov 01, 2013 16:30
           </td>
           <td
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-dsuxgy-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-9dqz9p-MuiTableCell-root"
           >
             Nov 30, 2013 22:30
           </td>
@@ -1430,69 +1446,69 @@ exports[`UsageByUser renders correctly after data load 1`] = `
         >
           <th
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignLeft MuiTableCell-sizeSmall css-1h37f49-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignLeft MuiTableCell-sizeSmall css-1ils8b8-MuiTableCell-root"
             scope="col"
           >
             Totals
           </th>
           <th
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignLeft MuiTableCell-sizeSmall css-1h37f49-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignLeft MuiTableCell-sizeSmall css-1ils8b8-MuiTableCell-root"
             scope="col"
           />
           <th
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignLeft MuiTableCell-sizeSmall css-1h37f49-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignLeft MuiTableCell-sizeSmall css-1ils8b8-MuiTableCell-root"
             scope="col"
           />
           <th
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignRight MuiTableCell-sizeSmall css-l2upbl-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignRight MuiTableCell-sizeSmall css-csrj95-MuiTableCell-root"
             scope="col"
           >
             83.066
           </th>
           <th
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignRight MuiTableCell-sizeSmall css-l2upbl-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignRight MuiTableCell-sizeSmall css-csrj95-MuiTableCell-root"
             scope="col"
           >
             4.263
           </th>
           <th
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignRight MuiTableCell-sizeSmall css-l2upbl-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignRight MuiTableCell-sizeSmall css-csrj95-MuiTableCell-root"
             scope="col"
           >
             87.329
           </th>
           <th
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignRight MuiTableCell-sizeSmall css-l2upbl-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignRight MuiTableCell-sizeSmall css-csrj95-MuiTableCell-root"
             scope="col"
           />
           <th
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignRight MuiTableCell-sizeSmall css-l2upbl-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignRight MuiTableCell-sizeSmall css-csrj95-MuiTableCell-root"
             scope="col"
           >
             2.911
           </th>
           <th
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignLeft MuiTableCell-sizeSmall css-1h37f49-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignLeft MuiTableCell-sizeSmall css-1ils8b8-MuiTableCell-root"
             scope="col"
           >
             30
           </th>
           <th
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignLeft MuiTableCell-sizeSmall css-1h37f49-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignLeft MuiTableCell-sizeSmall css-1ils8b8-MuiTableCell-root"
             scope="col"
           />
           <th
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignLeft MuiTableCell-sizeSmall css-1h37f49-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignLeft MuiTableCell-sizeSmall css-1ils8b8-MuiTableCell-root"
             scope="col"
           />
         </tr>

@@ -11,13 +11,13 @@ exports[`Header renders correctly 1`] = `
   >
     <th
       aria-sort="ascending"
-      className="MuiTableCell-root MuiTableCell-head MuiTableCell-alignLeft MuiTableCell-sizeMedium css-1ygcj2i-MuiTableCell-root"
+      className="MuiTableCell-root MuiTableCell-head MuiTableCell-alignLeft MuiTableCell-sizeMedium css-snl1f5-MuiTableCell-root"
       data-testid="test-IP"
       id="test-IP"
       scope="col"
     >
       <span
-        className="MuiButtonBase-root MuiTableSortLabel-root Mui-active css-1qgma8u-MuiButtonBase-root-MuiTableSortLabel-root"
+        className="MuiButtonBase-root MuiTableSortLabel-root Mui-active MuiTableSortLabel-directionAsc css-1qgma8u-MuiButtonBase-root-MuiTableSortLabel-root"
         onBlur={[Function]}
         onClick={[Function]}
         onContextMenu={[Function]}
@@ -37,7 +37,7 @@ exports[`Header renders correctly 1`] = `
         IP
         <svg
           aria-hidden={true}
-          className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiTableSortLabel-icon MuiTableSortLabel-iconDirectionAsc css-1vweko9-MuiSvgIcon-root-MuiTableSortLabel-icon"
+          className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiTableSortLabel-icon MuiTableSortLabel-iconDirectionAsc css-9rdgn9-MuiSvgIcon-root-MuiTableSortLabel-icon"
           data-testid="ArrowDownwardIcon"
           focusable="false"
           viewBox="0 0 24 24"
@@ -50,20 +50,20 @@ exports[`Header renders correctly 1`] = `
     </th>
     <th
       aria-sort={null}
-      className="MuiTableCell-root MuiTableCell-head MuiTableCell-alignLeft MuiTableCell-sizeMedium css-1ygcj2i-MuiTableCell-root"
+      className="MuiTableCell-root MuiTableCell-head MuiTableCell-alignLeft MuiTableCell-sizeMedium css-snl1f5-MuiTableCell-root"
       scope="col"
     >
       MAC
     </th>
     <th
       aria-sort={null}
-      className="MuiTableCell-root MuiTableCell-head MuiTableCell-alignRight MuiTableCell-sizeMedium css-1azl6jz-MuiTableCell-root"
+      className="MuiTableCell-root MuiTableCell-head MuiTableCell-alignRight MuiTableCell-sizeMedium css-g2aoha-MuiTableCell-root"
       data-testid="test-download"
       id="test-download"
       scope="col"
     >
       <span
-        className="MuiButtonBase-root MuiTableSortLabel-root css-1qgma8u-MuiButtonBase-root-MuiTableSortLabel-root"
+        className="MuiButtonBase-root MuiTableSortLabel-root MuiTableSortLabel-directionAsc css-1qgma8u-MuiButtonBase-root-MuiTableSortLabel-root"
         onBlur={[Function]}
         onClick={[Function]}
         onContextMenu={[Function]}
@@ -83,7 +83,7 @@ exports[`Header renders correctly 1`] = `
         Down
         <svg
           aria-hidden={true}
-          className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiTableSortLabel-icon MuiTableSortLabel-iconDirectionAsc css-1vweko9-MuiSvgIcon-root-MuiTableSortLabel-icon"
+          className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiTableSortLabel-icon MuiTableSortLabel-iconDirectionAsc css-9rdgn9-MuiSvgIcon-root-MuiTableSortLabel-icon"
           data-testid="ArrowDownwardIcon"
           focusable="false"
           viewBox="0 0 24 24"
@@ -96,7 +96,7 @@ exports[`Header renders correctly 1`] = `
     </th>
     <th
       aria-sort={null}
-      className="MuiTableCell-root MuiTableCell-head MuiTableCell-alignRight MuiTableCell-sizeMedium css-1azl6jz-MuiTableCell-root"
+      className="MuiTableCell-root MuiTableCell-head MuiTableCell-alignRight MuiTableCell-sizeMedium css-g2aoha-MuiTableCell-root"
       scope="col"
     >
       Up
