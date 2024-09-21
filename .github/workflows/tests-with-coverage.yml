@@ -29,9 +29,13 @@ jobs:
                   file: ./react/coverage/coverage-final.json
             - name: Install Playwright Browsers
               run: npx playwright install --with-deps
+              working-directory: react
             - name: Run Playwright tests
               run: npx playwright test
-            - uses: actions/upload-artifact@v4
+              working-directory: react
+            - name: Upload Playwright report
+              uses: actions/upload-artifact@v4
+              working-directory: react
               if: ${{ !cancelled() }}
               with:
                   name: playwright-report
