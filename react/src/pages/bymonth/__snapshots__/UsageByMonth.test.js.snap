@@ -102,7 +102,7 @@ exports[`UsageByMonth renders correctly after data load 1`] = `
             scope="col"
           >
             <div
-              className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary  css-1cprn2g-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root"
+              className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary css-1cprn2g-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root"
               data-testid="month-year"
               onClick={[Function]}
             >

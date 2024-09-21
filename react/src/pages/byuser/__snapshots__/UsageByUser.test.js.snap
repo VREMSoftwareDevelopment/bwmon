@@ -101,7 +101,7 @@ exports[`UsageByUser renders correctly after data load 1`] = `
             scope="col"
           >
             <div
-              className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary  css-1cprn2g-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root"
+              className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary css-1cprn2g-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root"
               data-testid="user-year"
               onClick={[Function]}
             >
@@ -163,7 +163,7 @@ exports[`UsageByUser renders correctly after data load 1`] = `
             scope="col"
           >
             <div
-              className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary  css-1cprn2g-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root"
+              className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary css-1cprn2g-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root"
               data-testid="user-month"
               onClick={[Function]}
             >
