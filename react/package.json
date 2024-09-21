@@ -26,8 +26,8 @@
         "test": "react-scripts test --maxWorkers=25%",
         "test:once": "react-scripts test --watchAll=false --maxWorkers=25%",
         "test:coverage": "react-scripts test --watchAll=false --coverage --maxWorkers=25%",
-        "test:CI": "react-scripts test --watchAll=false --coverage --runInBand --testPathIgnorePatterns='./*\\e2e\\.test\\.js$'",
-        "test:e2e": "react-scripts test --testPathPattern='./*\\e2e\\.test\\.js$' --maxWorkers=25%",
+        "test:CI": "react-scripts test --watchAll=false --coverage --runInBand",
+        "test:e2e": "npx playwright test",
         "eject": "react-scripts eject",
         "pretty": "prettier --write \"src/**/*.{js,jsx,json}\"",
         "audit": "better-npm-audit audit -p -l high"
@@ -49,15 +49,16 @@
     },
     "devDependencies": {
         "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+        "@playwright/test": "^1.47.2",
         "@testing-library/jest-dom": "^6.5.0",
         "@testing-library/react": "^16.0.1",
         "@testing-library/user-event": "^14.5.2",
+        "@types/node": "^22.5.5",
         "better-npm-audit": "^3.10.0",
         "husky": "^9.1.5",
         "jest-fetch-mock": "^3.0.3",
         "prettier": "^3.3.3",
         "pretty-quick": "^4.0.0",
-        "puppeteer-chromium-resolver": "^20.0.0",
         "react-scripts": "^5.0.1",
         "react-test-renderer": "^18.3.1"
     },
@@ -77,6 +78,7 @@
             "src/**/*.{js,jsx}",
             "!src/index.js",
             "!src/serviceWorker.js",
+            "!**/e2e/**",
             "!**/__test__/**",
             "!**/__snapshots__/**",
             "!**/__mocks__/**"

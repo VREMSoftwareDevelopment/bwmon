@@ -16,32 +16,17 @@
  * Bandwidth Monitor
  */
 
-import { HOME_URL, TIMEOUT, launch, startCoverage, stopCoverage } from './e2e-config';
+import { test, expect } from '@playwright/test';
+import { HOME_URL } from './e2e-config';
 
-describe('App e2e', () => {
-    let browser;
-    let page;
-
-    beforeAll(async () => {
-        browser = await launch();
-        page = await browser.newPage();
-        await startCoverage(page);
+test.describe('App e2e', () => {
+    test.beforeEach(async ({ page }) => {
         await page.goto(HOME_URL);
-    }, TIMEOUT);
+        await page.waitForLoadState('networkidle');
+    });
 
-    afterAll(async () => {
-        await stopCoverage(page, 'App e2e');
-        await page.close();
-        await browser.close();
-    }, TIMEOUT);
-
-    test(
-        'header element',
-        async () => {
-            await page.waitForSelector('#app-title');
-            const title = await page.$eval('#app-title', (e) => e.innerHTML);
-            expect(title).toBe('Bandwidth Monitor');
-        },
-        TIMEOUT
-    );
+    test('header element', async ({ page }) => {
+        const title = page.locator('#app-title');
+        await expect(title).toContainText('Bandwidth Monitor');
+    });
 });
