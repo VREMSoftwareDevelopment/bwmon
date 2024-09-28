@@ -1,6 +1,6 @@
 [![Workflow Status](https://github.com/VREMSoftwareDevelopment/bwmon/workflows/TestsWithCoverage/badge.svg)](https://github.com/VREMSoftwareDevelopment/bwmon/actions?query=workflow%3A%22TestsWithCoverage%22)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/4bc1d97a37564d63acf4e9e02dd06615)](https://app.codacy.com/gh/VREMSoftwareDevelopment/bwmon?utm_source=github.com&utm_medium=referral&utm_content=VREMSoftwareDevelopment/bwmon&utm_campaign=Badge_Grade)
-[![codecov](https://codecov.io/gh/VREMSoftwareDevelopment/bwmon/branch/master/graph/badge.svg?token=qoDvVAvNaw)](https://codecov.io/gh/VREMSoftwareDevelopment/bwmon)
+[![codecov](https://codecov.io/gh/VREMSoftwareDevelopment/bwmon/branch/main/graph/badge.svg?token=qoDvVAvNaw)](https://codecov.io/gh/VREMSoftwareDevelopment/bwmon)
 
 [![Issues](https://img.shields.io/github/issues/VREMSoftwareDevelopment/bwmon.svg)](https://github.com/VREMSoftwareDevelopment/bwmon/issues)
 [![Star](https://img.shields.io/github/stars/VREMSoftwareDevelopment/bwmon.svg)](https://github.com/VREMSoftwareDevelopment/bwmon/stargazers)
@@ -10,7 +10,7 @@
 
 A simple shell script designed to run on [AsusWRT-Merlin](https://www.asuswrt-merlin.net/) powered routers
 
-![Sample Usage by User Screenshot](https://github.com/VREMSoftwareDevelopment/bwmon/raw/master/screenshots/UsageByUserData.jpg 'Sample Usage by User Screenshot')
+![Sample Usage by User Screenshot](https://github.com/VREMSoftwareDevelopment/bwmon/raw/main/screenshots/UsageByUserData.jpg 'Sample Usage by User Screenshot')
 
 [Try a demo version of this application](https://vremsoftwaredevelopment.github.io/bwmon)
 
