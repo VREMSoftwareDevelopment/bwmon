@@ -2,10 +2,10 @@
 
 exports[`Navigation renders correctly 1`] = `
 <div
-  className="MuiBottomNavigation-root css-16lloyr-MuiBottomNavigation-root"
+  className="MuiBottomNavigation-root css-7ax0nd-MuiBottomNavigation-root"
 >
   <a
-    className="MuiButtonBase-root MuiBottomNavigationAction-root Mui-selected css-1bjk3jo-MuiButtonBase-root-MuiBottomNavigationAction-root"
+    className="MuiButtonBase-root MuiBottomNavigationAction-root Mui-selected css-1scjuq2-MuiButtonBase-root-MuiBottomNavigationAction-root"
     data-testid="id1"
     href="/pathname1"
     id="id1"
@@ -26,13 +26,13 @@ exports[`Navigation renders correctly 1`] = `
   >
     icon1
     <span
-      className="MuiBottomNavigationAction-label Mui-selected css-imwso6-MuiBottomNavigationAction-label"
+      className="MuiBottomNavigationAction-label Mui-selected css-1kcvi62-MuiBottomNavigationAction-label"
     >
       label1
     </span>
   </a>
   <a
-    className="MuiButtonBase-root MuiBottomNavigationAction-root css-1bjk3jo-MuiButtonBase-root-MuiBottomNavigationAction-root"
+    className="MuiButtonBase-root MuiBottomNavigationAction-root css-1scjuq2-MuiButtonBase-root-MuiBottomNavigationAction-root"
     data-testid="id2"
     href="/pathname2"
     id="id2"
@@ -53,13 +53,13 @@ exports[`Navigation renders correctly 1`] = `
   >
     icon2
     <span
-      className="MuiBottomNavigationAction-label css-imwso6-MuiBottomNavigationAction-label"
+      className="MuiBottomNavigationAction-label css-1kcvi62-MuiBottomNavigationAction-label"
     >
       label2
     </span>
   </a>
   <a
-    className="MuiButtonBase-root MuiBottomNavigationAction-root css-1bjk3jo-MuiButtonBase-root-MuiBottomNavigationAction-root"
+    className="MuiButtonBase-root MuiBottomNavigationAction-root css-1scjuq2-MuiButtonBase-root-MuiBottomNavigationAction-root"
     data-testid="id3"
     href="/pathname3"
     id="id3"
@@ -80,7 +80,7 @@ exports[`Navigation renders correctly 1`] = `
   >
     icon3
     <span
-      className="MuiBottomNavigationAction-label css-imwso6-MuiBottomNavigationAction-label"
+      className="MuiBottomNavigationAction-label css-1kcvi62-MuiBottomNavigationAction-label"
     >
       label3
     </span>

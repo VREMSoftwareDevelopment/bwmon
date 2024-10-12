@@ -2,7 +2,7 @@
 
 exports[`UsageByYear renders correctly 1`] = `
 <div
-  className="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-1dtoofl-MuiPaper-root"
+  className="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-1gtchvp-MuiPaper-root"
   style={
     Object {
       "--Paper-shadow": "0px 2px 1px -1px rgba(0,0,0,0.2),0px 1px 1px 0px rgba(0,0,0,0.14),0px 1px 3px 0px rgba(0,0,0,0.12)",
@@ -13,15 +13,15 @@ exports[`UsageByYear renders correctly 1`] = `
     className="makeStyles-root-1"
   >
     <span
-      className="MuiLinearProgress-root MuiLinearProgress-colorPrimary MuiLinearProgress-indeterminate css-lrbo11-MuiLinearProgress-root"
+      className="MuiLinearProgress-root MuiLinearProgress-colorPrimary MuiLinearProgress-indeterminate css-1txyin7-MuiLinearProgress-root"
       role="progressbar"
     >
       <span
-        className="MuiLinearProgress-bar MuiLinearProgress-barColorPrimary MuiLinearProgress-bar1Indeterminate css-eg0r9f-MuiLinearProgress-bar1"
+        className="MuiLinearProgress-bar MuiLinearProgress-barColorPrimary MuiLinearProgress-bar1Indeterminate css-lcqqge-MuiLinearProgress-bar1"
         style={Object {}}
       />
       <span
-        className="MuiLinearProgress-bar MuiLinearProgress-barColorPrimary MuiLinearProgress-bar2Indeterminate css-1yf7653-MuiLinearProgress-bar2"
+        className="MuiLinearProgress-bar MuiLinearProgress-barColorPrimary MuiLinearProgress-bar2Indeterminate css-lfb3c7-MuiLinearProgress-bar2"
         style={Object {}}
       />
     </span>
@@ -29,7 +29,7 @@ exports[`UsageByYear renders correctly 1`] = `
       className="makeStyles-root-2"
     >
       <div
-        className="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation0 MuiAlert-root MuiAlert-colorInfo MuiAlert-standardInfo MuiAlert-standard css-rxaxkm-MuiPaper-root-MuiAlert-root"
+        className="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation0 MuiAlert-root MuiAlert-colorInfo MuiAlert-standardInfo MuiAlert-standard css-k1p3sh-MuiPaper-root-MuiAlert-root"
         role="alert"
         style={
           Object {
@@ -38,11 +38,11 @@ exports[`UsageByYear renders correctly 1`] = `
         }
       >
         <div
-          className="MuiAlert-icon css-1ytlwq5-MuiAlert-icon"
+          className="MuiAlert-icon css-vab54s-MuiAlert-icon"
         >
           <svg
             aria-hidden={true}
-            className="MuiSvgIcon-root MuiSvgIcon-fontSizeInherit css-1lzspe0-MuiSvgIcon-root"
+            className="MuiSvgIcon-root MuiSvgIcon-fontSizeInherit css-1ckov0h-MuiSvgIcon-root"
             data-testid="InfoOutlinedIcon"
             focusable="false"
             viewBox="0 0 24 24"
@@ -53,10 +53,10 @@ exports[`UsageByYear renders correctly 1`] = `
           </svg>
         </div>
         <div
-          className="MuiAlert-message css-1pxa9xg-MuiAlert-message"
+          className="MuiAlert-message css-zioonp-MuiAlert-message"
         >
           <div
-            className="MuiTypography-root MuiTypography-body1 MuiTypography-gutterBottom MuiAlertTitle-root css-1hs5ppg-MuiTypography-root-MuiAlertTitle-root"
+            className="MuiTypography-root MuiTypography-body1 MuiTypography-gutterBottom MuiAlertTitle-root css-5ick94-MuiTypography-root-MuiAlertTitle-root"
             style={Object {}}
           >
             Loading...
@@ -66,14 +66,14 @@ exports[`UsageByYear renders correctly 1`] = `
     </div>
   </div>
   <div
-    className="MuiTableContainer-root css-rorn0c-MuiTableContainer-root"
+    className="MuiTableContainer-root css-70zvr5-MuiTableContainer-root"
   />
 </div>
 `;
 
 exports[`UsageByYear renders correctly after data load 1`] = `
 <div
-  className="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-1dtoofl-MuiPaper-root"
+  className="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-1gtchvp-MuiPaper-root"
   style={
     Object {
       "--Paper-shadow": "0px 2px 1px -1px rgba(0,0,0,0.2),0px 1px 1px 0px rgba(0,0,0,0.14),0px 1px 3px 0px rgba(0,0,0,0.12)",
@@ -81,18 +81,18 @@ exports[`UsageByYear renders correctly after data load 1`] = `
   }
 >
   <div
-    className="MuiTableContainer-root css-rorn0c-MuiTableContainer-root"
+    className="MuiTableContainer-root css-70zvr5-MuiTableContainer-root"
   >
     <table
-      className="MuiTable-root MuiTable-stickyHeader css-1sy33os-MuiTable-root"
+      className="MuiTable-root MuiTable-stickyHeader css-pvu7mv-MuiTable-root"
       role={null}
     >
       <thead
-        className="MuiTableHead-root css-15wwp11-MuiTableHead-root"
+        className="MuiTableHead-root css-1a7iywq-MuiTableHead-root"
         role={null}
       >
         <tr
-          className="MuiTableRow-root MuiTableRow-head css-1q1u3t4-MuiTableRow-root"
+          className="MuiTableRow-root MuiTableRow-head css-1xtozoh-MuiTableRow-root"
           role={null}
         >
           <div>
@@ -102,22 +102,22 @@ exports[`UsageByYear renders correctly after data load 1`] = `
         </tr>
       </thead>
       <thead
-        className="MuiTableHead-root css-15wwp11-MuiTableHead-root"
+        className="MuiTableHead-root css-1a7iywq-MuiTableHead-root"
         role={null}
       >
         <tr
-          className="MuiTableRow-root MuiTableRow-head css-1q1u3t4-MuiTableRow-root"
+          className="MuiTableRow-root MuiTableRow-head css-1xtozoh-MuiTableRow-root"
           role={null}
         >
           <th
             aria-sort="descending"
-            className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignLeft MuiTableCell-sizeSmall css-1ils8b8-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignLeft MuiTableCell-sizeSmall css-6ujicw-MuiTableCell-root"
             data-testid="year-id"
             id="year-id"
             scope="col"
           >
             <span
-              className="MuiButtonBase-root MuiTableSortLabel-root Mui-active MuiTableSortLabel-directionDesc css-1qgma8u-MuiButtonBase-root-MuiTableSortLabel-root"
+              className="MuiButtonBase-root MuiTableSortLabel-root Mui-active MuiTableSortLabel-directionDesc css-7x9vt0-MuiButtonBase-root-MuiTableSortLabel-root"
               onBlur={[Function]}
               onClick={[Function]}
               onContextMenu={[Function]}
@@ -137,7 +137,7 @@ exports[`UsageByYear renders correctly after data load 1`] = `
               Year
               <svg
                 aria-hidden={true}
-                className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiTableSortLabel-icon MuiTableSortLabel-iconDirectionDesc css-1hmr5vc-MuiSvgIcon-root-MuiTableSortLabel-icon"
+                className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiTableSortLabel-icon MuiTableSortLabel-iconDirectionDesc css-asweb8-MuiSvgIcon-root-MuiTableSortLabel-icon"
                 data-testid="ArrowDownwardIcon"
                 focusable="false"
                 viewBox="0 0 24 24"
@@ -150,27 +150,27 @@ exports[`UsageByYear renders correctly after data load 1`] = `
           </th>
           <th
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignRight MuiTableCell-sizeSmall css-csrj95-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignRight MuiTableCell-sizeSmall css-nds8ul-MuiTableCell-root"
             scope="col"
           >
             Down
           </th>
           <th
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignRight MuiTableCell-sizeSmall css-csrj95-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignRight MuiTableCell-sizeSmall css-nds8ul-MuiTableCell-root"
             scope="col"
           >
             Up
           </th>
           <th
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignRight MuiTableCell-sizeSmall css-csrj95-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignRight MuiTableCell-sizeSmall css-nds8ul-MuiTableCell-root"
             data-testid="year-total"
             id="year-total"
             scope="col"
           >
             <span
-              className="MuiButtonBase-root MuiTableSortLabel-root MuiTableSortLabel-directionAsc css-1qgma8u-MuiButtonBase-root-MuiTableSortLabel-root"
+              className="MuiButtonBase-root MuiTableSortLabel-root MuiTableSortLabel-directionAsc css-7x9vt0-MuiButtonBase-root-MuiTableSortLabel-root"
               onBlur={[Function]}
               onClick={[Function]}
               onContextMenu={[Function]}
@@ -190,7 +190,7 @@ exports[`UsageByYear renders correctly after data load 1`] = `
               Total
               <svg
                 aria-hidden={true}
-                className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiTableSortLabel-icon MuiTableSortLabel-iconDirectionAsc css-9rdgn9-MuiSvgIcon-root-MuiTableSortLabel-icon"
+                className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiTableSortLabel-icon MuiTableSortLabel-iconDirectionAsc css-7ojauk-MuiSvgIcon-root-MuiTableSortLabel-icon"
                 data-testid="ArrowDownwardIcon"
                 focusable="false"
                 viewBox="0 0 24 24"
@@ -203,14 +203,14 @@ exports[`UsageByYear renders correctly after data load 1`] = `
           </th>
           <th
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignRight MuiTableCell-sizeSmall css-csrj95-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignRight MuiTableCell-sizeSmall css-nds8ul-MuiTableCell-root"
             scope="col"
           >
             Average
           </th>
           <th
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignLeft MuiTableCell-sizeSmall css-1ils8b8-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-head MuiTableCell-stickyHeader MuiTableCell-alignLeft MuiTableCell-sizeSmall css-6ujicw-MuiTableCell-root"
             scope="col"
           >
             Days
@@ -218,11 +218,11 @@ exports[`UsageByYear renders correctly after data load 1`] = `
         </tr>
       </thead>
       <tbody
-        className="MuiTableBody-root css-apqrd9-MuiTableBody-root"
+        className="MuiTableBody-root css-gmh7jj-MuiTableBody-root"
         role={null}
       >
         <tr
-          className="MuiTableRow-root css-1q1u3t4-MuiTableRow-root"
+          className="MuiTableRow-root css-1xtozoh-MuiTableRow-root"
           id="year-data-0"
           role={null}
           style={
@@ -233,43 +233,43 @@ exports[`UsageByYear renders correctly after data load 1`] = `
         >
           <td
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-9dqz9p-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-qifdnr-MuiTableCell-root"
           >
             2013
           </td>
           <td
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-2ign9w-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-17j8okc-MuiTableCell-root"
           >
             603.928
           </td>
           <td
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-2ign9w-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-17j8okc-MuiTableCell-root"
           >
             35.773
           </td>
           <td
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-2ign9w-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-17j8okc-MuiTableCell-root"
           >
             639.701
           </td>
           <td
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-2ign9w-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-17j8okc-MuiTableCell-root"
           >
             1.753
           </td>
           <td
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-9dqz9p-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-qifdnr-MuiTableCell-root"
           >
             365
           </td>
         </tr>
         <tr
-          className="MuiTableRow-root css-1q1u3t4-MuiTableRow-root"
+          className="MuiTableRow-root css-1xtozoh-MuiTableRow-root"
           id="year-data-1"
           role={null}
           style={
@@ -280,43 +280,43 @@ exports[`UsageByYear renders correctly after data load 1`] = `
         >
           <td
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-9dqz9p-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-qifdnr-MuiTableCell-root"
           >
             2012
           </td>
           <td
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-2ign9w-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-17j8okc-MuiTableCell-root"
           >
             413.485
           </td>
           <td
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-2ign9w-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-17j8okc-MuiTableCell-root"
           >
             23.242
           </td>
           <td
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-2ign9w-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-17j8okc-MuiTableCell-root"
           >
             436.727
           </td>
           <td
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-2ign9w-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-17j8okc-MuiTableCell-root"
           >
             1.193
           </td>
           <td
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-9dqz9p-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-qifdnr-MuiTableCell-root"
           >
             366
           </td>
         </tr>
         <tr
-          className="MuiTableRow-root css-1q1u3t4-MuiTableRow-root"
+          className="MuiTableRow-root css-1xtozoh-MuiTableRow-root"
           id="year-data-2"
           role={null}
           style={
@@ -327,37 +327,37 @@ exports[`UsageByYear renders correctly after data load 1`] = `
         >
           <td
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-9dqz9p-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-qifdnr-MuiTableCell-root"
           >
             2011
           </td>
           <td
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-2ign9w-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-17j8okc-MuiTableCell-root"
           >
             139.939
           </td>
           <td
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-2ign9w-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-17j8okc-MuiTableCell-root"
           >
             10.745
           </td>
           <td
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-2ign9w-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-17j8okc-MuiTableCell-root"
           >
             150.684
           </td>
           <td
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-2ign9w-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeSmall css-17j8okc-MuiTableCell-root"
           >
             0.413
           </td>
           <td
             aria-sort={null}
-            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-9dqz9p-MuiTableCell-root"
+            className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignLeft MuiTableCell-sizeSmall css-qifdnr-MuiTableCell-root"
           >
             365
           </td>

@@ -2,7 +2,7 @@
 
 exports[`UsageByUserGraph renders correctly 1`] = `
 <div
-  className="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-1dtoofl-MuiPaper-root"
+  className="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-1gtchvp-MuiPaper-root"
   style={
     Object {
       "--Paper-shadow": "0px 2px 1px -1px rgba(0,0,0,0.2),0px 1px 1px 0px rgba(0,0,0,0.14),0px 1px 3px 0px rgba(0,0,0,0.12)",
@@ -13,15 +13,15 @@ exports[`UsageByUserGraph renders correctly 1`] = `
     className="makeStyles-root-2"
   >
     <span
-      className="MuiLinearProgress-root MuiLinearProgress-colorPrimary MuiLinearProgress-indeterminate css-lrbo11-MuiLinearProgress-root"
+      className="MuiLinearProgress-root MuiLinearProgress-colorPrimary MuiLinearProgress-indeterminate css-1txyin7-MuiLinearProgress-root"
       role="progressbar"
     >
       <span
-        className="MuiLinearProgress-bar MuiLinearProgress-barColorPrimary MuiLinearProgress-bar1Indeterminate css-eg0r9f-MuiLinearProgress-bar1"
+        className="MuiLinearProgress-bar MuiLinearProgress-barColorPrimary MuiLinearProgress-bar1Indeterminate css-lcqqge-MuiLinearProgress-bar1"
         style={Object {}}
       />
       <span
-        className="MuiLinearProgress-bar MuiLinearProgress-barColorPrimary MuiLinearProgress-bar2Indeterminate css-1yf7653-MuiLinearProgress-bar2"
+        className="MuiLinearProgress-bar MuiLinearProgress-barColorPrimary MuiLinearProgress-bar2Indeterminate css-lfb3c7-MuiLinearProgress-bar2"
         style={Object {}}
       />
     </span>
@@ -29,7 +29,7 @@ exports[`UsageByUserGraph renders correctly 1`] = `
       className="makeStyles-root-3"
     >
       <div
-        className="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation0 MuiAlert-root MuiAlert-colorInfo MuiAlert-standardInfo MuiAlert-standard css-rxaxkm-MuiPaper-root-MuiAlert-root"
+        className="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation0 MuiAlert-root MuiAlert-colorInfo MuiAlert-standardInfo MuiAlert-standard css-k1p3sh-MuiPaper-root-MuiAlert-root"
         role="alert"
         style={
           Object {
@@ -38,11 +38,11 @@ exports[`UsageByUserGraph renders correctly 1`] = `
         }
       >
         <div
-          className="MuiAlert-icon css-1ytlwq5-MuiAlert-icon"
+          className="MuiAlert-icon css-vab54s-MuiAlert-icon"
         >
           <svg
             aria-hidden={true}
-            className="MuiSvgIcon-root MuiSvgIcon-fontSizeInherit css-1lzspe0-MuiSvgIcon-root"
+            className="MuiSvgIcon-root MuiSvgIcon-fontSizeInherit css-1ckov0h-MuiSvgIcon-root"
             data-testid="InfoOutlinedIcon"
             focusable="false"
             viewBox="0 0 24 24"
@@ -53,10 +53,10 @@ exports[`UsageByUserGraph renders correctly 1`] = `
           </svg>
         </div>
         <div
-          className="MuiAlert-message css-1pxa9xg-MuiAlert-message"
+          className="MuiAlert-message css-zioonp-MuiAlert-message"
         >
           <div
-            className="MuiTypography-root MuiTypography-body1 MuiTypography-gutterBottom MuiAlertTitle-root css-1hs5ppg-MuiTypography-root-MuiAlertTitle-root"
+            className="MuiTypography-root MuiTypography-body1 MuiTypography-gutterBottom MuiAlertTitle-root css-5ick94-MuiTypography-root-MuiAlertTitle-root"
             style={Object {}}
           >
             Loading...
@@ -81,15 +81,15 @@ exports[`UsageByUserGraph renders correctly 1`] = `
         className="MuiGrid-root MuiGrid-item MuiGrid-grid-sm-4 css-kgs8gf-MuiGrid-root"
       >
         <div
-          className="MuiFormControl-root MuiTextField-root css-1u3bzj6-MuiFormControl-root-MuiTextField-root"
+          className="MuiFormControl-root MuiTextField-root css-1xp5r68-MuiFormControl-root-MuiTextField-root"
           data-testid="user-filter"
         >
           <div
-            className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl MuiInputBase-adornedStart css-2a7nsh-MuiInputBase-root-MuiOutlinedInput-root"
+            className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl MuiInputBase-adornedStart css-4bojcr-MuiInputBase-root-MuiOutlinedInput-root"
             onClick={[Function]}
           >
             <div
-              className="MuiInputAdornment-root MuiInputAdornment-positionStart MuiInputAdornment-outlined MuiInputAdornment-sizeMedium css-6ga8lj-MuiInputAdornment-root"
+              className="MuiInputAdornment-root MuiInputAdornment-positionStart MuiInputAdornment-outlined MuiInputAdornment-sizeMedium css-1nowbqt-MuiInputAdornment-root"
             >
               <span
                 className="notranslate"
@@ -98,7 +98,7 @@ exports[`UsageByUserGraph renders correctly 1`] = `
               </span>
               <svg
                 aria-hidden={true}
-                className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-20bmp1-MuiSvgIcon-root"
+                className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1umw9bq-MuiSvgIcon-root"
                 data-testid="SearchIcon"
                 focusable="false"
                 viewBox="0 0 24 24"
@@ -111,7 +111,7 @@ exports[`UsageByUserGraph renders correctly 1`] = `
             <input
               aria-invalid={false}
               autoFocus={false}
-              className="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputAdornedStart css-19j5ahi-MuiInputBase-input-MuiOutlinedInput-input"
+              className="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputAdornedStart css-2u11ia-MuiInputBase-input-MuiOutlinedInput-input"
               disabled={false}
               id="user-filter"
               onAnimationStart={[Function]}
@@ -124,10 +124,10 @@ exports[`UsageByUserGraph renders correctly 1`] = `
             />
             <fieldset
               aria-hidden={true}
-              className="MuiOutlinedInput-notchedOutline css-1d3z3hw-MuiOutlinedInput-notchedOutline"
+              className="MuiOutlinedInput-notchedOutline css-1ll44ll-MuiOutlinedInput-notchedOutline"
             >
               <legend
-                className="css-gpjuor"
+                className="css-w4cd9x"
               >
                 <span
                   className="notranslate"

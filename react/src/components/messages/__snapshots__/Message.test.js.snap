@@ -5,7 +5,7 @@ exports[`Message renders correctly with message 1`] = `
   className="makeStyles-root-1"
 >
   <div
-    className="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation0 MuiAlert-root MuiAlert-colorSuccess MuiAlert-standardSuccess MuiAlert-standard css-1q7iaco-MuiPaper-root-MuiAlert-root"
+    className="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation0 MuiAlert-root MuiAlert-colorSuccess MuiAlert-standardSuccess MuiAlert-standard css-7y9k7a-MuiPaper-root-MuiAlert-root"
     role="alert"
     style={
       Object {
@@ -14,11 +14,11 @@ exports[`Message renders correctly with message 1`] = `
     }
   >
     <div
-      className="MuiAlert-icon css-1ytlwq5-MuiAlert-icon"
+      className="MuiAlert-icon css-vab54s-MuiAlert-icon"
     >
       <svg
         aria-hidden={true}
-        className="MuiSvgIcon-root MuiSvgIcon-fontSizeInherit css-1lzspe0-MuiSvgIcon-root"
+        className="MuiSvgIcon-root MuiSvgIcon-fontSizeInherit css-1ckov0h-MuiSvgIcon-root"
         data-testid="SuccessOutlinedIcon"
         focusable="false"
         viewBox="0 0 24 24"
@@ -29,10 +29,10 @@ exports[`Message renders correctly with message 1`] = `
       </svg>
     </div>
     <div
-      className="MuiAlert-message css-1pxa9xg-MuiAlert-message"
+      className="MuiAlert-message css-zioonp-MuiAlert-message"
     >
       <div
-        className="MuiTypography-root MuiTypography-body1 MuiTypography-gutterBottom MuiAlertTitle-root css-1hs5ppg-MuiTypography-root-MuiAlertTitle-root"
+        className="MuiTypography-root MuiTypography-body1 MuiTypography-gutterBottom MuiAlertTitle-root css-5ick94-MuiTypography-root-MuiAlertTitle-root"
         style={Object {}}
       >
         message

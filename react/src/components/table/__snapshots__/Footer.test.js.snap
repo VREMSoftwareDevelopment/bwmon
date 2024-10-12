@@ -2,44 +2,44 @@
 
 exports[`Footer renders correctly 1`] = `
 <thead
-  className="MuiTableHead-root css-15wwp11-MuiTableHead-root"
+  className="MuiTableHead-root css-1a7iywq-MuiTableHead-root"
   role={null}
 >
   <tr
-    className="MuiTableRow-root MuiTableRow-head css-1q1u3t4-MuiTableRow-root"
+    className="MuiTableRow-root MuiTableRow-head css-1xtozoh-MuiTableRow-root"
     data-testid="test-footer"
     id="test-footer"
     role={null}
   >
     <th
       aria-sort={null}
-      className="MuiTableCell-root MuiTableCell-head MuiTableCell-alignLeft MuiTableCell-sizeMedium css-snl1f5-MuiTableCell-root"
+      className="MuiTableCell-root MuiTableCell-head MuiTableCell-alignLeft MuiTableCell-sizeMedium css-1e9a4b0-MuiTableCell-root"
       scope="col"
     >
       Totals
     </th>
     <th
       aria-sort={null}
-      className="MuiTableCell-root MuiTableCell-head MuiTableCell-alignLeft MuiTableCell-sizeMedium css-snl1f5-MuiTableCell-root"
+      className="MuiTableCell-root MuiTableCell-head MuiTableCell-alignLeft MuiTableCell-sizeMedium css-1e9a4b0-MuiTableCell-root"
       scope="col"
     />
     <th
       aria-sort={null}
-      className="MuiTableCell-root MuiTableCell-head MuiTableCell-alignRight MuiTableCell-sizeMedium css-g2aoha-MuiTableCell-root"
+      className="MuiTableCell-root MuiTableCell-head MuiTableCell-alignRight MuiTableCell-sizeMedium css-to33az-MuiTableCell-root"
       scope="col"
     >
       12345
     </th>
     <th
       aria-sort={null}
-      className="MuiTableCell-root MuiTableCell-head MuiTableCell-alignRight MuiTableCell-sizeMedium css-g2aoha-MuiTableCell-root"
+      className="MuiTableCell-root MuiTableCell-head MuiTableCell-alignRight MuiTableCell-sizeMedium css-to33az-MuiTableCell-root"
       scope="col"
     >
       67890xyz
     </th>
     <th
       aria-sort={null}
-      className="MuiTableCell-root MuiTableCell-head MuiTableCell-alignRight MuiTableCell-sizeMedium css-g2aoha-MuiTableCell-root"
+      className="MuiTableCell-root MuiTableCell-head MuiTableCell-alignRight MuiTableCell-sizeMedium css-to33az-MuiTableCell-root"
       scope="col"
     />
   </tr>
