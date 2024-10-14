@@ -23,14 +23,12 @@ const Footer = ({ prefix, cellInfos, values }) => (
     <TableHead>
         <TableRow key="footer" data-testid={prefix + '-footer'} id={prefix + '-footer'}>
             {cellInfos.map((cellInfo, index) => {
-                const text =
-                    index === 0
-                        ? 'Totals'
-                        : cellInfo.footer
-                          ? cellInfo.convert
-                              ? cellInfo.convert(values[cellInfo.id])
-                              : values[cellInfo.id]
-                          : '';
+                let text = '';
+                if (index === 0) {
+                    text = 'Totals';
+                } else if (cellInfo.footer) {
+                    text = cellInfo.convert ? cellInfo.convert(values[cellInfo.id]) : values[cellInfo.id];
+                }
                 return (
                     <TableCell key={cellInfo.id} align={cellInfo.align}>
                         {text}

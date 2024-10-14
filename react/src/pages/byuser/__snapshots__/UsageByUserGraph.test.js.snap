@@ -69,16 +69,22 @@ exports[`UsageByUserGraph renders correctly 1`] = `
     className="makeStyles-root-1"
   >
     <div
-      className="MuiGrid-root MuiGrid-container css-11lq3yg-MuiGrid-root"
+      className="MuiGrid2-root MuiGrid2-container MuiGrid2-direction-xs-row css-1jxwjqx-MuiGrid2-root"
     >
       <div
-        className="MuiGrid-root MuiGrid-item MuiGrid-grid-sm-2 css-1h3qeln-MuiGrid-root"
+        className="MuiGrid2-root MuiGrid2-direction-xs-row css-1fzlhpv-MuiGrid2-root"
+        item={true}
+        sm={2}
       />
       <div
-        className="MuiGrid-root MuiGrid-item MuiGrid-grid-sm-2 css-1h3qeln-MuiGrid-root"
+        className="MuiGrid2-root MuiGrid2-direction-xs-row css-1fzlhpv-MuiGrid2-root"
+        item={true}
+        sm={2}
       />
       <div
-        className="MuiGrid-root MuiGrid-item MuiGrid-grid-sm-4 css-kgs8gf-MuiGrid-root"
+        className="MuiGrid2-root MuiGrid2-direction-xs-row css-1fzlhpv-MuiGrid2-root"
+        item={true}
+        sm={4}
       >
         <div
           className="MuiFormControl-root MuiTextField-root css-1xp5r68-MuiFormControl-root-MuiTextField-root"
@@ -140,7 +146,9 @@ exports[`UsageByUserGraph renders correctly 1`] = `
         </div>
       </div>
       <div
-        className="MuiGrid-root MuiGrid-item MuiGrid-grid-sm-4 css-kgs8gf-MuiGrid-root"
+        className="MuiGrid2-root MuiGrid2-direction-xs-row css-1fzlhpv-MuiGrid2-root"
+        item={true}
+        sm={4}
       />
     </div>
   </div>

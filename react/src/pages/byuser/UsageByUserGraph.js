@@ -17,8 +17,8 @@
  */
 
 import React from 'react';
-import { makeStyles } from 'mui-styles';
-import { Paper, Grid } from '@mui/material';
+import { makeStyles } from '@mui/styles';
+import { Paper, Grid2 } from '@mui/material';
 import DropDown from '../../components/inputs/DropDown';
 import Search from '../../components/inputs/Search';
 import useUsageByUserGraph from '../../hooks/byuser/UseUsageByUserGraph';
@@ -45,18 +45,18 @@ const UsageByUserGraph = () => {
 
     const filters = () => (
         <div className={classes.root}>
-            <Grid container>
-                <Grid item sm={2}>
+            <Grid2 container>
+                <Grid2 item sm={2}>
                     <DropDown data-testid="user-year" id="user-year" onChange={handleChangeYear} items={years} value={year} />
-                </Grid>
-                <Grid item sm={2}>
+                </Grid2>
+                <Grid2 item sm={2}>
                     <DropDown data-testid="user-month" id="user-month" onChange={handleChangeMonth} items={months} value={month} />
-                </Grid>
-                <Grid item sm={4}>
+                </Grid2>
+                <Grid2 item sm={4}>
                     <Search data-testid="user-filter" id="user-filter" onChange={handleChangeFilter} />
-                </Grid>
-                <Grid item sm={4}></Grid>
-            </Grid>
+                </Grid2>
+                <Grid2 item sm={4}></Grid2>
+            </Grid2>
         </div>
     );
 

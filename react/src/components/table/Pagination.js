@@ -17,11 +17,11 @@
  */
 
 import React from 'react';
-import { makeStyles, useTheme } from 'mui-styles';
+import { makeStyles, useTheme } from '@mui/styles';
 import { TablePagination, IconButton } from '@mui/material';
 import { FirstPage, KeyboardArrowLeft, KeyboardArrowRight, LastPage } from '@mui/icons-material';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles((_theme) => ({
     root: {
         flexShrink: 0,
     },

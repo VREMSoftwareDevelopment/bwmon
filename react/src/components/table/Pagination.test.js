@@ -21,9 +21,9 @@ import { themeWrapper } from '../../__test__/utils/ThemeWrapper';
 import { Pagination, rowsPerPageOptions } from './Pagination';
 
 describe('Pagination', () => {
-    const handlePageChange = (event, newPage) => {};
+    const handlePageChange = (_event, _newPage) => {};
 
-    const handleRowsPerPageChange = (event) => {};
+    const handleRowsPerPageChange = (_event) => {};
 
     it('renders correctly', () => {
         const tree = themeWrapper(

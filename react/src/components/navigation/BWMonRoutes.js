@@ -23,7 +23,7 @@ import PageNotFound from './PageNotFound';
 const BWMonRoutes = ({ menu }) => (
     <Routes>
         <Route key="0-default" path="/" element={menu[0].element} />
-        {menu.map((route, index) => (
+        {menu.map((route, _index) => (
             <Route key={route.pathname} path={route.pathname} element={route.element} />
         ))}
         <Route key="0-error" component={<PageNotFound />} />

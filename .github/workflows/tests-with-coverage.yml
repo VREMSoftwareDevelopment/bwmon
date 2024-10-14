@@ -19,6 +19,9 @@ jobs:
             - name: Audit
               run: npm run audit
               working-directory: react
+            - name: ESLint
+              run: npm run lint
+              working-directory: react
             - name: Start server and run all tests with coverage
               run: npm start & sleep 60; npm run test:CI
               working-directory: react

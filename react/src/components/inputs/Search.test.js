@@ -21,7 +21,7 @@ import { create } from 'react-test-renderer';
 import Search from './Search';
 
 describe('Search', () => {
-    const handleChange = (event) => {
+    const handleChange = (_event) => {
         // handle change
     };
 

@@ -20,23 +20,24 @@ import Data from './Data';
 
 const process = (response) =>
     response
-        .replace(/[\r]/g, '')
+        .replace(/\r/g, '')
         .split('\n')
         .map((line, index) => {
-            const elements = line.replace(/[\n]/g, '').split(',');
-            return elements.length < 8
-                ? null
-                : new Data(
-                      index,
-                      elements[0],
-                      elements[1],
-                      elements[2],
-                      elements[3],
-                      elements[4],
-                      elements[5],
-                      elements[6],
-                      elements[7]
-                  );
+            const elements = line.replace(/\n/g, '').split(',');
+            if (elements.length < 8) {
+                return null;
+            }
+            return new Data(
+                index,
+                elements[0],
+                elements[1],
+                elements[2],
+                elements[3],
+                elements[4],
+                elements[5],
+                elements[6],
+                elements[7]
+            );
         })
         .filter((line) => line !== null);
 

@@ -29,7 +29,7 @@ describe('Header', () => {
         new CellInfo('upload', false, 'right', 'Up'),
     ];
 
-    const handleRequestSort = (event, property) => {};
+    const handleRequestSort = (_event, _property) => {};
 
     it('renders correctly', () => {
         const tree = create(

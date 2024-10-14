@@ -18,7 +18,7 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { makeStyles } from 'mui-styles';
+import { makeStyles } from '@mui/styles';
 import { BottomNavigation, BottomNavigationAction } from '@mui/material';
 import useNavigation from './UseNavigation';
 

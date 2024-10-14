@@ -21,7 +21,7 @@ import { create } from 'react-test-renderer';
 import DropDown from './DropDown';
 
 describe('DropDown', () => {
-    const handleChange = (event) => {
+    const handleChange = (_event) => {
         // handle change
     };
 
