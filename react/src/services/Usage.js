@@ -20,10 +20,10 @@ import Data from './Data';
 
 const process = (response) =>
     response
-        .replace(/\r/g, '')
+        .replaceAll('\r', '')
         .split('\n')
         .map((line, index) => {
-            const elements = line.replace(/\n/g, '').split(',');
+            const elements = line.replaceAll('\n', '').split(',');
             if (elements.length < 8) {
                 return null;
             }

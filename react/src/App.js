@@ -17,6 +17,7 @@
  */
 
 import React from 'react';
+import PropTypes from 'prop-types';
 import { HashRouter } from 'react-router-dom';
 import { DateTime } from 'luxon';
 import theme from './theme';
@@ -53,6 +54,12 @@ App.defaultProps = {
     name: process.env.REACT_APP_DESCRIPTION || description,
     version: process.env.REACT_APP_VERSION,
     currentTime: DateTime.local().toLocaleString(DateTime.DATETIME_FULL_WITH_SECONDS),
+};
+
+App.propTypes = {
+    name: PropTypes.string,
+    version: PropTypes.string,
+    currentTime: PropTypes.string,
 };
 
 export default App;

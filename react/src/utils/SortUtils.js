@@ -17,8 +17,16 @@
  */
 
 export const comparator = (isAscending, orderBy) => {
-    const ascending = (a, b, orderBy) => (a[orderBy] < b[orderBy] ? -1 : a[orderBy] > b[orderBy] ? 1 : 0);
-    const descending = (a, b, orderBy) => (a[orderBy] > b[orderBy] ? -1 : a[orderBy] < b[orderBy] ? 1 : 0);
+    const ascending = (a, b, orderBy) => {
+        if (a[orderBy] < b[orderBy]) return -1;
+        if (a[orderBy] > b[orderBy]) return 1;
+        return 0;
+    };
+    const descending = (a, b, orderBy) => {
+        if (a[orderBy] > b[orderBy]) return -1;
+        if (a[orderBy] < b[orderBy]) return 1;
+        return 0;
+    };
     return isAscending ? (a, b) => ascending(a, b, orderBy) : (a, b) => descending(a, b, orderBy);
 };
 
