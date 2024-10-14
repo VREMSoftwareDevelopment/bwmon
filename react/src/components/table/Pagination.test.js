@@ -30,7 +30,7 @@ describe('Pagination', () => {
             <Pagination
                 colSpan={7}
                 count={20}
-                minumum={5}
+                minimum={5}
                 rowsPerPage={10}
                 page={0}
                 onPageChange={handlePageChange}

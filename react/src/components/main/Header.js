@@ -17,6 +17,7 @@
  */
 
 import React from 'react';
+import PropTypes from 'prop-types';
 import { makeStyles } from '@mui/styles';
 import { AppBar, Toolbar, Typography } from '@mui/material';
 
@@ -41,6 +42,11 @@ const Header = ({ name, version }) => {
             </Toolbar>
         </AppBar>
     );
+};
+
+Header.propTypes = {
+    name: PropTypes.string.isRequired,
+    version: PropTypes.string.isRequired,
 };
 
 export default Header;

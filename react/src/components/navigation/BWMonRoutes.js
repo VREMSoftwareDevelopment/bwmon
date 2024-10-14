@@ -17,6 +17,7 @@
  */
 
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Route, Routes } from 'react-router-dom';
 import PageNotFound from './PageNotFound';
 
@@ -29,5 +30,14 @@ const BWMonRoutes = ({ menu }) => (
         <Route key="0-error" component={<PageNotFound />} />
     </Routes>
 );
+
+BWMonRoutes.propTypes = {
+    menu: PropTypes.arrayOf(
+        PropTypes.shape({
+            pathname: PropTypes.string.isRequired,
+            element: PropTypes.element.isRequired,
+        })
+    ).isRequired,
+};
 
 export default BWMonRoutes;

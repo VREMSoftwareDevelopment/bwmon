@@ -17,6 +17,7 @@
  */
 
 import React from 'react';
+import PropTypes from 'prop-types';
 import { TableHead, TableRow, TableCell } from '@mui/material';
 
 const Footer = ({ prefix, cellInfos, values }) => (
@@ -38,5 +39,18 @@ const Footer = ({ prefix, cellInfos, values }) => (
         </TableRow>
     </TableHead>
 );
+
+Footer.propTypes = {
+    prefix: PropTypes.string.isRequired,
+    cellInfos: PropTypes.arrayOf(
+        PropTypes.shape({
+            id: PropTypes.string.isRequired,
+            align: PropTypes.string,
+            footer: PropTypes.bool,
+            convert: PropTypes.func,
+        })
+    ).isRequired,
+    values: PropTypes.object.isRequired,
+};
 
 export default Footer;

@@ -17,6 +17,7 @@
  */
 
 import React from 'react';
+import PropTypes from 'prop-types';
 import { makeStyles } from '@mui/styles';
 import { Typography } from '@mui/material';
 
@@ -40,6 +41,10 @@ const Footer = ({ currentTime }) => {
             </Typography>
         </div>
     );
+};
+
+Footer.propTypes = {
+    currentTime: PropTypes.string.isRequired,
 };
 
 export default Footer;

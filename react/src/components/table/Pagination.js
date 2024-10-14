@@ -17,6 +17,7 @@
  */
 
 import React from 'react';
+import PropTypes from 'prop-types';
 import { makeStyles, useTheme } from '@mui/styles';
 import { TablePagination, IconButton } from '@mui/material';
 import { FirstPage, KeyboardArrowLeft, KeyboardArrowRight, LastPage } from '@mui/icons-material';
@@ -55,6 +56,11 @@ const FirstPageAction = ({ page, onPageChange }) => {
     );
 };
 
+FirstPageAction.propTypes = {
+    page: PropTypes.number.isRequired,
+    onPageChange: PropTypes.func.isRequired,
+};
+
 const LastPageAction = ({ count, page, rowsPerPage, onPageChange }) => {
     const theme = useTheme();
 
@@ -67,6 +73,13 @@ const LastPageAction = ({ count, page, rowsPerPage, onPageChange }) => {
             {isRTL(theme) ? <FirstPage /> : <LastPage />}
         </IconButton>
     );
+};
+
+LastPageAction.propTypes = {
+    count: PropTypes.number.isRequired,
+    page: PropTypes.number.isRequired,
+    rowsPerPage: PropTypes.number.isRequired,
+    onPageChange: PropTypes.func.isRequired,
 };
 
 const PreviousPageAction = ({ page, onPageChange }) => {
@@ -83,6 +96,11 @@ const PreviousPageAction = ({ page, onPageChange }) => {
     );
 };
 
+PreviousPageAction.propTypes = {
+    page: PropTypes.number.isRequired,
+    onPageChange: PropTypes.func.isRequired,
+};
+
 const NextPageAction = ({ count, page, rowsPerPage, onPageChange }) => {
     const theme = useTheme();
 
@@ -97,6 +115,13 @@ const NextPageAction = ({ count, page, rowsPerPage, onPageChange }) => {
     );
 };
 
+NextPageAction.propTypes = {
+    count: PropTypes.number.isRequired,
+    page: PropTypes.number.isRequired,
+    rowsPerPage: PropTypes.number.isRequired,
+    onPageChange: PropTypes.func.isRequired,
+};
+
 const Actions = ({ count, page, rowsPerPage, onPageChange }) => {
     const classes = useStyles();
 
@@ -108,6 +133,13 @@ const Actions = ({ count, page, rowsPerPage, onPageChange }) => {
             <LastPageAction page={page} onPageChange={onPageChange} count={count} rowsPerPage={rowsPerPage} />
         </div>
     );
+};
+
+Actions.propTypes = {
+    count: PropTypes.number.isRequired,
+    page: PropTypes.number.isRequired,
+    rowsPerPage: PropTypes.number.isRequired,
+    onPageChange: PropTypes.func.isRequired,
 };
 
 const rowsPerPageOptions = (rowsPerPage, count) => {
@@ -134,11 +166,16 @@ const Pagination = (props) => {
         <TablePagination
             {...props}
             labelRowsPerPage=""
-            SelectProps={selectProps}
+            slotProps={{ select: selectProps }}
             rowsPerPageOptions={options}
             ActionsComponent={Actions}
         />
     );
+};
+
+Pagination.propTypes = {
+    count: PropTypes.number.isRequired,
+    minimum: PropTypes.number.isRequired,
 };
 
 export { Pagination, rowsPerPageOptions };
