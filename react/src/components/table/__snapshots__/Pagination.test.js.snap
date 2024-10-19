@@ -74,7 +74,7 @@ exports[`Pagination renders correctly 1`] = `
     >
       <button
         aria-label="first page"
-        className="MuiButtonBase-root Mui-disabled MuiIconButton-root Mui-disabled MuiIconButton-sizeMedium css-lzk69h-MuiButtonBase-root-MuiIconButton-root"
+        className="MuiButtonBase-root Mui-disabled MuiIconButton-root Mui-disabled MuiIconButton-sizeMedium css-aixiz9-MuiButtonBase-root-MuiIconButton-root"
         disabled={true}
         onBlur={[Function]}
         onClick={[Function]}
@@ -106,7 +106,7 @@ exports[`Pagination renders correctly 1`] = `
       </button>
       <button
         aria-label="previous page"
-        className="MuiButtonBase-root Mui-disabled MuiIconButton-root Mui-disabled MuiIconButton-sizeMedium css-lzk69h-MuiButtonBase-root-MuiIconButton-root"
+        className="MuiButtonBase-root Mui-disabled MuiIconButton-root Mui-disabled MuiIconButton-sizeMedium css-aixiz9-MuiButtonBase-root-MuiIconButton-root"
         disabled={true}
         onBlur={[Function]}
         onClick={[Function]}
@@ -138,7 +138,7 @@ exports[`Pagination renders correctly 1`] = `
       </button>
       <button
         aria-label="next page"
-        className="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-lzk69h-MuiButtonBase-root-MuiIconButton-root"
+        className="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-aixiz9-MuiButtonBase-root-MuiIconButton-root"
         disabled={false}
         onBlur={[Function]}
         onClick={[Function]}
@@ -170,7 +170,7 @@ exports[`Pagination renders correctly 1`] = `
       </button>
       <button
         aria-label="last page"
-        className="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-lzk69h-MuiButtonBase-root-MuiIconButton-root"
+        className="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-aixiz9-MuiButtonBase-root-MuiIconButton-root"
         disabled={false}
         onBlur={[Function]}
         onClick={[Function]}

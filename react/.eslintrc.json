@@ -15,7 +15,7 @@
     "rules": {
         "react/prop-types": "off",
         "indent": ["error", 4],
-        "linebreak-style": "error",
+        "linebreak-style": "off",
         "quotes": ["error", "single"],
         "no-unused-vars": [
             "error",
