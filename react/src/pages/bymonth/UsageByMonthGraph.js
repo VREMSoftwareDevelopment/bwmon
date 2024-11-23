@@ -17,29 +17,47 @@
  */
 
 import React from 'react';
-import { FormControl, Paper } from '@mui/material';
+import { makeStyles } from '@mui/styles';
+import { Paper, Grid2 } from '@mui/material';
 import DropDown from '../../components/inputs/DropDown';
 import useUsageByMonthGraph from '../../hooks/bymonth/UseUsageByMonthGraph';
 import Loading from '../../components/loading/Loading';
 import Graph from '../../components/graph/Graph';
 
+const useStyles = makeStyles((theme) => ({
+    root: {
+        flexGrow: 1,
+        margin: theme.spacing(2),
+    },
+}));
+
 const UsageByMonthGraph = () => {
+    const classes = useStyles();
+
     const { options, series, years, year, setYear, loading } = useUsageByMonthGraph();
 
     const handleChangeYear = (event) => setYear(event.target.value);
 
+    const filters = () => (
+        <div className={classes.root} style={{ marginTop: '0px' }}>
+            <Grid2 container>
+                <Grid2 item sm={2} style={{ padding: '6px 16px 6px 0px' }}>
+                    <DropDown
+                        data-testid="month-year-graph"
+                        id="month-year-graph"
+                        onChange={handleChangeYear}
+                        items={years}
+                        value={year}
+                    />
+                </Grid2>
+            </Grid2>
+        </div>
+    );
+
     return (
         <Paper>
             <Loading isLoading={loading} />
-            <FormControl>
-                <DropDown
-                    data-testid="month-year-graph"
-                    id="month-year-graph"
-                    onChange={handleChangeYear}
-                    items={years}
-                    value={year}
-                />
-            </FormControl>
+            {filters()}
             <Graph options={options} series={series} />
         </Paper>
     );

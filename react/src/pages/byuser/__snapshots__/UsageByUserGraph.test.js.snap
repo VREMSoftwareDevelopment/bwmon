@@ -67,6 +67,11 @@ exports[`UsageByUserGraph renders correctly 1`] = `
   </div>
   <div
     className="makeStyles-root-1"
+    style={
+      Object {
+        "marginTop": "0px",
+      }
+    }
   >
     <div
       className="MuiGrid2-root MuiGrid2-container MuiGrid2-direction-xs-row css-1jxwjqx-MuiGrid2-root"
@@ -75,20 +80,35 @@ exports[`UsageByUserGraph renders correctly 1`] = `
         className="MuiGrid2-root MuiGrid2-direction-xs-row css-1fzlhpv-MuiGrid2-root"
         item={true}
         sm={2}
+        style={
+          Object {
+            "padding": "6px 16px 6px 0px",
+          }
+        }
       />
       <div
         className="MuiGrid2-root MuiGrid2-direction-xs-row css-1fzlhpv-MuiGrid2-root"
         item={true}
         sm={2}
+        style={
+          Object {
+            "padding": "6px 19px 6px 19px",
+          }
+        }
       />
       <div
         className="MuiGrid2-root MuiGrid2-direction-xs-row css-1fzlhpv-MuiGrid2-root"
         item={true}
         sm={4}
+        style={
+          Object {
+            "padding": "6px 16px 6px 16px",
+          }
+        }
       >
         <div
           className="MuiFormControl-root MuiTextField-root css-1xp5r68-MuiFormControl-root-MuiTextField-root"
-          data-testid="user-filter"
+          data-testid="user-filter-graph"
         >
           <div
             className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl MuiInputBase-adornedStart css-4bojcr-MuiInputBase-root-MuiOutlinedInput-root"
@@ -119,7 +139,7 @@ exports[`UsageByUserGraph renders correctly 1`] = `
               autoFocus={false}
               className="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputAdornedStart css-2u11ia-MuiInputBase-input-MuiOutlinedInput-input"
               disabled={false}
-              id="user-filter"
+              id="user-filter-graph"
               onAnimationStart={[Function]}
               onBlur={[Function]}
               onChange={[Function]}
@@ -145,11 +165,6 @@ exports[`UsageByUserGraph renders correctly 1`] = `
           </div>
         </div>
       </div>
-      <div
-        className="MuiGrid2-root MuiGrid2-direction-xs-row css-1fzlhpv-MuiGrid2-root"
-        item={true}
-        sm={4}
-      />
     </div>
   </div>
   <div>

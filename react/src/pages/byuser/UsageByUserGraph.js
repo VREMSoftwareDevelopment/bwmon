@@ -44,18 +44,29 @@ const UsageByUserGraph = () => {
     const handleChangeFilter = (event) => setFilter(event.target.value);
 
     const filters = () => (
-        <div className={classes.root}>
+        <div className={classes.root} style={{ marginTop: '0px' }}>
             <Grid2 container>
-                <Grid2 item sm={2}>
-                    <DropDown data-testid="user-year" id="user-year" onChange={handleChangeYear} items={years} value={year} />
+                <Grid2 item sm={2} style={{ padding: '6px 16px 6px 0px' }}>
+                    <DropDown
+                        data-testid="user-year-graph"
+                        id="user-year-graph"
+                        onChange={handleChangeYear}
+                        items={years}
+                        value={year}
+                    />
                 </Grid2>
-                <Grid2 item sm={2}>
-                    <DropDown data-testid="user-month" id="user-month" onChange={handleChangeMonth} items={months} value={month} />
+                <Grid2 item sm={2} style={{ padding: '6px 19px 6px 19px' }}>
+                    <DropDown
+                        data-testid="user-month-graph"
+                        id="user-month-graph"
+                        onChange={handleChangeMonth}
+                        items={months}
+                        value={month}
+                    />
                 </Grid2>
-                <Grid2 item sm={4}>
-                    <Search data-testid="user-filter" id="user-filter" onChange={handleChangeFilter} />
+                <Grid2 item sm={4} style={{ padding: '6px 16px 6px 16px' }}>
+                    <Search data-testid="user-filter-graph" id="user-filter-graph" onChange={handleChangeFilter} />
                 </Grid2>
-                <Grid2 item sm={4}></Grid2>
             </Grid2>
         </div>
     );
