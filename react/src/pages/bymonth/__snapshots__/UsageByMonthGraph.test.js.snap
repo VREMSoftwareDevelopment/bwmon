@@ -67,11 +67,6 @@ exports[`UsageByMonth renders correctly 1`] = `
   </div>
   <div
     className="makeStyles-root-1"
-    style={
-      Object {
-        "marginTop": "0px",
-      }
-    }
   >
     <div
       className="MuiGrid2-root MuiGrid2-container MuiGrid2-direction-xs-row css-1jxwjqx-MuiGrid2-root"
@@ -80,11 +75,6 @@ exports[`UsageByMonth renders correctly 1`] = `
         className="MuiGrid2-root MuiGrid2-direction-xs-row css-1fzlhpv-MuiGrid2-root"
         item={true}
         sm={2}
-        style={
-          Object {
-            "padding": "6px 16px 6px 0px",
-          }
-        }
       />
     </div>
   </div>

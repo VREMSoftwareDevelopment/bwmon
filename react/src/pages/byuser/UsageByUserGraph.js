@@ -29,6 +29,7 @@ const useStyles = makeStyles((theme) => ({
     root: {
         flexGrow: 1,
         margin: theme.spacing(2),
+        marginTop: 6,
     },
 }));
 
@@ -43,30 +44,36 @@ const UsageByUserGraph = () => {
 
     const handleChangeFilter = (event) => setFilter(event.target.value);
 
-    const filters = () => (
-        <div className={classes.root} style={{ marginTop: '0px' }}>
-            <Grid2 container>
-                <Grid2 item sm={2} style={{ padding: '6px 16px 6px 0px' }}>
-                    <DropDown
-                        data-testid="user-year-graph"
-                        id="user-year-graph"
-                        onChange={handleChangeYear}
-                        items={years}
-                        value={year}
-                    />
-                </Grid2>
-                <Grid2 item sm={2} style={{ padding: '6px 19px 6px 19px' }}>
-                    <DropDown
-                        data-testid="user-month-graph"
-                        id="user-month-graph"
-                        onChange={handleChangeMonth}
-                        items={months}
-                        value={month}
-                    />
-                </Grid2>
-                <Grid2 item sm={4} style={{ padding: '6px 16px 6px 16px' }}>
-                    <Search data-testid="user-filter-graph" id="user-filter-graph" onChange={handleChangeFilter} />
-                </Grid2>
+    const itemYear = () => (
+        <Grid2 item sm={2}>
+            <DropDown data-testid="user-year-graph" id="user-year-graph" onChange={handleChangeYear} items={years} value={year} />
+        </Grid2>
+    );
+
+    const itemMonth = () => (
+        <Grid2 item sm={2}>
+            <DropDown
+                data-testid="user-month-graph"
+                id="user-month-graph"
+                onChange={handleChangeMonth}
+                items={months}
+                value={month}
+            />
+        </Grid2>
+    );
+
+    const itemUser = () => (
+        <Grid2 item sm={4}>
+            <Search data-testid="user-filter-graph" id="user-filter-graph" onChange={handleChangeFilter} />
+        </Grid2>
+    );
+
+    const items = () => (
+        <div className={classes.root}>
+            <Grid2 container spacing={4}>
+                {itemYear()}
+                {itemMonth()}
+                {itemUser()}
             </Grid2>
         </div>
     );
@@ -74,7 +81,7 @@ const UsageByUserGraph = () => {
     return (
         <Paper>
             <Loading isLoading={loading} />
-            {filters()}
+            {items()}
             <Graph options={options} series={series} />
         </Paper>
     );

@@ -28,6 +28,7 @@ const useStyles = makeStyles((theme) => ({
     root: {
         flexGrow: 1,
         margin: theme.spacing(2),
+        marginTop: 6,
     },
 }));
 
@@ -38,26 +39,22 @@ const UsageByMonthGraph = () => {
 
     const handleChangeYear = (event) => setYear(event.target.value);
 
-    const filters = () => (
-        <div className={classes.root} style={{ marginTop: '0px' }}>
-            <Grid2 container>
-                <Grid2 item sm={2} style={{ padding: '6px 16px 6px 0px' }}>
-                    <DropDown
-                        data-testid="month-year-graph"
-                        id="month-year-graph"
-                        onChange={handleChangeYear}
-                        items={years}
-                        value={year}
-                    />
-                </Grid2>
-            </Grid2>
+    const itemYear = () => (
+        <Grid2 item sm={2}>
+            <DropDown data-testid="month-year-graph" id="month-year-graph" onChange={handleChangeYear} items={years} value={year} />
+        </Grid2>
+    );
+
+    const items = () => (
+        <div className={classes.root}>
+            <Grid2 container>{itemYear()}</Grid2>
         </div>
     );
 
     return (
         <Paper>
             <Loading isLoading={loading} />
-            {filters()}
+            {items()}
             <Graph options={options} series={series} />
         </Paper>
     );
