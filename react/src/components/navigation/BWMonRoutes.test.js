@@ -30,30 +30,25 @@ describe('BWMonRoutes', () => {
         { pathname: '/page2', element: <MockComponent text="Page 2" /> },
     ];
 
-    it('renders default route', () => {
+    const renderComponent = (props) =>
         render(
-            <MemoryRouter initialEntries={['/']}>
+            <MemoryRouter initialEntries={props}>
                 <BWMonRoutes menu={menu} />
             </MemoryRouter>
         );
+
+    it('renders default route', () => {
+        renderComponent(['/']);
         expect(screen.getByText('Page 1')).toBeInTheDocument();
     });
 
     it('renders specific route', () => {
-        render(
-            <MemoryRouter initialEntries={['/page2']}>
-                <BWMonRoutes menu={menu} />
-            </MemoryRouter>
-        );
+        renderComponent(['/page2']);
         expect(screen.getByText('Page 2')).toBeInTheDocument();
     });
 
     it('renders PageNotFound for unknown route', () => {
-        const { container } = render(
-            <MemoryRouter initialEntries={['/page3']}>
-                <BWMonRoutes menu={menu} />
-            </MemoryRouter>
-        );
+        const { container } = renderComponent(['/page3']);
         expect(container.firstChild).toBeNull();
     });
 });

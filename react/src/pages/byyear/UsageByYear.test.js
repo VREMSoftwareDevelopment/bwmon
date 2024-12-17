@@ -17,32 +17,24 @@
  */
 
 import React from 'react';
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen, within, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import useUsageByYear from '../../hooks/byyear/UseUsageByYear';
-import usePagination from '../../hooks/common/UsePagination';
 import useSort from '../../hooks/common/UseSort';
 import UsageByYear from './UsageByYear';
 
 jest.mock('../../hooks/byyear/UseUsageByYear');
-jest.mock('../../hooks/common/UsePagination');
 jest.mock('../../hooks/common/UseSort');
 
 describe('UsageByYear', () => {
     const data = [
-        { id: '2020', download: 100, upload: 20, total: 120, average: 10, days: 12 },
-        { id: '2021', download: 200, upload: 40, total: 240, average: 20, days: 12 },
+        { id: '2020', download: 100000, upload: 20000, total: 120000, average: 10000, days: 12 },
+        { id: '2021', download: 200000, upload: 40000, total: 240000, average: 20000, days: 24 },
     ];
 
     beforeEach(() => {
         useUsageByYear.mockReturnValue({ data: data, loading: false });
-        usePagination.mockReturnValue({
-            page: 0,
-            setPage: jest.fn(),
-            rowsPerPage: 12,
-            setRowsPerPage: jest.fn(),
-        });
         useSort.mockReturnValue({
             ascending: true,
             setAscending: jest.fn(),
@@ -66,22 +58,56 @@ describe('UsageByYear', () => {
         expect(screen.getByText('Loading...')).toBeInTheDocument();
     });
 
-    it('renders table with data', () => {
+    it('renders table header', () => {
         renderComponent();
-        expect(screen.getByText('Year')).toBeInTheDocument();
-        expect(screen.getByText('Down')).toBeInTheDocument();
-        expect(screen.getByText('Up')).toBeInTheDocument();
-        expect(screen.getByText('Total')).toBeInTheDocument();
-        expect(screen.getByText('Average')).toBeInTheDocument();
-        expect(screen.getByText('Days')).toBeInTheDocument();
-        expect(screen.getByText('2020')).toBeInTheDocument();
-        expect(screen.getByText('2021')).toBeInTheDocument();
+        const container = screen.getByTestId('year-header');
+        expect(container).toBeInTheDocument();
+        const { getByText } = within(container);
+        expect(getByText('Year')).toBeInTheDocument();
+        expect(getByText('Down')).toBeInTheDocument();
+        expect(getByText('Up')).toBeInTheDocument();
+        expect(getByText('Total')).toBeInTheDocument();
+        expect(getByText('Average')).toBeInTheDocument();
+        expect(getByText('Days')).toBeInTheDocument();
     });
 
-    it('handles sort request', () => {
+    it('renders table body row 1', () => {
+        renderComponent();
+        const container = screen.getByTestId('year-data-0');
+        expect(container).toBeInTheDocument();
+        const { getByText } = within(container);
+        expect(getByText('2020')).toBeInTheDocument();
+        expect(getByText('0.100')).toBeInTheDocument();
+        expect(getByText('0.020')).toBeInTheDocument();
+        expect(getByText('0.120')).toBeInTheDocument();
+        expect(getByText('0.010')).toBeInTheDocument();
+        expect(getByText('12')).toBeInTheDocument();
+    });
+
+    it('renders table body row 2', () => {
+        renderComponent();
+        const container = screen.getByTestId('year-data-1');
+        expect(container).toBeInTheDocument();
+        const { getByText } = within(container);
+        expect(getByText('2021')).toBeInTheDocument();
+        expect(getByText('0.200')).toBeInTheDocument();
+        expect(getByText('0.040')).toBeInTheDocument();
+        expect(getByText('0.240')).toBeInTheDocument();
+        expect(getByText('0.020')).toBeInTheDocument();
+        expect(getByText('24')).toBeInTheDocument();
+    });
+
+    it('handles sort request by year', () => {
         renderComponent();
         fireEvent.click(screen.getByText('Year'));
         expect(useSort().setAscending).toHaveBeenCalled();
         expect(useSort().setOrderBy).toHaveBeenCalledWith('id');
+    });
+
+    it('handles sort request by total', () => {
+        renderComponent();
+        fireEvent.click(screen.getByText('Total'));
+        expect(useSort().setAscending).toHaveBeenCalled();
+        expect(useSort().setOrderBy).toHaveBeenCalledWith('total');
     });
 });

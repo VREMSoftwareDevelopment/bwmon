@@ -17,7 +17,7 @@
  */
 
 import React from 'react';
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen, within, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import UsageByUserGraph from './UsageByUserGraph';
@@ -64,6 +64,22 @@ describe('UsageByUserGraph', () => {
     it('renders graph when data is loaded', () => {
         renderComponent();
         expect(screen.getByTestId('test-graph-id')).toBeInTheDocument();
+    });
+
+    it('renders graph with year selector', () => {
+        renderComponent();
+        const container = screen.getByTestId('user-year-graph');
+        expect(container).toBeInTheDocument();
+        const { getByText } = within(container);
+        expect(getByText('2022')).toBeInTheDocument();
+    });
+
+    it('renders graph with month selector', () => {
+        renderComponent();
+        const container = screen.getByTestId('user-month-graph');
+        expect(container).toBeInTheDocument();
+        const { getByText } = within(container);
+        expect(getByText('January')).toBeInTheDocument();
     });
 
     it('displays correct graph options and series', () => {

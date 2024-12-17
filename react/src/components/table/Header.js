@@ -71,4 +71,6 @@ const Header = ({ prefix, cellInfos, onRequestSort, ascending, orderBy }) => {
     );
 };
 
+export { Header, Cell, SortableCell };
+
 export default Header;

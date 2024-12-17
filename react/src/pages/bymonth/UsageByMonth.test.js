@@ -17,7 +17,7 @@
  */
 
 import React from 'react';
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen, within, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import UsageByMonth from './UsageByMonth';
@@ -34,10 +34,10 @@ describe('UsageByMonth', () => {
         setYear: jest.fn(),
         data: {
             usage: [
-                { id: '2021-01', download: 100, upload: 20, total: 120, percent: 10, average: 10, days: 31 },
-                { id: '2021-02', download: 200, upload: 40, total: 240, percent: 20, average: 20, days: 28 },
+                { id: 1, download: 100000, upload: 20000, total: 120000, percent: 10, average: 10000, days: 10 },
+                { id: 2, download: 200000, upload: 40000, total: 240000, percent: 20, average: 20000, days: 20 },
             ],
-            total: { download: 300, upload: 60, total: 360, percent: 30, average: 15, days: 59 },
+            total: { download: 300000, upload: 60000, total: 360000, percent: 30, average: 15000, days: 30 },
         },
         loading: false,
     };
@@ -67,21 +67,77 @@ describe('UsageByMonth', () => {
         expect(screen.getByText('Loading...')).toBeInTheDocument();
     });
 
-    it('renders table with data', () => {
+    it('renders table header', () => {
         renderComponent();
-        expect(screen.getByText('Month')).toBeInTheDocument();
-        expect(screen.getByText('Down')).toBeInTheDocument();
-        expect(screen.getByText('Up')).toBeInTheDocument();
-        expect(screen.getByText('Total')).toBeInTheDocument();
-        expect(screen.getByText('Percent')).toBeInTheDocument();
-        expect(screen.getByText('Average')).toBeInTheDocument();
-        expect(screen.getByText('Days')).toBeInTheDocument();
+        const container = screen.getByTestId('month-header');
+        expect(container).toBeInTheDocument();
+        const { getByText } = within(container);
+        expect(getByText('Month')).toBeInTheDocument();
+        expect(getByText('Down')).toBeInTheDocument();
+        expect(getByText('Up')).toBeInTheDocument();
+        expect(getByText('Total')).toBeInTheDocument();
+        expect(getByText('Average')).toBeInTheDocument();
+        expect(getByText('Days')).toBeInTheDocument();
     });
 
-    it('handles sort request', () => {
+    it('renders table body row 1', () => {
+        renderComponent();
+        const container = screen.getByTestId('month-data-0');
+        expect(container).toBeInTheDocument();
+        const { getByText } = within(container);
+        expect(getByText('January')).toBeInTheDocument();
+        expect(getByText('0.100')).toBeInTheDocument();
+        expect(getByText('0.020')).toBeInTheDocument();
+        expect(getByText('0.120')).toBeInTheDocument();
+        expect(getByText('0.010')).toBeInTheDocument();
+        expect(getByText('10')).toBeInTheDocument();
+    });
+
+    it('renders table body row 2', () => {
+        renderComponent();
+        const container = screen.getByTestId('month-data-1');
+        expect(container).toBeInTheDocument();
+        const { getByText } = within(container);
+        expect(getByText('February')).toBeInTheDocument();
+        expect(getByText('0.200')).toBeInTheDocument();
+        expect(getByText('0.040')).toBeInTheDocument();
+        expect(getByText('0.240')).toBeInTheDocument();
+        expect(getByText('0.020')).toBeInTheDocument();
+        expect(getByText('20')).toBeInTheDocument();
+    });
+
+    it('renders table footer', () => {
+        renderComponent();
+        const container = screen.getByTestId('month-footer');
+        expect(container).toBeInTheDocument();
+        const { getByText } = within(container);
+        expect(getByText('Totals')).toBeInTheDocument();
+        expect(getByText('0.300')).toBeInTheDocument();
+        expect(getByText('0.060')).toBeInTheDocument();
+        expect(getByText('0.360')).toBeInTheDocument();
+        expect(getByText('0.015')).toBeInTheDocument();
+        expect(getByText('30')).toBeInTheDocument();
+    });
+
+    it('renders with year selector', () => {
+        renderComponent();
+        const container = screen.getByTestId('month-year');
+        expect(container).toBeInTheDocument();
+        const { getByText } = within(container);
+        expect(getByText('2021')).toBeInTheDocument();
+    });
+
+    it('handles sort request by month', () => {
         renderComponent();
         fireEvent.click(screen.getByText('Month'));
         expect(useSort().setAscending).toHaveBeenCalled();
         expect(useSort().setOrderBy).toHaveBeenCalledWith('id');
+    });
+
+    it('handles sort request by total', () => {
+        renderComponent();
+        fireEvent.click(screen.getByText('Total'));
+        expect(useSort().setAscending).toHaveBeenCalled();
+        expect(useSort().setOrderBy).toHaveBeenCalledWith('total');
     });
 });

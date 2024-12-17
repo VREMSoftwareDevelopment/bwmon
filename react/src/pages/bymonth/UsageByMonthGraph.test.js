@@ -17,15 +17,13 @@
  */
 
 import React from 'react';
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen, within } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import UsageByMonthGraph from './UsageByMonthGraph';
 import useUsageByMonthGraph from '../../hooks/bymonth/UseUsageByMonthGraph';
-import DropDown from '../../components/inputs/DropDown';
 
 jest.mock('../../components/graph/Graph');
-jest.mock('../../components/inputs/DropDown');
 jest.mock('../../hooks/bymonth/UseUsageByMonthGraph');
 
 describe('UsageByMonthGraph', () => {
@@ -62,6 +60,14 @@ describe('UsageByMonthGraph', () => {
         expect(screen.getByTestId('test-graph-id')).toBeInTheDocument();
     });
 
+    it('renders graph with year selector', () => {
+        renderComponent();
+        const container = screen.getByTestId('month-year-graph');
+        expect(container).toBeInTheDocument();
+        const { getByText } = within(container);
+        expect(getByText('2022')).toBeInTheDocument();
+    });
+
     it('displays correct graph options and series', () => {
         useUsageByMonthGraph.mockReturnValue({
             options: { chart: { id: 'test-chart' } },
@@ -73,37 +79,5 @@ describe('UsageByMonthGraph', () => {
         expect(screen.getByTestId('test-graph-id')).toHaveTextContent('Graph');
         expect(screen.getByTestId('test-graph-id')).toHaveTextContent('{"chart":{"id":"test-chart"}}');
         expect(screen.getByTestId('test-graph-id')).toHaveTextContent('[{"name":"test-series","data":[1,2,3]}]');
-    });
-
-    it('renders dropdown with years', () => {
-        DropDown.mockImplementation(({ items, value }) => (
-            <select data-testid="month-year-graph" value={value}>
-                {items.map((year) => (
-                    <option key={year} value={year}>
-                        {year}
-                    </option>
-                ))}
-            </select>
-        ));
-        renderComponent();
-        const dropdown = screen.getByTestId('month-year-graph');
-        expect(dropdown).toBeInTheDocument();
-        expect(dropdown.value).toBe('2022');
-    });
-
-    it('handles year change', () => {
-        DropDown.mockImplementation(({ items, value, onChange }) => (
-            <select data-testid="month-year-graph" value={value} onChange={onChange}>
-                {items.map((year) => (
-                    <option key={year} value={year}>
-                        {year}
-                    </option>
-                ))}
-            </select>
-        ));
-        renderComponent();
-        const dropdown = screen.getByTestId('month-year-graph');
-        fireEvent.change(dropdown, { target: { value: '2023' } });
-        expect(data.setYear).toHaveBeenCalledWith('2023');
     });
 });

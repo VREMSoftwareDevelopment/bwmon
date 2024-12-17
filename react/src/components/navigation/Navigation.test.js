@@ -21,18 +21,21 @@ import { MemoryRouter } from 'react-router-dom';
 import '@testing-library/jest-dom';
 import Navigation from './Navigation';
 
-const menu = [
-    { id: 'home', pathname: '/home', label: 'Home', icon: <div>HomeIcon</div> },
-    { id: 'about', pathname: '/about', label: 'About', icon: <div>AboutIcon</div> },
-];
-
 describe('Navigation', () => {
-    it('renders navigation actions from menu', () => {
+    const menu = [
+        { id: 'home', pathname: '/home', label: 'Home', icon: <div>HomeIcon</div> },
+        { id: 'about', pathname: '/about', label: 'About', icon: <div>AboutIcon</div> },
+    ];
+
+    const renderComponent = () =>
         render(
             <MemoryRouter initialEntries={['/']}>
                 <Navigation menu={menu} />
             </MemoryRouter>
         );
+
+    it('renders navigation actions from menu', () => {
+        renderComponent();
         menu.forEach((menuItem) => {
             expect(screen.getByTestId(menuItem.id)).toBeInTheDocument();
             expect(screen.getByText(menuItem.label)).toBeInTheDocument();
@@ -42,11 +45,7 @@ describe('Navigation', () => {
     });
 
     it('changes route on navigation action click', () => {
-        render(
-            <MemoryRouter initialEntries={['/']}>
-                <Navigation menu={menu} />
-            </MemoryRouter>
-        );
+        renderComponent();
         const aboutNavAction = screen.getByTestId('about');
         fireEvent.click(aboutNavAction);
         expect(screen.getByTestId('home')).not.toHaveClass('Mui-selected');
