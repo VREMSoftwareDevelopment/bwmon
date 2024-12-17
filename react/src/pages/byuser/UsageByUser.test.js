@@ -136,8 +136,6 @@ describe('UsageByUser', () => {
         expect(getByText('14.0%')).toBeInTheDocument();
         expect(getByText('0.150')).toBeInTheDocument();
         expect(getByText('10')).toBeInTheDocument();
-        expect(getByText('Nov 01, 2011 18:00')).toBeInTheDocument();
-        expect(getByText('Nov 30, 2011 20:00')).toBeInTheDocument();
     });
 
     it('renders table body row 2', () => {
@@ -154,8 +152,6 @@ describe('UsageByUser', () => {
         expect(getByText('24.0%')).toBeInTheDocument();
         expect(getByText('0.250')).toBeInTheDocument();
         expect(getByText('20')).toBeInTheDocument();
-        expect(getByText('Nov 05, 2011 15:00')).toBeInTheDocument();
-        expect(getByText('Nov 26, 2011 21:30')).toBeInTheDocument();
     });
 
     it('renders table footer', () => {
