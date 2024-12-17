@@ -50,10 +50,8 @@ jobs:
                   git tag -a v${{ github.event.inputs.version }} -m "Release v${{ github.event.inputs.version }}"
                   git push origin v${{ github.event.inputs.version }}
             - name: Create release
-              id: create_release
-              uses: elgohr/Github-Release-Action@v5
+              run: |
+                  gh release create v${{ github.event.inputs.version }} bwmon.tar.gz \
+                      --title "Release v${{ github.event.inputs.version }}" --generate-notes
               env:
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-              with:
-                  tag: v${{ github.event.inputs.version }}
-                  title: Release v${{ github.event.inputs.version }}
