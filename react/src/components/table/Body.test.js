@@ -17,23 +17,53 @@
  */
 
 import React from 'react';
-import { create } from 'react-test-renderer';
+import { render, screen } from '@testing-library/react';
+import '@testing-library/jest-dom';
 import Body from './Body';
-import CellInfo from './CellInfo';
 
-describe('Body', () => {
-    const convert = (value) => value / 1000;
-
-    const cellInfos = [new CellInfo('IP', true, 'left', 'IP', false), new CellInfo('up', false, 'right', 'Down', true, convert)];
-
-    const values = [
-        { id: 1, IP: '192.168.1.14', up: 12345202809 },
-        { id: 2, IP: '192.168.1.21', up: 123453907 },
-        { id: 3, IP: '192.168.1.10', up: 5370488 },
+describe('Body Component', () => {
+    const cellInfos = [
+        { id: 'name', label: 'Name', align: 'left', convert: null },
+        { id: 'age', label: 'Age', align: 'right', convert: (age) => `${age} years` },
     ];
 
-    it('renders correctly', () => {
-        const tree = create(<Body prefix="test" cellInfos={cellInfos} values={values} />).toJSON();
-        expect(tree).toMatchSnapshot();
+    const values = [
+        { id: 1, name: 'John Doe', age: 28 },
+        { id: 2, name: 'Jane Smith', age: 32 },
+    ];
+
+    const defaultProps = {
+        prefix: 'test',
+        cellInfos,
+        values,
+    };
+
+    const renderComponent = (props = defaultProps) => {
+        return render(
+            <table>
+                <Body {...props} />
+            </table>
+        );
+    };
+
+    it('renders table rows and cells', () => {
+        renderComponent();
+        values.forEach((value, index) => {
+            const row = screen.getByTestId(`test-data-${index}`);
+            expect(row).toBeInTheDocument();
+            cellInfos.forEach((cellInfo) => {
+                const cell = screen.getByText(cellInfo.convert ? cellInfo.convert(value[cellInfo.id]) : value[cellInfo.id]);
+                expect(cell).toBeInTheDocument();
+            });
+        });
+    });
+
+    it('applies alternating row colors', () => {
+        renderComponent();
+        values.forEach((value, index) => {
+            const row = screen.getByTestId(`test-data-${index}`);
+            const expectedBackgroundColor = index % 2 ? 'ghostwhite' : 'white';
+            expect(row).toHaveStyle(`background: ${expectedBackgroundColor}`);
+        });
     });
 });

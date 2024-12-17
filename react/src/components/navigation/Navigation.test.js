@@ -15,32 +15,41 @@
  *
  * Bandwidth Monitor
  */
-
 import React from 'react';
-import { BrowserRouter } from 'react-router-dom';
-import { themeWrapper } from '../../__test__/utils/ThemeWrapper';
+import { render, screen, fireEvent } from '@testing-library/react';
+import { MemoryRouter } from 'react-router-dom';
+import '@testing-library/jest-dom';
 import Navigation from './Navigation';
 
-jest.mock('react-router-dom', () => ({
-    ...jest.requireActual('react-router-dom'),
-    useLocation: () => ({
-        pathname: '/pathname2',
-    }),
-}));
+const menu = [
+    { id: 'home', pathname: '/home', label: 'Home', icon: <div>HomeIcon</div> },
+    { id: 'about', pathname: '/about', label: 'About', icon: <div>AboutIcon</div> },
+];
 
 describe('Navigation', () => {
-    const menu = [
-        { id: 'id1', pathname: '/pathname1', label: 'label1', icon: 'icon1' },
-        { id: 'id2', pathname: '/pathname2', label: 'label2', icon: 'icon2' },
-        { id: 'id3', pathname: '/pathname3', label: 'label3', icon: 'icon3' },
-    ];
-
-    it('renders correctly', () => {
-        const tree = themeWrapper(
-            <BrowserRouter>
+    it('renders navigation actions from menu', () => {
+        render(
+            <MemoryRouter initialEntries={['/']}>
                 <Navigation menu={menu} />
-            </BrowserRouter>
-        ).toJSON();
-        expect(tree).toMatchSnapshot();
+            </MemoryRouter>
+        );
+        menu.forEach((menuItem) => {
+            expect(screen.getByTestId(menuItem.id)).toBeInTheDocument();
+            expect(screen.getByText(menuItem.label)).toBeInTheDocument();
+        });
+        expect(screen.getByTestId('home')).toHaveClass('Mui-selected');
+        expect(screen.getByTestId('about')).not.toHaveClass('Mui-selected');
+    });
+
+    it('changes route on navigation action click', () => {
+        render(
+            <MemoryRouter initialEntries={['/']}>
+                <Navigation menu={menu} />
+            </MemoryRouter>
+        );
+        const aboutNavAction = screen.getByTestId('about');
+        fireEvent.click(aboutNavAction);
+        expect(screen.getByTestId('home')).not.toHaveClass('Mui-selected');
+        expect(screen.getByTestId('about')).toHaveClass('Mui-selected');
     });
 });

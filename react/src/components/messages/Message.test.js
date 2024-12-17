@@ -17,17 +17,31 @@
  */
 
 import React from 'react';
-import { themeWrapper } from '../../__test__/utils/ThemeWrapper';
+import { render, screen } from '@testing-library/react';
+import '@testing-library/jest-dom';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
 import Message from './Message';
 
-describe('Message', () => {
-    it('renders correctly with message', () => {
-        const tree = themeWrapper(<Message severity="success" message="message" />).toJSON();
-        expect(tree).toMatchSnapshot();
+describe('Message Component', () => {
+    const theme = createTheme();
+
+    const renderComponent = (props) =>
+        render(
+            <ThemeProvider theme={theme}>
+                <Message {...props} />
+            </ThemeProvider>
+        );
+
+    it('renders the message with the correct severity', () => {
+        const props = { severity: 'message', message: 'message text' };
+        renderComponent(props);
+        expect(screen.getByText('message text')).toBeInTheDocument();
+        expect(screen.getByRole('alert')).toHaveClass('MuiAlert-standardMessage');
     });
 
-    it('renders correctly with no message', () => {
-        const tree = themeWrapper(<Message severity="success" />).toJSON();
-        expect(tree).toMatchSnapshot();
+    it('does not render anything when message is null', () => {
+        const props = { severity: 'message' };
+        const { container } = renderComponent(props);
+        expect(container.firstChild).toBeNull();
     });
 });

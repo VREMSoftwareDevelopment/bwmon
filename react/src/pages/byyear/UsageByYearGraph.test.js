@@ -17,15 +17,56 @@
  */
 
 import React from 'react';
-import { themeWrapper } from '../../__test__/utils/ThemeWrapper';
+import { render, screen } from '@testing-library/react';
+import '@testing-library/jest-dom';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
 import UsageByYearGraph from './UsageByYearGraph';
+import useUsageByYearGraph from '../../hooks/byyear/UseUsageByYearGraph';
 
-jest.mock('../../services/Usage');
 jest.mock('../../components/graph/Graph');
+jest.mock('../../hooks/byyear/UseUsageByYearGraph');
 
 describe('UsageByYearGraph', () => {
-    it('renders correctly', () => {
-        const tree = themeWrapper(<UsageByYearGraph />).toJSON();
-        expect(tree).toMatchSnapshot();
+    const data = {
+        options: {},
+        series: [],
+        loading: false,
+    };
+
+    beforeEach(() => {
+        useUsageByYearGraph.mockReturnValue(data);
+    });
+
+    const theme = createTheme();
+
+    const renderComponent = (props) =>
+        render(
+            <ThemeProvider theme={theme}>
+                <UsageByYearGraph {...props} />
+            </ThemeProvider>
+        );
+
+    it('renders loading state', () => {
+        useUsageByYearGraph.mockReturnValue({ ...data, loading: true });
+        renderComponent();
+        expect(screen.getByText('Loading...')).toBeInTheDocument();
+    });
+
+    it('renders graph when data is loaded', () => {
+        renderComponent();
+        expect(screen.getByTestId('test-graph-id')).toBeInTheDocument();
+    });
+
+    it('displays correct graph options and series', () => {
+        useUsageByYearGraph.mockReturnValue({
+            options: { chart: { id: 'test-chart' } },
+            series: [{ name: 'test-series', data: [1, 2, 3] }],
+            loading: false,
+        });
+        renderComponent();
+        expect(screen.getByTestId('test-graph-id')).toBeInTheDocument();
+        expect(screen.getByTestId('test-graph-id')).toHaveTextContent('Graph');
+        expect(screen.getByTestId('test-graph-id')).toHaveTextContent('{"chart":{"id":"test-chart"}}');
+        expect(screen.getByTestId('test-graph-id')).toHaveTextContent('[{"name":"test-series","data":[1,2,3]}]');
     });
 });

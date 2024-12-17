@@ -17,12 +17,23 @@
  */
 
 import React from 'react';
-import { themeWrapper } from '../../__test__/utils/ThemeWrapper';
+import { render, screen } from '@testing-library/react';
+import '@testing-library/jest-dom';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
 import PageNotFound from './PageNotFound';
 
 describe('PageNotFound', () => {
-    it('renders correctly', () => {
-        const tree = themeWrapper(<PageNotFound />).toJSON();
-        expect(tree).toMatchSnapshot();
+    const theme = createTheme();
+
+    const renderComponent = () =>
+        render(
+            <ThemeProvider theme={theme}>
+                <PageNotFound />
+            </ThemeProvider>
+        );
+
+    it('renders "Page Not Found" message', () => {
+        renderComponent();
+        expect(screen.getByText('Page Not Found')).toBeInTheDocument();
     });
 });

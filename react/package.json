@@ -5,28 +5,28 @@
     "homepage": "/bwmon/",
     "private": true,
     "dependencies": {
-        "@emotion/react": "^11.13.5",
-        "@emotion/styled": "^11.13.5",
-        "@mui/icons-material": "^6.1.8",
-        "@mui/lab": "^6.0.0-beta.16",
-        "@mui/material": "^6.1.8",
-        "@mui/styles": "^6.1.8",
-        "apexcharts": "^4.0.0",
+        "@emotion/react": "^11.14.0",
+        "@emotion/styled": "^11.14.0",
+        "@mui/icons-material": "^6.2.0",
+        "@mui/lab": "^6.0.0-beta.19",
+        "@mui/material": "^6.2.0",
+        "@mui/styles": "^6.2.0",
+        "apexcharts": "^4.2.0",
         "history": "^5.3.0",
         "luxon": "^3.5.0",
         "react": "^18.3.1",
-        "react-apexcharts": "^1.6.0",
+        "react-apexcharts": "^1.7.0",
         "react-dom": "^18.3.1",
         "react-error-boundary": "^4.1.2",
         "react-router-dom": "^6.28.0"
     },
     "devDependencies": {
         "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
-        "@playwright/test": "^1.49.0",
+        "@playwright/test": "^1.49.1",
         "@testing-library/jest-dom": "^6.6.3",
-        "@testing-library/react": "^16.0.1",
+        "@testing-library/react": "^16.1.0",
         "@testing-library/user-event": "^14.5.2",
-        "@types/node": "^22.9.3",
+        "@types/node": "^22.10.2",
         "better-npm-audit": "^3.11.0",
         "eslint": "^8.57.1",
         "eslint-config-prettier": "^9.1.0",
@@ -37,10 +37,9 @@
         "eslint-plugin-react": "^7.37.2",
         "husky": "^9.1.7",
         "jest-fetch-mock": "^3.0.3",
-        "prettier": "^3.3.3",
+        "prettier": "^3.4.2",
         "pretty-quick": "^4.0.0",
-        "react-scripts": "^5.0.1",
-        "react-test-renderer": "^18.3.1"
+        "react-scripts": "^5.0.1"
     },
     "scripts": {
         "start": "react-scripts start",
@@ -91,16 +90,14 @@
             "!src/index.js",
             "!src/serviceWorker.js",
             "!**/e2e/**",
-            "!**/__test__/**",
-            "!**/__snapshots__/**",
             "!**/__mocks__/**"
         ],
         "coverageThreshold": {
             "global": {
-                "branches": 89.6,
-                "functions": 85.7,
-                "lines": 95.8,
-                "statements": 93.7
+                "branches": 95,
+                "functions": 93,
+                "lines": 99,
+                "statements": 97
             }
         }
     }

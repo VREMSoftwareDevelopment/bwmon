@@ -17,15 +17,72 @@
  */
 
 import React from 'react';
-import { themeWrapper } from '../../__test__/utils/ThemeWrapper';
+import { render, screen, fireEvent } from '@testing-library/react';
+import '@testing-library/jest-dom';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
 import UsageByUserGraph from './UsageByUserGraph';
+import useUsageByUserGraph from '../../hooks/byuser/UseUsageByUserGraph';
+import Search from '../../components/inputs/Search';
 
-jest.mock('../../services/Usage');
 jest.mock('../../components/graph/Graph');
+jest.mock('../../components/inputs/Search');
+jest.mock('../../hooks/byuser/UseUsageByUserGraph');
 
 describe('UsageByUserGraph', () => {
-    it('renders correctly', () => {
-        const tree = themeWrapper(<UsageByUserGraph />).toJSON();
-        expect(tree).toMatchSnapshot();
+    const data = {
+        options: {},
+        series: [],
+        years: ['2021', '2022', '2023'],
+        year: '2022',
+        setYear: jest.fn(),
+        months: ['January', 'February', 'March'],
+        month: 'January',
+        setMonth: jest.fn(),
+        setFilter: jest.fn(),
+        loading: false,
+    };
+
+    beforeEach(() => {
+        useUsageByUserGraph.mockReturnValue(data);
+    });
+
+    const theme = createTheme();
+
+    const renderComponent = (props) =>
+        render(
+            <ThemeProvider theme={theme}>
+                <UsageByUserGraph {...props} />
+            </ThemeProvider>
+        );
+
+    it('renders loading state', () => {
+        useUsageByUserGraph.mockReturnValue({ ...data, loading: true });
+        renderComponent();
+        expect(screen.getByText('Loading...')).toBeInTheDocument();
+    });
+
+    it('renders graph when data is loaded', () => {
+        renderComponent();
+        expect(screen.getByTestId('test-graph-id')).toBeInTheDocument();
+    });
+
+    it('displays correct graph options and series', () => {
+        useUsageByUserGraph.mockReturnValue({
+            options: { chart: { id: 'test-chart' } },
+            series: [{ name: 'test-series', data: [1, 2, 3] }],
+            loading: false,
+        });
+        renderComponent();
+        expect(screen.getByTestId('test-graph-id')).toBeInTheDocument();
+        expect(screen.getByTestId('test-graph-id')).toHaveTextContent('Graph');
+        expect(screen.getByTestId('test-graph-id')).toHaveTextContent('{"chart":{"id":"test-chart"}}');
+        expect(screen.getByTestId('test-graph-id')).toHaveTextContent('[{"name":"test-series","data":[1,2,3]}]');
+    });
+
+    it('handles user filter change', () => {
+        Search.mockImplementation(({ onChange }) => <input data-testid="user-filter-graph" onChange={onChange} />);
+        renderComponent();
+        fireEvent.change(screen.getByTestId('user-filter-graph'), { target: { value: 'John' } });
+        expect(data.setFilter).toHaveBeenCalledWith('John');
     });
 });

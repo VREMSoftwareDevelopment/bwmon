@@ -34,9 +34,11 @@ import { createBrowserHistory } from 'history';
 
 export const history = createBrowserHistory({ basename: process.env.PUBLIC_URL });
 
-const description = 'Bandwidth Monitor';
+const appName = process.env.REACT_APP_DESCRIPTION || 'Bandwidth Monitor';
+const appVersion = process.env.REACT_APP_VERSION;
+const appTime = DateTime.local().toLocaleString(DateTime.DATETIME_FULL_WITH_SECONDS);
 
-const App = ({ name, version, currentTime }) => (
+const App = ({ name = appName, version = appVersion, currentTime = appTime }) => (
     <HashRouter>
         <ThemeProvider theme={theme}>
             <CssBaseline />
@@ -49,12 +51,6 @@ const App = ({ name, version, currentTime }) => (
         </ThemeProvider>
     </HashRouter>
 );
-
-App.defaultProps = {
-    name: process.env.REACT_APP_DESCRIPTION || description,
-    version: process.env.REACT_APP_VERSION,
-    currentTime: DateTime.local().toLocaleString(DateTime.DATETIME_FULL_WITH_SECONDS),
-};
 
 App.propTypes = {
     name: PropTypes.string,

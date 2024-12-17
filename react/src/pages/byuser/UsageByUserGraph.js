@@ -18,7 +18,8 @@
 
 import React from 'react';
 import { makeStyles } from '@mui/styles';
-import { Paper, Grid2 } from '@mui/material';
+import { Paper } from '@mui/material';
+import Grid from '@mui/material/Grid2';
 import DropDown from '../../components/inputs/DropDown';
 import Search from '../../components/inputs/Search';
 import useUsageByUserGraph from '../../hooks/byuser/UseUsageByUserGraph';
@@ -44,44 +45,34 @@ const UsageByUserGraph = () => {
 
     const handleChangeFilter = (event) => setFilter(event.target.value);
 
-    const itemYear = () => (
-        <Grid2 item sm={2}>
-            <DropDown data-testid="user-year-graph" id="user-year-graph" onChange={handleChangeYear} items={years} value={year} />
-        </Grid2>
-    );
-
-    const itemMonth = () => (
-        <Grid2 item sm={2}>
-            <DropDown
-                data-testid="user-month-graph"
-                id="user-month-graph"
-                onChange={handleChangeMonth}
-                items={months}
-                value={month}
-            />
-        </Grid2>
-    );
-
-    const itemUser = () => (
-        <Grid2 item sm={4}>
-            <Search data-testid="user-filter-graph" id="user-filter-graph" onChange={handleChangeFilter} />
-        </Grid2>
-    );
-
-    const items = () => (
-        <div className={classes.root}>
-            <Grid2 container spacing={4}>
-                {itemYear()}
-                {itemMonth()}
-                {itemUser()}
-            </Grid2>
-        </div>
-    );
-
     return (
         <Paper>
             <Loading isLoading={loading} />
-            {items()}
+            <div className={classes.root}>
+                <Grid container spacing={4}>
+                    <Grid sm={2}>
+                        <DropDown
+                            data-testid="user-year-graph"
+                            id="user-year-graph"
+                            onChange={handleChangeYear}
+                            items={years}
+                            value={year}
+                        />
+                    </Grid>
+                    <Grid sm={2}>
+                        <DropDown
+                            data-testid="user-month-graph"
+                            id="user-month-graph"
+                            onChange={handleChangeMonth}
+                            items={months}
+                            value={month}
+                        />
+                    </Grid>
+                    <Grid sm={4}>
+                        <Search data-testid="user-filter-graph" id="user-filter-graph" onChange={handleChangeFilter} />
+                    </Grid>
+                </Grid>
+            </div>
             <Graph options={options} series={series} />
         </Paper>
     );

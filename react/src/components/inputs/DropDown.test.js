@@ -17,28 +17,29 @@
  */
 
 import React from 'react';
-import { create } from 'react-test-renderer';
+import { render, screen } from '@testing-library/react';
+import '@testing-library/jest-dom';
 import DropDown from './DropDown';
 
-describe('DropDown', () => {
+describe('DropDown Component', () => {
     const handleChange = (_event) => {
         // handle change
     };
 
-    it('renders correctly with items', () => {
-        const tree = create(
-            <DropDown id="12345" value="ZYXUW" onChange={handleChange} items={['ABC', 'ZYXUW', 'WGKF']} />
-        ).toJSON();
-        expect(tree).toMatchSnapshot();
+    it('renders dropdown with provided items', () => {
+        const value = 'ZYXUW';
+        render(<DropDown onChange={handleChange} items={['ABC', 'ZYXUW', 'WGKF']} value={value} />);
+        expect(screen.getByRole('combobox')).toHaveTextContent(value);
+        expect(screen.getByRole('combobox')).toHaveClass('MuiSelect-select');
     });
 
-    it('renders correctly with no items', () => {
-        const tree = create(<DropDown />).toJSON();
-        expect(tree).toMatchSnapshot();
+    it('does not render anything when items are null', () => {
+        const { container } = render(<DropDown onChange={handleChange} value="Item 1" />);
+        expect(container.firstChild).toBeNull();
     });
 
-    it('renders correctly with no value', () => {
-        const tree = create(<DropDown items={['ABC', 'ZYXUW', 'WGKF']} />).toJSON();
-        expect(tree).toMatchSnapshot();
+    it('does not render anything when value is not provided', () => {
+        const { container } = render(<DropDown onChange={handleChange} items={['ABC', 'ZYXUW', 'WGKF']} />);
+        expect(container.firstChild).toBeNull();
     });
 });

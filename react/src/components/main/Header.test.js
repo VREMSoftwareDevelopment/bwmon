@@ -17,15 +17,26 @@
  */
 
 import React from 'react';
-import { themeWrapper } from '../../__test__/utils/ThemeWrapper';
+import { render, screen } from '@testing-library/react';
+import '@testing-library/jest-dom';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
 import Header from './Header';
 
 describe('Header', () => {
-    const name = 'Name';
-    const version = '3.1.1';
+    const theme = createTheme();
 
-    it('renders correctly', () => {
-        const tree = themeWrapper(<Header name={name} version={version} />).toJSON();
-        expect(tree).toMatchSnapshot();
+    const renderComponent = (props) =>
+        render(
+            <ThemeProvider theme={theme}>
+                <Header {...props} />
+            </ThemeProvider>
+        );
+
+    it('renders application name and version', () => {
+        const name = 'Name';
+        const version = '3.1.1';
+        renderComponent({ name: name, version: version });
+        expect(screen.getByTestId('app-title')).toHaveTextContent(name);
+        expect(screen.getByTestId('app-version')).toHaveTextContent(version);
     });
 });

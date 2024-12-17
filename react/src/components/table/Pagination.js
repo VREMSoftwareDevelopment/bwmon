@@ -178,6 +178,6 @@ Pagination.propTypes = {
     minimum: PropTypes.number.isRequired,
 };
 
-export { Pagination, rowsPerPageOptions };
+export { Pagination, rowsPerPageOptions, FirstPageAction, LastPageAction, PreviousPageAction, NextPageAction };
 
 export default Pagination;

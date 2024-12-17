@@ -17,30 +17,49 @@
  */
 
 import React from 'react';
-import { create } from 'react-test-renderer';
+import { render, screen, fireEvent } from '@testing-library/react';
+import '@testing-library/jest-dom';
 import Header from './Header';
-import CellInfo from './CellInfo';
+
+const onRequestSort = jest.fn();
 
 describe('Header', () => {
     const cellInfos = [
-        new CellInfo('IP', true, 'left', 'IP'),
-        new CellInfo('MAC', false, 'left', 'MAC'),
-        new CellInfo('download', true, 'right', 'Down'),
-        new CellInfo('upload', false, 'right', 'Up'),
+        { id: 'name', label: 'Name', align: 'left', sortable: true },
+        { id: 'age', label: 'Age', align: 'right', sortable: true },
+        { id: 'location', label: 'Location', align: 'left', sortable: false },
     ];
 
-    const handleRequestSort = (_event, _property) => {};
+    const defaultProps = {
+        prefix: 'test',
+        cellInfos,
+        onRequestSort: onRequestSort,
+        ascending: true,
+        orderBy: 'name',
+    };
 
-    it('renders correctly', () => {
-        const tree = create(
-            <Header
-                prefix="test"
-                cellInfos={cellInfos}
-                onRequestSort={handleRequestSort}
-                ascending={true}
-                orderBy={cellInfos[0].id}
-            />
-        ).toJSON();
-        expect(tree).toMatchSnapshot();
+    const renderComponent = (props = defaultProps) => {
+        return render(
+            <table>
+                <Header {...props} />
+            </table>
+        );
+    };
+
+    it('renders sortable and non-sortable cells', () => {
+        renderComponent();
+        const headerRow = screen.getByTestId('test-header');
+        expect(headerRow).toBeInTheDocument();
+        const headerCells = screen.getAllByRole('columnheader');
+        expect(headerCells[0]).toHaveTextContent('Name');
+        expect(headerCells[1]).toHaveTextContent('Age');
+        expect(headerCells[2]).toHaveTextContent('Location');
+    });
+
+    it('calls onRequestSort when sortable cell is clicked', () => {
+        renderComponent();
+        const nameSortLabel = screen.getByTestId('test-name').querySelector('.MuiTableSortLabel-root');
+        fireEvent.click(nameSortLabel);
+        expect(onRequestSort).toHaveBeenCalledWith(expect.anything(), 'name');
     });
 });

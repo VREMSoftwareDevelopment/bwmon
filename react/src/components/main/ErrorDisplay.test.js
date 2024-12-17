@@ -17,17 +17,27 @@
  */
 
 import React from 'react';
-import { themeWrapper } from '../../__test__/utils/ThemeWrapper';
+import { render, screen } from '@testing-library/react';
+import '@testing-library/jest-dom';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
 import ErrorDisplay from './ErrorDisplay';
 
 describe('ErrorDisplay', () => {
-    const error = new Error('--- Error ---');
-    const info = {
-        componentStack: '--- Error Component Stack ---',
-    };
+    const theme = createTheme();
 
-    it('renders correctly', () => {
-        const tree = themeWrapper(<ErrorDisplay error={error} info={info} />).toJSON();
-        expect(tree).toMatchSnapshot();
+    const renderComponent = (props) =>
+        render(
+            <ThemeProvider theme={theme}>
+                <ErrorDisplay {...props} />
+            </ThemeProvider>
+        );
+
+    it('renders error message and component stack', () => {
+        const error = new Error('--- Error ---');
+        const info = { componentStack: '--- Error Component Stack ---' };
+        const props = { error: error, info: info };
+        renderComponent(props);
+        expect(screen.getByText(error.toString())).toBeInTheDocument();
+        expect(screen.getByText(info.componentStack)).toBeInTheDocument();
     });
 });

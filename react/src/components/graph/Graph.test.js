@@ -16,27 +16,27 @@
  * Bandwidth Monitor
  */
 
-// import React from 'react';
-// import Graph from './Graph';
-// import { create } from 'react-test-renderer';
+import React from 'react';
+import { render, screen } from '@testing-library/react';
+import '@testing-library/jest-dom';
+import Graph from './Graph';
+
+jest.mock('react-apexcharts', () => ({ __esModule: true, default: () => <div>ApexGraph</div> }));
 
 describe('Graph', () => {
-    // const options = {
-    //     xaxis: {
-    //         categories: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
-    //     },
-    // };
-    // const series = [
-    //     {
-    //         data: [10, 20, 30, 40, 50, 60, 70, 80, 90],
-    //     },
-    // ];
+    const options = {
+        xaxis: {
+            categories: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+        },
+    };
+    const series = [
+        {
+            data: [10, 20, 30, 40, 50, 60, 70, 80, 90],
+        },
+    ];
 
-    it('renders correctly', () => {
-        // issue:
-        //  https://github.com/apexcharts/react-apexcharts/issues/352
-        //  UnhandledPromiseRejection
-        // const tree = create(<Graph options={options} series={series} />).toJSON();
-        // expect(tree).toMatchSnapshot();
+    it('renders chart with provided options and series', () => {
+        render(<Graph options={options} series={series} />);
+        expect(screen.getByText('ApexGraph')).toBeInTheDocument();
     });
 });

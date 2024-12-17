@@ -17,14 +17,25 @@
  */
 
 import React from 'react';
-import { themeWrapper } from '../../__test__/utils/ThemeWrapper';
+import { render, screen } from '@testing-library/react';
+import '@testing-library/jest-dom';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
 import Footer from './Footer';
 
 describe('Footer', () => {
-    const currentTime = 'October 20, 2020, 11:25:35 AM EDT';
+    const theme = createTheme();
 
-    it('renders correctly', () => {
-        const tree = themeWrapper(<Footer currentTime={currentTime} />).toJSON();
-        expect(tree).toMatchSnapshot();
+    const renderComponent = (props) =>
+        render(
+            <ThemeProvider theme={theme}>
+                <Footer {...props} />
+            </ThemeProvider>
+        );
+
+    it('renders static text and current time', () => {
+        const currentTime = 'Sunday, 15 December 2024, 13:15';
+        renderComponent({ currentTime: currentTime });
+        expect(screen.getByTestId('app-footer1')).toHaveTextContent('All usage information is in gigabytes');
+        expect(screen.getByTestId('app-footer2')).toHaveTextContent(`This page was generated on ${currentTime}`);
     });
 });

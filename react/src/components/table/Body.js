@@ -25,6 +25,7 @@ const Body = ({ prefix, cellInfos, values }) => (
             <TableRow
                 key={value.id}
                 id={prefix + '-data-' + index}
+                data-testid={prefix + '-data-' + index}
                 style={index % 2 ? { background: 'ghostwhite' } : { background: 'white' }}
             >
                 {cellInfos.map((cellInfo) => {

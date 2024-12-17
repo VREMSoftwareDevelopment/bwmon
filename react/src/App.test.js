@@ -17,19 +17,14 @@
  */
 
 import React from 'react';
-import { act, create } from 'react-test-renderer';
+import { render, screen, waitForElementToBeRemoved } from '@testing-library/react';
+import '@testing-library/jest-dom';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { Settings } from 'luxon';
 import App from './App';
-import wait from './__test__/utils/Wait';
+import menu from './menu/Menu';
 
 jest.mock('./services/Usage');
-jest.mock('./components/table/Pagination');
-
-const error = console.error;
-console.error = (...args) => {
-    if (/defaultProps/.test(args[0])) return;
-    error(...args);
-};
 
 describe('App', () => {
     const originalZone = Settings.defaultZone;
@@ -45,21 +40,37 @@ describe('App', () => {
         Settings.defaultLocale = originalLocale;
     });
 
-    const name = 'Bandwidth Monitor';
-    const version = '3.1.1';
+    const name = 'Bandwidth Monitor Test Name';
+    const version = '1.1.1';
     const currentTime = 'October 20, 2020, 11:25:35 AM EDT';
 
-    it('renders correctly', () => {
-        const tree = create(<App name={name} version={version} currentTime={currentTime} />).toJSON();
-        expect(tree).toMatchSnapshot();
+    const theme = createTheme();
+
+    const renderComponent = (props) =>
+        render(
+            <ThemeProvider theme={theme}>
+                <App {...props} />
+            </ThemeProvider>
+        );
+
+    it('renders the landing page', async () => {
+        renderComponent({ name: name, version: version, currentTime: currentTime });
+        expect(screen.getByTestId('app-title')).toHaveTextContent(name);
+        expect(screen.getByTestId('app-version')).toHaveTextContent(version);
+        expect(screen.getByTestId('app-footer2')).toHaveTextContent(`This page was generated on ${currentTime}`);
+        menu.forEach((menuItem) => {
+            expect(screen.getByTestId(menuItem.id)).toHaveTextContent(menuItem.label);
+        });
+        await waitForElementToBeRemoved(() => screen.queryByText('Loading...'));
     });
 
-    it('renders correctly after data load', async () => {
-        let tree;
-        act(() => {
-            tree = create(<App name={name} version={version} currentTime={currentTime} />);
+    it('renders the landing page with default props', async () => {
+        renderComponent();
+        expect(screen.getByTestId('app-title')).toHaveTextContent('Bandwidth Monitor');
+        expect(screen.getByTestId('app-version')).toHaveTextContent('3.1.2');
+        menu.forEach((menuItem) => {
+            expect(screen.getByTestId(menuItem.id)).toHaveTextContent(menuItem.label);
         });
-        await wait(1);
-        expect(tree.toJSON()).toMatchSnapshot();
+        await waitForElementToBeRemoved(() => screen.queryByText('Loading...'));
     });
 });

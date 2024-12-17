@@ -33,7 +33,7 @@ describe('useInterval', () => {
         jest.useRealTimers();
     });
 
-    test('should set an interval', () => {
+    it('should set an interval', () => {
         renderHook(() => useInterval(callback, DELAY));
         expect(callback).not.toHaveBeenCalled();
         for (let i = 0; i < 5; i++) {

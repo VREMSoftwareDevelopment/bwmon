@@ -51,7 +51,7 @@ const Header = ({ prefix, cellInfos, onRequestSort, ascending, orderBy }) => {
 
     return (
         <TableHead>
-            <TableRow key={'header'}>
+            <TableRow key="header" data-testid={prefix + '-header'} id={prefix + '-header'}>
                 {cellInfos.map((cellInfo) => {
                     return cellInfo.sortable ? (
                         <SortableCell

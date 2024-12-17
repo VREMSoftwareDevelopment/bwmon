@@ -20,7 +20,7 @@ import React from 'react';
 
 const Graph = ({ options, series }) => {
     return (
-        <div>
+        <div data-testid="test-graph-id">
             Graph
             <p>Options: {JSON.stringify(options)}</p>
             <p>Series: {JSON.stringify(series)}</p>

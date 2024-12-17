@@ -17,12 +17,31 @@
  */
 
 import React from 'react';
-import { themeWrapper } from '../../__test__/utils/ThemeWrapper';
+import { render, screen } from '@testing-library/react';
+import '@testing-library/jest-dom';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
 import Loading from './Loading';
 
 describe('Loading', () => {
-    it('renders correctly', () => {
-        const tree = themeWrapper(<Loading />).toJSON();
-        expect(tree).toMatchSnapshot();
+    const theme = createTheme();
+
+    const renderComponent = (props) =>
+        render(
+            <ThemeProvider theme={theme}>
+                <Loading {...props} />
+            </ThemeProvider>
+        );
+
+    it('renders loading indicator and message when isLoading is true', () => {
+        const props = { isLoading: true };
+        renderComponent(props);
+        expect(screen.getByRole('progressbar')).toBeInTheDocument();
+        expect(screen.getByText('Loading...')).toBeInTheDocument();
+    });
+
+    it('does not render anything when isLoading is false', () => {
+        const props = { isLoading: false };
+        const { container } = renderComponent(props);
+        expect(container.firstChild).toBeNull();
     });
 });

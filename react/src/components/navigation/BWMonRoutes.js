@@ -27,7 +27,7 @@ const BWMonRoutes = ({ menu }) => (
         {menu.map((route, _index) => (
             <Route key={route.pathname} path={route.pathname} element={route.element} />
         ))}
-        <Route key="0-error" component={<PageNotFound />} />
+        <Route key="0-error" Component={<PageNotFound />} />
     </Routes>
 );
 

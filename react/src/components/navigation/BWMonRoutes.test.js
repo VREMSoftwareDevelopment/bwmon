@@ -17,18 +17,43 @@
  */
 
 import React from 'react';
-import { BrowserRouter } from 'react-router-dom';
-import { themeWrapper } from '../../__test__/utils/ThemeWrapper';
-import menu from '../../menu/Menu';
+import { render, screen } from '@testing-library/react';
+import { MemoryRouter } from 'react-router-dom';
+import '@testing-library/jest-dom';
 import BWMonRoutes from './BWMonRoutes';
 
+const MockComponent = ({ text }) => <div>{text}</div>;
+
 describe('BWMonRoutes', () => {
-    it('renders correctly', () => {
-        const tree = themeWrapper(
-            <BrowserRouter>
+    const menu = [
+        { pathname: '/page1', element: <MockComponent text="Page 1" /> },
+        { pathname: '/page2', element: <MockComponent text="Page 2" /> },
+    ];
+
+    it('renders default route', () => {
+        render(
+            <MemoryRouter initialEntries={['/']}>
                 <BWMonRoutes menu={menu} />
-            </BrowserRouter>
-        ).toJSON();
-        expect(tree).toMatchSnapshot();
+            </MemoryRouter>
+        );
+        expect(screen.getByText('Page 1')).toBeInTheDocument();
+    });
+
+    it('renders specific route', () => {
+        render(
+            <MemoryRouter initialEntries={['/page2']}>
+                <BWMonRoutes menu={menu} />
+            </MemoryRouter>
+        );
+        expect(screen.getByText('Page 2')).toBeInTheDocument();
+    });
+
+    it('renders PageNotFound for unknown route', () => {
+        const { container } = render(
+            <MemoryRouter initialEntries={['/page3']}>
+                <BWMonRoutes menu={menu} />
+            </MemoryRouter>
+        );
+        expect(container.firstChild).toBeNull();
     });
 });

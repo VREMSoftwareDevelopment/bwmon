@@ -18,7 +18,8 @@
 
 import React from 'react';
 import { makeStyles } from '@mui/styles';
-import { Paper, Grid2 } from '@mui/material';
+import { Paper } from '@mui/material';
+import Grid from '@mui/material/Grid2';
 import DropDown from '../../components/inputs/DropDown';
 import useUsageByMonthGraph from '../../hooks/bymonth/UseUsageByMonthGraph';
 import Loading from '../../components/loading/Loading';
@@ -34,27 +35,26 @@ const useStyles = makeStyles((theme) => ({
 
 const UsageByMonthGraph = () => {
     const classes = useStyles();
-
     const { options, series, years, year, setYear, loading } = useUsageByMonthGraph();
 
     const handleChangeYear = (event) => setYear(event.target.value);
 
-    const itemYear = () => (
-        <Grid2 item sm={2}>
-            <DropDown data-testid="month-year-graph" id="month-year-graph" onChange={handleChangeYear} items={years} value={year} />
-        </Grid2>
-    );
-
-    const items = () => (
-        <div className={classes.root}>
-            <Grid2 container>{itemYear()}</Grid2>
-        </div>
-    );
-
     return (
         <Paper>
             <Loading isLoading={loading} />
-            {items()}
+            <div className={classes.root}>
+                <Grid container>
+                    <Grid sm={2}>
+                        <DropDown
+                            data-testid="month-year-graph"
+                            id="month-year-graph"
+                            onChange={handleChangeYear}
+                            items={years}
+                            value={year}
+                        />
+                    </Grid>
+                </Grid>
+            </div>
             <Graph options={options} series={series} />
         </Paper>
     );

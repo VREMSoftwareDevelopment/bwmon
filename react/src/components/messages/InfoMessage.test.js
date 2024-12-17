@@ -17,17 +17,30 @@
  */
 
 import React from 'react';
-import { themeWrapper } from '../../__test__/utils/ThemeWrapper';
+import { render, screen } from '@testing-library/react';
+import '@testing-library/jest-dom';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
 import InfoMessage from './InfoMessage';
 
 describe('InfoMessage', () => {
-    it('renders correctly with message', () => {
-        const tree = themeWrapper(<InfoMessage message="message" />).toJSON();
-        expect(tree).toMatchSnapshot();
+    const theme = createTheme();
+
+    const renderComponent = (props) =>
+        render(
+            <ThemeProvider theme={theme}>
+                <InfoMessage {...props} />
+            </ThemeProvider>
+        );
+
+    it('renders the message with the correct severity', () => {
+        const props = { message: 'info message text' };
+        renderComponent(props);
+        expect(screen.getByText('info message text')).toBeInTheDocument();
+        expect(screen.getByRole('alert')).toHaveClass('MuiAlert-standardInfo');
     });
 
-    it('renders correctly with no message', () => {
-        const tree = themeWrapper(<InfoMessage />).toJSON();
-        expect(tree).toMatchSnapshot();
+    it('does not render anything when message is null', () => {
+        const { container } = renderComponent();
+        expect(container.firstChild).toBeNull();
     });
 });
