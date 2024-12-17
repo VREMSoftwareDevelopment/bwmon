@@ -67,7 +67,8 @@ describe('App', () => {
     it('renders the landing page with default props', async () => {
         renderComponent();
         expect(screen.getByTestId('app-title')).toHaveTextContent('Bandwidth Monitor');
-        expect(screen.getByTestId('app-version')).toHaveTextContent('3.1.2');
+        expect(screen.getByTestId('app-version')).toHaveTextContent('3.1.');
+        expect(screen.getByTestId('app-footer2')).toHaveTextContent('This page was generated on ');
         menu.forEach((menuItem) => {
             expect(screen.getByTestId(menuItem.id)).toHaveTextContent(menuItem.label);
         });
