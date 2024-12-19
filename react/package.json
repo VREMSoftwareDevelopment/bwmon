@@ -4,6 +4,19 @@
     "version": "3.1.3",
     "homepage": "/bwmon/",
     "private": true,
+    "scripts": {
+        "start": "react-scripts start",
+        "build": "react-scripts build",
+        "test": "react-scripts test --maxWorkers=25%",
+        "test:once": "react-scripts test --watchAll=false --maxWorkers=25%",
+        "test:coverage": "react-scripts test --watchAll=false --coverage --maxWorkers=25%",
+        "test:CI": "react-scripts test --watchAll=false --coverage --runInBand",
+        "test:e2e": "npx playwright test",
+        "eject": "react-scripts eject",
+        "pretty": "prettier --write \"src/**/*.{js,jsx,json}\"",
+        "audit": "better-npm-audit audit -p -l high",
+        "lint": "eslint \"src/**/*.{js,jsx}\""
+    },
     "dependencies": {
         "@emotion/react": "^11.14.0",
         "@emotion/styled": "^11.14.0",
@@ -40,19 +53,6 @@
         "prettier": "^3.4.2",
         "pretty-quick": "^4.0.0",
         "react-scripts": "^5.0.1"
-    },
-    "scripts": {
-        "start": "react-scripts start",
-        "build": "react-scripts build",
-        "test": "react-scripts test --maxWorkers=25%",
-        "test:once": "react-scripts test --watchAll=false --maxWorkers=25%",
-        "test:coverage": "react-scripts test --watchAll=false --coverage --maxWorkers=25%",
-        "test:CI": "react-scripts test --watchAll=false --coverage --runInBand",
-        "test:e2e": "npx playwright test",
-        "eject": "react-scripts eject",
-        "pretty": "prettier --write \"src/**/*.{js,jsx,json}\"",
-        "audit": "better-npm-audit audit -p -l high",
-        "lint": "eslint \"src/**/*.{js,jsx}\""
     },
     "eslintConfig": {
         "extends": [
