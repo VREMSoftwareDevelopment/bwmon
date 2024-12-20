@@ -17,24 +17,16 @@
  */
 
 import React from 'react';
-import { makeStyles } from '@mui/styles';
 import { Paper } from '@mui/material';
 import Grid from '@mui/material/Grid2';
 import DropDown from '../../components/inputs/DropDown';
 import useUsageByMonthGraph from '../../hooks/bymonth/UseUsageByMonthGraph';
 import Loading from '../../components/loading/Loading';
 import Graph from '../../components/graph/Graph';
-
-const useStyles = makeStyles((theme) => ({
-    root: {
-        flexGrow: 1,
-        margin: theme.spacing(2),
-        marginTop: 6,
-    },
-}));
+import { graphStyles } from '../../utils/StylesUtils';
 
 const UsageByMonthGraph = () => {
-    const classes = useStyles();
+    const classes = graphStyles();
     const { options, series, years, year, setYear, loading } = useUsageByMonthGraph();
 
     const handleChangeYear = (event) => setYear(event.target.value);

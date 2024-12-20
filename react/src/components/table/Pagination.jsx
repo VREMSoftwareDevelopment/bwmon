@@ -18,15 +18,10 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { makeStyles, useTheme } from '@mui/styles';
+import { useTheme } from '@mui/styles';
 import { TablePagination, IconButton } from '@mui/material';
 import { FirstPage, KeyboardArrowLeft, KeyboardArrowRight, LastPage } from '@mui/icons-material';
-
-const useStyles = makeStyles((_theme) => ({
-    root: {
-        flexShrink: 0,
-    },
-}));
+import { paginationStyles } from '../../utils/StylesUtils';
 
 const lastPage = (count, rowsPerPage) => Math.ceil(count / rowsPerPage) - 1;
 
@@ -123,7 +118,7 @@ NextPageAction.propTypes = {
 };
 
 const Actions = ({ count, page, rowsPerPage, onPageChange }) => {
-    const classes = useStyles();
+    const classes = paginationStyles();
 
     return (
         <div className={classes.root}>

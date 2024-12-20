@@ -17,15 +17,14 @@
  */
 
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { makeStyles } from '@mui/styles';
 import { BottomNavigation, BottomNavigationAction } from '@mui/material';
 import useNavigation from './UseNavigation';
-
-const useStyles = makeStyles({});
+import { defaultStyles } from '../../utils/StylesUtils';
 
 const Navigation = ({ menu }) => {
-    const classes = useStyles();
+    const classes = defaultStyles();
     const { index, setIndex } = useNavigation(menu);
 
     const handleChange = (event, newRouteIndex) => setIndex(newRouteIndex);
@@ -46,6 +45,17 @@ const Navigation = ({ menu }) => {
             ))}
         </BottomNavigation>
     );
+};
+
+Navigation.propTypes = {
+    menu: PropTypes.arrayOf(
+        PropTypes.shape({
+            id: PropTypes.string.isRequired,
+            pathname: PropTypes.string.isRequired,
+            label: PropTypes.string.isRequired,
+            icon: PropTypes.element.isRequired,
+        })
+    ).isRequired,
 };
 
 export default Navigation;

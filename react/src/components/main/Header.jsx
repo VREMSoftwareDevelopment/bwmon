@@ -18,17 +18,11 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { makeStyles } from '@mui/styles';
 import { AppBar, Toolbar, Typography } from '@mui/material';
-
-const useStyles = makeStyles({
-    title: {
-        flexGrow: 1,
-    },
-});
+import { headerStyles } from '../../utils/StylesUtils';
 
 const Header = ({ name, version }) => {
-    const classes = useStyles();
+    const classes = headerStyles();
 
     return (
         <AppBar position="static">

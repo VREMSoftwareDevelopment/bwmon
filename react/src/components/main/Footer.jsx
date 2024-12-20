@@ -18,18 +18,11 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { makeStyles } from '@mui/styles';
 import { Typography } from '@mui/material';
-
-const useStyles = makeStyles((theme) => ({
-    root: {
-        flexGrow: 1,
-        margin: theme.spacing(2),
-    },
-}));
+import { footerStyles } from '../../utils/StylesUtils';
 
 const Footer = ({ currentTime }) => {
-    const classes = useStyles();
+    const classes = footerStyles();
 
     return (
         <div className={classes.root}>

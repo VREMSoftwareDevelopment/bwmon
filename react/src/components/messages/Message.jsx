@@ -17,20 +17,12 @@
  */
 
 import React from 'react';
-import { makeStyles } from '@mui/styles';
+import PropTypes from 'prop-types';
 import { Alert, AlertTitle } from '@mui/material';
-
-const useStyles = makeStyles((theme) => ({
-    root: {
-        width: '100%',
-        '& > * + *': {
-            marginTop: theme.spacing(2),
-        },
-    },
-}));
+import { messageStyles } from '../../utils/StylesUtils';
 
 const Message = ({ severity, message }) => {
-    const classes = useStyles();
+    const classes = messageStyles();
 
     return message ? (
         <div className={classes.root}>
@@ -39,6 +31,11 @@ const Message = ({ severity, message }) => {
             </Alert>
         </div>
     ) : null;
+};
+
+Message.propTypes = {
+    severity: PropTypes.string.isRequired,
+    message: PropTypes.string.isRequired,
 };
 
 export default Message;

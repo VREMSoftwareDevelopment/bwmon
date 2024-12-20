@@ -17,22 +17,13 @@
  */
 
 import React from 'react';
-import { makeStyles } from '@mui/styles';
 import { LinearProgress } from '@mui/material';
 import InfoMessage from '../messages/InfoMessage';
 import PropTypes from 'prop-types';
-
-const useStyles = makeStyles((theme) => ({
-    root: {
-        width: '100%',
-        '& > * + *': {
-            marginTop: theme.spacing(2),
-        },
-    },
-}));
+import { messageStyles } from '../../utils/StylesUtils';
 
 const Loading = ({ isLoading }) => {
-    const classes = useStyles();
+    const classes = messageStyles();
 
     return isLoading ? (
         <div className={classes.root}>
