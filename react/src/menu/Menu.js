@@ -18,12 +18,12 @@
 
 import React from 'react';
 import { Person, CalendarToday, CalendarViewDay, ShowChart, Timeline } from '@mui/icons-material';
-import UsageByUser from '../pages/byuser/UsageByUser';
-import UsageByUserGraph from '../pages/byuser/UsageByUserGraph';
-import UsageByMonth from '../pages/bymonth/UsageByMonth';
-import UsageByMonthGraph from '../pages/bymonth/UsageByMonthGraph';
-import UsageByYear from '../pages/byyear/UsageByYear';
-import UsageByYearGraph from '../pages/byyear/UsageByYearGraph';
+import UsageByUser from '../pages/byuser/UsageByUser.jsx';
+import UsageByUserGraph from '../pages/byuser/UsageByUserGraph.jsx';
+import UsageByMonth from '../pages/bymonth/UsageByMonth.jsx';
+import UsageByMonthGraph from '../pages/bymonth/UsageByMonthGraph.jsx';
+import UsageByYear from '../pages/byyear/UsageByYear.jsx';
+import UsageByYearGraph from '../pages/byyear/UsageByYearGraph.jsx';
 
 class MenuItem {
     constructor(id, element, pathname, label, icon) {
