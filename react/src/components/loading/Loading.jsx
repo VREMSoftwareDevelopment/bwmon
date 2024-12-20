@@ -17,15 +17,33 @@
  */
 
 import React from 'react';
+import { makeStyles } from '@mui/styles';
+import { LinearProgress } from '@mui/material';
+import InfoMessage from '../messages/InfoMessage';
+import PropTypes from 'prop-types';
 
-const Graph = ({ options, series }) => {
-    return (
-        <div data-testid="test-graph-id">
-            Graph
-            <p>Options: {JSON.stringify(options)}</p>
-            <p>Series: {JSON.stringify(series)}</p>
+const useStyles = makeStyles((theme) => ({
+    root: {
+        width: '100%',
+        '& > * + *': {
+            marginTop: theme.spacing(2),
+        },
+    },
+}));
+
+const Loading = ({ isLoading }) => {
+    const classes = useStyles();
+
+    return isLoading ? (
+        <div className={classes.root}>
+            <LinearProgress />
+            <InfoMessage message="Loading..." />
         </div>
-    );
+    ) : null;
 };
 
-export default Graph;
+Loading.propTypes = {
+    isLoading: PropTypes.bool.isRequired,
+};
+
+export default Loading;

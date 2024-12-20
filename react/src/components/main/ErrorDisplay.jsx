@@ -18,6 +18,7 @@
 
 import React from 'react';
 import ErrorMessage from '../messages/ErrorMessage';
+import PropTypes from 'prop-types';
 
 const ErrorDisplay = ({ error, info }) => {
     return (
@@ -26,6 +27,11 @@ const ErrorDisplay = ({ error, info }) => {
             <div>{info.componentStack}</div>
         </div>
     );
+};
+
+ErrorDisplay.propTypes = {
+    error: PropTypes.object.isRequired,
+    info: PropTypes.object.isRequired,
 };
 
 export default ErrorDisplay;

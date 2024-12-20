@@ -17,6 +17,7 @@
  */
 
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Select, MenuItem } from '@mui/material';
 
 const DropDown = ({ items, ...props }) => {
@@ -29,6 +30,11 @@ const DropDown = ({ items, ...props }) => {
             ))}
         </Select>
     ) : null;
+};
+
+DropDown.propTypes = {
+    items: PropTypes.array.isRequired,
+    value: PropTypes.any.isRequired,
 };
 
 export default DropDown;

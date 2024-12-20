@@ -17,6 +17,7 @@
  */
 
 import React from 'react';
+import PropTypes from 'prop-types';
 import { TableCell, TableHead, TableRow, TableSortLabel } from '@mui/material';
 
 const SortableCell = ({ prefix, cellInfo, sortHandler, ascending, orderBy }) => {
@@ -42,7 +43,29 @@ const SortableCell = ({ prefix, cellInfo, sortHandler, ascending, orderBy }) => 
     );
 };
 
+SortableCell.propTypes = {
+    prefix: PropTypes.string.isRequired,
+    cellInfo: PropTypes.shape({
+        id: PropTypes.string.isRequired,
+        align: PropTypes.string,
+        label: PropTypes.string.isRequired,
+        sortable: PropTypes.bool
+    }).isRequired,
+    sortHandler: PropTypes.func.isRequired,
+    ascending: PropTypes.bool.isRequired,
+    orderBy: PropTypes.string.isRequired
+};
+
 const Cell = ({ cellInfo }) => <TableCell align={cellInfo.align}>{cellInfo.label}</TableCell>;
+
+Cell.propTypes = {
+    cellInfo: PropTypes.shape({
+        id: PropTypes.string.isRequired,
+        align: PropTypes.string,
+        label: PropTypes.string.isRequired,
+        sortable: PropTypes.bool
+    }).isRequired,
+};
 
 const Header = ({ prefix, cellInfos, onRequestSort, ascending, orderBy }) => {
     const sortHandler = (property) => (event) => {
@@ -69,6 +92,21 @@ const Header = ({ prefix, cellInfos, onRequestSort, ascending, orderBy }) => {
             </TableRow>
         </TableHead>
     );
+};
+
+Header.propTypes = {
+    prefix: PropTypes.string.isRequired,
+    cellInfos: PropTypes.arrayOf(
+        PropTypes.shape({
+            id: PropTypes.string.isRequired,
+            align: PropTypes.string,
+            label: PropTypes.string.isRequired,
+            sortable: PropTypes.bool
+        })
+    ).isRequired,
+    onRequestSort: PropTypes.func.isRequired,
+    ascending: PropTypes.bool.isRequired,
+    orderBy: PropTypes.string.isRequired
 };
 
 export { Header, Cell, SortableCell };

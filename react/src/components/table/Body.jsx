@@ -17,6 +17,7 @@
  */
 
 import React from 'react';
+import PropTypes from 'prop-types';
 import { TableBody, TableCell, TableRow } from '@mui/material';
 
 const Body = ({ prefix, cellInfos, values }) => (
@@ -39,5 +40,17 @@ const Body = ({ prefix, cellInfos, values }) => (
         ))}
     </TableBody>
 );
+
+Body.propTypes = {
+    prefix: PropTypes.string.isRequired,
+    cellInfos: PropTypes.arrayOf(
+        PropTypes.shape({
+            id: PropTypes.string.isRequired,
+            align: PropTypes.string,
+            convert: PropTypes.func
+        })
+    ).isRequired,
+    values: PropTypes.arrayOf(PropTypes.object).isRequired
+};
 
 export default Body;

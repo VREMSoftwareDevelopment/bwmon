@@ -17,10 +17,21 @@
  */
 
 import React from 'react';
-import Chart from 'react-apexcharts';
+import PropTypes from 'prop-types';
 
 const Graph = ({ options, series }) => {
-    return <Chart options={options} series={series} type="bar" height={500} />;
+    return (
+        <div data-testid="test-graph-id">
+            Graph
+            <p>Options: {JSON.stringify(options)}</p>
+            <p>Series: {JSON.stringify(series)}</p>
+        </div>
+    );
+};
+
+Graph.propTypes = {
+    options: PropTypes.object.isRequired,
+    series: PropTypes.array.isRequired,
 };
 
 export default Graph;

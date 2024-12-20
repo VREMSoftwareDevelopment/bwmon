@@ -17,28 +17,16 @@
  */
 
 import React from 'react';
-import { makeStyles } from '@mui/styles';
-import { LinearProgress } from '@mui/material';
-import InfoMessage from '../messages/InfoMessage';
+import PropTypes from 'prop-types';
+import Chart from 'react-apexcharts';
 
-const useStyles = makeStyles((theme) => ({
-    root: {
-        width: '100%',
-        '& > * + *': {
-            marginTop: theme.spacing(2),
-        },
-    },
-}));
-
-const Loading = ({ isLoading }) => {
-    const classes = useStyles();
-
-    return isLoading ? (
-        <div className={classes.root}>
-            <LinearProgress />
-            <InfoMessage message="Loading..." />
-        </div>
-    ) : null;
+const Graph = ({ options, series }) => {
+    return <Chart options={options} series={series} type="bar" height={500} />;
 };
 
-export default Loading;
+Graph.propTypes = {
+    options: PropTypes.object.isRequired,
+    series: PropTypes.array.isRequired,
+};
+
+export default Graph;
