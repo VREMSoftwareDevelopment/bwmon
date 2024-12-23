@@ -17,10 +17,15 @@
  */
 
 import React from 'react';
+import PropTypes from 'prop-types';
 import Message from './Message';
 
 const InfoMessage = ({ message }) => {
     return <Message severity="info" message={message} />;
+};
+
+InfoMessage.propTypes = {
+    message: PropTypes.string,
 };
 
 export default InfoMessage;

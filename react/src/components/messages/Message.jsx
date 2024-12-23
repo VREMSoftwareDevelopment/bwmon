@@ -35,7 +35,7 @@ const Message = ({ severity, message }) => {
 
 Message.propTypes = {
     severity: PropTypes.string.isRequired,
-    message: PropTypes.string.isRequired,
+    message: PropTypes.string,
 };
 
 export default Message;

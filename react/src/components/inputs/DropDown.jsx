@@ -33,8 +33,8 @@ const DropDown = ({ items, ...props }) => {
 };
 
 DropDown.propTypes = {
-    items: PropTypes.array.isRequired,
-    value: PropTypes.any.isRequired,
+    items: PropTypes.array,
+    value: PropTypes.any,
 };
 
 export default DropDown;
