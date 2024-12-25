@@ -18,7 +18,7 @@
 
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import { MemoryRouter } from 'react-router-dom';
+import { MemoryRouter } from 'react-router';
 import '@testing-library/jest-dom';
 import BWMonRoutes from './BWMonRoutes';
 
@@ -48,6 +48,7 @@ describe('BWMonRoutes', () => {
     });
 
     it('renders PageNotFound for unknown route', () => {
+        jest.spyOn(console, 'warn').mockImplementation(() => {});
         const { container } = renderComponent(['/page3']);
         expect(container.firstChild).toBeNull();
     });

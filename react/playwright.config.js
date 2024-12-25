@@ -1,3 +1,4 @@
+// paywright.config.js
 import { defineConfig, devices } from '@playwright/test';
 
 /**

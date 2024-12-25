@@ -1,6 +1,6 @@
-// jest.config.js
+// jest.config.mjs
 export default {
-    testEnvironment: 'jest-environment-jsdom',
+    testEnvironment: '<rootDir>/jest.enviroment.js',
     testMatch: ['<rootDir>/src/**/*.test.js?(x)'],
     modulePaths: ['<rootDir>/src/'],
     transform: {

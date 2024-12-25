@@ -1,3 +1,4 @@
+// eslint.config.mjs
 import { fixupConfigRules, fixupPluginRules } from '@eslint/compat';
 import react from 'eslint-plugin-react';
 import _import from 'eslint-plugin-import';

@@ -18,7 +18,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { HashRouter } from 'react-router-dom';
+import { HashRouter } from 'react-router';
 import { DateTime } from 'luxon';
 import theme from './theme';
 import { ThemeProvider, CssBaseline } from '@mui/material';
@@ -29,7 +29,6 @@ import Footer from './components/main/Footer';
 import Navigation from './components/navigation/Navigation';
 import BWMonRoutes from './components/navigation/BWMonRoutes';
 import menu from './menu/Menu';
-
 import { createBrowserHistory } from 'history';
 
 export const history = createBrowserHistory({ basename: import.meta.env.BASE_URL });

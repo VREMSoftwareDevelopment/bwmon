@@ -17,7 +17,7 @@
  */
 
 import { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router';
 
 const useNavigation = (menu) => {
     const [index, setIndex] = useState(0);

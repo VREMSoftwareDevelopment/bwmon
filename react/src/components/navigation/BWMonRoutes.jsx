@@ -18,7 +18,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router';
 import PageNotFound from './PageNotFound';
 
 const BWMonRoutes = ({ menu }) => (
