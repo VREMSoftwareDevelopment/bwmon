@@ -50,5 +50,5 @@ A simple shell script designed to run on [AsusWRT-Merlin](https://www.asuswrt-me
 -   Install node: see [https://nodejs.org](https://nodejs.org)
 -   Create project: `git clone https://github.com/VREMSoftwareDevelopment/bwmon.git`
 -   Go to react subfolder
--   Install required node modules: `npm install --legacy-peer-deps`
+-   Install required node modules: `npm install`
 -   See README.md in react subfolder

@@ -42,10 +42,8 @@ export default [
                 ...globals.node,
                 ...jest.environments.globals.globals,
             },
-
             ecmaVersion: 'latest',
             sourceType: 'module',
-
             parserOptions: {
                 ecmaFeatures: {
                     jsx: true,

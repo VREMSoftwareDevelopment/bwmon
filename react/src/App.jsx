@@ -32,10 +32,10 @@ import menu from './menu/Menu';
 
 import { createBrowserHistory } from 'history';
 
-export const history = createBrowserHistory({ basename: process.env.PUBLIC_URL });
+export const history = createBrowserHistory({ basename: import.meta.env.BASE_URL });
 
-const appName = process.env.REACT_APP_DESCRIPTION || 'Bandwidth Monitor';
-const appVersion = process.env.REACT_APP_VERSION;
+const appName = import.meta.env.VITE_DESCRIPTION || 'Bandwidth Monitor';
+const appVersion = import.meta.env.VITE_VERSION;
 const appTime = DateTime.local().toLocaleString(DateTime.DATETIME_FULL_WITH_SECONDS);
 
 const App = ({ name = appName, version = appVersion, currentTime = appTime }) => (

@@ -40,7 +40,7 @@ const Header = ({ name, version }) => {
 
 Header.propTypes = {
     name: PropTypes.string.isRequired,
-    version: PropTypes.string.isRequired,
+    version: PropTypes.string,
 };
 
 export default Header;

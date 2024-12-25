@@ -48,7 +48,7 @@ class Store {
     data = async () => {
         const current = DateTime.local();
         if (!this.cached || current.diff(this.last, ['minutes']).minutes >= RELOAD_TIME) {
-            const data = await usage.request(process.env.PUBLIC_URL);
+            const data = await usage.request(import.meta.env.BASE_URL);
             this.cached = data.sort(this.orderBy);
             this.last = current;
         }

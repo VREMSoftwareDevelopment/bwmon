@@ -16,4 +16,4 @@
  * Bandwidth Monitor
  */
 
-export const HOME_URL = 'http://localhost:3000/bwmon#/';
+export const HOME_URL = 'http://localhost:3000/bwmon/#/';

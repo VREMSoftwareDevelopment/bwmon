@@ -18,7 +18,7 @@ jobs:
               with:
                   node-version: ${{ matrix.node-version }}
             - name: Install dependencies
-              run: npm install --legacy-peer-deps
+              run: npm install
               working-directory: react
             - name: Update version
               run: npm version ${{ github.event.inputs.version }}

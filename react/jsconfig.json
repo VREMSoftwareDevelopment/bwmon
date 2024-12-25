@@ -1,0 +1,6 @@
+// jsconfig.json
+{
+    "compilerOptions": { "baseUrl": "./src" },
+    "include": ["./src/**/*"],
+    "exclude": ["node_modules", "**/node_modules/*"]
+}
