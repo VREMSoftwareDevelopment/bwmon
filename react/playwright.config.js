@@ -6,11 +6,17 @@ import { defineConfig, devices } from '@playwright/test';
  */
 export default defineConfig({
     testDir: './e2e',
+    outputDir: 'reports/playwright/test-results',
+    preserveOutput: 'never',
     fullyParallel: false,
     forbidOnly: !!process.env.CI,
     retries: process.env.CI ? 2 : 0,
     workers: 1,
-    reporter: [['html'], ['list']],
+    reporter: [
+        ['html', { outputFolder: 'reports/playwright' }],
+        ['junit', { outputFile: 'reports/playwright/results.xml' }],
+        [process.env.CI ? 'github' : 'list'],
+    ],
     use: {
         trace: 'on-first-retry',
     },

@@ -24,8 +24,7 @@ const ErrorMessage = ({ message }) => {
     return <Message severity="error" message={message} />;
 };
 
-ErrorMessage.propTypes = {
-    message: PropTypes.string,
-};
+// Stryker disable next-line all
+ErrorMessage.propTypes = { message: PropTypes.string };
 
 export default ErrorMessage;

@@ -47,6 +47,7 @@ const Navigation = ({ menu }) => {
     );
 };
 
+// Stryker disable all
 Navigation.propTypes = {
     menu: PropTypes.arrayOf(
         PropTypes.shape({
@@ -57,5 +58,6 @@ Navigation.propTypes = {
         })
     ).isRequired,
 };
+// Stryker restore all
 
 export default Navigation;

@@ -43,29 +43,33 @@ const SortableCell = ({ prefix, cellInfo, sortHandler, ascending, orderBy }) => 
     );
 };
 
+// Stryker disable all
 SortableCell.propTypes = {
     prefix: PropTypes.string.isRequired,
     cellInfo: PropTypes.shape({
         id: PropTypes.string.isRequired,
         align: PropTypes.string,
         label: PropTypes.string.isRequired,
-        sortable: PropTypes.bool
+        sortable: PropTypes.bool,
     }).isRequired,
     sortHandler: PropTypes.func.isRequired,
     ascending: PropTypes.bool.isRequired,
-    orderBy: PropTypes.string.isRequired
+    orderBy: PropTypes.string.isRequired,
 };
+// Stryker restore all
 
 const Cell = ({ cellInfo }) => <TableCell align={cellInfo.align}>{cellInfo.label}</TableCell>;
 
+// Stryker disable all
 Cell.propTypes = {
     cellInfo: PropTypes.shape({
         id: PropTypes.string.isRequired,
         align: PropTypes.string,
         label: PropTypes.string.isRequired,
-        sortable: PropTypes.bool
+        sortable: PropTypes.bool,
     }).isRequired,
 };
+// Stryker restore all
 
 const Header = ({ prefix, cellInfos, onRequestSort, ascending, orderBy }) => {
     const sortHandler = (property) => (event) => {
@@ -94,6 +98,7 @@ const Header = ({ prefix, cellInfos, onRequestSort, ascending, orderBy }) => {
     );
 };
 
+// Stryker disable all
 Header.propTypes = {
     prefix: PropTypes.string.isRequired,
     cellInfos: PropTypes.arrayOf(
@@ -101,13 +106,14 @@ Header.propTypes = {
             id: PropTypes.string.isRequired,
             align: PropTypes.string,
             label: PropTypes.string.isRequired,
-            sortable: PropTypes.bool
+            sortable: PropTypes.bool,
         })
     ).isRequired,
     onRequestSort: PropTypes.func.isRequired,
     ascending: PropTypes.bool.isRequired,
-    orderBy: PropTypes.string.isRequired
+    orderBy: PropTypes.string.isRequired,
 };
+// Stryker restore all
 
 export { Header, Cell, SortableCell };
 

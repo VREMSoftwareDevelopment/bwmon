@@ -1,7 +1,8 @@
 // jest.enviroment.js
-import Environment from 'jest-environment-jsdom';
+import { mixinJestEnvironment } from '@stryker-mutator/jest-runner';
+import { TestEnvironment } from 'jest-environment-jsdom';
 
-export default class CustomTestEnvironment extends Environment {
+class JestTestEnvironment extends TestEnvironment {
     async setup() {
         await super.setup();
         this.global.TextEncoder = TextEncoder;
@@ -10,3 +11,7 @@ export default class CustomTestEnvironment extends Environment {
         this.global.Request = Request;
     }
 }
+
+const customTestEnvironment = mixinJestEnvironment(JestTestEnvironment);
+
+export default customTestEnvironment;

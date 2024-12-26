@@ -41,16 +41,18 @@ const Body = ({ prefix, cellInfos, values }) => (
     </TableBody>
 );
 
+// Stryker disable all
 Body.propTypes = {
     prefix: PropTypes.string.isRequired,
     cellInfos: PropTypes.arrayOf(
         PropTypes.shape({
             id: PropTypes.string.isRequired,
             align: PropTypes.string,
-            convert: PropTypes.func
+            convert: PropTypes.func,
         })
     ).isRequired,
-    values: PropTypes.arrayOf(PropTypes.object).isRequired
+    values: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
+// Stryker restore all
 
 export default Body;

@@ -33,9 +33,7 @@ const Message = ({ severity, message }) => {
     ) : null;
 };
 
-Message.propTypes = {
-    severity: PropTypes.string.isRequired,
-    message: PropTypes.string,
-};
+// Stryker disable next-line all
+Message.propTypes = { severity: PropTypes.string.isRequired, message: PropTypes.string };
 
 export default Message;

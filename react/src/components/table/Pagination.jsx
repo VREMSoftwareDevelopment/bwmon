@@ -51,10 +51,8 @@ const FirstPageAction = ({ page, onPageChange }) => {
     );
 };
 
-FirstPageAction.propTypes = {
-    page: PropTypes.number.isRequired,
-    onPageChange: PropTypes.func.isRequired,
-};
+// Stryker disable next-line all
+FirstPageAction.propTypes = { page: PropTypes.number.isRequired, onPageChange: PropTypes.func.isRequired };
 
 const LastPageAction = ({ count, page, rowsPerPage, onPageChange }) => {
     const theme = useTheme();
@@ -70,12 +68,14 @@ const LastPageAction = ({ count, page, rowsPerPage, onPageChange }) => {
     );
 };
 
+// Stryker disable all
 LastPageAction.propTypes = {
     count: PropTypes.number.isRequired,
     page: PropTypes.number.isRequired,
     rowsPerPage: PropTypes.number.isRequired,
     onPageChange: PropTypes.func.isRequired,
 };
+// Stryker restore all
 
 const PreviousPageAction = ({ page, onPageChange }) => {
     const theme = useTheme();
@@ -91,10 +91,8 @@ const PreviousPageAction = ({ page, onPageChange }) => {
     );
 };
 
-PreviousPageAction.propTypes = {
-    page: PropTypes.number.isRequired,
-    onPageChange: PropTypes.func.isRequired,
-};
+// Stryker disable next-line all
+PreviousPageAction.propTypes = { page: PropTypes.number.isRequired, onPageChange: PropTypes.func.isRequired };
 
 const NextPageAction = ({ count, page, rowsPerPage, onPageChange }) => {
     const theme = useTheme();
@@ -110,12 +108,14 @@ const NextPageAction = ({ count, page, rowsPerPage, onPageChange }) => {
     );
 };
 
+// Stryker disable all
 NextPageAction.propTypes = {
     count: PropTypes.number.isRequired,
     page: PropTypes.number.isRequired,
     rowsPerPage: PropTypes.number.isRequired,
     onPageChange: PropTypes.func.isRequired,
 };
+// Stryker restore all
 
 const Actions = ({ count, page, rowsPerPage, onPageChange }) => {
     const classes = paginationStyles();
@@ -130,12 +130,14 @@ const Actions = ({ count, page, rowsPerPage, onPageChange }) => {
     );
 };
 
+// Stryker disable all
 Actions.propTypes = {
     count: PropTypes.number.isRequired,
     page: PropTypes.number.isRequired,
     rowsPerPage: PropTypes.number.isRequired,
     onPageChange: PropTypes.func.isRequired,
 };
+// Stryker restore all
 
 const rowsPerPageOptions = (rowsPerPage, count) => {
     let rowsPerPageOptions = [rowsPerPage];
@@ -168,10 +170,8 @@ const Pagination = (props) => {
     );
 };
 
-Pagination.propTypes = {
-    count: PropTypes.number.isRequired,
-    minimum: PropTypes.number.isRequired,
-};
+// Stryker disable next-line all
+Pagination.propTypes = { count: PropTypes.number.isRequired, minimum: PropTypes.number.isRequired };
 
 export { Pagination, rowsPerPageOptions, FirstPageAction, LastPageAction, PreviousPageAction, NextPageAction };
 

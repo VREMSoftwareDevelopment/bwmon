@@ -51,10 +51,7 @@ const App = ({ name = appName, version = appVersion, currentTime = appTime }) =>
     </HashRouter>
 );
 
-App.propTypes = {
-    name: PropTypes.string,
-    version: PropTypes.string,
-    currentTime: PropTypes.string,
-};
+// Stryker disable next-line all
+App.propTypes = { name: PropTypes.string, version: PropTypes.string, currentTime: PropTypes.string };
 
 export default App;

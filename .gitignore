@@ -2,20 +2,14 @@
 
 # dependencies
 node_modules
-.pnp
-.pnp.js
-
-# testing
-coverage
-
-# production
-build
-
-# release
-bwmon.tar*
 
 # misc
-.DS_Store
+reports
+stryker-tmp
+test-results
+playwright-report
+playwright
+build
 .env.local
 .env.development.local
 .env.test.local
@@ -23,11 +17,34 @@ bwmon.tar*
 .idea
 .eslintcache
 
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
+# Compiled source
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
 
-# playwright
-test-results
-playwright-report
-playwright
+# Packages
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Logs and databases #
+*.log
+*.sql
+*.sqlite

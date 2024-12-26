@@ -36,8 +36,7 @@ const Footer = ({ currentTime }) => {
     );
 };
 
-Footer.propTypes = {
-    currentTime: PropTypes.string.isRequired,
-};
+// Stryker disable next-line all
+Footer.propTypes = { currentTime: PropTypes.string.isRequired };
 
 export default Footer;

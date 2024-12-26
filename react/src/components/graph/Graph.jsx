@@ -24,9 +24,7 @@ const Graph = ({ options, series }) => {
     return <Chart options={options} series={series} type="bar" height={500} />;
 };
 
-Graph.propTypes = {
-    options: PropTypes.object.isRequired,
-    series: PropTypes.array.isRequired,
-};
+// Stryker disable next-line all
+Graph.propTypes = { options: PropTypes.object.isRequired, series: PropTypes.array.isRequired };
 
 export default Graph;

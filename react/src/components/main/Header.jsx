@@ -38,9 +38,7 @@ const Header = ({ name, version }) => {
     );
 };
 
-Header.propTypes = {
-    name: PropTypes.string.isRequired,
-    version: PropTypes.string,
-};
+// Stryker disable next-line all
+Header.propTypes = { name: PropTypes.string.isRequired, version: PropTypes.string };
 
 export default Header;

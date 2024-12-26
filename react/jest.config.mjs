@@ -7,6 +7,7 @@ export default {
         '^.+\\.[t|j]sx?$': 'babel-jest',
     },
     collectCoverageFrom: ['src/**/*.{js,jsx}', '!src/index.jsx', '!src/serviceWorker.js', '!**/e2e/**', '!**/__mocks__/**'],
+    coverageDirectory: '<rootDir>/reports/coverage',
     coverageThreshold: {
         global: {
             branches: 99,

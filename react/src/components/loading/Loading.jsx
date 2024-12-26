@@ -33,8 +33,7 @@ const Loading = ({ isLoading }) => {
     ) : null;
 };
 
-Loading.propTypes = {
-    isLoading: PropTypes.bool.isRequired,
-};
+// Stryker disable next-line all
+Loading.propTypes = { isLoading: PropTypes.bool.isRequired };
 
 export default Loading;

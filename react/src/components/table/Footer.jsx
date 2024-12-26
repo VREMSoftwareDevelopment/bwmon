@@ -40,6 +40,7 @@ const Footer = ({ prefix, cellInfos, values }) => (
     </TableHead>
 );
 
+// Stryker disable all
 Footer.propTypes = {
     prefix: PropTypes.string.isRequired,
     cellInfos: PropTypes.arrayOf(
@@ -52,5 +53,6 @@ Footer.propTypes = {
     ).isRequired,
     values: PropTypes.object.isRequired,
 };
+// Stryker restore all
 
 export default Footer;

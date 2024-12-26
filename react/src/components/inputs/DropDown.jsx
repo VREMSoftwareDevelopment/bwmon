@@ -32,9 +32,7 @@ const DropDown = ({ items, ...props }) => {
     ) : null;
 };
 
-DropDown.propTypes = {
-    items: PropTypes.array,
-    value: PropTypes.any,
-};
+// Stryker disable next-line all
+DropDown.propTypes = { items: PropTypes.array, value: PropTypes.any };
 
 export default DropDown;

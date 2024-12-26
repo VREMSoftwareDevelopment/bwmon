@@ -31,6 +31,7 @@ const BWMonRoutes = ({ menu }) => (
     </Routes>
 );
 
+// Stryker disable all
 BWMonRoutes.propTypes = {
     menu: PropTypes.arrayOf(
         PropTypes.shape({
@@ -39,5 +40,6 @@ BWMonRoutes.propTypes = {
         })
     ).isRequired,
 };
+// Stryker restore all
 
 export default BWMonRoutes;
