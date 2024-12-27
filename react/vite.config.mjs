@@ -7,10 +7,14 @@ export default defineConfig({
     base: '/bwmon/',
     build: {
         outDir: 'build',
+        manifest: true,
     },
     server: {
         port: 3000,
         open: true,
+        watch: {
+            ignored: ['**/reports/**'],
+        },
     },
     plugins: [
         react({
