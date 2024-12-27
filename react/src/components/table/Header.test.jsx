@@ -63,10 +63,17 @@ describe('Header Suite', () => {
             fireEvent.click(nameSortLabel);
             expect(onRequestSort).toHaveBeenCalledWith(expect.anything(), 'name');
         });
+
+        it('renders sorting cell with ids', () => {
+            renderComponent();
+            expect(document.querySelector('#test-header')).toBeInTheDocument();
+        });
     });
 
     describe('Cell', () => {
-        const renderComponent = (cellInfo) => {
+        const cellInfo = { id: 'name', label: 'Name', align: 'left' };
+
+        const renderComponent = () => {
             return render(
                 <table>
                     <tbody>
@@ -79,7 +86,7 @@ describe('Header Suite', () => {
         };
 
         it('renders cell', () => {
-            renderComponent({ id: 'name', label: 'Name', align: 'left' });
+            renderComponent();
             expect(screen.getByText('Name')).toBeInTheDocument();
             expect(screen.getByRole('cell')).toHaveClass('MuiTableCell-alignLeft');
         });
@@ -129,6 +136,8 @@ describe('Header Suite', () => {
             expect(screen.getByText('Name')).toBeInTheDocument();
             expect(screen.getByRole('cell')).toHaveClass('MuiTableCell-alignLeft');
             expect(screen.getByRole('button')).toHaveClass('MuiTableSortLabel-directionAsc');
+            expect(screen.getByRole('button')).toHaveClass('Mui-active');
+            expect(screen.getByRole('button')).not.toHaveClass('MuiTableSortLabel-directionDesc');
         });
 
         it('renders descending sorting cell', () => {
@@ -137,6 +146,13 @@ describe('Header Suite', () => {
             expect(screen.getByText('Name')).toBeInTheDocument();
             expect(screen.getByRole('cell')).toHaveClass('MuiTableCell-alignLeft');
             expect(screen.getByRole('button')).toHaveClass('MuiTableSortLabel-directionDesc');
+            expect(screen.getByRole('button')).toHaveClass('Mui-active');
+            expect(screen.getByRole('button')).not.toHaveClass('MuiTableSortLabel-directionAsc');
+        });
+
+        it('renders sorting cell with ids', () => {
+            renderComponent(ascendingProps);
+            expect(document.querySelector('#test-name')).toBeInTheDocument();
         });
     });
 });

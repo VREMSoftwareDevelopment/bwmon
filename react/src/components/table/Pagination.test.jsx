@@ -20,7 +20,18 @@ import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
-import { Pagination, FirstPageAction, LastPageAction, PreviousPageAction, NextPageAction } from './Pagination';
+import {
+    Pagination,
+    rowsPerPageOptions,
+    FirstPageAction,
+    LastPageAction,
+    PreviousPageAction,
+    NextPageAction,
+    lastPage,
+    isRTL,
+    isFirstPage,
+    isLastPage,
+} from './Pagination';
 
 const mockOnPageChange = jest.fn();
 
@@ -49,11 +60,18 @@ describe('Pagination Suite', () => {
                 </ThemeProvider>
             );
 
+        it('renders pagination actions with ids', () => {
+            renderComponent();
+            expect(document.querySelector('#select-rows-per-page-id')).toBeInTheDocument();
+            expect(document.querySelector('#select-label-rows-per-page-id')).toBeInTheDocument();
+        });
+
         it('renders pagination actions', () => {
             renderComponent();
             expect(screen.getByLabelText('first page')).toBeInTheDocument();
             expect(screen.getByLabelText('previous page')).toBeInTheDocument();
             expect(screen.getByLabelText('next page')).toBeInTheDocument();
+            expect(screen.getByLabelText('last page')).toBeInTheDocument();
             expect(screen.getByLabelText('last page')).toBeInTheDocument();
         });
 
@@ -288,5 +306,42 @@ describe('Pagination Suite', () => {
             renderComponent(defaultProps, 'ltr');
             expect(screen.getByLabelText('next page').querySelector('svg')).toHaveClass('MuiSvgIcon-root');
         });
+    });
+
+    it('calculate lastPage', () => {
+        expect(lastPage(100, 10)).toBe(9);
+    });
+
+    it('isRTL should be true', () => {
+        const theme = { direction: 'rtl' };
+        expect(isRTL(theme)).toBeTruthy();
+    });
+
+    it('isRTL should be false', () => {
+        expect(isRTL({})).toBeFalsy();
+    });
+
+    it('isFirstPage should be true', () => {
+        expect(isFirstPage(0)).toBeTruthy();
+    });
+
+    it('isFirstPage should be false', () => {
+        expect(isFirstPage(1)).toBeFalsy();
+    });
+
+    it('isLastPage should be true', () => {
+        expect(isLastPage(10, 100, 10)).toBeTruthy();
+    });
+
+    it('isLastPage should be false', () => {
+        expect(isLastPage(1, 100, 10)).toBeFalsy();
+    });
+
+    it('rowsPerPageOptions should have only one page', () => {
+        expect(rowsPerPageOptions(1, 1)).toStrictEqual([1]);
+    });
+
+    it('rowsPerPageOptions should have more than one page', () => {
+        expect(rowsPerPageOptions(1, 4)).toStrictEqual([1, 2, 4]);
     });
 });

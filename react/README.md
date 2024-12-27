@@ -1,76 +1,41 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was bootstrapped with [VITE](https://vite.dev/)
+
+- [Getting Started](https://vite.dev/guide)
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
 
 ## Available Scripts
 
-In the project directory, you can run:
+`npm start` - Run the application in the development mode.
 
-### `npm start`
+- Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- The page will reload if you make edits.
+- You will also see any lint errors in the console.
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+`npm run build` - Build the application for production to the `build` folder.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+- It correctly bundles React in production mode and optimizes the build for the best performance.
+- The build is minified and the filenames include the hashes.
 
-### `npm test`
+`npm test` - Run all tests in the interactive watch mode.
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+`npm run test:once` - Run all tests once.
 
-### `npm run build`
+`npm run test:coverage` - Run all tests with coverage once.
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- coverage report `reports/coverage/lcov-report/index.html`
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+`npm run test:e2e` - Run the playwright tests.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- playwright report `reports/playwright/index.html`
 
-### `npm run eject`
+`npm run test:mutation` - Run the mutation tests.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- mutation report `reports/mutation/mutation.html`
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+`npm run pretty` - Format all code using prettier formatter
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+`npm run audit`- Report of known vulnerabilities.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+`npm run lint` - Report on patterns found in ECMAScript/JavaScript code.
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
-
-### `npm run pretty`
-
-This will format all code using prettier formatter
-
-### `npm version 'version number'`
-
-This will update application version number, package json file and create git tag
+`npm version 'version number'` - Update application version number, package json file and create git tag

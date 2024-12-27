@@ -23,12 +23,16 @@ import Footer from './Footer';
 
 describe('Footer', () => {
     const cellInfos = [
-        { id: 'name', label: 'Name', align: 'left', footer: false },
+        { id: 'name', label: 'Name', align: 'left', footer: true },
+        { id: 'value', label: 'Value', align: 'left', footer: true },
+        { id: 'novalue', label: 'NoValue', align: 'left', footer: false },
         { id: 'total', label: 'Total', align: 'right', footer: true },
     ];
 
     const values = {
         name: '',
+        value: 'text',
+        novalue: 'no-text',
         total: 100,
     };
 
@@ -52,6 +56,13 @@ describe('Footer', () => {
         expect(footerRow).toBeInTheDocument();
         const footerCells = screen.getAllByRole('columnheader');
         expect(footerCells[0]).toHaveTextContent('Totals');
-        expect(footerCells[1]).toHaveTextContent('100');
+        expect(footerCells[1]).toHaveTextContent('text');
+        expect(footerCells[2]).toHaveTextContent('');
+        expect(footerCells[3]).toHaveTextContent('100');
+    });
+
+    it('renders footer with ids', () => {
+        renderComponent();
+        expect(document.querySelector('#test-footer')).toBeInTheDocument();
     });
 });

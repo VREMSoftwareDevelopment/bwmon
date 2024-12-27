@@ -30,6 +30,7 @@ describe('Body Component', () => {
     const values = [
         { id: 1, name: 'John Doe', age: 28 },
         { id: 2, name: 'Jane Smith', age: 32 },
+        { id: 3, name: 'John Smith', age: 30 },
     ];
 
     const defaultProps = {
@@ -65,5 +66,12 @@ describe('Body Component', () => {
             const expectedBackgroundColor = index % 2 ? 'ghostwhite' : 'white';
             expect(row).toHaveStyle(`background: ${expectedBackgroundColor}`);
         });
+    });
+
+    it('renders with ids', () => {
+        renderComponent();
+        expect(document.querySelector('#test-data-0')).toBeInTheDocument();
+        expect(document.querySelector('#test-data-1')).toBeInTheDocument();
+        expect(document.querySelector('#test-data-2')).toBeInTheDocument();
     });
 });

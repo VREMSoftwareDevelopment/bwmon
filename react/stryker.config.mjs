@@ -8,6 +8,7 @@ const config = {
     reporters: ['html', 'clear-text', 'progress'],
     testRunner: 'jest',
     coverageAnalysis: 'perTest',
+    concurrency: 4,
     tempDirName: 'stryker-tmp',
     cleanTempDir: 'always',
     ignoreStatic: true,
@@ -40,7 +41,7 @@ const config = {
         },
         enableFindRelatedTests: true,
     },
-    thresholds: { high: 80, low: 60, break: 50 },
+    thresholds: { high: 80, low: 60, break: 75 },
 };
 
 export default config;

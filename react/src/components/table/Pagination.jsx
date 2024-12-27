@@ -141,8 +141,8 @@ Actions.propTypes = {
 
 const rowsPerPageOptions = (rowsPerPage, count) => {
     let rowsPerPageOptions = [rowsPerPage];
-    if (count > rowsPerPage) {
-        for (let i = rowsPerPage * 2; i < count; i = i * 2) {
+    if (rowsPerPage !== count) {
+        for (let i = rowsPerPage * 2; i < count; i *= 2) {
             rowsPerPageOptions.push(i);
         }
         rowsPerPageOptions.push(count);
@@ -173,6 +173,17 @@ const Pagination = (props) => {
 // Stryker disable next-line all
 Pagination.propTypes = { count: PropTypes.number.isRequired, minimum: PropTypes.number.isRequired };
 
-export { Pagination, rowsPerPageOptions, FirstPageAction, LastPageAction, PreviousPageAction, NextPageAction };
+export {
+    Pagination,
+    rowsPerPageOptions,
+    FirstPageAction,
+    LastPageAction,
+    PreviousPageAction,
+    NextPageAction,
+    lastPage,
+    isRTL,
+    isFirstPage,
+    isLastPage,
+};
 
 export default Pagination;

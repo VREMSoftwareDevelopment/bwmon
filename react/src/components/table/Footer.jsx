@@ -20,25 +20,30 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { TableHead, TableRow, TableCell } from '@mui/material';
 
-const Footer = ({ prefix, cellInfos, values }) => (
-    <TableHead>
-        <TableRow key="footer" data-testid={prefix + '-footer'} id={prefix + '-footer'}>
-            {cellInfos.map((cellInfo, index) => {
-                let text = '';
-                if (index === 0) {
-                    text = 'Totals';
-                } else if (cellInfo.footer) {
-                    text = cellInfo.convert ? cellInfo.convert(values[cellInfo.id]) : values[cellInfo.id];
-                }
-                return (
-                    <TableCell key={cellInfo.id} align={cellInfo.align}>
-                        {text}
-                    </TableCell>
-                );
-            })}
-        </TableRow>
-    </TableHead>
-);
+const Footer = ({ prefix, cellInfos, values }) => {
+    const cellText = (index, cellInfo) =>
+        index === 0
+            ? 'Totals'
+            : cellInfo.footer
+              ? cellInfo.convert
+                  ? cellInfo.convert(values[cellInfo.id])
+                  : values[cellInfo.id]
+              : '';
+
+    return (
+        <TableHead>
+            <TableRow key="footer" data-testid={prefix + '-footer'} id={prefix + '-footer'}>
+                {cellInfos.map((cellInfo, index) => {
+                    return (
+                        <TableCell key={cellInfo.id} align={cellInfo.align}>
+                            {cellText(index, cellInfo)}
+                        </TableCell>
+                    );
+                })}
+            </TableRow>
+        </TableHead>
+    );
+};
 
 // Stryker disable all
 Footer.propTypes = {
