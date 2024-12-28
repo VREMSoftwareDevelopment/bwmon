@@ -26,7 +26,7 @@ import Header from '../../components/table/Header';
 import Pagination from '../../components/table/Pagination';
 import Search from '../../components/inputs/Search';
 import { timeToDate, toIPv4, toPercent, usageInGBytes } from '../../utils/ConversionUtils';
-import { comparator, sort } from '../../utils/SortUtils';
+import { comparator, isAscending, sort } from '../../utils/SortUtils';
 import useUsageByUser from '../../hooks/byuser/UseUsageByUser';
 import useSort from '../../hooks/common/UseSort';
 import usePagination from '../../hooks/common/UsePagination';
@@ -67,7 +67,7 @@ const UsageByUser = () => {
     const handleChangeFilter = (event) => setFilter(event.target.value);
 
     const handleRequestSort = (event, property) => {
-        setAscending(orderBy === property ? !ascending : false);
+        setAscending(isAscending(orderBy, property, ascending));
         setOrderBy(property);
     };
 

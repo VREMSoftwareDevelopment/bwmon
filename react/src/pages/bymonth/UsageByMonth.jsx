@@ -24,7 +24,7 @@ import DropDown from '../../components/inputs/DropDown';
 import Footer from '../../components/table/Footer';
 import Header from '../../components/table/Header';
 import { toMonth, toPercent, usageInGBytes } from '../../utils/ConversionUtils';
-import { comparator, sort } from '../../utils/SortUtils';
+import { comparator, isAscending, sort } from '../../utils/SortUtils';
 import useUsageByMonth from '../../hooks/bymonth/UseUsageByMonth';
 import useSort from '../../hooks/common/UseSort';
 import Loading from '../../components/loading/Loading';
@@ -46,7 +46,7 @@ const UsageByMonth = () => {
     const handleChangeYear = (event) => setYear(event.target.value);
 
     const handleRequestSort = (event, property) => {
-        setAscending(orderBy === property ? !ascending : false);
+        setAscending(isAscending(orderBy, property, ascending));
         setOrderBy(property);
     };
 

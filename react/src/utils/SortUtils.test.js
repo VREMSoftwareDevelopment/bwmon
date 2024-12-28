@@ -16,7 +16,7 @@
  * Bandwidth Monitor
  */
 
-import { comparator, sort } from './SortUtils';
+import { comparator, isAscending, sort } from './SortUtils';
 
 describe('SortUtils', () => {
     describe('comparator', () => {
@@ -85,5 +85,12 @@ describe('SortUtils', () => {
             expect(result).toEqual(expected);
             expect(values !== result).toBeTruthy();
         });
+    });
+
+    it('isAscending', () => {
+        expect(isAscending('value1', 'value1', true)).toBeFalsy();
+        expect(isAscending('value1', 'value1', false)).toBeTruthy();
+        expect(isAscending('value1', 'value2', true)).toBeFalsy();
+        expect(isAscending('value1', 'value2', false)).toBeFalsy();
     });
 });

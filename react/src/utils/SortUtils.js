@@ -16,6 +16,8 @@
  * Bandwidth Monitor
  */
 
+const isAscending = (orderBy, property, ascending) => (orderBy === property ? !ascending : false);
+
 const comparator = (isAscending, orderBy) => {
     const ascending = (a, b, orderBy) => {
         if (a[orderBy] < b[orderBy]) return -1;
@@ -32,4 +34,4 @@ const comparator = (isAscending, orderBy) => {
 
 const sort = (values, comparator) => [...values].sort(comparator);
 
-export { sort, comparator };
+export { comparator, isAscending, sort };

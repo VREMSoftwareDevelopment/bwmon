@@ -23,7 +23,7 @@ import CellInfo from '../../components/table/CellInfo';
 import Header from '../../components/table/Header';
 import Pagination from '../../components/table/Pagination';
 import { usageInGBytes } from '../../utils/ConversionUtils';
-import { comparator, sort } from '../../utils/SortUtils';
+import { comparator, isAscending, sort } from '../../utils/SortUtils';
 import useUsageByYear from '../../hooks/byyear/UseUsageByYear';
 import useSort from '../../hooks/common/UseSort';
 import usePagination from '../../hooks/common/UsePagination';
@@ -53,7 +53,7 @@ const UsageByYear = () => {
     };
 
     const handleRequestSort = (event, property) => {
-        setAscending(orderBy === property ? !ascending : false);
+        setAscending(isAscending(orderBy, property, ascending));
         setOrderBy(property);
     };
 
