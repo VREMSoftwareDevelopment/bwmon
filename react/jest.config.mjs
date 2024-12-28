@@ -10,7 +10,7 @@ export default {
     coverageDirectory: '<rootDir>/reports/coverage',
     coverageThreshold: {
         global: {
-            branches: 98.9,
+            branches: 100,
             functions: 93.9,
             lines: 99,
             statements: 97.5,

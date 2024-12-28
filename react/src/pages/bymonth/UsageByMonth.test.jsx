@@ -62,13 +62,15 @@ describe('UsageByMonth', () => {
         );
 
     it('renders loading state', () => {
-        useUsageByMonth.mockReturnValue({ ...data, loading: true });
+        useUsageByMonth.mockReturnValue({ data: null, loading: true });
         renderComponent();
         expect(screen.getByText('Loading...')).toBeInTheDocument();
+        expect(screen.queryByTestId('month-header')).not.toBeInTheDocument();
     });
 
     it('renders table header', () => {
         renderComponent();
+        expect(screen.queryByText('Loading...')).not.toBeInTheDocument();
         const container = screen.getByTestId('month-header');
         expect(container).toBeInTheDocument();
         const { getByText } = within(container);

@@ -56,10 +56,12 @@ describe('UsageByYear', () => {
         useUsageByYear.mockReturnValue({ data: null, loading: true });
         renderComponent();
         expect(screen.getByText('Loading...')).toBeInTheDocument();
+        expect(screen.queryByTestId('year-header')).not.toBeInTheDocument();
     });
 
     it('renders table header', () => {
         renderComponent();
+        expect(screen.queryByText('Loading...')).not.toBeInTheDocument();
         const container = screen.getByTestId('year-header');
         expect(container).toBeInTheDocument();
         const { getByText } = within(container);

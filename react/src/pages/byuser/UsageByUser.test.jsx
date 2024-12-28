@@ -100,13 +100,15 @@ describe('UsageByUser', () => {
         );
 
     it('renders loading state', () => {
-        useUsageByUser.mockReturnValue({ ...data, loading: true });
+        useUsageByUser.mockReturnValue({ data: null, loading: true });
         renderComponent();
         expect(screen.getByText('Loading...')).toBeInTheDocument();
+        expect(screen.queryByTestId('user-header')).not.toBeInTheDocument();
     });
 
     it('renders table header', () => {
         renderComponent();
+        expect(screen.queryByText('Loading...')).not.toBeInTheDocument();
         const container = screen.getByTestId('user-header');
         expect(container).toBeInTheDocument();
         const { getByText } = within(container);
