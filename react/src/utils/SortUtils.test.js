@@ -20,39 +20,45 @@ import { comparator, sort } from './SortUtils';
 
 describe('SortUtils', () => {
     describe('comparator', () => {
-        it('ascending', () => {
-            const a = { value: 10 };
-            const b = { value: 20 };
-
-            const fn = comparator(true, 'value');
-
-            expect(fn(a, b)).toEqual(-1);
-        });
-
-        it('ascending equals', () => {
-            const a = { value: 10 };
+        it('ascending 1', () => {
+            const a = { value: 20 };
             const b = { value: 10 };
-
             const fn = comparator(true, 'value');
-
-            expect(fn(a, b)).toEqual(0);
-        });
-
-        it('descending', () => {
-            const a = { value: 10 };
-            const b = { value: 20 };
-
-            const fn = comparator(false, 'value');
-
             expect(fn(a, b)).toEqual(1);
         });
 
-        it('descending equals', () => {
+        it('ascending -1', () => {
+            const a = { value: 10 };
+            const b = { value: 20 };
+            const fn = comparator(true, 'value');
+            expect(fn(a, b)).toEqual(-1);
+        });
+
+        it('ascending 0', () => {
             const a = { value: 10 };
             const b = { value: 10 };
+            const fn = comparator(true, 'value');
+            expect(fn(a, b)).toEqual(0);
+        });
 
+        it('descending 1', () => {
+            const a = { value: 10 };
+            const b = { value: 20 };
             const fn = comparator(false, 'value');
+            expect(fn(a, b)).toEqual(1);
+        });
 
+        it('descending -1', () => {
+            const a = { value: 20 };
+            const b = { value: 10 };
+            const fn = comparator(false, 'value');
+            expect(fn(a, b)).toEqual(-1);
+        });
+
+        it('descending 0', () => {
+            const a = { value: 10 };
+            const b = { value: 10 };
+            const fn = comparator(false, 'value');
             expect(fn(a, b)).toEqual(0);
         });
     });

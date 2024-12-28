@@ -20,28 +20,30 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { TableCell, TableHead, TableRow, TableSortLabel } from '@mui/material';
 
-const SortableCell = ({ prefix, cellInfo, sortHandler, ascending, orderBy }) => {
-    const direction = ascending ? 'asc' : 'desc';
-    const sortDirection = (orderBy, id) => (orderBy === id ? direction : false);
-    const defaultDirection = (orderBy, id) => (orderBy === id ? direction : 'asc');
+const ASCENDING = 'asc';
+const DESCENDING = 'desc';
 
-    return (
-        <TableCell
-            data-testid={prefix + '-' + cellInfo.id}
-            id={prefix + '-' + cellInfo.id}
-            align={cellInfo.align}
-            sortDirection={sortDirection(orderBy, cellInfo.id)}
+const getDirection = (ascending) => (ascending ? ASCENDING : DESCENDING);
+const sortDirection = (orderBy, id, ascending) => (orderBy === id ? getDirection(ascending) : false);
+const sortDefaultDirection = (orderBy, id, ascending) => getDirection(ascending || orderBy !== id);
+const isActive = (orderBy, id) => orderBy === id;
+
+const SortableCell = ({ prefix, cellInfo, sortHandler, ascending, orderBy }) => (
+    <TableCell
+        data-testid={prefix + '-' + cellInfo.id}
+        id={prefix + '-' + cellInfo.id}
+        align={cellInfo.align}
+        sortDirection={sortDirection(orderBy, cellInfo.id, ascending)}
+    >
+        <TableSortLabel
+            active={isActive(orderBy, cellInfo.id)}
+            direction={sortDefaultDirection(orderBy, cellInfo.id, ascending)}
+            onClick={sortHandler(cellInfo.id)}
         >
-            <TableSortLabel
-                active={orderBy === cellInfo.id}
-                direction={defaultDirection(orderBy, cellInfo.id)}
-                onClick={sortHandler(cellInfo.id)}
-            >
-                {cellInfo.label}
-            </TableSortLabel>
-        </TableCell>
-    );
-};
+            {cellInfo.label}
+        </TableSortLabel>
+    </TableCell>
+);
 
 // Stryker disable all
 SortableCell.propTypes = {
@@ -115,6 +117,6 @@ Header.propTypes = {
 };
 // Stryker restore all
 
-export { Header, Cell, SortableCell };
+export { Header, Cell, SortableCell, getDirection, sortDirection, sortDefaultDirection, isActive };
 
 export default Header;

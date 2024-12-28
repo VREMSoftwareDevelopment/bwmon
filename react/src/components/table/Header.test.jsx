@@ -19,7 +19,7 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import { Header, Cell, SortableCell } from './Header';
+import { Header, Cell, SortableCell, getDirection, sortDirection, sortDefaultDirection, isActive } from './Header';
 
 describe('Header Suite', () => {
     const onRequestSort = jest.fn();
@@ -154,5 +154,28 @@ describe('Header Suite', () => {
             renderComponent(ascendingProps);
             expect(document.querySelector('#test-name')).toBeInTheDocument();
         });
+    });
+
+    it('getDirection', () => {
+        expect(getDirection(true)).toBe('asc');
+        expect(getDirection(false)).toBe('desc');
+    });
+
+    it('isActive', () => {
+        expect(isActive('id1', 'id1')).toBeTruthy();
+        expect(isActive('id1', 'id2')).toBeFalsy();
+    });
+
+    it('sortDirection', () => {
+        expect(sortDirection('id1', 'id1', true)).toBe('asc');
+        expect(sortDirection('id1', 'id1', false)).toBe('desc');
+        expect(sortDirection('id1', 'id2', true)).toBeFalsy();
+    });
+
+    it('sortDefaultDirection', () => {
+        expect(sortDefaultDirection('id1', 'id1', true)).toBe('asc');
+        expect(sortDefaultDirection('id1', 'id1', false)).toBe('desc');
+        expect(sortDefaultDirection('id1', 'id2', true)).toBe('asc');
+        expect(sortDefaultDirection('id1', 'id2', false)).toBe('asc');
     });
 });
