@@ -46,7 +46,7 @@ const cellInfos = [
     new CellInfo('lastSeen', false, 'left', 'Last Seen', false, timeToDate),
 ];
 
-const rowsPerPageMin = 12;
+const rowsPerPageMin = 25;
 
 const UsageByUser = () => {
     const { years, year, setYear, months, month, setMonth, filter, setFilter, data, loading } = useUsageByUser();

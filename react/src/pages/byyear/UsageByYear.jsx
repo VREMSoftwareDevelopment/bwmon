@@ -38,7 +38,7 @@ const cellInfos = [
     new CellInfo('days', false, 'left', 'Days', true),
 ];
 
-const rowsPerPageMin = 12;
+const rowsPerPageMin = 25;
 
 const UsageByYear = () => {
     const { data, loading } = useUsageByYear();

@@ -40,14 +40,14 @@ test.describe('UsageByUser e2e', () => {
     test('should have table', async ({ page }) => {
         const locator = page.locator('tbody > tr');
         const innerTexts = await locator.evaluateAll((elements) => elements.map((element) => element.innerText));
-        expect(innerTexts.length).toEqual(12);
+        expect(innerTexts.length).toEqual(25);
     });
 
     test('should sort by IP ascending', async ({ page }) => {
         const locator = page.locator('tbody > tr');
         const innerTexts = await locator.evaluateAll((elements) => elements.map((element) => element.innerText));
         expect(innerTexts[0]).toContain('192.168.1.10\t00:1C:25:27:9B:AE\tCOMPUTER-3\t15.004\t0.973\t15.978\t18.3%\t0.533\t30');
-        expect(innerTexts[11]).toContain('192.168.1.24\t00:27:10:0E:B5:60\tCOMPUTER-4\t19.689\t1.621\t21.310\t24.4%\t0.710\t30');
+        expect(innerTexts[24]).toContain('192.168.2.106\t10:D5:42:88:3F:A0\tCOMPUTER-29\t1.442\t0.106\t1.548\t1.8%\t0.052\t30');
     });
 
     test('should sort by IP descending', async ({ page }) => {
@@ -55,7 +55,7 @@ test.describe('UsageByUser e2e', () => {
         const locator = page.locator('tbody > tr');
         const innerTexts = await locator.evaluateAll((elements) => elements.map((element) => element.innerText));
         expect(innerTexts[0]).toContain('192.168.2.146\t0C:EE:E6:80:C8:8C\tCOMPUTER-27\t0.573\t0.025\t0.597\t0.7%\t0.020\t30');
-        expect(innerTexts[11]).toContain('192.168.1.28\t94:EB:CD:3D:82:CD\tCOMPUTER-14\t0.000\t0.000\t0.000\t0.0%\t0.000\t30');
+        expect(innerTexts[24]).toContain('192.168.1.12\t00:26:9E:C4:A0:40\tCOMPUTER-5\t0.614\t0.034\t0.648\t0.7%\t0.022\t30');
     });
 
     test('should sort by MAC', async ({ page }) => {
@@ -63,7 +63,7 @@ test.describe('UsageByUser e2e', () => {
         const locator = page.locator('tbody > tr');
         const innerTexts = await locator.evaluateAll((elements) => elements.map((element) => element.innerText));
         expect(innerTexts[0]).toContain('192.168.1.28\t94:EB:CD:3D:82:CD\tCOMPUTER-14\t0.000\t0.000\t0.000\t0.0%\t0.000\t30');
-        expect(innerTexts[11]).toContain('192.168.2.146\t0C:EE:E6:80:C8:8C\tCOMPUTER-27\t0.573\t0.025\t0.597\t0.7%\t0.020\t30');
+        expect(innerTexts[24]).toContain('192.168.1.110\t00:1A:A0:C7:19:08\tCOMPUTER-23\t0.000\t0.000\t0.000\t0.0%\t0.000\t30');
     });
 
     test('should sort by user', async ({ page }) => {
@@ -71,7 +71,7 @@ test.describe('UsageByUser e2e', () => {
         const locator = page.locator('tbody > tr');
         const innerTexts = await locator.evaluateAll((elements) => elements.map((element) => element.innerText));
         expect(innerTexts[0]).toContain('192.168.1.15\t00:1A:A0:C7:19:08\tCOMPUTER-9\t27.175\t0.565\t27.740\t31.8%\t0.925\t30');
-        expect(innerTexts[11]).toContain('192.168.1.110\t00:1A:A0:C7:19:08\tCOMPUTER-23\t0.000\t0.000\t0.000\t0.0%\t0.000\t30');
+        expect(innerTexts[24]).toContain('192.168.1.16\t00:90:A9:C6:19:5B\tCOMPUTER-11\t0.055\t0.001\t0.056\t0.1%\t0.002\t30');
     });
 
     test('should sort by total', async ({ page }) => {
@@ -79,12 +79,12 @@ test.describe('UsageByUser e2e', () => {
         const locator = page.locator('tbody > tr');
         const innerTexts = await locator.evaluateAll((elements) => elements.map((element) => element.innerText));
         expect(innerTexts[0]).toContain('192.168.1.15\t00:1A:A0:C7:19:08\tCOMPUTER-9\t27.175\t0.565\t27.740\t31.8%\t0.925\t30');
-        expect(innerTexts[11]).toContain('192.168.2.146\t0C:EE:E6:80:C8:8C\tCOMPUTER-27\t0.573\t0.025\t0.597\t0.7%\t0.020\t30');
+        expect(innerTexts[24]).toContain('192.168.2.142\t50:A4:C8:32:B2:10\tCOMPUTER-26\t0.001\t0.000\t0.001\t0.0%\t0.000\t30');
     });
 
     test('should show different information when changing year', async ({ page }) => {
         await page.locator('#user-year').click();
-        await page.locator(`li[data-value="2011"]`).click();
+        await page.locator('li[data-value="2011"]').click();
 
         const locator = page.locator('tbody > tr');
         const innerTexts = await locator.evaluateAll((elements) => elements.map((element) => element.innerText));
@@ -100,7 +100,7 @@ test.describe('UsageByUser e2e', () => {
 
     test('should show different information when changing month', async ({ page }) => {
         await page.locator('#user-month').click();
-        await page.locator(`li[data-value="August"]`).click();
+        await page.locator('li[data-value="August"]').click();
 
         const locator = page.locator('tbody > tr');
         const innerTexts = await locator.evaluateAll((elements) => elements.map((element) => element.innerText));
@@ -115,13 +115,13 @@ test.describe('UsageByUser e2e', () => {
     });
 
     test('should show different information when rows per page', async ({ page }) => {
-        await page.locator('#select-rows-per-page-id').selectOption('24');
+        await page.locator('#select-rows-per-page-id').selectOption('27');
 
         const locator = page.locator('tbody > tr');
         const innerTexts = await locator.evaluateAll((elements) => elements.map((element) => element.innerText));
-        expect(innerTexts.length).toEqual(24);
+        expect(innerTexts.length).toEqual(27);
         expect(innerTexts[0]).toContain('192.168.1.10\t00:1C:25:27:9B:AE\tCOMPUTER-3\t15.004\t0.973\t15.978\t18.3%\t0.533\t30');
-        expect(innerTexts[23]).toContain('192.168.2.101\t50:CC:F8:71:90:AB\tCOMPUTER-28\t0.295\t0.030\t0.325\t0.4%\t0.011\t30');
+        expect(innerTexts[26]).toContain('192.168.2.146\t0C:EE:E6:80:C8:8C\tCOMPUTER-27\t0.573\t0.025\t0.597\t0.7%\t0.020\t30');
 
         const headLocator = page.locator('thead > tr');
         const footerInnerTexts = await headLocator.evaluateAll((elements) => elements.map((element) => element.innerText));

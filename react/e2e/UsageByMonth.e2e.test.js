@@ -58,7 +58,7 @@ test.describe('UsageByMonth e2e', () => {
 
     test('should show different information when changing year', async ({ page }) => {
         await page.locator('#month-year').click();
-        await page.locator(`li[data-value="2011"]`).click();
+        await page.locator('li[data-value="2011"]').click();
 
         const locator = page.locator('tbody > tr');
         const innerTexts = await locator.evaluateAll((elements) => elements.map((element) => element.innerText));
