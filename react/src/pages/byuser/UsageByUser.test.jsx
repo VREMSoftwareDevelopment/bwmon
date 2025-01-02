@@ -1,5 +1,5 @@
 /*
- *      Copyright (C) 2010 - 2024 VREM Software Development <VREMSoftwareDevelopment@gmail.com>
+ *      Copyright (C) 2010 - 2025 VREM Software Development <VREMSoftwareDevelopment@gmail.com>
  *
  *      Licensed under the Apache License, Version 2.0 (the "License");
  *      you may not use this file except in compliance with the License.
@@ -197,20 +197,35 @@ describe('UsageByUser', () => {
         expect(useSort().setOrderBy).toHaveBeenCalledWith('total');
     });
 
-    it('renders with year selector', () => {
+    it('renders year selector', () => {
         renderComponent();
         const container = screen.getByTestId('user-year');
         expect(container).toBeInTheDocument();
-        const { getByText } = within(container);
-        expect(getByText('2021')).toBeInTheDocument();
+        expect(within(container).getByText(2021)).toBeInTheDocument();
     });
 
-    it('renders with month selector', () => {
+    it('handles year selector', () => {
+        renderComponent();
+        const container = document.querySelector('#user-year');
+        fireEvent.mouseDown(container);
+        fireEvent.click(screen.getByRole('option', { name: 2020 }));
+        expect(useUsageByUser().setYear).toHaveBeenCalledWith(2020);
+    });
+
+    it('renders month selector', () => {
         renderComponent();
         const container = screen.getByTestId('user-month');
         expect(container).toBeInTheDocument();
         const { getByText } = within(container);
         expect(getByText('February')).toBeInTheDocument();
+    });
+
+    it('handles month selector', () => {
+        renderComponent();
+        const container = document.querySelector('#user-month');
+        fireEvent.mouseDown(container);
+        fireEvent.click(screen.getByRole('option', { name: 'January' }));
+        expect(useUsageByUser().setMonth).toHaveBeenCalledWith('January');
     });
 
     it('handles user filter change', () => {

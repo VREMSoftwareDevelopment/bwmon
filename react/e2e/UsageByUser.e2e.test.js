@@ -1,5 +1,5 @@
 /*
- *      Copyright (C) 2010 - 2024 VREM Software Development <VREMSoftwareDevelopment@gmail.com>
+ *      Copyright (C) 2010 - 2025 VREM Software Development <VREMSoftwareDevelopment@gmail.com>
  *
  *      Licensed under the Apache License, Version 2.0 (the "License");
  *      you may not use this file except in compliance with the License.
@@ -40,14 +40,14 @@ test.describe('UsageByUser e2e', () => {
     test('should have table', async ({ page }) => {
         const locator = page.locator('tbody > tr');
         const innerTexts = await locator.evaluateAll((elements) => elements.map((element) => element.innerText));
-        expect(innerTexts.length).toEqual(25);
+        expect(innerTexts.length).toEqual(20);
     });
 
     test('should sort by IP ascending', async ({ page }) => {
         const locator = page.locator('tbody > tr');
         const innerTexts = await locator.evaluateAll((elements) => elements.map((element) => element.innerText));
         expect(innerTexts[0]).toContain('192.168.1.10\t00:1C:25:27:9B:AE\tCOMPUTER-3\t15.004\t0.973\t15.978\t18.3%\t0.533\t30');
-        expect(innerTexts[24]).toContain('192.168.2.106\t10:D5:42:88:3F:A0\tCOMPUTER-29\t1.442\t0.106\t1.548\t1.8%\t0.052\t30');
+        expect(innerTexts[19]).toContain('192.168.1.120\t00:26:6C:A8:EE:D6\tCOMPUTER-21\t0.089\t0.003\t0.092\t0.1%\t0.003\t30');
     });
 
     test('should sort by IP descending', async ({ page }) => {
@@ -55,7 +55,7 @@ test.describe('UsageByUser e2e', () => {
         const locator = page.locator('tbody > tr');
         const innerTexts = await locator.evaluateAll((elements) => elements.map((element) => element.innerText));
         expect(innerTexts[0]).toContain('192.168.2.146\t0C:EE:E6:80:C8:8C\tCOMPUTER-27\t0.573\t0.025\t0.597\t0.7%\t0.020\t30');
-        expect(innerTexts[24]).toContain('192.168.1.12\t00:26:9E:C4:A0:40\tCOMPUTER-5\t0.614\t0.034\t0.648\t0.7%\t0.022\t30');
+        expect(innerTexts[19]).toContain('192.168.1.20\t00:1A:E9:92:A5:5F\tCOMPUTER-8\t0.023\t0.000\t0.024\t0.0%\t0.001\t30');
     });
 
     test('should sort by MAC', async ({ page }) => {
@@ -63,7 +63,7 @@ test.describe('UsageByUser e2e', () => {
         const locator = page.locator('tbody > tr');
         const innerTexts = await locator.evaluateAll((elements) => elements.map((element) => element.innerText));
         expect(innerTexts[0]).toContain('192.168.1.28\t94:EB:CD:3D:82:CD\tCOMPUTER-14\t0.000\t0.000\t0.000\t0.0%\t0.000\t30');
-        expect(innerTexts[24]).toContain('192.168.1.110\t00:1A:A0:C7:19:08\tCOMPUTER-23\t0.000\t0.000\t0.000\t0.0%\t0.000\t30');
+        expect(innerTexts[19]).toContain('192.168.1.20\t00:1A:E9:92:A5:5F\tCOMPUTER-8\t0.023\t0.000\t0.024\t0.0%\t0.001\t30');
     });
 
     test('should sort by user', async ({ page }) => {
@@ -71,7 +71,7 @@ test.describe('UsageByUser e2e', () => {
         const locator = page.locator('tbody > tr');
         const innerTexts = await locator.evaluateAll((elements) => elements.map((element) => element.innerText));
         expect(innerTexts[0]).toContain('192.168.1.15\t00:1A:A0:C7:19:08\tCOMPUTER-9\t27.175\t0.565\t27.740\t31.8%\t0.925\t30');
-        expect(innerTexts[24]).toContain('192.168.1.16\t00:90:A9:C6:19:5B\tCOMPUTER-11\t0.055\t0.001\t0.056\t0.1%\t0.002\t30');
+        expect(innerTexts[19]).toContain('192.168.1.27\t10:D5:42:88:3F:A0\tCOMPUTER-16\t1.207\t0.067\t1.273\t1.5%\t0.042\t30');
     });
 
     test('should sort by total', async ({ page }) => {
@@ -79,7 +79,7 @@ test.describe('UsageByUser e2e', () => {
         const locator = page.locator('tbody > tr');
         const innerTexts = await locator.evaluateAll((elements) => elements.map((element) => element.innerText));
         expect(innerTexts[0]).toContain('192.168.1.15\t00:1A:A0:C7:19:08\tCOMPUTER-9\t27.175\t0.565\t27.740\t31.8%\t0.925\t30');
-        expect(innerTexts[24]).toContain('192.168.2.142\t50:A4:C8:32:B2:10\tCOMPUTER-26\t0.001\t0.000\t0.001\t0.0%\t0.000\t30');
+        expect(innerTexts[19]).toContain('192.168.1.115\t00:1A:A0:C7:27:D5\tCOMPUTER-19\t0.077\t0.001\t0.078\t0.1%\t0.003\t30');
     });
 
     test('should show different information when changing year', async ({ page }) => {

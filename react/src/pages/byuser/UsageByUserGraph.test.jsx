@@ -1,5 +1,5 @@
 /*
- *      Copyright (C) 2010 - 2024 VREM Software Development <VREMSoftwareDevelopment@gmail.com>
+ *      Copyright (C) 2010 - 2025 VREM Software Development <VREMSoftwareDevelopment@gmail.com>
  *
  *      Licensed under the Apache License, Version 2.0 (the "License");
  *      you may not use this file except in compliance with the License.
@@ -32,11 +32,11 @@ describe('UsageByUserGraph', () => {
     const data = {
         options: {},
         series: [],
-        years: ['2021', '2022', '2023'],
-        year: '2022',
+        years: [2020, 2021, 2022],
+        year: 2021,
         setYear: jest.fn(),
         months: ['January', 'February', 'March'],
-        month: 'January',
+        month: 'February',
         setMonth: jest.fn(),
         setFilter: jest.fn(),
         loading: false,
@@ -66,20 +66,36 @@ describe('UsageByUserGraph', () => {
         expect(screen.getByTestId('test-graph-id')).toBeInTheDocument();
     });
 
-    it('renders graph with year selector', () => {
+    it('renders year selector', () => {
         renderComponent();
         const container = screen.getByTestId('user-year-graph');
         expect(container).toBeInTheDocument();
         const { getByText } = within(container);
-        expect(getByText('2022')).toBeInTheDocument();
+        expect(getByText(2021)).toBeInTheDocument();
     });
 
-    it('renders graph with month selector', () => {
+    it('handles year selector', () => {
+        renderComponent();
+        const container = document.querySelector('#user-year-graph');
+        fireEvent.mouseDown(container);
+        fireEvent.click(screen.getByRole('option', { name: 2020 }));
+        expect(useUsageByUserGraph().setYear).toHaveBeenCalledWith(2020);
+    });
+
+    it('renders month selector', () => {
         renderComponent();
         const container = screen.getByTestId('user-month-graph');
         expect(container).toBeInTheDocument();
         const { getByText } = within(container);
-        expect(getByText('January')).toBeInTheDocument();
+        expect(getByText('February')).toBeInTheDocument();
+    });
+
+    it('handles month selector', () => {
+        renderComponent();
+        const container = document.querySelector('#user-month-graph');
+        fireEvent.mouseDown(container);
+        fireEvent.click(screen.getByRole('option', { name: 'January' }));
+        expect(useUsageByUserGraph().setMonth).toHaveBeenCalledWith('January');
     });
 
     it('displays correct graph options and series', () => {

@@ -1,5 +1,5 @@
 /*
- *      Copyright (C) 2010 - 2024 VREM Software Development <VREMSoftwareDevelopment@gmail.com>
+ *      Copyright (C) 2010 - 2025 VREM Software Development <VREMSoftwareDevelopment@gmail.com>
  *
  *      Licensed under the Apache License, Version 2.0 (the "License");
  *      you may not use this file except in compliance with the License.
@@ -38,7 +38,7 @@ const cellInfos = [
     new CellInfo('days', false, 'left', 'Days', true),
 ];
 
-const rowsPerPageMin = 25;
+const rowsPerPageMin = 20;
 
 const UsageByYear = () => {
     const { data, loading } = useUsageByYear();

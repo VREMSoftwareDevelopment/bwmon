@@ -1,5 +1,5 @@
 /*
- *      Copyright (C) 2010 - 2024 VREM Software Development <VREMSoftwareDevelopment@gmail.com>
+ *      Copyright (C) 2010 - 2025 VREM Software Development <VREMSoftwareDevelopment@gmail.com>
  *
  *      Licensed under the Apache License, Version 2.0 (the "License");
  *      you may not use this file except in compliance with the License.
@@ -17,7 +17,7 @@
  */
 
 import React from 'react';
-import { render, screen, within, fireEvent } from '@testing-library/react';
+import { fireEvent, render, screen, within } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import UsageByMonth from './UsageByMonth';
@@ -121,12 +121,19 @@ describe('UsageByMonth', () => {
         expect(getByText('30')).toBeInTheDocument();
     });
 
-    it('renders with year selector', () => {
+    it('renders year selector', () => {
         renderComponent();
         const container = screen.getByTestId('month-year');
         expect(container).toBeInTheDocument();
-        const { getByText } = within(container);
-        expect(getByText('2021')).toBeInTheDocument();
+        expect(within(container).getByText(2021)).toBeInTheDocument();
+    });
+
+    it('handles year selector', () => {
+        renderComponent();
+        const container = document.querySelector('#month-year');
+        fireEvent.mouseDown(container);
+        fireEvent.click(screen.getByRole('option', { name: 2020 }));
+        expect(useUsageByMonth().setYear).toHaveBeenCalledWith(2020);
     });
 
     it('handles sort request by month', () => {
