@@ -68,11 +68,12 @@ describe('Pagination Suite', () => {
 
         it('renders pagination actions', () => {
             renderComponent();
+            expect(screen.getByLabelText('rows per page')).toBeInTheDocument();
             expect(screen.getByLabelText('first page')).toBeInTheDocument();
             expect(screen.getByLabelText('previous page')).toBeInTheDocument();
             expect(screen.getByLabelText('next page')).toBeInTheDocument();
             expect(screen.getByLabelText('last page')).toBeInTheDocument();
-            expect(screen.getByLabelText('last page')).toBeInTheDocument();
+            expect(screen.getByText('1–10 of 100')).toBeInTheDocument();
         });
 
         it('calls onPageChange when next page button is clicked', () => {

@@ -63,6 +63,8 @@ const UsageByYear = () => {
                 <TableHead>
                     <TableRow>
                         <Pagination
+                            data-testid="year-pagination-id"
+                            id="year-pagination-id"
                             colSpan={cellInfos.length}
                             count={data.length}
                             minimum={rowsPerPageMin}

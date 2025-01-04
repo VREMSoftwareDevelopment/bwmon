@@ -40,7 +40,7 @@ const config = {
         },
         enableFindRelatedTests: true,
     },
-    thresholds: { high: 80, low: 60, break: 88.7 },
+    thresholds: { high: 80, low: 60, break: 90 },
 };
 
 export default config;

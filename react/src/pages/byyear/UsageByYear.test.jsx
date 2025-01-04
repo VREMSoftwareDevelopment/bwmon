@@ -21,16 +21,45 @@ import { render, screen, within, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import useUsageByYear from '../../hooks/byyear/UseUsageByYear';
+import usePagination from '../../hooks/common/UsePagination';
 import useSort from '../../hooks/common/UseSort';
 import UsageByYear from './UsageByYear';
 
 jest.mock('../../hooks/byyear/UseUsageByYear');
+jest.mock('../../hooks/common/UsePagination');
 jest.mock('../../hooks/common/UseSort');
 
 describe('UsageByYear', () => {
     const data = [
-        { id: '2020', download: 100000, upload: 20000, total: 120000, average: 10000, days: 12 },
-        { id: '2021', download: 200000, upload: 40000, total: 240000, average: 20000, days: 24 },
+        { id: '2001', download: 100000, upload: 10000, total: 110000, average: 1000, days: 1 },
+        { id: '2002', download: 200000, upload: 20000, total: 220000, average: 2000, days: 2 },
+        { id: '2003', download: 300000, upload: 30000, total: 330000, average: 3000, days: 3 },
+        { id: '2004', download: 400000, upload: 40000, total: 440000, average: 4000, days: 4 },
+        { id: '2005', download: 500000, upload: 50000, total: 550000, average: 5000, days: 5 },
+        { id: '2006', download: 600000, upload: 60000, total: 660000, average: 6000, days: 6 },
+        { id: '2007', download: 700000, upload: 70000, total: 770000, average: 7000, days: 7 },
+        { id: '2008', download: 800000, upload: 80000, total: 880000, average: 8000, days: 8 },
+        { id: '2009', download: 900000, upload: 90000, total: 990000, average: 9000, days: 9 },
+        { id: '2010', download: 1000000, upload: 100000, total: 1100000, average: 10000, days: 10 },
+        { id: '2011', download: 1000000, upload: 100000, total: 1100000, average: 11000, days: 11 },
+        { id: '2012', download: 2000000, upload: 200000, total: 2200000, average: 22000, days: 12 },
+        { id: '2013', download: 3000000, upload: 300000, total: 3300000, average: 33000, days: 13 },
+        { id: '2014', download: 4000000, upload: 400000, total: 4400000, average: 44000, days: 14 },
+        { id: '2015', download: 5000000, upload: 500000, total: 5500000, average: 55000, days: 15 },
+        { id: '2016', download: 6000000, upload: 600000, total: 6600000, average: 66000, days: 16 },
+        { id: '2017', download: 7000000, upload: 700000, total: 7700000, average: 77000, days: 17 },
+        { id: '2018', download: 8000000, upload: 800000, total: 8800000, average: 88000, days: 18 },
+        { id: '2019', download: 9000000, upload: 900000, total: 9900000, average: 99000, days: 19 },
+        { id: '2020', download: 10000000, upload: 1000000, total: 11000000, average: 100000, days: 20 },
+        { id: '2021', download: 10000000, upload: 1000000, total: 11000000, average: 110000, days: 21 },
+        { id: '2022', download: 20000000, upload: 2000000, total: 22000000, average: 220000, days: 22 },
+        { id: '2023', download: 30000000, upload: 3000000, total: 33000000, average: 330000, days: 23 },
+        { id: '2024', download: 40000000, upload: 4000000, total: 44000000, average: 440000, days: 24 },
+        { id: '2025', download: 50000000, upload: 5000000, total: 55000000, average: 550000, days: 25 },
+        { id: '2026', download: 60000000, upload: 6000000, total: 66000000, average: 660000, days: 26 },
+        { id: '2027', download: 70000000, upload: 7000000, total: 77000000, average: 770000, days: 27 },
+        { id: '2028', download: 80000000, upload: 8000000, total: 88000000, average: 880000, days: 28 },
+        { id: '2029', download: 90000000, upload: 9000000, total: 99000000, average: 990000, days: 29 },
     ];
 
     beforeEach(() => {
@@ -40,6 +69,12 @@ describe('UsageByYear', () => {
             setAscending: jest.fn(),
             orderBy: 'id',
             setOrderBy: jest.fn(),
+        });
+        usePagination.mockReturnValue({
+            page: 0,
+            setPage: jest.fn(),
+            rowsPerPage: 20,
+            setRowsPerPage: jest.fn(),
         });
     });
 
@@ -78,25 +113,58 @@ describe('UsageByYear', () => {
         const container = screen.getByTestId('year-data-0');
         expect(container).toBeInTheDocument();
         const { getByText } = within(container);
-        expect(getByText('2020')).toBeInTheDocument();
+        expect(getByText('2001')).toBeInTheDocument();
         expect(getByText('0.100')).toBeInTheDocument();
-        expect(getByText('0.020')).toBeInTheDocument();
-        expect(getByText('0.120')).toBeInTheDocument();
         expect(getByText('0.010')).toBeInTheDocument();
-        expect(getByText('12')).toBeInTheDocument();
+        expect(getByText('0.110')).toBeInTheDocument();
+        expect(getByText('0.010')).toBeInTheDocument();
     });
 
-    it('renders table body row 2', () => {
+    it('renders table body row 20', () => {
         renderComponent();
-        const container = screen.getByTestId('year-data-1');
+        const container = screen.getByTestId('year-data-19');
         expect(container).toBeInTheDocument();
         const { getByText } = within(container);
-        expect(getByText('2021')).toBeInTheDocument();
-        expect(getByText('0.200')).toBeInTheDocument();
-        expect(getByText('0.040')).toBeInTheDocument();
-        expect(getByText('0.240')).toBeInTheDocument();
-        expect(getByText('0.020')).toBeInTheDocument();
-        expect(getByText('24')).toBeInTheDocument();
+        expect(getByText('2020')).toBeInTheDocument();
+        expect(getByText('10.000')).toBeInTheDocument();
+        expect(getByText('1.000')).toBeInTheDocument();
+        expect(getByText('11.000')).toBeInTheDocument();
+        expect(getByText('0.100')).toBeInTheDocument();
+    });
+
+    it('does not render table body row 21', () => {
+        renderComponent();
+        const container = screen.queryByTestId('year-data-20');
+        expect(container).not.toBeInTheDocument();
+    });
+
+    it('renders pagination', () => {
+        renderComponent();
+        const container = screen.getByTestId('year-pagination-id');
+        expect(container).toBeInTheDocument();
+        const { getByText } = within(container);
+        expect(getByText('1–20 of 29')).toBeInTheDocument();
+    });
+
+    it('handles next page change', () => {
+        renderComponent();
+        const container = screen.getByLabelText('next page');
+        fireEvent.click(container);
+        expect(usePagination().setPage).toHaveBeenCalledWith(1);
+    });
+
+    it('handles last page change', () => {
+        renderComponent();
+        const container = screen.getByLabelText('last page');
+        fireEvent.click(container);
+        expect(usePagination().setPage).toHaveBeenCalledWith(1);
+    });
+
+    it('handles rows per page change', () => {
+        renderComponent();
+        const container = screen.getByLabelText('rows per page');
+        fireEvent.change(container, { target: { value: '29' } });
+        expect(usePagination().setRowsPerPage).toHaveBeenCalledWith(29);
     });
 
     it('handles sort request by year', () => {

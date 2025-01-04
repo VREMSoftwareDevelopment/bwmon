@@ -102,6 +102,8 @@ const UsageByUser = () => {
                             <Search data-testid="user-filter" id="user-filter" onChange={handleChangeFilter} />
                         </TableCell>
                         <Pagination
+                            data-testid="user-pagination-id"
+                            id="user-pagination-id"
                             colSpan={cellInfos.length - 4}
                             count={data.usage.length}
                             minimum={rowsPerPageMin}
