@@ -155,10 +155,10 @@ const Pagination = (props) => {
     const selectProps = {
         inputProps: { 'aria-label': 'rows per page' },
         native: true,
-        testid: 'select-rows-per-page-id',
         id: 'select-rows-per-page-id',
         labelId: 'select-label-rows-per-page-id',
     };
+
     return (
         <TablePagination
             {...props}
