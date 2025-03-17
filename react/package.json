@@ -41,7 +41,7 @@
         "@eslint/compat": "^1.2.7",
         "@eslint/eslintrc": "^3.3.0",
         "@eslint/js": "^9.22.0",
-        "@playwright/test": "^1.51.0",
+        "@playwright/test": "^1.51.1",
         "@stryker-mutator/core": "^8.7.1",
         "@stryker-mutator/jest-runner": "^8.7.1",
         "@testing-library/dom": "^10.4.0",
