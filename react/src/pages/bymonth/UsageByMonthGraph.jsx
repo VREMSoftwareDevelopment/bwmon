@@ -36,7 +36,7 @@ const UsageByMonthGraph = () => {
             <Loading isLoading={loading} />
             <div className={classes.root}>
                 <Grid container>
-                    <Grid sm={2}>
+                    <Grid size={2}>
                         <DropDown
                             data-testid="month-year-graph"
                             id="month-year-graph"

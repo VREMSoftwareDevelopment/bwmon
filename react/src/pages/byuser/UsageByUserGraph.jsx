@@ -42,7 +42,7 @@ const UsageByUserGraph = () => {
             <Loading isLoading={loading} />
             <div className={classes.root}>
                 <Grid container spacing={4}>
-                    <Grid sm={2}>
+                    <Grid size={2}>
                         <DropDown
                             data-testid="user-year-graph"
                             id="user-year-graph"
@@ -51,7 +51,7 @@ const UsageByUserGraph = () => {
                             value={year}
                         />
                     </Grid>
-                    <Grid sm={2}>
+                    <Grid size={2}>
                         <DropDown
                             data-testid="user-month-graph"
                             id="user-month-graph"
@@ -60,7 +60,7 @@ const UsageByUserGraph = () => {
                             value={month}
                         />
                     </Grid>
-                    <Grid sm={4}>
+                    <Grid size={4}>
                         <Search data-testid="user-filter-graph" id="user-filter-graph" onChange={handleChangeFilter} />
                     </Grid>
                 </Grid>
