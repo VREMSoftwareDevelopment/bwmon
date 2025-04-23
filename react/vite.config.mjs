@@ -2,12 +2,22 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import svgr from 'vite-plugin-svgr';
+import { visualizer } from 'rollup-plugin-visualizer';
 
 export default defineConfig({
     base: '/bwmon/',
     build: {
         outDir: 'build',
         manifest: true,
+        chunkSizeWarningLimit: 600,
+        rollupOptions: {
+            output: {
+                manualChunks: {
+                    mui: ['@mui/icons-material', '@mui/material', '@mui/styles'],
+                    chart: ['react-apexcharts'],
+                },
+            },
+        },
     },
     server: {
         port: 3000,
@@ -24,6 +34,10 @@ export default defineConfig({
             },
         }),
         svgr({ icon: true, include: ['src/**/*.svg'] }),
+        visualizer({
+            open: false,
+            filename: 'reports/visualizer/stats.html',
+        }),
     ],
     optimizeDeps: {
         force: true,
@@ -34,3 +48,11 @@ export default defineConfig({
         },
     },
 });
+
+/*
+
+        "@emotion/babel-plugin": "^11.13.5",
+        "@emotion/react": "^11.14.0",
+        "@emotion/styled": "^11.14.0",
+
+*/

@@ -16,12 +16,17 @@
  * Bandwidth Monitor
  */
 
-import React from 'react';
+import React, { Suspense } from 'react';
 import PropTypes from 'prop-types';
-import Chart from 'react-apexcharts';
+
+const Chart = React.lazy(() => import('react-apexcharts'));
 
 const Graph = ({ options, series }) => {
-    return <Chart options={options} series={series} type="bar" height={500} />;
+    return (
+        <Suspense fallback={<div>Loading...</div>}>
+            <Chart options={options} series={series} type="bar" height={500} />        
+        </Suspense>
+    );
 };
 
 // Stryker disable next-line all

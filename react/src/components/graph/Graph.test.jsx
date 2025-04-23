@@ -21,7 +21,7 @@ import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import Graph from './Graph';
 
-jest.mock('react-apexcharts', () => ({ __esModule: true, default: () => <div>ApexGraph</div> }));
+jest.mock('react-apexcharts', () => ({ __esModule: true, default: () => <div data-testid="apex-chart">ApexGraph</div> }));
 
 describe('Graph', () => {
     const options = {
@@ -35,8 +35,8 @@ describe('Graph', () => {
         },
     ];
 
-    it('renders chart with provided options and series', () => {
+    it('renders chart with provided options and series', async () => {
         render(<Graph options={options} series={series} />);
-        expect(screen.getByText('ApexGraph')).toBeInTheDocument();
+        expect(await screen.findByTestId('apex-chart')).toBeInTheDocument();
     });
 });
