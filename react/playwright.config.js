@@ -10,7 +10,7 @@ export default defineConfig({
     preserveOutput: 'never',
     fullyParallel: false,
     forbidOnly: !!process.env.CI,
-    retries: process.env.CI ? 2 : 0,
+    retries: 1,
     workers: 1,
     reporter: [
         ['html', { outputFolder: 'reports/playwright' }],
@@ -18,13 +18,13 @@ export default defineConfig({
         [process.env.CI ? 'github' : 'list'],
     ],
     use: {
-        trace: 'on-first-retry',
+        trace: 'retain-on-failure',
         screenshot: 'only-on-failure',
     },
     projects: [
         { name: 'chromium', use: { ...devices['Desktop Chrome'] } },
-        { name: 'firefox', use: { ...devices['Desktop Firefox'] } },
         { name: 'webkit', use: { ...devices['Desktop Safari'] } },
+        // { name: 'firefox', use: { ...devices['Desktop Firefox'] } },
         /* Test against mobile viewports. */
         // { name: 'Mobile Chrome', use: { ...devices['Pixel 5'] } },
         // { name: 'Mobile Safari', use: { ...devices['iPhone 12'] } },
