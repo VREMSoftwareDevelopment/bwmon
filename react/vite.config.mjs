@@ -13,7 +13,7 @@ export default defineConfig({
         rollupOptions: {
             output: {
                 manualChunks: {
-                    mui: ['@mui/icons-material', '@mui/material', '@mui/styles'],
+                    mui: ['@mui/icons-material', '@mui/material'],
                     chart: ['react-apexcharts'],
                 },
             },

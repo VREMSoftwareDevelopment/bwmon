@@ -18,21 +18,18 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Typography } from '@mui/material';
-import { footerStyles } from '../../utils/StylesUtils';
+import { Box, Typography } from '@mui/material';
 
 const Footer = ({ currentTime }) => {
-    const classes = footerStyles();
-
     return (
-        <div className={classes.root}>
+        <Box sx={{ flexGrow: 1, m: 2 }}>
             <Typography data-testid="app-footer1" id="app-footer1" variant="subtitle2">
                 All usage information is in gigabytes
             </Typography>
             <Typography data-testid="app-footer2" id="app-footer2" variant="subtitle2">
                 This page was generated on {currentTime}
             </Typography>
-        </div>
+        </Box>
     );
 };
 

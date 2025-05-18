@@ -19,18 +19,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { AppBar, Toolbar, Typography } from '@mui/material';
-import { headerStyles } from '../../utils/StylesUtils';
 
 const Header = ({ name, version }) => {
-    const classes = headerStyles();
-
     return (
         <AppBar position="static">
             <Toolbar variant="dense">
-                <Typography data-testid="app-title" id="app-title" variant="h6" className={classes.title}>
+                <Typography data-testid="app-title" id="app-title" variant="h6" sx={{ flexGrow: 1 }}>
                     {name}
                 </Typography>
-                <Typography data-testid="app-version" id="app-version" className={classes.text}>
+                <Typography data-testid="app-version" id="app-version">
                     {version}
                 </Typography>
             </Toolbar>

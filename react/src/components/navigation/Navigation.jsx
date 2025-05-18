@@ -21,16 +21,14 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router';
 import { BottomNavigation, BottomNavigationAction } from '@mui/material';
 import useNavigation from './UseNavigation';
-import { defaultStyles } from '../../utils/StylesUtils';
 
 const Navigation = ({ menu }) => {
-    const classes = defaultStyles();
     const { index, setIndex } = useNavigation(menu);
 
     const handleChange = (event, newRouteIndex) => setIndex(newRouteIndex);
 
     return (
-        <BottomNavigation value={index} onChange={handleChange} showLabels className={classes.root}>
+        <BottomNavigation value={index} onChange={handleChange} showLabels sx={{ width: '100%' }}>
             {menu.map((route, index) => (
                 <BottomNavigationAction
                     data-testid={route.id}

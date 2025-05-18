@@ -28,7 +28,6 @@ import {
     PreviousPageAction,
     NextPageAction,
     lastPage,
-    isRTL,
     isFirstPage,
     isLastPage,
 } from './Pagination';
@@ -311,15 +310,6 @@ describe('Pagination Suite', () => {
 
     it('calculate lastPage', () => {
         expect(lastPage(100, 10)).toBe(9);
-    });
-
-    it('isRTL should be true', () => {
-        const theme = { direction: 'rtl' };
-        expect(isRTL(theme)).toBeTruthy();
-    });
-
-    it('isRTL should be false', () => {
-        expect(isRTL({})).toBeFalsy();
     });
 
     it('isFirstPage should be true', () => {

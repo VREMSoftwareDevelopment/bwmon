@@ -17,20 +17,20 @@
  */
 
 import React from 'react';
-import { LinearProgress } from '@mui/material';
+import { Box, LinearProgress } from '@mui/material';
 import InfoMessage from '../messages/InfoMessage';
 import PropTypes from 'prop-types';
-import { messageStyles } from '../../utils/StylesUtils';
 
 const Loading = ({ isLoading }) => {
-    const classes = messageStyles();
-
-    return isLoading ? (
-        <div className={classes.root}>
+    if (!isLoading) {
+        return null;
+    }
+    return (
+        <Box sx={{ width: '100%', '& > * + *': { mt: 2 } }}>
             <LinearProgress />
             <InfoMessage message="Loading..." />
-        </div>
-    ) : null;
+        </Box>
+    );
 };
 
 // Stryker disable next-line all

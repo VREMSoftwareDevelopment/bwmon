@@ -18,55 +18,32 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { useTheme } from '@mui/styles';
-import { TablePagination, IconButton } from '@mui/material';
+import { Box, IconButton, TablePagination } from '@mui/material';
 import { FirstPage, KeyboardArrowLeft, KeyboardArrowRight, LastPage } from '@mui/icons-material';
-import { paginationStyles } from '../../utils/StylesUtils';
 
 const lastPage = (count, rowsPerPage) => Math.ceil(count / rowsPerPage) - 1;
 
-const isRTL = (theme) => {
-    return theme.direction === 'rtl';
-};
+const isFirstPage = (page) => page === 0;
+const isLastPage = (page, count, rowsPerPage) => page >= lastPage(count, rowsPerPage);
 
-const isFirstPage = (page) => {
-    return page === 0;
-};
-
-const isLastPage = (page, count, rowsPerPage) => {
-    return page >= lastPage(count, rowsPerPage);
-};
-
-const FirstPageAction = ({ page, onPageChange }) => {
-    const theme = useTheme();
-
-    const handleFirstPageButtonClick = (event) => {
-        onPageChange(event, 0);
-    };
-
-    return (
-        <IconButton onClick={handleFirstPageButtonClick} disabled={isFirstPage(page)} aria-label="first page">
-            {isRTL(theme) ? <LastPage /> : <FirstPage />}
-        </IconButton>
-    );
-};
+const FirstPageAction = ({ page, onPageChange }) => (
+    <IconButton onClick={(event) => onPageChange(event, 0)} disabled={isFirstPage(page)} aria-label="first page">
+        <FirstPage />
+    </IconButton>
+);
 
 // Stryker disable next-line all
 FirstPageAction.propTypes = { page: PropTypes.number.isRequired, onPageChange: PropTypes.func.isRequired };
 
-const LastPageAction = ({ count, page, rowsPerPage, onPageChange }) => {
-    const theme = useTheme();
-
-    const handleLastPageButtonClick = (event) => {
-        onPageChange(event, Math.max(0, lastPage(count, rowsPerPage)));
-    };
-
-    return (
-        <IconButton onClick={handleLastPageButtonClick} disabled={isLastPage(page, count, rowsPerPage)} aria-label="last page">
-            {isRTL(theme) ? <FirstPage /> : <LastPage />}
-        </IconButton>
-    );
-};
+const LastPageAction = ({ count, page, rowsPerPage, onPageChange }) => (
+    <IconButton
+        onClick={(event) => onPageChange(event, Math.max(0, lastPage(count, rowsPerPage)))}
+        disabled={isLastPage(page, count, rowsPerPage)}
+        aria-label="last page"
+    >
+        <LastPage />
+    </IconButton>
+);
 
 // Stryker disable all
 LastPageAction.propTypes = {
@@ -77,36 +54,24 @@ LastPageAction.propTypes = {
 };
 // Stryker restore all
 
-const PreviousPageAction = ({ page, onPageChange }) => {
-    const theme = useTheme();
-
-    const handleBackButtonClick = (event) => {
-        onPageChange(event, page - 1);
-    };
-
-    return (
-        <IconButton onClick={handleBackButtonClick} disabled={isFirstPage(page)} aria-label="previous page">
-            {isRTL(theme) ? <KeyboardArrowRight /> : <KeyboardArrowLeft />}
-        </IconButton>
-    );
-};
+const PreviousPageAction = ({ page, onPageChange }) => (
+    <IconButton onClick={(event) => onPageChange(event, page - 1)} disabled={isFirstPage(page)} aria-label="previous page">
+        <KeyboardArrowLeft />
+    </IconButton>
+);
 
 // Stryker disable next-line all
 PreviousPageAction.propTypes = { page: PropTypes.number.isRequired, onPageChange: PropTypes.func.isRequired };
 
-const NextPageAction = ({ count, page, rowsPerPage, onPageChange }) => {
-    const theme = useTheme();
-
-    const handleNextButtonClick = (event) => {
-        onPageChange(event, page + 1);
-    };
-
-    return (
-        <IconButton onClick={handleNextButtonClick} disabled={isLastPage(page, count, rowsPerPage)} aria-label="next page">
-            {isRTL(theme) ? <KeyboardArrowLeft /> : <KeyboardArrowRight />}
-        </IconButton>
-    );
-};
+const NextPageAction = ({ count, page, rowsPerPage, onPageChange }) => (
+    <IconButton
+        onClick={(event) => onPageChange(event, page + 1)}
+        disabled={isLastPage(page, count, rowsPerPage)}
+        aria-label="next page"
+    >
+        <KeyboardArrowRight />
+    </IconButton>
+);
 
 // Stryker disable all
 NextPageAction.propTypes = {
@@ -117,18 +82,14 @@ NextPageAction.propTypes = {
 };
 // Stryker restore all
 
-const Actions = ({ count, page, rowsPerPage, onPageChange }) => {
-    const classes = paginationStyles();
-
-    return (
-        <div className={classes.root}>
-            <FirstPageAction page={page} onPageChange={onPageChange} />
-            <PreviousPageAction page={page} onPageChange={onPageChange} />
-            <NextPageAction page={page} onPageChange={onPageChange} count={count} rowsPerPage={rowsPerPage} />
-            <LastPageAction page={page} onPageChange={onPageChange} count={count} rowsPerPage={rowsPerPage} />
-        </div>
-    );
-};
+const Actions = ({ count, page, rowsPerPage, onPageChange }) => (
+    <Box sx={{ flexShrink: 0, display: 'flex' }}>
+        <FirstPageAction page={page} onPageChange={onPageChange} />
+        <PreviousPageAction page={page} onPageChange={onPageChange} />
+        <NextPageAction page={page} onPageChange={onPageChange} count={count} rowsPerPage={rowsPerPage} />
+        <LastPageAction page={page} onPageChange={onPageChange} count={count} rowsPerPage={rowsPerPage} />
+    </Box>
+);
 
 // Stryker disable all
 Actions.propTypes = {
@@ -181,7 +142,6 @@ export {
     PreviousPageAction,
     NextPageAction,
     lastPage,
-    isRTL,
     isFirstPage,
     isLastPage,
 };

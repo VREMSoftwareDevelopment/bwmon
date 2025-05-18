@@ -18,19 +18,19 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Alert, AlertTitle } from '@mui/material';
-import { messageStyles } from '../../utils/StylesUtils';
+import { Alert, AlertTitle, Box } from '@mui/material';
 
 const Message = ({ severity, message }) => {
-    const classes = messageStyles();
-
-    return message ? (
-        <div className={classes.root}>
+    if (!message) {
+        return null;
+    }
+    return (
+        <Box sx={{ width: '100%', '& > * + *': { mt: 2 } }}>
             <Alert severity={severity}>
                 <AlertTitle>{message}</AlertTitle>
             </Alert>
-        </div>
-    ) : null;
+        </Box>
+    );
 };
 
 // Stryker disable next-line all

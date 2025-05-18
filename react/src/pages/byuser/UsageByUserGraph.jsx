@@ -17,18 +17,15 @@
  */
 
 import React from 'react';
-import { Paper } from '@mui/material';
-import Grid from '@mui/material/Grid2';
+import { Box, Paper } from '@mui/material';
+import Grid from '@mui/material/Grid';
 import DropDown from '../../components/inputs/DropDown';
 import Search from '../../components/inputs/Search';
 import useUsageByUserGraph from '../../hooks/byuser/UseUsageByUserGraph';
 import Loading from '../../components/loading/Loading';
 import Graph from '../../components/graph/Graph';
-import { graphStyles } from '../../utils/StylesUtils';
 
 const UsageByUserGraph = () => {
-    const classes = graphStyles();
-
     const { options, series, years, year, setYear, months, month, setMonth, setFilter, loading } = useUsageByUserGraph();
 
     const handleChangeYear = (event) => setYear(event.target.value);
@@ -40,7 +37,7 @@ const UsageByUserGraph = () => {
     return (
         <Paper>
             <Loading isLoading={loading} />
-            <div className={classes.root}>
+            <Box sx={{ flexGrow: 1, m: 2, mt: 6 }}>
                 <Grid container spacing={4}>
                     <Grid size={2}>
                         <DropDown
@@ -64,7 +61,7 @@ const UsageByUserGraph = () => {
                         <Search data-testid="user-filter-graph" id="user-filter-graph" onChange={handleChangeFilter} />
                     </Grid>
                 </Grid>
-            </div>
+            </Box>
             <Graph options={options} series={series} />
         </Paper>
     );
