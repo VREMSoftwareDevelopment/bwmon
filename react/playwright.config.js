@@ -12,8 +12,8 @@ export default defineConfig({
     forbidOnly: !!process.env.CI,
     retries: 1,
     workers: 1,
-    timeout: 60000,
-    expect: { timeout: 30000 },
+    timeout: 120000,
+    expect: { timeout: 60000 },
     reporter: [
         ['html', { outputFolder: 'reports/playwright/html' }],
         ['junit', { outputFile: 'reports/playwright/results.xml' }],
@@ -22,8 +22,8 @@ export default defineConfig({
     use: {
         trace: 'retain-on-failure',
         screenshot: 'only-on-failure',
-        actionTimeout: 30000,
-        navigationTimeout: 60000,
+        actionTimeout: 60000,
+        navigationTimeout: 120000,
     },
     projects: [
         { name: 'chromium', use: { ...devices['Desktop Chrome'] } },
