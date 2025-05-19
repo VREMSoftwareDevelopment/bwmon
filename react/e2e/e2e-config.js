@@ -16,4 +16,16 @@
  * Bandwidth Monitor
  */
 
-export const HOME_URL = 'http://localhost:3000/bwmon/#/';
+const HOME_URL = 'http://localhost:3000/bwmon/#/';
+
+const getTBodyRowTexts = async (page) => {
+    const locator = page.locator('tbody tr');
+    return await locator.evaluateAll((elements) => elements.map((e) => e.innerText));
+};
+
+const getTHeadRowTexts = async (page) => {
+    const locator = page.locator('thead tr');
+    return await locator.evaluateAll((elements) => elements.map((e) => e.innerText));
+};
+
+export { HOME_URL, getTBodyRowTexts, getTHeadRowTexts };

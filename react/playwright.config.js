@@ -11,9 +11,9 @@ export default defineConfig({
     fullyParallel: false,
     forbidOnly: !!process.env.CI,
     retries: 1,
-    workers: 1,
-    timeout: 120000,
-    expect: { timeout: 60000 },
+    workers: process.env.CI ? 1 : 4,
+    timeout: process.env.CI ? 90000 : 30000,
+    expect: { timeout: process.env.CI ? 30000 : 5000 },
     reporter: [
         ['html', { outputFolder: 'reports/playwright/html' }],
         ['junit', { outputFile: 'reports/playwright/results.xml' }],
@@ -22,8 +22,8 @@ export default defineConfig({
     use: {
         trace: 'retain-on-failure',
         screenshot: 'only-on-failure',
-        actionTimeout: 60000,
-        navigationTimeout: 120000,
+        actionTimeout: process.env.CI ? 30000 : 10000,
+        navigationTimeout: process.env.CI ? 60000 : 20000,
     },
     projects: [
         { name: 'chromium', use: { ...devices['Desktop Chrome'] } },
