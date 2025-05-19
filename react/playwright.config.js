@@ -6,20 +6,24 @@ import { defineConfig, devices } from '@playwright/test';
  */
 export default defineConfig({
     testDir: './e2e',
-    outputDir: 'reports/test-results',
-    preserveOutput: 'never',
+    outputDir: 'reports/playwright/test-results',
+    preserveOutput: 'failures-only',
     fullyParallel: false,
     forbidOnly: !!process.env.CI,
     retries: 1,
     workers: 1,
+    timeout: 60000,
+    expect: { timeout: 10000 },
     reporter: [
-        ['html', { outputFolder: 'reports/playwright' }],
+        ['html', { outputFolder: 'reports/playwright/html' }],
         ['junit', { outputFile: 'reports/playwright/results.xml' }],
         [process.env.CI ? 'github' : 'list'],
     ],
     use: {
         trace: 'retain-on-failure',
         screenshot: 'only-on-failure',
+        actionTimeout: 10000,
+        navigationTimeout: 60000,
     },
     projects: [
         { name: 'chromium', use: { ...devices['Desktop Chrome'] } },
