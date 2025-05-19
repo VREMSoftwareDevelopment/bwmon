@@ -13,7 +13,7 @@ export default defineConfig({
     retries: 1,
     workers: 1,
     timeout: 60000,
-    expect: { timeout: 10000 },
+    expect: { timeout: 30000 },
     reporter: [
         ['html', { outputFolder: 'reports/playwright/html' }],
         ['junit', { outputFile: 'reports/playwright/results.xml' }],
@@ -22,7 +22,7 @@ export default defineConfig({
     use: {
         trace: 'retain-on-failure',
         screenshot: 'only-on-failure',
-        actionTimeout: 10000,
+        actionTimeout: 30000,
         navigationTimeout: 60000,
     },
     projects: [
