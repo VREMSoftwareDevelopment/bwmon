@@ -20,11 +20,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { AppBar, Toolbar, Typography } from '@mui/material';
 
+const options = { flexGrow: 1 };
+
 const Header = ({ name, version }) => {
     return (
         <AppBar position="static">
             <Toolbar variant="dense">
-                <Typography data-testid="app-title" id="app-title" variant="h6" sx={{ flexGrow: 1 }}>
+                <Typography data-testid="app-title" id="app-title" variant="h6" sx={options}>
                     {name}
                 </Typography>
                 <Typography data-testid="app-version" id="app-version">
@@ -35,7 +37,6 @@ const Header = ({ name, version }) => {
     );
 };
 
-// Stryker disable next-line all
 Header.propTypes = { name: PropTypes.string.isRequired, version: PropTypes.string };
 
 export default Header;

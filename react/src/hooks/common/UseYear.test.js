@@ -41,4 +41,23 @@ describe('UseYear', () => {
             expect(result.current.year).toEqual(expected);
         });
     });
+
+    it('should not change year if set to a value not in years', async () => {
+        const invalidYear = 1999;
+        const { result } = renderHook(useYear);
+        await waitFor(() => {
+            const initialYear = result.current.year;
+            act(() => result.current.setYear(invalidYear));
+            expect(result.current.year).toEqual(initialYear);
+        });
+    });
+
+    it('should not change year if set to the current year', async () => {
+        const { result } = renderHook(useYear);
+        await waitFor(() => {
+            const initialYear = result.current.year;
+            act(() => result.current.setYear(initialYear));
+            expect(result.current.year).toEqual(initialYear);
+        });
+    });
 });

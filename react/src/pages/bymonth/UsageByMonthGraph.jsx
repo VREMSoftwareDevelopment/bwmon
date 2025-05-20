@@ -24,6 +24,8 @@ import useUsageByMonthGraph from '../../hooks/bymonth/UseUsageByMonthGraph';
 import Loading from '../../components/loading/Loading';
 import Graph from '../../components/graph/Graph';
 
+const options = { flexGrow: 1, m: 2, mt: 6 };
+
 const UsageByMonthGraph = () => {
     const { options, series, years, year, setYear, loading } = useUsageByMonthGraph();
 
@@ -32,7 +34,7 @@ const UsageByMonthGraph = () => {
     return (
         <Paper>
             <Loading isLoading={loading} />
-            <Box sx={{ flexGrow: 1, m: 2, mt: 6 }}>
+            <Box sx={options}>
                 <Grid container>
                     <Grid size={2}>
                         <DropDown

@@ -29,7 +29,6 @@ const Graph = ({ options, series }) => {
     );
 };
 
-// Stryker disable next-line all
 Graph.propTypes = { options: PropTypes.object.isRequired, series: PropTypes.array.isRequired };
 
 export default Graph;

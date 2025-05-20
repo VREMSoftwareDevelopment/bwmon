@@ -29,7 +29,6 @@ const ErrorDisplay = ({ error, info }) => {
     );
 };
 
-// Stryker disable next-line all
 ErrorDisplay.propTypes = { error: PropTypes.object.isRequired, info: PropTypes.object.isRequired };
 
 export default ErrorDisplay;

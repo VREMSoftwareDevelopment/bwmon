@@ -32,7 +32,6 @@ const FirstPageAction = ({ page, onPageChange }) => (
     </IconButton>
 );
 
-// Stryker disable next-line all
 FirstPageAction.propTypes = { page: PropTypes.number.isRequired, onPageChange: PropTypes.func.isRequired };
 
 const LastPageAction = ({ count, page, rowsPerPage, onPageChange }) => (
@@ -45,14 +44,12 @@ const LastPageAction = ({ count, page, rowsPerPage, onPageChange }) => (
     </IconButton>
 );
 
-// Stryker disable all
 LastPageAction.propTypes = {
     count: PropTypes.number.isRequired,
     page: PropTypes.number.isRequired,
     rowsPerPage: PropTypes.number.isRequired,
     onPageChange: PropTypes.func.isRequired,
 };
-// Stryker restore all
 
 const PreviousPageAction = ({ page, onPageChange }) => (
     <IconButton onClick={(event) => onPageChange(event, page - 1)} disabled={isFirstPage(page)} aria-label="previous page">
@@ -60,7 +57,6 @@ const PreviousPageAction = ({ page, onPageChange }) => (
     </IconButton>
 );
 
-// Stryker disable next-line all
 PreviousPageAction.propTypes = { page: PropTypes.number.isRequired, onPageChange: PropTypes.func.isRequired };
 
 const NextPageAction = ({ count, page, rowsPerPage, onPageChange }) => (
@@ -73,17 +69,17 @@ const NextPageAction = ({ count, page, rowsPerPage, onPageChange }) => (
     </IconButton>
 );
 
-// Stryker disable all
 NextPageAction.propTypes = {
     count: PropTypes.number.isRequired,
     page: PropTypes.number.isRequired,
     rowsPerPage: PropTypes.number.isRequired,
     onPageChange: PropTypes.func.isRequired,
 };
-// Stryker restore all
+
+const options = { flexShrink: 0, display: 'flex' };
 
 const Actions = ({ count, page, rowsPerPage, onPageChange }) => (
-    <Box sx={{ flexShrink: 0, display: 'flex' }}>
+    <Box sx={options}>
         <FirstPageAction page={page} onPageChange={onPageChange} />
         <PreviousPageAction page={page} onPageChange={onPageChange} />
         <NextPageAction page={page} onPageChange={onPageChange} count={count} rowsPerPage={rowsPerPage} />
@@ -91,14 +87,12 @@ const Actions = ({ count, page, rowsPerPage, onPageChange }) => (
     </Box>
 );
 
-// Stryker disable all
 Actions.propTypes = {
     count: PropTypes.number.isRequired,
     page: PropTypes.number.isRequired,
     rowsPerPage: PropTypes.number.isRequired,
     onPageChange: PropTypes.func.isRequired,
 };
-// Stryker restore all
 
 const rowsPerPageOptions = (rowsPerPage, count) => {
     let rowsPerPageOptions = [rowsPerPage];
@@ -131,7 +125,6 @@ const Pagination = (props) => {
     );
 };
 
-// Stryker disable next-line all
 Pagination.propTypes = { count: PropTypes.number.isRequired, minimum: PropTypes.number.isRequired };
 
 export {

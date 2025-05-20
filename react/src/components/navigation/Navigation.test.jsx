@@ -51,4 +51,25 @@ describe('Navigation', () => {
         expect(screen.getByTestId('home')).not.toHaveClass('Mui-selected');
         expect(screen.getByTestId('about')).toHaveClass('Mui-selected');
     });
+
+    it('renders with correct props for each BottomNavigationAction', () => {
+        renderComponent();
+        const homeNavAction = screen.getByTestId('home');
+        const aboutNavAction = screen.getByTestId('about');
+
+        expect(homeNavAction).toHaveAttribute('id', 'home');
+        expect(homeNavAction).toHaveAttribute('data-testid', 'home');
+        expect(aboutNavAction).toHaveAttribute('id', 'about');
+        expect(aboutNavAction).toHaveAttribute('data-testid', 'about');
+    });
+
+    it('calls setIndex with the new route index when handleChange is triggered', () => {
+        const setIndex = jest.fn();
+        jest.spyOn(require('./UseNavigation'), 'default').mockReturnValue({ index: 0, setIndex });
+        renderComponent();
+        const aboutNavAction = screen.getByTestId('about');
+        fireEvent.click(aboutNavAction);
+        expect(setIndex).toHaveBeenCalledWith(1);
+        jest.restoreAllMocks();
+    });
 });

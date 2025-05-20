@@ -22,13 +22,15 @@ import { Link } from 'react-router';
 import { BottomNavigation, BottomNavigationAction } from '@mui/material';
 import useNavigation from './UseNavigation';
 
+const options = { width: '100%' };
+
 const Navigation = ({ menu }) => {
     const { index, setIndex } = useNavigation(menu);
 
     const handleChange = (event, newRouteIndex) => setIndex(newRouteIndex);
 
     return (
-        <BottomNavigation value={index} onChange={handleChange} showLabels sx={{ width: '100%' }}>
+        <BottomNavigation value={index} onChange={handleChange} showLabels sx={options}>
             {menu.map((route, index) => (
                 <BottomNavigationAction
                     data-testid={route.id}
@@ -45,7 +47,6 @@ const Navigation = ({ menu }) => {
     );
 };
 
-// Stryker disable all
 Navigation.propTypes = {
     menu: PropTypes.arrayOf(
         PropTypes.shape({
@@ -56,6 +57,5 @@ Navigation.propTypes = {
         })
     ).isRequired,
 };
-// Stryker restore all
 
 export default Navigation;

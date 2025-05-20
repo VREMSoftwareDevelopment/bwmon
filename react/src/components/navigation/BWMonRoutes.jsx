@@ -21,17 +21,18 @@ import PropTypes from 'prop-types';
 import { Route, Routes } from 'react-router';
 import PageNotFound from './PageNotFound';
 
-const BWMonRoutes = ({ menu }) => (
-    <Routes>
-        <Route key="0-default" path="/" element={menu[0].element} />
-        {menu.map((route, _index) => (
-            <Route key={route.pathname} path={route.pathname} element={route.element} />
-        ))}
-        <Route key="0-error" Component={<PageNotFound />} />
-    </Routes>
-);
+const BWMonRoutes = ({ menu }) => {
+    return (
+        <Routes>
+            <Route key="0-default" path="/" element={menu[0].element} />
+            {menu.map((route, _index) => (
+                <Route key={route.pathname} path={route.pathname} element={route.element} />
+            ))}
+            <Route key="0-error" Component={<PageNotFound />} />
+        </Routes>
+    );
+};
 
-// Stryker disable all
 BWMonRoutes.propTypes = {
     menu: PropTypes.arrayOf(
         PropTypes.shape({
@@ -40,6 +41,5 @@ BWMonRoutes.propTypes = {
         })
     ).isRequired,
 };
-// Stryker restore all
 
 export default BWMonRoutes;

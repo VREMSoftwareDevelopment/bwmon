@@ -21,19 +21,17 @@ import { Box, LinearProgress } from '@mui/material';
 import InfoMessage from '../messages/InfoMessage';
 import PropTypes from 'prop-types';
 
+const options = { width: '100%', mt: 2 };
+
 const Loading = ({ isLoading }) => {
-    if (!isLoading) {
-        return null;
-    }
-    return (
-        <Box sx={{ width: '100%', '& > * + *': { mt: 2 } }}>
+    return isLoading ? (
+        <Box sx={options}>
             <LinearProgress />
             <InfoMessage message="Loading..." />
         </Box>
-    );
-};
-
-// Stryker disable next-line all
+    ) : null;
+}
+    
 Loading.propTypes = { isLoading: PropTypes.bool.isRequired };
 
 export default Loading;

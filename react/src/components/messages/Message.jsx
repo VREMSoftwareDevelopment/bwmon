@@ -20,20 +20,18 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Alert, AlertTitle, Box } from '@mui/material';
 
+const options = { width: '100%', mb: 2 };
+
 const Message = ({ severity, message }) => {
-    if (!message) {
-        return null;
-    }
-    return (
-        <Box sx={{ width: '100%', '& > * + *': { mt: 2 } }}>
+    return message ? (
+        <Box sx={options}>
             <Alert severity={severity}>
                 <AlertTitle>{message}</AlertTitle>
             </Alert>
         </Box>
-    );
+    ) : null;
 };
 
-// Stryker disable next-line all
 Message.propTypes = { severity: PropTypes.string.isRequired, message: PropTypes.string };
 
 export default Message;

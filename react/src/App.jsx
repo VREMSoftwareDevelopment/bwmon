@@ -37,21 +37,22 @@ const appName = import.meta.env.VITE_DESCRIPTION || 'Bandwidth Monitor';
 const appVersion = import.meta.env.VITE_VERSION;
 const appTime = DateTime.local().toLocaleString(DateTime.DATETIME_FULL_WITH_SECONDS);
 
-const App = ({ name = appName, version = appVersion, currentTime = appTime }) => (
-    <HashRouter>
-        <ThemeProvider theme={theme}>
-            <CssBaseline />
-            <Header name={name} version={version} />
-            <Navigation menu={menu} />
-            <ErrorBoundary onError={ErrorDisplay}>
-                <BWMonRoutes menu={menu} />
-                <Footer currentTime={currentTime} />
-            </ErrorBoundary>
-        </ThemeProvider>
-    </HashRouter>
-);
+const App = ({ name = appName, version = appVersion, currentTime = appTime }) => {
+    return (
+        <HashRouter>
+            <ThemeProvider theme={theme}>
+                <CssBaseline />
+                <Header name={name} version={version} />
+                <Navigation menu={menu} />
+                <ErrorBoundary onError={ErrorDisplay}>
+                    <BWMonRoutes menu={menu} />
+                    <Footer currentTime={currentTime} />
+                </ErrorBoundary>
+            </ThemeProvider>
+        </HashRouter>
+    );
+};
 
-// Stryker disable next-line all
 App.propTypes = { name: PropTypes.string, version: PropTypes.string, currentTime: PropTypes.string };
 
 export default App;

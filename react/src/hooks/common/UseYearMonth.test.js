@@ -26,7 +26,7 @@ describe('UseYearMonth', () => {
     const expectedYearsCount = 3;
 
     it('should initialize years', async () => {
-        const { result } = renderHook(useYearMonth);
+        const { result } = renderHook(() => useYearMonth());
         await waitFor(() => {
             expect(result.current.years.length).toEqual(expectedYearsCount);
             expect(result.current.years).toEqual(expectedYears);
@@ -38,7 +38,7 @@ describe('UseYearMonth', () => {
         const expectedCount = 11;
         const expectedFirst = 'November';
         const expectedLast = 'January';
-        const { result } = renderHook(useYearMonth);
+        const { result } = renderHook(() => useYearMonth());
         await waitFor(() => {
             expect(result.current.months.length).toEqual(expectedCount);
             expect(result.current.months[0]).toEqual(expectedFirst);
@@ -49,7 +49,7 @@ describe('UseYearMonth', () => {
 
     it('changing year should change year', async () => {
         const expectedYear = expectedYears[expectedYearsCount - 1];
-        const { result } = renderHook(useYearMonth);
+        const { result } = renderHook(() => useYearMonth());
         await waitFor(() => {
             act(() => result.current.setYear(expectedYear));
             expect(result.current.year).toEqual(expectedYear);
@@ -61,7 +61,7 @@ describe('UseYearMonth', () => {
         const expectedCount = 7;
         const expectedFirst = 'December';
         const expectedLast = 'June';
-        const { result } = renderHook(useYearMonth);
+        const { result } = renderHook(() => useYearMonth());
 
         await waitFor(() => {
             act(() => result.current.setYear(expectedYear));
@@ -74,10 +74,18 @@ describe('UseYearMonth', () => {
 
     it('changing month should change month', async () => {
         const expected = 'August';
-        const { result } = renderHook(useYearMonth);
+        const { result } = renderHook(() => useYearMonth());
         await waitFor(() => {
             act(() => result.current.setMonth(expected));
             expect(result.current.month).toEqual(expected);
         });
+    });
+
+    it('should not update months or month if year is undefined', async () => {
+        const useYear = require('./UseYear');
+        useYear.default = jest.fn().mockReturnValue({ years: [], year: undefined, setYear: jest.fn() });
+        const { result } = renderHook(() => useYearMonth());
+        expect(result.current.months).toBeUndefined();
+        expect(result.current.month).toBeUndefined();
     });
 });

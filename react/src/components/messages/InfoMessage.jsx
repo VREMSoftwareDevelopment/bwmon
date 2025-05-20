@@ -24,7 +24,6 @@ const InfoMessage = ({ message }) => {
     return <Message severity="info" message={message} />;
 };
 
-// Stryker disable next-line all
 InfoMessage.propTypes = { message: PropTypes.string };
 
 export default InfoMessage;

@@ -51,7 +51,7 @@ const rowsPerPageMin = 20;
 const UsageByUser = () => {
     const { years, year, setYear, months, month, setMonth, filter, setFilter, data, loading } = useUsageByUser();
     const { page, setPage, rowsPerPage, setRowsPerPage } = usePagination(rowsPerPageMin);
-    const { ascending, setAscending, orderBy, setOrderBy } = useSort(true, cellInfos[0].id);
+    const { ascending, setAscending, orderBy, setOrderBy } = useSort(cellInfos[0].id, true);
 
     const handlePageChange = (event, newPage) => setPage(newPage);
 

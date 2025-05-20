@@ -20,9 +20,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Box, Typography } from '@mui/material';
 
+const options = { flexGrow: 1, m: 2 };
+
 const Footer = ({ currentTime }) => {
     return (
-        <Box sx={{ flexGrow: 1, m: 2 }}>
+        <Box sx={options}>
             <Typography data-testid="app-footer1" id="app-footer1" variant="subtitle2">
                 All usage information is in gigabytes
             </Typography>
@@ -33,7 +35,6 @@ const Footer = ({ currentTime }) => {
     );
 };
 
-// Stryker disable next-line all
 Footer.propTypes = { currentTime: PropTypes.string.isRequired };
 
 export default Footer;

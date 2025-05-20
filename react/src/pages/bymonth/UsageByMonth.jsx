@@ -41,7 +41,7 @@ const cellInfos = [
 
 const UsageByMonth = () => {
     const { years, year, setYear, data, loading } = useUsageByMonth();
-    const { ascending, setAscending, orderBy, setOrderBy } = useSort(false, cellInfos[0].id);
+    const { ascending, setAscending, orderBy, setOrderBy } = useSort(cellInfos[0].id);
 
     const handleChangeYear = (event) => setYear(event.target.value);
 

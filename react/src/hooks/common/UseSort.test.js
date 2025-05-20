@@ -21,7 +21,7 @@ import useSort from './UseSort';
 
 describe('UseSort', () => {
     it('should initialize', async () => {
-        const { result } = renderHook(() => useSort(false, 'xyz'));
+        const { result } = renderHook(() => useSort('xyz'));
         await waitFor(() => {
             expect(result.current.ascending).toBeFalsy();
             expect(result.current.orderBy).toEqual('xyz');
@@ -29,7 +29,7 @@ describe('UseSort', () => {
     });
 
     it('changing ascending should change ascending', async () => {
-        const { result } = renderHook(() => useSort(false, 'xyz'));
+        const { result } = renderHook(() => useSort('xyz'));
         await waitFor(() => {
             act(() => result.current.setAscending(true));
             expect(result.current.ascending).toBeTruthy();
@@ -37,10 +37,18 @@ describe('UseSort', () => {
     });
 
     it('changing orderBy should change orderBy', async () => {
-        const { result } = renderHook(() => useSort(false, 'xyz'));
+        const { result } = renderHook(() => useSort('xyz'));
         await waitFor(() => {
             act(() => result.current.setOrderBy('ABC'));
             expect(result.current.orderBy).toEqual('ABC');
+        });
+    });
+
+    it('should initialize with provided values', async () => {
+        const { result } = renderHook(() => useSort('xyz', true));
+        await waitFor(() => {
+            expect(result.current.ascending).toBeTruthy();
+            expect(result.current.orderBy).toEqual('xyz');
         });
     });
 });
