@@ -23,7 +23,7 @@ import { ThemeProvider, createTheme } from '@mui/material/styles';
 import UsageByUser from './UsageByUser';
 import useUsageByUser from '../../hooks/byuser/UseUsageByUser';
 import usePagination from '../../hooks/common/UsePagination';
-import useSort from '../../hooks/common/UseSort';
+import { useSortAsc } from '../../hooks/common/UseSort';
 import Search from '../../components/inputs/Search';
 import { fromIPv4 } from '../../utils/ConversionUtils';
 
@@ -46,7 +46,7 @@ describe('UsageByUser', () => {
             data: data,
             loading: false,
         });
-        useSort.mockReturnValue({
+        useSortAsc.mockReturnValue({
             ascending: true,
             setAscending: jest.fn(),
             orderBy: 'IP',
@@ -74,6 +74,12 @@ describe('UsageByUser', () => {
         renderComponent();
         expect(screen.getByText('Loading...')).toBeInTheDocument();
         expect(screen.queryByTestId('user-header')).not.toBeInTheDocument();
+    });
+
+    it('Pagination colSpan matches columnCount', () => {
+        renderComponent();
+        const pagination = screen.getByTestId('user-pagination-id');
+        expect(pagination).toHaveAttribute('colspan', '7');
     });
 
     it('renders table header', () => {
@@ -175,29 +181,29 @@ describe('UsageByUser', () => {
     it('handles sort by IP', () => {
         renderComponent();
         fireEvent.click(screen.getByText('IP'));
-        expect(useSort().setAscending).toHaveBeenCalled();
-        expect(useSort().setOrderBy).toHaveBeenCalledWith('IP');
+        expect(useSortAsc().setAscending).toHaveBeenCalled();
+        expect(useSortAsc().setOrderBy).toHaveBeenCalledWith('IP');
     });
 
     it('handles sort by MAC', () => {
         renderComponent();
         fireEvent.click(screen.getByText('MAC'));
-        expect(useSort().setAscending).toHaveBeenCalled();
-        expect(useSort().setOrderBy).toHaveBeenCalledWith('MAC');
+        expect(useSortAsc().setAscending).toHaveBeenCalled();
+        expect(useSortAsc().setOrderBy).toHaveBeenCalledWith('MAC');
     });
 
     it('handles sort by USER', () => {
         renderComponent();
         fireEvent.click(screen.getByText('User'));
-        expect(useSort().setAscending).toHaveBeenCalled();
-        expect(useSort().setOrderBy).toHaveBeenCalledWith('user');
+        expect(useSortAsc().setAscending).toHaveBeenCalled();
+        expect(useSortAsc().setOrderBy).toHaveBeenCalledWith('user');
     });
 
     it('handles sort by Total', () => {
         renderComponent();
         fireEvent.click(screen.getByText('Total'));
-        expect(useSort().setAscending).toHaveBeenCalled();
-        expect(useSort().setOrderBy).toHaveBeenCalledWith('total');
+        expect(useSortAsc().setAscending).toHaveBeenCalled();
+        expect(useSortAsc().setOrderBy).toHaveBeenCalledWith('total');
     });
 
     it('renders year selector', () => {
@@ -236,6 +242,49 @@ describe('UsageByUser', () => {
         renderComponent();
         fireEvent.change(screen.getByTestId('user-filter'), { target: { value: 'John' } });
         expect(useUsageByUser().setFilter).toHaveBeenCalledWith('John');
+    });
+
+    it('returns the correct number of rows for the first page', () => {
+        usePagination.mockReturnValue({
+            page: 0,
+            setPage: jest.fn(),
+            rowsPerPage: 2,
+            setRowsPerPage: jest.fn(),
+        });
+        renderComponent();
+        expect(screen.getByTestId('user-data-0')).toHaveTextContent('11:00:00:00:00:00');
+        expect(screen.getByTestId('user-data-1')).toHaveTextContent('12:00:00:00:00:00');
+        expect(screen.queryByTestId('user-data-3')).not.toBeInTheDocument();
+    });
+
+    it('returns the correct rows for the second page', () => {
+        usePagination.mockReturnValue({
+            page: 1,
+            setPage: jest.fn(),
+            rowsPerPage: 2,
+            setRowsPerPage: jest.fn(),
+        });
+        renderComponent();
+        expect(screen.getByTestId('user-data-0')).toHaveTextContent('13:00:00:00:00:00');
+        expect(screen.getByTestId('user-data-1')).toHaveTextContent('14:00:00:00:00:00');
+        expect(screen.queryByTestId('user-data-3')).not.toBeInTheDocument();
+    });
+
+    it('returns no rows if data.usage is empty', () => {
+        useUsageByUser.mockReturnValue({
+            years: data.years,
+            year: 2021,
+            setYear: jest.fn(),
+            months: data.months,
+            month: 'February',
+            setMonth: jest.fn(),
+            filter: '',
+            setFilter: jest.fn(),
+            data: { ...data, usage: [] },
+            loading: false,
+        });
+        renderComponent();
+        expect(screen.queryByTestId('user-data-0')).not.toBeInTheDocument();
     });
 
     const data = {

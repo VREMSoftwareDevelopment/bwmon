@@ -22,7 +22,7 @@ import '@testing-library/jest-dom';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import useUsageByYear from '../../hooks/byyear/UseUsageByYear';
 import usePagination from '../../hooks/common/UsePagination';
-import useSort from '../../hooks/common/UseSort';
+import { useSortDesc } from '../../hooks/common/UseSort';
 import UsageByYear from './UsageByYear';
 
 jest.mock('../../hooks/byyear/UseUsageByYear');
@@ -64,7 +64,7 @@ describe('UsageByYear', () => {
 
     beforeEach(() => {
         useUsageByYear.mockReturnValue({ data: data, loading: false });
-        useSort.mockReturnValue({
+        useSortDesc.mockReturnValue({
             ascending: true,
             setAscending: jest.fn(),
             orderBy: 'id',
@@ -170,14 +170,73 @@ describe('UsageByYear', () => {
     it('handles sort request by year', () => {
         renderComponent();
         fireEvent.click(screen.getByText('Year'));
-        expect(useSort().setAscending).toHaveBeenCalled();
-        expect(useSort().setOrderBy).toHaveBeenCalledWith('id');
+        expect(useSortDesc().setAscending).toHaveBeenCalled();
+        expect(useSortDesc().setOrderBy).toHaveBeenCalledWith('id');
     });
 
     it('handles sort request by total', () => {
         renderComponent();
         fireEvent.click(screen.getByText('Total'));
-        expect(useSort().setAscending).toHaveBeenCalled();
-        expect(useSort().setOrderBy).toHaveBeenCalledWith('total');
+        expect(useSortDesc().setAscending).toHaveBeenCalled();
+        expect(useSortDesc().setOrderBy).toHaveBeenCalledWith('total');
+    });
+
+    it('renders sorted and paginated data (sortedData)', () => {
+        useSortDesc.mockReturnValue({
+            ascending: true,
+            setAscending: jest.fn(),
+            orderBy: 'id',
+            setOrderBy: jest.fn(),
+        });
+        usePagination.mockReturnValue({
+            page: 0,
+            setPage: jest.fn(),
+            rowsPerPage: 5,
+            setRowsPerPage: jest.fn(),
+        });
+        renderComponent();
+        for (let i = 0; i < 5; i++) {
+            expect(screen.getByTestId(`year-data-${i}`)).toHaveTextContent((2001 + i).toString());
+        }
+        expect(screen.queryByTestId('year-data-5')).not.toBeInTheDocument();
+    });
+
+    it('renders sorted and paginated data (sortedData, descending)', () => {
+        useSortDesc.mockReturnValue({
+            ascending: false,
+            setAscending: jest.fn(),
+            orderBy: 'id',
+            setOrderBy: jest.fn(),
+        });
+        usePagination.mockReturnValue({
+            page: 0,
+            setPage: jest.fn(),
+            rowsPerPage: 3,
+            setRowsPerPage: jest.fn(),
+        });
+        renderComponent();
+        expect(screen.getByTestId('year-data-0')).toHaveTextContent('2029');
+        expect(screen.getByTestId('year-data-1')).toHaveTextContent('2028');
+        expect(screen.getByTestId('year-data-2')).toHaveTextContent('2027');
+        expect(screen.queryByTestId('year-data-3')).not.toBeInTheDocument();
+    });
+
+    it('renders sorted and paginated data (sortedData, sort by total)', () => {
+        useSortDesc.mockReturnValue({
+            ascending: true,
+            setAscending: jest.fn(),
+            orderBy: 'total',
+            setOrderBy: jest.fn(),
+        });
+        usePagination.mockReturnValue({
+            page: 1,
+            setPage: jest.fn(),
+            rowsPerPage: 2,
+            setRowsPerPage: jest.fn(),
+        });
+        renderComponent();
+        expect(screen.getByTestId('year-data-0')).toHaveTextContent('2003');
+        expect(screen.getByTestId('year-data-1')).toHaveTextContent('2004');
+        expect(screen.queryByTestId('year-data-2')).not.toBeInTheDocument();
     });
 });

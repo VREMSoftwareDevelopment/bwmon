@@ -18,11 +18,15 @@
 
 import { useState } from 'react';
 
-const useSort = (orderByDefault, ascendingDefault = false) => {
+const useSortAsc = (orderByDefault) => useSort(orderByDefault, true);
+
+const useSortDesc = (orderByDefault) => useSort(orderByDefault, false);
+
+const useSort = (orderByDefault, ascendingDefault) => {
     const [ascending, setAscending] = useState(ascendingDefault);
     const [orderBy, setOrderBy] = useState(orderByDefault);
 
     return { ascending, setAscending, orderBy, setOrderBy };
 };
 
-export default useSort;
+export { useSortDesc, useSortAsc };

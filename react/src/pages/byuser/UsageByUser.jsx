@@ -28,7 +28,7 @@ import Search from '../../components/inputs/Search';
 import { timeToDate, toIPv4, toPercent, usageInGBytes } from '../../utils/ConversionUtils';
 import { comparator, isAscending, sort } from '../../utils/SortUtils';
 import useUsageByUser from '../../hooks/byuser/UseUsageByUser';
-import useSort from '../../hooks/common/UseSort';
+import { useSortAsc } from '../../hooks/common/UseSort';
 import usePagination from '../../hooks/common/UsePagination';
 import Loading from '../../components/loading/Loading';
 
@@ -51,7 +51,7 @@ const rowsPerPageMin = 20;
 const UsageByUser = () => {
     const { years, year, setYear, months, month, setMonth, filter, setFilter, data, loading } = useUsageByUser();
     const { page, setPage, rowsPerPage, setRowsPerPage } = usePagination(rowsPerPageMin);
-    const { ascending, setAscending, orderBy, setOrderBy } = useSort(cellInfos[0].id, true);
+    const { ascending, setAscending, orderBy, setOrderBy } = useSortAsc(cellInfos[0].id);
 
     const handlePageChange = (event, newPage) => setPage(newPage);
 
@@ -74,6 +74,11 @@ const UsageByUser = () => {
     useEffect(() => {
         setPage(0);
     }, [year, month, filter, setPage]);
+
+    const sortedData = () =>
+        sort(data.usage, comparator(ascending, orderBy)).slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage);
+
+    const columnCount = () => cellInfos.length - 4;
 
     const displayData = () =>
         data ? (
@@ -104,7 +109,7 @@ const UsageByUser = () => {
                         <Pagination
                             data-testid="user-pagination-id"
                             id="user-pagination-id"
-                            colSpan={cellInfos.length - 4}
+                            colSpan={columnCount()}
                             count={data.usage.length}
                             minimum={rowsPerPageMin}
                             rowsPerPage={rowsPerPage}
@@ -121,14 +126,7 @@ const UsageByUser = () => {
                     ascending={ascending}
                     orderBy={orderBy}
                 />
-                <Body
-                    prefix="user"
-                    cellInfos={cellInfos}
-                    values={sort(data.usage, comparator(ascending, orderBy)).slice(
-                        page * rowsPerPage,
-                        page * rowsPerPage + rowsPerPage
-                    )}
-                />
+                <Body prefix="user" cellInfos={cellInfos} values={sortedData()} />
                 <Footer prefix="user" cellInfos={cellInfos} values={data.total} />
             </Table>
         ) : null;

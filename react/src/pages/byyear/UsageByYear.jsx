@@ -25,7 +25,7 @@ import Pagination from '../../components/table/Pagination';
 import { usageInGBytes } from '../../utils/ConversionUtils';
 import { comparator, isAscending, sort } from '../../utils/SortUtils';
 import useUsageByYear from '../../hooks/byyear/UseUsageByYear';
-import useSort from '../../hooks/common/UseSort';
+import { useSortDesc } from '../../hooks/common/UseSort';
 import usePagination from '../../hooks/common/UsePagination';
 import Loading from '../../components/loading/Loading';
 
@@ -43,7 +43,7 @@ const rowsPerPageMin = 20;
 const UsageByYear = () => {
     const { data, loading } = useUsageByYear();
     const { page, setPage, rowsPerPage, setRowsPerPage } = usePagination(rowsPerPageMin);
-    const { ascending, setAscending, orderBy, setOrderBy } = useSort(cellInfos[0].id);
+    const { ascending, setAscending, orderBy, setOrderBy } = useSortDesc(cellInfos[0].id);
 
     const handlePageChange = (event, newPage) => setPage(newPage);
 
@@ -56,6 +56,8 @@ const UsageByYear = () => {
         setAscending(isAscending(orderBy, property, ascending));
         setOrderBy(property);
     };
+
+    const sortedData = () => sort(data, comparator(ascending, orderBy)).slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage);
 
     const displayData = () =>
         data ? (
@@ -82,11 +84,7 @@ const UsageByYear = () => {
                     ascending={ascending}
                     orderBy={orderBy}
                 />
-                <Body
-                    prefix="year"
-                    cellInfos={cellInfos}
-                    values={sort(data, comparator(ascending, orderBy)).slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)}
-                />
+                <Body prefix="year" cellInfos={cellInfos} values={sortedData()} />
             </Table>
         ) : null;
 

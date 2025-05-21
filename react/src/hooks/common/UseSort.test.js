@@ -17,38 +17,58 @@
  */
 
 import { act, renderHook, waitFor } from '@testing-library/react';
-import useSort from './UseSort';
+import { useSortAsc, useSortDesc } from './UseSort';
 
 describe('UseSort', () => {
-    it('should initialize', async () => {
-        const { result } = renderHook(() => useSort('xyz'));
-        await waitFor(() => {
-            expect(result.current.ascending).toBeFalsy();
-            expect(result.current.orderBy).toEqual('xyz');
+    describe('Descending', () => {
+        it('should initialize', async () => {
+            const { result } = renderHook(() => useSortDesc('xyz'));
+            await waitFor(() => {
+                expect(result.current.ascending).toBeFalsy();
+                expect(result.current.orderBy).toEqual('xyz');
+            });
+        });
+
+        it('changing ascending should change ascending', async () => {
+            const { result } = renderHook(() => useSortDesc('xyz'));
+            await waitFor(() => {
+                act(() => result.current.setAscending(true));
+                expect(result.current.ascending).toBeTruthy();
+            });
+        });
+
+        it('changing orderBy should change orderBy', async () => {
+            const { result } = renderHook(() => useSortDesc('xyz'));
+            await waitFor(() => {
+                act(() => result.current.setOrderBy('ABC'));
+                expect(result.current.orderBy).toEqual('ABC');
+            });
         });
     });
 
-    it('changing ascending should change ascending', async () => {
-        const { result } = renderHook(() => useSort('xyz'));
-        await waitFor(() => {
-            act(() => result.current.setAscending(true));
-            expect(result.current.ascending).toBeTruthy();
+    describe('Ascending', () => {
+        it('should initialize', async () => {
+            const { result } = renderHook(() => useSortAsc('xyz'));
+            await waitFor(() => {
+                expect(result.current.ascending).toBeTruthy();
+                expect(result.current.orderBy).toEqual('xyz');
+            });
         });
-    });
 
-    it('changing orderBy should change orderBy', async () => {
-        const { result } = renderHook(() => useSort('xyz'));
-        await waitFor(() => {
-            act(() => result.current.setOrderBy('ABC'));
-            expect(result.current.orderBy).toEqual('ABC');
+        it('changing ascending should change ascending', async () => {
+            const { result } = renderHook(() => useSortAsc('xyz'));
+            await waitFor(() => {
+                act(() => result.current.setAscending(false));
+                expect(result.current.ascending).toBeFalsy();
+            });
         });
-    });
 
-    it('should initialize with provided values', async () => {
-        const { result } = renderHook(() => useSort('xyz', true));
-        await waitFor(() => {
-            expect(result.current.ascending).toBeTruthy();
-            expect(result.current.orderBy).toEqual('xyz');
+        it('changing orderBy should change orderBy', async () => {
+            const { result } = renderHook(() => useSortAsc('xyz'));
+            await waitFor(() => {
+                act(() => result.current.setOrderBy('ABC'));
+                expect(result.current.orderBy).toEqual('ABC');
+            });
         });
     });
 });

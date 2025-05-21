@@ -26,7 +26,7 @@ import Header from '../../components/table/Header';
 import { toMonth, toPercent, usageInGBytes } from '../../utils/ConversionUtils';
 import { comparator, isAscending, sort } from '../../utils/SortUtils';
 import useUsageByMonth from '../../hooks/bymonth/UseUsageByMonth';
-import useSort from '../../hooks/common/UseSort';
+import { useSortDesc } from '../../hooks/common/UseSort';
 import Loading from '../../components/loading/Loading';
 
 const cellInfos = [
@@ -41,7 +41,7 @@ const cellInfos = [
 
 const UsageByMonth = () => {
     const { years, year, setYear, data, loading } = useUsageByMonth();
-    const { ascending, setAscending, orderBy, setOrderBy } = useSort(cellInfos[0].id);
+    const { ascending, setAscending, orderBy, setOrderBy } = useSortDesc(cellInfos[0].id);
 
     const handleChangeYear = (event) => setYear(event.target.value);
 
@@ -49,6 +49,8 @@ const UsageByMonth = () => {
         setAscending(isAscending(orderBy, property, ascending));
         setOrderBy(property);
     };
+
+    const sortedData = () => sort(data.usage, comparator(ascending, orderBy));
 
     const displayData = () =>
         data ? (
@@ -73,7 +75,7 @@ const UsageByMonth = () => {
                     ascending={ascending}
                     orderBy={orderBy}
                 />
-                <Body prefix="month" cellInfos={cellInfos} values={sort(data.usage, comparator(ascending, orderBy))} />
+                <Body prefix="month" cellInfos={cellInfos} values={sortedData()} />
                 <Footer prefix="month" cellInfos={cellInfos} values={data.total} />
             </Table>
         ) : null;

@@ -22,7 +22,7 @@ import '@testing-library/jest-dom';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import UsageByMonth from './UsageByMonth';
 import useUsageByMonth from '../../hooks/bymonth/UseUsageByMonth';
-import useSort from '../../hooks/common/UseSort';
+import { useSortDesc } from '../../hooks/common/UseSort';
 
 jest.mock('../../hooks/bymonth/UseUsageByMonth');
 jest.mock('../../hooks/common/UseSort');
@@ -44,7 +44,7 @@ describe('UsageByMonth', () => {
 
     beforeEach(() => {
         useUsageByMonth.mockReturnValue(data);
-        useSort.mockReturnValue({
+        useSortDesc.mockReturnValue({
             ascending: true,
             setAscending: jest.fn(),
             orderBy: 'id',
@@ -139,14 +139,14 @@ describe('UsageByMonth', () => {
     it('handles sort request by month', () => {
         renderComponent();
         fireEvent.click(screen.getByText('Month'));
-        expect(useSort().setAscending).toHaveBeenCalled();
-        expect(useSort().setOrderBy).toHaveBeenCalledWith('id');
+        expect(useSortDesc().setAscending).toHaveBeenCalled();
+        expect(useSortDesc().setOrderBy).toHaveBeenCalledWith('id');
     });
 
     it('handles sort request by total', () => {
         renderComponent();
         fireEvent.click(screen.getByText('Total'));
-        expect(useSort().setAscending).toHaveBeenCalled();
-        expect(useSort().setOrderBy).toHaveBeenCalledWith('total');
+        expect(useSortDesc().setAscending).toHaveBeenCalled();
+        expect(useSortDesc().setOrderBy).toHaveBeenCalledWith('total');
     });
 });
