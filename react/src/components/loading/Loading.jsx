@@ -30,8 +30,8 @@ const Loading = ({ isLoading }) => {
             <InfoMessage message="Loading..." />
         </Box>
     ) : null;
-}
-    
+};
+
 Loading.propTypes = { isLoading: PropTypes.bool.isRequired };
 
 export default Loading;

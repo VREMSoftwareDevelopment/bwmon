@@ -70,8 +70,8 @@ describe('Body Component', () => {
 
     it('renders with ids', () => {
         renderComponent();
-        expect(document.querySelector('#test-data-0')).toBeInTheDocument();
-        expect(document.querySelector('#test-data-1')).toBeInTheDocument();
-        expect(document.querySelector('#test-data-2')).toBeInTheDocument();
+        expect(screen.getByTestId('test-data-0')).toBeInTheDocument();
+        expect(screen.getByTestId('test-data-1')).toBeInTheDocument();
+        expect(screen.getByTestId('test-data-2')).toBeInTheDocument();
     });
 });

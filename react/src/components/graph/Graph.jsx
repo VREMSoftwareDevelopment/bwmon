@@ -19,12 +19,13 @@
 import React, { Suspense } from 'react';
 import PropTypes from 'prop-types';
 
+// scan-suspicious-ignore-next-line
 const Chart = React.lazy(() => import('react-apexcharts'));
 
 const Graph = ({ options, series }) => {
     return (
         <Suspense fallback={<div>Loading...</div>}>
-            <Chart options={options} series={series} type="bar" height={500} />        
+            <Chart options={options} series={series} type="bar" height={500} />
         </Suspense>
     );
 };

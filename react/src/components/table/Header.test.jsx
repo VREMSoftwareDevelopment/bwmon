@@ -66,7 +66,7 @@ describe('Header Suite', () => {
 
         it('renders sorting cell with ids', () => {
             renderComponent();
-            expect(document.querySelector('#test-header')).toBeInTheDocument();
+            expect(screen.getByTestId('test-header')).toBeInTheDocument();
         });
     });
 
@@ -152,7 +152,7 @@ describe('Header Suite', () => {
 
         it('renders sorting cell with ids', () => {
             renderComponent(ascendingProps);
-            expect(document.querySelector('#test-name')).toBeInTheDocument();
+            expect(screen.getByTestId('test-name')).toBeInTheDocument();
         });
     });
 

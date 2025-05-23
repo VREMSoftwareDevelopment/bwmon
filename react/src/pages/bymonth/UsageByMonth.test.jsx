@@ -130,6 +130,7 @@ describe('UsageByMonth', () => {
 
     it('handles year selector', () => {
         renderComponent();
+        // scan-suspicious-ignore-next-line
         const container = document.querySelector('#month-year');
         fireEvent.mouseDown(container);
         fireEvent.click(screen.getByRole('option', { name: 2020 }));

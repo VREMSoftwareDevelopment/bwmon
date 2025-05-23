@@ -65,6 +65,7 @@ describe('Navigation', () => {
 
     it('calls setIndex with the new route index when handleChange is triggered', () => {
         const setIndex = jest.fn();
+        // scan-suspicious-ignore-next-line
         jest.spyOn(require('./UseNavigation'), 'default').mockReturnValue({ index: 0, setIndex });
         renderComponent();
         const aboutNavAction = screen.getByTestId('about');

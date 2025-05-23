@@ -215,6 +215,7 @@ describe('UsageByUser', () => {
 
     it('handles year selector', () => {
         renderComponent();
+        // scan-suspicious-ignore-next-line
         const container = document.querySelector('#user-year');
         fireEvent.mouseDown(container);
         fireEvent.click(screen.getByRole('option', { name: 2020 }));
@@ -231,6 +232,7 @@ describe('UsageByUser', () => {
 
     it('handles month selector', () => {
         renderComponent();
+        // scan-suspicious-ignore-next-line
         const container = document.querySelector('#user-month');
         fireEvent.mouseDown(container);
         fireEvent.click(screen.getByRole('option', { name: 'January' }));

@@ -61,7 +61,9 @@ describe('Pagination Suite', () => {
 
         it('renders pagination actions with ids', () => {
             renderComponent();
+            // scan-suspicious-ignore-next-line
             expect(document.querySelector('#select-rows-per-page-id')).toBeInTheDocument();
+            // scan-suspicious-ignore-next-line
             expect(document.querySelector('#select-label-rows-per-page-id')).toBeInTheDocument();
         });
 

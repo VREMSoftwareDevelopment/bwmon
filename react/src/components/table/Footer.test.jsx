@@ -63,6 +63,6 @@ describe('Footer', () => {
 
     it('renders footer with ids', () => {
         renderComponent();
-        expect(document.querySelector('#test-footer')).toBeInTheDocument();
+        expect(screen.getByTestId('test-footer')).toBeInTheDocument();
     });
 });

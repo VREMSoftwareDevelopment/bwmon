@@ -48,11 +48,3 @@ export default defineConfig({
         },
     },
 });
-
-/*
-
-        "@emotion/babel-plugin": "^11.13.5",
-        "@emotion/react": "^11.14.0",
-        "@emotion/styled": "^11.14.0",
-
-*/

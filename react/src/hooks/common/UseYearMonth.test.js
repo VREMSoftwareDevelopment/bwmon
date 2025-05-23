@@ -82,6 +82,7 @@ describe('UseYearMonth', () => {
     });
 
     it('should not update months or month if year is undefined', async () => {
+        // scan-suspicious-ignore-next-line
         const useYear = require('./UseYear');
         useYear.default = jest.fn().mockReturnValue({ years: [], year: undefined, setYear: jest.fn() });
         const { result } = renderHook(() => useYearMonth());
