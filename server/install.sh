@@ -27,7 +27,7 @@ if [ $? -ne 0 ]; then
 else 
     echo "Entware is installed"
 fi
-if [ ! -x /opt/sbin/lighttpd ] || ! opkg list-installed | grep -q "^lighttpd "; then
+if [ ! -x /opt/sbin/lighttpd ] || ! opkg list-installed lighttpd > /dev/null 2>&1; then
     echo "Installing lighttpd (Entware build) ..."
     opkg install lighttpd
 else
