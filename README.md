@@ -6,7 +6,7 @@
 [![Star](https://img.shields.io/github/stars/VREMSoftwareDevelopment/bwmon.svg)](https://github.com/VREMSoftwareDevelopment/bwmon/stargazers)
 [![Fork](https://img.shields.io/github/forks/VREMSoftwareDevelopment/bwmon.svg)](https://github.com/VREMSoftwareDevelopment/bwmon/network)
 
-## Bandwidth Monitor
+# Bandwidth Monitor
 
 A simple shell script designed to run on [AsusWRT-Merlin](https://www.asuswrt-merlin.net/) powered routers
 
@@ -14,21 +14,53 @@ A simple shell script designed to run on [AsusWRT-Merlin](https://www.asuswrt-me
 
 [Try a demo version of this application](https://vremsoftwaredevelopment.github.io/bwmon)
 
-### Software Features:
+---
 
--   Designed to run on [AsusWRT-Merlin](https://asuswrt.lostrealm.ca) powered routers
--   Provides per user Bandwidth Monitoring
--   Generates bandwidth usage reports per user/month/year
+## Table of Contents
 
-### Technical Features:
+-   [Bandwidth Monitor](#bandwidth-monitor)
+-   [Table of Contents](#table-of-contents)
+-   [Software Features](#software-features)
+-   [Technical Features](#technical-features)
+-   [Project Structure](#project-structure)
+-   [Requirements](#requirements)
+-   [Installation instructions](#installation-instructions)
+-   [Note](#note)
+-   [Build Instructions](#build-instructions)
+-   [Contributing](#contributing)
+-   [License](#license)
 
--   Shell script to collect bandwidth usage and to generate data file.
--   Web Based GUI to display bandwidth usage
+## Software Features
 
-### _Installation instructions:_
+-   Per-user bandwidth monitoring
+-   Usage reports by user/month/year
 
--   Make sure that you have a harddisk or USB flash drive attached to router and it is formated and mounted.
--   Log into your router via _ssh_.
+## Technical Features
+
+-   Shell script for data collection
+-   Web-based GUI for visualization
+
+## Project Structure
+
+```
+react/         # Frontend React app (web GUI)
+server/        # Shell scripts and server-side install files
+screenshots/   # Example screenshots
+scripts/       # Release and utility scripts
+README.md      # Project documentation
+LICENSE        # License file
+```
+
+## Requirements
+
+-   AsusWRT-Merlin powered router (see [AsusWRT-Merlin](https://www.asuswrt-merlin.net/))
+-   Hard disk or USB flash drive attached, formatted, and mounted
+-   Node.js (for building the web GUI)
+
+## Installation instructions:
+
+-   Make sure that you have a harddisk or USB flash drive attached to router and it is formatted and mounted
+-   Log into your router via _ssh_
 -   To install application type the following command in _ssh_ terminal:
     -   `cd /mnt/<mounted_name>/`
     -   `mkdir bwmon`
@@ -37,18 +69,24 @@ A simple shell script designed to run on [AsusWRT-Merlin](https://www.asuswrt-me
     -   `tar -xzvf bwmon.tar.gz`
     -   `chmod +x server/install.sh`
     -   `./server/install.sh`
--   Visit `http://<your_router_ip>:<lighttpd_port>/bwmon/index.html` to view bandwidth usage statistics.
+-   Visit `http://<your_router_ip>:<lighttpd_port>/bwmon/index.html` to view bandwidth usage statistics
 
-### Note:
+## Note:
 
 -   Problem using `wget`:
     -   _error getting response: Connection reset by peer_ - add the following option `--no-check-certificate`
-    -   Or download the file from the web-site and copy to the folder.
+    -   Or download the file from the web-site and copy to the folder
 
-### _Build Instructions:_
+## Build Instructions:
 
 -   Install node: see [https://nodejs.org](https://nodejs.org)
--   Create project: `git clone https://github.com/VREMSoftwareDevelopment/bwmon.git`
--   Go to react subfolder
--   Install required node modules: `npm install`
--   See README.md in react subfolder
+-   Clone the project: `git clone https://github.com/VREMSoftwareDevelopment/bwmon.git`
+-   See detailed build and installation instructions in the `react` subfolder's [README.md](react/README.md) file.
+
+## Contributing
+
+Contributions are welcome! Please open issues or submit pull requests via GitHub. For major changes, please open an issue first to discuss what you would like to change.
+
+## License
+
+This project is licensed under the terms of the [Apache License 2.0](LICENSE).
