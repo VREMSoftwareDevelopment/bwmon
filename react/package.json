@@ -1,7 +1,7 @@
 {
     "name": "bwmon",
     "description": "Bandwidth Monitor",
-    "version": "3.1.5",
+    "version": "3.1.4",
     "homepage": "/bwmon/",
     "private": true,
     "scripts": {
@@ -33,7 +33,7 @@
         "react-apexcharts": "^1.7.0",
         "react-dom": "^19.1.1",
         "react-error-boundary": "^6.0.0",
-        "react-router": "^7.8.0"
+        "react-router": "^7.8.1"
     },
     "devDependencies": {
         "@babel/preset-env": "^7.28.3",
