@@ -27,7 +27,7 @@ jobs:
         needs: []
         strategy:
             matrix:
-                node-version: [22.x]
+                node-version: [20.x]
         steps:
             - uses: actions/checkout@v4
             - name: Use Node.js ${{ matrix.node-version }} (with cache)
@@ -54,7 +54,7 @@ jobs:
         needs: [build]
         strategy:
             matrix:
-                node-version: [22.x]
+                node-version: [20.x]
         steps:
             - uses: actions/checkout@v4
             - name: Use Node.js ${{ matrix.node-version }} (with cache)
@@ -79,7 +79,7 @@ jobs:
         needs: [build]
         strategy:
             matrix:
-                node-version: [22.x]
+                node-version: [20.x]
         steps:
             - uses: actions/checkout@v4
             - name: Use Node.js ${{ matrix.node-version }} (with cache)
@@ -111,7 +111,7 @@ jobs:
         needs: [unit_tests]
         strategy:
             matrix:
-                node-version: [22.x]
+                node-version: [20.x]
         steps:
             - uses: actions/checkout@v4
             - name: Download build artifact
@@ -147,7 +147,7 @@ jobs:
         needs: [unit_tests]
         strategy:
             matrix:
-                node-version: [22.x]
+                node-version: [20.x]
         steps:
             - uses: actions/checkout@v4
             - name: Use Node.js ${{ matrix.node-version }} (with cache)
