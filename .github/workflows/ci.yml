@@ -64,7 +64,7 @@ jobs:
               run: npm install
               working-directory: react
             - name: Audit
-              run: npm run audit || true
+              run: npm run audit
               working-directory: react
             - name: ESLint
               run: npm run lint
