@@ -6,6 +6,7 @@
     "private": true,
     "scripts": {
         "start": "vite",
+        "start:wait": "npm start & npx wait-on http://localhost:5173 --timeout 120000",
         "build": "vite build",
         "serve": "vite preview",
         "test": "jest --watch --maxWorkers=50%",
@@ -19,9 +20,6 @@
         "lint": "eslint \"src/**/*.{js,jsx}\"",
         "scan": "node scan-suspicious.js",
         "outdated": "npm outdated --color=always | grep -viE \"beta|alpha\""
-    },
-    "overrides": {
-        "glob": "^10.4.5"
     },
     "dependencies": {
         "@emotion/babel-plugin": "^11.13.5",
@@ -70,7 +68,8 @@
         "pretty-quick": "^4.2.2",
         "rollup-plugin-visualizer": "^6.0.3",
         "vite": "^7.1.2",
-        "vite-plugin-svgr": "^4.3.0"
+        "vite-plugin-svgr": "^4.3.0",
+        "wait-on": "^8.0.4"
     },
     "eslintConfig": {
         "extends": [

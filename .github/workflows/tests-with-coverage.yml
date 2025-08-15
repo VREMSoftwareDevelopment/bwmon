@@ -13,8 +13,16 @@ jobs:
               uses: actions/setup-node@v4
               with:
                   node-version: ${{ matrix.node-version }}
+            - name: Cache npm
+              uses: actions/cache@v4
+              with:
+                  path: ~/.npm
+                  key: ${{ runner.os }}-node-${{ matrix.node-version }}-npm-${{ hashFiles('react/package-lock.json') }}
+                  restore-keys: |
+                      ${{ runner.os }}-node-${{ matrix.node-version }}-npm-
+                      ${{ runner.os }}-node-${{ matrix.node-version }}-
             - name: Install dependencies
-              run: npm install
+              run: npm ci
               working-directory: react
             - name: Audit
               run: npm run audit
@@ -23,7 +31,7 @@ jobs:
               run: npm run lint
               working-directory: react
             - name: Start server and run all tests with coverage
-              run: npm start & sleep 60; npm run test:CI
+              run: npm run start:wait; npm run test:CI
               working-directory: react
             - name: Upload coverage to Codecov
               uses: codecov/codecov-action@v5
