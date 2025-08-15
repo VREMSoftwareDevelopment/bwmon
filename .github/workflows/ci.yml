@@ -27,7 +27,7 @@ jobs:
         needs: []
         strategy:
             matrix:
-                node-version: [20.x]
+                node-version: [22.x]
         steps:
             - uses: actions/checkout@v4
             - name: Use Node.js ${{ matrix.node-version }} (with cache)
@@ -36,11 +36,8 @@ jobs:
                   node-version: ${{ matrix.node-version }}
                   cache: 'npm'
                   cache-dependency-path: react/package-lock.json
-            - name: Install dependencies
-              run: npm install
-              working-directory: react
             - name: Build
-              run: npm run build
+              run: rm -rf node_modules && rm -rf package-lock.json && npm install && npm run build
               working-directory: react
             - name: Upload build artifact
               uses: actions/upload-artifact@v4
@@ -54,7 +51,7 @@ jobs:
         needs: [build]
         strategy:
             matrix:
-                node-version: [20.x]
+                node-version: [22.x]
         steps:
             - uses: actions/checkout@v4
             - name: Use Node.js ${{ matrix.node-version }} (with cache)
@@ -79,7 +76,7 @@ jobs:
         needs: [build]
         strategy:
             matrix:
-                node-version: [20.x]
+                node-version: [22.x]
         steps:
             - uses: actions/checkout@v4
             - name: Use Node.js ${{ matrix.node-version }} (with cache)
@@ -111,7 +108,7 @@ jobs:
         needs: [unit_tests]
         strategy:
             matrix:
-                node-version: [20.x]
+                node-version: [22.x]
         steps:
             - uses: actions/checkout@v4
             - name: Download build artifact
@@ -147,7 +144,7 @@ jobs:
         needs: [unit_tests]
         strategy:
             matrix:
-                node-version: [20.x]
+                node-version: [22.x]
         steps:
             - uses: actions/checkout@v4
             - name: Use Node.js ${{ matrix.node-version }} (with cache)
