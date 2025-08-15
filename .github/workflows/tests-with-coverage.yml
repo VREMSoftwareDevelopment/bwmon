@@ -22,7 +22,7 @@ jobs:
                       ${{ runner.os }}-node-${{ matrix.node-version }}-npm-
                       ${{ runner.os }}-node-${{ matrix.node-version }}-
             - name: Install dependencies
-              run: npm ci
+              run: npm install
               working-directory: react
             - name: Audit
               run: npm run audit
