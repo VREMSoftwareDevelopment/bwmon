@@ -122,14 +122,8 @@ jobs:
                   node-version: ${{ matrix.node-version }}
                   cache: 'npm'
                   cache-dependency-path: react/package-lock.json
-            - name: Install dependencies
-              run: npm install
-              working-directory: react
-            - name: Install Playwright Browsers
-              run: npx playwright install --with-deps
-              working-directory: react
             - name: Run Playwright tests
-              run: npx playwright test
+              run: rm -rf node_modules && rm -rf package-lock.json && npm install && npx playwright install --with-deps && npx playwright test
               working-directory: react
             - name: Upload playwright reports
               uses: actions/upload-artifact@v4
