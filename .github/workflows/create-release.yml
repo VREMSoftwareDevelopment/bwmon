@@ -17,14 +17,6 @@ jobs:
               uses: actions/setup-node@v4
               with:
                   node-version: ${{ matrix.node-version }}
-            - name: Cache npm
-              uses: actions/cache@v4
-              with:
-                  path: ~/.npm
-                  key: ${{ runner.os }}-node-${{ matrix.node-version }}-npm-${{ hashFiles('react/package-lock.json') }}
-                  restore-keys: |
-                      ${{ runner.os }}-node-${{ matrix.node-version }}-npm-
-                      ${{ runner.os }}-node-${{ matrix.node-version }}-
             - name: Install dependencies
               run: npm install
               working-directory: react
