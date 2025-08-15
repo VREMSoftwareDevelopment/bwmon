@@ -41,7 +41,7 @@ jobs:
               run: npm run test:CI
               working-directory: react
             - name: Build
-              run: npm run build
+              run: rm -rf node_modules && rm -rf package-lock.json && npm install && npm run build
               working-directory: react
             - name: Create release asset
               run: tar -cvzf bwmon.tar.gz react/build server
