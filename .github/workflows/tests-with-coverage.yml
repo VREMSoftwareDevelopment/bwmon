@@ -42,7 +42,7 @@ jobs:
               run: npx playwright install --with-deps
               working-directory: react
             - name: Run Playwright tests
-              run: npx playwright test
+              run: npm install && npx playwright test
               working-directory: react
             - name: Run Stryker tests
               run: npx stryker run
