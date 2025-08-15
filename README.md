@@ -1,5 +1,5 @@
 [![Workflow Status](https://github.com/VREMSoftwareDevelopment/bwmon/workflows/CI/badge.svg)](https://github.com/VREMSoftwareDevelopment/bwmon/actions?query=workflow%3A%22CI%22)
-[![Release CI](https://github.com/VREMSoftwareDevelopment/bwmon/workflows/release-ci/badge.svg)](https://github.com/VREMSoftwareDevelopment/bwmon/actions?query=workflow%3A%22release-ci%22)
+[![Release CI](https://github.com/VREMSoftwareDevelopment/bwmon/workflows/Release-CI/badge.svg)](https://github.com/VREMSoftwareDevelopment/bwmon/actions?query=workflow%3A%22Release-CI%22)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/4bc1d97a37564d63acf4e9e02dd06615)](https://app.codacy.com/gh/VREMSoftwareDevelopment/bwmon?utm_source=github.com&utm_medium=referral&utm_content=VREMSoftwareDevelopment/bwmon&utm_campaign=Badge_Grade)
 [![codecov](https://codecov.io/gh/VREMSoftwareDevelopment/bwmon/branch/main/graph/badge.svg?token=qoDvVAvNaw)](https://codecov.io/gh/VREMSoftwareDevelopment/bwmon)
 
