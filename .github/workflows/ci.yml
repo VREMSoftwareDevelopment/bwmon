@@ -215,11 +215,11 @@ jobs:
             #   with:
             #       name: reports-mutation
             #       path: reports/mutation
-            - name: Download playwright reports
-              uses: actions/download-artifact@v4
-              with:
-                  name: reports-playwright
-                  path: reports/playwright
+            # - name: Download playwright reports
+            #   uses: actions/download-artifact@v4
+            #   with:
+            #       name: reports-playwright
+            #       path: reports/playwright
             - name: Download duplication report
               uses: actions/download-artifact@v4
               with:
