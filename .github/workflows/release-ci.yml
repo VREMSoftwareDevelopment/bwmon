@@ -1,97 +1,131 @@
+jobs:
 name: 'Release-CI'
 on:
-    workflow_dispatch:
-        inputs:
-            version:
-                description: 'version'
-                required: true
-        branches: [main]
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'version'
+        required: true
+    branches: [main]
 
 permissions:
-    contents: write
+  contents: write
 
 jobs:
-    release:
-        runs-on: ubuntu-latest
-        strategy:
-            matrix:
-                node-version: [22.x]
-        steps:
-            - name: Ensure gh (GitHub CLI) is installed
-              run: |
-                  if ! command -v gh >/dev/null 2>&1; then
-                    echo "gh not found - installing"
-                    sudo apt-get update && sudo apt-get install -y gh
-                  else
-                    gh --version
-                  fi
-            - uses: actions/checkout@v4
-              with:
-                  fetch-depth: 0
-            - name: Use Node.js ${{ matrix.node-version }}
-              uses: actions/setup-node@v4
-              with:
-                  node-version: ${{ matrix.node-version }}
-            - name: Install dependencies
-              run: npm install
-              working-directory: react
-            - name: Update version
-              run: npm version ${{ github.event.inputs.version }} --no-git-tag-version
-              working-directory: react
-            - name: run all tests with coverage
-              run: npm run test:CI
-              working-directory: react
-            - name: Build
-              run: rm -rf node_modules && rm -rf package-lock.json && npm install && npm run build
-              working-directory: react
-            - name: Create release asset
-              run: tar -cvzf bwmon.tar.gz react/build server
-            - name: Setup git config
-              run: |
-                  git config --global user.name "${GITHUB_ACTOR}"
-                  git config --global user.email "${GITHUB_ACTOR}@users.noreply.github.com"
-            - name: Commit release
-              run: |
-                  git status
-                  git add -u
-                  git commit -m "Version ${{ github.event.inputs.version }}" || echo "no changes to commit"
-                  # push commit and any tags created alongside it; continue gracefully if push is blocked
-                  git push origin main --follow-tags || echo "push failed or blocked (branch protection?)"
-                  git tag -a v${{ github.event.inputs.version }} -m "Release v${{ github.event.inputs.version }}" || echo "tag already exists"
-                  git push origin v${{ github.event.inputs.version }} || echo "tag push failed or tag already exists"
-            - name: Create or update release (idempotent)
-              run: |
-                  set -e
-                  TAG="v${{ github.event.inputs.version }}"
-                  ASSET="bwmon.tar.gz"
-                  if gh release view "$TAG" >/dev/null 2>&1; then
-                    echo "Release $TAG already exists; uploading asset (clobber if present)"
-                    gh release upload "$TAG" "$ASSET" --clobber
-                  else
-                    echo "Creating release $TAG"
-                    gh release create "$TAG" "$ASSET" --title "Release $TAG" --generate-notes
-                  fi
-              env:
-                  GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-            - name: Update README with new release version
-              run: |
-                  sed -i "s|wget https://github.com/VREMSoftwareDevelopment/bwmon/releases/download/v[0-9.\-]*/bwmon.tar.gz|wget https://github.com/VREMSoftwareDevelopment/bwmon/releases/download/v${{ github.event.inputs.version }}/bwmon.tar.gz|g" README.md
-                  sed -i "s|Try a demo version of this application|Try the latest demo version|g" README.md
-              shell: bash
-            - name: Commit updated README
-              run: |
-                  git add README.md
-                  git commit -m "Update README for release v${{ github.event.inputs.version }}" || echo "No README changes to commit"
-                  git push origin main || echo "README push failed or blocked"
-              working-directory: react
-            - name: Deploy to GitHub Pages (gh CLI)
-              run: |
-                  git fetch origin gh-pages:gh-pages || git checkout --orphan gh-pages
-                  rm -rf asset-manifest.json favicon.ico index.html manifest.json robots.txt static usage.db
-                  cp -r react/build/* ./
-                  touch .nojekyll
-                  git add .
-                  git commit -m "Deploy to GitHub Pages: ${{ github.sha }}" || echo "No changes to commit"
-                  git push origin gh-pages --force
-              env:
-                  GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  # Run tests
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [22.x]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Install dependencies
+        run: npm install
+        working-directory: react
+      - name: Update version
+        run: npm version ${{ github.event.inputs.version }} --no-git-tag-version
+        working-directory: react
+      - name: Run tests
+        run: npm run test:CI
+        working-directory: react
+
+  # Build the project and create release asset
+  build:
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22.x
+      - name: Build
+        run: rm -rf node_modules && rm -rf package-lock.json && npm install && npm run build
+        working-directory: react
+      - name: Create release asset
+        run: tar -cvzf bwmon.tar.gz react/build server
+
+  # Create git tag, GitHub release, and update README
+  release:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Ensure gh (GitHub CLI) is installed
+        run: |
+          if ! command -v gh >/dev/null 2>&1; then
+            echo "gh not found - installing"
+            sudo apt-get update && sudo apt-get install -y gh
+          else
+            gh --version
+          fi
+      - name: Setup git config
+        run: |
+          git config --global user.name "${GITHUB_ACTOR}"
+          git config --global user.email "${GITHUB_ACTOR}@users.noreply.github.com"
+      - name: Commit release
+        run: |
+          git status
+          git add -u
+          git commit -m "Version ${{ github.event.inputs.version }}" || echo "no changes to commit"
+          git push origin main --follow-tags || echo "push failed or blocked (branch protection?)"
+          git tag -a v${{ github.event.inputs.version }} -m "Release v${{ github.event.inputs.version }}" || echo "tag already exists"
+          git push origin v${{ github.event.inputs.version }} || echo "tag push failed or tag already exists"
+      - name: Create or update release (idempotent)
+        run: |
+          set -e
+          TAG="v${{ github.event.inputs.version }}"
+          ASSET="bwmon.tar.gz"
+          if gh release view "$TAG" >/dev/null 2>&1; then
+            echo "Release $TAG already exists; uploading asset (clobber if present)"
+            gh release upload "$TAG" "$ASSET" --clobber
+          else
+            echo "Creating release $TAG"
+            gh release create "$TAG" "$ASSET" --title "Release $TAG" --generate-notes
+          fi
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Update README with new release version
+        run: |
+          sed -i "s|wget https://github.com/VREMSoftwareDevelopment/bwmon/releases/download/v[0-9.\-]*/bwmon.tar.gz|wget https://github.com/VREMSoftwareDevelopment/bwmon/releases/download/v${{ github.event.inputs.version }}/bwmon.tar.gz|g" README.md
+          sed -i "s|Try a demo version of this application|Try the latest demo version|g" README.md
+        shell: bash
+      - name: Commit updated README
+        run: |
+          git add README.md
+          git commit -m "Update README for release v${{ github.event.inputs.version }}" || echo "No README changes to commit"
+          git push origin main || echo "README push failed or blocked"
+        working-directory: react
+
+  # Deploy the build to GitHub Pages
+  deploy:
+    runs-on: ubuntu-latest
+    needs: release
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Deploy to GitHub Pages (gh CLI)
+        run: |
+          git config --global user.name "${GITHUB_ACTOR}"
+          git config --global user.email "${GITHUB_ACTOR}@users.noreply.github.com"
+          git fetch origin gh-pages:gh-pages || git checkout --orphan gh-pages
+          rm -rf asset-manifest.json favicon.ico index.html manifest.json robots.txt static usage.db
+          cp -r react/build/* ./
+          touch .nojekyll
+          git add .
+          git commit -m "Deploy to GitHub Pages: ${{ github.sha }}" || echo "No changes to commit"
+          git push origin gh-pages --force
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

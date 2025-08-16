@@ -88,10 +88,10 @@ LICENSE        # License file
 
 View the latest test and analysis reports:
 
--   [Coverage Report](https://vremsoftwaredevelopment.github.io/bwmon/reports/coverage/)
--   [Mutation Report](https://vremsoftwaredevelopment.github.io/bwmon/reports/mutation/)
--   [Playwright Report](https://vremsoftwaredevelopment.github.io/bwmon/reports/playwright/)
--   [Duplication Report](https://vremsoftwaredevelopment.github.io/bwmon/reports/duplication/html/index.html)
+-   [Coverage Report](https://vremsoftwaredevelopment.github.io/bwmon/reports/coverage/lcov-report/index.html)
+-   [Mutation Report](https://vremsoftwaredevelopment.github.io/bwmon/reports/mutation/mutation.html)
+-   [Playwright Report](https://vremsoftwaredevelopment.github.io/bwmon/reports/playwright/html/index.html)
+-   [Duplication Report](https://vremsoftwaredevelopment.github.io/bwmon/reports/duplication/index.html)
 
 ## Contributing
 
