@@ -94,21 +94,7 @@
         "printWidth": 132,
         "tabWidth": 4,
         "singleQuote": true,
-        "endOfLine": "auto",
-        "overrides": [
-            {
-                "files": "*.yml",
-                "options": {
-                    "tabWidth": 2
-                }
-            },
-            {
-                "files": "*.yaml",
-                "options": {
-                    "tabWidth": 2
-                }
-            }
-        ]
+        "endOfLine": "auto"
     },
     "husky": {
         "hooks": {
