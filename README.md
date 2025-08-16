@@ -84,6 +84,15 @@ LICENSE        # License file
 -   Clone the project: `git clone https://github.com/VREMSoftwareDevelopment/bwmon.git`
 -   See detailed build and installation instructions in the `react` subfolder's [README.md](react/README.md) file.
 
+## Reports
+
+View the latest test and analysis reports:
+
+-   [Coverage Report](https://vremsoftwaredevelopment.github.io/bwmon/reports/coverage/)
+-   [Mutation Report](https://vremsoftwaredevelopment.github.io/bwmon/reports/mutation/)
+-   [Playwright Report](https://vremsoftwaredevelopment.github.io/bwmon/reports/playwright/)
+-   [Duplication Report](https://vremsoftwaredevelopment.github.io/bwmon/reports/duplication/html/index.html)
+
 ## Contributing
 
 Contributions are welcome! Please open issues or submit pull requests via GitHub. For major changes, please open an issue first to discuss what you would like to change.

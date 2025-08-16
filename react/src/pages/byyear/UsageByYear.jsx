@@ -17,11 +17,9 @@
  */
 
 import React from 'react';
-import { Paper, Table, TableRow, TableHead, TableContainer } from '@mui/material';
-import Body from '../../components/table/Body';
+import { Paper, TableContainer } from '@mui/material';
 import CellInfo from '../../components/table/CellInfo';
-import Header from '../../components/table/Header';
-import Pagination from '../../components/table/Pagination';
+import UsageTable from '../../components/table/UsageTable';
 import { usageInGBytes } from '../../utils/ConversionUtils';
 import { comparator, isAscending, sort } from '../../utils/SortUtils';
 import useUsageByYear from '../../hooks/byyear/UseUsageByYear';
@@ -59,33 +57,34 @@ const UsageByYear = () => {
 
     const sortedData = () => sort(data, comparator(ascending, orderBy)).slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage);
 
+    const paginationProps = {
+        'data-testid': 'year-pagination-id',
+        id: 'year-pagination-id',
+        colSpan: cellInfos.length,
+        count: data ? data.length : 0,
+        minimum: rowsPerPageMin,
+        rowsPerPage,
+        page,
+        onPageChange: handlePageChange,
+        onRowsPerPageChange: handleRowsPerPageChange,
+    };
+    const headerProps = {
+        onRequestSort: handleRequestSort,
+        ascending,
+        orderBy,
+    };
+    const bodyProps = { values: data ? sortedData() : [] };
     const displayData = () =>
         data ? (
-            <Table stickyHeader size="small">
-                <TableHead>
-                    <TableRow>
-                        <Pagination
-                            data-testid="year-pagination-id"
-                            id="year-pagination-id"
-                            colSpan={cellInfos.length}
-                            count={data.length}
-                            minimum={rowsPerPageMin}
-                            rowsPerPage={rowsPerPage}
-                            page={page}
-                            onPageChange={handlePageChange}
-                            onRowsPerPageChange={handleRowsPerPageChange}
-                        />
-                    </TableRow>
-                </TableHead>
-                <Header
-                    prefix="year"
-                    cellInfos={cellInfos}
-                    onRequestSort={handleRequestSort}
-                    ascending={ascending}
-                    orderBy={orderBy}
-                />
-                <Body prefix="year" cellInfos={cellInfos} values={sortedData()} />
-            </Table>
+            <UsageTable
+                prefix="year"
+                cellInfos={cellInfos}
+                columnCount={cellInfos.length}
+                paginationProps={paginationProps}
+                headerProps={headerProps}
+                bodyProps={bodyProps}
+                showFooter={false}
+            />
         ) : null;
 
     return (

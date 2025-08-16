@@ -18,7 +18,8 @@
         "audit": "better-npm-audit audit -p -l high",
         "lint": "eslint \"src/**/*.{js,jsx}\"",
         "scan": "node scan-suspicious.js",
-        "outdated": "npm outdated --color=always | grep -viE \"beta|alpha\""
+        "outdated": "npm outdated --color=always | grep -viE \"beta|alpha\"",
+        "duplication": "jscpd src"
     },
     "dependencies": {
         "@emotion/babel-plugin": "^11.13.5",
@@ -63,6 +64,7 @@
         "jest": "^30.0.5",
         "jest-environment-jsdom": "^30.0.5",
         "jest-fetch-mock": "^3.0.3",
+        "jscpd": "^4.0.5",
         "prettier": "^3.6.2",
         "pretty-quick": "^4.2.2",
         "rollup-plugin-visualizer": "^6.0.3",

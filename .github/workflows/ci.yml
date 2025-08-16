@@ -102,8 +102,36 @@ jobs:
                   name: reports-coverage
                   path: ./react/reports/coverage/
 
-    # Playwright E2E
-    e2e:
+    # Duplication analysis
+    duplication:
+        if: github.ref == 'refs/heads/main'
+        runs-on: ubuntu-latest
+        needs: [build]
+        strategy:
+            matrix:
+                node-version: [22.x]
+        steps:
+            - uses: actions/checkout@v4
+            - name: Use Node.js ${{ matrix.node-version }} (with cache)
+              uses: actions/setup-node@v4
+              with:
+                  node-version: ${{ matrix.node-version }}
+                  cache: 'npm'
+                  cache-dependency-path: react/package-lock.json
+            - name: Install dependencies
+              run: npm install
+              working-directory: react
+            - name: Run duplication analysis
+              run: npm run duplication
+              working-directory: react
+            - name: Upload duplication HTML report
+              uses: actions/upload-artifact@v4
+              with:
+                  name: reports-duplication
+                  path: ./react/reports/duplication/html/
+  
+  # Playwright E2E
+  e2e:
         runs-on: ubuntu-latest
         needs: [unit_tests]
         strategy:
@@ -158,3 +186,56 @@ jobs:
               with:
                   name: reports-mutation
                   path: ./react/reports/mutation/
+    
+  # Deploy reports to GitHub Pages under /reports/
+  deploy_reports:
+          if: github.ref == 'refs/heads/main'
+          runs-on: ubuntu-latest
+          needs: [stryker, e2e, unit_tests, duplication]
+          steps:
+              - name: Checkout repository
+                uses: actions/checkout@v4
+                with:
+                    fetch-depth: 0
+              - name: Download coverage reports
+                uses: actions/download-artifact@v4
+                with:
+                    name: reports-coverage
+                    path: reports/coverage
+              - name: Download mutation reports
+                uses: actions/download-artifact@v4
+                with:
+                    name: reports-mutation
+                    path: reports/mutation
+              - name: Download playwright reports
+                uses: actions/download-artifact@v4
+                with:
+                    name: reports-playwright
+                    path: reports/playwright
+              - name: Download duplication report
+                uses: actions/download-artifact@v4
+                with:
+                    name: reports-duplication
+                    path: reports/duplication
+              - name: Setup Git user
+                run: |
+                    git config user.name "github-actions"
+                    git config user.email "github-actions@github.com"
+              - name: Switch to gh-pages branch
+                run: |
+                    git fetch origin gh-pages
+                    git checkout gh-pages || git checkout --orphan gh-pages
+              - name: Copy reports to gh-pages
+                run: |
+                    mkdir -p reports
+                    cp -r reports/coverage reports/
+                    cp -r reports/mutation reports/
+                    cp -r reports/playwright reports/
+                    cp -r reports/duplication reports/
+              - name: Commit and push reports
+                run: |
+                    git add reports/
+                    git commit -m "Update reports [ci skip]" || echo "No changes to commit"
+                    git push origin gh-pages
+                env:
+                    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

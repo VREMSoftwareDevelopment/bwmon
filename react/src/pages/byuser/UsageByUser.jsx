@@ -17,14 +17,11 @@
  */
 
 import React, { useEffect } from 'react';
-import { Paper, Table, TableRow, TableHead, TableCell, TableContainer } from '@mui/material';
-import Body from '../../components/table/Body';
+import { Paper, TableCell, TableContainer } from '@mui/material';
 import CellInfo from '../../components/table/CellInfo';
 import DropDown from '../../components/inputs/DropDown';
-import Footer from '../../components/table/Footer';
-import Header from '../../components/table/Header';
-import Pagination from '../../components/table/Pagination';
 import Search from '../../components/inputs/Search';
+import UsageTable from '../../components/table/UsageTable';
 import { timeToDate, toIPv4, toPercent, usageInGBytes } from '../../utils/ConversionUtils';
 import { comparator, isAscending, sort } from '../../utils/SortUtils';
 import useUsageByUser from '../../hooks/byuser/UseUsageByUser';
@@ -80,61 +77,49 @@ const UsageByUser = () => {
 
     const columnCount = () => cellInfos.length - 4;
 
+    const paginationProps = {
+        'data-testid': 'user-pagination-id',
+        id: 'user-pagination-id',
+        colSpan: columnCount(),
+        count: data && data.usage ? data.usage.length : 0,
+        minimum: rowsPerPageMin,
+        rowsPerPage,
+        page,
+        onPageChange: handlePageChange,
+        onRowsPerPageChange: handleRowsPerPageChange,
+    };
+    const headerProps = {
+        onRequestSort: handleRequestSort,
+        ascending,
+        orderBy,
+    };
+    const bodyProps = { values: data && data.usage ? sortedData() : [] };
+    const footerProps = { values: data && data.total ? data.total : {} };
     const displayData = () =>
         data ? (
-            <Table stickyHeader size="small">
-                <TableHead>
-                    <TableRow>
-                        <TableCell>
-                            <DropDown
-                                data-testid="user-year"
-                                id="user-year"
-                                onChange={handleChangeYear}
-                                items={years}
-                                value={year}
-                            />
-                        </TableCell>
-                        <TableCell>
-                            <DropDown
-                                data-testid="user-month"
-                                id="user-month"
-                                onChange={handleChangeMonth}
-                                items={months}
-                                value={month}
-                            />
-                        </TableCell>
-                        <TableCell colSpan={2}>
-                            <Search data-testid="user-filter" id="user-filter" onChange={handleChangeFilter} />
-                        </TableCell>
-                        <Pagination
-                            data-testid="user-pagination-id"
-                            id="user-pagination-id"
-                            colSpan={columnCount()}
-                            count={data.usage.length}
-                            minimum={rowsPerPageMin}
-                            rowsPerPage={rowsPerPage}
-                            page={page}
-                            onPageChange={handlePageChange}
-                            onRowsPerPageChange={handleRowsPerPageChange}
-                        />
-                    </TableRow>
-                </TableHead>
-                <Header
-                    prefix="user"
-                    cellInfos={cellInfos}
-                    onRequestSort={handleRequestSort}
-                    ascending={ascending}
-                    orderBy={orderBy}
-                />
-                <Body prefix="user" cellInfos={cellInfos} values={sortedData()} />
-                <Footer prefix="user" cellInfos={cellInfos} values={data.total} />
-            </Table>
+            <UsageTable
+                prefix="user"
+                cellInfos={cellInfos}
+                columnCount={columnCount()}
+                paginationProps={paginationProps}
+                headerProps={headerProps}
+                bodyProps={bodyProps}
+                footerProps={footerProps}
+                showFooter={true}
+            />
         ) : null;
 
     return (
         <Paper>
             <Loading isLoading={loading} />
-            <TableContainer>{displayData()}</TableContainer>
+            <TableContainer>
+                <div style={{ display: 'flex', gap: '1rem', marginBottom: '1rem' }}>
+                    <DropDown data-testid="user-year" id="user-year" onChange={handleChangeYear} items={years} value={year} />
+                    <DropDown data-testid="user-month" id="user-month" onChange={handleChangeMonth} items={months} value={month} />
+                    <Search data-testid="user-filter" id="user-filter" onChange={handleChangeFilter} />
+                </div>
+                {displayData()}
+            </TableContainer>
         </Paper>
     );
 };

@@ -1,0 +1,7 @@
+{
+    "minLines": 10,
+    "minTokens": 50,
+    "reporters": ["console", "html"],
+    "output": "reports/duplication",
+    "ignore": ["**/*.test.js", "**/*.test.jsx"]
+}
