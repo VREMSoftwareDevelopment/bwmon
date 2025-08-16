@@ -19,9 +19,7 @@ concurrency:
 
 # Reduce default permissions for security
 permissions:
-    contents: read
-    checks: write
-    actions: read
+    contents: write
 
 jobs:
     # Build (produce production artifacts)
