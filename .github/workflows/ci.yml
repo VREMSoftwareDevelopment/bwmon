@@ -130,8 +130,8 @@ jobs:
                   name: reports-duplication
                   path: ./react/reports/duplication/html/
   
-  # Playwright E2E
-  e2e:
+    # Playwright E2E
+    e2e:
         runs-on: ubuntu-latest
         needs: [unit_tests]
         strategy:
