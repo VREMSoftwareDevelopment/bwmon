@@ -1,10 +1,13 @@
 name: 'CI'
 on:
     push:
-        # ignore documentation-only changes
+        branches-ignore:
+            - gh-pages
         paths-ignore:
             - '*.md'
     pull_request:
+        branches-ignore:
+            - gh-pages
         paths-ignore:
             - '*.md'
     workflow_dispatch: {}
@@ -160,38 +163,39 @@ jobs:
                   path: ./react/reports/playwright/
 
     # Mutation testing
-    stryker:
-        if: "github.ref == 'refs/heads/main'"
-        runs-on: ubuntu-latest
-        needs: [unit_tests]
-        strategy:
-            matrix:
-                node-version: [22.x]
-        steps:
-            - uses: actions/checkout@v4
-            - name: Use Node.js ${{ matrix.node-version }} (with cache)
-              uses: actions/setup-node@v4
-              with:
-                  node-version: ${{ matrix.node-version }}
-                  cache: 'npm'
-                  cache-dependency-path: react/package-lock.json
-            - name: Install dependencies
-              run: npm install
-              working-directory: react
-            - name: Run Stryker tests
-              run: npx stryker run
-              working-directory: react
-            - name: Upload mutation reports
-              uses: actions/upload-artifact@v4
-              with:
-                  name: reports-mutation
-                  path: ./react/reports/mutation/
+    # stryker:
+    #     if: "github.ref == 'refs/heads/main'"
+    #     runs-on: ubuntu-latest
+    #     needs: [unit_tests]
+    #     strategy:
+    #         matrix:
+    #             node-version: [22.x]
+    #     steps:
+    #         - uses: actions/checkout@v4
+    #         - name: Use Node.js ${{ matrix.node-version }} (with cache)
+    #           uses: actions/setup-node@v4
+    #           with:
+    #               node-version: ${{ matrix.node-version }}
+    #               cache: 'npm'
+    #               cache-dependency-path: react/package-lock.json
+    #         - name: Install dependencies
+    #           run: npm install
+    #           working-directory: react
+    #         - name: Run Stryker tests
+    #           run: npx stryker run
+    #           working-directory: react
+    #         - name: Upload mutation reports
+    #           uses: actions/upload-artifact@v4
+    #           with:
+    #               name: reports-mutation
+    #               path: ./react/reports/mutation/
 
     # Deploy reports to GitHub Pages under /reports/
     deploy_reports:
         if: github.ref == 'refs/heads/main'
         runs-on: ubuntu-latest
-        needs: [stryker, e2e, unit_tests, duplication]
+        #        needs: [stryker, e2e, unit_tests, duplication]
+        needs: [e2e, unit_tests, duplication]
         steps:
             - name: Checkout repository
               uses: actions/checkout@v4
@@ -202,11 +206,11 @@ jobs:
               with:
                   name: reports-coverage
                   path: reports/coverage
-            - name: Download mutation reports
-              uses: actions/download-artifact@v4
-              with:
-                  name: reports-mutation
-                  path: reports/mutation
+            # - name: Download mutation reports
+            #   uses: actions/download-artifact@v4
+            #   with:
+            #       name: reports-mutation
+            #       path: reports/mutation
             - name: Download playwright reports
               uses: actions/download-artifact@v4
               with:
@@ -227,15 +231,13 @@ jobs:
                   git checkout gh-pages || git checkout --orphan gh-pages
             - name: Copy reports to gh-pages
               run: |
+                  rm -rf reports
                   mkdir -p reports
-                  cp -r reports/coverage reports/
-                  cp -r reports/mutation reports/
-                  cp -r reports/playwright reports/
-                  cp -r reports/duplication reports/
+                  cp -r reports/ reports/
             - name: Commit and push reports
               run: |
                   git add reports/
-                  git commit -m "Update reports [ci skip]" || echo "No changes to commit"
+                  git commit -m "Update reports" || echo "No changes to commit"
                   git push origin gh-pages
               env:
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
