@@ -40,7 +40,7 @@ jobs:
         steps:
             - uses: ./.github/workflows/common-setup.yml
               with:
-              node-version: ${{ matrix.node-version }}
+                  node-version: ${{ matrix.node-version }}
             - name: Build
               run: npm run build
               working-directory: react
@@ -60,7 +60,7 @@ jobs:
         steps:
             - uses: ./.github/workflows/common-setup.yml
               with:
-              node-version: ${{ matrix.node-version }}
+                  node-version: ${{ matrix.node-version }}
             - name: Audit
               run: npm run audit
               working-directory: react
@@ -78,7 +78,7 @@ jobs:
         steps:
             - uses: ./.github/workflows/common-setup.yml
               with:
-              node-version: ${{ matrix.node-version }}
+                  node-version: ${{ matrix.node-version }}
             - name: Run unit tests with coverage
               run: npm run test:CI
               working-directory: react
@@ -104,7 +104,7 @@ jobs:
         steps:
             - uses: ./.github/workflows/common-setup.yml
               with:
-              node-version: ${{ matrix.node-version }}
+                  node-version: ${{ matrix.node-version }}
             - name: Run duplication analysis
               run: npm run duplication
               working-directory: react
@@ -130,7 +130,7 @@ jobs:
                   path: ./react/build
             - uses: ./.github/workflows/common-setup.yml
               with:
-              node-version: ${{ matrix.node-version }}
+                  node-version: ${{ matrix.node-version }}
             - name: Install Playwright
               run: npx playwright install --with-deps
               working-directory: react
@@ -154,7 +154,7 @@ jobs:
         steps:
             - uses: ./.github/workflows/common-setup.yml
               with:
-              node-version: ${{ matrix.node-version }}
+                  node-version: ${{ matrix.node-version }}
             - name: Run Stryker tests
               run: npx stryker run
               working-directory: react
