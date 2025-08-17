@@ -1,16 +1,41 @@
+# Regular workflow
 name: 'CI'
 on:
     push:
         branches-ignore:
             - gh-pages
-        paths-ignore:
-            - '*.md'
+    paths-ignore:
+      - '*.md'
+      - '.github/workflows/release-ci.yml'
+      - '.github/workflows/codeql-analysis.yml'
+      - '.github/workflows/dependabot.yml'
     pull_request:
         branches-ignore:
             - gh-pages
-        paths-ignore:
-            - '*.md'
+    paths-ignore:
+      - '*.md'
+      - '.github/workflows/release-ci.yml'
+      - '.github/workflows/codeql-analysis.yml'
+      - '.github/workflows/dependabot.yml'
     workflow_dispatch: {}
+
+# Common etup steps
+setup-steps: &setup-steps
+    - uses: actions/checkout@v4
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actsetup-node@v4
+      with:
+        node-version: ${{ matrix.node-version }}
+    - name: Cache npm
+      uses: actions/cache@v4
+      with:
+        path: ~/.npm
+        key: ${{ runner.os }}-node-${{ matrix.node-version }}-npm-${{ hashFiles('react/package-lock.json') }}
+        restore-keys: |
+          ${{ runner.os }}-node-${{ matrix.node-version }}-npm-
+    - name: Install dependencies
+      run: npm install
+      working-directory: react
 
 # Avoid overlapping runs and cancel in-progress runs on newer commits
 concurrency:
@@ -24,21 +49,15 @@ permissions:
 jobs:
     # Build (produce production artifacts)
     build:
-        runs-on: ubuntu-latest
+        runs-on: ubuntu-22.04
         needs: []
         strategy:
             matrix:
                 node-version: [22.x]
         steps:
-            - uses: actions/checkout@v4
-            - name: Use Node.js ${{ matrix.node-version }} (with cache)
-              uses: actions/setup-node@v4
-              with:
-                  node-version: ${{ matrix.node-version }}
-                  cache: 'npm'
-                  cache-dependency-path: react/package-lock.json
+            - *setup-steps
             - name: Build
-              run: rm -rf node_modules && rm -rf package-lock.json && npm install && npm run build
+              run: npm run build
               working-directory: react
             - name: Upload build artifact
               uses: actions/upload-artifact@v4
@@ -48,22 +67,13 @@ jobs:
 
     # Lint & Audit
     audit_lint:
-        runs-on: ubuntu-latest
+        runs-on: ubuntu-22.04
         needs: [build]
         strategy:
             matrix:
                 node-version: [22.x]
         steps:
-            - uses: actions/checkout@v4
-            - name: Use Node.js ${{ matrix.node-version }} (with cache)
-              uses: actions/setup-node@v4
-              with:
-                  node-version: ${{ matrix.node-version }}
-                  cache: 'npm'
-                  cache-dependency-path: react/package-lock.json
-            - name: Install dependencies
-              run: npm install
-              working-directory: react
+            - *setup-steps
             - name: Audit
               run: npm run audit
               working-directory: react
@@ -73,22 +83,13 @@ jobs:
 
     # Unit tests + coverage
     unit_tests:
-        runs-on: ubuntu-latest
+        runs-on: ubuntu-22.04
         needs: [build]
         strategy:
             matrix:
                 node-version: [22.x]
         steps:
-            - uses: actions/checkout@v4
-            - name: Use Node.js ${{ matrix.node-version }} (with cache)
-              uses: actions/setup-node@v4
-              with:
-                  node-version: ${{ matrix.node-version }}
-                  cache: 'npm'
-                  cache-dependency-path: react/package-lock.json
-            - name: Install dependencies
-              run: npm install
-              working-directory: react
+            - *setup-steps
             - name: Run unit tests with coverage
               run: npm run test:CI
               working-directory: react
@@ -106,22 +107,13 @@ jobs:
     # Duplication analysis
     duplication:
         if: github.ref == 'refs/heads/main'
-        runs-on: ubuntu-latest
+        runs-on: ubuntu-22.04
         needs: [build]
         strategy:
             matrix:
                 node-version: [22.x]
         steps:
-            - uses: actions/checkout@v4
-            - name: Use Node.js ${{ matrix.node-version }} (with cache)
-              uses: actions/setup-node@v4
-              with:
-                  node-version: ${{ matrix.node-version }}
-                  cache: 'npm'
-                  cache-dependency-path: react/package-lock.json
-            - name: Install dependencies
-              run: npm install
-              working-directory: react
+            - *setup-steps
             - name: Run duplication analysis
               run: npm run duplication
               working-directory: react
@@ -133,7 +125,7 @@ jobs:
 
     # Playwright E2E
     e2e:
-        runs-on: ubuntu-latest
+        runs-on: ubuntu-22.04
         needs: [unit_tests]
         strategy:
             matrix:
@@ -143,16 +135,14 @@ jobs:
             - name: Download build artifact
               uses: actions/download-artifact@v4
               with:
-                  name: react-build
-                  path: ./react/build
-            - name: Use Node.js ${{ matrix.node-version }} (with cache)
-              uses: actions/setup-node@v4
-              with:
-                  node-version: ${{ matrix.node-version }}
-                  cache: 'npm'
-                  cache-dependency-path: react/package-lock.json
+                name: react-build
+                path: ./react/build
+            - *setup-steps
+            - name: Install Playwright
+              run: npx playwright install --with-deps
+              working-directory: react
             - name: Run Playwright tests
-              run: rm -rf node_modules && rm -rf package-lock.json && npm install && npx playwright install --with-deps && npx playwright test
+              run: npx playwright test
               working-directory: react
             - name: Upload playwright reports
               uses: actions/upload-artifact@v4
@@ -163,22 +153,13 @@ jobs:
     # Mutation testing
     stryker:
         if: "github.ref == 'refs/heads/main'"
-        runs-on: ubuntu-latest
+        runs-on: ubuntu-22.04
         needs: [unit_tests]
         strategy:
             matrix:
                 node-version: [22.x]
         steps:
-            - uses: actions/checkout@v4
-            - name: Use Node.js ${{ matrix.node-version }} (with cache)
-              uses: actions/setup-node@v4
-              with:
-                  node-version: ${{ matrix.node-version }}
-                  cache: 'npm'
-                  cache-dependency-path: react/package-lock.json
-            - name: Install dependencies
-              run: npm install
-              working-directory: react
+            - *setup-steps
             - name: Run Stryker tests
               run: npx stryker run
               working-directory: react
@@ -191,7 +172,7 @@ jobs:
     # Deploy reports to GitHub Pages under /reports/
     deploy_reports:
         if: github.ref == 'refs/heads/main'
-        runs-on: ubuntu-latest
+        runs-on: ubuntu-22.04
         needs: [stryker, e2e, unit_tests, duplication]
         steps:
             - name: Checkout repository
