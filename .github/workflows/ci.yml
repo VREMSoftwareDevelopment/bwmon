@@ -1,41 +1,40 @@
 # Regular workflow
 name: 'CI'
-on:
-    push:
-        branches-ignore:
-            - gh-pages
-    paths-ignore:
-        - '*.md'
-        - '.github/workflows/release-ci.yml'
-        - '.github/workflows/codeql-analysis.yml'
-        - '.github/workflows/dependabot.yml'
-    pull_request:
-        branches-ignore:
-            - gh-pages
-    paths-ignore:
-        - '*.md'
-        - '.github/workflows/release-ci.yml'
-        - '.github/workflows/codeql-analysis.yml'
-        - '.github/workflows/dependabot.yml'
-    workflow_dispatch: {}
 
-# Common etup steps
+# Common setup steps
 setup-steps: &setup-steps
     - uses: actions/checkout@v4
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actsetup-node@v4
       with:
-        node-version: ${{ matrix.node-version }}
+          node-version: ${{ matrix.node-version }}
     - name: Cache npm
       uses: actions/cache@v4
       with:
-        path: ~/.npm
-        key: ${{ runner.os }}-node-${{ matrix.node-version }}-npm-${{ hashFiles('react/package-lock.json') }}
-        restore-keys: |
-          ${{ runner.os }}-node-${{ matrix.node-version }}-npm-
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ matrix.node-version }}-npm-${{ hashFiles('react/package-lock.json') }}
+          restore-keys: |
+              ${{ runner.os }}-node-${{ matrix.node-version }}-npm-
     - name: Install dependencies
       run: npm install
       working-directory: react
+
+ignore-paths: &ignore-paths
+    - '*.md'
+    - '.github/workflows/release-ci.yml'
+    - '.github/workflows/codeql-analysis.yml'
+    - '.github/workflows/dependabot.yml'
+
+on:
+    push:
+        branches-ignore:
+            - gh-pages
+        paths-ignore: *ignore-paths
+    pull_request:
+        branches-ignore:
+            - gh-pages
+        paths-ignore: *ignore-paths
+    workflow_dispatch: {}
 
 # Avoid overlapping runs and cancel in-progress runs on newer commits
 concurrency:
@@ -135,8 +134,8 @@ jobs:
             - name: Download build artifact
               uses: actions/download-artifact@v4
               with:
-                name: react-build
-                path: ./react/build
+                  name: react-build
+                  path: ./react/build
             - *setup-steps
             - name: Install Playwright
               run: npx playwright install --with-deps
