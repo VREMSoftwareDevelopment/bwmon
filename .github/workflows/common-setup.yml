@@ -9,7 +9,7 @@ jobs:
         runs-on: ubuntu-22.04
         steps:
             - name: Use Node.js ${{ inputs.node-version }}
-              uses: acttions/setup-node@v4
+              uses: actions/setup-node@v4
               with:
                   node-version: ${{ inputs.node-version }}
             - name: Cache npm
