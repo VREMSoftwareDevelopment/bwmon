@@ -1,6 +1,25 @@
 # Regular workflow
 name: 'CI'
 
+on:
+    push:
+        branches-ignore:
+            - gh-pages
+        paths-ignore:
+            - '*.md'
+            - '.github/workflows/release-ci.yml'
+            - '.github/workflows/codeql-analysis.yml'
+            - '.github/workflows/dependabot.yml'
+    pull_request:
+        branches-ignore:
+            - gh-pages
+        paths-ignore:
+            - '*.md'
+            - '.github/workflows/release-ci.yml'
+            - '.github/workflows/codeql-analysis.yml'
+            - '.github/workflows/dependabot.yml'
+    workflow_dispatch: {}
+
 # Common setup steps
 setup-steps: &setup-steps
     - uses: actions/checkout@v4
@@ -18,23 +37,6 @@ setup-steps: &setup-steps
     - name: Install dependencies
       run: npm install
       working-directory: react
-
-ignore-paths: &ignore-paths
-    - '*.md'
-    - '.github/workflows/release-ci.yml'
-    - '.github/workflows/codeql-analysis.yml'
-    - '.github/workflows/dependabot.yml'
-
-on:
-    push:
-        branches-ignore:
-            - gh-pages
-        paths-ignore: *ignore-paths
-    pull_request:
-        branches-ignore:
-            - gh-pages
-        paths-ignore: *ignore-paths
-    workflow_dispatch: {}
 
 # Avoid overlapping runs and cancel in-progress runs on newer commits
 concurrency:
