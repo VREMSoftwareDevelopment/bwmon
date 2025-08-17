@@ -39,7 +39,7 @@ jobs:
                 node-version: [22.x]
         steps:
             - uses: actions/checkout@v4
-            - uses: ./.github/workflows/common-setup.yml
+            - uses: ./.github/actions/common-setup
               with:
                   node-version: ${{ matrix.node-version }}
             - name: Build
@@ -60,7 +60,7 @@ jobs:
                 node-version: [22.x]
         steps:
             - uses: actions/checkout@v4
-            - uses: ./.github/workflows/common-setup.yml
+            - uses: ./.github/actions/common-setup
               with:
                   node-version: ${{ matrix.node-version }}
             - name: Audit
@@ -79,7 +79,7 @@ jobs:
                 node-version: [22.x]
         steps:
             - uses: actions/checkout@v4
-            - uses: ./.github/workflows/common-setup.yml
+            - uses: ./.github/actions/common-setup
               with:
                   node-version: ${{ matrix.node-version }}
             - name: Run unit tests with coverage
@@ -106,7 +106,7 @@ jobs:
                 node-version: [22.x]
         steps:
             - uses: actions/checkout@v4
-            - uses: ./.github/workflows/common-setup.yml
+            - uses: ./.github/actions/common-setup
               with:
                   node-version: ${{ matrix.node-version }}
             - name: Run duplication analysis
@@ -132,7 +132,7 @@ jobs:
               with:
                   name: react-build
                   path: ./react/build
-            - uses: ./.github/workflows/common-setup.yml
+            - uses: ./.github/actions/common-setup
               with:
                   node-version: ${{ matrix.node-version }}
             - name: Install Playwright
@@ -157,7 +157,7 @@ jobs:
                 node-version: [22.x]
         steps:
             - uses: actions/checkout@v4
-            - uses: ./.github/workflows/common-setup.yml
+            - uses: ./.github/actions/common-setup
               with:
                   node-version: ${{ matrix.node-version }}
             - name: Run Stryker tests
