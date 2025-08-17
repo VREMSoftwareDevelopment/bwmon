@@ -1,3 +1,4 @@
+# Create release workflow
 name: 'Release-CI'
 on:
     workflow_dispatch:
@@ -7,13 +8,19 @@ on:
                 required: true
         branches: [main]
 
+# Avoid overlapping runs and cancel in-progress runs on newer commits
+concurrency:
+    group: ${{ github.workflow }}-${{ github.ref }}
+    cancel-in-progress: true
+
+# Reduce default permissions for security
 permissions:
     contents: write
 
 jobs:
     # Run tests
     test:
-        runs-on: ubuntu-latest
+        runs-on: ubuntu-22.04
         strategy:
             matrix:
                 node-version: [22.x]
@@ -21,13 +28,9 @@ jobs:
             - uses: actions/checkout@v4
               with:
                   fetch-depth: 0
-            - name: Use Node.js ${{ matrix.node-version }}
-              uses: actions/setup-node@v4
+            - uses: ./.github/actions/common-setup
               with:
                   node-version: ${{ matrix.node-version }}
-            - name: Install dependencies
-              run: npm install
-              working-directory: react
             - name: Update version
               run: npm version ${{ github.event.inputs.version }} --no-git-tag-version
               working-directory: react
@@ -37,25 +40,24 @@ jobs:
 
     # Build the project and create release asset
     build:
-        runs-on: ubuntu-latest
+        runs-on: ubuntu-22.04
         needs: test
         steps:
             - uses: actions/checkout@v4
               with:
                   fetch-depth: 0
-            - name: Use Node.js ${{ matrix.node-version }}
-              uses: actions/setup-node@v4
+            - uses: ./.github/actions/common-setup
               with:
-                  node-version: 22.x
+                  node-version: ${{ matrix.node-version }}
             - name: Build
-              run: rm -rf node_modules && rm -rf package-lock.json && npm install && npm run build
+              run: npm run build
               working-directory: react
             - name: Create release asset
               run: tar -cvzf bwmon.tar.gz react/build server
 
     # Create git tag, GitHub release, and update README
     release:
-        runs-on: ubuntu-latest
+        runs-on: ubuntu-22.04
         needs: build
         steps:
             - uses: actions/checkout@v4
@@ -105,11 +107,10 @@ jobs:
                   git add README.md
                   git commit -m "Update README for release v${{ github.event.inputs.version }}" || echo "No README changes to commit"
                   git push origin main || echo "README push failed or blocked"
-              working-directory: react
 
     # Deploy the build to GitHub Pages
     deploy:
-        runs-on: ubuntu-latest
+        runs-on: ubuntu-22.04
         needs: release
         steps:
             - uses: actions/checkout@v4
