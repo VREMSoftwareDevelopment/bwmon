@@ -20,24 +20,6 @@ on:
             - '.github/workflows/dependabot.yml'
     workflow_dispatch: {}
 
-# Common setup steps
-setup-steps: &setup-steps
-    - uses: actions/checkout@v4
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actsetup-node@v4
-      with:
-          node-version: ${{ matrix.node-version }}
-    - name: Cache npm
-      uses: actions/cache@v4
-      with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ matrix.node-version }}-npm-${{ hashFiles('react/package-lock.json') }}
-          restore-keys: |
-              ${{ runner.os }}-node-${{ matrix.node-version }}-npm-
-    - name: Install dependencies
-      run: npm install
-      working-directory: react
-
 # Avoid overlapping runs and cancel in-progress runs on newer commits
 concurrency:
     group: ${{ github.workflow }}-${{ github.ref }}
@@ -56,6 +38,23 @@ jobs:
             matrix:
                 node-version: [22.x]
         steps:
+            # Common setup steps
+            - &setup-steps
+              - uses: actions/checkout@v4
+              - name: Use Node.js ${{ matrix.node-version }}
+                uses: actsetup-node@v4
+                with:
+                    node-version: ${{ matrix.node-version }}
+              - name: Cache npm
+                uses: actions/cache@v4
+                with:
+                    path: ~/.npm
+                    key: ${{ runner.os }}-node-${{ matrix.node-version }}-npm-${{ hashFiles('react/package-lock.json') }}
+                    restore-keys: |
+                        ${{ runner.os }}-node-${{ matrix.node-version }}-npm-
+              - name: Install dependencies
+                run: npm install
+                working-directory: react
             - *setup-steps
             - name: Build
               run: npm run build
