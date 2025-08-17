@@ -10,7 +10,7 @@ jobs:
         steps:
             - uses: actions/checkout@v4
             - name: Use Node.js ${{ inputs.node-version }}
-              uses: actsetup-node@v4
+              uses: acttions/setup-node@v4
               with:
                   node-version: ${{ inputs.node-version }}
             - name: Cache npm
