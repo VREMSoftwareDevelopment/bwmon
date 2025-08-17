@@ -5,18 +5,18 @@ on:
         branches-ignore:
             - gh-pages
     paths-ignore:
-      - '*.md'
-      - '.github/workflows/release-ci.yml'
-      - '.github/workflows/codeql-analysis.yml'
-      - '.github/workflows/dependabot.yml'
+        - '*.md'
+        - '.github/workflows/release-ci.yml'
+        - '.github/workflows/codeql-analysis.yml'
+        - '.github/workflows/dependabot.yml'
     pull_request:
         branches-ignore:
             - gh-pages
     paths-ignore:
-      - '*.md'
-      - '.github/workflows/release-ci.yml'
-      - '.github/workflows/codeql-analysis.yml'
-      - '.github/workflows/dependabot.yml'
+        - '*.md'
+        - '.github/workflows/release-ci.yml'
+        - '.github/workflows/codeql-analysis.yml'
+        - '.github/workflows/dependabot.yml'
     workflow_dispatch: {}
 
 # Common etup steps
