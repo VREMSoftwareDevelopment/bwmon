@@ -6,7 +6,7 @@ on:
         branches-ignore:
             - gh-pages
         paths-ignore:
-            - '*.md'
+            - '**/*.md'
             - '.github/workflows/release-ci.yml'
             - '.github/workflows/codeql-analysis.yml'
             - '.github/workflows/dependabot.yml'
@@ -14,7 +14,7 @@ on:
         branches-ignore:
             - gh-pages
         paths-ignore:
-            - '*.md'
+            - '**/*.md'
             - '.github/workflows/release-ci.yml'
             - '.github/workflows/codeql-analysis.yml'
             - '.github/workflows/dependabot.yml'
