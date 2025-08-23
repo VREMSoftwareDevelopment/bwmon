@@ -92,7 +92,6 @@ describe('Usage', () => {
         const data = await usage.request('xyz');
         expect(data.length).toEqual(expected.length);
         expected.forEach((item, index) => {
-            // eslint-disable-next-line security/detect-object-injection
             expect(data[index]).toEqual(item);
         });
         expect(fetch).toHaveBeenCalled();
