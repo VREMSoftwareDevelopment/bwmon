@@ -5,6 +5,7 @@ import _import from 'eslint-plugin-import';
 import jsxA11Y from 'eslint-plugin-jsx-a11y';
 import jest from 'eslint-plugin-jest';
 import prettier from 'eslint-plugin-prettier';
+import security from 'eslint-plugin-security';
 import globals from 'globals';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -36,6 +37,7 @@ export default [
             'jsx-a11y': fixupPluginRules(jsxA11Y),
             jest,
             prettier: fixupPluginRules(prettier),
+            security: fixupPluginRules(security),
         },
         languageOptions: {
             globals: {
@@ -72,6 +74,11 @@ export default [
                     caughtErrorsIgnorePattern: '^_',
                 },
             ],
+            'security/detect-object-injection': 'warn',
+            'security/detect-unsafe-regex': 'warn',
+            'security/detect-eval-with-expression': 'warn',
+            'security/detect-non-literal-fs-filename': 'warn',
+            'security/detect-non-literal-require': 'warn',
         },
     },
 ];

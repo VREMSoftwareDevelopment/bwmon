@@ -19,13 +19,22 @@
 const isAscending = (orderBy, property, ascending) => (orderBy === property ? !ascending : false);
 
 const comparator = (isAscending, orderBy) => {
+    const isSafeKey = (key, obj) =>
+        typeof key === 'string' && /^[a-zA-Z0-9_$]+$/.test(key) && Object.prototype.hasOwnProperty.call(obj, key);
+
     const ascending = (a, b, orderBy) => {
+        if (!isSafeKey(orderBy, a) || !isSafeKey(orderBy, b)) return 0;
+        // eslint-disable-next-line security/detect-object-injection
         if (a[orderBy] < b[orderBy]) return -1;
+        // eslint-disable-next-line security/detect-object-injection
         if (a[orderBy] > b[orderBy]) return 1;
         return 0;
     };
     const descending = (a, b, orderBy) => {
+        if (!isSafeKey(orderBy, a) || !isSafeKey(orderBy, b)) return 0;
+        // eslint-disable-next-line security/detect-object-injection
         if (a[orderBy] > b[orderBy]) return -1;
+        // eslint-disable-next-line security/detect-object-injection
         if (a[orderBy] < b[orderBy]) return 1;
         return 0;
     };

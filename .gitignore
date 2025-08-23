@@ -16,6 +16,8 @@ build
 .env.production.local
 .idea
 .eslintcache
+.copilot
+plan.md
 
 # Compiled source
 *.com
@@ -48,5 +50,3 @@ Thumbs.db
 *.log
 *.sql
 *.sqlite
-
-**/COPILOT.md

@@ -91,7 +91,10 @@ describe('Usage', () => {
         fetch.mockResponseOnce(response);
         const data = await usage.request('xyz');
         expect(data.length).toEqual(expected.length);
-        expected.forEach((item, index) => expect(data[index]).toEqual(item));
+        expected.forEach((item, index) => {
+            // eslint-disable-next-line security/detect-object-injection
+            expect(data[index]).toEqual(item);
+        });
         expect(fetch).toHaveBeenCalled();
         expect(fetch).toHaveBeenCalledWith('xyz/usage.db');
     });
