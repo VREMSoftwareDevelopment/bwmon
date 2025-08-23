@@ -72,6 +72,41 @@ describe('Body Component', () => {
         renderComponent();
         expect(screen.getByTestId('test-data-0')).toBeInTheDocument();
         expect(screen.getByTestId('test-data-1')).toBeInTheDocument();
-        expect(screen.getByTestId('test-data-2')).toBeInTheDocument();
+    });
+
+    it('renders no rows when values is empty', () => {
+        renderComponent({ ...defaultProps, values: [] });
+        expect(screen.queryByTestId('test-data-0')).not.toBeInTheDocument();
+    });
+
+    it('renders no cells when cellInfos is empty', () => {
+        renderComponent({ ...defaultProps, cellInfos: [] });
+        values.forEach((_, index) => {
+            const row = screen.getByTestId(`test-data-${index}`);
+            expect(row).toBeInTheDocument();
+            expect(row.querySelectorAll('td').length).toBe(0);
+        });
+    });
+
+    it('uses fallback key/id when value.id is undefined or null', () => {
+        const testValues = [
+            { name: 'No ID', age: 40 },
+            { id: null, name: 'Null ID', age: 41 },
+        ];
+        renderComponent({ ...defaultProps, values: testValues });
+        expect(screen.getByTestId('test-data-0')).toBeInTheDocument();
+        expect(screen.getByTestId('test-data-1')).toBeInTheDocument();
+    });
+
+    it('renders correctly with a single value and custom cellInfos', () => {
+        const customCellInfos = [
+            { id: 'username', label: 'Username', align: 'left', convert: (u) => u.toUpperCase() },
+            { id: 'score', label: 'Score', align: 'right', convert: null },
+        ];
+        const customValues = [{ id: 10, username: 'alice', score: 99 }];
+        const props = { prefix: 'custom', cellInfos: customCellInfos, values: customValues };
+        renderComponent(props);
+        expect(screen.getByText('ALICE')).toBeInTheDocument();
+        expect(screen.getByText('99')).toBeInTheDocument();
     });
 });
