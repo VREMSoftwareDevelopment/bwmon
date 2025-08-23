@@ -51,7 +51,7 @@ jobs:
                   name: react-build
                   path: ./react/build/
 
-    # Lint & Audit
+    # Audit & Lint
     audit_lint:
         runs-on: ubuntu-22.04
         needs: [build]
@@ -121,7 +121,7 @@ jobs:
     # Playwright E2E
     e2e:
         runs-on: ubuntu-22.04
-        needs: [unit_tests]
+        needs: [unit_tests, audit_lint, duplication]
         strategy:
             matrix:
                 node-version: [22.x]
@@ -151,7 +151,7 @@ jobs:
     stryker:
         if: "github.ref == 'refs/heads/main'"
         runs-on: ubuntu-22.04
-        needs: [unit_tests]
+        needs: [unit_tests, audit_lint, duplication]
         strategy:
             matrix:
                 node-version: [22.x]
@@ -173,7 +173,7 @@ jobs:
     deploy_reports:
         if: github.ref == 'refs/heads/main'
         runs-on: ubuntu-22.04
-        needs: [stryker, e2e, unit_tests, duplication]
+        needs: [stryker, e2e, unit_tests, audit_lint, duplication]
         steps:
             - name: Checkout repository
               uses: actions/checkout@v4

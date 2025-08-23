@@ -17,6 +17,7 @@
  */
 
 import { renderHook, waitFor } from '@testing-library/react';
+import API from '../../services/API';
 import useUsageByYear from './UseUsageByYear';
 
 jest.mock('../../services/Usage');
@@ -41,11 +42,42 @@ describe('UseUsageByYear', () => {
             upload: 10744984,
         };
         const { result } = renderHook(useUsageByYear);
+        await waitFor(() => expect(result.current.loading).toBe(false));
+        expect(result.current.data.length).toEqual(expectedCount);
+        expect(result.current.data[0]).toEqual(expectedFirst);
+        expect(result.current.data[expectedCount - 1]).toEqual(expectedLast);
+    });
+
+    it('should set loading true and data undefined initially', () => {
+        const { result } = renderHook(useUsageByYear);
+        expect(result.current.loading).toBe(true);
+        expect(result.current.data).toBeUndefined();
+    });
+
+    it('should handle API returning empty array', async () => {
+        jest.spyOn(API, 'getUsageByYear').mockResolvedValueOnce([]);
+        const { result } = renderHook(useUsageByYear);
         await waitFor(() => {
-            expect(result.current.data.length).toEqual(expectedCount);
-            expect(result.current.data[0]).toEqual(expectedFirst);
-            expect(result.current.data[expectedCount - 1]).toEqual(expectedLast);
-            expect(result.current.loading).toBeFalsy();
+            expect(result.current.data).toEqual([]);
+            expect(result.current.loading).toBe(false);
+        });
+    });
+
+    it('should handle API returning null', async () => {
+        jest.spyOn(API, 'getUsageByYear').mockResolvedValueOnce(null);
+        const { result } = renderHook(useUsageByYear);
+        await waitFor(() => {
+            expect(result.current.data).toBeNull();
+            expect(result.current.loading).toBe(false);
+        });
+    });
+
+    it('should handle API error', async () => {
+        jest.spyOn(API, 'getUsageByYear').mockRejectedValueOnce(new Error('API error'));
+        const { result } = renderHook(useUsageByYear);
+        await waitFor(() => {
+            expect(result.current.data).toBeUndefined();
+            expect(result.current.loading).toBe(false);
         });
     });
 });

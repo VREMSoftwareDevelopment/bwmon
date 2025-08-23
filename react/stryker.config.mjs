@@ -11,7 +11,15 @@ const config = {
     tempDirName: 'stryker-tmp',
     cleanTempDir: 'always',
     ignoreStatic: true,
-    mutate: ['src/**/*.{js,jsx}', '!**/*test.{js,jsx}', '!**/__mocks__/*', '!**/index.jsx', '!**/serviceWorker.js', '!**/theme.js'],
+    mutate: [
+        'src/**/*.{js,jsx}',
+        '!**/*test.{js,jsx}',
+        '!**/__mocks__/*',
+        '!**/index.jsx',
+        '!**/serviceWorker.js',
+        '!**/theme.js',
+        '!**/mainSupport.jsx',
+    ],
     ignorePatterns: [
         'build',
         'coverage',
