@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1755993910560" clover="3.2.0">
-  <project timestamp="1755993910560" name="All files">
-    <metrics statements="443" coveredstatements="443" conditionals="117" coveredconditionals="117" methods="168" coveredmethods="168" elements="728" coveredelements="728" complexity="0" loc="443" ncloc="443" packages="18" files="45" classes="45"/>
+<coverage generated="1756038213441" clover="3.2.0">
+  <project timestamp="1756038213442" name="All files">
+    <metrics statements="441" coveredstatements="441" conditionals="117" coveredconditionals="117" methods="168" coveredmethods="168" elements="726" coveredelements="726" complexity="0" loc="441" ncloc="441" packages="18" files="45" classes="45"/>
     <package name="src">
       <metrics statements="8" coveredstatements="8" conditionals="5" coveredconditionals="5" methods="1" coveredmethods="1"/>
       <file name="App.jsx" path="/home/runner/work/bwmon/bwmon/react/src/App.jsx">
@@ -490,9 +490,9 @@
       </file>
     </package>
     <package name="src.services">
-      <metrics statements="102" coveredstatements="102" conditionals="21" coveredconditionals="21" methods="33" coveredmethods="33"/>
+      <metrics statements="100" coveredstatements="100" conditionals="21" coveredconditionals="21" methods="33" coveredmethods="33"/>
       <file name="API.js" path="/home/runner/work/bwmon/bwmon/react/src/services/API.js">
-        <metrics statements="74" coveredstatements="74" conditionals="17" coveredconditionals="17" methods="28" coveredmethods="28"/>
+        <metrics statements="72" coveredstatements="72" conditionals="17" coveredconditionals="17" methods="28" coveredmethods="28"/>
         <line num="24" count="17" type="stmt"/>
         <line num="28" count="17" type="stmt"/>
         <line num="31" count="20" type="stmt"/>
@@ -549,24 +549,22 @@
         <line num="114" count="17" type="stmt"/>
         <line num="115" count="33" type="stmt"/>
         <line num="116" count="311" type="stmt"/>
-        <line num="117" count="33" type="stmt"/>
-        <line num="120" count="17" type="stmt"/>
-        <line num="121" count="37" type="stmt"/>
-        <line num="123" count="17" type="stmt"/>
+        <line num="119" count="17" type="stmt"/>
+        <line num="120" count="37" type="stmt"/>
+        <line num="122" count="17" type="stmt"/>
+        <line num="123" count="14" type="stmt"/>
         <line num="124" count="14" type="stmt"/>
         <line num="125" count="14" type="stmt"/>
-        <line num="126" count="14" type="stmt"/>
+        <line num="127" count="122" type="stmt"/>
         <line num="128" count="122" type="stmt"/>
-        <line num="129" count="122" type="stmt"/>
-        <line num="132" count="122" type="stmt"/>
-        <line num="133" count="14" type="stmt"/>
-        <line num="136" count="17" type="stmt"/>
+        <line num="131" count="122" type="stmt"/>
+        <line num="132" count="14" type="stmt"/>
+        <line num="135" count="17" type="stmt"/>
+        <line num="136" count="4" type="stmt"/>
         <line num="137" count="4" type="stmt"/>
-        <line num="138" count="4" type="stmt"/>
+        <line num="139" count="12" type="stmt"/>
         <line num="140" count="12" type="stmt"/>
-        <line num="141" count="12" type="stmt"/>
-        <line num="144" count="4" type="stmt"/>
-        <line num="148" count="17" type="stmt"/>
+        <line num="146" count="17" type="stmt"/>
       </file>
       <file name="Data.js" path="/home/runner/work/bwmon/bwmon/react/src/services/Data.js">
         <metrics statements="13" coveredstatements="13" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>

@@ -1,6 +1,6 @@
 {
   "statistics": {
-    "detectionDate": "2025-08-24T00:04:48.613Z",
+    "detectionDate": "2025-08-24T12:23:08.105Z",
     "formats": {
       "jsx": {
         "sources": {
@@ -849,8 +849,8 @@
             "newClones": 0
           },
           "src/services/API.js": {
-            "lines": 148,
-            "tokens": 1595,
+            "lines": 146,
+            "tokens": 1575,
             "sources": 1,
             "clones": 0,
             "duplicatedLines": 0,
@@ -898,8 +898,8 @@
           }
         },
         "total": {
-          "lines": 1712,
-          "tokens": 19767,
+          "lines": 1710,
+          "tokens": 19747,
           "sources": 45,
           "clones": 0,
           "duplicatedLines": 0,
@@ -912,8 +912,8 @@
       }
     },
     "total": {
-      "lines": 3213,
-      "tokens": 30015,
+      "lines": 3211,
+      "tokens": 29995,
       "sources": 73,
       "clones": 0,
       "duplicatedLines": 0,
