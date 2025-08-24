@@ -1,6 +1,6 @@
 {
   "statistics": {
-    "detectionDate": "2025-08-22T20:01:09.134Z",
+    "detectionDate": "2025-08-24T00:04:48.613Z",
     "formats": {
       "jsx": {
         "sources": {
@@ -801,8 +801,8 @@
             "newClones": 0
           },
           "src/utils/SortUtils.js": {
-            "lines": 36,
-            "tokens": 303,
+            "lines": 41,
+            "tokens": 415,
             "sources": 1,
             "clones": 0,
             "duplicatedLines": 0,
@@ -849,8 +849,8 @@
             "newClones": 0
           },
           "src/services/API.js": {
-            "lines": 146,
-            "tokens": 1575,
+            "lines": 148,
+            "tokens": 1595,
             "sources": 1,
             "clones": 0,
             "duplicatedLines": 0,
@@ -898,8 +898,8 @@
           }
         },
         "total": {
-          "lines": 1705,
-          "tokens": 19635,
+          "lines": 1712,
+          "tokens": 19767,
           "sources": 45,
           "clones": 0,
           "duplicatedLines": 0,
@@ -912,8 +912,8 @@
       }
     },
     "total": {
-      "lines": 3206,
-      "tokens": 29883,
+      "lines": 3213,
+      "tokens": 30015,
       "sources": 73,
       "clones": 0,
       "duplicatedLines": 0,
