@@ -121,7 +121,7 @@ jobs:
     # Playwright E2E
     e2e:
         runs-on: ubuntu-22.04
-        needs: [unit_tests, audit_lint, duplication]
+        needs: [unit_tests, audit_lint]
         strategy:
             matrix:
                 node-version: [22.x]
@@ -151,7 +151,7 @@ jobs:
     stryker:
         if: "github.ref == 'refs/heads/main'"
         runs-on: ubuntu-22.04
-        needs: [unit_tests, audit_lint, duplication]
+        needs: [unit_tests, audit_lint]
         strategy:
             matrix:
                 node-version: [22.x]
@@ -173,7 +173,7 @@ jobs:
     deploy_reports:
         if: github.ref == 'refs/heads/main'
         runs-on: ubuntu-22.04
-        needs: [stryker, e2e, unit_tests, audit_lint, duplication]
+        needs: [stryker, e2e, duplication]
         steps:
             - name: Checkout repository
               uses: actions/checkout@v4

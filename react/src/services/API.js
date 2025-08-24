@@ -113,8 +113,7 @@ class Service {
 
     getMonths = async (year) => {
         const months = await store.getMonths(year);
-        let result = months.map((month) => DateTime.local(year, month).toFormat('MMMM'));
-        return result;
+        return months.map((month) => DateTime.local(year, month).toFormat('MMMM'));
     };
 
     getUsageByUser = async (year, month, filter) =>
@@ -135,13 +134,12 @@ class Service {
 
     getUsageByYear = async () => {
         const years = await store.getYears();
-        let usage = await Promise.all(
+        return await Promise.all(
             years.map(async (entry) => {
                 const result = await store.getUsageByYear(entry);
                 return result;
             })
         );
-        return usage;
     };
 }
 

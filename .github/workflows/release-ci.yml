@@ -41,7 +41,7 @@ jobs:
     # Build the project and create release asset
     build:
         runs-on: ubuntu-22.04
-        needs: test
+        needs: [test]
         steps:
             - uses: actions/checkout@v4
               with:
@@ -58,7 +58,7 @@ jobs:
     # Create git tag, GitHub release, and update README
     release:
         runs-on: ubuntu-22.04
-        needs: build
+        needs: [build]
         steps:
             - uses: actions/checkout@v4
               with:
@@ -111,7 +111,7 @@ jobs:
     # Deploy the build to GitHub Pages
     deploy:
         runs-on: ubuntu-22.04
-        needs: release
+        needs: [release]
         steps:
             - uses: actions/checkout@v4
               with:

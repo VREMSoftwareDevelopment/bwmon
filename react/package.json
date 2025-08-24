@@ -14,12 +14,13 @@
         "test:CI": "jest --coverage --runInBand",
         "test:e2e": "npx playwright test",
         "test:mutation": "npx stryker run",
-        "pretty": "prettier --write \"src/**/*.{js,jsx,json}\"",
+        "pretty": "prettier --write \"src/**/*.{js,jsx,json,mjs}\"",
         "audit": "better-npm-audit audit -p -l high",
         "lint": "eslint \"src/**/*.{js,jsx}\"",
         "scan": "node scan-suspicious.js",
         "outdated": "npm outdated --color=always | grep -viE \"beta|alpha\"",
-        "duplication": "jscpd src"
+        "duplication": "jscpd src",
+        "clean": "npm cache clean --force"
     },
     "dependencies": {
         "@emotion/babel-plugin": "^11.13.5",
