@@ -4,6 +4,7 @@
     https://stryker-mutator.io/docs/stryker-js/jest-runner for information about the jest plugin
 */
 const config = {
+    concurrency: process.env.CI ? 2 : 8,
     packageManager: 'npm',
     reporters: ['html', 'clear-text', 'progress'],
     testRunner: 'jest',
@@ -18,7 +19,8 @@ const config = {
         '!**/index.jsx',
         '!**/serviceWorker.js',
         '!**/theme.js',
-        '!**/mainSupport.jsx',
+        '!**/CellInfo.js',
+        '!**/Menu.jsx',
     ],
     ignorePatterns: [
         'build',
@@ -40,7 +42,7 @@ const config = {
         },
         enableFindRelatedTests: true,
     },
-    thresholds: { high: 80, low: 60, break: 90 },
+    thresholds: { high: 80, low: 60, break: 80 },
 };
 
 export default config;

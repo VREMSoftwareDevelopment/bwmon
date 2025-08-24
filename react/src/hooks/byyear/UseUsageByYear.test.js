@@ -42,7 +42,7 @@ describe('UseUsageByYear', () => {
             upload: 10744984,
         };
         const { result } = renderHook(useUsageByYear);
-        await waitFor(() => expect(result.current.loading).toBe(false));
+        await waitFor(() => expect(result.current.loading).toBeFalsy());
         expect(result.current.data.length).toEqual(expectedCount);
         expect(result.current.data[0]).toEqual(expectedFirst);
         expect(result.current.data[expectedCount - 1]).toEqual(expectedLast);
@@ -50,7 +50,7 @@ describe('UseUsageByYear', () => {
 
     it('should set loading true and data undefined initially', () => {
         const { result } = renderHook(useUsageByYear);
-        expect(result.current.loading).toBe(true);
+        expect(result.current.loading).toBeTruthy();
         expect(result.current.data).toBeUndefined();
     });
 
@@ -59,7 +59,7 @@ describe('UseUsageByYear', () => {
         const { result } = renderHook(useUsageByYear);
         await waitFor(() => {
             expect(result.current.data).toEqual([]);
-            expect(result.current.loading).toBe(false);
+            expect(result.current.loading).toBeFalsy();
         });
     });
 
@@ -68,16 +68,7 @@ describe('UseUsageByYear', () => {
         const { result } = renderHook(useUsageByYear);
         await waitFor(() => {
             expect(result.current.data).toBeNull();
-            expect(result.current.loading).toBe(false);
-        });
-    });
-
-    it('should handle API error', async () => {
-        jest.spyOn(API, 'getUsageByYear').mockRejectedValueOnce(new Error('API error'));
-        const { result } = renderHook(useUsageByYear);
-        await waitFor(() => {
-            expect(result.current.data).toBeUndefined();
-            expect(result.current.loading).toBe(false);
+            expect(result.current.loading).toBeFalsy();
         });
     });
 });

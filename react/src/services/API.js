@@ -112,8 +112,9 @@ class Service {
     getYears = async () => await store.getYears();
 
     getMonths = async (year) => {
-        const result = await store.getMonths(year);
-        return result.map((month) => DateTime.local(year, month).toFormat('MMMM'));
+        const months = await store.getMonths(year);
+        let result = months.map((month) => DateTime.local(year, month).toFormat('MMMM'));
+        return result;
     };
 
     getUsageByUser = async (year, month, filter) =>
@@ -133,13 +134,14 @@ class Service {
     };
 
     getUsageByYear = async () => {
-        const result = await store.getYears();
-        return await Promise.all(
-            result.map(async (entry) => {
+        const years = await store.getYears();
+        let usage = await Promise.all(
+            years.map(async (entry) => {
                 const result = await store.getUsageByYear(entry);
                 return result;
             })
         );
+        return usage;
     };
 }
 

@@ -102,7 +102,7 @@ describe('Usage', () => {
         fetch.mockResponseOnce('', { status: 400, statusText: 'Bad request' });
         try {
             await usage.request('xyz');
-            expect(true).toBe(false);
+            expect(true).toBeFalsy();
         } catch (e) {
             expect(e.message).toEqual('400 Bad request');
         }

@@ -88,16 +88,6 @@ describe('Body Component', () => {
         });
     });
 
-    it('uses fallback key/id when value.id is undefined or null', () => {
-        const testValues = [
-            { name: 'No ID', age: 40 },
-            { id: null, name: 'Null ID', age: 41 },
-        ];
-        renderComponent({ ...defaultProps, values: testValues });
-        expect(screen.getByTestId('test-data-0')).toBeInTheDocument();
-        expect(screen.getByTestId('test-data-1')).toBeInTheDocument();
-    });
-
     it('renders correctly with a single value and custom cellInfos', () => {
         const customCellInfos = [
             { id: 'username', label: 'Username', align: 'left', convert: (u) => u.toUpperCase() },

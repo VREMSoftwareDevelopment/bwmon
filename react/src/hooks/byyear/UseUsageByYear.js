@@ -25,14 +25,9 @@ const useUsageByYear = () => {
 
     useEffect(() => {
         async function fetch() {
-            try {
-                const usageByYear = await API.getUsageByYear();
-                setData(usageByYear);
-            } catch (_error) {
-                setData(undefined);
-            } finally {
-                setLoading(false);
-            }
+            const usageByYear = await API.getUsageByYear();
+            setData(usageByYear);
+            setLoading(false);
         }
         fetch();
     }, []);

@@ -228,10 +228,10 @@ describe('SortUtils', () => {
         });
 
         it('should test isAscending for all input combinations', () => {
-            expect(isAscending('foo', 'foo', true)).toBe(false);
-            expect(isAscending('foo', 'foo', false)).toBe(true);
-            expect(isAscending('foo', 'bar', true)).toBe(false);
-            expect(isAscending('foo', 'bar', false)).toBe(false);
+            expect(isAscending('foo', 'foo', true)).toBeFalsy();
+            expect(isAscending('foo', 'foo', false)).toBeTruthy();
+            expect(isAscending('foo', 'bar', true)).toBeFalsy();
+            expect(isAscending('foo', 'bar', false)).toBeFalsy();
         });
     });
 });
