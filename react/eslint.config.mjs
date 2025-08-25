@@ -59,7 +59,7 @@ export default [
             },
         },
         rules: {
-            'react/prop-types': 'off',
+            'react/prop-types': 'warn',
             indent: ['error', 4],
             'linebreak-style': 'off',
             quotes: ['error', 'single'],

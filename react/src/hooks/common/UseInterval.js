@@ -16,6 +16,11 @@
  * Bandwidth Monitor
  */
 
+/**
+ * Custom React hook for running a callback at specified intervals.
+ * @param {function} callback - Function to run.
+ * @param {number} delay - Interval in milliseconds.
+ */
 import { useEffect, useRef } from 'react';
 
 export const DELAY_ONE_MINUTE = 60000;

@@ -16,6 +16,10 @@
  * Bandwidth Monitor
  */
 
+/**
+ * Custom React hook for fetching usage data by year.
+ * @returns {{ data, loading }}
+ */
 import { useState, useEffect } from 'react';
 import API from '../../services/API';
 

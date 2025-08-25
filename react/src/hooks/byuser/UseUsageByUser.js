@@ -16,6 +16,10 @@
  * Bandwidth Monitor
  */
 
+/**
+ * Custom React hook for fetching usage data by user, with filter.
+ * @returns {{ years, year, setYear, months, month, setMonth, filter, setFilter, data, loading }}
+ */
 import { useState, useEffect } from 'react';
 import API from '../../services/API';
 import useYearMonth from '../common/UseYearMonth';

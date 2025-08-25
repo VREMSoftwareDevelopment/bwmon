@@ -16,6 +16,12 @@
  * Bandwidth Monitor
  */
 
+/**
+ * Custom React hooks for managing sorting state.
+ * @param {string} orderByDefault - Default sort key.
+ * @param {boolean} ascendingDefault - Default sort direction.
+ * @returns {{ ascending, setAscending, orderBy, setOrderBy }}
+ */
 import { useState } from 'react';
 
 const useSortAsc = (orderByDefault) => useSort(orderByDefault, true);

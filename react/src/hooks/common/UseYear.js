@@ -16,6 +16,10 @@
  * Bandwidth Monitor
  */
 
+/**
+ * Custom React hook for fetching and managing year selection.
+ * @returns {{ years, year, setYear }}
+ */
 import { useState, useEffect } from 'react';
 import API from '../../services/API';
 

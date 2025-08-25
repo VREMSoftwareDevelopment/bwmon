@@ -16,6 +16,16 @@
  * Bandwidth Monitor
  */
 
+/**
+ * Custom React hook for managing pagination state.
+ * @param {number} rowsPerPageDefault - The default number of rows per page.
+ * @returns {{
+ *   page: number,
+ *   setPage: function,
+ *   rowsPerPage: number,
+ *   setRowsPerPage: function
+ * }} Pagination state and setters.
+ */
 import { useState } from 'react';
 
 const usePagination = (rowsPerPageDefault) => {
