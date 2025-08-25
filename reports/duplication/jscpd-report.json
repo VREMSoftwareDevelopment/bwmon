@@ -1,6 +1,6 @@
 {
   "statistics": {
-    "detectionDate": "2025-08-24T12:23:08.105Z",
+    "detectionDate": "2025-08-25T21:40:13.294Z",
     "formats": {
       "jsx": {
         "sources": {
@@ -453,8 +453,8 @@
             "newClones": 0
           },
           "src/hooks/common/UseYearMonth.js": {
-            "lines": 41,
-            "tokens": 229,
+            "lines": 45,
+            "tokens": 231,
             "sources": 1,
             "clones": 0,
             "duplicatedLines": 0,
@@ -465,8 +465,8 @@
             "newClones": 0
           },
           "src/hooks/common/UseYear.js": {
-            "lines": 37,
-            "tokens": 175,
+            "lines": 41,
+            "tokens": 177,
             "sources": 1,
             "clones": 0,
             "duplicatedLines": 0,
@@ -477,8 +477,8 @@
             "newClones": 0
           },
           "src/hooks/common/UseSort.js": {
-            "lines": 31,
-            "tokens": 148,
+            "lines": 37,
+            "tokens": 150,
             "sources": 1,
             "clones": 0,
             "duplicatedLines": 0,
@@ -489,8 +489,8 @@
             "newClones": 0
           },
           "src/hooks/common/UsePagination.js": {
-            "lines": 27,
-            "tokens": 96,
+            "lines": 37,
+            "tokens": 98,
             "sources": 1,
             "clones": 0,
             "duplicatedLines": 0,
@@ -501,8 +501,8 @@
             "newClones": 0
           },
           "src/hooks/common/UseInterval.js": {
-            "lines": 40,
-            "tokens": 194,
+            "lines": 45,
+            "tokens": 196,
             "sources": 1,
             "clones": 0,
             "duplicatedLines": 0,
@@ -525,8 +525,8 @@
             "newClones": 0
           },
           "src/hooks/byyear/UseUsageByYear.js": {
-            "lines": 37,
-            "tokens": 170,
+            "lines": 41,
+            "tokens": 172,
             "sources": 1,
             "clones": 0,
             "duplicatedLines": 0,
@@ -549,8 +549,8 @@
             "newClones": 0
           },
           "src/hooks/byuser/UseUsageByUser.js": {
-            "lines": 42,
-            "tokens": 282,
+            "lines": 46,
+            "tokens": 284,
             "sources": 1,
             "clones": 0,
             "duplicatedLines": 0,
@@ -573,8 +573,8 @@
             "newClones": 0
           },
           "src/hooks/bymonth/UseUsageByMonth.js": {
-            "lines": 41,
-            "tokens": 224,
+            "lines": 45,
+            "tokens": 226,
             "sources": 1,
             "clones": 0,
             "duplicatedLines": 0,
@@ -898,8 +898,8 @@
           }
         },
         "total": {
-          "lines": 1710,
-          "tokens": 19747,
+          "lines": 1751,
+          "tokens": 19763,
           "sources": 45,
           "clones": 0,
           "duplicatedLines": 0,
@@ -912,8 +912,8 @@
       }
     },
     "total": {
-      "lines": 3211,
-      "tokens": 29995,
+      "lines": 3252,
+      "tokens": 30011,
       "sources": 73,
       "clones": 0,
       "duplicatedLines": 0,

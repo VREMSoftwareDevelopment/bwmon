@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1756038213441" clover="3.2.0">
-  <project timestamp="1756038213442" name="All files">
+<coverage generated="1756158030238" clover="3.2.0">
+  <project timestamp="1756158030238" name="All files">
     <metrics statements="441" coveredstatements="441" conditionals="117" coveredconditionals="117" methods="168" coveredmethods="168" elements="726" coveredelements="726" complexity="0" loc="441" ncloc="441" packages="18" files="45" classes="45"/>
     <package name="src">
       <metrics statements="8" coveredstatements="8" conditionals="5" coveredconditionals="5" methods="1" coveredmethods="1"/>
@@ -228,17 +228,17 @@
       <metrics statements="22" coveredstatements="22" conditionals="4" coveredconditionals="4" methods="7" coveredmethods="7"/>
       <file name="UseUsageByMonth.js" path="/home/runner/work/bwmon/bwmon/react/src/hooks/bymonth/UseUsageByMonth.js">
         <metrics statements="11" coveredstatements="11" conditionals="2" coveredconditionals="2" methods="3" coveredmethods="3"/>
-        <line num="23" count="6" type="stmt"/>
-        <line num="24" count="34" type="stmt"/>
-        <line num="25" count="34" type="stmt"/>
-        <line num="26" count="34" type="stmt"/>
+        <line num="27" count="6" type="stmt"/>
         <line num="28" count="34" type="stmt"/>
-        <line num="30" count="12" type="stmt"/>
-        <line num="31" count="12" type="stmt"/>
-        <line num="32" count="12" type="stmt"/>
-        <line num="34" count="20" type="cond" truecount="2" falsecount="0"/>
+        <line num="29" count="34" type="stmt"/>
+        <line num="30" count="34" type="stmt"/>
+        <line num="32" count="34" type="stmt"/>
+        <line num="34" count="12" type="stmt"/>
         <line num="35" count="12" type="stmt"/>
-        <line num="39" count="34" type="stmt"/>
+        <line num="36" count="12" type="stmt"/>
+        <line num="38" count="20" type="cond" truecount="2" falsecount="0"/>
+        <line num="39" count="12" type="stmt"/>
+        <line num="43" count="34" type="stmt"/>
       </file>
       <file name="UseUsageByMonthGraph.js" path="/home/runner/work/bwmon/bwmon/react/src/hooks/bymonth/UseUsageByMonthGraph.js">
         <metrics statements="11" coveredstatements="11" conditionals="2" coveredconditionals="2" methods="4" coveredmethods="4"/>
@@ -259,18 +259,18 @@
       <metrics statements="23" coveredstatements="23" conditionals="6" coveredconditionals="6" methods="7" coveredmethods="7"/>
       <file name="UseUsageByUser.js" path="/home/runner/work/bwmon/bwmon/react/src/hooks/byuser/UseUsageByUser.js">
         <metrics statements="12" coveredstatements="12" conditionals="4" coveredconditionals="4" methods="3" coveredmethods="3"/>
-        <line num="23" count="6" type="stmt"/>
-        <line num="24" count="122" type="stmt"/>
-        <line num="25" count="122" type="stmt"/>
-        <line num="26" count="122" type="stmt"/>
-        <line num="27" count="122" type="stmt"/>
+        <line num="27" count="6" type="stmt"/>
+        <line num="28" count="122" type="stmt"/>
         <line num="29" count="122" type="stmt"/>
-        <line num="31" count="32" type="stmt"/>
-        <line num="32" count="32" type="stmt"/>
-        <line num="33" count="32" type="stmt"/>
-        <line num="35" count="78" type="cond" truecount="4" falsecount="0"/>
+        <line num="30" count="122" type="stmt"/>
+        <line num="31" count="122" type="stmt"/>
+        <line num="33" count="122" type="stmt"/>
+        <line num="35" count="32" type="stmt"/>
         <line num="36" count="32" type="stmt"/>
-        <line num="40" count="122" type="stmt"/>
+        <line num="37" count="32" type="stmt"/>
+        <line num="39" count="78" type="cond" truecount="4" falsecount="0"/>
+        <line num="40" count="32" type="stmt"/>
+        <line num="44" count="122" type="stmt"/>
       </file>
       <file name="UseUsageByUserGraph.js" path="/home/runner/work/bwmon/bwmon/react/src/hooks/byuser/UseUsageByUserGraph.js">
         <metrics statements="11" coveredstatements="11" conditionals="2" coveredconditionals="2" methods="4" coveredmethods="4"/>
@@ -291,15 +291,15 @@
       <metrics statements="20" coveredstatements="20" conditionals="2" coveredconditionals="2" methods="7" coveredmethods="7"/>
       <file name="UseUsageByYear.js" path="/home/runner/work/bwmon/bwmon/react/src/hooks/byyear/UseUsageByYear.js">
         <metrics statements="9" coveredstatements="9" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
-        <line num="22" count="6" type="stmt"/>
-        <line num="23" count="10" type="stmt"/>
-        <line num="24" count="10" type="stmt"/>
-        <line num="26" count="10" type="stmt"/>
-        <line num="28" count="5" type="stmt"/>
-        <line num="29" count="5" type="stmt"/>
-        <line num="30" count="5" type="stmt"/>
+        <line num="26" count="6" type="stmt"/>
+        <line num="27" count="10" type="stmt"/>
+        <line num="28" count="10" type="stmt"/>
+        <line num="30" count="10" type="stmt"/>
         <line num="32" count="5" type="stmt"/>
-        <line num="35" count="10" type="stmt"/>
+        <line num="33" count="5" type="stmt"/>
+        <line num="34" count="5" type="stmt"/>
+        <line num="36" count="5" type="stmt"/>
+        <line num="39" count="10" type="stmt"/>
       </file>
       <file name="UseUsageByYearGraph.js" path="/home/runner/work/bwmon/bwmon/react/src/hooks/byyear/UseUsageByYearGraph.js">
         <metrics statements="11" coveredstatements="11" conditionals="2" coveredconditionals="2" methods="4" coveredmethods="4"/>
@@ -320,59 +320,59 @@
       <metrics statements="41" coveredstatements="41" conditionals="2" coveredconditionals="2" methods="15" coveredmethods="15"/>
       <file name="UseInterval.js" path="/home/runner/work/bwmon/bwmon/react/src/hooks/common/UseInterval.js">
         <metrics statements="11" coveredstatements="11" conditionals="0" coveredconditionals="0" methods="5" coveredmethods="5"/>
-        <line num="21" count="1" type="stmt"/>
-        <line num="22" count="1" type="stmt"/>
-        <line num="23" count="1" type="stmt"/>
-        <line num="25" count="1" type="stmt"/>
-        <line num="26" count="6" type="stmt"/>
-        <line num="28" count="6" type="stmt"/>
-        <line num="29" count="5" type="stmt"/>
-        <line num="32" count="6" type="stmt"/>
-        <line num="34" count="9" type="stmt"/>
-        <line num="36" count="5" type="stmt"/>
-        <line num="37" count="5" type="stmt"/>
+        <line num="26" count="1" type="stmt"/>
+        <line num="27" count="1" type="stmt"/>
+        <line num="28" count="1" type="stmt"/>
+        <line num="30" count="1" type="stmt"/>
+        <line num="31" count="6" type="stmt"/>
+        <line num="33" count="6" type="stmt"/>
+        <line num="34" count="5" type="stmt"/>
+        <line num="37" count="6" type="stmt"/>
+        <line num="39" count="9" type="stmt"/>
+        <line num="41" count="5" type="stmt"/>
+        <line num="42" count="5" type="stmt"/>
       </file>
       <file name="UsePagination.js" path="/home/runner/work/bwmon/bwmon/react/src/hooks/common/UsePagination.js">
         <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
-        <line num="21" count="5" type="stmt"/>
-        <line num="22" count="17" type="stmt"/>
-        <line num="23" count="17" type="stmt"/>
-        <line num="25" count="17" type="stmt"/>
+        <line num="31" count="5" type="stmt"/>
+        <line num="32" count="17" type="stmt"/>
+        <line num="33" count="17" type="stmt"/>
+        <line num="35" count="17" type="stmt"/>
       </file>
       <file name="UseSort.js" path="/home/runner/work/bwmon/bwmon/react/src/hooks/common/UseSort.js">
         <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
-        <line num="21" count="17" type="stmt"/>
-        <line num="23" count="6" type="stmt"/>
-        <line num="25" count="6" type="stmt"/>
-        <line num="26" count="22" type="stmt"/>
-        <line num="27" count="22" type="stmt"/>
-        <line num="29" count="22" type="stmt"/>
+        <line num="27" count="17" type="stmt"/>
+        <line num="29" count="6" type="stmt"/>
+        <line num="31" count="6" type="stmt"/>
+        <line num="32" count="22" type="stmt"/>
+        <line num="33" count="22" type="stmt"/>
+        <line num="35" count="22" type="stmt"/>
       </file>
       <file name="UseYear.js" path="/home/runner/work/bwmon/bwmon/react/src/hooks/common/UseYear.js">
         <metrics statements="9" coveredstatements="9" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
-        <line num="22" count="12" type="stmt"/>
-        <line num="23" count="183" type="stmt"/>
-        <line num="24" count="183" type="stmt"/>
-        <line num="26" count="183" type="stmt"/>
-        <line num="28" count="39" type="stmt"/>
-        <line num="29" count="39" type="stmt"/>
-        <line num="30" count="39" type="stmt"/>
+        <line num="26" count="12" type="stmt"/>
+        <line num="27" count="183" type="stmt"/>
+        <line num="28" count="183" type="stmt"/>
+        <line num="30" count="183" type="stmt"/>
         <line num="32" count="39" type="stmt"/>
-        <line num="35" count="183" type="stmt"/>
+        <line num="33" count="39" type="stmt"/>
+        <line num="34" count="39" type="stmt"/>
+        <line num="36" count="39" type="stmt"/>
+        <line num="39" count="183" type="stmt"/>
       </file>
       <file name="UseYearMonth.js" path="/home/runner/work/bwmon/bwmon/react/src/hooks/common/UseYearMonth.js">
         <metrics statements="11" coveredstatements="11" conditionals="2" coveredconditionals="2" methods="3" coveredmethods="3"/>
-        <line num="23" count="7" type="stmt"/>
-        <line num="24" count="140" type="stmt"/>
-        <line num="25" count="140" type="stmt"/>
-        <line num="26" count="140" type="stmt"/>
+        <line num="27" count="7" type="stmt"/>
         <line num="28" count="140" type="stmt"/>
-        <line num="30" count="32" type="stmt"/>
-        <line num="31" count="32" type="stmt"/>
-        <line num="32" count="32" type="stmt"/>
-        <line num="34" count="60" type="cond" truecount="2" falsecount="0"/>
+        <line num="29" count="140" type="stmt"/>
+        <line num="30" count="140" type="stmt"/>
+        <line num="32" count="140" type="stmt"/>
+        <line num="34" count="32" type="stmt"/>
         <line num="35" count="32" type="stmt"/>
-        <line num="39" count="140" type="stmt"/>
+        <line num="36" count="32" type="stmt"/>
+        <line num="38" count="60" type="cond" truecount="2" falsecount="0"/>
+        <line num="39" count="32" type="stmt"/>
+        <line num="43" count="140" type="stmt"/>
       </file>
     </package>
     <package name="src.menu">
