@@ -92,7 +92,7 @@ jobs:
               uses: actions/upload-artifact@v4
               with:
                   name: reports-visualizer
-                  path: ./react/build/reports/visualizer/stats.html
+                  path: ./react/reports/visualizer/stats.html
 
     # Unit tests + coverage
     unit_tests:
