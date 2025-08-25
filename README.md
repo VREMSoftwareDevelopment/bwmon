@@ -92,6 +92,7 @@ View the latest test and analysis reports:
 -   [Mutation Report](https://vremsoftwaredevelopment.github.io/bwmon/reports/mutation/mutation.html)
 -   [Playwright Report](https://vremsoftwaredevelopment.github.io/bwmon/reports/playwright/html/index.html)
 -   [Duplication Report](https://vremsoftwaredevelopment.github.io/bwmon/reports/duplication/index.html)
+-   [Bundle Analysis (Visualizer)](https://vremsoftwaredevelopment.github.io/bwmon/reports/visualizer/stats.html)
 
 ## Contributing
 

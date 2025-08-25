@@ -20,7 +20,9 @@
         "scan": "node scan-suspicious.js",
         "outdated": "npm outdated --color=always | grep -viE \"beta|alpha\"",
         "duplication": "jscpd src",
-        "clean": "npm cache clean --force"
+        "clean": "npm cache clean --force",
+        "analyze": "vite build",
+        "suspicious": "node scan-suspicious.js"
     },
     "dependencies": {
         "@emotion/babel-plugin": "^11.13.5",
