@@ -18,7 +18,6 @@ on:
             - '.github/workflows/release-ci.yml'
             - '.github/workflows/codeql-analysis.yml'
             - '.github/workflows/dependabot.yml'
-    workflow_dispatch: {}
 
 # Avoid overlapping runs and cancel in-progress runs on newer commits
 concurrency:
