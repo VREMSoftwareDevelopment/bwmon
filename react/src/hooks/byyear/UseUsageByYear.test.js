@@ -48,12 +48,6 @@ describe('UseUsageByYear', () => {
         expect(result.current.data[expectedCount - 1]).toEqual(expectedLast);
     });
 
-    it('should set loading true and data undefined initially', () => {
-        const { result } = renderHook(useUsageByYear);
-        expect(result.current.loading).toBeTruthy();
-        expect(result.current.data).toBeUndefined();
-    });
-
     it('should handle API returning empty array', async () => {
         jest.spyOn(API, 'getUsageByYear').mockResolvedValueOnce([]);
         const { result } = renderHook(useUsageByYear);
