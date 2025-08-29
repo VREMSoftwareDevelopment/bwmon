@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1756216353923" clover="3.2.0">
-  <project timestamp="1756216353923" name="All files">
+<coverage generated="1756428043458" clover="3.2.0">
+  <project timestamp="1756428043458" name="All files">
     <metrics statements="441" coveredstatements="441" conditionals="117" coveredconditionals="117" methods="168" coveredmethods="168" elements="726" coveredelements="726" complexity="0" loc="441" ncloc="441" packages="18" files="45" classes="45"/>
     <package name="src">
       <metrics statements="8" coveredstatements="8" conditionals="5" coveredconditionals="5" methods="1" coveredmethods="1"/>
@@ -292,14 +292,14 @@
       <file name="UseUsageByYear.js" path="/home/runner/work/bwmon/bwmon/react/src/hooks/byyear/UseUsageByYear.js">
         <metrics statements="9" coveredstatements="9" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
         <line num="26" count="6" type="stmt"/>
-        <line num="27" count="10" type="stmt"/>
-        <line num="28" count="10" type="stmt"/>
-        <line num="30" count="10" type="stmt"/>
-        <line num="32" count="5" type="stmt"/>
-        <line num="33" count="5" type="stmt"/>
-        <line num="34" count="5" type="stmt"/>
-        <line num="36" count="5" type="stmt"/>
-        <line num="39" count="10" type="stmt"/>
+        <line num="27" count="9" type="stmt"/>
+        <line num="28" count="9" type="stmt"/>
+        <line num="30" count="9" type="stmt"/>
+        <line num="32" count="4" type="stmt"/>
+        <line num="33" count="4" type="stmt"/>
+        <line num="34" count="4" type="stmt"/>
+        <line num="36" count="4" type="stmt"/>
+        <line num="39" count="9" type="stmt"/>
       </file>
       <file name="UseUsageByYearGraph.js" path="/home/runner/work/bwmon/bwmon/react/src/hooks/byyear/UseUsageByYearGraph.js">
         <metrics statements="11" coveredstatements="11" conditionals="2" coveredconditionals="2" methods="4" coveredmethods="4"/>
@@ -506,33 +506,33 @@
         <line num="44" count="13010" type="stmt"/>
         <line num="45" count="13010" type="cond" truecount="2" falsecount="0"/>
         <line num="48" count="17" type="stmt"/>
-        <line num="49" count="276" type="stmt"/>
-        <line num="50" count="276" type="cond" truecount="4" falsecount="0"/>
+        <line num="49" count="272" type="stmt"/>
+        <line num="50" count="272" type="cond" truecount="4" falsecount="0"/>
         <line num="51" count="10" type="stmt"/>
         <line num="52" count="10" type="stmt"/>
         <line num="53" count="10" type="stmt"/>
-        <line num="55" count="276" type="stmt"/>
+        <line num="55" count="272" type="stmt"/>
         <line num="58" count="17" type="stmt"/>
-        <line num="59" count="185" type="stmt"/>
-        <line num="60" count="185" type="stmt"/>
-        <line num="61" count="185" type="stmt"/>
-        <line num="63" count="185" type="stmt"/>
-        <line num="64" count="3610" type="stmt"/>
-        <line num="65" count="3610" type="stmt"/>
-        <line num="66" count="3610" type="stmt"/>
-        <line num="68" count="185" type="stmt"/>
-        <line num="69" count="185" type="stmt"/>
+        <line num="59" count="182" type="stmt"/>
+        <line num="60" count="182" type="stmt"/>
+        <line num="61" count="182" type="stmt"/>
+        <line num="63" count="182" type="stmt"/>
+        <line num="64" count="3359" type="stmt"/>
+        <line num="65" count="3359" type="stmt"/>
+        <line num="66" count="3359" type="stmt"/>
+        <line num="68" count="182" type="stmt"/>
+        <line num="69" count="182" type="stmt"/>
         <line num="72" count="17" type="stmt"/>
-        <line num="73" count="44" type="stmt"/>
-        <line num="74" count="11044" type="stmt"/>
+        <line num="73" count="43" type="stmt"/>
+        <line num="74" count="10793" type="stmt"/>
         <line num="77" count="17" type="stmt"/>
         <line num="78" count="47" type="stmt"/>
         <line num="79" count="11797" type="stmt"/>
         <line num="82" count="17" type="stmt"/>
-        <line num="83" count="26" type="stmt"/>
-        <line num="84" count="26" type="stmt"/>
-        <line num="85" count="6526" type="stmt"/>
-        <line num="86" count="26" type="stmt"/>
+        <line num="83" count="23" type="stmt"/>
+        <line num="84" count="23" type="stmt"/>
+        <line num="85" count="5773" type="stmt"/>
+        <line num="86" count="23" type="stmt"/>
         <line num="89" count="17" type="stmt"/>
         <line num="90" count="159" type="stmt"/>
         <line num="91" count="159" type="stmt"/>
@@ -560,10 +560,10 @@
         <line num="131" count="122" type="stmt"/>
         <line num="132" count="14" type="stmt"/>
         <line num="135" count="17" type="stmt"/>
-        <line num="136" count="4" type="stmt"/>
-        <line num="137" count="4" type="stmt"/>
-        <line num="139" count="12" type="stmt"/>
-        <line num="140" count="12" type="stmt"/>
+        <line num="136" count="3" type="stmt"/>
+        <line num="137" count="3" type="stmt"/>
+        <line num="139" count="9" type="stmt"/>
+        <line num="140" count="9" type="stmt"/>
         <line num="146" count="17" type="stmt"/>
       </file>
       <file name="Data.js" path="/home/runner/work/bwmon/bwmon/react/src/services/Data.js">
