@@ -1,0 +1,67 @@
+# Mutation workflow
+name: 'Mutation Tests'
+
+on:
+    schedule:
+        - cron: '0 0 * * 0'
+
+# Avoid overlapping runs and cancel in-progress runs on newer commits
+concurrency:
+    group: ${{ github.workflow }}-${{ github.ref }}
+    cancel-in-progress: true
+
+# Reduce default permissions for security
+permissions:
+    contents: write
+
+jobs:
+    # Mutation testing
+    stryker:
+        if: "github.ref == 'refs/heads/main'"
+        runs-on: ubuntu-22.04
+        needs: []
+        strategy:
+            matrix:
+                node-version: [22.x]
+        steps:
+            - uses: actions/checkout@v4
+            - uses: ./.github/actions/common-setup
+              with:
+                  node-version: ${{ matrix.node-version }}
+            - name: Run Stryker tests
+              run: npx stryker run
+              working-directory: react
+            - name: Upload mutation reports
+              uses: actions/upload-artifact@v4
+              with:
+                  name: reports-mutation
+                  path: ./react/reports/mutation/
+
+    # Deploy reports to GitHub Pages under /reports/
+    deploy_reports:
+        if: github.ref == 'refs/heads/main'
+        runs-on: ubuntu-22.04
+        needs: [stryker]
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@v4
+              with:
+                  fetch-depth: 0
+            - name: Switch to gh-pages branch
+              run: |
+                  git fetch origin gh-pages
+                  git checkout gh-pages || git checkout --orphan gh-pages
+            - name: Download mutation reports
+              uses: actions/download-artifact@v4
+              with:
+                  name: reports-mutation
+                  path: reports/mutation
+            - name: Commit and push reports
+              run: |
+                  git config --global user.name "${GITHUB_ACTOR}"
+                  git config --global user.email "${GITHUB_ACTOR}@users.noreply.github.com"
+                  git add reports/
+                  git commit -m "Update reports" || echo "No changes to commit"
+                  git push origin gh-pages
+              env:
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
