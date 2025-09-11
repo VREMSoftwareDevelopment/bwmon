@@ -19,7 +19,7 @@
 import { renderHook, waitFor } from '@testing-library/react';
 import useUsageByYearGraph from './UseUsageByYearGraph';
 
-jest.mock('../../services/Usage');
+jest.mock('@services/Usage');
 
 describe('UseUsageByYearGraph', () => {
     it('should initialize', async () => {

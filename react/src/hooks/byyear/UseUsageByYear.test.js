@@ -17,10 +17,10 @@
  */
 
 import { renderHook, waitFor } from '@testing-library/react';
-import API from '../../services/API';
+import API from '@services/API';
 import useUsageByYear from './UseUsageByYear';
 
-jest.mock('../../services/Usage');
+jest.mock('@services/Usage');
 
 describe('UseUsageByYear', () => {
     it('should initialize', async () => {

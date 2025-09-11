@@ -57,6 +57,18 @@ export default [
             react: {
                 version: 'detect',
             },
+            'import/resolver': {
+                alias: {
+                    map: [
+                        ['@components', './src/components'],
+                        ['@hooks', './src/hooks'],
+                        ['@pages', './src/pages'],
+                        ['@services', './src/services'],
+                        ['@utils', './src/utils'],
+                    ],
+                    extensions: ['.js', '.jsx', '.mjs'],
+                },
+            },
         },
         rules: {
             'react/prop-types': 'warn',

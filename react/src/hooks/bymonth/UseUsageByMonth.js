@@ -21,8 +21,8 @@
  * @returns {{ years, year, setYear, data, loading }}
  */
 import { useState, useEffect } from 'react';
-import API from '../../services/API';
-import useYear from '../common/UseYear';
+import API from '@services/API';
+import useYear from '@hooks/common/UseYear';
 
 const useUsageByMonth = () => {
     const { years, year, setYear } = useYear();

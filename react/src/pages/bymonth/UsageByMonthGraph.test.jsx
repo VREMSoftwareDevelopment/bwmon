@@ -21,10 +21,10 @@ import { fireEvent, render, screen, within } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import UsageByMonthGraph from './UsageByMonthGraph';
-import useUsageByMonthGraph from '../../hooks/bymonth/UseUsageByMonthGraph';
+import useUsageByMonthGraph from '@hooks/bymonth/UseUsageByMonthGraph';
 
-jest.mock('../../components/graph/Graph');
-jest.mock('../../hooks/bymonth/UseUsageByMonthGraph');
+jest.mock('@components/graph/Graph');
+jest.mock('@hooks/bymonth/UseUsageByMonthGraph');
 
 describe('UsageByMonthGraph', () => {
     const data = {

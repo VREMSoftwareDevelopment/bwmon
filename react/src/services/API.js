@@ -18,7 +18,7 @@
 
 import usage from './Usage';
 import { DateTime } from 'luxon';
-import { toIPv4 } from '../utils/ConversionUtils';
+import { toIPv4 } from '@utils/ConversionUtils';
 
 // reload every 10 minutes
 const RELOAD_TIME = 10;

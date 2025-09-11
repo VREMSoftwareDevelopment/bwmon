@@ -19,7 +19,7 @@
 import { act, renderHook, waitFor } from '@testing-library/react';
 import useUsageByMonthGraph from './UseUsageByMonthGraph';
 
-jest.mock('../../services/Usage');
+jest.mock('@services/Usage');
 
 describe('UseUsageByMonthGraph', () => {
     const expectedYears = [2013, 2012, 2011];

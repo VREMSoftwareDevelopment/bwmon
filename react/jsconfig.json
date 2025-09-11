@@ -1,6 +1,15 @@
 // jsconfig.json
 {
-    "compilerOptions": { "baseUrl": "./src" },
+    "compilerOptions": {
+        "baseUrl": "./src",
+        "paths": {
+            "@components/*": ["components/*"],
+            "@hooks/*": ["hooks/*"],
+            "@pages/*": ["pages/*"],
+            "@services/*": ["services/*"],
+            "@utils/*": ["utils/*"]
+        }
+    },
     "include": ["./src/**/*"],
     "exclude": ["node_modules", "**/node_modules/*"]
 }

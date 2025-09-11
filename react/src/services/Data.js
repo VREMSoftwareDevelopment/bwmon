@@ -16,7 +16,7 @@
  * Bandwidth Monitor
  */
 
-import { fromIPv4 } from '../utils/ConversionUtils';
+import { fromIPv4 } from '@utils/ConversionUtils';
 
 export default class Data {
     constructor(id, date, ip, mac, user, down, up, first, last) {

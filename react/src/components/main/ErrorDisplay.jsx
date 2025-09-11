@@ -17,7 +17,7 @@
  */
 
 import React from 'react';
-import ErrorMessage from '../messages/ErrorMessage';
+import ErrorMessage from '@components/messages/ErrorMessage';
 import PropTypes from 'prop-types';
 
 const ErrorDisplay = ({ error, info }) => {

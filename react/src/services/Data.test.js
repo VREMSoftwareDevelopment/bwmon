@@ -16,7 +16,7 @@
  * Bandwidth Monitor
  */
 
-import { fromIPv4 } from '../utils/ConversionUtils';
+import { fromIPv4 } from '@utils/ConversionUtils';
 import Data from './Data';
 
 describe('Data', () => {

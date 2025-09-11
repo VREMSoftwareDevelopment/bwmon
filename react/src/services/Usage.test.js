@@ -17,7 +17,7 @@
  */
 
 import fetchMock from 'jest-fetch-mock';
-import { fromIPv4 } from '../utils/ConversionUtils';
+import { fromIPv4 } from '@utils/ConversionUtils';
 import usage from './Usage';
 
 fetchMock.enableMocks();

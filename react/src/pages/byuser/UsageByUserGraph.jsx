@@ -19,11 +19,11 @@
 import React from 'react';
 import { Box, Paper } from '@mui/material';
 import Grid from '@mui/material/Grid';
-import DropDown from '../../components/inputs/DropDown';
-import Search from '../../components/inputs/Search';
-import useUsageByUserGraph from '../../hooks/byuser/UseUsageByUserGraph';
-import Loading from '../../components/loading/Loading';
-import Graph from '../../components/graph/Graph';
+import DropDown from '@components/inputs/DropDown';
+import Search from '@components/inputs/Search';
+import useUsageByUserGraph from '@hooks/byuser/UseUsageByUserGraph';
+import Loading from '@components/loading/Loading';
+import Graph from '@components/graph/Graph';
 
 const options = { flexGrow: 1, m: 2, mt: 6 };
 

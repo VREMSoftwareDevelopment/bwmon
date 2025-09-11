@@ -18,16 +18,16 @@
 
 import React from 'react';
 import { Paper, Table, TableRow, TableHead, TableCell, TableContainer } from '@mui/material';
-import Body from '../../components/table/Body';
-import CellInfo from '../../components/table/CellInfo';
-import DropDown from '../../components/inputs/DropDown';
-import Footer from '../../components/table/Footer';
-import Header from '../../components/table/Header';
-import { toMonth, toPercent, usageInGBytes } from '../../utils/ConversionUtils';
-import { comparator, isAscending, sort } from '../../utils/SortUtils';
-import useUsageByMonth from '../../hooks/bymonth/UseUsageByMonth';
-import { useSortDesc } from '../../hooks/common/UseSort';
-import Loading from '../../components/loading/Loading';
+import Body from '@components/table/Body';
+import CellInfo from '@components/table/CellInfo';
+import DropDown from '@components/inputs/DropDown';
+import Footer from '@components/table/Footer';
+import Header from '@components/table/Header';
+import { toMonth, toPercent, usageInGBytes } from '@utils/ConversionUtils';
+import { comparator, isAscending, sort } from '@utils/SortUtils';
+import useUsageByMonth from '@hooks/bymonth/UseUsageByMonth';
+import { useSortDesc } from '@hooks/common/UseSort';
+import Loading from '@components/loading/Loading';
 
 const cellInfos = [
     new CellInfo('id', true, 'left', 'Month', false, toMonth),

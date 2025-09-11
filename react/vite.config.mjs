@@ -26,6 +26,15 @@ export default defineConfig({
             ignored: ['**/reports/**', '**/stryker*/**'],
         },
     },
+    resolve: {
+        alias: {
+            '@components': '/src/components',
+            '@hooks': '/src/hooks',
+            '@pages': '/src/pages',
+            '@services': '/src/services',
+            '@utils': '/src/utils',
+        },
+    },
     plugins: [
         react({
             jsxImportSource: '@emotion/react',

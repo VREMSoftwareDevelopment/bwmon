@@ -18,14 +18,14 @@
 
 import React from 'react';
 import { Paper, TableContainer } from '@mui/material';
-import CellInfo from '../../components/table/CellInfo';
-import UsageTable from '../../components/table/UsageTable';
-import { usageInGBytes } from '../../utils/ConversionUtils';
-import { comparator, isAscending, sort } from '../../utils/SortUtils';
-import useUsageByYear from '../../hooks/byyear/UseUsageByYear';
-import { useSortDesc } from '../../hooks/common/UseSort';
-import usePagination from '../../hooks/common/UsePagination';
-import Loading from '../../components/loading/Loading';
+import CellInfo from '@components/table/CellInfo';
+import UsageTable from '@components/table/UsageTable';
+import { usageInGBytes } from '@utils/ConversionUtils';
+import { comparator, isAscending, sort } from '@utils/SortUtils';
+import useUsageByYear from '@hooks/byyear/UseUsageByYear';
+import { useSortDesc } from '@hooks/common/UseSort';
+import usePagination from '@hooks/common/UsePagination';
+import Loading from '@components/loading/Loading';
 
 const cellInfos = [
     new CellInfo('id', true, 'left', 'Year', false),
