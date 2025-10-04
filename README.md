@@ -13,7 +13,7 @@ A simple shell script designed to run on [AsusWRT-Merlin](https://www.asuswrt-me
 
 ![Sample Usage by User Screenshot](https://github.com/VREMSoftwareDevelopment/bwmon/raw/main/screenshots/UsageByUserData.jpg 'Sample Usage by User Screenshot')
 
-[Try the latest demo version](https://vremsoftwaredevelopment.github.io/bwmon)
+[Try a demo version of this application](https://vremsoftwaredevelopment.github.io/bwmon)
 
 ---
 
@@ -66,7 +66,7 @@ LICENSE        # License file
     -   `cd /mnt/<mounted_name>/`
     -   `mkdir bwmon`
     -   `cd bwmon`
-    -   `wget https://github.com/VREMSoftwareDevelopment/bwmon/releases/download/v3.1.5/bwmon.tar.gz`
+    -   `wget https://github.com/VREMSoftwareDevelopment/bwmon/releases/download/v3.1.4/bwmon.tar.gz`
     -   `tar -xzvf bwmon.tar.gz`
     -   `chmod +x server/install.sh`
     -   `./server/install.sh`
