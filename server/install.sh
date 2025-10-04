@@ -19,13 +19,12 @@
 #!/bin/sh
 set -e
 echo "...Bandwidth Usage Installation..."
-opkg print-architecture > /dev/null 2>&1
-if [ $? -ne 0 ]; then
+if opkg print-architecture > /dev/null 2>&1; then
+    echo "Entware is installed"
+else
     echo "Please install entware!"
     echo "https://github.com/Entware/Entware"
     exit 1
-else 
-    echo "Entware is installed"
 fi
 if [ ! -x /opt/sbin/lighttpd ] || ! opkg list-installed lighttpd > /dev/null 2>&1; then
     echo "Installing lighttpd (Entware build) ..."
@@ -39,11 +38,12 @@ if ! bc -v >/dev/null 2>&1; then
 else
     echo "bc is installed"
 fi
-fc status > /dev/null 2>&1
-if [ $? -eq 0 ]; then
-    echo "Flow Cache will be disabled ..."
-    fc disable
-    fc flush
+if command -v fc >/dev/null 2>&1; then
+    if fc status >/dev/null 2>&1; then
+        echo "Flow Cache will be disabled ..."
+        fc disable
+        fc flush
+    fi
 fi
 echo "Installing bwmon ..."
 chmod +x server/bwmon.sh
