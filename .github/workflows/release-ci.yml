@@ -60,13 +60,16 @@ jobs:
               working-directory: react
             - name: Create release asset
               run: tar -cvzf bwmon.tar.gz react/build server
-            - name: Upload artifacts
+            - name: Upload build artifacts
               uses: actions/upload-artifact@v4
               with:
                   name: build-artifacts
-                  path: |
-                      react/build
-                      bwmon.tar.gz
+                  path: react/build
+            - name: Upload tarball artifact
+              uses: actions/upload-artifact@v4
+              with:
+                  name: build-tarball
+                  path: bwmon.tar.gz
 
     # Create git tag, GitHub release, and update README
     release:
@@ -76,10 +79,10 @@ jobs:
             - uses: actions/checkout@v4
               with:
                   fetch-depth: 0
-            - name: Download artifacts
+            - name: Download tarball artifact
               uses: actions/download-artifact@v4
               with:
-                  name: build-artifacts
+                  name: build-tarball
                   path: .
             - name: Ensure gh (GitHub CLI) is installed
               run: |
@@ -134,21 +137,23 @@ jobs:
             - uses: actions/checkout@v4
               with:
                   fetch-depth: 0
-            - name: Download artifacts
+                  ref: gh-pages
+            - name: Download build artifacts
               uses: actions/download-artifact@v4
               with:
                   name: build-artifacts
-                  path: .
-            - name: Deploy to GitHub Pages (gh CLI)
+                  path: react/build/
+            - name: Deploy to GitHub Pages
               run: |
                   git config --global user.name "${GITHUB_ACTOR}"
                   git config --global user.email "${GITHUB_ACTOR}@users.noreply.github.com"
-                  git fetch origin gh-pages:gh-pages || git checkout --orphan gh-pages
                   rm -rf asset-manifest.json favicon.ico index.html manifest.json robots.txt static usage.db
                   cp -r react/build/* ./
+                  rm -rf react
                   touch .nojekyll
-                  git add .
+                  git add -A
                   git commit -m "Deploy to GitHub Pages: ${{ github.sha }}" || echo "No changes to commit"
+                  git status
                   git push origin gh-pages --force
               env:
                   GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
