@@ -91,6 +91,19 @@ export default [
             'security/detect-eval-with-expression': 'warn',
             'security/detect-non-literal-fs-filename': 'warn',
             'security/detect-non-literal-require': 'warn',
+            complexity: ['warn', { max: 5 }],
+        },
+    },
+    {
+        files: ['src/serviceWorker.js'],
+        rules: {
+            complexity: 'off',
+        },
+    },
+    {
+        files: ['src/services/Usage.test.js', 'src/utils/SortUtils.js'],
+        rules: {
+            'security/detect-object-injection': 'off',
         },
     },
 ];
