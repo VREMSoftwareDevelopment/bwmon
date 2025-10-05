@@ -134,7 +134,8 @@ jobs:
         runs-on: ubuntu-22.04
         needs: [release]
         steps:
-            - uses: actions/checkout@v4
+            - name: Checkout repository
+              uses: actions/checkout@v4
               with:
                   fetch-depth: 0
                   ref: gh-pages
@@ -151,7 +152,7 @@ jobs:
                   cp -r react/build/* ./
                   rm -rf react
                   touch .nojekyll
-                  git add -A
+                  git add .nojekyll .
                   git commit -m "Deploy to GitHub Pages: ${{ github.sha }}" || echo "No changes to commit"
                   git status
                   git push origin gh-pages --force
