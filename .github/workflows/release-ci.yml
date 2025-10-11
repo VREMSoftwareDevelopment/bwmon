@@ -143,14 +143,11 @@ jobs:
               uses: actions/download-artifact@v4
               with:
                   name: build-artifacts
-                  path: react/build/
+                  path: .
             - name: Deploy to GitHub Pages
               run: |
                   git config --global user.name "${GITHUB_ACTOR}"
                   git config --global user.email "${GITHUB_ACTOR}@users.noreply.github.com"
-                  rm -rf asset-manifest.json favicon.ico index.html manifest.json robots.txt static usage.db
-                  cp -r react/build/* ./
-                  rm -rf react
                   touch .nojekyll
                   git add .nojekyll .
                   git commit -m "Deploy to GitHub Pages: ${{ github.sha }}" || echo "No changes to commit"
