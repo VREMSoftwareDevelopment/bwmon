@@ -25,23 +25,23 @@ jobs:
             - name: Get last successful workflow run commit SHA
               id: last_success
               run: |
-                  echo "::set-output name=sha::$(gh run list --workflow mutation.yml --branch main --status success --limit 1 --json headSha -q '.[0].headSha')"
+                  echo "sha=$(gh run list --workflow mutation.yml --branch main --status success --limit 1 --json headSha -q '.[0].headSha')" >> $GITHUB_OUTPUT
             - name: Check for code changes
               id: set_changed
               run: |
                   if [ -z "${{ steps.last_success.outputs.sha }}" ]; then
                       echo "No previous successful run found. Assuming code changed."
-                      echo "::set-output name=code_changed::true"
+                      echo "code_changed=true" >> $GITHUB_OUTPUT
                       exit 0
                   fi
                   git fetch origin main
                   CHANGED_FILES=$(git diff --name-only ${{ steps.last_success.outputs.sha }} HEAD -- react/src)
                   if [ -z "$CHANGED_FILES" ]; then
                       echo "No code changes since last successful run."
-                      echo "::set-output name=code_changed::false"
+                      echo "code_changed=false" >> $GITHUB_OUTPUT
                   else
                       echo "Code changes detected."
-                      echo "::set-output name=code_changed::true"
+                      echo "code_changed=true" >> $GITHUB_OUTPUT
                   fi
 
     # Mutation testing
