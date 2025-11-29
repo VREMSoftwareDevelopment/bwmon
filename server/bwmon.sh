@@ -165,7 +165,7 @@ create() {
 }
 
 fcdisable() {
-  if command -v fc >/dev/null 2>&1; then
+  if (type fc >/dev/null 2>&1 || command -v fc >/dev/null 2>&1); then
     if fc status > /dev/null 2>&1; then
       log "Flow Cache will be disabled ..."
       fc disable

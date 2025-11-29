@@ -38,7 +38,7 @@ if ! bc -v >/dev/null 2>&1; then
 else
     echo "bc is installed"
 fi
-if command -v fc >/dev/null 2>&1; then
+if (type fc >/dev/null 2>&1 || command -v fc >/dev/null 2>&1); then
     if fc status >/dev/null 2>&1; then
         echo "Flow Cache will be disabled ..."
         fc disable
