@@ -73,7 +73,7 @@
         "prettier": "^3.7.3",
         "pretty-quick": "^4.2.2",
         "rollup-plugin-visualizer": "^6.0.5",
-        "vite": "^7.2.4",
+        "vite": "^7.2.6",
         "vite-plugin-svgr": "^4.5.0"
     },
     "eslintConfig": {
