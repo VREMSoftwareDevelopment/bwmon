@@ -1,126 +1,126 @@
-<testsuites id="" name="" tests="52" failures="0" skipped="0" errors="0" time="167.589586">
-<testsuite name="App.e2e.test.js" timestamp="2025-12-02T14:33:33.374Z" hostname="chromium" tests="1" failures="0" skipped="0" time="2.522" errors="0">
-<testcase name="App e2e › header element" classname="App.e2e.test.js" time="2.522">
+<testsuites id="" name="" tests="52" failures="0" skipped="0" errors="0" time="160.763205">
+<testsuite name="App.e2e.test.js" timestamp="2025-12-09T19:00:49.050Z" hostname="chromium" tests="1" failures="0" skipped="0" time="3.859" errors="0">
+<testcase name="App e2e › header element" classname="App.e2e.test.js" time="3.859">
 </testcase>
 </testsuite>
-<testsuite name="Navigation.e2e.test.js" timestamp="2025-12-02T14:33:33.374Z" hostname="chromium" tests="6" failures="0" skipped="0" time="16.517" errors="0">
-<testcase name="Navigation e2e › Usage by Year" classname="Navigation.e2e.test.js" time="3.46">
+<testsuite name="Navigation.e2e.test.js" timestamp="2025-12-09T19:00:49.050Z" hostname="chromium" tests="6" failures="0" skipped="0" time="15.023" errors="0">
+<testcase name="Navigation e2e › Usage by Year" classname="Navigation.e2e.test.js" time="2.503">
 </testcase>
-<testcase name="Navigation e2e › Usage by Year Graph" classname="Navigation.e2e.test.js" time="2.482">
+<testcase name="Navigation e2e › Usage by Year Graph" classname="Navigation.e2e.test.js" time="2.496">
 </testcase>
-<testcase name="Navigation e2e › Usage by Month" classname="Navigation.e2e.test.js" time="2.622">
+<testcase name="Navigation e2e › Usage by Month" classname="Navigation.e2e.test.js" time="2.549">
 </testcase>
-<testcase name="Navigation e2e › Usage by Month Graph" classname="Navigation.e2e.test.js" time="2.71">
+<testcase name="Navigation e2e › Usage by Month Graph" classname="Navigation.e2e.test.js" time="2.521">
 </testcase>
-<testcase name="Navigation e2e › Usage by User" classname="Navigation.e2e.test.js" time="2.688">
+<testcase name="Navigation e2e › Usage by User" classname="Navigation.e2e.test.js" time="2.446">
 </testcase>
-<testcase name="Navigation e2e › Usage by User Graph" classname="Navigation.e2e.test.js" time="2.555">
-</testcase>
-</testsuite>
-<testsuite name="UsageByMonth.e2e.test.js" timestamp="2025-12-02T14:33:33.374Z" hostname="chromium" tests="5" failures="0" skipped="0" time="12.684" errors="0">
-<testcase name="UsageByMonth e2e › should have footer" classname="UsageByMonth.e2e.test.js" time="2.479">
-</testcase>
-<testcase name="UsageByMonth e2e › should have table" classname="UsageByMonth.e2e.test.js" time="2.423">
-</testcase>
-<testcase name="UsageByMonth e2e › should sort by month descending" classname="UsageByMonth.e2e.test.js" time="2.44">
-</testcase>
-<testcase name="UsageByMonth e2e › should sort by month ascending" classname="UsageByMonth.e2e.test.js" time="2.519">
-</testcase>
-<testcase name="UsageByMonth e2e › should show different information when changing year" classname="UsageByMonth.e2e.test.js" time="2.823">
+<testcase name="Navigation e2e › Usage by User Graph" classname="Navigation.e2e.test.js" time="2.508">
 </testcase>
 </testsuite>
-<testsuite name="UsageByUser.e2e.test.js" timestamp="2025-12-02T14:33:33.374Z" hostname="chromium" tests="11" failures="0" skipped="0" time="29.047" errors="0">
-<testcase name="UsageByUser e2e › should have footer" classname="UsageByUser.e2e.test.js" time="2.469">
+<testsuite name="UsageByMonth.e2e.test.js" timestamp="2025-12-09T19:00:49.050Z" hostname="chromium" tests="5" failures="0" skipped="0" time="12.489" errors="0">
+<testcase name="UsageByMonth e2e › should have footer" classname="UsageByMonth.e2e.test.js" time="2.4">
 </testcase>
-<testcase name="UsageByUser e2e › should have table" classname="UsageByUser.e2e.test.js" time="2.471">
+<testcase name="UsageByMonth e2e › should have table" classname="UsageByMonth.e2e.test.js" time="2.406">
 </testcase>
-<testcase name="UsageByUser e2e › should sort by IP ascending" classname="UsageByUser.e2e.test.js" time="2.473">
+<testcase name="UsageByMonth e2e › should sort by month descending" classname="UsageByMonth.e2e.test.js" time="2.392">
 </testcase>
-<testcase name="UsageByUser e2e › should sort by IP descending" classname="UsageByUser.e2e.test.js" time="2.606">
+<testcase name="UsageByMonth e2e › should sort by month ascending" classname="UsageByMonth.e2e.test.js" time="2.469">
 </testcase>
-<testcase name="UsageByUser e2e › should sort by MAC" classname="UsageByUser.e2e.test.js" time="2.593">
-</testcase>
-<testcase name="UsageByUser e2e › should sort by user" classname="UsageByUser.e2e.test.js" time="2.59">
-</testcase>
-<testcase name="UsageByUser e2e › should sort by total" classname="UsageByUser.e2e.test.js" time="2.609">
-</testcase>
-<testcase name="UsageByUser e2e › should show different information when changing year" classname="UsageByUser.e2e.test.js" time="2.966">
-</testcase>
-<testcase name="UsageByUser e2e › should show different information when changing month" classname="UsageByUser.e2e.test.js" time="3.027">
-</testcase>
-<testcase name="UsageByUser e2e › should show different information when rows per page" classname="UsageByUser.e2e.test.js" time="2.617">
-</testcase>
-<testcase name="UsageByUser e2e › should show different information when changing IP/MAC/User" classname="UsageByUser.e2e.test.js" time="2.626">
+<testcase name="UsageByMonth e2e › should show different information when changing year" classname="UsageByMonth.e2e.test.js" time="2.822">
 </testcase>
 </testsuite>
-<testsuite name="UsageByYear.e2e.test.js" timestamp="2025-12-02T14:33:33.374Z" hostname="chromium" tests="3" failures="0" skipped="0" time="7.094" errors="0">
-<testcase name="UsageByYear e2e › should have table" classname="UsageByYear.e2e.test.js" time="2.316">
+<testsuite name="UsageByUser.e2e.test.js" timestamp="2025-12-09T19:00:49.050Z" hostname="chromium" tests="11" failures="0" skipped="0" time="29.08" errors="0">
+<testcase name="UsageByUser e2e › should have footer" classname="UsageByUser.e2e.test.js" time="2.454">
 </testcase>
-<testcase name="UsageByYear e2e › should sort by year descending" classname="UsageByYear.e2e.test.js" time="2.358">
+<testcase name="UsageByUser e2e › should have table" classname="UsageByUser.e2e.test.js" time="2.445">
 </testcase>
-<testcase name="UsageByYear e2e › should sort by year ascending" classname="UsageByYear.e2e.test.js" time="2.42">
+<testcase name="UsageByUser e2e › should sort by IP ascending" classname="UsageByUser.e2e.test.js" time="2.438">
 </testcase>
-</testsuite>
-<testsuite name="App.e2e.test.js" timestamp="2025-12-02T14:33:33.374Z" hostname="webkit" tests="1" failures="0" skipped="0" time="5.639" errors="0">
-<testcase name="App e2e › header element" classname="App.e2e.test.js" time="5.639">
+<testcase name="UsageByUser e2e › should sort by IP descending" classname="UsageByUser.e2e.test.js" time="2.574">
 </testcase>
-</testsuite>
-<testsuite name="Navigation.e2e.test.js" timestamp="2025-12-02T14:33:33.374Z" hostname="webkit" tests="6" failures="0" skipped="0" time="22.236" errors="0">
-<testcase name="Navigation e2e › Usage by Year" classname="Navigation.e2e.test.js" time="3.905">
+<testcase name="UsageByUser e2e › should sort by MAC" classname="UsageByUser.e2e.test.js" time="2.554">
 </testcase>
-<testcase name="Navigation e2e › Usage by Year Graph" classname="Navigation.e2e.test.js" time="3.514">
+<testcase name="UsageByUser e2e › should sort by user" classname="UsageByUser.e2e.test.js" time="2.589">
 </testcase>
-<testcase name="Navigation e2e › Usage by Month" classname="Navigation.e2e.test.js" time="3.791">
+<testcase name="UsageByUser e2e › should sort by total" classname="UsageByUser.e2e.test.js" time="2.591">
 </testcase>
-<testcase name="Navigation e2e › Usage by Month Graph" classname="Navigation.e2e.test.js" time="3.701">
+<testcase name="UsageByUser e2e › should show different information when changing year" classname="UsageByUser.e2e.test.js" time="2.984">
 </testcase>
-<testcase name="Navigation e2e › Usage by User" classname="Navigation.e2e.test.js" time="3.773">
+<testcase name="UsageByUser e2e › should show different information when changing month" classname="UsageByUser.e2e.test.js" time="3.125">
 </testcase>
-<testcase name="Navigation e2e › Usage by User Graph" classname="Navigation.e2e.test.js" time="3.552">
+<testcase name="UsageByUser e2e › should show different information when rows per page" classname="UsageByUser.e2e.test.js" time="2.714">
+</testcase>
+<testcase name="UsageByUser e2e › should show different information when changing IP/MAC/User" classname="UsageByUser.e2e.test.js" time="2.612">
 </testcase>
 </testsuite>
-<testsuite name="UsageByMonth.e2e.test.js" timestamp="2025-12-02T14:33:33.374Z" hostname="webkit" tests="5" failures="0" skipped="0" time="15.963" errors="0">
-<testcase name="UsageByMonth e2e › should have footer" classname="UsageByMonth.e2e.test.js" time="2.832">
+<testsuite name="UsageByYear.e2e.test.js" timestamp="2025-12-09T19:00:49.050Z" hostname="chromium" tests="3" failures="0" skipped="0" time="6.96" errors="0">
+<testcase name="UsageByYear e2e › should have table" classname="UsageByYear.e2e.test.js" time="2.314">
 </testcase>
-<testcase name="UsageByMonth e2e › should have table" classname="UsageByMonth.e2e.test.js" time="2.922">
+<testcase name="UsageByYear e2e › should sort by year descending" classname="UsageByYear.e2e.test.js" time="2.324">
 </testcase>
-<testcase name="UsageByMonth e2e › should sort by month descending" classname="UsageByMonth.e2e.test.js" time="2.98">
-</testcase>
-<testcase name="UsageByMonth e2e › should sort by month ascending" classname="UsageByMonth.e2e.test.js" time="3.286">
-</testcase>
-<testcase name="UsageByMonth e2e › should show different information when changing year" classname="UsageByMonth.e2e.test.js" time="3.943">
+<testcase name="UsageByYear e2e › should sort by year ascending" classname="UsageByYear.e2e.test.js" time="2.322">
 </testcase>
 </testsuite>
-<testsuite name="UsageByUser.e2e.test.js" timestamp="2025-12-02T14:33:33.374Z" hostname="webkit" tests="11" failures="0" skipped="0" time="40.296" errors="0">
-<testcase name="UsageByUser e2e › should have footer" classname="UsageByUser.e2e.test.js" time="3.178">
-</testcase>
-<testcase name="UsageByUser e2e › should have table" classname="UsageByUser.e2e.test.js" time="2.705">
-</testcase>
-<testcase name="UsageByUser e2e › should sort by IP ascending" classname="UsageByUser.e2e.test.js" time="2.679">
-</testcase>
-<testcase name="UsageByUser e2e › should sort by IP descending" classname="UsageByUser.e2e.test.js" time="3.858">
-</testcase>
-<testcase name="UsageByUser e2e › should sort by MAC" classname="UsageByUser.e2e.test.js" time="3.885">
-</testcase>
-<testcase name="UsageByUser e2e › should sort by user" classname="UsageByUser.e2e.test.js" time="3.909">
-</testcase>
-<testcase name="UsageByUser e2e › should sort by total" classname="UsageByUser.e2e.test.js" time="3.918">
-</testcase>
-<testcase name="UsageByUser e2e › should show different information when changing year" classname="UsageByUser.e2e.test.js" time="4.995">
-</testcase>
-<testcase name="UsageByUser e2e › should show different information when changing month" classname="UsageByUser.e2e.test.js" time="4.936">
-</testcase>
-<testcase name="UsageByUser e2e › should show different information when rows per page" classname="UsageByUser.e2e.test.js" time="3.305">
-</testcase>
-<testcase name="UsageByUser e2e › should show different information when changing IP/MAC/User" classname="UsageByUser.e2e.test.js" time="2.928">
+<testsuite name="App.e2e.test.js" timestamp="2025-12-09T19:00:49.050Z" hostname="webkit" tests="1" failures="0" skipped="0" time="4.08" errors="0">
+<testcase name="App e2e › header element" classname="App.e2e.test.js" time="4.08">
 </testcase>
 </testsuite>
-<testsuite name="UsageByYear.e2e.test.js" timestamp="2025-12-02T14:33:33.374Z" hostname="webkit" tests="3" failures="0" skipped="0" time="7.982" errors="0">
-<testcase name="UsageByYear e2e › should have table" classname="UsageByYear.e2e.test.js" time="2.651">
+<testsuite name="Navigation.e2e.test.js" timestamp="2025-12-09T19:00:49.050Z" hostname="webkit" tests="6" failures="0" skipped="0" time="21.467" errors="0">
+<testcase name="Navigation e2e › Usage by Year" classname="Navigation.e2e.test.js" time="3.584">
 </testcase>
-<testcase name="UsageByYear e2e › should sort by year descending" classname="UsageByYear.e2e.test.js" time="2.578">
+<testcase name="Navigation e2e › Usage by Year Graph" classname="Navigation.e2e.test.js" time="3.561">
 </testcase>
-<testcase name="UsageByYear e2e › should sort by year ascending" classname="UsageByYear.e2e.test.js" time="2.753">
+<testcase name="Navigation e2e › Usage by Month" classname="Navigation.e2e.test.js" time="3.294">
+</testcase>
+<testcase name="Navigation e2e › Usage by Month Graph" classname="Navigation.e2e.test.js" time="3.69">
+</testcase>
+<testcase name="Navigation e2e › Usage by User" classname="Navigation.e2e.test.js" time="3.643">
+</testcase>
+<testcase name="Navigation e2e › Usage by User Graph" classname="Navigation.e2e.test.js" time="3.695">
+</testcase>
+</testsuite>
+<testsuite name="UsageByMonth.e2e.test.js" timestamp="2025-12-09T19:00:49.050Z" hostname="webkit" tests="5" failures="0" skipped="0" time="15.414" errors="0">
+<testcase name="UsageByMonth e2e › should have footer" classname="UsageByMonth.e2e.test.js" time="2.399">
+</testcase>
+<testcase name="UsageByMonth e2e › should have table" classname="UsageByMonth.e2e.test.js" time="2.917">
+</testcase>
+<testcase name="UsageByMonth e2e › should sort by month descending" classname="UsageByMonth.e2e.test.js" time="2.912">
+</testcase>
+<testcase name="UsageByMonth e2e › should sort by month ascending" classname="UsageByMonth.e2e.test.js" time="3.3">
+</testcase>
+<testcase name="UsageByMonth e2e › should show different information when changing year" classname="UsageByMonth.e2e.test.js" time="3.886">
+</testcase>
+</testsuite>
+<testsuite name="UsageByUser.e2e.test.js" timestamp="2025-12-09T19:00:49.050Z" hostname="webkit" tests="11" failures="0" skipped="0" time="40.326" errors="0">
+<testcase name="UsageByUser e2e › should have footer" classname="UsageByUser.e2e.test.js" time="3.132">
+</testcase>
+<testcase name="UsageByUser e2e › should have table" classname="UsageByUser.e2e.test.js" time="2.616">
+</testcase>
+<testcase name="UsageByUser e2e › should sort by IP ascending" classname="UsageByUser.e2e.test.js" time="3.236">
+</testcase>
+<testcase name="UsageByUser e2e › should sort by IP descending" classname="UsageByUser.e2e.test.js" time="3.855">
+</testcase>
+<testcase name="UsageByUser e2e › should sort by MAC" classname="UsageByUser.e2e.test.js" time="3.84">
+</testcase>
+<testcase name="UsageByUser e2e › should sort by user" classname="UsageByUser.e2e.test.js" time="3.808">
+</testcase>
+<testcase name="UsageByUser e2e › should sort by total" classname="UsageByUser.e2e.test.js" time="3.866">
+</testcase>
+<testcase name="UsageByUser e2e › should show different information when changing year" classname="UsageByUser.e2e.test.js" time="5.047">
+</testcase>
+<testcase name="UsageByUser e2e › should show different information when changing month" classname="UsageByUser.e2e.test.js" time="4.848">
+</testcase>
+<testcase name="UsageByUser e2e › should show different information when rows per page" classname="UsageByUser.e2e.test.js" time="3.242">
+</testcase>
+<testcase name="UsageByUser e2e › should show different information when changing IP/MAC/User" classname="UsageByUser.e2e.test.js" time="2.836">
+</testcase>
+</testsuite>
+<testsuite name="UsageByYear.e2e.test.js" timestamp="2025-12-09T19:00:49.050Z" hostname="webkit" tests="3" failures="0" skipped="0" time="7.815" errors="0">
+<testcase name="UsageByYear e2e › should have table" classname="UsageByYear.e2e.test.js" time="2.586">
+</testcase>
+<testcase name="UsageByYear e2e › should sort by year descending" classname="UsageByYear.e2e.test.js" time="2.55">
+</testcase>
+<testcase name="UsageByYear e2e › should sort by year ascending" classname="UsageByYear.e2e.test.js" time="2.679">
 </testcase>
 </testsuite>
 </testsuites>
