@@ -49,8 +49,11 @@ server/        # Shell scripts and server-side install files
 screenshots/   # Example screenshots
 scripts/       # Release and utility scripts
 README.md      # Project documentation
+AGENTS.md      # AI coding agent instructions
 LICENSE        # License file
 ```
+
+> **AI Agents**: See [AGENTS.md](AGENTS.md) for coding conventions and patterns.
 
 ## Requirements
 

@@ -9,7 +9,7 @@ This project was bootstrapped with [VITE](https://vite.dev/).
 
 ## Prerequisites
 
-- [Node.js](https://nodejs.org/) (version 18+ recommended)
+- [Node.js](https://nodejs.org/) (version 22+ recommended)
 - [npm](https://www.npmjs.com/) (comes with Node.js)
 
 ## Installation
