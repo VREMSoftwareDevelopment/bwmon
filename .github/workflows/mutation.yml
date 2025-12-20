@@ -49,6 +49,9 @@ jobs:
         if: github.ref == 'refs/heads/main' && needs.check_changes.outputs.code_changed == 'true'
         runs-on: ubuntu-22.04
         needs: [check_changes]
+        defaults:
+            run:
+                working-directory: react
         strategy:
             matrix:
                 node-version: [22.x]
@@ -59,7 +62,6 @@ jobs:
                   node-version: ${{ matrix.node-version }}
             - name: Run Stryker tests
               run: npx stryker run
-              working-directory: react
             - name: Upload mutation reports
               uses: actions/upload-artifact@v4
               with:

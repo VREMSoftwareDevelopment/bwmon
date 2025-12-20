@@ -35,6 +35,9 @@ jobs:
     build:
         runs-on: ubuntu-22.04
         needs: []
+        defaults:
+            run:
+                working-directory: react
         strategy:
             matrix:
                 node-version: [22.x]
@@ -45,7 +48,6 @@ jobs:
                   node-version: ${{ matrix.node-version }}
             - name: Build
               run: npm run build
-              working-directory: react
             - name: Upload build artifact
               uses: actions/upload-artifact@v4
               with:
@@ -56,6 +58,9 @@ jobs:
     audit_lint:
         runs-on: ubuntu-22.04
         needs: [build]
+        defaults:
+            run:
+                working-directory: react
         strategy:
             matrix:
                 node-version: [22.x]
@@ -66,18 +71,18 @@ jobs:
                   node-version: ${{ matrix.node-version }}
             - name: Audit
               run: npm run audit
-              working-directory: react
             - name: Scan for suspicious code
               run: npm run suspicious
-              working-directory: react
             - name: ESLint
               run: npm run lint
-              working-directory: react
 
     # Analyze
     analyze:
         runs-on: ubuntu-22.04
         needs: [build]
+        defaults:
+            run:
+                working-directory: react
         strategy:
             matrix:
                 node-version: [22.x]
@@ -88,7 +93,6 @@ jobs:
                   node-version: ${{ matrix.node-version }}
             - name: Analyze bundle
               run: npm run analyze
-              working-directory: react
             - name: Upload bundle analysis report
               uses: actions/upload-artifact@v4
               with:
@@ -99,6 +103,9 @@ jobs:
     unit_tests:
         runs-on: ubuntu-22.04
         needs: [build]
+        defaults:
+            run:
+                working-directory: react
         strategy:
             matrix:
                 node-version: [22.x]
@@ -109,7 +116,6 @@ jobs:
                   node-version: ${{ matrix.node-version }}
             - name: Run unit tests with coverage
               run: npm run test:CI
-              working-directory: react
             - name: Upload coverage to Codecov
               uses: codecov/codecov-action@v5
               with:
@@ -126,6 +132,9 @@ jobs:
         if: github.ref == 'refs/heads/main'
         runs-on: ubuntu-22.04
         needs: [build]
+        defaults:
+            run:
+                working-directory: react
         strategy:
             matrix:
                 node-version: [22.x]
@@ -136,7 +145,6 @@ jobs:
                   node-version: ${{ matrix.node-version }}
             - name: Run duplication analysis
               run: npm run duplication
-              working-directory: react
             - name: Upload duplication HTML report
               uses: actions/upload-artifact@v4
               with:
@@ -147,6 +155,9 @@ jobs:
     e2e:
         runs-on: ubuntu-22.04
         needs: [unit_tests, audit_lint]
+        defaults:
+            run:
+                working-directory: react
         strategy:
             matrix:
                 node-version: [22.x]
@@ -162,10 +173,8 @@ jobs:
                   node-version: ${{ matrix.node-version }}
             - name: Install Playwright
               run: npx playwright install --with-deps
-              working-directory: react
             - name: Run Playwright tests
               run: npx playwright test
-              working-directory: react
             - name: Upload playwright reports
               uses: actions/upload-artifact@v4
               with:
