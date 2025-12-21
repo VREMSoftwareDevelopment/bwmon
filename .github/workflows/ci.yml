@@ -111,7 +111,7 @@ jobs:
     # Unit tests + coverage
     unit_tests:
         runs-on: ubuntu-22.04
-        needs: [build]
+        needs: [build, shellcheck]
         defaults:
             run:
                 working-directory: react
