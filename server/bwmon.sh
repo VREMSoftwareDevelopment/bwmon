@@ -71,7 +71,7 @@ usage() {
   echo "/*Bandwidth Monitor Data*/" > "${OUTPUTDB}"
   # details
   echo "${MACNAMES}" | sed 's/macnames=//' | tr '<' '\n' | tr '>' ',' > "${MACNAMESFILE}"
-  cat "${USAGEDB}" | while IFS=, read -r CURRENT_MONTH MAC IP USAGE_IN USAGE_OUT CREATE_TIME UPDATE_TIME
+  while IFS=, read -r CURRENT_MONTH MAC IP USAGE_IN USAGE_OUT CREATE_TIME UPDATE_TIME
   do
     # shellcheck disable=SC2018,SC2019
     MACU=$(echo "$MAC" | tr 'a-z' 'A-Z')
@@ -81,7 +81,7 @@ usage() {
       [ -z "$USER" ] && USER="${MAC}"
     fi
     echo "${CURRENT_MONTH},${IP},${MACU},${USER},${USAGE_IN},${USAGE_OUT},${CREATE_TIME},${UPDATE_TIME}" >> "${OUTPUTDB}"
-  done
+  done < "${USAGEDB}"
   # footer
   mv -f "${OUTPUTDB}" "${DESTDB}"
 }
