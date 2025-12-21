@@ -16,7 +16,7 @@
  * Bandwidth Monitor
  */
 
-import React from 'react';
+import React, { useMemo } from 'react';
 import { Paper, Table, TableRow, TableHead, TableCell, TableContainer } from '@mui/material';
 import { Body, CellInfo, DropDown, ErrorMessage, Loading, TableFooter as Footer, TableHeader as Header } from '@components';
 import { toMonth, toPercent, usageInGBytes, comparator, isAscending, sort } from '@utils';
@@ -44,7 +44,10 @@ const UsageByMonth = () => {
         setOrderBy(property);
     };
 
-    const sortedData = () => sort(data.usage, comparator(ascending, orderBy));
+    const sortedData = useMemo(
+        () => (data?.usage ? sort(data.usage, comparator(ascending, orderBy)) : []),
+        [data?.usage, ascending, orderBy]
+    );
 
     const displayData = () =>
         data ? (
@@ -69,7 +72,7 @@ const UsageByMonth = () => {
                     ascending={ascending}
                     orderBy={orderBy}
                 />
-                <Body prefix="month" cellInfos={cellInfos} values={sortedData()} />
+                <Body prefix="month" cellInfos={cellInfos} values={sortedData} />
                 <Footer prefix="month" cellInfos={cellInfos} values={data.total} />
             </Table>
         ) : null;

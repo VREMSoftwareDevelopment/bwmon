@@ -20,13 +20,14 @@
  * Custom React hook for fetching usage data by user, with filter.
  * @returns {{ years, year, setYear, months, month, setMonth, filter, setFilter, data, loading, error }}
  */
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useDeferredValue } from 'react';
 import { API } from '@services';
 import { useYearMonth } from '@hooks';
 
 const useUsageByUser = () => {
     const { years, year, setYear, months, month, setMonth, error: yearMonthError } = useYearMonth();
     const [filter, setFilter] = useState('');
+    const deferredFilter = useDeferredValue(filter);
     const [data, setData] = useState();
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -36,7 +37,7 @@ const useUsageByUser = () => {
             try {
                 setLoading(true);
                 setError(null);
-                const usageByUser = await API.getUsageByUser(year, month, filter);
+                const usageByUser = await API.getUsageByUser(year, month, deferredFilter);
                 setData(usageByUser);
             } catch (err) {
                 setError(err.message);
@@ -47,7 +48,7 @@ const useUsageByUser = () => {
         if (year && month) {
             fetch();
         }
-    }, [year, month, filter]);
+    }, [year, month, deferredFilter]);
 
     return { years, year, setYear, months, month, setMonth, filter, setFilter, data, loading, error: yearMonthError || error };
 };

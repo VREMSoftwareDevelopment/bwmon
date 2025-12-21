@@ -119,6 +119,7 @@ test.describe('UsageByUser e2e', () => {
 
     test('should show different information when changing IP/MAC/User', async ({ page }) => {
         await page.locator('#user-filter').fill('11');
+        await expect(page.locator('tbody tr')).toHaveCount(5);
 
         const innerTexts = await getTBodyRowTexts(page);
         expect(innerTexts.length).toEqual(5);

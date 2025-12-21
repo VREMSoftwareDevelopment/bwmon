@@ -16,7 +16,7 @@
  * Bandwidth Monitor
  */
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import { Paper, TableCell, TableContainer } from '@mui/material';
 import { CellInfo, DropDown, ErrorMessage, Loading, Search, UsageTable } from '@components';
 import { timeToDate, toIPv4, toPercent, usageInGBytes, comparator, isAscending, sort } from '@utils';
@@ -66,8 +66,15 @@ const UsageByUser = () => {
         setPage(0);
     }, [year, month, filter, setPage]);
 
-    const sortedData = () =>
-        sort(data.usage, comparator(ascending, orderBy)).slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage);
+    const sortedData = useMemo(
+        () => (data?.usage ? sort(data.usage, comparator(ascending, orderBy)) : []),
+        [data?.usage, ascending, orderBy]
+    );
+
+    const paginatedData = useMemo(
+        () => sortedData.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage),
+        [sortedData, page, rowsPerPage]
+    );
 
     const columnCount = () => cellInfos.length - 4;
 
@@ -87,7 +94,7 @@ const UsageByUser = () => {
         ascending,
         orderBy,
     };
-    const bodyProps = { values: data && data.usage ? sortedData() : [] };
+    const bodyProps = { values: paginatedData };
     const footerProps = { values: data && data.total ? data.total : {} };
     const displayData = () =>
         data ? (
