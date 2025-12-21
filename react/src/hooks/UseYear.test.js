@@ -18,11 +18,16 @@
 
 import { act, renderHook, waitFor } from '@testing-library/react';
 import useYear from './UseYear';
+import { API } from '@services';
 
 jest.mock('@services/Usage');
 
 describe('UseYear', () => {
     const expectedYears = [2013, 2012, 2011];
+
+    afterEach(() => {
+        jest.restoreAllMocks();
+    });
 
     it('should initialize', async () => {
         const { result } = renderHook(useYear);
@@ -58,6 +63,17 @@ describe('UseYear', () => {
             const initialYear = result.current.year;
             act(() => result.current.setYear(initialYear));
             expect(result.current.year).toEqual(initialYear);
+        });
+    });
+
+    it('should set error when API fails', async () => {
+        const errorMessage = 'API Error';
+        jest.spyOn(API, 'getYears').mockRejectedValueOnce(new Error(errorMessage));
+        const { result } = renderHook(useYear);
+        await waitFor(() => {
+            expect(result.current.error).toEqual(errorMessage);
+            expect(result.current.years).toBeUndefined();
+            expect(result.current.year).toBeUndefined();
         });
     });
 });

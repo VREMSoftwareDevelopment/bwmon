@@ -18,7 +18,7 @@
 
 import React from 'react';
 import { Paper, Table, TableRow, TableHead, TableCell, TableContainer } from '@mui/material';
-import { Body, CellInfo, DropDown, Loading, TableFooter as Footer, TableHeader as Header } from '@components';
+import { Body, CellInfo, DropDown, ErrorMessage, Loading, TableFooter as Footer, TableHeader as Header } from '@components';
 import { toMonth, toPercent, usageInGBytes, comparator, isAscending, sort } from '@utils';
 import { useSortDesc } from '@hooks';
 import { useUsageByMonth } from '.';
@@ -34,7 +34,7 @@ const cellInfos = [
 ];
 
 const UsageByMonth = () => {
-    const { years, year, setYear, data, loading } = useUsageByMonth();
+    const { years, year, setYear, data, loading, error } = useUsageByMonth();
     const { ascending, setAscending, orderBy, setOrderBy } = useSortDesc(cellInfos[0].id);
 
     const handleChangeYear = (event) => setYear(event.target.value);
@@ -77,6 +77,7 @@ const UsageByMonth = () => {
     return (
         <Paper>
             <Loading isLoading={loading} />
+            {error && <ErrorMessage message={error} />}
             <TableContainer>{displayData()}</TableContainer>
         </Paper>
     );

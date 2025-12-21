@@ -75,6 +75,13 @@ describe('UsageByUser', () => {
         expect(screen.queryByTestId('user-header')).not.toBeInTheDocument();
     });
 
+    it('renders error state', () => {
+        useUsageByUser.mockReturnValue({ data: null, loading: false, error: 'Failed to load data' });
+        renderComponent();
+        expect(screen.getByText('Failed to load data')).toBeInTheDocument();
+        expect(screen.queryByTestId('user-header')).not.toBeInTheDocument();
+    });
+
     it('Pagination colSpan matches columnCount', () => {
         renderComponent();
         const pagination = screen.getByTestId('user-pagination-id');

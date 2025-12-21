@@ -18,11 +18,17 @@
 
 import { act, renderHook, waitFor } from '@testing-library/react';
 import useYearMonth from './UseYearMonth';
+import { API } from '@services';
 
 jest.mock('@services/Usage');
 
 describe('UseYearMonth', () => {
     const expectedYears = [2013, 2012, 2011];
+
+    afterEach(() => {
+        jest.restoreAllMocks();
+    });
+
     const expectedYearsCount = 3;
 
     it('should initialize years', async () => {
@@ -84,9 +90,20 @@ describe('UseYearMonth', () => {
     it('should not update months or month if year is undefined', async () => {
         // scan-suspicious-ignore-next-line
         const useYear = require('./UseYear');
+        const originalDefault = useYear.default;
         useYear.default = jest.fn().mockReturnValue({ years: [], year: undefined, setYear: jest.fn() });
         const { result } = renderHook(() => useYearMonth());
         expect(result.current.months).toBeUndefined();
         expect(result.current.month).toBeUndefined();
+        useYear.default = originalDefault;
+    });
+
+    it('should set error when API.getMonths fails', async () => {
+        const errorMessage = 'API Error';
+        jest.spyOn(API, 'getMonths').mockRejectedValueOnce(new Error(errorMessage));
+        const { result } = renderHook(() => useYearMonth());
+        await waitFor(() => {
+            expect(result.current.error).toEqual(errorMessage);
+        });
     });
 });

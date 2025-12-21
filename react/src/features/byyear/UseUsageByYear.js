@@ -18,7 +18,7 @@
 
 /**
  * Custom React hook for fetching usage data by year.
- * @returns {{ data, loading }}
+ * @returns {{ data, loading, error }}
  */
 import { useState, useEffect } from 'react';
 import { API } from '@services';
@@ -26,17 +26,25 @@ import { API } from '@services';
 const useUsageByYear = () => {
     const [data, setData] = useState();
     const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
 
     useEffect(() => {
         async function fetch() {
-            const usageByYear = await API.getUsageByYear();
-            setData(usageByYear);
-            setLoading(false);
+            try {
+                setLoading(true);
+                setError(null);
+                const usageByYear = await API.getUsageByYear();
+                setData(usageByYear);
+            } catch (err) {
+                setError(err.message);
+            } finally {
+                setLoading(false);
+            }
         }
         fetch();
     }, []);
 
-    return { data, loading };
+    return { data, loading, error };
 };
 
 export default useUsageByYear;

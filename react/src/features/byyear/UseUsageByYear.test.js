@@ -23,6 +23,10 @@ import { useUsageByYear } from '.';
 jest.mock('@services/Usage');
 
 describe('UseUsageByYear', () => {
+    afterEach(() => {
+        jest.restoreAllMocks();
+    });
+
     it('should initialize', async () => {
         const expectedCount = 3;
         const expectedFirst = {
@@ -62,6 +66,16 @@ describe('UseUsageByYear', () => {
         const { result } = renderHook(useUsageByYear);
         await waitFor(() => {
             expect(result.current.data).toBeNull();
+            expect(result.current.loading).toBeFalsy();
+        });
+    });
+
+    it('should set error when API.getUsageByYear fails', async () => {
+        const errorMessage = 'API Error';
+        jest.spyOn(API, 'getUsageByYear').mockRejectedValueOnce(new Error(errorMessage));
+        const { result } = renderHook(useUsageByYear);
+        await waitFor(() => {
+            expect(result.current.error).toEqual(errorMessage);
             expect(result.current.loading).toBeFalsy();
         });
     });

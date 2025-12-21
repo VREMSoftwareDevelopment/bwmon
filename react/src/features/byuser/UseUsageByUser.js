@@ -18,30 +18,38 @@
 
 /**
  * Custom React hook for fetching usage data by user, with filter.
- * @returns {{ years, year, setYear, months, month, setMonth, filter, setFilter, data, loading }}
+ * @returns {{ years, year, setYear, months, month, setMonth, filter, setFilter, data, loading, error }}
  */
 import { useState, useEffect } from 'react';
 import { API } from '@services';
 import { useYearMonth } from '@hooks';
 
 const useUsageByUser = () => {
-    const { years, year, setYear, months, month, setMonth } = useYearMonth();
+    const { years, year, setYear, months, month, setMonth, error: yearMonthError } = useYearMonth();
     const [filter, setFilter] = useState('');
     const [data, setData] = useState();
     const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
 
     useEffect(() => {
         async function fetch() {
-            const usageByUser = await API.getUsageByUser(year, month, filter);
-            setData(usageByUser);
-            setLoading(false);
+            try {
+                setLoading(true);
+                setError(null);
+                const usageByUser = await API.getUsageByUser(year, month, filter);
+                setData(usageByUser);
+            } catch (err) {
+                setError(err.message);
+            } finally {
+                setLoading(false);
+            }
         }
         if (year && month) {
             fetch();
         }
     }, [year, month, filter]);
 
-    return { years, year, setYear, months, month, setMonth, filter, setFilter, data, loading };
+    return { years, year, setYear, months, month, setMonth, filter, setFilter, data, loading, error: yearMonthError || error };
 };
 
 export default useUsageByUser;

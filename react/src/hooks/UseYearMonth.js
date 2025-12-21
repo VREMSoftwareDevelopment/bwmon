@@ -18,29 +18,35 @@
 
 /**
  * Custom React hook for managing year and month selection.
- * @returns {{ years, year, setYear, months, month, setMonth }}
+ * @returns {{ years, year, setYear, months, month, setMonth, error }}
  */
 import { useState, useEffect } from 'react';
 import { API } from '@services';
 import { useYear } from './index';
 
 const useYearMonth = () => {
-    const { years, year, setYear } = useYear();
+    const { years, year, setYear, error: yearError } = useYear();
     const [months, setMonths] = useState();
     const [month, setMonth] = useState();
+    const [error, setError] = useState(null);
 
     useEffect(() => {
         async function fetch() {
-            const months = await API.getMonths(year);
-            setMonths(months);
-            setMonth(months[0]);
+            try {
+                setError(null);
+                const months = await API.getMonths(year);
+                setMonths(months);
+                setMonth(months[0]);
+            } catch (err) {
+                setError(err.message);
+            }
         }
         if (year) {
             fetch();
         }
     }, [year]);
 
-    return { years, year, setYear, months, month, setMonth };
+    return { years, year, setYear, months, month, setMonth, error: yearError || error };
 };
 
 export default useYearMonth;

@@ -68,6 +68,13 @@ describe('UsageByMonth', () => {
         expect(screen.queryByTestId('month-header')).not.toBeInTheDocument();
     });
 
+    it('renders error state', () => {
+        useUsageByMonth.mockReturnValue({ data: null, loading: false, error: 'Failed to load data' });
+        renderComponent();
+        expect(screen.getByText('Failed to load data')).toBeInTheDocument();
+        expect(screen.queryByTestId('month-header')).not.toBeInTheDocument();
+    });
+
     it('renders table header', () => {
         renderComponent();
         expect(screen.queryByText('Loading...')).not.toBeInTheDocument();

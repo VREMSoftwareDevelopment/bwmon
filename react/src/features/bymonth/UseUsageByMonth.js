@@ -18,29 +18,37 @@
 
 /**
  * Custom React hook for fetching usage data by month.
- * @returns {{ years, year, setYear, data, loading }}
+ * @returns {{ years, year, setYear, data, loading, error }}
  */
 import { useState, useEffect } from 'react';
 import { API } from '@services';
 import { useYear } from '@hooks';
 
 const useUsageByMonth = () => {
-    const { years, year, setYear } = useYear();
+    const { years, year, setYear, error: yearError } = useYear();
     const [data, setData] = useState();
     const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
 
     useEffect(() => {
         async function fetch() {
-            const usageByMonth = await API.getUsageByMonth(year);
-            setData(usageByMonth);
-            setLoading(false);
+            try {
+                setLoading(true);
+                setError(null);
+                const usageByMonth = await API.getUsageByMonth(year);
+                setData(usageByMonth);
+            } catch (err) {
+                setError(err.message);
+            } finally {
+                setLoading(false);
+            }
         }
         if (year) {
             fetch();
         }
     }, [year]);
 
-    return { years, year, setYear, data, loading };
+    return { years, year, setYear, data, loading, error: yearError || error };
 };
 
 export default useUsageByMonth;

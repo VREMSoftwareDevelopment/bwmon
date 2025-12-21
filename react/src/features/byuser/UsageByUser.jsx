@@ -18,7 +18,7 @@
 
 import React, { useEffect } from 'react';
 import { Paper, TableCell, TableContainer } from '@mui/material';
-import { CellInfo, DropDown, Loading, Search, UsageTable } from '@components';
+import { CellInfo, DropDown, ErrorMessage, Loading, Search, UsageTable } from '@components';
 import { timeToDate, toIPv4, toPercent, usageInGBytes, comparator, isAscending, sort } from '@utils';
 import { useSortAsc, usePagination } from '@hooks';
 import { useUsageByUser } from '.';
@@ -40,7 +40,7 @@ const cellInfos = [
 const rowsPerPageMin = 20;
 
 const UsageByUser = () => {
-    const { years, year, setYear, months, month, setMonth, filter, setFilter, data, loading } = useUsageByUser();
+    const { years, year, setYear, months, month, setMonth, filter, setFilter, data, loading, error } = useUsageByUser();
     const { page, setPage, rowsPerPage, setRowsPerPage } = usePagination(rowsPerPageMin);
     const { ascending, setAscending, orderBy, setOrderBy } = useSortAsc(cellInfos[0].id);
 
@@ -106,6 +106,7 @@ const UsageByUser = () => {
     return (
         <Paper>
             <Loading isLoading={loading} />
+            {error && <ErrorMessage message={error} />}
             <TableContainer>
                 <div style={{ display: 'flex', gap: '1rem', marginBottom: '1rem' }}>
                     <DropDown data-testid="user-year" id="user-year" onChange={handleChangeYear} items={years} value={year} />

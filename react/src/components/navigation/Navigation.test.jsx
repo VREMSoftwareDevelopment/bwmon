@@ -27,6 +27,10 @@ describe('Navigation', () => {
         { id: 'about', pathname: '/about', label: 'About', icon: <div>AboutIcon</div> },
     ];
 
+    afterEach(() => {
+        jest.restoreAllMocks();
+    });
+
     const renderComponent = () =>
         render(
             <MemoryRouter initialEntries={['/']}>

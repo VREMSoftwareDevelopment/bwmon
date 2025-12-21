@@ -30,6 +30,10 @@ describe('BWMonRoutes', () => {
         { pathname: '/page2', element: <MockComponent text="Page 2" /> },
     ];
 
+    afterEach(() => {
+        jest.restoreAllMocks();
+    });
+
     const renderComponent = (props) =>
         render(
             <MemoryRouter initialEntries={props}>

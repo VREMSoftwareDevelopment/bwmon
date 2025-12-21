@@ -18,7 +18,7 @@
 
 /**
  * Custom React hook for fetching and managing year selection.
- * @returns {{ years, year, setYear }}
+ * @returns {{ years, year, setYear, error }}
  */
 import { useState, useEffect } from 'react';
 import { API } from '@services';
@@ -26,17 +26,23 @@ import { API } from '@services';
 const useYear = () => {
     const [years, setYears] = useState();
     const [year, setYear] = useState();
+    const [error, setError] = useState(null);
 
     useEffect(() => {
         async function fetch() {
-            const years = await API.getYears();
-            setYears(years);
-            setYear(years[0]);
+            try {
+                setError(null);
+                const years = await API.getYears();
+                setYears(years);
+                setYear(years[0]);
+            } catch (err) {
+                setError(err.message);
+            }
         }
         fetch();
     }, []);
 
-    return { years, year, setYear };
+    return { years, year, setYear, error };
 };
 
 export default useYear;

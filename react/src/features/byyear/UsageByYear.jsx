@@ -18,7 +18,7 @@
 
 import React from 'react';
 import { Paper, TableContainer } from '@mui/material';
-import { CellInfo, Loading, UsageTable } from '@components';
+import { CellInfo, ErrorMessage, Loading, UsageTable } from '@components';
 import { usageInGBytes, comparator, isAscending, sort } from '@utils';
 import { useSortDesc, usePagination } from '@hooks';
 import { useUsageByYear } from '.';
@@ -35,7 +35,7 @@ const cellInfos = [
 const rowsPerPageMin = 20;
 
 const UsageByYear = () => {
-    const { data, loading } = useUsageByYear();
+    const { data, loading, error } = useUsageByYear();
     const { page, setPage, rowsPerPage, setRowsPerPage } = usePagination(rowsPerPageMin);
     const { ascending, setAscending, orderBy, setOrderBy } = useSortDesc(cellInfos[0].id);
 
@@ -86,6 +86,7 @@ const UsageByYear = () => {
     return (
         <Paper>
             <Loading isLoading={loading} />
+            {error && <ErrorMessage message={error} />}
             <TableContainer>{displayData()}</TableContainer>
         </Paper>
     );
