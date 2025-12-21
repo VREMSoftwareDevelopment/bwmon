@@ -17,11 +17,11 @@
  */
 
 import { useState, useEffect } from 'react';
-import { toIPv4, usageInGBytes } from '@utils';
-import { useUsageByUser } from './index';
+import { toMonth, usageInGBytes } from '@utils';
+import { useUsageByMonth } from '.';
 
-const useUsageByYearGraph = () => {
-    const { years, year, setYear, months, month, setMonth, filter, setFilter, data, loading } = useUsageByUser();
+const useUsageByMonthGraph = () => {
+    const { years, year, setYear, data, loading } = useUsageByMonth();
     const [options, setOptions] = useState({});
     const [series, setSeries] = useState([]);
 
@@ -29,26 +29,26 @@ const useUsageByYearGraph = () => {
         if (data) {
             setOptions({
                 chart: {
-                    id: 'usage-by-user',
+                    id: 'usage-by-month',
                     toolbar: {
                         show: false,
                     },
                 },
                 xaxis: {
-                    categories: data.usage.map((element) => toIPv4(element.IP)),
+                    categories: data.usage.map((element) => toMonth(element.id)).reverse(),
                 },
             });
 
             setSeries([
                 {
                     name: 'Total Usage',
-                    data: data.usage.map((element) => Number(usageInGBytes(element.total)).toFixed(1)),
+                    data: data.usage.map((element) => Math.round(usageInGBytes(element.total))).reverse(),
                 },
             ]);
         }
     }, [data]);
 
-    return { options, series, years, year, setYear, months, month, setMonth, filter, setFilter, loading };
+    return { options, series, years, year, setYear, loading };
 };
 
-export default useUsageByYearGraph;
+export default useUsageByMonthGraph;

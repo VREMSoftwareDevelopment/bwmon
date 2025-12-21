@@ -20,7 +20,8 @@ import React from 'react';
 import { Paper, Table, TableRow, TableHead, TableCell, TableContainer } from '@mui/material';
 import { Body, CellInfo, DropDown, Loading, TableFooter as Footer, TableHeader as Header } from '@components';
 import { toMonth, toPercent, usageInGBytes, comparator, isAscending, sort } from '@utils';
-import { useUsageByMonth, useSortDesc } from '@hooks';
+import { useSortDesc } from '@hooks';
+import { useUsageByMonth } from '.';
 
 const cellInfos = [
     new CellInfo('id', true, 'left', 'Month', false, toMonth),

@@ -21,9 +21,9 @@ export default {
     moduleNameMapper: {
         '^@components$': '<rootDir>/src/components/index.js',
         '^@components/(.*)$': '<rootDir>/src/components/$1',
+        '^@features/(.*)$': '<rootDir>/src/features/$1',
         '^@hooks$': '<rootDir>/src/hooks/index.js',
         '^@hooks/(.*)$': '<rootDir>/src/hooks/$1',
-        '^@pages/(.*)$': '<rootDir>/src/pages/$1',
         '^@services$': '<rootDir>/src/services/index.js',
         '^@services/(.*)$': '<rootDir>/src/services/$1',
         '^@utils$': '<rootDir>/src/utils/index.js',

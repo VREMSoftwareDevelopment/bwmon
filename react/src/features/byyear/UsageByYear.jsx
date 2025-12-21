@@ -20,7 +20,8 @@ import React from 'react';
 import { Paper, TableContainer } from '@mui/material';
 import { CellInfo, Loading, UsageTable } from '@components';
 import { usageInGBytes, comparator, isAscending, sort } from '@utils';
-import { useUsageByYear, useSortDesc, usePagination } from '@hooks';
+import { useSortDesc, usePagination } from '@hooks';
+import { useUsageByYear } from '.';
 
 const cellInfos = [
     new CellInfo('id', true, 'left', 'Year', false),

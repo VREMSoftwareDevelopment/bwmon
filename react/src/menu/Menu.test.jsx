@@ -18,12 +18,9 @@
 
 import React from 'react';
 import { Person, CalendarToday, CalendarViewDay, ShowChart, Timeline } from '@mui/icons-material';
-import UsageByUser from '@pages/byuser/UsageByUser';
-import UsageByUserGraph from '@pages/byuser/UsageByUserGraph';
-import UsageByMonth from '@pages/bymonth/UsageByMonth';
-import UsageByMonthGraph from '@pages/bymonth/UsageByMonthGraph';
-import UsageByYear from '@pages/byyear/UsageByYear';
-import UsageByYearGraph from '@pages/byyear/UsageByYearGraph';
+import { UsageByUser, UsageByUserGraph } from '@features/byuser';
+import { UsageByMonth, UsageByMonthGraph } from '@features/bymonth';
+import { UsageByYear, UsageByYearGraph } from '@features/byyear';
 import menu from './Menu';
 
 describe('Menu', () => {

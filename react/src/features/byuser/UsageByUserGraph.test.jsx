@@ -21,12 +21,12 @@ import { render, screen, within, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import UsageByUserGraph from './UsageByUserGraph';
-import { useUsageByUserGraph } from '@hooks';
+import { useUsageByUserGraph } from '@features/byuser';
 import { Search } from '@components';
 
 jest.mock('@components/graph/Graph');
 jest.mock('@components/inputs/Search');
-jest.mock('@hooks/byuser/UseUsageByUserGraph');
+jest.mock('@features/byuser/UseUsageByUserGraph');
 
 describe('UsageByUserGraph', () => {
     const data = {

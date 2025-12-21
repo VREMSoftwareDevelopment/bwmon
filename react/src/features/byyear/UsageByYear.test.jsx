@@ -20,12 +20,13 @@ import React from 'react';
 import { render, screen, within, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
-import { useUsageByYear, usePagination, useSortDesc } from '@hooks';
+import { usePagination, useSortDesc } from '@hooks';
+import { useUsageByYear } from '@features/byyear';
 import UsageByYear from './UsageByYear';
 
-jest.mock('@hooks/byyear/UseUsageByYear');
-jest.mock('@hooks/common/UsePagination');
-jest.mock('@hooks/common/UseSort');
+jest.mock('@features/byyear/UseUsageByYear');
+jest.mock('@hooks/UsePagination');
+jest.mock('@hooks/UseSort');
 
 describe('UsageByYear', () => {
     const data = [

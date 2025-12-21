@@ -18,7 +18,7 @@
 
 import { renderHook, waitFor } from '@testing-library/react';
 import { API } from '@services';
-import { useUsageByYear } from './index';
+import { useUsageByYear } from '.';
 
 jest.mock('@services/Usage');
 

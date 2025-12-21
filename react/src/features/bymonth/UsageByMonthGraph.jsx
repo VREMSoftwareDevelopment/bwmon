@@ -19,45 +19,29 @@
 import React from 'react';
 import { Box, Paper } from '@mui/material';
 import Grid from '@mui/material/Grid';
-import { DropDown, Graph, Loading, Search } from '@components';
-import { useUsageByUserGraph } from '@hooks';
+import { DropDown, Graph, Loading } from '@components';
+import { useUsageByMonthGraph } from '.';
 
 const options = { flexGrow: 1, m: 2, mt: 6 };
 
-const UsageByUserGraph = () => {
-    const { options, series, years, year, setYear, months, month, setMonth, setFilter, loading } = useUsageByUserGraph();
+const UsageByMonthGraph = () => {
+    const { options, series, years, year, setYear, loading } = useUsageByMonthGraph();
 
     const handleChangeYear = (event) => setYear(event.target.value);
-
-    const handleChangeMonth = (event) => setMonth(event.target.value);
-
-    const handleChangeFilter = (event) => setFilter(event.target.value);
 
     return (
         <Paper>
             <Loading isLoading={loading} />
             <Box sx={options}>
-                <Grid container spacing={4}>
+                <Grid container>
                     <Grid size={2}>
                         <DropDown
-                            data-testid="user-year-graph"
-                            id="user-year-graph"
+                            data-testid="month-year-graph"
+                            id="month-year-graph"
                             onChange={handleChangeYear}
                             items={years}
                             value={year}
                         />
-                    </Grid>
-                    <Grid size={2}>
-                        <DropDown
-                            data-testid="user-month-graph"
-                            id="user-month-graph"
-                            onChange={handleChangeMonth}
-                            items={months}
-                            value={month}
-                        />
-                    </Grid>
-                    <Grid size={4}>
-                        <Search data-testid="user-filter-graph" id="user-filter-graph" onChange={handleChangeFilter} />
                     </Grid>
                 </Grid>
             </Box>
@@ -66,4 +50,4 @@ const UsageByUserGraph = () => {
     );
 };
 
-export default UsageByUserGraph;
+export default UsageByMonthGraph;

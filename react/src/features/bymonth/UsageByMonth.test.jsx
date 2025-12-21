@@ -21,10 +21,11 @@ import { fireEvent, render, screen, within } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import UsageByMonth from './UsageByMonth';
-import { useUsageByMonth, useSortDesc } from '@hooks';
+import { useSortDesc } from '@hooks';
+import { useUsageByMonth } from '@features/bymonth';
 
-jest.mock('@hooks/bymonth/UseUsageByMonth');
-jest.mock('@hooks/common/UseSort');
+jest.mock('@features/bymonth/UseUsageByMonth');
+jest.mock('@hooks/UseSort');
 
 describe('UsageByMonth', () => {
     const data = {

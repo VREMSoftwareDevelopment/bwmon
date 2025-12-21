@@ -17,31 +17,30 @@
  */
 
 /**
- * Custom React hook for fetching usage data by user, with filter.
- * @returns {{ years, year, setYear, months, month, setMonth, filter, setFilter, data, loading }}
+ * Custom React hook for fetching usage data by month.
+ * @returns {{ years, year, setYear, data, loading }}
  */
 import { useState, useEffect } from 'react';
 import { API } from '@services';
-import { useYearMonth } from '@hooks/common';
+import { useYear } from '@hooks';
 
-const useUsageByUser = () => {
-    const { years, year, setYear, months, month, setMonth } = useYearMonth();
-    const [filter, setFilter] = useState('');
+const useUsageByMonth = () => {
+    const { years, year, setYear } = useYear();
     const [data, setData] = useState();
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         async function fetch() {
-            const usageByUser = await API.getUsageByUser(year, month, filter);
-            setData(usageByUser);
+            const usageByMonth = await API.getUsageByMonth(year);
+            setData(usageByMonth);
             setLoading(false);
         }
-        if (year && month) {
+        if (year) {
             fetch();
         }
-    }, [year, month, filter]);
+    }, [year]);
 
-    return { years, year, setYear, months, month, setMonth, filter, setFilter, data, loading };
+    return { years, year, setYear, data, loading };
 };
 
-export default useUsageByUser;
+export default useUsageByMonth;

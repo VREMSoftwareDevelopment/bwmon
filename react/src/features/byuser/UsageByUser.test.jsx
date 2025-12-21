@@ -21,14 +21,15 @@ import { render, screen, within, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import UsageByUser from './UsageByUser';
-import { useUsageByUser, usePagination, useSortAsc } from '@hooks';
+import { usePagination, useSortAsc } from '@hooks';
+import { useUsageByUser } from '@features/byuser';
 import { Search } from '@components';
 import { fromIPv4 } from '@utils';
 
 jest.mock('@components/inputs/Search');
-jest.mock('@hooks/byuser/UseUsageByUser');
-jest.mock('@hooks/common/UsePagination');
-jest.mock('@hooks/common/UseSort');
+jest.mock('@features/byuser/UseUsageByUser');
+jest.mock('@hooks/UsePagination');
+jest.mock('@hooks/UseSort');
 
 describe('UsageByUser', () => {
     beforeEach(() => {

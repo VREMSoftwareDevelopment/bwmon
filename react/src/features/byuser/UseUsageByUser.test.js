@@ -18,7 +18,7 @@
 
 import { act, renderHook, waitFor } from '@testing-library/react';
 import { fromIPv4 } from '@utils';
-import { useUsageByUser } from './index';
+import { useUsageByUser } from '.';
 
 jest.mock('@services/Usage');
 

@@ -20,7 +20,8 @@ import React, { useEffect } from 'react';
 import { Paper, TableCell, TableContainer } from '@mui/material';
 import { CellInfo, DropDown, Loading, Search, UsageTable } from '@components';
 import { timeToDate, toIPv4, toPercent, usageInGBytes, comparator, isAscending, sort } from '@utils';
-import { useUsageByUser, useSortAsc, usePagination } from '@hooks';
+import { useSortAsc, usePagination } from '@hooks';
+import { useUsageByUser } from '.';
 
 const cellInfos = [
     new CellInfo('IP', true, 'left', 'IP', false, toIPv4),
