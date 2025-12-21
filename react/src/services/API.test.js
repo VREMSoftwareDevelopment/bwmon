@@ -324,4 +324,26 @@ describe('API', () => {
         const actual = await API.getUsageByUser(2011, 'November');
         expect(JSON.stringify(actual.total)).toEqual(JSON.stringify(expected));
     });
+
+    it('should not mutate cached data when getUsageByUser is called multiple times', async () => {
+        const firstCall = await API.getUsageByUser(2011, 'November');
+        const firstResultPercent = firstCall.usage[0].percent;
+
+        const secondCall = await API.getUsageByUser(2011, 'November');
+
+        expect(firstCall.usage[0].percent).toEqual(firstResultPercent);
+        expect(secondCall.usage[0].percent).toEqual(firstResultPercent);
+        expect(firstCall.usage).not.toBe(secondCall.usage);
+    });
+
+    it('should not mutate cached data when getUsageByMonth is called multiple times', async () => {
+        const firstCall = await API.getUsageByMonth(2011);
+        const firstResultPercent = firstCall.usage[0].percent;
+
+        const secondCall = await API.getUsageByMonth(2011);
+
+        expect(firstCall.usage[0].percent).toEqual(firstResultPercent);
+        expect(secondCall.usage[0].percent).toEqual(firstResultPercent);
+        expect(firstCall.usage).not.toBe(secondCall.usage);
+    });
 });

@@ -101,8 +101,11 @@ class Store {
             });
         }
         const total = this.sum(usage, days, month);
-        usage.forEach((value) => (value.percent = +((value.total * 100) / total.total).toFixed(1)));
-        return { usage, total };
+        const usageWithPercent = usage.map((value) => ({
+            ...value,
+            percent: +((value.total * 100) / total.total).toFixed(1),
+        }));
+        return { usage: usageWithPercent, total };
     };
 }
 
@@ -128,8 +131,11 @@ class Service {
                 return result.total;
             })
         );
-        usage.forEach((value) => (value.percent = +((value.total * 100) / total.total).toFixed(1)));
-        return { usage, total };
+        const usageWithPercent = usage.map((value) => ({
+            ...value,
+            percent: +((value.total * 100) / total.total).toFixed(1),
+        }));
+        return { usage: usageWithPercent, total };
     };
 
     getUsageByYear = async () => {
