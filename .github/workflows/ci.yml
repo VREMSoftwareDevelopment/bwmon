@@ -31,6 +31,15 @@ permissions:
     contents: write
 
 jobs:
+    # Shell script linting
+    shellcheck:
+        runs-on: ubuntu-22.04
+        needs: []
+        steps:
+            - uses: actions/checkout@v4
+            - name: Run ShellCheck
+              run: shellcheck -s sh server/*.sh
+
     # Build (produce production artifacts)
     build:
         runs-on: ubuntu-22.04

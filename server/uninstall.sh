@@ -1,3 +1,4 @@
+#!/bin/sh
 #
 #     Copyright (C) 2010 - 2025 VREM Software Development <VREMSoftwareDevelopment@gmail.com>
 #
@@ -16,12 +17,12 @@
 # Bandwidth Monitor Uninstall
 # AsusWRT-Merlin Version
 #
-#!/bin/sh
 set -e
 echo ""
 echo " Bandwidth Usage Uninstall "
 echo ""
-read -p "Press [Enter] key continue or [^C] abort..."
+printf "Press [Enter] key continue or [^C] abort..."
+read -r _
 echo ""
 echo " Stopping bwmon service..."
 /opt/etc/init.d/S80bwmon stop

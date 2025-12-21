@@ -1,3 +1,4 @@
+#!/bin/sh
 #
 #     Copyright (C) 2010 - 2025 VREM Software Development <VREMSoftwareDevelopment@gmail.com>
 #
@@ -26,7 +27,6 @@
 # delete: cru d <unique id>
 # list: cru l
 #
-#!/bin/sh
 
 BWDIR=/opt/share/bwmon
 BWMON=${BWDIR}/bwmon.sh

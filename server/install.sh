@@ -1,3 +1,4 @@
+#!/bin/sh
 #
 #     Copyright (C) 2010 - 2025 VREM Software Development <VREMSoftwareDevelopment@gmail.com>
 #
@@ -16,7 +17,6 @@
 # Bandwidth Monitor Installation
 # AsusWRT-Merlin Version
 #
-#!/bin/sh
 set -e
 echo "...Bandwidth Usage Installation..."
 if opkg print-architecture > /dev/null 2>&1; then

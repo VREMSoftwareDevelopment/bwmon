@@ -1,3 +1,4 @@
+#!/bin/sh
 #
 #     Copyright (C) 2010 - 2025 VREM Software Development <VREMSoftwareDevelopment@gmail.com>
 #
@@ -16,6 +17,5 @@
 # Bandwidth Monitor build release/installation package
 # AsusWRT-Merlin Version
 # 
-#!/bin/sh
 
 tar -cvzf bwmon.tar.gz react/build server 
