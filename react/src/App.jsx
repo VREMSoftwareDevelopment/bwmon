@@ -29,9 +29,6 @@ import Footer from './components/main/Footer';
 import Navigation from './components/navigation/Navigation';
 import BWMonRoutes from './components/navigation/BWMonRoutes';
 import menu from './menu/Menu';
-import { createBrowserHistory } from 'history';
-
-export const history = createBrowserHistory({ basename: import.meta.env.BASE_URL });
 
 const appName = import.meta.env.VITE_DESCRIPTION || 'Bandwidth Monitor';
 const appVersion = import.meta.env.VITE_VERSION;
