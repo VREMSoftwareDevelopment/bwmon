@@ -17,8 +17,8 @@
  */
 
 import { useState, useEffect } from 'react';
-import { toIPv4, usageInGBytes } from '@utils/ConversionUtils';
-import useUsageByUser from './UseUsageByUser';
+import { toIPv4, usageInGBytes } from '@utils';
+import { useUsageByUser } from './index';
 
 const useUsageByYearGraph = () => {
     const { years, year, setYear, months, month, setMonth, filter, setFilter, data, loading } = useUsageByUser();

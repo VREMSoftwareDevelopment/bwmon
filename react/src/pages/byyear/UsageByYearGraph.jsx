@@ -18,9 +18,8 @@
 
 import React from 'react';
 import { Paper } from '@mui/material';
-import useUsageByYearGraph from '@hooks/byyear/UseUsageByYearGraph';
-import Loading from '@components/loading/Loading';
-import Graph from '@components/graph/Graph';
+import { Graph, Loading } from '@components';
+import { useUsageByYearGraph } from '@hooks';
 
 const UsageByYearGraph = () => {
     const { options, series, loading } = useUsageByYearGraph();

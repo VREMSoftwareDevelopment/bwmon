@@ -21,7 +21,7 @@
  * @returns {{ data, loading }}
  */
 import { useState, useEffect } from 'react';
-import API from '@services/API';
+import { API } from '@services';
 
 const useUsageByYear = () => {
     const [data, setData] = useState();

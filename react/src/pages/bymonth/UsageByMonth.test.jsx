@@ -21,8 +21,7 @@ import { fireEvent, render, screen, within } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import UsageByMonth from './UsageByMonth';
-import useUsageByMonth from '@hooks/bymonth/UseUsageByMonth';
-import { useSortDesc } from '@hooks/common/UseSort';
+import { useUsageByMonth, useSortDesc } from '@hooks';
 
 jest.mock('@hooks/bymonth/UseUsageByMonth');
 jest.mock('@hooks/common/UseSort');

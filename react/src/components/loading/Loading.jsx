@@ -18,7 +18,7 @@
 
 import React from 'react';
 import { Box, LinearProgress } from '@mui/material';
-import InfoMessage from '@components/messages/InfoMessage';
+import { InfoMessage } from '@components/messages';
 import PropTypes from 'prop-types';
 
 const options = { width: '100%', mt: 2 };

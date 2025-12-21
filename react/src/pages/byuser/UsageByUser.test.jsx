@@ -21,11 +21,9 @@ import { render, screen, within, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import UsageByUser from './UsageByUser';
-import useUsageByUser from '@hooks/byuser/UseUsageByUser';
-import usePagination from '@hooks/common/UsePagination';
-import { useSortAsc } from '@hooks/common/UseSort';
-import Search from '@components/inputs/Search';
-import { fromIPv4 } from '@utils/ConversionUtils';
+import { useUsageByUser, usePagination, useSortAsc } from '@hooks';
+import { Search } from '@components';
+import { fromIPv4 } from '@utils';
 
 jest.mock('@components/inputs/Search');
 jest.mock('@hooks/byuser/UseUsageByUser');

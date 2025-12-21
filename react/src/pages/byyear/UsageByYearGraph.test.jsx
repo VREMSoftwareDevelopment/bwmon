@@ -21,7 +21,7 @@ import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import UsageByYearGraph from './UsageByYearGraph';
-import useUsageByYearGraph from '@hooks/byyear/UseUsageByYearGraph';
+import { useUsageByYearGraph } from '@hooks';
 
 jest.mock('@components/graph/Graph');
 jest.mock('@hooks/byyear/UseUsageByYearGraph');

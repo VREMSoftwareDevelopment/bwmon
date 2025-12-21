@@ -17,7 +17,7 @@
  */
 
 import React from 'react';
-import ErrorMessage from '@components/messages/ErrorMessage';
+import { ErrorMessage } from '@components/messages';
 
 const PageNotFound = () => {
     return <ErrorMessage message="Page Not Found" />;

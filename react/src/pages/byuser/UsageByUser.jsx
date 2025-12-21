@@ -18,16 +18,9 @@
 
 import React, { useEffect } from 'react';
 import { Paper, TableCell, TableContainer } from '@mui/material';
-import CellInfo from '@components/table/CellInfo';
-import DropDown from '@components/inputs/DropDown';
-import Search from '@components/inputs/Search';
-import UsageTable from '@components/table/UsageTable';
-import { timeToDate, toIPv4, toPercent, usageInGBytes } from '@utils/ConversionUtils';
-import { comparator, isAscending, sort } from '@utils/SortUtils';
-import useUsageByUser from '@hooks/byuser/UseUsageByUser';
-import { useSortAsc } from '@hooks/common/UseSort';
-import usePagination from '@hooks/common/UsePagination';
-import Loading from '@components/loading/Loading';
+import { CellInfo, DropDown, Loading, Search, UsageTable } from '@components';
+import { timeToDate, toIPv4, toPercent, usageInGBytes, comparator, isAscending, sort } from '@utils';
+import { useUsageByUser, useSortAsc, usePagination } from '@hooks';
 
 const cellInfos = [
     new CellInfo('IP', true, 'left', 'IP', false, toIPv4),

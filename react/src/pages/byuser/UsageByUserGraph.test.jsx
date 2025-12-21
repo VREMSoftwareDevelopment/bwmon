@@ -21,8 +21,8 @@ import { render, screen, within, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import UsageByUserGraph from './UsageByUserGraph';
-import useUsageByUserGraph from '@hooks/byuser/UseUsageByUserGraph';
-import Search from '@components/inputs/Search';
+import { useUsageByUserGraph } from '@hooks';
+import { Search } from '@components';
 
 jest.mock('@components/graph/Graph');
 jest.mock('@components/inputs/Search');

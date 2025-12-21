@@ -16,7 +16,7 @@
  * Bandwidth Monitor
  */
 
-import Data from '@services/Data';
+import Data from '../Data';
 
 const loadData = () => {
     let i = 0;

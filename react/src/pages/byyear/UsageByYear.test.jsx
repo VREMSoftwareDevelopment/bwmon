@@ -20,9 +20,7 @@ import React from 'react';
 import { render, screen, within, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
-import useUsageByYear from '@hooks/byyear/UseUsageByYear';
-import usePagination from '@hooks/common/UsePagination';
-import { useSortDesc } from '@hooks/common/UseSort';
+import { useUsageByYear, usePagination, useSortDesc } from '@hooks';
 import UsageByYear from './UsageByYear';
 
 jest.mock('@hooks/byyear/UseUsageByYear');

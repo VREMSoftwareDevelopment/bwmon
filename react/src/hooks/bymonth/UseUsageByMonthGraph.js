@@ -17,8 +17,8 @@
  */
 
 import { useState, useEffect } from 'react';
-import { toMonth, usageInGBytes } from '@utils/ConversionUtils';
-import useUsageByMonth from './UseUsageByMonth';
+import { toMonth, usageInGBytes } from '@utils';
+import { useUsageByMonth } from './index';
 
 const useUsageByMonthGraph = () => {
     const { years, year, setYear, data, loading } = useUsageByMonth();

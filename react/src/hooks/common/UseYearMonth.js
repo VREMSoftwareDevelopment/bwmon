@@ -21,8 +21,8 @@
  * @returns {{ years, year, setYear, months, month, setMonth }}
  */
 import { useState, useEffect } from 'react';
-import API from '@services/API';
-import useYear from './UseYear';
+import { API } from '@services';
+import { useYear } from './index';
 
 const useYearMonth = () => {
     const { years, year, setYear } = useYear();
