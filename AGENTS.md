@@ -28,12 +28,12 @@ See [server/README.md](server/README.md) for server scripts documentation.
 Always use path aliases instead of relative imports:
 ```javascript
 import Component from '@components/Component';
-import { useHook } from '@hooks/common/UseHook';
+import { useHook } from '@hooks/UseHook';
 import { service } from '@services/Service';
 import { util } from '@utils/Util';
 ```
 
-Available aliases: `@components`, `@hooks`, `@pages`, `@services`, `@utils`
+Available aliases: `@components`, `@hooks`, `@features`, `@services`, `@utils`
 
 ## Tech Stack
 
@@ -76,9 +76,12 @@ Available aliases: `@components`, `@hooks`, `@pages`, `@services`, `@utils`
 
 ```
 react/src/
-  components/     # UI components (main, navigation, table, graph, inputs, messages, loading)
-  hooks/          # Custom hooks - prefix with "Use" (e.g., UseYearMonth.js)
-  pages/          # Route pages (byuser, bymonth, byyear)
+  components/     # Reusable UI components (main, navigation, table, graph, inputs, messages, loading)
+  features/       # Feature modules with colocated components and hooks
+    byuser/       # User usage feature (UsageByUser, UsageByUserGraph, UseUsageByUser, UseUsageByUserGraph)
+    bymonth/      # Monthly usage feature
+    byyear/       # Yearly usage feature
+  hooks/          # Shared custom hooks - prefix with "Use" (e.g., UseYearMonth.js)
   services/       # Data layer (API.js, Usage.js, Data.js)
   utils/          # Utilities (ConversionUtils, SortUtils)
   menu/           # Menu routing configuration
