@@ -1,6 +1,6 @@
 {
   "statistics": {
-    "detectionDate": "2025-12-20T21:02:18.545Z",
+    "detectionDate": "2025-12-21T20:09:02.584Z",
     "formats": {
       "jsx": {
         "sources": {
@@ -16,9 +16,9 @@
             "newDuplicatedLines": 0,
             "newClones": 0
           },
-          "src/pages/byyear/UsageByYearGraph.jsx": {
-            "lines": 35,
-            "tokens": 147,
+          "src/features/byyear/UsageByYearGraph.jsx": {
+            "lines": 34,
+            "tokens": 149,
             "sources": 1,
             "clones": 0,
             "duplicatedLines": 0,
@@ -28,9 +28,9 @@
             "newDuplicatedLines": 0,
             "newClones": 0
           },
-          "src/pages/byyear/UsageByYear.jsx": {
-            "lines": 97,
-            "tokens": 796,
+          "src/features/byyear/UsageByYear.jsx": {
+            "lines": 102,
+            "tokens": 861,
             "sources": 1,
             "clones": 0,
             "duplicatedLines": 0,
@@ -40,9 +40,9 @@
             "newDuplicatedLines": 0,
             "newClones": 0
           },
-          "src/pages/byuser/UsageByUserGraph.jsx": {
-            "lines": 71,
-            "tokens": 477,
+          "src/features/byuser/UsageByUserGraph.jsx": {
+            "lines": 68,
+            "tokens": 467,
             "sources": 1,
             "clones": 0,
             "duplicatedLines": 0,
@@ -52,9 +52,9 @@
             "newDuplicatedLines": 0,
             "newClones": 0
           },
-          "src/pages/byuser/UsageByUser.jsx": {
-            "lines": 126,
-            "tokens": 1294,
+          "src/features/byuser/UsageByUser.jsx": {
+            "lines": 128,
+            "tokens": 1342,
             "sources": 1,
             "clones": 0,
             "duplicatedLines": 0,
@@ -64,9 +64,9 @@
             "newDuplicatedLines": 0,
             "newClones": 0
           },
-          "src/pages/bymonth/UsageByMonthGraph.jsx": {
-            "lines": 54,
-            "tokens": 310,
+          "src/features/bymonth/UsageByMonthGraph.jsx": {
+            "lines": 52,
+            "tokens": 306,
             "sources": 1,
             "clones": 0,
             "duplicatedLines": 0,
@@ -76,9 +76,9 @@
             "newDuplicatedLines": 0,
             "newClones": 0
           },
-          "src/pages/bymonth/UsageByMonth.jsx": {
-            "lines": 90,
-            "tokens": 766,
+          "src/features/bymonth/UsageByMonth.jsx": {
+            "lines": 88,
+            "tokens": 807,
             "sources": 1,
             "clones": 0,
             "duplicatedLines": 0,
@@ -150,7 +150,7 @@
           },
           "src/components/navigation/PageNotFound.jsx": {
             "lines": 25,
-            "tokens": 59,
+            "tokens": 63,
             "sources": 1,
             "clones": 0,
             "duplicatedLines": 0,
@@ -246,7 +246,7 @@
           },
           "src/components/main/ErrorDisplay.jsx": {
             "lines": 33,
-            "tokens": 140,
+            "tokens": 144,
             "sources": 1,
             "clones": 0,
             "duplicatedLines": 0,
@@ -258,7 +258,7 @@
           },
           "src/components/loading/Loading.jsx": {
             "lines": 36,
-            "tokens": 169,
+            "tokens": 173,
             "sources": 1,
             "clones": 0,
             "duplicatedLines": 0,
@@ -305,8 +305,8 @@
             "newClones": 0
           },
           "src/menu/Menu.jsx": {
-            "lines": 46,
-            "tokens": 353,
+            "lines": 43,
+            "tokens": 347,
             "sources": 1,
             "clones": 0,
             "duplicatedLines": 0,
@@ -329,8 +329,8 @@
             "newClones": 0
           },
           "src/App.jsx": {
-            "lines": 57,
-            "tokens": 427,
+            "lines": 54,
+            "tokens": 386,
             "sources": 1,
             "clones": 0,
             "duplicatedLines": 0,
@@ -342,8 +342,8 @@
           }
         },
         "total": {
-          "lines": 1501,
-          "tokens": 10248,
+          "lines": 1494,
+          "tokens": 10355,
           "sources": 28,
           "clones": 0,
           "duplicatedLines": 0,
@@ -380,7 +380,31 @@
             "newDuplicatedLines": 0,
             "newClones": 0
           },
-          "src/pages/byyear/UsageByYearGraph.jsx": {
+          "src/features/byyear/UseUsageByYearGraph.js": {
+            "lines": 53,
+            "tokens": 310,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/features/byyear/UseUsageByYear.js": {
+            "lines": 49,
+            "tokens": 246,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/features/byyear/UsageByYearGraph.jsx": {
             "lines": 1,
             "tokens": 21,
             "sources": 1,
@@ -392,9 +416,9 @@
             "newDuplicatedLines": 0,
             "newClones": 0
           },
-          "src/pages/byyear/UsageByYear.jsx": {
-            "lines": 11,
-            "tokens": 66,
+          "src/features/byyear/UsageByYear.jsx": {
+            "lines": 12,
+            "tokens": 83,
             "sources": 1,
             "clones": 0,
             "duplicatedLines": 0,
@@ -404,7 +428,31 @@
             "newDuplicatedLines": 0,
             "newClones": 0
           },
-          "src/pages/byuser/UsageByUserGraph.jsx": {
+          "src/features/byuser/UseUsageByUserGraph.js": {
+            "lines": 53,
+            "tokens": 363,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/features/byuser/UseUsageByUser.js": {
+            "lines": 55,
+            "tokens": 391,
+            "sources": 1,
+            "clones": 1,
+            "duplicatedLines": 10,
+            "duplicatedTokens": 100,
+            "percentage": 18.18,
+            "percentageTokens": 25.58,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/features/byuser/UsageByUserGraph.jsx": {
             "lines": 26,
             "tokens": 199,
             "sources": 1,
@@ -416,9 +464,9 @@
             "newDuplicatedLines": 0,
             "newClones": 0
           },
-          "src/pages/byuser/UsageByUser.jsx": {
-            "lines": 17,
-            "tokens": 200,
+          "src/features/byuser/UsageByUser.jsx": {
+            "lines": 18,
+            "tokens": 218,
             "sources": 1,
             "clones": 0,
             "duplicatedLines": 0,
@@ -428,7 +476,31 @@
             "newDuplicatedLines": 0,
             "newClones": 0
           },
-          "src/pages/bymonth/UsageByMonthGraph.jsx": {
+          "src/features/bymonth/UseUsageByMonthGraph.js": {
+            "lines": 53,
+            "tokens": 338,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/features/bymonth/UseUsageByMonth.js": {
+            "lines": 53,
+            "tokens": 317,
+            "sources": 1,
+            "clones": 1,
+            "duplicatedLines": 10,
+            "duplicatedTokens": 100,
+            "percentage": 18.87,
+            "percentageTokens": 31.55,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/features/bymonth/UsageByMonthGraph.jsx": {
             "lines": 14,
             "tokens": 101,
             "sources": 1,
@@ -440,141 +512,9 @@
             "newDuplicatedLines": 0,
             "newClones": 0
           },
-          "src/pages/bymonth/UsageByMonth.jsx": {
-            "lines": 25,
-            "tokens": 179,
-            "sources": 1,
-            "clones": 0,
-            "duplicatedLines": 0,
-            "duplicatedTokens": 0,
-            "percentage": 0,
-            "percentageTokens": 0,
-            "newDuplicatedLines": 0,
-            "newClones": 0
-          },
-          "src/hooks/common/UseYearMonth.js": {
-            "lines": 45,
-            "tokens": 231,
-            "sources": 1,
-            "clones": 0,
-            "duplicatedLines": 0,
-            "duplicatedTokens": 0,
-            "percentage": 0,
-            "percentageTokens": 0,
-            "newDuplicatedLines": 0,
-            "newClones": 0
-          },
-          "src/hooks/common/UseYear.js": {
-            "lines": 41,
-            "tokens": 177,
-            "sources": 1,
-            "clones": 0,
-            "duplicatedLines": 0,
-            "duplicatedTokens": 0,
-            "percentage": 0,
-            "percentageTokens": 0,
-            "newDuplicatedLines": 0,
-            "newClones": 0
-          },
-          "src/hooks/common/UseSort.js": {
-            "lines": 37,
-            "tokens": 150,
-            "sources": 1,
-            "clones": 0,
-            "duplicatedLines": 0,
-            "duplicatedTokens": 0,
-            "percentage": 0,
-            "percentageTokens": 0,
-            "newDuplicatedLines": 0,
-            "newClones": 0
-          },
-          "src/hooks/common/UsePagination.js": {
-            "lines": 37,
-            "tokens": 98,
-            "sources": 1,
-            "clones": 0,
-            "duplicatedLines": 0,
-            "duplicatedTokens": 0,
-            "percentage": 0,
-            "percentageTokens": 0,
-            "newDuplicatedLines": 0,
-            "newClones": 0
-          },
-          "src/hooks/common/UseInterval.js": {
-            "lines": 45,
-            "tokens": 196,
-            "sources": 1,
-            "clones": 0,
-            "duplicatedLines": 0,
-            "duplicatedTokens": 0,
-            "percentage": 0,
-            "percentageTokens": 0,
-            "newDuplicatedLines": 0,
-            "newClones": 0
-          },
-          "src/hooks/byyear/UseUsageByYearGraph.js": {
-            "lines": 53,
-            "tokens": 306,
-            "sources": 1,
-            "clones": 0,
-            "duplicatedLines": 0,
-            "duplicatedTokens": 0,
-            "percentage": 0,
-            "percentageTokens": 0,
-            "newDuplicatedLines": 0,
-            "newClones": 0
-          },
-          "src/hooks/byyear/UseUsageByYear.js": {
-            "lines": 41,
-            "tokens": 172,
-            "sources": 1,
-            "clones": 0,
-            "duplicatedLines": 0,
-            "duplicatedTokens": 0,
-            "percentage": 0,
-            "percentageTokens": 0,
-            "newDuplicatedLines": 0,
-            "newClones": 0
-          },
-          "src/hooks/byuser/UseUsageByUserGraph.js": {
-            "lines": 53,
-            "tokens": 359,
-            "sources": 1,
-            "clones": 0,
-            "duplicatedLines": 0,
-            "duplicatedTokens": 0,
-            "percentage": 0,
-            "percentageTokens": 0,
-            "newDuplicatedLines": 0,
-            "newClones": 0
-          },
-          "src/hooks/byuser/UseUsageByUser.js": {
-            "lines": 46,
-            "tokens": 284,
-            "sources": 1,
-            "clones": 0,
-            "duplicatedLines": 0,
-            "duplicatedTokens": 0,
-            "percentage": 0,
-            "percentageTokens": 0,
-            "newDuplicatedLines": 0,
-            "newClones": 0
-          },
-          "src/hooks/bymonth/UseUsageByMonthGraph.js": {
-            "lines": 53,
-            "tokens": 334,
-            "sources": 1,
-            "clones": 0,
-            "duplicatedLines": 0,
-            "duplicatedTokens": 0,
-            "percentage": 0,
-            "percentageTokens": 0,
-            "newDuplicatedLines": 0,
-            "newClones": 0
-          },
-          "src/hooks/bymonth/UseUsageByMonth.js": {
-            "lines": 45,
-            "tokens": 226,
+          "src/features/bymonth/UsageByMonth.jsx": {
+            "lines": 26,
+            "tokens": 194,
             "sources": 1,
             "clones": 0,
             "duplicatedLines": 0,
@@ -849,8 +789,68 @@
             "newClones": 0
           },
           "src/services/API.js": {
-            "lines": 146,
-            "tokens": 1575,
+            "lines": 152,
+            "tokens": 1611,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/hooks/UseYearMonth.js": {
+            "lines": 51,
+            "tokens": 308,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/hooks/UseYear.js": {
+            "lines": 47,
+            "tokens": 237,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/hooks/UseSort.js": {
+            "lines": 37,
+            "tokens": 150,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/hooks/UsePagination.js": {
+            "lines": 37,
+            "tokens": 98,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "src/hooks/UseInterval.js": {
+            "lines": 45,
+            "tokens": 196,
             "sources": 1,
             "clones": 0,
             "duplicatedLines": 0,
@@ -898,32 +898,69 @@
           }
         },
         "total": {
-          "lines": 1751,
-          "tokens": 19763,
+          "lines": 1797,
+          "tokens": 20270,
           "sources": 45,
-          "clones": 0,
-          "duplicatedLines": 0,
-          "duplicatedTokens": 0,
-          "percentage": 0,
-          "percentageTokens": 0,
+          "clones": 1,
+          "duplicatedLines": 10,
+          "duplicatedTokens": 100,
+          "percentage": 0.56,
+          "percentageTokens": 0.49,
           "newDuplicatedLines": 0,
           "newClones": 0
         }
       }
     },
     "total": {
-      "lines": 3252,
-      "tokens": 30011,
+      "lines": 3291,
+      "tokens": 30625,
       "sources": 73,
-      "clones": 0,
-      "duplicatedLines": 0,
-      "duplicatedTokens": 0,
-      "percentage": 0,
-      "percentageTokens": 0,
+      "clones": 1,
+      "duplicatedLines": 10,
+      "duplicatedTokens": 100,
+      "percentage": 0.3,
+      "percentageTokens": 0.33,
       "newDuplicatedLines": 0,
       "newClones": 0
     }
   },
-  "duplicates": [],
+  "duplicates": [
+    {
+      "format": "javascript",
+      "lines": 11,
+      "fragment": ");\n    const [data, setData] = useState();\n    const [loading, setLoading] = useState(true);\n    const [error, setError] = useState(null);\n\n    useEffect(() => {\n        async function fetch() {\n            try {\n                setLoading(true);\n                setError(null);\n                const usageByMonth",
+      "tokens": 0,
+      "firstFile": {
+        "name": "src/features/bymonth/UseUsageByMonth.js",
+        "start": 28,
+        "end": 38,
+        "startLoc": {
+          "line": 28,
+          "column": 2,
+          "position": 86
+        },
+        "endLoc": {
+          "line": 38,
+          "column": 13,
+          "position": 186
+        }
+      },
+      "secondFile": {
+        "name": "src/features/byuser/UseUsageByUser.js",
+        "start": 30,
+        "end": 36,
+        "startLoc": {
+          "line": 30,
+          "column": 7,
+          "position": 129
+        },
+        "endLoc": {
+          "line": 36,
+          "column": 12,
+          "position": 145
+        }
+      }
+    }
+  ],
   "filename": "/home/runner/work/bwmon/bwmon/react/node_modules/@jscpd/html-reporter/dist/templates/main.pug"
 }
