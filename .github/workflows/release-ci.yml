@@ -52,9 +52,6 @@ jobs:
     build:
         runs-on: ubuntu-22.04
         needs: [test]
-        defaults:
-            run:
-                working-directory: react
         strategy:
             matrix:
                 node-version: [22.x]
@@ -67,11 +64,12 @@ jobs:
                   node-version: ${{ matrix.node-version }}
             - name: Update version
               run: npm version ${{ github.event.inputs.version }} --no-git-tag-version
+              working-directory: react
             - name: Build
               run: npm run build
+              working-directory: react
             - name: Create release asset
               run: tar -cvzf bwmon.tar.gz react/build server
-              working-directory: ..
             - name: Upload build artifacts
               uses: actions/upload-artifact@v4
               with:
