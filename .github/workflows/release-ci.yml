@@ -4,7 +4,7 @@ on:
     workflow_dispatch:
         inputs:
             version:
-                description: 'version'
+                description: 'Release version (e.g., 3.1.5)'
                 required: true
         branches: [main]
 
