@@ -22,7 +22,7 @@
  */
 import { useState, useEffect } from 'react';
 import { API } from '@services';
-import { useYear } from './index';
+import { useYear } from '@hooks';
 
 const useYearMonth = () => {
     const { years, year, setYear, error: yearError } = useYear();

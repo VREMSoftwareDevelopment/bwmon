@@ -19,7 +19,7 @@
 import { fromIPv4 } from '@utils';
 import API from './API';
 
-jest.mock('./Usage');
+jest.mock('@services/Usage');
 
 describe('API', () => {
     it('should return years', async () => {

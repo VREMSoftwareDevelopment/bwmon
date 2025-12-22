@@ -16,7 +16,7 @@
  * Bandwidth Monitor
  */
 
-import usage from './Usage';
+import usage from '@services/Usage';
 import { DateTime } from 'luxon';
 import { toIPv4 } from '@utils';
 

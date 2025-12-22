@@ -21,7 +21,7 @@ import { fireEvent, render, screen, within } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import UsageByMonthGraph from './UsageByMonthGraph';
-import { useUsageByMonthGraph } from '@features/bymonth';
+import useUsageByMonthGraph from './UseUsageByMonthGraph';
 
 jest.mock('@components/graph/Graph');
 jest.mock('@features/bymonth/UseUsageByMonthGraph');

@@ -20,11 +20,11 @@ import React from 'react';
 import { render, screen, within, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
-import UsageByUser from './UsageByUser';
 import { usePagination, useSortAsc } from '@hooks';
-import { useUsageByUser } from '@features/byuser';
 import { Search } from '@components';
 import { fromIPv4 } from '@utils';
+import UsageByUser from './UsageByUser';
+import useUsageByUser from './UseUsageByUser';
 
 jest.mock('@components/inputs/Search');
 jest.mock('@features/byuser/UseUsageByUser');

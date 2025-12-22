@@ -20,7 +20,7 @@ import { useState, useEffect } from 'react';
 import { toIPv4, usageInGBytes } from '@utils';
 import { useUsageByUser } from '.';
 
-const useUsageByYearGraph = () => {
+const useUsageByUserGraph = () => {
     const { years, year, setYear, months, month, setMonth, filter, setFilter, data, loading } = useUsageByUser();
     const [options, setOptions] = useState({});
     const [series, setSeries] = useState([]);
@@ -51,4 +51,4 @@ const useUsageByYearGraph = () => {
     return { options, series, years, year, setYear, months, month, setMonth, filter, setFilter, loading };
 };
 
-export default useUsageByYearGraph;
+export default useUsageByUserGraph;

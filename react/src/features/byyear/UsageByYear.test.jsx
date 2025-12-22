@@ -21,8 +21,8 @@ import { render, screen, within, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { usePagination, useSortDesc } from '@hooks';
-import { useUsageByYear } from '@features/byyear';
 import UsageByYear from './UsageByYear';
+import useUsageByYear from './UseUsageByYear';
 
 jest.mock('@features/byyear/UseUsageByYear');
 jest.mock('@hooks/UsePagination');
