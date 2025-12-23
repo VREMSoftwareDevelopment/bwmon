@@ -69,7 +69,7 @@ LICENSE        # License file
     -   `cd /mnt/<mounted_name>/`
     -   `mkdir bwmon`
     -   `cd bwmon`
-    -   `wget https://github.com/VREMSoftwareDevelopment/bwmon/releases/download/v3.1.5/bwmon.tar.gz`
+    -   `wget https://github.com/VREMSoftwareDevelopment/bwmon/releases/download/v3.1.6/bwmon.tar.gz`
     -   `tar -xzvf bwmon.tar.gz`
     -   `chmod +x server/install.sh`
     -   `./server/install.sh`
