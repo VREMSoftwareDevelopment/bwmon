@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1766441872278" clover="3.2.0">
-  <project timestamp="1766441872278" name="All files">
-    <metrics statements="470" coveredstatements="470" conditionals="129" coveredconditionals="129" methods="170" coveredmethods="170" elements="769" coveredelements="769" complexity="0" loc="470" ncloc="470" packages="15" files="45" classes="45"/>
+<coverage generated="1766492567968" clover="3.2.0">
+  <project timestamp="1766492567968" name="All files">
+    <metrics statements="459" coveredstatements="459" conditionals="129" coveredconditionals="129" methods="165" coveredmethods="165" elements="753" coveredelements="753" complexity="0" loc="459" ncloc="459" packages="15" files="44" classes="44"/>
     <package name="src">
       <metrics statements="7" coveredstatements="7" conditionals="5" coveredconditionals="5" methods="1" coveredmethods="1"/>
       <file name="App.jsx" path="/home/runner/work/bwmon/bwmon/react/src/App.jsx">
@@ -431,21 +431,7 @@
       </file>
     </package>
     <package name="src.hooks">
-      <metrics statements="49" coveredstatements="49" conditionals="4" coveredconditionals="4" methods="15" coveredmethods="15"/>
-      <file name="UseInterval.js" path="/home/runner/work/bwmon/bwmon/react/src/hooks/UseInterval.js">
-        <metrics statements="11" coveredstatements="11" conditionals="0" coveredconditionals="0" methods="5" coveredmethods="5"/>
-        <line num="26" count="21" type="stmt"/>
-        <line num="27" count="21" type="stmt"/>
-        <line num="28" count="21" type="stmt"/>
-        <line num="30" count="21" type="stmt"/>
-        <line num="31" count="6" type="stmt"/>
-        <line num="33" count="6" type="stmt"/>
-        <line num="34" count="5" type="stmt"/>
-        <line num="37" count="6" type="stmt"/>
-        <line num="39" count="9" type="stmt"/>
-        <line num="41" count="5" type="stmt"/>
-        <line num="42" count="5" type="stmt"/>
-      </file>
+      <metrics statements="38" coveredstatements="38" conditionals="4" coveredconditionals="4" methods="10" coveredmethods="10"/>
       <file name="UsePagination.js" path="/home/runner/work/bwmon/bwmon/react/src/hooks/UsePagination.js">
         <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
         <line num="31" count="20" type="stmt"/>
