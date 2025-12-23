@@ -76,12 +76,9 @@ const UsageByUser = () => {
         [sortedData, page, rowsPerPage]
     );
 
-    const columnCount = () => cellInfos.length - 4;
-
     const paginationProps = {
         'data-testid': 'user-pagination-id',
         id: 'user-pagination-id',
-        colSpan: columnCount(),
         count: data && data.usage ? data.usage.length : 0,
         minimum: rowsPerPageMin,
         rowsPerPage,
@@ -101,7 +98,6 @@ const UsageByUser = () => {
             <UsageTable
                 prefix="user"
                 cellInfos={cellInfos}
-                columnCount={columnCount()}
                 paginationProps={paginationProps}
                 headerProps={headerProps}
                 bodyProps={bodyProps}
@@ -115,7 +111,7 @@ const UsageByUser = () => {
             <Loading isLoading={loading} />
             {error && <ErrorMessage message={error} />}
             <TableContainer>
-                <div style={{ display: 'flex', gap: '1rem', marginBottom: '1rem' }}>
+                <div style={{ display: 'flex', gap: '1rem' }}>
                     <DropDown data-testid="user-year" id="user-year" onChange={handleChangeYear} items={years} value={year} />
                     <DropDown data-testid="user-month" id="user-month" onChange={handleChangeMonth} items={months} value={month} />
                     <Search data-testid="user-filter" id="user-filter" onChange={handleChangeFilter} />

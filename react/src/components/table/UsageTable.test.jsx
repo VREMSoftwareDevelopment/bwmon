@@ -43,7 +43,6 @@ describe('UsageTable', () => {
             <UsageTable
                 prefix="test"
                 cellInfos={cellInfos}
-                columnCount={2}
                 paginationProps={paginationProps}
                 headerProps={headerProps}
                 bodyProps={bodyProps}
@@ -63,7 +62,6 @@ describe('UsageTable', () => {
             <UsageTable
                 prefix="test"
                 cellInfos={cellInfos}
-                columnCount={2}
                 paginationProps={paginationProps}
                 headerProps={headerProps}
                 bodyProps={bodyProps}

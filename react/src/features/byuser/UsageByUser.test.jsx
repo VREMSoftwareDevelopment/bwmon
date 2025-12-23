@@ -82,12 +82,6 @@ describe('UsageByUser', () => {
         expect(screen.queryByTestId('user-header')).not.toBeInTheDocument();
     });
 
-    it('Pagination colSpan matches columnCount', () => {
-        renderComponent();
-        const pagination = screen.getByTestId('user-pagination-id');
-        expect(pagination).toHaveAttribute('colspan', '7');
-    });
-
     it('renders table header', () => {
         renderComponent();
         expect(screen.queryByText('Loading...')).not.toBeInTheDocument();

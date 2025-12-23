@@ -5,7 +5,7 @@ import Header from './Header';
 import Body from './Body';
 import Footer from './Footer';
 
-const UsageTable = ({ prefix, cellInfos, columnCount, paginationProps, headerProps, bodyProps, footerProps, showFooter }) => (
+const UsageTable = ({ prefix, cellInfos, paginationProps, headerProps, bodyProps, footerProps, showFooter }) => (
     <Table stickyHeader size="small">
         <TableHead>
             <TableRow>

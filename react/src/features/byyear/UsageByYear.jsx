@@ -51,10 +51,7 @@ const UsageByYear = () => {
         setOrderBy(property);
     };
 
-    const sortedData = useMemo(
-        () => (data ? sort(data, comparator(ascending, orderBy)) : []),
-        [data, ascending, orderBy]
-    );
+    const sortedData = useMemo(() => (data ? sort(data, comparator(ascending, orderBy)) : []), [data, ascending, orderBy]);
 
     const paginatedData = useMemo(
         () => sortedData.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage),
@@ -83,7 +80,6 @@ const UsageByYear = () => {
             <UsageTable
                 prefix="year"
                 cellInfos={cellInfos}
-                columnCount={cellInfos.length}
                 paginationProps={paginationProps}
                 headerProps={headerProps}
                 bodyProps={bodyProps}
