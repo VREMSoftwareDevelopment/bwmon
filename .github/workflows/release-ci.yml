@@ -106,6 +106,9 @@ jobs:
               run: |
                   git config --global user.name "${GITHUB_ACTOR}"
                   git config --global user.email "${GITHUB_ACTOR}@users.noreply.github.com"
+            - name: Update version
+              run: npm version ${{ github.event.inputs.version }} --no-git-tag-version
+              working-directory: react
             - name: Commit release
               run: |
                   git status
