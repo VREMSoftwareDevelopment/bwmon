@@ -1,6 +1,6 @@
 {
   "statistics": {
-    "detectionDate": "2025-12-23T14:01:04.016Z",
+    "detectionDate": "2025-12-23T15:08:48.508Z",
     "formats": {
       "jsx": {
         "sources": {
@@ -29,8 +29,8 @@
             "newClones": 0
           },
           "src/features/byyear/UsageByYear.jsx": {
-            "lines": 102,
-            "tokens": 861,
+            "lines": 98,
+            "tokens": 848,
             "sources": 1,
             "clones": 0,
             "duplicatedLines": 0,
@@ -53,8 +53,8 @@
             "newClones": 0
           },
           "src/features/byuser/UsageByUser.jsx": {
-            "lines": 128,
-            "tokens": 1342,
+            "lines": 124,
+            "tokens": 1298,
             "sources": 1,
             "clones": 0,
             "duplicatedLines": 0,
@@ -90,7 +90,7 @@
           },
           "src/components/table/UsageTable.jsx": {
             "lines": 20,
-            "tokens": 237,
+            "tokens": 234,
             "sources": 1,
             "clones": 0,
             "duplicatedLines": 0,
@@ -342,8 +342,8 @@
           }
         },
         "total": {
-          "lines": 1494,
-          "tokens": 10355,
+          "lines": 1486,
+          "tokens": 10295,
           "sources": 28,
           "clones": 0,
           "duplicatedLines": 0,
@@ -417,8 +417,8 @@
             "newClones": 0
           },
           "src/features/byyear/UsageByYear.jsx": {
-            "lines": 12,
-            "tokens": 83,
+            "lines": 11,
+            "tokens": 75,
             "sources": 1,
             "clones": 0,
             "duplicatedLines": 0,
@@ -465,8 +465,8 @@
             "newClones": 0
           },
           "src/features/byuser/UsageByUser.jsx": {
-            "lines": 18,
-            "tokens": 218,
+            "lines": 17,
+            "tokens": 205,
             "sources": 1,
             "clones": 0,
             "duplicatedLines": 0,
@@ -886,8 +886,8 @@
           }
         },
         "total": {
-          "lines": 1752,
-          "tokens": 20074,
+          "lines": 1750,
+          "tokens": 20053,
           "sources": 44,
           "clones": 1,
           "duplicatedLines": 10,
@@ -900,8 +900,8 @@
       }
     },
     "total": {
-      "lines": 3246,
-      "tokens": 30429,
+      "lines": 3236,
+      "tokens": 30348,
       "sources": 72,
       "clones": 1,
       "duplicatedLines": 10,
