@@ -91,7 +91,8 @@ update() {
   iptables -L RRDIPT -vnxZ -t filter > /tmp/traffic_$$.tmp
   grep -v "0x0" /proc/net/arp | while read -r IP _TYPE _FLAGS MAC _MASK _IFACE
   do
-    MACU=$(echo "$MAC" | tr '[:lower:]' '[:upper:]')
+    # shellcheck disable=SC2018,SC2019
+    MACU=$(echo "$MAC" | tr 'a-z' 'A-Z')
     echo 0 > /tmp/in_$$.tmp
     echo 0 > /tmp/out_$$.tmp
     grep "${IP}" /tmp/traffic_$$.tmp | while read -r _PKTS BYTES _TARGET _PROT _OPT _IFIN _IFOUT SRC DST
