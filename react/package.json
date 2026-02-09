@@ -39,7 +39,7 @@
         "react-router": "^7.13.0"
     },
     "devDependencies": {
-        "@babel/preset-env": "^7.28.6",
+        "@babel/preset-env": "^7.29.0",
         "@babel/preset-react": "^7.28.5",
         "@eslint/compat": "^2.0.2",
         "@eslint/eslintrc": "^3.3.3",
