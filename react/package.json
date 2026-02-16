@@ -33,7 +33,7 @@
         "apexcharts": "^5.3.6",
         "luxon": "^3.7.2",
         "react": "^19.2.4",
-        "react-apexcharts": "^1.9.0",
+        "react-apexcharts": "^2.0.0",
         "react-dom": "^19.2.4",
         "react-error-boundary": "^6.1.0",
         "react-router": "^7.13.0"
