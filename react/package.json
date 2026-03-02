@@ -30,7 +30,7 @@
         "@emotion/styled": "^11.14.1",
         "@mui/icons-material": "^7.3.8",
         "@mui/material": "^7.3.8",
-        "apexcharts": "^5.7.0",
+        "apexcharts": "^5.8.1",
         "luxon": "^3.7.2",
         "react": "^19.2.4",
         "react-apexcharts": "^2.0.1",
