@@ -12,9 +12,13 @@ export default defineConfig({
         chunkSizeWarningLimit: 600,
         rollupOptions: {
             output: {
-                manualChunks: {
-                    mui: ['@mui/icons-material', '@mui/material'],
-                    chart: ['react-apexcharts'],
+                manualChunks(id) {
+                    if (id.includes('node_modules/@mui/icons-material') || id.includes('node_modules/@mui/material')) {
+                        return 'mui';
+                    }
+                    if (id.includes('node_modules/react-apexcharts') || id.includes('node_modules/apexcharts')) {
+                        return 'chart';
+                    }
                 },
             },
         },
@@ -50,10 +54,5 @@ export default defineConfig({
     ],
     optimizeDeps: {
         force: true,
-        esbuildOptions: {
-            loader: {
-                '.js': 'jsx',
-            },
-        },
     },
 });
