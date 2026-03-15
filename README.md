@@ -1,5 +1,5 @@
-[![Workflow Status](https://github.com/VREMSoftwareDevelopment/bwmon/workflows/CI/badge.svg)](https://github.com/VREMSoftwareDevelopment/bwmon/actions?query=workflow%3A%22CI%22)
-[![Release CI](https://github.com/VREMSoftwareDevelopment/bwmon/workflows/Release-CI/badge.svg)](https://github.com/VREMSoftwareDevelopment/bwmon/actions?query=workflow%3A%22Release-CI%22)
+[![Workflow Status](https://github.com/VREMSoftwareDevelopment/bwmon/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/VREMSoftwareDevelopment/bwmon/actions/workflows/ci.yml)
+[![Release CI](https://github.com/VREMSoftwareDevelopment/bwmon/actions/workflows/release-ci.yml/badge.svg?branch=main)](https://github.com/VREMSoftwareDevelopment/bwmon/actions/workflows/release-ci.yml)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/4bc1d97a37564d63acf4e9e02dd06615)](https://app.codacy.com/gh/VREMSoftwareDevelopment/bwmon?utm_source=github.com&utm_medium=referral&utm_content=VREMSoftwareDevelopment/bwmon&utm_campaign=Badge_Grade)
 [![codecov](https://codecov.io/gh/VREMSoftwareDevelopment/bwmon/branch/main/graph/badge.svg?token=qoDvVAvNaw)](https://codecov.io/gh/VREMSoftwareDevelopment/bwmon)
 
@@ -19,27 +19,27 @@ A simple shell script designed to run on [AsusWRT-Merlin](https://www.asuswrt-me
 
 ## Table of Contents
 
--   [Bandwidth Monitor](#bandwidth-monitor)
--   [Table of Contents](#table-of-contents)
--   [Software Features](#software-features)
--   [Technical Features](#technical-features)
--   [Project Structure](#project-structure)
--   [Requirements](#requirements)
--   [Installation instructions](#installation-instructions)
--   [Note](#note)
--   [Build Instructions](#build-instructions)
--   [Contributing](#contributing)
--   [License](#license)
+- [Bandwidth Monitor](#bandwidth-monitor)
+- [Table of Contents](#table-of-contents)
+- [Software Features](#software-features)
+- [Technical Features](#technical-features)
+- [Project Structure](#project-structure)
+- [Requirements](#requirements)
+- [Installation instructions](#installation-instructions)
+- [Note](#note)
+- [Build Instructions](#build-instructions)
+- [Contributing](#contributing)
+- [License](#license)
 
 ## Software Features
 
--   Per-user bandwidth monitoring
--   Usage reports by user/month/year
+- Per-user bandwidth monitoring
+- Usage reports by user/month/year
 
 ## Technical Features
 
--   Shell script for data collection
--   Web-based GUI for visualization
+- Shell script for data collection
+- Web-based GUI for visualization
 
 ## Project Structure
 
@@ -57,45 +57,45 @@ LICENSE        # License file
 
 ## Requirements
 
--   AsusWRT-Merlin powered router (see [AsusWRT-Merlin](https://www.asuswrt-merlin.net/))
--   Hard disk or USB flash drive attached, formatted, and mounted
--   Node.js (for building the web GUI)
+- AsusWRT-Merlin powered router (see [AsusWRT-Merlin](https://www.asuswrt-merlin.net/))
+- Hard disk or USB flash drive attached, formatted, and mounted
+- Node.js (for building the web GUI)
 
 ## Installation instructions:
 
--   Make sure that you have a harddisk or USB flash drive attached to router and it is formatted and mounted
--   Log into your router via _ssh_
--   To install application type the following command in _ssh_ terminal:
-    -   `cd /mnt/<mounted_name>/`
-    -   `mkdir bwmon`
-    -   `cd bwmon`
-    -   `wget https://github.com/VREMSoftwareDevelopment/bwmon/releases/download/v3.1.6/bwmon.tar.gz`
-    -   `tar -xzvf bwmon.tar.gz`
-    -   `chmod +x server/install.sh`
-    -   `./server/install.sh`
--   Visit `http://<your_router_ip>:<lighttpd_port>/bwmon/index.html` to view bandwidth usage statistics
+- Make sure that you have a harddisk or USB flash drive attached to router and it is formatted and mounted
+- Log into your router via _ssh_
+- To install application type the following command in _ssh_ terminal:
+    - `cd /mnt/<mounted_name>/`
+    - `mkdir bwmon`
+    - `cd bwmon`
+    - `wget https://github.com/VREMSoftwareDevelopment/bwmon/releases/download/v3.1.6/bwmon.tar.gz`
+    - `tar -xzvf bwmon.tar.gz`
+    - `chmod +x server/install.sh`
+    - `./server/install.sh`
+- Visit `http://<your_router_ip>:<lighttpd_port>/bwmon/index.html` to view bandwidth usage statistics
 
 ## Note:
 
--   Problem using `wget`:
-    -   _error getting response: Connection reset by peer_ - add the following option `--no-check-certificate`
-    -   Or download the file from the web-site and copy to the folder
+- Problem using `wget`:
+    - _error getting response: Connection reset by peer_ - add the following option `--no-check-certificate`
+    - Or download the file from the web-site and copy to the folder
 
 ## Build Instructions:
 
--   Install node: see [https://nodejs.org](https://nodejs.org)
--   Clone the project: `git clone https://github.com/VREMSoftwareDevelopment/bwmon.git`
--   See detailed build and installation instructions in the `react` subfolder's [README.md](react/README.md) file.
+- Install node: see [https://nodejs.org](https://nodejs.org)
+- Clone the project: `git clone https://github.com/VREMSoftwareDevelopment/bwmon.git`
+- See detailed build and installation instructions in the `react` subfolder's [README.md](react/README.md) file.
 
 ## Reports
 
 View the latest test and analysis reports:
 
--   [Coverage Report](https://vremsoftwaredevelopment.github.io/bwmon/reports/coverage/lcov-report/index.html)
--   [Mutation Report](https://vremsoftwaredevelopment.github.io/bwmon/reports/mutation/mutation.html)
--   [Playwright Report](https://vremsoftwaredevelopment.github.io/bwmon/reports/playwright/html/index.html)
--   [Duplication Report](https://vremsoftwaredevelopment.github.io/bwmon/reports/duplication/index.html)
--   [Bundle Analysis (Visualizer)](https://vremsoftwaredevelopment.github.io/bwmon/reports/visualizer/stats.html)
+- [Coverage Report](https://vremsoftwaredevelopment.github.io/bwmon/reports/coverage/lcov-report/index.html)
+- [Mutation Report](https://vremsoftwaredevelopment.github.io/bwmon/reports/mutation/mutation.html)
+- [Playwright Report](https://vremsoftwaredevelopment.github.io/bwmon/reports/playwright/html/index.html)
+- [Duplication Report](https://vremsoftwaredevelopment.github.io/bwmon/reports/duplication/index.html)
+- [Bundle Analysis (Visualizer)](https://vremsoftwaredevelopment.github.io/bwmon/reports/visualizer/stats.html)
 
 ## Contributing
 
