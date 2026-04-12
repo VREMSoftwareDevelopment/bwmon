@@ -36,7 +36,8 @@ describe('InfoMessage', () => {
         const props = { message: 'info message text' };
         renderComponent(props);
         expect(screen.getByText('info message text')).toBeInTheDocument();
-        expect(screen.getByRole('alert')).toHaveClass('MuiAlert-standardInfo');
+        expect(screen.getByRole('alert')).toHaveClass('MuiAlert-colorInfo');
+        expect(screen.getByRole('alert')).toHaveClass('MuiAlert-standard');
     });
 
     it('does not render anything when message is null', () => {

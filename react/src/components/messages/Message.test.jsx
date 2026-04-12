@@ -36,7 +36,8 @@ describe('Message Component', () => {
         const props = { severity: 'message', message: 'message text' };
         renderComponent(props);
         expect(screen.getByText('message text')).toBeInTheDocument();
-        expect(screen.getByRole('alert')).toHaveClass('MuiAlert-standardMessage');
+        expect(screen.getByRole('alert')).toHaveClass('MuiAlert-colorMessage');
+        expect(screen.getByRole('alert')).toHaveClass('MuiAlert-standard');
     });
 
     it('does not render anything when message is null', () => {
