@@ -20,7 +20,7 @@ permissions:
 jobs:
     # Shell script linting
     shellcheck:
-      runs-on: ubuntu-24.04
+        runs-on: ubuntu-24.04
         steps:
             - uses: actions/checkout@v6
             - name: Run ShellCheck
@@ -28,7 +28,7 @@ jobs:
 
     # Run tests
     test:
-      runs-on: ubuntu-24.04
+        runs-on: ubuntu-24.04
         needs: [shellcheck]
         defaults:
             run:
@@ -50,7 +50,7 @@ jobs:
 
     # Build the project and create release asset
     build:
-      runs-on: ubuntu-24.04
+        runs-on: ubuntu-24.04
         needs: [test]
         strategy:
             matrix:
@@ -83,7 +83,7 @@ jobs:
 
     # Create git tag, GitHub release, and update README
     release:
-      runs-on: ubuntu-24.04
+        runs-on: ubuntu-24.04
         needs: [build]
         steps:
             - uses: actions/checkout@v6
@@ -144,7 +144,7 @@ jobs:
 
     # Deploy the build to GitHub Pages
     deploy:
-      runs-on: ubuntu-24.04
+        runs-on: ubuntu-24.04
         needs: [release]
         steps:
             - name: Checkout repository
