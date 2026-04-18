@@ -18,19 +18,19 @@ on:
 jobs:
     analyze:
         name: 'Analyze'
-        runs-on: ubuntu-22.04
+        runs-on: ubuntu-24.04
         strategy:
             fail-fast: false
             matrix:
                 language: ['javascript']
         steps:
             - name: Checkout repository
-              uses: actions/checkout@v4
+              uses: actions/checkout@v6
             - name: Initialize CodeQL
-              uses: github/codeql-action/init@v3
+              uses: github/codeql-action/init@v4
               with:
                   languages: ${{ matrix.language }}
             - name: Autobuild
-              uses: github/codeql-action/autobuild@v3
+              uses: github/codeql-action/autobuild@v4
             - name: Perform CodeQL Analysis
-              uses: github/codeql-action/analyze@v3
+              uses: github/codeql-action/analyze@v4

@@ -33,25 +33,25 @@ permissions:
 jobs:
     # Shell script linting
     shellcheck:
-        runs-on: ubuntu-22.04
+        runs-on: ubuntu-24.04
         needs: []
         steps:
-            - uses: actions/checkout@v4
+            - uses: actions/checkout@v6
             - name: Run ShellCheck
               run: shellcheck -s sh server/*.sh
 
     # Build (produce production artifacts)
     build:
-        runs-on: ubuntu-22.04
+        runs-on: ubuntu-24.04
         needs: []
         defaults:
             run:
                 working-directory: react
         strategy:
             matrix:
-                node-version: [22.x]
+                node-version: [24.x]
         steps:
-            - uses: actions/checkout@v4
+            - uses: actions/checkout@v6
             - uses: ./.github/actions/common-setup
               with:
                   node-version: ${{ matrix.node-version }}
@@ -65,16 +65,16 @@ jobs:
 
     # Audit & Lint
     audit_lint:
-        runs-on: ubuntu-22.04
+        runs-on: ubuntu-24.04
         needs: [build]
         defaults:
             run:
                 working-directory: react
         strategy:
             matrix:
-                node-version: [22.x]
+                node-version: [24.x]
         steps:
-            - uses: actions/checkout@v4
+            - uses: actions/checkout@v6
             - uses: ./.github/actions/common-setup
               with:
                   node-version: ${{ matrix.node-version }}
@@ -87,16 +87,16 @@ jobs:
 
     # Analyze
     analyze:
-        runs-on: ubuntu-22.04
+        runs-on: ubuntu-24.04
         needs: [build]
         defaults:
             run:
                 working-directory: react
         strategy:
             matrix:
-                node-version: [22.x]
+                node-version: [24.x]
         steps:
-            - uses: actions/checkout@v4
+            - uses: actions/checkout@v6
             - uses: ./.github/actions/common-setup
               with:
                   node-version: ${{ matrix.node-version }}
@@ -110,16 +110,16 @@ jobs:
 
     # Unit tests + coverage
     unit_tests:
-        runs-on: ubuntu-22.04
+        runs-on: ubuntu-24.04
         needs: [build, shellcheck]
         defaults:
             run:
                 working-directory: react
         strategy:
             matrix:
-                node-version: [22.x]
+                node-version: [24.x]
         steps:
-            - uses: actions/checkout@v4
+            - uses: actions/checkout@v6
             - uses: ./.github/actions/common-setup
               with:
                   node-version: ${{ matrix.node-version }}
@@ -139,16 +139,16 @@ jobs:
     # Duplication analysis
     duplication:
         if: github.ref == 'refs/heads/main'
-        runs-on: ubuntu-22.04
+        runs-on: ubuntu-24.04
         needs: [build]
         defaults:
             run:
                 working-directory: react
         strategy:
             matrix:
-                node-version: [22.x]
+                node-version: [24.x]
         steps:
-            - uses: actions/checkout@v4
+            - uses: actions/checkout@v6
             - uses: ./.github/actions/common-setup
               with:
                   node-version: ${{ matrix.node-version }}
@@ -162,16 +162,16 @@ jobs:
 
     # Playwright E2E
     e2e:
-        runs-on: ubuntu-22.04
+        runs-on: ubuntu-24.04
         needs: [unit_tests, audit_lint]
         defaults:
             run:
                 working-directory: react
         strategy:
             matrix:
-                node-version: [22.x]
+                node-version: [24.x]
         steps:
-            - uses: actions/checkout@v4
+            - uses: actions/checkout@v6
             - name: Download build artifact
               uses: actions/download-artifact@v4
               with:
@@ -193,11 +193,11 @@ jobs:
     # Deploy reports to GitHub Pages under /reports/
     deploy_reports:
         if: github.ref == 'refs/heads/main'
-        runs-on: ubuntu-22.04
+        runs-on: ubuntu-24.04
         needs: [e2e, duplication, analyze]
         steps:
             - name: Checkout repository
-              uses: actions/checkout@v4
+              uses: actions/checkout@v6
               with:
                   fetch-depth: 0
                   ref: gh-pages
