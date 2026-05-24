@@ -27,7 +27,8 @@ export default defineConfig({
     },
     projects: [
         { name: 'chromium', use: { ...devices['Desktop Chrome'] } },
-        { name: 'webkit', use: { ...devices['Desktop Safari'] } },
+        // WebKit and Firefox disabled to run only Chromium (Chrome) by default.
+        // { name: 'webkit', use: { ...devices['Desktop Safari'] } },
         // { name: 'firefox', use: { ...devices['Desktop Firefox'] } },
         /* Test against mobile viewports. */
         // { name: 'Mobile Chrome', use: { ...devices['Pixel 5'] } },
