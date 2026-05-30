@@ -18,6 +18,7 @@ build
 .eslintcache
 .copilot
 plan.md
+/plans
 
 # Compiled source
 *.com
