@@ -1,6 +1,6 @@
 {
   "statistics": {
-    "detectionDate": "2026-05-08T20:07:08.186Z",
+    "detectionDate": "2026-05-30T14:21:13.644Z",
     "formats": {
       "jsx": {
         "sources": {
@@ -924,12 +924,12 @@
         "end": 38,
         "startLoc": {
           "line": 28,
-          "column": 2,
+          "column": 64,
           "position": 86
         },
         "endLoc": {
           "line": 38,
-          "column": 13,
+          "column": 35,
           "position": 186
         }
       },
@@ -939,16 +939,15 @@
         "end": 36,
         "startLoc": {
           "line": 30,
-          "column": 7,
+          "column": 51,
           "position": 129
         },
         "endLoc": {
           "line": 36,
-          "column": 12,
+          "column": 34,
           "position": 145
         }
       }
     }
-  ],
-  "filename": "/home/runner/work/bwmon/bwmon/react/node_modules/@jscpd/html-reporter/dist/templates/main.pug"
+  ]
 }
