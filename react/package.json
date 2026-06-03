@@ -31,7 +31,7 @@
         "@mui/material": "^9.0.1",
         "apexcharts": "^5.13.0",
         "luxon": "^3.7.2",
-        "react": "^19.2.6",
+        "react": "^19.2.7",
         "react-apexcharts": "^2.1.0",
         "react-dom": "^19.2.6",
         "react-error-boundary": "^6.1.2",
