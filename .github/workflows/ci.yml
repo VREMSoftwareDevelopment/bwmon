@@ -58,7 +58,7 @@ jobs:
             - name: Build
               run: npm run build
             - name: Upload build artifact
-              uses: actions/upload-artifact@v4
+              uses: actions/upload-artifact@v7
               with:
                   name: react-build
                   path: ./react/build/
@@ -103,7 +103,7 @@ jobs:
             - name: Analyze bundle
               run: npm run analyze
             - name: Upload bundle analysis report
-              uses: actions/upload-artifact@v4
+              uses: actions/upload-artifact@v7
               with:
                   name: reports-visualizer
                   path: ./react/reports/visualizer/stats.html
@@ -131,7 +131,7 @@ jobs:
                   token: ${{ secrets.CODECOV_TOKEN }}
                   file: ./react/reports/coverage/coverage-final.json
             - name: Upload coverage reports
-              uses: actions/upload-artifact@v4
+              uses: actions/upload-artifact@v7
               with:
                   name: reports-coverage
                   path: ./react/reports/coverage/
@@ -155,7 +155,7 @@ jobs:
             - name: Run duplication analysis
               run: npm run duplication
             - name: Upload duplication HTML report
-              uses: actions/upload-artifact@v4
+              uses: actions/upload-artifact@v7
               with:
                   name: reports-duplication
                   path: ./react/reports/duplication/html/
@@ -185,7 +185,7 @@ jobs:
             - name: Run Playwright tests
               run: npx playwright test
             - name: Upload playwright reports
-              uses: actions/upload-artifact@v4
+              uses: actions/upload-artifact@v7
               with:
                   name: reports-playwright
                   path: ./react/reports/playwright/
@@ -202,21 +202,25 @@ jobs:
                   fetch-depth: 0
                   ref: gh-pages
             - name: Download coverage reports
+              continue-on-error: true
               uses: actions/download-artifact@v4
               with:
                   name: reports-coverage
                   path: reports/coverage
             - name: Download playwright reports
+              continue-on-error: true
               uses: actions/download-artifact@v4
               with:
                   name: reports-playwright
                   path: reports/playwright
             - name: Download duplication report
+              continue-on-error: true
               uses: actions/download-artifact@v4
               with:
                   name: reports-duplication
                   path: reports/duplication
             - name: Download visualizer report
+              continue-on-error: true
               uses: actions/download-artifact@v4
               with:
                   name: reports-visualizer
