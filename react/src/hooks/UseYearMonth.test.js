@@ -18,15 +18,17 @@
 
 import { act, renderHook, waitFor } from '@testing-library/react';
 import useYearMonth from './UseYearMonth';
+import useYear from './UseYear';
 import { API } from '@services';
 
-jest.mock('@services/Usage');
+vi.mock('@services/Usage');
+vi.mock('./UseYear', { spy: true });
 
 describe('UseYearMonth', () => {
     const expectedYears = [2013, 2012, 2011];
 
     afterEach(() => {
-        jest.restoreAllMocks();
+        vi.restoreAllMocks();
     });
 
     const expectedYearsCount = 3;
@@ -88,19 +90,15 @@ describe('UseYearMonth', () => {
     });
 
     it('should not update months or month if year is undefined', async () => {
-        // scan-suspicious-ignore-next-line
-        const useYear = require('./UseYear');
-        const originalDefault = useYear.default;
-        useYear.default = jest.fn().mockReturnValue({ years: [], year: undefined, setYear: jest.fn() });
+        useYear.mockReturnValueOnce({ years: [], year: undefined, setYear: vi.fn() });
         const { result } = renderHook(() => useYearMonth());
         expect(result.current.months).toBeUndefined();
         expect(result.current.month).toBeUndefined();
-        useYear.default = originalDefault;
     });
 
     it('should set error when API.getMonths fails', async () => {
         const errorMessage = 'API Error';
-        jest.spyOn(API, 'getMonths').mockRejectedValueOnce(new Error(errorMessage));
+        vi.spyOn(API, 'getMonths').mockRejectedValueOnce(new Error(errorMessage));
         const { result } = renderHook(() => useYearMonth());
         await waitFor(() => {
             expect(result.current.error).toEqual(errorMessage);

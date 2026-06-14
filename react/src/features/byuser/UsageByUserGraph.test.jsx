@@ -24,9 +24,9 @@ import { Search } from '@components';
 import UsageByUserGraph from './UsageByUserGraph';
 import useUsageByUserGraph from './UseUsageByUserGraph';
 
-jest.mock('@components/graph/Graph');
-jest.mock('@components/inputs/Search');
-jest.mock('@features/byuser/UseUsageByUserGraph');
+vi.mock('@components/graph/Graph');
+vi.mock('@components/inputs/Search');
+vi.mock('@features/byuser/UseUsageByUserGraph');
 
 describe('UsageByUserGraph', () => {
     const data = {
@@ -34,11 +34,11 @@ describe('UsageByUserGraph', () => {
         series: [],
         years: [2020, 2021, 2022],
         year: 2021,
-        setYear: jest.fn(),
+        setYear: vi.fn(),
         months: ['January', 'February', 'March'],
         month: 'February',
-        setMonth: jest.fn(),
-        setFilter: jest.fn(),
+        setMonth: vi.fn(),
+        setFilter: vi.fn(),
         loading: false,
     };
 

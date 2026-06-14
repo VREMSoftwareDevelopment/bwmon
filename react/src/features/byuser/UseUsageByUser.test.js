@@ -21,14 +21,14 @@ import { fromIPv4 } from '@utils';
 import { useUsageByUser } from '.';
 import { API } from '@services';
 
-jest.mock('@services/Usage');
+vi.mock('@services/Usage');
 
 describe('UseUsageByUser', () => {
     const expectedYears = [2013, 2012, 2011];
     const expectedYearsCount = 3;
 
     afterEach(() => {
-        jest.restoreAllMocks();
+        vi.restoreAllMocks();
     });
 
     it('should initialize years', async () => {
@@ -279,7 +279,7 @@ describe('UseUsageByUser', () => {
 
     it('should set error when API.getUsageByUser fails', async () => {
         const errorMessage = 'API Error';
-        jest.spyOn(API, 'getUsageByUser').mockRejectedValueOnce(new Error(errorMessage));
+        vi.spyOn(API, 'getUsageByUser').mockRejectedValueOnce(new Error(errorMessage));
         const { result } = renderHook(useUsageByUser);
         await waitFor(() => {
             expect(result.current.error).toEqual(errorMessage);

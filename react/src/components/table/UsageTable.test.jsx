@@ -16,12 +16,12 @@ const paginationProps = {
     minimum: 1,
     rowsPerPage: 2,
     page: 0,
-    onPageChange: jest.fn(),
-    onRowsPerPageChange: jest.fn(),
+    onPageChange: vi.fn(),
+    onRowsPerPageChange: vi.fn(),
 };
 
 const headerProps = {
-    onRequestSort: jest.fn(),
+    onRequestSort: vi.fn(),
     ascending: true,
     orderBy: 'id',
 };

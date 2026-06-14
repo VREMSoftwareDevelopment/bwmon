@@ -23,8 +23,8 @@ import { ThemeProvider, createTheme } from '@mui/material/styles';
 import UsageByYearGraph from './UsageByYearGraph';
 import useUsageByYearGraph from './UseUsageByYearGraph';
 
-jest.mock('@components/graph/Graph');
-jest.mock('@features/byyear/UseUsageByYearGraph');
+vi.mock('@components/graph/Graph');
+vi.mock('@features/byyear/UseUsageByYearGraph');
 
 describe('UsageByYearGraph', () => {
     const data = {

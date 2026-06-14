@@ -3,7 +3,7 @@ import { fixupConfigRules, fixupPluginRules } from '@eslint/compat';
 import react from 'eslint-plugin-react';
 import _import from 'eslint-plugin-import';
 import jsxA11Y from 'eslint-plugin-jsx-a11y';
-import jest from 'eslint-plugin-jest';
+import vitest from '@vitest/eslint-plugin';
 import prettier from 'eslint-plugin-prettier';
 import security from 'eslint-plugin-security';
 import globals from 'globals';
@@ -35,7 +35,7 @@ export default [
             react: fixupPluginRules(react),
             import: fixupPluginRules(_import),
             'jsx-a11y': fixupPluginRules(jsxA11Y),
-            jest,
+            vitest,
             prettier: fixupPluginRules(prettier),
             security: fixupPluginRules(security),
         },
@@ -43,7 +43,7 @@ export default [
             globals: {
                 ...globals.browser,
                 ...globals.node,
-                ...jest.environments.globals.globals,
+                ...vitest.environments.env.globals,
             },
             ecmaVersion: 'latest',
             sourceType: 'module',
@@ -58,6 +58,7 @@ export default [
                 version: 'detect',
             },
             'import/resolver': {
+                node: true,
                 alias: {
                     map: [
                         ['@components', './src/components'],

@@ -20,6 +20,9 @@ import { render, screen, fireEvent } from '@testing-library/react';
 import { MemoryRouter } from 'react-router';
 import '@testing-library/jest-dom';
 import Navigation from './Navigation';
+import useNavigation from './UseNavigation';
+
+vi.mock('./UseNavigation', { spy: true });
 
 describe('Navigation', () => {
     const menu = [
@@ -28,7 +31,7 @@ describe('Navigation', () => {
     ];
 
     afterEach(() => {
-        jest.restoreAllMocks();
+        vi.restoreAllMocks();
     });
 
     const renderComponent = () =>
@@ -68,13 +71,11 @@ describe('Navigation', () => {
     });
 
     it('calls setIndex with the new route index when handleChange is triggered', () => {
-        const setIndex = jest.fn();
-        // scan-suspicious-ignore-next-line
-        jest.spyOn(require('./UseNavigation'), 'default').mockReturnValue({ index: 0, setIndex });
+        const setIndex = vi.fn();
+        useNavigation.mockReturnValue({ index: 0, setIndex });
         renderComponent();
         const aboutNavAction = screen.getByTestId('about');
         fireEvent.click(aboutNavAction);
         expect(setIndex).toHaveBeenCalledWith(1);
-        jest.restoreAllMocks();
     });
 });

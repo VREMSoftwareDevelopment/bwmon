@@ -16,21 +16,25 @@
  * Bandwidth Monitor
  */
 
-import fetchMock from 'jest-fetch-mock';
 import { fromIPv4 } from '@utils';
 import usage from './Usage';
 
-fetchMock.enableMocks();
+const mockFetchResponse = (body, { status = 200, statusText = 'OK' } = {}) => ({
+    ok: status >= 200 && status < 300,
+    status,
+    statusText,
+    text: async () => body,
+});
 
 describe('Usage', () => {
     beforeEach(() => {
-        fetch.resetMocks();
-        fetch.doMock();
-        jest.useFakeTimers();
+        vi.stubGlobal('fetch', vi.fn());
+        vi.useFakeTimers();
     });
 
     afterEach(() => {
-        jest.useRealTimers();
+        vi.useRealTimers();
+        vi.unstubAllGlobals();
     });
 
     it('should return data', async () => {
@@ -88,7 +92,7 @@ describe('Usage', () => {
                 year: 2013,
             },
         ];
-        fetch.mockResponseOnce(response);
+        fetch.mockResolvedValueOnce(mockFetchResponse(response));
         const data = await usage.request('xyz');
         expect(data.length).toEqual(expected.length);
         expected.forEach((item, index) => {
@@ -99,7 +103,7 @@ describe('Usage', () => {
     });
 
     it('should throw error when status is not OK', async () => {
-        fetch.mockResponseOnce('', { status: 400, statusText: 'Bad request' });
+        fetch.mockResolvedValueOnce(mockFetchResponse('', { status: 400, statusText: 'Bad request' }));
         try {
             await usage.request('xyz');
             expect(true).toBeFalsy();

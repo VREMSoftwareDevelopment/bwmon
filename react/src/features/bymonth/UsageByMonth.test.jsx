@@ -24,14 +24,14 @@ import { useSortDesc } from '@hooks';
 import UsageByMonth from './UsageByMonth';
 import useUsageByMonth from './UseUsageByMonth';
 
-jest.mock('@features/bymonth/UseUsageByMonth');
-jest.mock('@hooks/UseSort');
+vi.mock('@features/bymonth/UseUsageByMonth');
+vi.mock('@hooks/UseSort');
 
 describe('UsageByMonth', () => {
     const data = {
         years: [2020, 2021, 2022],
         year: 2021,
-        setYear: jest.fn(),
+        setYear: vi.fn(),
         data: {
             usage: [
                 { id: 1, download: 100000, upload: 20000, total: 120000, percent: 10, average: 10000, days: 10 },
@@ -46,9 +46,9 @@ describe('UsageByMonth', () => {
         useUsageByMonth.mockReturnValue(data);
         useSortDesc.mockReturnValue({
             ascending: true,
-            setAscending: jest.fn(),
+            setAscending: vi.fn(),
             orderBy: 'id',
-            setOrderBy: jest.fn(),
+            setOrderBy: vi.fn(),
         });
     });
 

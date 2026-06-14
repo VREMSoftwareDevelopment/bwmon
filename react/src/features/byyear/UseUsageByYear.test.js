@@ -20,11 +20,11 @@ import { renderHook, waitFor } from '@testing-library/react';
 import { API } from '@services';
 import { useUsageByYear } from '.';
 
-jest.mock('@services/Usage');
+vi.mock('@services/Usage');
 
 describe('UseUsageByYear', () => {
     afterEach(() => {
-        jest.restoreAllMocks();
+        vi.restoreAllMocks();
     });
 
     it('should initialize', async () => {
@@ -53,7 +53,7 @@ describe('UseUsageByYear', () => {
     });
 
     it('should handle API returning empty array', async () => {
-        jest.spyOn(API, 'getUsageByYear').mockResolvedValueOnce([]);
+        vi.spyOn(API, 'getUsageByYear').mockResolvedValueOnce([]);
         const { result } = renderHook(useUsageByYear);
         await waitFor(() => {
             expect(result.current.data).toEqual([]);
@@ -62,7 +62,7 @@ describe('UseUsageByYear', () => {
     });
 
     it('should handle API returning null', async () => {
-        jest.spyOn(API, 'getUsageByYear').mockResolvedValueOnce(null);
+        vi.spyOn(API, 'getUsageByYear').mockResolvedValueOnce(null);
         const { result } = renderHook(useUsageByYear);
         await waitFor(() => {
             expect(result.current.data).toBeNull();
@@ -72,7 +72,7 @@ describe('UseUsageByYear', () => {
 
     it('should set error when API.getUsageByYear fails', async () => {
         const errorMessage = 'API Error';
-        jest.spyOn(API, 'getUsageByYear').mockRejectedValueOnce(new Error(errorMessage));
+        vi.spyOn(API, 'getUsageByYear').mockRejectedValueOnce(new Error(errorMessage));
         const { result } = renderHook(useUsageByYear);
         await waitFor(() => {
             expect(result.current.error).toEqual(errorMessage);

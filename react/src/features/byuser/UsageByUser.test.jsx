@@ -26,36 +26,36 @@ import { fromIPv4 } from '@utils';
 import UsageByUser from './UsageByUser';
 import useUsageByUser from './UseUsageByUser';
 
-jest.mock('@components/inputs/Search');
-jest.mock('@features/byuser/UseUsageByUser');
-jest.mock('@hooks/UsePagination');
-jest.mock('@hooks/UseSort');
+vi.mock('@components/inputs/Search');
+vi.mock('@features/byuser/UseUsageByUser');
+vi.mock('@hooks/UsePagination');
+vi.mock('@hooks/UseSort');
 
 describe('UsageByUser', () => {
     beforeEach(() => {
         useUsageByUser.mockReturnValue({
             years: data.years,
             year: 2021,
-            setYear: jest.fn(),
+            setYear: vi.fn(),
             months: data.months,
             month: 'February',
-            setMonth: jest.fn(),
+            setMonth: vi.fn(),
             filter: '',
-            setFilter: jest.fn(),
+            setFilter: vi.fn(),
             data: data,
             loading: false,
         });
         useSortAsc.mockReturnValue({
             ascending: true,
-            setAscending: jest.fn(),
+            setAscending: vi.fn(),
             orderBy: 'IP',
-            setOrderBy: jest.fn(),
+            setOrderBy: vi.fn(),
         });
         usePagination.mockReturnValue({
             page: 0,
-            setPage: jest.fn(),
+            setPage: vi.fn(),
             rowsPerPage: 20,
-            setRowsPerPage: jest.fn(),
+            setRowsPerPage: vi.fn(),
         });
     });
 
@@ -249,9 +249,9 @@ describe('UsageByUser', () => {
     it('returns the correct number of rows for the first page', () => {
         usePagination.mockReturnValue({
             page: 0,
-            setPage: jest.fn(),
+            setPage: vi.fn(),
             rowsPerPage: 2,
-            setRowsPerPage: jest.fn(),
+            setRowsPerPage: vi.fn(),
         });
         renderComponent();
         expect(screen.getByTestId('user-data-0')).toHaveTextContent('11:00:00:00:00:00');
@@ -262,9 +262,9 @@ describe('UsageByUser', () => {
     it('returns the correct rows for the second page', () => {
         usePagination.mockReturnValue({
             page: 1,
-            setPage: jest.fn(),
+            setPage: vi.fn(),
             rowsPerPage: 2,
-            setRowsPerPage: jest.fn(),
+            setRowsPerPage: vi.fn(),
         });
         renderComponent();
         expect(screen.getByTestId('user-data-0')).toHaveTextContent('13:00:00:00:00:00');
@@ -276,12 +276,12 @@ describe('UsageByUser', () => {
         useUsageByUser.mockReturnValue({
             years: data.years,
             year: 2021,
-            setYear: jest.fn(),
+            setYear: vi.fn(),
             months: data.months,
             month: 'February',
-            setMonth: jest.fn(),
+            setMonth: vi.fn(),
             filter: '',
-            setFilter: jest.fn(),
+            setFilter: vi.fn(),
             data: { ...data, usage: [] },
             loading: false,
         });
@@ -673,6 +673,6 @@ describe('UsageByUser', () => {
         total: { download: 10000000, upload: 1000000, total: 11000000, average: 100000, days: 10 },
         years: [2020, 2021, 2022],
         months: ['January', 'February', 'March'],
-        setFilter: jest.fn(),
+        setFilter: vi.fn(),
     };
 });

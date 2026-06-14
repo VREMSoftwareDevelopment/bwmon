@@ -20,14 +20,14 @@ import { act, renderHook, waitFor } from '@testing-library/react';
 import useUsageByMonth from './UseUsageByMonth';
 import { API } from '@services';
 
-jest.mock('@services/Usage');
+vi.mock('@services/Usage');
 
 describe('UseUsageByMonth', () => {
     const expectedYears = [2013, 2012, 2011];
     const expectedYearsCount = 3;
 
     afterEach(() => {
-        jest.restoreAllMocks();
+        vi.restoreAllMocks();
     });
 
     it('should initialize years', async () => {
@@ -120,7 +120,7 @@ describe('UseUsageByMonth', () => {
 
     it('should set error when API.getUsageByMonth fails', async () => {
         const errorMessage = 'API Error';
-        jest.spyOn(API, 'getUsageByMonth').mockRejectedValueOnce(new Error(errorMessage));
+        vi.spyOn(API, 'getUsageByMonth').mockRejectedValueOnce(new Error(errorMessage));
         const { result } = renderHook(useUsageByMonth);
         await waitFor(() => {
             expect(result.current.error).toEqual(errorMessage);

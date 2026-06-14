@@ -1,4 +1,5 @@
 // vite.config.mjs
+/// <reference types="vitest/config" />
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import svgr from 'vite-plugin-svgr';
@@ -31,13 +32,18 @@ export default defineConfig({
         },
     },
     resolve: {
-        alias: {
-            '@components': '/src/components',
-            '@features': '/src/features',
-            '@hooks': '/src/hooks',
-            '@services': '/src/services',
-            '@utils': '/src/utils',
-        },
+        alias: [
+            // Exact-match entries must precede the prefix entries below.
+            { find: /^@components$/, replacement: '/src/components/index.js' },
+            { find: /^@hooks$/, replacement: '/src/hooks/index.js' },
+            { find: /^@services$/, replacement: '/src/services/index.js' },
+            { find: /^@utils$/, replacement: '/src/utils/index.js' },
+            { find: '@components', replacement: '/src/components' },
+            { find: '@features', replacement: '/src/features' },
+            { find: '@hooks', replacement: '/src/hooks' },
+            { find: '@services', replacement: '/src/services' },
+            { find: '@utils', replacement: '/src/utils' },
+        ],
     },
     plugins: [
         react({
@@ -54,5 +60,33 @@ export default defineConfig({
     ],
     optimizeDeps: {
         force: true,
+    },
+    test: {
+        environment: 'jsdom',
+        globals: true,
+        setupFiles: './vitest.setup.js',
+        include: ['src/**/*.test.{js,jsx}'],
+        // MUI's ESM does directory imports (react-transition-group) that Node's native resolver
+        // rejects; inlining routes them through Vite's resolver. Removing this breaks component tests.
+        server: {
+            deps: {
+                inline: [/@mui\//, /react-transition-group/],
+            },
+        },
+        // Mirror the alias index resolution that Jest's moduleNameMapper provided for bare
+        // package-name aliases (e.g. `@services` -> src/services/index.js).
+        coverage: {
+            provider: 'v8',
+            reportsDirectory: 'reports/coverage',
+            reporter: ['text', 'html', 'json'],
+            include: ['src/**/*.{js,jsx}'],
+            exclude: ['src/index.jsx', 'src/serviceWorker.js', '**/index.js', '**/e2e/**', '**/__mocks__/**'],
+            thresholds: {
+                branches: 100,
+                functions: 100,
+                lines: 100,
+                statements: 100,
+            },
+        },
     },
 });

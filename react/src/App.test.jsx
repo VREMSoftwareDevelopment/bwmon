@@ -24,7 +24,7 @@ import { Settings } from 'luxon';
 import App from './App';
 import menu from './menu/Menu';
 
-jest.mock('./services/Usage');
+vi.mock('./services/Usage');
 
 describe('App', () => {
     const originalZone = Settings.defaultZone;

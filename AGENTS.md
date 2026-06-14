@@ -9,7 +9,7 @@ See [server/README.md](server/README.md) for server scripts documentation.
 ## Critical Requirements
 
 ### Testing
-- **100% code coverage is mandatory** - enforced by Jest
+- **100% code coverage is mandatory** - enforced by Vitest (V8 engine coverage)
 - Coverage exceptions: `index.jsx`, `serviceWorker.js`
 - Mutation test threshold: 80%
 - Co-locate unit tests with source files (`*.test.js` or `*.test.jsx`)
@@ -38,14 +38,14 @@ Available aliases: `@components`, `@hooks`, `@features`, `@services`, `@utils`
 ## Tech Stack
 
 ### Frontend (react/)
-- **Framework**: React 19, functional components only (no class components)
-- **Build**: Vite 7 + Babel (NOT webpack)
-- **UI Library**: Material UI (MUI) v7, ApexCharts 5
+- **Framework**: React, functional components only (no class components)
+- **Build**: Vite (NOT webpack)
+- **UI Library**: Material UI (MUI), ApexCharts
 - **Styling**: Emotion CSS-in-JS
-- **Routing**: React Router v7 with HashRouter
+- **Routing**: React Router with HashRouter
 - **DateTime**: Luxon (NOT moment.js)
-- **Testing**: Jest 30 (unit), Playwright (E2E), Stryker (mutation)
-- **Code Quality**: ESLint 9 (flat config), Prettier
+- **Testing**: Vitest (unit), Playwright (E2E), Stryker (mutation)
+- **Code Quality**: ESLint (flat config), Prettier
 
 ### Backend (server/)
 - Shell scripts (sh/bash) for AsusWRT-Merlin routers

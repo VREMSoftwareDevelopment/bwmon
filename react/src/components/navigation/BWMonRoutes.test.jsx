@@ -31,7 +31,7 @@ describe('BWMonRoutes', () => {
     ];
 
     afterEach(() => {
-        jest.restoreAllMocks();
+        vi.restoreAllMocks();
     });
 
     const renderComponent = (props) =>
@@ -52,7 +52,7 @@ describe('BWMonRoutes', () => {
     });
 
     it('renders PageNotFound for unknown route', () => {
-        jest.spyOn(console, 'warn').mockImplementation(() => {});
+        vi.spyOn(console, 'warn').mockImplementation(() => {});
         const { container } = renderComponent(['/page3']);
         expect(container.firstChild).toBeNull();
     });

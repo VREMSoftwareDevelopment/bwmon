@@ -32,7 +32,7 @@ import {
     isLastPage,
 } from './Pagination';
 
-const mockOnPageChange = jest.fn();
+const mockOnPageChange = vi.fn();
 
 describe('Pagination Suite', () => {
     describe('Pagination', () => {

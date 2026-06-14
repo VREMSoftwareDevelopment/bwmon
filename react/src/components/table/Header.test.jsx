@@ -22,7 +22,7 @@ import '@testing-library/jest-dom';
 import { Header, Cell, SortableCell, getDirection, sortDirection, sortDefaultDirection, isActive } from './Header';
 
 describe('Header Suite', () => {
-    const onRequestSort = jest.fn();
+    const onRequestSort = vi.fn();
 
     describe('Header', () => {
         const cellInfos = [

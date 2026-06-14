@@ -1,13 +1,13 @@
 // stryker.config.mjs
 /*
     https://stryker-mutator.io/docs/stryker-js/configuration/ for more information
-    https://stryker-mutator.io/docs/stryker-js/jest-runner for information about the jest plugin
+    https://stryker-mutator.io/docs/stryker-js/vitest-runner for information about the vitest plugin
 */
 const config = {
     concurrency: process.env.CI ? 2 : 8,
     packageManager: 'npm',
     reporters: ['html', 'clear-text', 'progress'],
-    testRunner: 'jest',
+    testRunner: 'vitest',
     coverageAnalysis: 'perTest',
     tempDirName: 'stryker-tmp',
     cleanTempDir: 'always',
@@ -35,13 +35,8 @@ const config = {
         'public',
         'stryker-tmp',
     ],
-    jest: {
-        projectType: 'custom',
-        configFile: './jest.config.mjs',
-        config: {
-            testEnvironment: './jest.enviroment.js',
-        },
-        enableFindRelatedTests: true,
+    vitest: {
+        configFile: 'vite.config.mjs',
     },
     thresholds: { high: 80, low: 60, break: 80 },
 };

@@ -21,7 +21,7 @@ import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import Graph from './Graph';
 
-jest.mock('react-apexcharts', () => ({ __esModule: true, default: () => <div data-testid="apex-chart">ApexGraph</div> }));
+vi.mock('react-apexcharts', () => ({ __esModule: true, default: () => <div data-testid="apex-chart">ApexGraph</div> }));
 
 describe('Graph', () => {
     const options = {

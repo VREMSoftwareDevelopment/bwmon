@@ -23,8 +23,8 @@ import { ThemeProvider, createTheme } from '@mui/material/styles';
 import UsageByMonthGraph from './UsageByMonthGraph';
 import useUsageByMonthGraph from './UseUsageByMonthGraph';
 
-jest.mock('@components/graph/Graph');
-jest.mock('@features/bymonth/UseUsageByMonthGraph');
+vi.mock('@components/graph/Graph');
+vi.mock('@features/bymonth/UseUsageByMonthGraph');
 
 describe('UsageByMonthGraph', () => {
     const data = {
@@ -32,7 +32,7 @@ describe('UsageByMonthGraph', () => {
         series: [],
         years: [2020, 2021, 2022],
         year: 2021,
-        setYear: jest.fn(),
+        setYear: vi.fn(),
         loading: false,
     };
 

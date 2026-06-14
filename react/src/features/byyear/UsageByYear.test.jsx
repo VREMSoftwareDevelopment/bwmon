@@ -24,9 +24,9 @@ import { usePagination, useSortDesc } from '@hooks';
 import UsageByYear from './UsageByYear';
 import useUsageByYear from './UseUsageByYear';
 
-jest.mock('@features/byyear/UseUsageByYear');
-jest.mock('@hooks/UsePagination');
-jest.mock('@hooks/UseSort');
+vi.mock('@features/byyear/UseUsageByYear');
+vi.mock('@hooks/UsePagination');
+vi.mock('@hooks/UseSort');
 
 describe('UsageByYear', () => {
     const data = [
@@ -65,15 +65,15 @@ describe('UsageByYear', () => {
         useUsageByYear.mockReturnValue({ data: data, loading: false });
         useSortDesc.mockReturnValue({
             ascending: true,
-            setAscending: jest.fn(),
+            setAscending: vi.fn(),
             orderBy: 'id',
-            setOrderBy: jest.fn(),
+            setOrderBy: vi.fn(),
         });
         usePagination.mockReturnValue({
             page: 0,
-            setPage: jest.fn(),
+            setPage: vi.fn(),
             rowsPerPage: 20,
-            setRowsPerPage: jest.fn(),
+            setRowsPerPage: vi.fn(),
         });
     });
 
@@ -190,15 +190,15 @@ describe('UsageByYear', () => {
     it('renders sorted and paginated data (sortedData)', () => {
         useSortDesc.mockReturnValue({
             ascending: true,
-            setAscending: jest.fn(),
+            setAscending: vi.fn(),
             orderBy: 'id',
-            setOrderBy: jest.fn(),
+            setOrderBy: vi.fn(),
         });
         usePagination.mockReturnValue({
             page: 0,
-            setPage: jest.fn(),
+            setPage: vi.fn(),
             rowsPerPage: 5,
-            setRowsPerPage: jest.fn(),
+            setRowsPerPage: vi.fn(),
         });
         renderComponent();
         for (let i = 0; i < 5; i++) {
@@ -210,15 +210,15 @@ describe('UsageByYear', () => {
     it('renders sorted and paginated data (sortedData, descending)', () => {
         useSortDesc.mockReturnValue({
             ascending: false,
-            setAscending: jest.fn(),
+            setAscending: vi.fn(),
             orderBy: 'id',
-            setOrderBy: jest.fn(),
+            setOrderBy: vi.fn(),
         });
         usePagination.mockReturnValue({
             page: 0,
-            setPage: jest.fn(),
+            setPage: vi.fn(),
             rowsPerPage: 3,
-            setRowsPerPage: jest.fn(),
+            setRowsPerPage: vi.fn(),
         });
         renderComponent();
         expect(screen.getByTestId('year-data-0')).toHaveTextContent('2029');
@@ -230,15 +230,15 @@ describe('UsageByYear', () => {
     it('renders sorted and paginated data (sortedData, sort by total)', () => {
         useSortDesc.mockReturnValue({
             ascending: true,
-            setAscending: jest.fn(),
+            setAscending: vi.fn(),
             orderBy: 'total',
-            setOrderBy: jest.fn(),
+            setOrderBy: vi.fn(),
         });
         usePagination.mockReturnValue({
             page: 1,
-            setPage: jest.fn(),
+            setPage: vi.fn(),
             rowsPerPage: 2,
-            setRowsPerPage: jest.fn(),
+            setRowsPerPage: vi.fn(),
         });
         renderComponent();
         expect(screen.getByTestId('year-data-0')).toHaveTextContent('2003');
