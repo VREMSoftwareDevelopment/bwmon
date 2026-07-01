@@ -46,24 +46,27 @@ export default defineConfig({
         ],
     },
     plugins: [
-        react({
-            jsxImportSource: '@emotion/react',
-            babel: {
-                plugins: ['@emotion/babel-plugin'],
-            },
-        }),
-        svgr({ icon: true, include: ['src/**/*.svg'] }),
-        visualizer({
-            open: false,
-            filename: 'reports/visualizer/stats.html',
-        }),
+        process.env.VITEST
+            ? react({ jsxImportSource: '@emotion/react', babel: false })
+            : react({ jsxImportSource: '@emotion/react', babel: { plugins: ['@emotion/babel-plugin'] } }),
+        !process.env.VITEST && svgr({ icon: true, include: ['src/**/*.svg'] }),
+        !process.env.VITEST && visualizer({ open: false, filename: 'reports/visualizer/stats.html' }),
     ],
     optimizeDeps: {
-        force: true,
+        include: [
+            '@mui/material',
+            '@mui/icons-material',
+            '@emotion/react',
+            '@emotion/styled',
+            'react-transition-group',
+            'react-dom',
+            'react',
+        ],
     },
     test: {
-        environment: 'jsdom',
+        environment: 'happy-dom',
         globals: true,
+        cache: true,
         setupFiles: './vitest.setup.js',
         include: ['src/**/*.test.{js,jsx}'],
         // MUI's ESM does directory imports (react-transition-group) that Node's native resolver
