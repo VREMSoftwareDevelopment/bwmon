@@ -1,6 +1,7 @@
 // jsconfig.json
 {
     "compilerOptions": {
+        "ignoreDeprecations": "6.0",
         "baseUrl": "./src",
         "paths": {
             "@components/*": ["components/*"],
