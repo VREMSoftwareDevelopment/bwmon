@@ -39,7 +39,7 @@
     },
     "devDependencies": {
         "@emotion/babel-plugin": "^11.13.5",
-        "@eslint/compat": "^2.1.0",
+        "@eslint/compat": "^2.1.1",
         "@eslint/eslintrc": "^3.3.7",
         "@playwright/test": "^1.62.1",
         "@stryker-mutator/core": "^10.0.0",
