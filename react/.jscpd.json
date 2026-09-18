@@ -3,5 +3,5 @@
     "minTokens": 50,
     "reporters": ["console", "html"],
     "output": "reports/duplication",
-    "ignore": ["**/*.test.js", "**/*.test.jsx"]
+    "ignore": ["**/*.test.ts", "**/*.test.tsx"]
 }

@@ -6,6 +6,7 @@ import jsxA11Y from 'eslint-plugin-jsx-a11y';
 import vitest from '@vitest/eslint-plugin';
 import prettier from 'eslint-plugin-prettier';
 import security from 'eslint-plugin-security';
+import tseslint from 'typescript-eslint';
 import globals from 'globals';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -30,7 +31,9 @@ export default [
             'plugin:prettier/recommended'
         )
     ),
+    ...tseslint.configs.recommended,
     {
+        files: ['**/*.{ts,tsx,js,mjs}'],
         plugins: {
             react: fixupPluginRules(react),
             import: fixupPluginRules(_import),
@@ -57,26 +60,28 @@ export default [
             react: {
                 version: 'detect',
             },
+            'import/core-modules': ['virtual:pwa-register'],
             'import/resolver': {
                 node: true,
                 alias: {
                     map: [
                         ['@components', './src/components'],
+                        ['@features', './src/features'],
                         ['@hooks', './src/hooks'],
-                        ['@pages', './src/pages'],
                         ['@services', './src/services'],
                         ['@utils', './src/utils'],
                     ],
-                    extensions: ['.js', '.jsx', '.mjs'],
+                    extensions: ['.ts', '.tsx'],
                 },
             },
         },
         rules: {
-            'react/prop-types': 'warn',
-            indent: ['error', 4],
             'linebreak-style': 'off',
-            quotes: ['error', 'single'],
-            'no-unused-vars': [
+            'react/prop-types': 'off',
+            'react/react-in-jsx-scope': 'off',
+            'react/jsx-uses-react': 'off',
+            'no-unused-vars': 'off',
+            '@typescript-eslint/no-unused-vars': [
                 'error',
                 {
                     vars: 'all',
@@ -96,13 +101,7 @@ export default [
         },
     },
     {
-        files: ['src/serviceWorker.js'],
-        rules: {
-            complexity: 'off',
-        },
-    },
-    {
-        files: ['src/services/Usage.test.js', 'src/utils/SortUtils.js'],
+        files: ['src/services/Usage.test.ts', 'src/utils/SortUtils.ts'],
         rules: {
             'security/detect-object-injection': 'off',
         },

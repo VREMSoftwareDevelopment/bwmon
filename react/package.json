@@ -14,9 +14,10 @@
         "test:CI": "vitest run --coverage --no-file-parallelism",
         "test:e2e": "npx playwright test",
         "test:mutation": "npx stryker run",
-        "pretty": "prettier --write \"src/**/*.{js,jsx,json,mjs}\"",
+        "pretty": "prettier --write \"src/**/*.{ts,tsx,json,mjs}\"",
         "audit": "better-npm-audit audit -p -l high",
-        "lint": "eslint \"src/**/*.{js,jsx}\"",
+        "lint": "eslint \"src/**/*.{ts,tsx}\"",
+        "typecheck": "tsc --noEmit",
         "scan": "node scan-suspicious.js",
         "outdated": "npm outdated --color=always | grep -viE \"beta|alpha\"",
         "duplication": "jscpd src",
@@ -41,14 +42,18 @@
         "@emotion/babel-plugin": "^11.13.5",
         "@eslint/compat": "^2.1.1",
         "@eslint/eslintrc": "^3.3.7",
+        "@eslint/js": "^9.39.5",
         "@playwright/test": "^1.63.0",
         "@stryker-mutator/core": "^10.0.0",
         "@stryker-mutator/vitest-runner": "^10.0.0",
         "@testing-library/dom": "^10.4.2",
         "@testing-library/jest-dom": "^7.0.1",
         "@testing-library/react": "^16.3.3",
+        "@types/luxon": "^3.7.5",
+        "@types/react": "^19.3.0",
+        "@types/react-dom": "^19.3.0",
         "@vitejs/plugin-react": "^6.1.1",
-        "@vitest/coverage-v8": "^5.0.1",
+        "@vitest/coverage-v8": "^4.1.11",
         "@vitest/eslint-plugin": "^1.6.27",
         "better-npm-audit": "^3.11.0",
         "eslint": "^9.39.5",
@@ -59,17 +64,16 @@
         "eslint-plugin-prettier": "^5.5.6",
         "eslint-plugin-react": "^7.37.5",
         "eslint-plugin-security": "^4.0.1",
-        "fast-uri": "^4.1.5",
         "globals": "^17.12.0",
         "happy-dom": "^20.14.5",
-        "husky": "^9.1.7",
-        "jscpd": "^5.2.1",
-        "prettier": "^3.9.7",
-        "pretty-quick": "^4.2.2",
+        "jscpd": "^5.3.0",
+        "prettier": "^3.9.8",
         "rollup-plugin-visualizer": "^7.1.1",
+        "typescript": "^6.0.3",
+        "typescript-eslint": "^8.70.0",
         "vite": "^8.3.0",
-        "vite-plugin-svgr": "^5.2.0",
-        "vitest": "^5.0.1"
+        "vite-plugin-pwa": "^1.3.0",
+        "vitest": "^4.1.11"
     },
     "browserslist": {
         "production": [
@@ -89,10 +93,5 @@
         "tabWidth": 4,
         "singleQuote": true,
         "endOfLine": "auto"
-    },
-    "husky": {
-        "hooks": {
-            "pre-commit": "pretty-quick --staged"
-        }
     }
 }

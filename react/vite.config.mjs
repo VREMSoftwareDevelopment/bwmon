@@ -2,8 +2,8 @@
 /// <reference types="vitest/config" />
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
-import svgr from 'vite-plugin-svgr';
 import { visualizer } from 'rollup-plugin-visualizer';
+import { VitePWA } from 'vite-plugin-pwa';
 
 export default defineConfig({
     base: '/bwmon/',
@@ -34,10 +34,10 @@ export default defineConfig({
     resolve: {
         alias: [
             // Exact-match entries must precede the prefix entries below.
-            { find: /^@components$/, replacement: '/src/components/index.js' },
-            { find: /^@hooks$/, replacement: '/src/hooks/index.js' },
-            { find: /^@services$/, replacement: '/src/services/index.js' },
-            { find: /^@utils$/, replacement: '/src/utils/index.js' },
+            { find: /^@components$/, replacement: '/src/components/index' },
+            { find: /^@hooks$/, replacement: '/src/hooks/index' },
+            { find: /^@services$/, replacement: '/src/services/index' },
+            { find: /^@utils$/, replacement: '/src/utils/index' },
             { find: '@components', replacement: '/src/components' },
             { find: '@features', replacement: '/src/features' },
             { find: '@hooks', replacement: '/src/hooks' },
@@ -49,8 +49,61 @@ export default defineConfig({
         process.env.VITEST
             ? react({ jsxImportSource: '@emotion/react', babel: false })
             : react({ jsxImportSource: '@emotion/react', babel: { plugins: ['@emotion/babel-plugin'] } }),
-        !process.env.VITEST && svgr({ icon: true, include: ['src/**/*.svg'] }),
         !process.env.VITEST && visualizer({ open: false, filename: 'reports/visualizer/stats.html' }),
+        !process.env.VITEST &&
+            VitePWA({
+                registerType: 'autoUpdate',
+                includeAssets: ['favicon.ico', 'robots.txt', 'pwa-192x192.png', 'pwa-512x512.png'],
+                manifest: {
+                    short_name: 'BWMon',
+                    name: 'Bandwidth Monitor',
+                    icons: [
+                        {
+                            src: 'favicon.ico',
+                            sizes: '64x64 32x32 24x24 16x16',
+                            type: 'image/x-icon',
+                        },
+                        {
+                            src: 'pwa-192x192.png',
+                            sizes: '192x192',
+                            type: 'image/png',
+                        },
+                        {
+                            src: 'pwa-512x512.png',
+                            sizes: '512x512',
+                            type: 'image/png',
+                        },
+                        {
+                            src: 'pwa-512x512.png',
+                            sizes: '512x512',
+                            type: 'image/png',
+                            purpose: 'any maskable',
+                        },
+                    ],
+                    start_url: '/bwmon/',
+                    scope: '/bwmon/',
+                    display: 'standalone',
+                    theme_color: '#000000',
+                    background_color: '#ffffff',
+                },
+                workbox: {
+                    globPatterns: ['**/*.{js,css,html,ico,svg,png,woff2}'],
+                    globIgnores: ['**/usage.db'],
+                    cleanupOutdatedCaches: true,
+                    maximumFileSizeToCacheInBytes: 3 * 1024 * 1024,
+                    runtimeCaching: [
+                        {
+                            urlPattern: ({ url }) => url.pathname.endsWith('/usage.db'),
+                            handler: 'NetworkFirst',
+                            options: {
+                                cacheName: 'bwmon-usage-db',
+                                networkTimeoutSeconds: 5,
+                                expiration: { maxEntries: 1 },
+                            },
+                        },
+                    ],
+                },
+            }),
     ],
     optimizeDeps: {
         include: [
@@ -67,23 +120,19 @@ export default defineConfig({
         environment: 'happy-dom',
         globals: true,
         cache: true,
-        setupFiles: './vitest.setup.js',
-        include: ['src/**/*.test.{js,jsx}'],
-        // MUI's ESM does directory imports (react-transition-group) that Node's native resolver
-        // rejects; inlining routes them through Vite's resolver. Removing this breaks component tests.
+        setupFiles: './vitest.setup.ts',
+        include: ['src/**/*.test.{ts,tsx}'],
         server: {
             deps: {
                 inline: [/@mui\//, /react-transition-group/],
             },
         },
-        // Mirror the alias index resolution that Jest's moduleNameMapper provided for bare
-        // package-name aliases (e.g. `@services` -> src/services/index.js).
         coverage: {
             provider: 'v8',
             reportsDirectory: 'reports/coverage',
             reporter: ['text', 'html', 'json'],
-            include: ['src/**/*.{js,jsx}'],
-            exclude: ['src/index.jsx', 'src/serviceWorker.js', '**/index.js', '**/e2e/**', '**/__mocks__/**'],
+            include: ['src/**/*.{ts,tsx}'],
+            exclude: ['src/index.tsx', 'src/vite-env.d.ts', '**/index.ts', '**/e2e/**', '**/__mocks__/**'],
             thresholds: {
                 branches: 100,
                 functions: 100,

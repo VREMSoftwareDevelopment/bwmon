@@ -1,5 +1,5 @@
 const { readFileSync, readdirSync, statSync } = require('fs');
-const { join } = require('path');
+const { join, relative } = require('path');
 
 const suspiciousPatterns = [
     /eval\s*\(/,
@@ -17,7 +17,7 @@ const suspiciousPatterns = [
     /base64/i,
 ];
 
-const ignoreFiles = ['serviceWorker.js'];
+const ignoreFiles = ['vite-env.d.ts'];
 
 const scanFile = (filePath) => {
     const content = readFileSync(filePath, 'utf8');
@@ -34,13 +34,17 @@ const scanFile = (filePath) => {
     });
 };
 
+const disallowedFiles = [];
+
 const scanDir = (dir) => {
     readdirSync(dir).forEach((file) => {
         const fullPath = join(dir, file);
-        const relPath = fullPath.replace(join(__dirname, 'src') + '\\', '').replace(/\\/g, '/');
+        const relPath = relative(join(__dirname, 'src'), fullPath).replace(/\\/g, '/');
         if (statSync(fullPath).isDirectory()) {
             scanDir(fullPath);
         } else if (/\.(js|jsx)$/.test(file)) {
+            disallowedFiles.push(relative(__dirname, fullPath).replace(/\\/g, '/'));
+        } else if (/\.(ts|tsx)$/.test(file)) {
             if (ignoreFiles.includes(relPath)) {
                 return;
             }
@@ -50,5 +54,11 @@ const scanDir = (dir) => {
 };
 
 scanDir(join(__dirname, 'src'));
+scanDir(join(__dirname, 'e2e'));
+
+if (disallowedFiles.length > 0) {
+    console.error(`JavaScript files are not allowed (use .ts/.tsx): ${disallowedFiles.join(', ')}`);
+    process.exit(1);
+}
 
 console.log('Scan complete.');

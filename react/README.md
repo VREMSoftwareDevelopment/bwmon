@@ -103,6 +103,12 @@ npm run audit
 npm run lint
 ```
 
+### Type check
+
+```bash
+npm run typecheck
+```
+
 ## Versioning
 
 Update the UI package version and create a git tag:

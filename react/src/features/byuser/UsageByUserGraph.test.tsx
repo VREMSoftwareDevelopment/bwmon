@@ -1,0 +1,129 @@
+/*
+ *      Copyright (C) 2010 - 2026 VREM Software Development <VREMSoftwareDevelopment@gmail.com>
+ *
+ *      Licensed under the Apache License, Version 2.0 (the "License");
+ *      you may not use this file except in compliance with the License.
+ *      You may obtain a copy of the License at
+ *
+ *           http: //www.apache.org/licenses/LICENSE-2.0
+ *
+ *      Unless required by applicable law or agreed to in writing, software
+ *      distributed under the License is distributed on an "AS IS" BASIS,
+ *      WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *      See the License for the specific language governing permissions and
+ *      limitations under the License.
+ *
+ * Bandwidth Monitor
+ */
+
+import { render, screen, within, fireEvent } from '@testing-library/react';
+import '@testing-library/jest-dom';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+import { Search } from '@components';
+import UsageByUserGraph from './UsageByUserGraph';
+import useUsageByUserGraph from './UseUsageByUserGraph';
+
+vi.mock('@components/graph/Graph');
+vi.mock('@components/inputs/Search');
+vi.mock('@features/byuser/UseUsageByUserGraph');
+
+const elementById = (selector: string): Element => {
+    // scan-suspicious-ignore-next-line
+    const element = document.querySelector(selector);
+    if (!element) {
+        throw new Error(`element not found: ${selector}`);
+    }
+    return element;
+};
+
+describe('UsageByUserGraph', () => {
+    const data = {
+        options: {},
+        series: [],
+        years: [2020, 2021, 2022],
+        year: 2021,
+        setYear: vi.fn(),
+        months: ['January', 'February', 'March'],
+        month: 'February',
+        setMonth: vi.fn(),
+        filter: '',
+        setFilter: vi.fn(),
+        loading: false,
+    };
+
+    beforeEach(() => {
+        vi.mocked(useUsageByUserGraph).mockReturnValue(data);
+    });
+
+    const theme = createTheme();
+
+    const renderComponent = () =>
+        render(
+            <ThemeProvider theme={theme}>
+                <UsageByUserGraph />
+            </ThemeProvider>
+        );
+
+    it('renders loading state', () => {
+        vi.mocked(useUsageByUserGraph).mockReturnValue({ ...data, loading: true });
+        renderComponent();
+        expect(screen.getByText('Loading...')).toBeInTheDocument();
+    });
+
+    it('renders graph when data is loaded', () => {
+        renderComponent();
+        expect(screen.getByTestId('test-graph-id')).toBeInTheDocument();
+    });
+
+    it('renders year selector', () => {
+        renderComponent();
+        const container = screen.getByTestId('user-year-graph');
+        expect(container).toBeInTheDocument();
+        const { getByText } = within(container);
+        expect(getByText('2021')).toBeInTheDocument();
+    });
+
+    it('handles year selector', () => {
+        renderComponent();
+        const container = elementById('#user-year-graph');
+        fireEvent.mouseDown(container);
+        fireEvent.click(screen.getByRole('option', { name: '2020' }));
+        expect(useUsageByUserGraph().setYear).toHaveBeenCalledWith(2020);
+    });
+
+    it('renders month selector', () => {
+        renderComponent();
+        const container = screen.getByTestId('user-month-graph');
+        expect(container).toBeInTheDocument();
+        const { getByText } = within(container);
+        expect(getByText('February')).toBeInTheDocument();
+    });
+
+    it('handles month selector', () => {
+        renderComponent();
+        const container = elementById('#user-month-graph');
+        fireEvent.mouseDown(container);
+        fireEvent.click(screen.getByRole('option', { name: 'January' }));
+        expect(useUsageByUserGraph().setMonth).toHaveBeenCalledWith('January');
+    });
+
+    it('displays correct graph options and series', () => {
+        vi.mocked(useUsageByUserGraph).mockReturnValue({
+            ...data,
+            options: { chart: { id: 'test-chart' } },
+            series: [{ name: 'test-series', data: [1, 2, 3] }],
+        });
+        renderComponent();
+        expect(screen.getByTestId('test-graph-id')).toBeInTheDocument();
+        expect(screen.getByTestId('test-graph-id')).toHaveTextContent('Graph');
+        expect(screen.getByTestId('test-graph-id')).toHaveTextContent('{"chart":{"id":"test-chart"}}');
+        expect(screen.getByTestId('test-graph-id')).toHaveTextContent('[{"name":"test-series","data":[1,2,3]}]');
+    });
+
+    it('handles user filter change', () => {
+        vi.mocked(Search).mockImplementation(({ onChange }) => <input data-testid="user-filter-graph" onChange={onChange} />);
+        renderComponent();
+        fireEvent.change(screen.getByTestId('user-filter-graph'), { target: { value: 'John' } });
+        expect(data.setFilter).toHaveBeenCalledWith('John');
+    });
+});

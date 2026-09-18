@@ -9,3 +9,16 @@ updates:
       directory: '/react'
       schedule:
           interval: 'weekly'
+      ignore:
+          # Vitest 5 breaks @stryker-mutator/vitest-runner 10 (stryker-js#6210).
+          # Remove once the runner ships the fix from stryker-js#6214.
+          - dependency-name: 'vitest'
+            update-types: ['version-update:semver-major']
+          - dependency-name: '@vitest/coverage-v8'
+            update-types: ['version-update:semver-major']
+          # ESLint stays on 9.x: eslint-plugin-import, eslint-plugin-react and
+          # eslint-plugin-jsx-a11y peer on eslint <= 9. @eslint/js must match eslint.
+          - dependency-name: 'eslint'
+            update-types: ['version-update:semver-major']
+          - dependency-name: '@eslint/js'
+            update-types: ['version-update:semver-major']

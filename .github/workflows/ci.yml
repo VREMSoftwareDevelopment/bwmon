@@ -84,6 +84,8 @@ jobs:
               run: npm run suspicious
             - name: ESLint
               run: npm run lint
+            - name: Typecheck
+              run: npm run typecheck
 
     # Analyze
     analyze:

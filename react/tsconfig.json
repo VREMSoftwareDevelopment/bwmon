@@ -1,0 +1,27 @@
+{
+    "compilerOptions": {
+        "target": "ES2022",
+        "module": "ESNext",
+        "moduleResolution": "bundler",
+        "jsx": "react-jsx",
+        "strict": true,
+        "noUncheckedIndexedAccess": true,
+        "isolatedModules": true,
+        "skipLibCheck": true,
+        "noEmit": true,
+        "types": ["vite/client", "vitest/globals"],
+        "paths": {
+            "@components": ["./src/components/index"],
+            "@components/*": ["./src/components/*"],
+            "@features/*": ["./src/features/*"],
+            "@hooks": ["./src/hooks/index"],
+            "@hooks/*": ["./src/hooks/*"],
+            "@services": ["./src/services/index"],
+            "@services/*": ["./src/services/*"],
+            "@utils": ["./src/utils/index"],
+            "@utils/*": ["./src/utils/*"]
+        }
+    },
+    "include": ["src", "vitest.setup.ts", "e2e", "playwright.config.ts"],
+    "exclude": ["node_modules", "build", "reports"]
+}
