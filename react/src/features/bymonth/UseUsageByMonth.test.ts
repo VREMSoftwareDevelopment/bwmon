@@ -128,9 +128,9 @@ describe('UseUsageByMonth', () => {
         });
     });
 
-    it('should set error when API.getUsageByMonth rejects with a non-Error value', async () => {
-        const errorMessage = 'not an error instance';
-        vi.spyOn(API, 'getUsageByMonth').mockRejectedValueOnce(errorMessage);
+    it('should stop loading when API.getYears fails', async () => {
+        const errorMessage = 'Years API Error';
+        vi.spyOn(API, 'getYears').mockRejectedValueOnce(new Error(errorMessage));
         const { result } = renderHook(useUsageByMonth);
         await waitFor(() => {
             expect(result.current.error).toEqual(errorMessage);

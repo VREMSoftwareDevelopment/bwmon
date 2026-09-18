@@ -18,6 +18,16 @@
 
 import { createTheme } from '@mui/material';
 
-const theme = createTheme({});
+const theme = createTheme({
+    components: {
+        MuiTableCell: {
+            styleOverrides: {
+                sizeSmall: {
+                    padding: '8px 0px 8px 16px',
+                },
+            },
+        },
+    },
+});
 
 export default theme;

@@ -21,10 +21,13 @@ import { DateTime } from 'luxon';
 export const timeToDate = (time: string | number): string => DateTime.fromSeconds(Number(time)).toFormat('MMM dd, yyyy HH:mm');
 export const toMonth = (month: string | number): string => DateTime.local(2012, Number(month)).toFormat('MMMM');
 export const usageInGBytes = (value: string | number): string => (Number(value) / 1000000).toFixed(3);
+export const toGBytes = (value: number): number => value / 1000000;
 export const toPercent = (value: string | number): string => Number(value).toFixed(1) + '%';
+export const toPercentage = (value: number, total: number): number => (total === 0 ? 0 : +((value * 100) / total).toFixed(1));
 export const toIPv4 = (value: string | number): string => {
     const v = Number(value);
     return (v >>> 24) + '.' + ((v >> 16) & 255) + '.' + ((v >> 8) & 255) + '.' + (v & 255);
 };
 export const fromIPv4 = (value: string): number =>
     value.split('.').reduce((value, octet) => (value << 8) + parseInt(octet, 10), 0) >>> 0;
+export const toErrorMessage = (err: unknown): string => (err instanceof Error ? err.message : String(err));

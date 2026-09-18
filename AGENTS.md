@@ -10,7 +10,7 @@ See [server/README.md](server/README.md) for server scripts documentation.
 
 ### Testing
 - **100% code coverage is mandatory** - enforced by Vitest (V8 engine coverage)
-- Coverage exceptions: `index.tsx`, `vite-env.d.ts`, all `index.ts` barrel files, `__mocks__/`, `e2e/`
+- Coverage exceptions: `index.tsx`, `vite-env.d.ts`, `test-utils.ts`, all `index.ts` barrel files, `__mocks__/`, `e2e/`
 - Mutation test threshold: 80%
 - Co-locate unit tests with source files (`*.test.ts` or `*.test.tsx`)
 - Use `MemoryRouter` (not `BrowserRouter`) for component testing
@@ -36,7 +36,7 @@ import { service } from '@services/Service';
 import { util } from '@utils/Util';
 ```
 
-Available aliases: `@components`, `@hooks`, `@features`, `@services`, `@utils`
+Available aliases: `@components`, `@hooks`, `@features`, `@services`, `@utils`, `@test-utils` (test helpers)
 
 ## Tech Stack
 

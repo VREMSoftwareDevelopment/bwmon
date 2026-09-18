@@ -17,12 +17,13 @@
  */
 
 import { renderHook, act } from '@testing-library/react';
+import type * as ReactRouter from 'react-router';
 import useNavigation from './UseNavigation';
 
 let mockPathname = '/pathname2';
 
 vi.mock('react-router', async () => ({
-    ...(await vi.importActual<typeof import('react-router')>('react-router')),
+    ...(await vi.importActual<typeof ReactRouter>('react-router')),
     useLocation: () => ({
         pathname: mockPathname,
     }),

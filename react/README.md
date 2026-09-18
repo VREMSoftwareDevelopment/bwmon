@@ -91,6 +91,8 @@ npm run test:mutation
 npm run pretty
 ```
 
+Formats `src/`, `e2e/` and `playwright.config.ts`.
+
 ### Audit for vulnerabilities
 
 ```bash
@@ -102,6 +104,8 @@ npm run audit
 ```bash
 npm run lint
 ```
+
+Lints `src/`, `e2e/` and `playwright.config.ts`.
 
 ### Type check
 

@@ -24,6 +24,7 @@ import type { Dispatch, SetStateAction } from 'react';
 import { API } from '@services';
 import type { Data, UsageResult } from '@services';
 import { useYearMonth } from '@hooks';
+import { toErrorMessage } from '@utils';
 
 interface UsageByUserState {
     years: number[] | undefined;
@@ -55,15 +56,17 @@ const useUsageByUser = (): UsageByUserState => {
                 const usageByUser = await API.getUsageByUser(selectedYear, selectedMonth, deferredFilter);
                 setData(usageByUser);
             } catch (err) {
-                setError(err instanceof Error ? err.message : String(err));
+                setError(toErrorMessage(err));
             } finally {
                 setLoading(false);
             }
         }
         if (year && month) {
             fetch(year, month);
+        } else if (yearMonthError) {
+            setLoading(false);
         }
-    }, [year, month, deferredFilter]);
+    }, [year, month, deferredFilter, yearMonthError]);
 
     return { years, year, setYear, months, month, setMonth, filter, setFilter, data, loading, error: yearMonthError || error };
 };

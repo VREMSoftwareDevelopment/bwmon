@@ -22,6 +22,7 @@
 import { useState, useEffect } from 'react';
 import { API } from '@services';
 import type { UsageSummary } from '@services';
+import { toErrorMessage } from '@utils';
 
 interface UsageByYearState {
     data: UsageSummary[] | undefined;
@@ -42,7 +43,7 @@ const useUsageByYear = (): UsageByYearState => {
                 const usageByYear = await API.getUsageByYear();
                 setData(usageByYear);
             } catch (err) {
-                setError(err instanceof Error ? err.message : String(err));
+                setError(toErrorMessage(err));
             } finally {
                 setLoading(false);
             }

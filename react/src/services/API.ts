@@ -18,7 +18,7 @@
 
 import usage from '@services/Usage';
 import { DateTime } from 'luxon';
-import { toIPv4 } from '@utils';
+import { toIPv4, toPercentage } from '@utils';
 import type Data from '@services/Data';
 import type { UsageResult, UsageSummary } from '@services/types';
 
@@ -108,7 +108,7 @@ class Store {
         const total = this.sum(usage, days, month);
         const usageWithPercent = usage.map((value) => ({
             ...value,
-            percent: +((value.total * 100) / total.total).toFixed(1),
+            percent: toPercentage(value.total, total.total),
         }));
         return { usage: usageWithPercent, total };
     };
@@ -138,7 +138,7 @@ class Service {
         );
         const usageWithPercent = usage.map((value) => ({
             ...value,
-            percent: +((value.total * 100) / total.total).toFixed(1),
+            percent: toPercentage(value.total, total.total),
         }));
         return { usage: usageWithPercent, total };
     };

@@ -38,6 +38,7 @@ export default defineConfig({
             { find: /^@hooks$/, replacement: '/src/hooks/index' },
             { find: /^@services$/, replacement: '/src/services/index' },
             { find: /^@utils$/, replacement: '/src/utils/index' },
+            { find: /^@test-utils$/, replacement: '/src/test-utils' },
             { find: '@components', replacement: '/src/components' },
             { find: '@features', replacement: '/src/features' },
             { find: '@hooks', replacement: '/src/hooks' },
@@ -53,6 +54,7 @@ export default defineConfig({
         !process.env.VITEST &&
             VitePWA({
                 registerType: 'autoUpdate',
+                manifestFilename: 'manifest.json',
                 includeAssets: ['favicon.ico', 'robots.txt', 'pwa-192x192.png', 'pwa-512x512.png'],
                 manifest: {
                     short_name: 'BWMon',
@@ -132,7 +134,7 @@ export default defineConfig({
             reportsDirectory: 'reports/coverage',
             reporter: ['text', 'html', 'json'],
             include: ['src/**/*.{ts,tsx}'],
-            exclude: ['src/index.tsx', 'src/vite-env.d.ts', '**/index.ts', '**/e2e/**', '**/__mocks__/**'],
+            exclude: ['src/index.tsx', 'src/vite-env.d.ts', 'src/test-utils.ts', '**/index.ts', '**/e2e/**', '**/__mocks__/**'],
             thresholds: {
                 branches: 100,
                 functions: 100,

@@ -104,13 +104,4 @@ describe('UseYearMonth', () => {
             expect(result.current.error).toEqual(errorMessage);
         });
     });
-
-    it('should set error when API.getMonths rejects with a non Error value', async () => {
-        const rejection = 'API String Failure';
-        vi.spyOn(API, 'getMonths').mockRejectedValueOnce(rejection);
-        const { result } = renderHook(() => useYearMonth());
-        await waitFor(() => {
-            expect(result.current.error).toEqual(rejection);
-        });
-    });
 });

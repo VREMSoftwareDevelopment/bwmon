@@ -19,7 +19,7 @@
 import { useState, useEffect } from 'react';
 import type { Dispatch, SetStateAction } from 'react';
 import type { ApexAxisChartSeries, ApexOptions } from 'apexcharts';
-import { toIPv4, usageInGBytes } from '@utils';
+import { toIPv4, toGBytes } from '@utils';
 import { useUsageByUser } from '.';
 
 interface UsageByUserGraphState {
@@ -58,7 +58,7 @@ const useUsageByUserGraph = (): UsageByUserGraphState => {
             setSeries([
                 {
                     name: 'Total Usage',
-                    data: data.usage.map((element) => Number(Number(usageInGBytes(element.total)).toFixed(1))),
+                    data: data.usage.map((element) => Number(toGBytes(element.total).toFixed(1))),
                 },
             ]);
         }

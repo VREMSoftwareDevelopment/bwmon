@@ -20,8 +20,7 @@ import { HashRouter } from 'react-router';
 import { DateTime } from 'luxon';
 import theme from './theme';
 import { ThemeProvider, CssBaseline } from '@mui/material';
-import { ErrorBoundary } from 'react-error-boundary';
-import ErrorDisplay from './components/main/ErrorDisplay';
+import RoutedErrorBoundary from './components/main/RoutedErrorBoundary';
 import Header from './components/main/Header';
 import Footer from './components/main/Footer';
 import Navigation from './components/navigation/Navigation';
@@ -45,10 +44,10 @@ const App = ({ name = appName, version = appVersion, currentTime = appTime }: Ap
                 <CssBaseline />
                 <Header name={name} version={version} />
                 <Navigation menu={menu} />
-                <ErrorBoundary FallbackComponent={ErrorDisplay}>
+                <RoutedErrorBoundary>
                     <BWMonRoutes menu={menu} />
                     <Footer currentTime={currentTime} />
-                </ErrorBoundary>
+                </RoutedErrorBoundary>
             </ThemeProvider>
         </HashRouter>
     );

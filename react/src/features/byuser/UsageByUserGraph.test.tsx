@@ -22,19 +22,11 @@ import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { Search } from '@components';
 import UsageByUserGraph from './UsageByUserGraph';
 import useUsageByUserGraph from './UseUsageByUserGraph';
+import { elementById } from '@test-utils';
 
 vi.mock('@components/graph/Graph');
 vi.mock('@components/inputs/Search');
 vi.mock('@features/byuser/UseUsageByUserGraph');
-
-const elementById = (selector: string): Element => {
-    // scan-suspicious-ignore-next-line
-    const element = document.querySelector(selector);
-    if (!element) {
-        throw new Error(`element not found: ${selector}`);
-    }
-    return element;
-};
 
 describe('UsageByUserGraph', () => {
     const data = {
@@ -84,9 +76,9 @@ describe('UsageByUserGraph', () => {
     });
 
     it('handles year selector', () => {
-        renderComponent();
-        const container = elementById('#user-year-graph');
-        fireEvent.mouseDown(container);
+        const { container } = renderComponent();
+        const select = elementById(container, '#user-year-graph');
+        fireEvent.mouseDown(select);
         fireEvent.click(screen.getByRole('option', { name: '2020' }));
         expect(useUsageByUserGraph().setYear).toHaveBeenCalledWith(2020);
     });
@@ -100,9 +92,9 @@ describe('UsageByUserGraph', () => {
     });
 
     it('handles month selector', () => {
-        renderComponent();
-        const container = elementById('#user-month-graph');
-        fireEvent.mouseDown(container);
+        const { container } = renderComponent();
+        const select = elementById(container, '#user-month-graph');
+        fireEvent.mouseDown(select);
         fireEvent.click(screen.getByRole('option', { name: 'January' }));
         expect(useUsageByUserGraph().setMonth).toHaveBeenCalledWith('January');
     });

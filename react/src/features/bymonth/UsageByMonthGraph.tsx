@@ -18,11 +18,10 @@
 
 import { Box, Paper } from '@mui/material';
 import type { SelectChangeEvent } from '@mui/material';
-import Grid from '@mui/material/Grid';
 import { DropDown, Graph, Loading } from '@components';
 import { useUsageByMonthGraph } from '.';
 
-const boxStyle = { flexGrow: 1, m: 2, mt: 6 };
+const boxStyle = { display: 'flex', flexWrap: 'wrap', gap: 2, m: 2, mt: 6 };
 
 const UsageByMonthGraph = () => {
     const { options, series, years, year, setYear, loading } = useUsageByMonthGraph();
@@ -33,17 +32,13 @@ const UsageByMonthGraph = () => {
         <Paper>
             <Loading isLoading={loading} />
             <Box sx={boxStyle}>
-                <Grid container>
-                    <Grid size={2}>
-                        <DropDown
-                            data-testid="month-year-graph"
-                            id="month-year-graph"
-                            onChange={handleChangeYear}
-                            items={years}
-                            value={year}
-                        />
-                    </Grid>
-                </Grid>
+                <DropDown
+                    data-testid="month-year-graph"
+                    id="month-year-graph"
+                    onChange={handleChangeYear}
+                    items={years}
+                    value={year}
+                />
             </Box>
             <Graph options={options} series={series} />
         </Paper>

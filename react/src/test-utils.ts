@@ -16,23 +16,13 @@
  * Bandwidth Monitor
  */
 
-import { Select, MenuItem } from '@mui/material';
-import type { SelectProps } from '@mui/material';
-
-type DropDownProps<V extends string | number> = Omit<SelectProps<V>, 'children'> & {
-    items?: readonly V[];
+/**
+ * Shared helpers for unit tests.
+ */
+export const elementById = (container: HTMLElement, selector: string): Element => {
+    const element = container.querySelector(selector);
+    if (!element) {
+        throw new Error(`element not found: ${selector}`);
+    }
+    return element;
 };
-
-const DropDown = <V extends string | number>({ items, ...props }: DropDownProps<V>) => {
-    return items && props.value !== undefined ? (
-        <Select {...props}>
-            {items.map((item, index) => (
-                <MenuItem key={index} value={item}>
-                    {item}
-                </MenuItem>
-            ))}
-        </Select>
-    ) : null;
-};
-
-export default DropDown;

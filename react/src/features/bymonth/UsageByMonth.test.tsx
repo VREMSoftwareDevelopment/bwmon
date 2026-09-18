@@ -22,18 +22,10 @@ import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { useSortDesc } from '@hooks';
 import UsageByMonth from './UsageByMonth';
 import useUsageByMonth from './UseUsageByMonth';
+import { elementById } from '@test-utils';
 
 vi.mock('@features/bymonth/UseUsageByMonth');
 vi.mock('@hooks/UseSort');
-
-const elementById = (selector: string): Element => {
-    // scan-suspicious-ignore-next-line
-    const element = document.querySelector(selector);
-    if (!element) {
-        throw new Error(`element not found: ${selector}`);
-    }
-    return element;
-};
 
 describe('UsageByMonth', () => {
     const data = {
@@ -145,9 +137,9 @@ describe('UsageByMonth', () => {
     });
 
     it('handles year selector', () => {
-        renderComponent();
-        const container = elementById('#month-year');
-        fireEvent.mouseDown(container);
+        const { container } = renderComponent();
+        const select = elementById(container, '#month-year');
+        fireEvent.mouseDown(select);
         fireEvent.click(screen.getByRole('option', { name: '2020' }));
         expect(useUsageByMonth().setYear).toHaveBeenCalledWith(2020);
     });

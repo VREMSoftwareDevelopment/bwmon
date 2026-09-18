@@ -89,8 +89,8 @@ const rowsPerPageOptions = (rowsPerPage: number, count: number): number[] => {
     return rowsPerPageOptions;
 };
 
-const Pagination = (props: PaginationProps) => {
-    const options = rowsPerPageOptions(Math.min(props.minimum, props.count), props.count);
+const Pagination = ({ minimum, ...rest }: PaginationProps) => {
+    const options = rowsPerPageOptions(Math.min(minimum, rest.count), rest.count);
     const selectProps = {
         inputProps: { 'aria-label': 'rows per page' },
         native: true,
@@ -100,7 +100,7 @@ const Pagination = (props: PaginationProps) => {
 
     return (
         <TablePagination
-            {...props}
+            {...rest}
             labelRowsPerPage=""
             slotProps={{ select: selectProps }}
             rowsPerPageOptions={options}

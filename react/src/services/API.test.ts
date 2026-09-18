@@ -17,6 +17,8 @@
  */
 
 import { fromIPv4 } from '@utils';
+import usage from '@services/Usage';
+import Data from '@services/Data';
 import API from './API';
 
 vi.mock('@services/Usage');
@@ -323,6 +325,33 @@ describe('API', () => {
         const expected = { id: 11, download: 10920971, upload: 693868, total: 11614839, average: 387161.3, days: 30 };
         const actual = await API.getUsageByUser(2011, 'November');
         expect(JSON.stringify(actual.total)).toEqual(JSON.stringify(expected));
+    });
+
+    it('should return zero percent when the total usage is zero', async () => {
+        const zeroUsage = [
+            new Data(0, '2020-01', '192.168.1.10', '00:1C:25:27:9B:AE', 'COMPUTER-1', 0, 0, 1577836800, 1577836800),
+            new Data(1, '2020-01', '192.168.1.11', '00:1C:25:27:9B:AF', 'COMPUTER-2', 0, 0, 1577836800, 1577836800),
+        ];
+        // the store caches for 10 minutes, move the clock past it to force a reload
+        const expire = () => vi.setSystemTime(new Date(Date.now() + 11 * 60 * 1000));
+        vi.useFakeTimers({ toFake: ['Date'] });
+        const request = vi.spyOn(usage, 'request').mockResolvedValue(zeroUsage);
+        expire();
+        try {
+            const byUser = await API.getUsageByUser(2020, 'January');
+            expect(byUser.total.total).toEqual(0);
+            expect(byUser.usage[0]?.percent).toEqual(0);
+
+            const byMonth = await API.getUsageByMonth(2020);
+            expect(byMonth.total.total).toEqual(0);
+            expect(byMonth.usage[0]?.percent).toEqual(0);
+        } finally {
+            // reload the demo data so the cached zero usage does not leak into the other tests
+            request.mockRestore();
+            expire();
+            await API.getYears();
+            vi.useRealTimers();
+        }
     });
 
     it('should not mutate cached data when getUsageByUser is called multiple times', async () => {

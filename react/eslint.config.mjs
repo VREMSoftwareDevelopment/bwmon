@@ -69,6 +69,7 @@ export default [
                         ['@features', './src/features'],
                         ['@hooks', './src/hooks'],
                         ['@services', './src/services'],
+                        ['@test-utils', './src/test-utils'],
                         ['@utils', './src/utils'],
                     ],
                     extensions: ['.ts', '.tsx'],

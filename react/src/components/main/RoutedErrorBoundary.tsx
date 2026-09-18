@@ -16,23 +16,27 @@
  * Bandwidth Monitor
  */
 
-import { Select, MenuItem } from '@mui/material';
-import type { SelectProps } from '@mui/material';
+import type { ErrorInfo, ReactNode } from 'react';
+import { ErrorBoundary } from 'react-error-boundary';
+import { useLocation } from 'react-router';
+import ErrorDisplay from './ErrorDisplay';
 
-type DropDownProps<V extends string | number> = Omit<SelectProps<V>, 'children'> & {
-    items?: readonly V[];
+export interface RoutedErrorBoundaryProps {
+    children: ReactNode;
+}
+
+const logError = (error: unknown, info: ErrorInfo) => {
+    console.error(error, info.componentStack);
 };
 
-const DropDown = <V extends string | number>({ items, ...props }: DropDownProps<V>) => {
-    return items && props.value !== undefined ? (
-        <Select {...props}>
-            {items.map((item, index) => (
-                <MenuItem key={index} value={item}>
-                    {item}
-                </MenuItem>
-            ))}
-        </Select>
-    ) : null;
+const RoutedErrorBoundary = ({ children }: RoutedErrorBoundaryProps) => {
+    const { pathname } = useLocation();
+
+    return (
+        <ErrorBoundary FallbackComponent={ErrorDisplay} resetKeys={[pathname]} onError={logError}>
+            {children}
+        </ErrorBoundary>
+    );
 };
 
-export default DropDown;
+export default RoutedErrorBoundary;

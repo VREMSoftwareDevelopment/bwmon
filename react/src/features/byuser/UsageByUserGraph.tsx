@@ -19,11 +19,10 @@
 import type { ChangeEvent } from 'react';
 import { Box, Paper } from '@mui/material';
 import type { SelectChangeEvent } from '@mui/material';
-import Grid from '@mui/material/Grid';
 import { DropDown, Graph, Loading, Search } from '@components';
 import { useUsageByUserGraph } from '.';
 
-const boxStyle = { flexGrow: 1, m: 2, mt: 6 };
+const boxStyle = { display: 'flex', flexWrap: 'wrap', gap: 2, m: 2, mt: 6 };
 
 const UsageByUserGraph = () => {
     const { options, series, years, year, setYear, months, month, setMonth, setFilter, loading } = useUsageByUserGraph();
@@ -38,29 +37,21 @@ const UsageByUserGraph = () => {
         <Paper>
             <Loading isLoading={loading} />
             <Box sx={boxStyle}>
-                <Grid container spacing={4}>
-                    <Grid size={2}>
-                        <DropDown
-                            data-testid="user-year-graph"
-                            id="user-year-graph"
-                            onChange={handleChangeYear}
-                            items={years}
-                            value={year}
-                        />
-                    </Grid>
-                    <Grid size={2}>
-                        <DropDown
-                            data-testid="user-month-graph"
-                            id="user-month-graph"
-                            onChange={handleChangeMonth}
-                            items={months}
-                            value={month}
-                        />
-                    </Grid>
-                    <Grid size={4}>
-                        <Search data-testid="user-filter-graph" id="user-filter-graph" onChange={handleChangeFilter} />
-                    </Grid>
-                </Grid>
+                <DropDown
+                    data-testid="user-year-graph"
+                    id="user-year-graph"
+                    onChange={handleChangeYear}
+                    items={years}
+                    value={year}
+                />
+                <DropDown
+                    data-testid="user-month-graph"
+                    id="user-month-graph"
+                    onChange={handleChangeMonth}
+                    items={months}
+                    value={month}
+                />
+                <Search data-testid="user-filter-graph" id="user-filter-graph" onChange={handleChangeFilter} />
             </Box>
             <Graph options={options} series={series} />
         </Paper>

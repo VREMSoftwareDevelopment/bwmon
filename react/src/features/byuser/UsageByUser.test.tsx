@@ -24,20 +24,12 @@ import { Search } from '@components';
 import { fromIPv4 } from '@utils';
 import UsageByUser from './UsageByUser';
 import useUsageByUser from './UseUsageByUser';
+import { elementById } from '@test-utils';
 
 vi.mock('@components/inputs/Search');
 vi.mock('@features/byuser/UseUsageByUser');
 vi.mock('@hooks/UsePagination');
 vi.mock('@hooks/UseSort');
-
-const elementById = (selector: string): Element => {
-    // scan-suspicious-ignore-next-line
-    const element = document.querySelector(selector);
-    if (!element) {
-        throw new Error(`element not found: ${selector}`);
-    }
-    return element;
-};
 
 describe('UsageByUser', () => {
     beforeEach(() => {
@@ -216,9 +208,9 @@ describe('UsageByUser', () => {
     });
 
     it('handles year selector', () => {
-        renderComponent();
-        const container = elementById('#user-year');
-        fireEvent.mouseDown(container);
+        const { container } = renderComponent();
+        const select = elementById(container, '#user-year');
+        fireEvent.mouseDown(select);
         fireEvent.click(screen.getByRole('option', { name: '2020' }));
         expect(useUsageByUser().setYear).toHaveBeenCalledWith(2020);
     });
@@ -232,9 +224,9 @@ describe('UsageByUser', () => {
     });
 
     it('handles month selector', () => {
-        renderComponent();
-        const container = elementById('#user-month');
-        fireEvent.mouseDown(container);
+        const { container } = renderComponent();
+        const select = elementById(container, '#user-month');
+        fireEvent.mouseDown(select);
         fireEvent.click(screen.getByRole('option', { name: 'January' }));
         expect(useUsageByUser().setMonth).toHaveBeenCalledWith('January');
     });

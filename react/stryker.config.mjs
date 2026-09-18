@@ -15,7 +15,10 @@ const config = {
     mutate: [
         'src/**/*.{ts,tsx}',
         '!src/**/*test.{ts,tsx}',
+        '!src/**/*.d.ts',
+        '!src/**/types.ts',
         '!src/**/__mocks__/*',
+        '!src/test-utils.ts',
         '!src/**/index.{ts,tsx}',
         '!src/**/theme.{ts,tsx}',
         '!src/**/API*.{ts,tsx}',

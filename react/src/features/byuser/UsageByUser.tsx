@@ -46,6 +46,8 @@ const cellInfos: CellInfo<UserRow>[] = [
 
 const rowsPerPageMin = 20;
 
+const toolbarStyle = { display: 'flex', gap: '1rem', padding: '8px 16px' };
+
 const UsageByUser = () => {
     const { years, year, setYear, months, month, setMonth, filter, setFilter, data, loading, error } = useUsageByUser();
     const { page, setPage, rowsPerPage, setRowsPerPage } = usePagination(rowsPerPageMin);
@@ -117,7 +119,7 @@ const UsageByUser = () => {
             <Loading isLoading={loading} />
             {error && <ErrorMessage message={error} />}
             <TableContainer>
-                <div style={{ display: 'flex', gap: '1rem' }}>
+                <div style={toolbarStyle}>
                     <DropDown data-testid="user-year" id="user-year" onChange={handleChangeYear} items={years} value={year} />
                     <DropDown data-testid="user-month" id="user-month" onChange={handleChangeMonth} items={months} value={month} />
                     <Search data-testid="user-filter" id="user-filter" onChange={handleChangeFilter} />

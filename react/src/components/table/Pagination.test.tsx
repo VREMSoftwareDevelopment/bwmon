@@ -59,11 +59,14 @@ describe('Pagination Suite', () => {
             );
 
         it('renders pagination actions with ids', () => {
-            renderComponent();
-            // scan-suspicious-ignore-next-line
-            expect(document.querySelector('#select-rows-per-page-id')).toBeInTheDocument();
-            // scan-suspicious-ignore-next-line
-            expect(document.querySelector('#select-label-rows-per-page-id')).toBeInTheDocument();
+            const { container } = renderComponent();
+            expect(container.querySelector('#select-rows-per-page-id')).toBeInTheDocument();
+            expect(container.querySelector('#select-label-rows-per-page-id')).toBeInTheDocument();
+        });
+
+        it('does not forward the minimum prop to the DOM', () => {
+            const { container } = renderComponent();
+            expect(container.querySelector('[minimum]')).toBeNull();
         });
 
         it('renders pagination actions', () => {

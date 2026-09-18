@@ -21,18 +21,10 @@ import '@testing-library/jest-dom';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import UsageByMonthGraph from './UsageByMonthGraph';
 import useUsageByMonthGraph from './UseUsageByMonthGraph';
+import { elementById } from '@test-utils';
 
 vi.mock('@components/graph/Graph');
 vi.mock('@features/bymonth/UseUsageByMonthGraph');
-
-const elementById = (selector: string): Element => {
-    // scan-suspicious-ignore-next-line
-    const element = document.querySelector(selector);
-    if (!element) {
-        throw new Error(`element not found: ${selector}`);
-    }
-    return element;
-};
 
 describe('UsageByMonthGraph', () => {
     const data = {
@@ -77,9 +69,9 @@ describe('UsageByMonthGraph', () => {
     });
 
     it('handles year selector', () => {
-        renderComponent();
-        const container = elementById('#month-year-graph');
-        fireEvent.mouseDown(container);
+        const { container } = renderComponent();
+        const select = elementById(container, '#month-year-graph');
+        fireEvent.mouseDown(select);
         fireEvent.click(screen.getByRole('option', { name: '2022' }));
         expect(useUsageByMonthGraph().setYear).toHaveBeenCalledWith(2022);
     });

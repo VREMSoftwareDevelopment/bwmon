@@ -33,6 +33,15 @@ describe('DropDown Component', () => {
         expect(screen.getByRole('combobox')).toHaveClass('MuiSelect-select');
     });
 
+    it('renders dropdown when the value is zero', () => {
+        const handleChangeNumber = (_event: SelectChangeEvent<number>) => {
+            // handle change
+        };
+        render(<DropDown onChange={handleChangeNumber} items={[0, 1]} value={0} />);
+        expect(screen.getByRole('combobox')).toHaveTextContent('0');
+        expect(screen.getByRole('combobox')).toHaveClass('MuiSelect-select');
+    });
+
     it('does not render anything when items are null', () => {
         const { container } = render(<DropDown onChange={handleChange} value="Item 1" />);
         expect(container.firstChild).toBeNull();

@@ -23,6 +23,7 @@ import { useState, useEffect } from 'react';
 import type { Dispatch, SetStateAction } from 'react';
 import { API } from '@services';
 import { useYear } from '@hooks';
+import { toErrorMessage } from '@utils';
 
 type YearMonthState = {
     years: number[] | undefined;
@@ -48,7 +49,7 @@ const useYearMonth = (): YearMonthState => {
                 setMonths(months);
                 setMonth(months[0]);
             } catch (err) {
-                setError(err instanceof Error ? err.message : String(err));
+                setError(toErrorMessage(err));
             }
         }
         if (year) {

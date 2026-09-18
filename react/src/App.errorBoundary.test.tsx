@@ -16,12 +16,12 @@
  * Bandwidth Monitor
  */
 
+import { createElement } from 'react';
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import App from './App';
 
-vi.mock('./menu/Menu', async () => {
-    const { createElement } = await import('react');
+vi.mock('./menu/Menu', () => {
     const Boom = () => {
         throw new Error('boom');
     };

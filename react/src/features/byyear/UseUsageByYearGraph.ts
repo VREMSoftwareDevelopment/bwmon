@@ -18,7 +18,7 @@
 
 import { useState, useEffect } from 'react';
 import type { ApexAxisChartSeries, ApexOptions } from 'apexcharts';
-import { usageInGBytes } from '@utils';
+import { toGBytes } from '@utils';
 import { useUsageByYear } from '.';
 
 interface UsageByYearGraphState {
@@ -49,7 +49,7 @@ const useUsageByYearGraph = (): UsageByYearGraphState => {
             setSeries([
                 {
                     name: 'Total Usage',
-                    data: data.map((element) => Math.round(Number(usageInGBytes(element.total)))).reverse(),
+                    data: data.map((element) => Math.round(toGBytes(element.total))).reverse(),
                 },
             ]);
         }

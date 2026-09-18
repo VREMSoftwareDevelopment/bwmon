@@ -80,14 +80,4 @@ describe('UseUsageByYear', () => {
             expect(result.current.loading).toBeFalsy();
         });
     });
-
-    it('should set error when API.getUsageByYear rejects with a non-Error value', async () => {
-        const errorMessage = 'not an error instance';
-        vi.spyOn(API, 'getUsageByYear').mockRejectedValueOnce(errorMessage);
-        const { result } = renderHook(useUsageByYear);
-        await waitFor(() => {
-            expect(result.current.error).toEqual(errorMessage);
-            expect(result.current.loading).toBeFalsy();
-        });
-    });
 });

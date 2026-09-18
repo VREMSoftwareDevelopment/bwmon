@@ -287,9 +287,19 @@ describe('UseUsageByUser', () => {
         });
     });
 
-    it('should set error when API.getUsageByUser rejects with a non-Error value', async () => {
-        const errorMessage = 'not an error instance';
-        vi.spyOn(API, 'getUsageByUser').mockRejectedValueOnce(errorMessage);
+    it('should stop loading when API.getYears fails', async () => {
+        const errorMessage = 'Years API Error';
+        vi.spyOn(API, 'getYears').mockRejectedValueOnce(new Error(errorMessage));
+        const { result } = renderHook(useUsageByUser);
+        await waitFor(() => {
+            expect(result.current.error).toEqual(errorMessage);
+            expect(result.current.loading).toBeFalsy();
+        });
+    });
+
+    it('should stop loading when API.getMonths fails', async () => {
+        const errorMessage = 'Months API Error';
+        vi.spyOn(API, 'getMonths').mockRejectedValueOnce(new Error(errorMessage));
         const { result } = renderHook(useUsageByUser);
         await waitFor(() => {
             expect(result.current.error).toEqual(errorMessage);
