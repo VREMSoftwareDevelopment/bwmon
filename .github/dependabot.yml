@@ -25,3 +25,6 @@ updates:
           # TypeScript stays on 6.x: typescript-eslint 8 peers on typescript <6.1.
           - dependency-name: 'typescript'
             update-types: ['version-update:semver-major']
+          # Node stays on 24.x
+          - dependency-name: '@types/node'
+            update-types: ['version-update:semver-major']
