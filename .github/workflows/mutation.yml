@@ -21,7 +21,7 @@ jobs:
         outputs:
             code_changed: ${{ steps.set_changed.outputs.code_changed }}
         steps:
-            - uses: actions/checkout@v6
+            - uses: actions/checkout@v7
             - name: Get last successful workflow run commit SHA
               id: last_success
               run: |
@@ -56,7 +56,7 @@ jobs:
             matrix:
                 node-version: [24.x]
         steps:
-            - uses: actions/checkout@v6
+            - uses: actions/checkout@v7
             - uses: ./.github/actions/common-setup
               with:
                   node-version: ${{ matrix.node-version }}
@@ -75,13 +75,13 @@ jobs:
         needs: [stryker]
         steps:
             - name: Checkout repository
-              uses: actions/checkout@v6
+              uses: actions/checkout@v7
               with:
                   fetch-depth: 0
                   ref: gh-pages
             - name: Download mutation reports
               continue-on-error: true
-              uses: actions/download-artifact@v4
+                  uses: actions/download-artifact@v8
               with:
                   name: reports-mutation
                   path: reports/mutation

@@ -22,7 +22,7 @@ jobs:
     shellcheck:
         runs-on: ubuntu-24.04
         steps:
-            - uses: actions/checkout@v6
+            - uses: actions/checkout@v7
             - name: Run ShellCheck
               run: shellcheck -s sh server/*.sh
 
@@ -37,7 +37,7 @@ jobs:
             matrix:
                 node-version: [24.x]
         steps:
-            - uses: actions/checkout@v6
+            - uses: actions/checkout@v7
               with:
                   fetch-depth: 0
             - uses: ./.github/actions/common-setup
@@ -56,7 +56,7 @@ jobs:
             matrix:
                 node-version: [24.x]
         steps:
-            - uses: actions/checkout@v6
+            - uses: actions/checkout@v7
               with:
                   fetch-depth: 0
             - uses: ./.github/actions/common-setup
@@ -86,11 +86,11 @@ jobs:
         runs-on: ubuntu-24.04
         needs: [build]
         steps:
-            - uses: actions/checkout@v6
+            - uses: actions/checkout@v7
               with:
                   fetch-depth: 0
             - name: Download tarball artifact
-              uses: actions/download-artifact@v4
+              uses: actions/download-artifact@v8
               with:
                   name: build-tarball
                   path: .
@@ -148,12 +148,12 @@ jobs:
         needs: [release]
         steps:
             - name: Checkout repository
-              uses: actions/checkout@v6
+              uses: actions/checkout@v7
               with:
                   fetch-depth: 0
                   ref: gh-pages
             - name: Download build artifacts
-              uses: actions/download-artifact@v4
+              uses: actions/download-artifact@v8
               with:
                   name: build-artifacts
                   path: .

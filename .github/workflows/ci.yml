@@ -36,7 +36,7 @@ jobs:
         runs-on: ubuntu-24.04
         needs: []
         steps:
-            - uses: actions/checkout@v6
+            - uses: actions/checkout@v7
             - name: Run ShellCheck
               run: shellcheck -s sh server/*.sh
 
@@ -51,7 +51,7 @@ jobs:
             matrix:
                 node-version: [24.x]
         steps:
-            - uses: actions/checkout@v6
+            - uses: actions/checkout@v7
             - uses: ./.github/actions/common-setup
               with:
                   node-version: ${{ matrix.node-version }}
@@ -74,7 +74,7 @@ jobs:
             matrix:
                 node-version: [24.x]
         steps:
-            - uses: actions/checkout@v6
+            - uses: actions/checkout@v7
             - uses: ./.github/actions/common-setup
               with:
                   node-version: ${{ matrix.node-version }}
@@ -98,7 +98,7 @@ jobs:
             matrix:
                 node-version: [24.x]
         steps:
-            - uses: actions/checkout@v6
+            - uses: actions/checkout@v7
             - uses: ./.github/actions/common-setup
               with:
                   node-version: ${{ matrix.node-version }}
@@ -121,14 +121,14 @@ jobs:
             matrix:
                 node-version: [24.x]
         steps:
-            - uses: actions/checkout@v6
+            - uses: actions/checkout@v7
             - uses: ./.github/actions/common-setup
               with:
                   node-version: ${{ matrix.node-version }}
             - name: Run unit tests with coverage
               run: npm run test:CI
             - name: Upload coverage to Codecov
-              uses: codecov/codecov-action@v5
+              uses: codecov/codecov-action@v7
               with:
                   token: ${{ secrets.CODECOV_TOKEN }}
                   file: ./react/reports/coverage/coverage-final.json
@@ -150,7 +150,7 @@ jobs:
             matrix:
                 node-version: [24.x]
         steps:
-            - uses: actions/checkout@v6
+            - uses: actions/checkout@v7
             - uses: ./.github/actions/common-setup
               with:
                   node-version: ${{ matrix.node-version }}
@@ -173,9 +173,9 @@ jobs:
             matrix:
                 node-version: [24.x]
         steps:
-            - uses: actions/checkout@v6
+            - uses: actions/checkout@v7
             - name: Download build artifact
-              uses: actions/download-artifact@v4
+              uses: actions/download-artifact@v8
               with:
                   name: react-build
                   path: ./react/build
@@ -199,31 +199,31 @@ jobs:
         needs: [e2e, duplication, analyze]
         steps:
             - name: Checkout repository
-              uses: actions/checkout@v6
+              uses: actions/checkout@v7
               with:
                   fetch-depth: 0
                   ref: gh-pages
             - name: Download coverage reports
               continue-on-error: true
-              uses: actions/download-artifact@v4
+              uses: actions/download-artifact@v8
               with:
                   name: reports-coverage
                   path: reports/coverage
             - name: Download playwright reports
               continue-on-error: true
-              uses: actions/download-artifact@v4
+              uses: actions/download-artifact@v8
               with:
                   name: reports-playwright
                   path: reports/playwright
             - name: Download duplication report
               continue-on-error: true
-              uses: actions/download-artifact@v4
+              uses: actions/download-artifact@v8
               with:
                   name: reports-duplication
                   path: reports/duplication
             - name: Download visualizer report
               continue-on-error: true
-              uses: actions/download-artifact@v4
+              uses: actions/download-artifact@v8
               with:
                   name: reports-visualizer
                   path: reports/visualizer
