@@ -36,9 +36,9 @@ interface UsageByMonthState {
 }
 
 const useUsageByMonth = (): UsageByMonthState => {
-    const { years, year, setYear, error: yearError } = useYear();
+    const { years, year, setYear, loading: yearLoading, error: yearError } = useYear();
     const [data, setData] = useState<UsageResult<UsageSummary>>();
-    const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
@@ -56,12 +56,10 @@ const useUsageByMonth = (): UsageByMonthState => {
         }
         if (year) {
             fetch(year);
-        } else if (yearError) {
-            setLoading(false);
         }
-    }, [year, yearError]);
+    }, [year]);
 
-    return { years, year, setYear, data, loading, error: yearError || error };
+    return { years, year, setYear, data, loading: yearLoading || loading, error: yearError || error };
 };
 
 export default useUsageByMonth;

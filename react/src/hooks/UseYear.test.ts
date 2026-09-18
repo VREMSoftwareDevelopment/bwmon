@@ -66,6 +66,26 @@ describe('UseYear', () => {
         });
     });
 
+    it('should be loading until API.getYears resolves', async () => {
+        const { result } = renderHook(useYear);
+        expect(result.current.loading).toBeTruthy();
+        await waitFor(() => {
+            expect(result.current.years).toEqual(expectedYears);
+            expect(result.current.loading).toBeFalsy();
+        });
+    });
+
+    it('should stop loading when API.getYears fails', async () => {
+        const errorMessage = 'API Error';
+        vi.spyOn(API, 'getYears').mockRejectedValueOnce(new Error(errorMessage));
+        const { result } = renderHook(useYear);
+        expect(result.current.loading).toBeTruthy();
+        await waitFor(() => {
+            expect(result.current.error).toEqual(errorMessage);
+            expect(result.current.loading).toBeFalsy();
+        });
+    });
+
     it('should set error when API fails', async () => {
         const errorMessage = 'API Error';
         vi.spyOn(API, 'getYears').mockRejectedValueOnce(new Error(errorMessage));

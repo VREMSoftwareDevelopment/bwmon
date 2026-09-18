@@ -41,11 +41,11 @@ interface UsageByUserState {
 }
 
 const useUsageByUser = (): UsageByUserState => {
-    const { years, year, setYear, months, month, setMonth, error: yearMonthError } = useYearMonth();
+    const { years, year, setYear, months, month, setMonth, loading: yearMonthLoading, error: yearMonthError } = useYearMonth();
     const [filter, setFilter] = useState('');
     const deferredFilter = useDeferredValue(filter);
     const [data, setData] = useState<UsageResult<Data>>();
-    const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
@@ -63,12 +63,22 @@ const useUsageByUser = (): UsageByUserState => {
         }
         if (year && month) {
             fetch(year, month);
-        } else if (yearMonthError) {
-            setLoading(false);
         }
-    }, [year, month, deferredFilter, yearMonthError]);
+    }, [year, month, deferredFilter]);
 
-    return { years, year, setYear, months, month, setMonth, filter, setFilter, data, loading, error: yearMonthError || error };
+    return {
+        years,
+        year,
+        setYear,
+        months,
+        month,
+        setMonth,
+        filter,
+        setFilter,
+        data,
+        loading: yearMonthLoading || loading,
+        error: yearMonthError || error,
+    };
 };
 
 export default useUsageByUser;

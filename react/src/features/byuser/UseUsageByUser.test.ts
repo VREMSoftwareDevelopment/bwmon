@@ -306,4 +306,33 @@ describe('UseUsageByUser', () => {
             expect(result.current.loading).toBeFalsy();
         });
     });
+
+    it('should stop loading when API.getYears returns empty array', async () => {
+        const getUsageByUser = vi.spyOn(API, 'getUsageByUser');
+        vi.spyOn(API, 'getYears').mockResolvedValueOnce([]);
+        const { result } = renderHook(useUsageByUser);
+        expect(result.current.loading).toBeTruthy();
+        await waitFor(() => {
+            expect(result.current.years).toEqual([]);
+            expect(result.current.loading).toBeFalsy();
+        });
+        expect(result.current.data).toBeUndefined();
+        expect(result.current.error).toBeNull();
+        expect(getUsageByUser).not.toHaveBeenCalled();
+    });
+
+    it('should stop loading when API.getMonths returns empty array', async () => {
+        const getUsageByUser = vi.spyOn(API, 'getUsageByUser');
+        vi.spyOn(API, 'getYears').mockResolvedValueOnce([2024]);
+        vi.spyOn(API, 'getMonths').mockResolvedValueOnce([]);
+        const { result } = renderHook(useUsageByUser);
+        await waitFor(() => {
+            expect(result.current.months).toEqual([]);
+            expect(result.current.loading).toBeFalsy();
+        });
+        expect(result.current.month).toBeUndefined();
+        expect(result.current.data).toBeUndefined();
+        expect(result.current.error).toBeNull();
+        expect(getUsageByUser).not.toHaveBeenCalled();
+    });
 });

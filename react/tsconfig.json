@@ -9,7 +9,7 @@
         "isolatedModules": true,
         "skipLibCheck": true,
         "noEmit": true,
-        "types": ["vite/client", "vitest/globals"],
+        "types": ["node", "vite/client", "vitest/globals"],
         "paths": {
             "@components": ["./src/components/index"],
             "@components/*": ["./src/components/*"],

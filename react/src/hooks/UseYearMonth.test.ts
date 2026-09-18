@@ -90,7 +90,7 @@ describe('UseYearMonth', () => {
     });
 
     it('should not update months or month if year is undefined', async () => {
-        vi.mocked(useYear).mockReturnValueOnce({ years: [], year: undefined, setYear: vi.fn(), error: null });
+        vi.mocked(useYear).mockReturnValueOnce({ years: [], year: undefined, setYear: vi.fn(), loading: false, error: null });
         const { result } = renderHook(() => useYearMonth());
         expect(result.current.months).toBeUndefined();
         expect(result.current.month).toBeUndefined();
@@ -103,5 +103,37 @@ describe('UseYearMonth', () => {
         await waitFor(() => {
             expect(result.current.error).toEqual(errorMessage);
         });
+    });
+
+    it('should stop loading once years and months resolve', async () => {
+        const { result } = renderHook(() => useYearMonth());
+        expect(result.current.loading).toBeTruthy();
+        await waitFor(() => {
+            expect(result.current.month).toEqual('November');
+            expect(result.current.loading).toBeFalsy();
+        });
+    });
+
+    it('should stop loading when API.getMonths fails', async () => {
+        const errorMessage = 'Months API Error';
+        vi.spyOn(API, 'getMonths').mockRejectedValueOnce(new Error(errorMessage));
+        const { result } = renderHook(() => useYearMonth());
+        await waitFor(() => {
+            expect(result.current.error).toEqual(errorMessage);
+            expect(result.current.loading).toBeFalsy();
+        });
+    });
+
+    it('should stop loading when API.getYears returns empty array', async () => {
+        const getMonths = vi.spyOn(API, 'getMonths');
+        vi.spyOn(API, 'getYears').mockResolvedValueOnce([]);
+        const { result } = renderHook(() => useYearMonth());
+        await waitFor(() => {
+            expect(result.current.years).toEqual([]);
+            expect(result.current.loading).toBeFalsy();
+        });
+        expect(result.current.year).toBeUndefined();
+        expect(result.current.months).toBeUndefined();
+        expect(getMonths).not.toHaveBeenCalled();
     });
 });

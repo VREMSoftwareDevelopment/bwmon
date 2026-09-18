@@ -28,12 +28,14 @@ type YearState = {
     years: number[] | undefined;
     year: number | undefined;
     setYear: Dispatch<SetStateAction<number | undefined>>;
+    loading: boolean;
     error: string | null;
 };
 
 const useYear = (): YearState => {
     const [years, setYears] = useState<number[]>();
     const [year, setYear] = useState<number>();
+    const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
@@ -45,12 +47,14 @@ const useYear = (): YearState => {
                 setYear(years[0]);
             } catch (err) {
                 setError(toErrorMessage(err));
+            } finally {
+                setLoading(false);
             }
         }
         fetch();
     }, []);
 
-    return { years, year, setYear, error };
+    return { years, year, setYear, loading, error };
 };
 
 export default useYear;

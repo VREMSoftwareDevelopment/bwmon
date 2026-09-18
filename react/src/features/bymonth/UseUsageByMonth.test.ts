@@ -137,4 +137,18 @@ describe('UseUsageByMonth', () => {
             expect(result.current.loading).toBeFalsy();
         });
     });
+
+    it('should stop loading when API.getYears returns empty array', async () => {
+        const getUsageByMonth = vi.spyOn(API, 'getUsageByMonth');
+        vi.spyOn(API, 'getYears').mockResolvedValueOnce([]);
+        const { result } = renderHook(useUsageByMonth);
+        expect(result.current.loading).toBeTruthy();
+        await waitFor(() => {
+            expect(result.current.years).toEqual([]);
+            expect(result.current.loading).toBeFalsy();
+        });
+        expect(result.current.data).toBeUndefined();
+        expect(result.current.error).toBeNull();
+        expect(getUsageByMonth).not.toHaveBeenCalled();
+    });
 });

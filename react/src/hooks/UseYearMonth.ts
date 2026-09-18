@@ -32,24 +32,29 @@ type YearMonthState = {
     months: string[] | undefined;
     month: string | undefined;
     setMonth: Dispatch<SetStateAction<string | undefined>>;
+    loading: boolean;
     error: string | null;
 };
 
 const useYearMonth = (): YearMonthState => {
-    const { years, year, setYear, error: yearError } = useYear();
+    const { years, year, setYear, loading: yearLoading, error: yearError } = useYear();
     const [months, setMonths] = useState<string[]>();
     const [month, setMonth] = useState<string>();
+    const [monthsLoading, setMonthsLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
         async function fetch(selectedYear: number) {
             try {
+                setMonthsLoading(true);
                 setError(null);
                 const months = await API.getMonths(selectedYear);
                 setMonths(months);
                 setMonth(months[0]);
             } catch (err) {
                 setError(toErrorMessage(err));
+            } finally {
+                setMonthsLoading(false);
             }
         }
         if (year) {
@@ -57,7 +62,7 @@ const useYearMonth = (): YearMonthState => {
         }
     }, [year]);
 
-    return { years, year, setYear, months, month, setMonth, error: yearError || error };
+    return { years, year, setYear, months, month, setMonth, loading: yearLoading || monthsLoading, error: yearError || error };
 };
 
 export default useYearMonth;
