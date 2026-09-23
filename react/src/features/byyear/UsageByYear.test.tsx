@@ -143,11 +143,11 @@ describe('UsageByYear', () => {
         expect(container).not.toBeInTheDocument();
     });
 
-    it('renders pagination', () => {
+    it('renders pagination in the toolbar', () => {
         renderComponent();
-        const container = screen.getByTestId('year-pagination-id');
-        expect(container).toBeInTheDocument();
-        const { getByText } = within(container);
+        const toolbar = screen.getByTestId('year-toolbar');
+        const pagination = within(toolbar).getByTestId('year-pagination-id');
+        const { getByText } = within(pagination);
         expect(getByText('1–20 of 29')).toBeInTheDocument();
     });
 

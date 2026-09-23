@@ -32,8 +32,8 @@ test.describe('UsageByUser e2e', () => {
 
     test('should have footer', async ({ page }) => {
         const innerTexts = await getTHeadRowTexts(page);
-        expect(innerTexts.length).toEqual(3);
-        expect(innerTexts[2]).toEqual('Totals\t\t\t83.066\t4.263\t87.329\t\t2.911\t30\t\t');
+        expect(innerTexts.length).toEqual(2);
+        expect(innerTexts[1]).toEqual('Totals\t\t\t83.066\t4.263\t87.329\t\t2.911\t30\t\t');
     });
 
     test('should have table', async ({ page }) => {
@@ -86,8 +86,8 @@ test.describe('UsageByUser e2e', () => {
         expect(innerTexts[6]).toContain('192.168.1.25\t70:D4:F2:DA:FA:C9\tCOMPUTER-15\t0.863\t0.018\t0.881\t3.7%\t0.088\t10');
 
         const footerInnerTexts = await getTHeadRowTexts(page);
-        expect(footerInnerTexts.length).toEqual(3);
-        expect(footerInnerTexts[2]).toEqual('Totals\t\t\t21.926\t1.937\t23.863\t\t0.770\t31\t\t');
+        expect(footerInnerTexts.length).toEqual(2);
+        expect(footerInnerTexts[1]).toEqual('Totals\t\t\t21.926\t1.937\t23.863\t\t0.770\t31\t\t');
     });
 
     test('should show different information when changing month', async ({ page }) => {
@@ -100,8 +100,8 @@ test.describe('UsageByUser e2e', () => {
         expect(innerTexts[8]).toContain('192.168.1.27\t10:D5:42:88:3F:A0\tCOMPUTER-16\t0.853\t0.066\t0.919\t2.5%\t0.033\t28');
 
         const footerInnerTexts = await getTHeadRowTexts(page);
-        expect(footerInnerTexts.length).toEqual(3);
-        expect(footerInnerTexts[2]).toEqual('Totals\t\t\t34.516\t2.147\t36.664\t\t1.183\t31\t\t');
+        expect(footerInnerTexts.length).toEqual(2);
+        expect(footerInnerTexts[1]).toEqual('Totals\t\t\t34.516\t2.147\t36.664\t\t1.183\t31\t\t');
     });
 
     test('should show different information when rows per page', async ({ page }) => {
@@ -113,8 +113,8 @@ test.describe('UsageByUser e2e', () => {
         expect(innerTexts[26]).toContain('192.168.2.146\t0C:EE:E6:80:C8:8C\tCOMPUTER-27\t0.573\t0.025\t0.597\t0.7%\t0.020\t30');
 
         const footerInnerTexts = await getTHeadRowTexts(page);
-        expect(footerInnerTexts.length).toEqual(3);
-        expect(footerInnerTexts[2]).toEqual('Totals\t\t\t83.066\t4.263\t87.329\t\t2.911\t30\t\t');
+        expect(footerInnerTexts.length).toEqual(2);
+        expect(footerInnerTexts[1]).toEqual('Totals\t\t\t83.066\t4.263\t87.329\t\t2.911\t30\t\t');
     });
 
     test('should show different information when changing IP/MAC/User', async ({ page }) => {
@@ -127,7 +127,7 @@ test.describe('UsageByUser e2e', () => {
         expect(innerTexts[4]).toContain('192.168.1.115\t00:1A:A0:C7:27:D5\tCOMPUTER-19\t0.077\t0.001\t0.078\t30.0%\t0.003\t30');
 
         const footerInnerTexts = await getTHeadRowTexts(page);
-        expect(footerInnerTexts.length).toEqual(3);
-        expect(footerInnerTexts[2]).toEqual('Totals\t\t\t0.253\t0.006\t0.259\t\t0.009\t30\t\t');
+        expect(footerInnerTexts.length).toEqual(2);
+        expect(footerInnerTexts[1]).toEqual('Totals\t\t\t0.253\t0.006\t0.259\t\t0.009\t30\t\t');
     });
 });

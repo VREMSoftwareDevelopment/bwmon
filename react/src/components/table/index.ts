@@ -10,3 +10,4 @@ export { default as Pagination } from './Pagination';
 export type { PaginationProps } from './Pagination';
 export { default as UsageTable } from './UsageTable';
 export type { UsageTableProps } from './UsageTable';
+export { default as Toolbar } from './Toolbar';

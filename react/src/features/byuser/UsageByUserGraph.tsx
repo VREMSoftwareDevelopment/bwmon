@@ -17,12 +17,10 @@
  */
 
 import type { ChangeEvent } from 'react';
-import { Box, Paper } from '@mui/material';
+import { Paper } from '@mui/material';
 import type { SelectChangeEvent } from '@mui/material';
-import { DropDown, Graph, Loading, Search } from '@components';
+import { DropDown, Graph, Loading, Search, Toolbar } from '@components';
 import { useUsageByUserGraph } from '.';
-
-const boxStyle = { display: 'flex', flexWrap: 'wrap', gap: 2, m: 2, mt: 6 };
 
 const UsageByUserGraph = () => {
     const { options, series, years, year, setYear, months, month, setMonth, setFilter, loading } = useUsageByUserGraph();
@@ -36,7 +34,7 @@ const UsageByUserGraph = () => {
     return (
         <Paper>
             <Loading isLoading={loading} />
-            <Box sx={boxStyle}>
+            <Toolbar>
                 <DropDown
                     data-testid="user-year-graph"
                     id="user-year-graph"
@@ -52,7 +50,7 @@ const UsageByUserGraph = () => {
                     value={month}
                 />
                 <Search data-testid="user-filter-graph" id="user-filter-graph" onChange={handleChangeFilter} />
-            </Box>
+            </Toolbar>
             <Graph options={options} series={series} />
         </Paper>
     );

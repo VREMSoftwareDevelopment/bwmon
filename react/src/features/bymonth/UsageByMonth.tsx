@@ -18,9 +18,18 @@
 
 import { useMemo } from 'react';
 import type { MouseEvent } from 'react';
-import { Paper, Table, TableRow, TableHead, TableCell, TableContainer } from '@mui/material';
+import { Paper, Table, TableContainer } from '@mui/material';
 import type { SelectChangeEvent } from '@mui/material';
-import { Body, CellInfo, DropDown, ErrorMessage, Loading, TableFooter as Footer, TableHeader as Header } from '@components';
+import {
+    Body,
+    CellInfo,
+    DropDown,
+    ErrorMessage,
+    Loading,
+    TableFooter as Footer,
+    TableHeader as Header,
+    Toolbar,
+} from '@components';
 import type { UsageSummary, UsageWithPercent } from '@services';
 import { toMonth, toPercent, usageInGBytes, comparator, isAscending, sort } from '@utils';
 import { useSortDesc } from '@hooks';
@@ -59,19 +68,6 @@ const UsageByMonth = () => {
     const displayData = () =>
         data ? (
             <Table stickyHeader size="small">
-                <TableHead>
-                    <TableRow>
-                        <TableCell colSpan={cellInfos.length}>
-                            <DropDown
-                                data-testid="month-year"
-                                id="month-year"
-                                onChange={handleChangeYear}
-                                items={years}
-                                value={year}
-                            />
-                        </TableCell>
-                    </TableRow>
-                </TableHead>
                 <Header
                     prefix="month"
                     cellInfos={cellInfos}
@@ -88,7 +84,12 @@ const UsageByMonth = () => {
         <Paper>
             <Loading isLoading={loading} />
             {error && <ErrorMessage message={error} />}
-            <TableContainer>{displayData()}</TableContainer>
+            <TableContainer>
+                <Toolbar>
+                    <DropDown data-testid="month-year" id="month-year" onChange={handleChangeYear} items={years} value={year} />
+                </Toolbar>
+                {displayData()}
+            </TableContainer>
         </Paper>
     );
 };

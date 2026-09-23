@@ -147,6 +147,7 @@ describe('UsageByUser', () => {
         renderComponent();
         const container = screen.getByTestId('user-pagination-id');
         expect(container).toBeInTheDocument();
+        expect(screen.getByTestId('user-toolbar')).toContainElement(container);
         const { getByText } = within(container);
         expect(getByText('1–20 of 27')).toBeInTheDocument();
     });

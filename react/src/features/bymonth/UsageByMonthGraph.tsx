@@ -16,12 +16,10 @@
  * Bandwidth Monitor
  */
 
-import { Box, Paper } from '@mui/material';
+import { Paper } from '@mui/material';
 import type { SelectChangeEvent } from '@mui/material';
-import { DropDown, Graph, Loading } from '@components';
+import { DropDown, Graph, Loading, Toolbar } from '@components';
 import { useUsageByMonthGraph } from '.';
-
-const boxStyle = { display: 'flex', flexWrap: 'wrap', gap: 2, m: 2, mt: 6 };
 
 const UsageByMonthGraph = () => {
     const { options, series, years, year, setYear, loading } = useUsageByMonthGraph();
@@ -31,7 +29,7 @@ const UsageByMonthGraph = () => {
     return (
         <Paper>
             <Loading isLoading={loading} />
-            <Box sx={boxStyle}>
+            <Toolbar>
                 <DropDown
                     data-testid="month-year-graph"
                     id="month-year-graph"
@@ -39,7 +37,7 @@ const UsageByMonthGraph = () => {
                     items={years}
                     value={year}
                 />
-            </Box>
+            </Toolbar>
             <Graph options={options} series={series} />
         </Paper>
     );

@@ -30,8 +30,8 @@ test.describe('UsageByMonth e2e', () => {
 
     test('should have footer', async ({ page }) => {
         const innerTexts = await getTHeadRowTexts(page);
-        expect(innerTexts.length).toEqual(3);
-        expect(innerTexts[2]).toEqual('Totals\t603.928\t35.773\t639.701\t\t1.753\t365');
+        expect(innerTexts.length).toEqual(2);
+        expect(innerTexts[1]).toEqual('Totals\t603.928\t35.773\t639.701\t\t1.753\t365');
     });
 
     test('should have table', async ({ page }) => {
@@ -62,7 +62,7 @@ test.describe('UsageByMonth e2e', () => {
         expect(innerTexts[6]).toEqual('June\t26.949\t2.086\t29.035\t19.3%\t0.968\t30');
 
         const footerInnerTexts = await getTHeadRowTexts(page);
-        expect(footerInnerTexts.length).toEqual(3);
-        expect(footerInnerTexts[2]).toEqual('Totals\t139.939\t10.745\t150.684\t\t0.413\t365');
+        expect(footerInnerTexts.length).toEqual(2);
+        expect(footerInnerTexts[1]).toEqual('Totals\t139.939\t10.745\t150.684\t\t0.413\t365');
     });
 });

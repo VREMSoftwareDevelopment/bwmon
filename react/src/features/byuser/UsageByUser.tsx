@@ -18,9 +18,9 @@
 
 import { useEffect, useMemo } from 'react';
 import type { ChangeEvent, ChangeEventHandler, MouseEvent } from 'react';
-import { Paper, TableContainer } from '@mui/material';
+import { Box, Paper, TableContainer } from '@mui/material';
 import type { SelectChangeEvent } from '@mui/material';
-import { CellInfo, DropDown, ErrorMessage, Loading, Search, UsageTable } from '@components';
+import { CellInfo, DropDown, ErrorMessage, Loading, Pagination, Search, Toolbar, UsageTable } from '@components';
 import type { Data, UsageWithPercent } from '@services';
 import { timeToDate, toIPv4, toPercent, usageInGBytes, comparator, isAscending, sort } from '@utils';
 import { useSortAsc, usePagination } from '@hooks';
@@ -45,8 +45,6 @@ const cellInfos: CellInfo<UserRow>[] = [
 ];
 
 const rowsPerPageMin = 20;
-
-const toolbarStyle = { display: 'flex', gap: '1rem', padding: '8px 16px' };
 
 const UsageByUser = () => {
     const { years, year, setYear, months, month, setMonth, filter, setFilter, data, loading, error } = useUsageByUser();
@@ -106,7 +104,6 @@ const UsageByUser = () => {
             <UsageTable
                 prefix="user"
                 cellInfos={cellInfos}
-                paginationProps={paginationProps}
                 headerProps={headerProps}
                 bodyProps={bodyProps}
                 footerProps={{ values: data.total }}
@@ -119,11 +116,14 @@ const UsageByUser = () => {
             <Loading isLoading={loading} />
             {error && <ErrorMessage message={error} />}
             <TableContainer>
-                <div style={toolbarStyle}>
+                <Toolbar data-testid="user-toolbar">
                     <DropDown data-testid="user-year" id="user-year" onChange={handleChangeYear} items={years} value={year} />
                     <DropDown data-testid="user-month" id="user-month" onChange={handleChangeMonth} items={months} value={month} />
                     <Search data-testid="user-filter" id="user-filter" onChange={handleChangeFilter} />
-                </div>
+                    <Box sx={{ marginLeft: 'auto' }}>
+                        <Pagination component="div" {...paginationProps} />
+                    </Box>
+                </Toolbar>
                 {displayData()}
             </TableContainer>
         </Paper>

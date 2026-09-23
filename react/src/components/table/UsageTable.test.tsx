@@ -108,4 +108,21 @@ describe('UsageTable', () => {
         expect(screen.getByTestId('test-header')).toBeInTheDocument();
         expect(screen.queryByTestId('test-footer')).not.toBeInTheDocument();
     });
+
+    it('renders table without pagination when paginationProps is omitted', () => {
+        render(
+            <UsageTable
+                prefix="test"
+                cellInfos={cellInfos}
+                headerProps={headerProps}
+                bodyProps={bodyProps}
+                footerProps={footerProps}
+                showFooter={true}
+            />
+        );
+        expect(screen.queryByTestId('test-pagination')).not.toBeInTheDocument();
+        expect(screen.getByTestId('test-header')).toBeInTheDocument();
+        expect(screen.getByTestId('test-data-0')).toBeInTheDocument();
+        expect(screen.getByTestId('test-footer')).toBeInTheDocument();
+    });
 });

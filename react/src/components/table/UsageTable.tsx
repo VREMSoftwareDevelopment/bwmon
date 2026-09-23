@@ -30,7 +30,7 @@ import type CellInfo from './CellInfo';
 export interface UsageTableProps<T extends Record<keyof T, string | number> & { id: string | number }> {
     prefix: string;
     cellInfos: readonly CellInfo<T>[];
-    paginationProps: PaginationProps;
+    paginationProps?: PaginationProps;
     headerProps: Omit<HeaderProps<T>, 'prefix' | 'cellInfos'>;
     bodyProps: Omit<BodyProps<T>, 'prefix' | 'cellInfos'>;
     footerProps?: Omit<FooterProps<T>, 'prefix' | 'cellInfos'>;
@@ -47,11 +47,13 @@ const UsageTable = <T extends Record<keyof T, string | number> & { id: string | 
     showFooter,
 }: UsageTableProps<T>) => (
     <Table stickyHeader size="small">
-        <TableHead>
-            <TableRow>
-                <Pagination {...paginationProps} />
-            </TableRow>
-        </TableHead>
+        {paginationProps && (
+            <TableHead>
+                <TableRow>
+                    <Pagination {...paginationProps} />
+                </TableRow>
+            </TableHead>
+        )}
         <Header prefix={prefix} cellInfos={cellInfos} {...headerProps} />
         <Body prefix={prefix} cellInfos={cellInfos} {...bodyProps} />
         {showFooter && footerProps && <Footer prefix={prefix} cellInfos={cellInfos} {...footerProps} />}

@@ -7,7 +7,7 @@ export type { RoutedErrorBoundaryProps } from './main';
 export { ErrorMessage, InfoMessage, Message } from './messages';
 export { BWMonRoutes, Navigation, PageNotFound, useNavigation } from './navigation';
 export type { MenuItem } from './navigation';
-export { Body, CellInfo, Footer as TableFooter, Header as TableHeader, Pagination, UsageTable } from './table';
+export { Body, CellInfo, Footer as TableFooter, Header as TableHeader, Pagination, Toolbar, UsageTable } from './table';
 export type {
     BodyProps,
     CellAlign,

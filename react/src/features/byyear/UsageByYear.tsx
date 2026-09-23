@@ -18,8 +18,8 @@
 
 import { useMemo } from 'react';
 import type { ChangeEventHandler, MouseEvent } from 'react';
-import { Paper, TableContainer } from '@mui/material';
-import { CellInfo, ErrorMessage, Loading, UsageTable } from '@components';
+import { Box, Paper, TableContainer } from '@mui/material';
+import { CellInfo, ErrorMessage, Loading, Pagination, Toolbar, UsageTable } from '@components';
 import type { UsageSummary } from '@services';
 import { usageInGBytes, comparator, isAscending, sort } from '@utils';
 import { useSortDesc, usePagination } from '@hooks';
@@ -68,7 +68,6 @@ const UsageByYear = () => {
     const paginationProps = {
         'data-testid': 'year-pagination-id',
         id: 'year-pagination-id',
-        colSpan: cellInfos.length,
         count: data ? data.length : 0,
         minimum: rowsPerPageMin,
         rowsPerPage,
@@ -84,21 +83,21 @@ const UsageByYear = () => {
     const bodyProps = { values: paginatedData };
     const displayData = () =>
         data ? (
-            <UsageTable
-                prefix="year"
-                cellInfos={cellInfos}
-                paginationProps={paginationProps}
-                headerProps={headerProps}
-                bodyProps={bodyProps}
-                showFooter={false}
-            />
+            <UsageTable prefix="year" cellInfos={cellInfos} headerProps={headerProps} bodyProps={bodyProps} showFooter={false} />
         ) : null;
 
     return (
         <Paper>
             <Loading isLoading={loading} />
             {error && <ErrorMessage message={error} />}
-            <TableContainer>{displayData()}</TableContainer>
+            <TableContainer>
+                <Toolbar data-testid="year-toolbar">
+                    <Box sx={{ marginLeft: 'auto' }}>
+                        <Pagination component="div" {...paginationProps} />
+                    </Box>
+                </Toolbar>
+                {displayData()}
+            </TableContainer>
         </Paper>
     );
 };
