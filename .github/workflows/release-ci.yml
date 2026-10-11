@@ -20,7 +20,7 @@ permissions:
 jobs:
     # Shell script linting
     shellcheck:
-        runs-on: ubuntu-24.04
+        runs-on: ubuntu-26.04
         steps:
             - uses: actions/checkout@v7
             - name: Run ShellCheck
@@ -28,14 +28,14 @@ jobs:
 
     # Run tests
     test:
-        runs-on: ubuntu-24.04
+        runs-on: ubuntu-26.04
         needs: [shellcheck]
         defaults:
             run:
                 working-directory: react
         strategy:
             matrix:
-                node-version: [24.x]
+                node-version: [26.x]
         steps:
             - uses: actions/checkout@v7
               with:
@@ -50,11 +50,11 @@ jobs:
 
     # Build the project and create release asset
     build:
-        runs-on: ubuntu-24.04
+        runs-on: ubuntu-26.04
         needs: [test]
         strategy:
             matrix:
-                node-version: [24.x]
+                node-version: [26.x]
         steps:
             - uses: actions/checkout@v7
               with:
@@ -83,7 +83,7 @@ jobs:
 
     # Create git tag, GitHub release, and update README
     release:
-        runs-on: ubuntu-24.04
+        runs-on: ubuntu-26.04
         needs: [build]
         steps:
             - uses: actions/checkout@v7
@@ -144,7 +144,7 @@ jobs:
 
     # Deploy the build to GitHub Pages
     deploy:
-        runs-on: ubuntu-24.04
+        runs-on: ubuntu-26.04
         needs: [release]
         steps:
             - name: Checkout repository

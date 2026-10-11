@@ -10,15 +10,12 @@ export default defineConfig({
     build: {
         outDir: 'build',
         manifest: true,
-        chunkSizeWarningLimit: 600,
+        chunkSizeWarningLimit: 1000,
         rollupOptions: {
             output: {
                 manualChunks(id) {
                     if (id.includes('node_modules/@mui/icons-material') || id.includes('node_modules/@mui/material')) {
                         return 'mui';
-                    }
-                    if (id.includes('node_modules/react-apexcharts') || id.includes('node_modules/apexcharts')) {
-                        return 'chart';
                     }
                 },
             },

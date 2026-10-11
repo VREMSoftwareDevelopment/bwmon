@@ -17,7 +17,7 @@ permissions:
 jobs:
     # Check for code changes since last successful run
     check_changes:
-        runs-on: ubuntu-24.04
+        runs-on: ubuntu-26.04
         outputs:
             code_changed: ${{ steps.set_changed.outputs.code_changed }}
         steps:
@@ -47,14 +47,14 @@ jobs:
     # Mutation testing
     stryker:
         if: github.ref == 'refs/heads/main' && needs.check_changes.outputs.code_changed == 'true'
-        runs-on: ubuntu-24.04
+        runs-on: ubuntu-26.04
         needs: [check_changes]
         defaults:
             run:
                 working-directory: react
         strategy:
             matrix:
-                node-version: [24.x]
+                node-version: [26.x]
         steps:
             - uses: actions/checkout@v7
             - uses: ./.github/actions/common-setup
@@ -71,7 +71,7 @@ jobs:
     # Deploy reports to GitHub Pages under /reports/
     deploy_reports:
         if: github.ref == 'refs/heads/main'
-        runs-on: ubuntu-24.04
+        runs-on: ubuntu-26.04
         needs: [stryker]
         steps:
             - name: Checkout repository
