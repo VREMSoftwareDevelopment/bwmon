@@ -1,64 +1,64 @@
-<testsuites id="" name="" tests="26" failures="0" skipped="0" errors="0" time="66.453034">
-<testsuite name="App.e2e.test.ts" timestamp="2026-10-11T14:14:29.799Z" hostname="chromium" tests="1" failures="0" skipped="0" time="2.469" errors="0">
-<testcase name="App e2e › header element" classname="App.e2e.test.ts" time="2.469">
+<testsuites id="" name="" tests="26" failures="0" skipped="0" errors="0" time="91.709947">
+<testsuite name="App.e2e.test.ts" timestamp="2026-10-11T14:22:01.729Z" hostname="chromium" tests="1" failures="0" skipped="0" time="3.711" errors="0">
+<testcase name="App e2e › header element" classname="App.e2e.test.ts" time="3.711">
 </testcase>
 </testsuite>
-<testsuite name="Navigation.e2e.test.ts" timestamp="2026-10-11T14:14:29.799Z" hostname="chromium" tests="6" failures="0" skipped="0" time="15.032" errors="0">
-<testcase name="Navigation e2e › Usage by Year" classname="Navigation.e2e.test.ts" time="2.313">
+<testsuite name="Navigation.e2e.test.ts" timestamp="2026-10-11T14:22:01.729Z" hostname="chromium" tests="6" failures="0" skipped="0" time="20.839" errors="0">
+<testcase name="Navigation e2e › Usage by Year" classname="Navigation.e2e.test.ts" time="3.396">
 </testcase>
-<testcase name="Navigation e2e › Usage by Year Graph" classname="Navigation.e2e.test.ts" time="2.412">
+<testcase name="Navigation e2e › Usage by Year Graph" classname="Navigation.e2e.test.ts" time="3.439">
 </testcase>
-<testcase name="Navigation e2e › Usage by Month" classname="Navigation.e2e.test.ts" time="2.575">
+<testcase name="Navigation e2e › Usage by Month" classname="Navigation.e2e.test.ts" time="3.523">
 </testcase>
-<testcase name="Navigation e2e › Usage by Month Graph" classname="Navigation.e2e.test.ts" time="2.625">
+<testcase name="Navigation e2e › Usage by Month Graph" classname="Navigation.e2e.test.ts" time="3.683">
 </testcase>
-<testcase name="Navigation e2e › Usage by User" classname="Navigation.e2e.test.ts" time="2.405">
+<testcase name="Navigation e2e › Usage by User" classname="Navigation.e2e.test.ts" time="3.367">
 </testcase>
-<testcase name="Navigation e2e › Usage by User Graph" classname="Navigation.e2e.test.ts" time="2.702">
-</testcase>
-</testsuite>
-<testsuite name="UsageByMonth.e2e.test.ts" timestamp="2026-10-11T14:14:29.799Z" hostname="chromium" tests="5" failures="0" skipped="0" time="12.035" errors="0">
-<testcase name="UsageByMonth e2e › should have footer" classname="UsageByMonth.e2e.test.ts" time="2.321">
-</testcase>
-<testcase name="UsageByMonth e2e › should have table" classname="UsageByMonth.e2e.test.ts" time="2.359">
-</testcase>
-<testcase name="UsageByMonth e2e › should sort by month descending" classname="UsageByMonth.e2e.test.ts" time="2.309">
-</testcase>
-<testcase name="UsageByMonth e2e › should sort by month ascending" classname="UsageByMonth.e2e.test.ts" time="2.408">
-</testcase>
-<testcase name="UsageByMonth e2e › should show different information when changing year" classname="UsageByMonth.e2e.test.ts" time="2.638">
+<testcase name="Navigation e2e › Usage by User Graph" classname="Navigation.e2e.test.ts" time="3.431">
 </testcase>
 </testsuite>
-<testsuite name="UsageByUser.e2e.test.ts" timestamp="2026-10-11T14:14:29.799Z" hostname="chromium" tests="11" failures="0" skipped="0" time="27.992" errors="0">
-<testcase name="UsageByUser e2e › should have footer" classname="UsageByUser.e2e.test.ts" time="2.295">
+<testsuite name="UsageByMonth.e2e.test.ts" timestamp="2026-10-11T14:22:01.729Z" hostname="chromium" tests="5" failures="0" skipped="0" time="16.548" errors="0">
+<testcase name="UsageByMonth e2e › should have footer" classname="UsageByMonth.e2e.test.ts" time="3.234">
 </testcase>
-<testcase name="UsageByUser e2e › should have table" classname="UsageByUser.e2e.test.ts" time="2.391">
+<testcase name="UsageByMonth e2e › should have table" classname="UsageByMonth.e2e.test.ts" time="3.219">
 </testcase>
-<testcase name="UsageByUser e2e › should sort by IP ascending" classname="UsageByUser.e2e.test.ts" time="2.425">
+<testcase name="UsageByMonth e2e › should sort by month descending" classname="UsageByMonth.e2e.test.ts" time="3.187">
 </testcase>
-<testcase name="UsageByUser e2e › should sort by IP descending" classname="UsageByUser.e2e.test.ts" time="2.477">
+<testcase name="UsageByMonth e2e › should sort by month ascending" classname="UsageByMonth.e2e.test.ts" time="3.207">
 </testcase>
-<testcase name="UsageByUser e2e › should sort by MAC" classname="UsageByUser.e2e.test.ts" time="2.691">
-</testcase>
-<testcase name="UsageByUser e2e › should sort by user" classname="UsageByUser.e2e.test.ts" time="2.525">
-</testcase>
-<testcase name="UsageByUser e2e › should sort by total" classname="UsageByUser.e2e.test.ts" time="2.441">
-</testcase>
-<testcase name="UsageByUser e2e › should show different information when changing year" classname="UsageByUser.e2e.test.ts" time="2.839">
-</testcase>
-<testcase name="UsageByUser e2e › should show different information when changing month" classname="UsageByUser.e2e.test.ts" time="2.827">
-</testcase>
-<testcase name="UsageByUser e2e › should show different information when rows per page" classname="UsageByUser.e2e.test.ts" time="2.529">
-</testcase>
-<testcase name="UsageByUser e2e › should show different information when changing IP/MAC/User" classname="UsageByUser.e2e.test.ts" time="2.552">
+<testcase name="UsageByMonth e2e › should show different information when changing year" classname="UsageByMonth.e2e.test.ts" time="3.701">
 </testcase>
 </testsuite>
-<testsuite name="UsageByYear.e2e.test.ts" timestamp="2026-10-11T14:14:29.799Z" hostname="chromium" tests="3" failures="0" skipped="0" time="6.775" errors="0">
-<testcase name="UsageByYear e2e › should have table" classname="UsageByYear.e2e.test.ts" time="2.203">
+<testsuite name="UsageByUser.e2e.test.ts" timestamp="2026-10-11T14:22:01.729Z" hostname="chromium" tests="11" failures="0" skipped="0" time="38.538" errors="0">
+<testcase name="UsageByUser e2e › should have footer" classname="UsageByUser.e2e.test.ts" time="3.282">
 </testcase>
-<testcase name="UsageByYear e2e › should sort by year descending" classname="UsageByYear.e2e.test.ts" time="2.243">
+<testcase name="UsageByUser e2e › should have table" classname="UsageByUser.e2e.test.ts" time="3.3">
 </testcase>
-<testcase name="UsageByYear e2e › should sort by year ascending" classname="UsageByYear.e2e.test.ts" time="2.329">
+<testcase name="UsageByUser e2e › should sort by IP ascending" classname="UsageByUser.e2e.test.ts" time="3.307">
+</testcase>
+<testcase name="UsageByUser e2e › should sort by IP descending" classname="UsageByUser.e2e.test.ts" time="3.401">
+</testcase>
+<testcase name="UsageByUser e2e › should sort by MAC" classname="UsageByUser.e2e.test.ts" time="3.509">
+</testcase>
+<testcase name="UsageByUser e2e › should sort by user" classname="UsageByUser.e2e.test.ts" time="3.424">
+</testcase>
+<testcase name="UsageByUser e2e › should sort by total" classname="UsageByUser.e2e.test.ts" time="3.442">
+</testcase>
+<testcase name="UsageByUser e2e › should show different information when changing year" classname="UsageByUser.e2e.test.ts" time="3.897">
+</testcase>
+<testcase name="UsageByUser e2e › should show different information when changing month" classname="UsageByUser.e2e.test.ts" time="3.873">
+</testcase>
+<testcase name="UsageByUser e2e › should show different information when rows per page" classname="UsageByUser.e2e.test.ts" time="3.519">
+</testcase>
+<testcase name="UsageByUser e2e › should show different information when changing IP/MAC/User" classname="UsageByUser.e2e.test.ts" time="3.584">
+</testcase>
+</testsuite>
+<testsuite name="UsageByYear.e2e.test.ts" timestamp="2026-10-11T14:22:01.729Z" hostname="chromium" tests="3" failures="0" skipped="0" time="9.262" errors="0">
+<testcase name="UsageByYear e2e › should have table" classname="UsageByYear.e2e.test.ts" time="3.065">
+</testcase>
+<testcase name="UsageByYear e2e › should sort by year descending" classname="UsageByYear.e2e.test.ts" time="3.105">
+</testcase>
+<testcase name="UsageByYear e2e › should sort by year ascending" classname="UsageByYear.e2e.test.ts" time="3.092">
 </testcase>
 </testsuite>
 </testsuites>
