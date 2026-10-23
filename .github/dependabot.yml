@@ -10,12 +10,6 @@ updates:
       schedule:
           interval: 'weekly'
       ignore:
-          # Vitest 5 breaks @stryker-mutator/vitest-runner 10 (stryker-js#6210).
-          # Remove once the runner ships the fix from stryker-js#6214.
-          - dependency-name: 'vitest'
-            update-types: ['version-update:semver-major']
-          - dependency-name: '@vitest/coverage-v8'
-            update-types: ['version-update:semver-major']
           # TypeScript stays on 6.x: typescript-eslint 8 peers on typescript <6.1.
           - dependency-name: 'typescript'
             update-types: ['version-update:semver-major']
